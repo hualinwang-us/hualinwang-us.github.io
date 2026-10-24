@@ -23,8 +23,8 @@ const FEEDS = {
     uschina: [["中美关系", gnSearch("中美关系 OR 中美贸易 OR 关税 中国 美国", "zh")]],
     china: [["BBC中文", ["https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"]], ["RFI中文", ["https://www.rfi.fr/cn/rss"]], ["DW中文", ["https://rss.dw.com/rdf/rss-chi-all"]], ["中国新闻", gnSearch("中国", "zh")]],
     business: [["美股", gnSearch("美股 OR 华尔街 OR 美联储 OR 道琼斯", "zh")], ["美国经济", gnSearch("美国经济 OR 房贷利率 OR 油价 OR 通胀", "zh")], ["华人理财", gnSearch("报税 OR 退休金 OR 社安金 OR 理财 美国", "zh")], ["财经频道", gnTopic("BUSINESS", "zh")]],
-    health: [["健康", gnSearch("健康 OR 养生 OR 医生提醒 OR 饮食", "zh")], ["医疗保险", gnSearch("白卡 OR 红蓝卡 OR 医疗保险 OR 疫苗 美国", "zh")], ["健康频道", gnTopic("HEALTH", "zh")]],
-    ent: [["娱乐", gnSearch("明星 OR 电影 OR 娱乐圈 OR 好莱坞", "zh")], ["体育", gnSearch("NBA OR 足球 OR 网球 OR 体育", "zh")], ["娱乐频道", gnTopic("ENTERTAINMENT", "zh")], ["体育频道", gnTopic("SPORTS", "zh")]]
+    health: [["养生", gnSearch("养生 OR 医生提醒 OR 健康饮食 OR 失智 OR 糖尿病 OR 高血压", "zh")], ["医疗保险", gnSearch("白卡 OR 红蓝卡 OR 医疗保险 OR 疫苗 美国", "zh")], ["健康频道", gnTopic("HEALTH", "zh")]],
+    ent: [["娱乐", gnSearch("明星 OR 女星 OR 影帝 OR 娱乐圈 OR 好莱坞 OR 演唱会", "zh")], ["体育", gnSearch("NBA OR 足球 OR 网球 OR 体育", "zh")], ["娱乐频道", gnTopic("ENTERTAINMENT", "zh")], ["体育频道", gnTopic("SPORTS", "zh")]]
   },
   en: {
     top: [["Chinese American", gnSearch("\"Chinese American\" OR \"Chinese Americans\"", "en")], ["Asian American", gnSearch("\"Asian American\"", "en")]],
@@ -88,6 +88,9 @@ async function get(url, type = "text") {
   } finally { clearTimeout(timer); }
 }
 
+// Stock-ticker blurbs and press-release mills crowd out real news; skip them.
+const BLOCK_SRC = /TradingKey|TradingView|Moomoo|富途|东方财富|同花顺|雪球|股吧|金融界|格隆汇|智通财经|财华社|生物通|证券|Investing\.com|MarketBeat|Benzinga|Zacks|GuruFocus|Yahoo Finance UK/i;
+const BLOCK_TITLE = /\([A-Z]{1,5}\)|\d{4,5}\.HK|季度业绩|财年第|耗资|回购|非经营性|概念股?集体|涨超|跌超|\bQ[1-4]\b.*Earnings|Stock (Price|Forecast)/i;
 // A Chinese headline: at least 30% of its non-space characters are CJK.
 const isChinese = t => { const c = t.replace(/\s/g, ""); const n = (c.match(/[\u3400-\u9fff]/g) || []).length; return c.length > 0 && n / c.length >= 0.3; };
 const key = t => t.toLowerCase().replace(/[\s\p{P}\p{S}]/gu, "").slice(0, 22);
@@ -118,7 +121,7 @@ async function buildNews() {
         (/频道$/.test(r.name) ? filler : items).push(...r.items);
       }
       const prep = list => {
-        list = list.filter(i => !i.d || now - Date.parse(i.d) < MAX_AGE_H * 3600e3);
+        list = list.filter(i => (!i.d || now - Date.parse(i.d) < MAX_AGE_H * 3600e3) && !BLOCK_SRC.test(i.src || "") && !BLOCK_TITLE.test(i.t));
         if (lang === "zh") list = list.filter(i => isChinese(i.t));
         return list.sort((a, b) => (b.d || "").localeCompare(a.d || ""));
       };
@@ -126,7 +129,7 @@ async function buildNews() {
       const fresh = [];
       for (const i of items) { const k = key(i.t); if (k.length < 4 || seen.has(k)) continue; seen.add(k); fresh.push(i); if (fresh.length >= CAP[sec]) break; }
       // Keep yesterday's stories when a section comes back thin, so the page never goes empty.
-      const old = (prev.sections?.[lang]?.[sec] || []).filter(i => (!i.d || now - Date.parse(i.d) < 7 * 86400e3) && (lang !== "zh" || isChinese(i.t)));
+      const old = (prev.sections?.[lang]?.[sec] || []).filter(i => !BLOCK_SRC.test(i.src || "") && !BLOCK_TITLE.test(i.t) && (!i.d || now - Date.parse(i.d) < 7 * 86400e3) && (lang !== "zh" || isChinese(i.t)));
       for (const i of old) { if (fresh.length >= Math.min(8, CAP[sec])) break; const k = key(i.t); if (seen.has(k)) continue; seen.add(k); fresh.push(i); }
       out.sections[lang][sec] = fresh;
     }
