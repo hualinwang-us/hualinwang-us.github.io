@@ -1,0 +1,55 @@
+name: Update news and deploy
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # every hour (UTC); free on public repos
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-and-deploy
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch news, exchange rates and weather
+        run: node scripts/fetch.mjs
+      - name: Save data to the repo
+        run: |
+          git config user.name "hualin-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/market.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update news $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase --autostash || true
+            git push || echo "push skipped"
+          fi
+      - name: Prepare site files
+        run: |
+          mkdir -p _site
+          cp -r index.html config.js assets data _site/
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

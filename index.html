@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>华邻网 · 在美华人新闻与分类信息</title>
+<meta name="description" content="华邻网：每小时更新的在美华人新闻、纽约本地资讯、移民签证动态，以及招聘、租房、生意转让等免费分类信息。">
+<meta name="theme-color" content="#121a2b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23c2362b'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='white' font-family='serif' font-weight='900'%3E%E9%82%BB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="util"><div class="shell util-in">
+  <span id="today"></span>
+  <span class="util-mid">
+    <span id="wxNow" class="pill" hidden></span>
+    <span id="fxNow" class="pill" hidden></span>
+  </span>
+  <div class="seg" role="group" aria-label="Language / 语言">
+    <button type="button" id="lzh" aria-pressed="true">中文</button>
+    <button type="button" id="len" aria-pressed="false">EN</button>
+  </div>
+</div></div>
+
+<header class="mast"><div class="shell mast-in">
+  <a class="logo" href="#" data-home>
+    <span class="seal" aria-hidden="true">邻</span>
+    <span class="logo-txt"><b>华邻网</b><small data-i18n="tagline">在美华人 · 新闻与生活信息</small></span>
+  </a>
+  <form class="search" id="searchForm" role="search">
+    <input id="q" type="search" autocomplete="off" data-i18n-ph="searchPh" placeholder="搜索分类信息：工作、房屋、地区…">
+    <button type="submit" data-i18n="searchBtn">搜索</button>
+  </form>
+  <button class="btn" type="button" data-post data-i18n="postFree">免费发布</button>
+</div></header>
+
+<nav class="tabs"><div class="shell tabs-in" id="tabs"></div></nav>
+
+<main class="shell" id="vHome">
+  <section class="dir" aria-labelledby="dirH">
+    <h2 id="dirH" class="sr" data-i18n="directory">分类目录</h2>
+    <div class="dir-grid" id="dir"></div>
+  </section>
+
+  <section class="spons" id="sponTop" aria-label="Sponsors"></section>
+
+  <div class="layout">
+    <div class="col-main">
+      <section class="block lead-block">
+        <div class="bh"><h2 data-i18n="sec_top">新闻速递</h2><a href="#n-top" data-i18n="more">更多</a></div>
+        <div id="sec-top" class="lead-wrap"></div>
+      </section>
+      <div class="pair">
+        <section class="block"><div class="bh"><h2 data-i18n="sec_local">纽约本地</h2><a href="#n-local" data-i18n="more">更多</a></div><ul class="nl" id="sec-local"></ul></section>
+        <section class="block"><div class="bh"><h2 data-i18n="sec_immigration">移民签证</h2><a href="#n-immigration" data-i18n="more">更多</a></div><ul class="nl" id="sec-immigration"></ul></section>
+      </div>
+      <div class="pair">
+        <section class="block"><div class="bh"><h2 data-i18n="sec_uschina">中美关系</h2><a href="#n-uschina" data-i18n="more">更多</a></div><ul class="nl" id="sec-uschina"></ul></section>
+        <section class="block"><div class="bh"><h2 data-i18n="sec_china">中国</h2><a href="#n-china" data-i18n="more">更多</a></div><ul class="nl" id="sec-china"></ul></section>
+      </div>
+      <div class="pair">
+        <section class="block"><div class="bh"><h2 data-i18n="sec_business">财经</h2><a href="#n-business" data-i18n="more">更多</a></div><ul class="nl" id="sec-business"></ul></section>
+        <section class="block"><div class="bh"><h2 data-i18n="sec_health">健康养生</h2><a href="#n-health" data-i18n="more">更多</a></div><ul class="nl" id="sec-health"></ul></section>
+      </div>
+      <section class="block"><div class="bh"><h2 data-i18n="sec_ent">娱乐体育</h2><a href="#n-ent" data-i18n="more">更多</a></div><ul class="nl two-col" id="sec-ent"></ul></section>
+    </div>
+
+    <aside class="col-rail">
+      <div class="cta">
+        <b data-i18n="ctaH">免费发布分类信息</b>
+        <p data-i18n="ctaP">招聘、租房、生意转让、二手买卖……无需注册，一分钟发布。</p>
+        <button class="btn" type="button" data-post data-i18n="postNow">立即发布</button>
+      </div>
+      <section class="block">
+        <div class="bh"><h2 data-i18n="latest">最新信息</h2></div>
+        <ul class="rows" id="latest"></ul>
+      </section>
+      <section class="block" id="fxBlock" hidden>
+        <div class="bh"><h2 data-i18n="fx">货币兑换率</h2><span class="bh-note" id="fxAsOf"></span></div>
+        <table class="fx" id="fxTable"></table>
+      </section>
+      <section class="block" id="wxBlock" hidden>
+        <div class="bh"><h2 data-i18n="weather">纽约天气</h2></div>
+        <div class="wx" id="wx"></div>
+      </section>
+      <div id="sponRail" class="spon-rail"></div>
+    </aside>
+  </div>
+
+  <section class="boards-sec">
+    <div class="bh big"><h2 data-i18n="classifieds">分类信息</h2><span class="bh-note" data-i18n="classHint">点击板块查看全部</span></div>
+    <div class="bgrid" id="bgrid"></div>
+  </section>
+</main>
+
+<main class="shell view" id="vBoard" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <div class="vh-row"><span class="seal md" id="bSeal"></span><h1 id="bTitle"></h1>
+      <button class="btn" type="button" id="bPost" data-i18n="postHere">在本板块发布</button></div>
+    <input class="filter" id="bFilter" type="search" data-i18n-ph="filterPh" placeholder="在本板块中筛选">
+  </div>
+  <ul class="plist" id="bList"></ul>
+</main>
+
+<main class="shell view" id="vNews" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <h1 id="nTitle"></h1>
+    <p class="vh-note" id="nNote"></p>
+  </div>
+  <ul class="nl full" id="nList"></ul>
+</main>
+
+<main class="shell view" id="vSearch" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <h1 id="sTitle"></h1>
+  </div>
+  <ul class="plist" id="sList"></ul>
+</main>
+
+<footer class="foot"><div class="shell foot-in">
+  <div><b>华邻网 HuaLin</b><p data-i18n="foot1">新闻每小时自动汇集自各大中英文媒体，点击标题阅读原文。</p></div>
+  <div><b data-i18n="footAds">广告刊登</b><p id="adContact" data-i18n="footAdsP">首页及侧栏广告位招租，欢迎商家联系。</p></div>
+  <div><b data-i18n="footSafe">安全提示</b><p data-i18n="foot2">分类信息由用户自行发布，请自行核实；交易当面确认，切勿预付定金，谨防诈骗。</p></div>
+</div></footer>
+
+<dialog id="postDlg" aria-labelledby="postH">
+  <form class="dl" id="postForm" novalidate>
+    <button type="button" class="x" data-close aria-label="Close">×</button>
+    <h3 id="postH" data-i18n="postH">发布分类信息</h3>
+    <div id="postOff" class="off" hidden data-i18n="postOff">发布功能即将开放，敬请期待。</div>
+    <div id="postFields">
+      <div class="two">
+        <div class="field"><label for="fBoard" data-i18n="fBoard">板块</label><select id="fBoard"></select></div>
+        <div class="field"><label for="fArea" data-i18n="fArea">地区</label><input id="fArea" list="areas" maxlength="30" data-i18n-ph="areaPh" placeholder="如：法拉盛"></div>
+      </div>
+      <datalist id="areas"><option value="法拉盛"><option value="布碌崙八大道"><option value="日落公园"><option value="曼哈顿华埠"><option value="艾姆赫斯特"><option value="长岛"><option value="史坦顿岛"><option value="新泽西"><option value="费城"><option value="波士顿"></datalist>
+      <div class="field"><label for="fTitle" data-i18n="fTitle">标题</label><input id="fTitle" maxlength="60" data-i18n-ph="titlePh" placeholder="如：法拉盛餐馆请炒锅，包吃住"></div>
+      <div class="field"><label for="fBody" data-i18n="fBody">详细内容</label><textarea id="fBody" maxlength="2000" data-i18n-ph="bodyPh" placeholder="薪资、要求、价格、时间等"></textarea></div>
+      <div class="two">
+        <div class="field"><label for="fName" data-i18n="fName">联系人</label><input id="fName" maxlength="20" data-i18n-ph="namePh" placeholder="如：王先生"></div>
+        <div class="field"><label for="fPhone" data-i18n="fPhone">电话</label><input id="fPhone" type="tel" maxlength="20" placeholder="917-555-0123"></div>
+      </div>
+      <div class="field"><label for="fWx" data-i18n="fWx">微信（选填）</label><input id="fWx" maxlength="30"></div>
+      <div class="hp" aria-hidden="true"><label for="fSite">Website</label><input id="fSite" tabindex="-1" autocomplete="off"></div>
+      <p class="hint" data-i18n="formHint">电话和微信至少填一项。信息公开显示，请勿填写证件号等隐私。</p>
+      <p class="err" id="fErr" role="alert"></p>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close data-i18n="cancel">取消</button>
+        <button type="submit" class="btn" id="fSubmit" data-i18n="submit">发布</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="viewDlg"><div class="dl" id="viewBody"></div></dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
