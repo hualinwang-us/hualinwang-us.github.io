@@ -10,21 +10,21 @@ const gnSearch = (q, lang) => lang === "zh"
      `https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:3d")}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans`]
   : [`https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:3d")}&hl=en-US&gl=US&ceid=US:en`];
 const gnTopic = (topic, lang) => lang === "zh"
-  ? [`https://news.google.com/rss/headlines/section/topic/${topic}?hl=zh-CN&gl=US&ceid=US:zh-Hans`,
-     `https://news.google.com/rss/headlines/section/topic/${topic}?hl=zh-CN&gl=CN&ceid=CN:zh-Hans`]
+  ? [`https://news.google.com/rss/headlines/section/topic/${topic}?hl=zh-CN&gl=CN&ceid=CN:zh-Hans`,
+     `https://news.google.com/rss/headlines/section/topic/${topic}?hl=zh-TW&gl=TW&ceid=TW:zh-Hant`]
   : [`https://news.google.com/rss/headlines/section/topic/${topic}?hl=en-US&gl=US&ceid=US:en`];
 
 // Section order = de-duplication priority. A story shows up in the first section that claims it.
 const FEEDS = {
   zh: {
-    top: [["华人 美国", gnSearch("美国 华人", "zh")], ["华裔", gnSearch("华裔", "zh")], ["美国新闻", gnTopic("NATION", "zh")]],
+    top: [["美国华人", gnSearch("美国 华人 OR 华裔", "zh")], ["美国要闻", gnSearch("美国 白宫 OR 国会 OR 特朗普 OR 川普", "zh")], ["选举", gnSearch("美国 中期选举 OR 选民 OR 投票", "zh")]],
     local: [["纽约华人", gnSearch("纽约 华人", "zh")], ["法拉盛", gnSearch("法拉盛", "zh")], ["布碌崙", gnSearch("布鲁克林 OR 布碌崙 OR 日落公园 华人", "zh")]],
     immigration: [["移民签证", gnSearch("移民 OR 签证 OR 绿卡 OR 入籍 美国", "zh")], ["H-1B", gnSearch("H-1B OR 留学生 OR F-1", "zh")]],
     uschina: [["中美关系", gnSearch("中美关系 OR 中美贸易 OR 关税 中国 美国", "zh")]],
     china: [["BBC中文", ["https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"]], ["RFI中文", ["https://www.rfi.fr/cn/rss"]], ["DW中文", ["https://rss.dw.com/rdf/rss-chi-all"]], ["中国新闻", gnSearch("中国", "zh")]],
-    business: [["财经", gnTopic("BUSINESS", "zh")], ["美股", gnSearch("美股 OR 美联储 OR 房贷利率", "zh")]],
-    health: [["健康", gnTopic("HEALTH", "zh")], ["养生", gnSearch("养生 OR 健康 饮食", "zh")]],
-    ent: [["娱乐", gnTopic("ENTERTAINMENT", "zh")], ["体育", gnTopic("SPORTS", "zh")]]
+    business: [["美股", gnSearch("美股 OR 华尔街 OR 美联储 OR 道琼斯", "zh")], ["经济", gnSearch("房贷 OR 油价 OR 通胀 OR 美国经济", "zh")], ["财经频道", gnTopic("BUSINESS", "zh")]],
+    health: [["健康", gnSearch("健康 OR 养生 OR 医生提醒 OR 饮食", "zh")], ["健康频道", gnTopic("HEALTH", "zh")]],
+    ent: [["娱乐", gnSearch("明星 OR 电影 OR 娱乐圈 OR 好莱坞", "zh")], ["体育", gnSearch("NBA OR 足球 OR 体育 OR 网球", "zh")], ["娱乐频道", gnTopic("ENTERTAINMENT", "zh")], ["体育频道", gnTopic("SPORTS", "zh")]]
   },
   en: {
     top: [["Chinese American", gnSearch("\"Chinese American\" OR \"Chinese Americans\"", "en")], ["Asian American", gnSearch("\"Asian American\"", "en")]],
@@ -68,6 +68,7 @@ export function parseFeed(xml, fallbackSource) {
       const cut = title.lastIndexOf(" - ");
       if (cut > 0) { if (!clean(tag(b, "source"))) source = title.slice(cut + 3); title = title.slice(0, cut); }
     }
+    if (/\|/.test(title)) { const first = title.split(/\s*[|｜]\s*/)[0]; if (first.length >= 8) title = first; }
     let summary = isGN ? "" : clean(tag(b, "description") || tag(b, "summary") || tag(b, "content"));
     if (summary.length > 160) summary = summary.slice(0, 158) + "…";
     if (summary && summary.replace(/\s/g, "") === title.replace(/\s/g, "")) summary = "";
@@ -87,6 +88,8 @@ async function get(url, type = "text") {
   } finally { clearTimeout(timer); }
 }
 
+// A Chinese headline: at least 30% of its non-space characters are CJK.
+const isChinese = t => { const c = t.replace(/\s/g, ""); const n = (c.match(/[\u3400-\u9fff]/g) || []).length; return c.length > 0 && n / c.length >= 0.3; };
 const key = t => t.toLowerCase().replace(/[\s\p{P}\p{S}]/gu, "").slice(0, 22);
 
 async function readJSON(path, fallback) { try { return JSON.parse(await fs.readFile(path, "utf8")); } catch { return fallback; } }
@@ -113,11 +116,12 @@ async function buildNews() {
         items.push(...r.items);
       }
       items = items.filter(i => !i.d || now - Date.parse(i.d) < MAX_AGE_H * 3600e3);
+      if (lang === "zh") items = items.filter(i => isChinese(i.t));
       items.sort((a, b) => (b.d || "").localeCompare(a.d || ""));
       const fresh = [];
       for (const i of items) { const k = key(i.t); if (k.length < 4 || seen.has(k)) continue; seen.add(k); fresh.push(i); if (fresh.length >= CAP[sec]) break; }
       // Keep yesterday's stories when a section comes back thin, so the page never goes empty.
-      const old = (prev.sections?.[lang]?.[sec] || []).filter(i => !i.d || now - Date.parse(i.d) < 7 * 86400e3);
+      const old = (prev.sections?.[lang]?.[sec] || []).filter(i => (!i.d || now - Date.parse(i.d) < 7 * 86400e3) && (lang !== "zh" || isChinese(i.t)));
       for (const i of old) { if (fresh.length >= Math.min(8, CAP[sec])) break; const k = key(i.t); if (seen.has(k)) continue; seen.add(k); fresh.push(i); }
       out.sections[lang][sec] = fresh;
     }
