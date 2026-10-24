@@ -219,10 +219,12 @@
     }
     ["local", "immigration", "uschina", "china", "business", "health"].forEach(s => {
       const list = sec(s).slice(0, 7);
-      $("#sec-" + s).innerHTML = list.length ? list.map(i => liHtml(i, false)).join("") : `<div class="empty">${esc(t("newsEmpty"))}</div>`;
+      $("#sec-" + s).innerHTML = list.map(i => liHtml(i, false)).join("");
+      $("#sec-" + s).closest(".block").hidden = !list.length; // hide a section that has no stories right now
     });
     const ent = sec("ent").slice(0, 10);
-    $("#sec-ent").innerHTML = ent.length ? ent.map(i => liHtml(i, false)).join("") : `<div class="empty">${esc(t("newsEmpty"))}</div>`;
+    $("#sec-ent").innerHTML = ent.map(i => liHtml(i, false)).join("");
+    $("#sec-ent").closest(".block").hidden = !ent.length;
   }
   function renderNewsView() {
     if (route.view !== "news") return;
