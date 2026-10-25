@@ -242,6 +242,9 @@ function preferEmbeddable(out) {
         if (twin) { swapped++; return false; }
         return true;
       });
+      { const L = out.sections[lang][sec], c = { n: L.length, ok: 0, no: 0, unk: 0, fresh6: 0, fresh6ok: 0 };
+        for (const i of L) { const f = Date.now() - (Date.parse(i.d) || 0) < 6 * 3600e3; if (i.fr === 1 || i.full) c.ok++; else if (i.fr === 0) c.no++; else c.unk++; if (f) { c.fresh6++; if (i.fr === 1) c.fresh6ok++; } }
+        (out.filterStats = out.filterStats || {})[lang + "." + sec] = c; }
       // Stories that can't be shown in full on our site are always left out.
       const keep = out.sections[lang][sec].filter(i => i.fr === 1 || i.full);
       const score = i => Date.parse(i.d) || 0;
