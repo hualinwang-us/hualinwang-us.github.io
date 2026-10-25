@@ -1,4 +1,4 @@
-/* 华邻网 shared pieces: boards, Supabase calls, share, report, scam check.
+/* 华脉 shared pieces: boards, Supabase calls, share, report, scam check.
    Loaded by the home page, the per-listing pages, and the page builder (Node). */
 (function (root) {
   "use strict";
@@ -124,7 +124,7 @@
   /* Site disclaimer (shown at #disclaimer and linked from every page footer). */
   const DISCLAIMER = {
     updated: "2026-10-24",
-    zh: { title: "免责声明", intro: "使用华邻网（以下称“本站”）即表示你理解并同意以下内容。",
+    zh: { title: "免责声明", intro: "使用华脉（以下称“本站”）即表示你理解并同意以下内容。",
       items: [
         ["仅供一般参考", "本站的新闻、生活指南、“我能申请什么”自测结果及其他内容，只供一般参考，**不构成法律、移民、税务、医疗、财务或其他专业意见**，也不会因此建立律师与客户或任何专业服务关系。遇到具体问题，请咨询持牌律师或相关专业人士。"],
         ["以官方为准", "我们尽力根据官方资料编写并标注核实日期，但政府规定经常变化，内容可能有延误、遗漏或错误。**一切以政府机构的官方网站、正式文件和工作人员的说明为准**。申请任何福利或递交移民文件前，请先向官方或专业人士确认。"],
@@ -138,7 +138,7 @@
         ["责任限制", "在法律允许的最大范围内，本站及其运营者不对因使用或依赖本站内容而造成的任何直接或间接损失承担责任。"],
         ["更正", "如发现内容有误，欢迎联系站长，我们会尽快核实更正。"]
       ] },
-    en: { title: "Disclaimer", intro: "By using HuaLin (\"this site\") you understand and agree to the following.",
+    en: { title: "Disclaimer", intro: "By using HuaMai (\"this site\") you understand and agree to the following.",
       items: [
         ["General information only", "News, life guides, \"What can I apply for?\" results and other content are for general information only and are **not legal, immigration, tax, medical, financial or other professional advice**. No attorney-client or other professional relationship is created. For your specific situation, consult a licensed attorney or qualified professional."],
         ["Official sources control", "We write from official sources and show when each guide was checked, but rules change often and content may be delayed, incomplete or wrong. **Government agencies' official websites, documents and staff are the final word.** Confirm with the agency or a professional before applying for benefits or filing immigration papers."],

@@ -1,4 +1,4 @@
-/* 华邻网 guides: rendering and the "what can I apply for" check.
+/* 华脉 guides: rendering and the "what can I apply for" check.
    Shared by the home page (browser) and the page builder (Node). Content lives in data/guides.json. */
 (function (root) {
   "use strict";

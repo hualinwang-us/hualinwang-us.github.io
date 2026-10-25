@@ -1,4 +1,4 @@
-/* 华邻网 — refined community portal.
+/* 华脉 — refined community portal.
    Layout: thin utility bar → masthead with search → section tabs → category directory →
    sponsor row → news (main) + rail (post CTA, latest, FX, weather, sponsors) → board grid. */
 :root{
@@ -644,7 +644,7 @@ a.spon.empty:hover{border-color:var(--gold)}
 .rec .rows{margin:0 0 12px}
 .rec-news h4{margin-top:6px}
 
-/* ===== app launch screen: "有事找华邻" (about 4 seconds) ===== */
+/* ===== app launch screen: "有事找华脉" (about 4 seconds) ===== */
 .splash{display:none}
 .hl-launch body{overflow:hidden}
 .hl-launch .splash{display:flex;position:fixed;inset:0;z-index:1000;flex-direction:column;align-items:center;justify-content:center;color:#fff;overflow:hidden;background:#0e1320;
@@ -913,7 +913,7 @@ footer,.foot{background:#171b26;color:#cfc8bb}
 /* bottom nav on phones */
 .bnav{background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
 
-/* splash: 天涯若比邻 (brush-revealed in white) then 有事找华邻 (gold shimmer) */
+/* splash: 天涯若比邻 (brush-revealed in white) then 有事找华脉 (gold shimmer) */
 .sp-poem{font:700 26px/1.3 "Noto Serif SC","Songti SC","STSong",serif;color:#fff;letter-spacing:.55em;padding-left:.55em;margin-bottom:12px;
   clip-path:inset(0 100% 0 0);animation:sp-brush .9s cubic-bezier(.6,0,.2,1) 2.1s forwards}
 .sp-poem+.sp-slogan{font-size:17px;letter-spacing:.6em;padding-left:.6em;animation:sp-brush .8s cubic-bezier(.6,0,.2,1) 2.75s forwards,sp-shine 1s ease-in-out 3.2s forwards}
@@ -923,7 +923,7 @@ footer,.foot{background:#171b26;color:#cfc8bb}
 .foot .muted,.foot small{color:#a9a294}
 .ir-frame{height:min(1600px,calc(100svh - 72px))}
 
-/* quick opening (later opens on the same day): seal + 有事找华邻, about 1.5 seconds */
+/* quick opening (later opens on the same day): seal + 有事找华脉, about 1.5 seconds */
 .hl-quick .splash{animation:sp-exit .5s cubic-bezier(.76,0,.24,1) 1.35s forwards}
 .hl-quick .sp-poem,.hl-quick .sp-sky,.hl-quick .sp-foot,.hl-quick .sp-rule{display:none}
 .hl-quick .sp-bg{animation-duration:1.2s}
@@ -1070,3 +1070,18 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .latest-main .rows{column-gap:28px}
 @media (min-width:720px){.latest-main .rows:has(> li){columns:2}}
 .latest-main .rows li{break-inside:avoid}
+
+/* ===== 华脉 brand mark ===== */
+.logo-mark{width:46px;height:46px;flex:none;border-radius:11px;box-shadow:0 6px 16px -8px rgba(27,31,42,.6)}
+@media (max-width:719px){.logo-mark{width:40px;height:40px}}
+.logo-txt b{letter-spacing:.12em}
+/* splash: vermilion tile, then the pulse line draws and the two dots light up */
+.sp-pulse{position:absolute;inset:0;width:100%;height:100%}
+.sp-pulse path{fill:none;stroke:#FFF8EE;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:sp-draw .75s cubic-bezier(.65,0,.35,1) 1.1s forwards}
+.sp-pulse circle{fill:#E9C27A;transform-box:fill-box;transform-origin:center;transform:scale(0);animation:sp-pop .35s cubic-bezier(.2,1.6,.4,1) 1.0s forwards}
+.sp-pulse circle:last-of-type{animation-delay:1.8s}
+@keyframes sp-pop{to{transform:scale(1)}}
+.hl-quick .sp-pulse path{animation:sp-draw .4s cubic-bezier(.65,0,.35,1) .3s forwards}
+.hl-quick .sp-pulse circle{animation:sp-pop .25s ease .25s forwards}
+.hl-quick .sp-pulse circle:last-of-type{animation-delay:.65s}
+@media (prefers-reduced-motion:reduce){.sp-pulse path{stroke-dashoffset:0!important}.sp-pulse circle{transform:none!important}}

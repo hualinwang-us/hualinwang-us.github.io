@@ -43,7 +43,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: android-${{ github.run_number }}
-          name: 华邻网 Android ${{ env.KIND == 'release' && '正式版' || '测试版' }} 1.0.${{ github.run_number }}
+          name: 华脉 Android ${{ env.KIND == 'release' && '正式版' || '测试版' }} 1.0.${{ github.run_number }}
           body: 下载 hualin.apk，在安卓手机上打开安装。第一次安装时手机会提示“允许安装未知来源的应用”，选允许即可。
           files: hualin.apk
           make_latest: true

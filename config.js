@@ -1,7 +1,7 @@
-/* 华邻网 settings — edit this file on GitHub to change them. */
+/* 华脉 settings — edit this file on GitHub to change them. */
 window.HL_CONFIG = {
   // Public address of the site (used for share links). Change this when you add your own domain.
-  siteUrl: "https://hualin88.com/",
+  siteUrl: "https://huamai88.com/",
 
   // Supabase (free) for classifieds. Fill both to turn on posting.
   supabaseUrl: "https://wkiviznpdcjubyqfovfx.supabase.co",
@@ -15,7 +15,7 @@ window.HL_CONFIG = {
   translateEmail: "huamai.us@gmail.com",
 
   // Shown on empty ad spaces and in the footer so businesses can reach you.
-  contactEmail: "hualinwang.us@gmail.com",
+  contactEmail: "huamai.us@gmail.com",
   adContact: { phone: "516-628-7119", wechat: "", email: "" },
 
   // Prices shown on the "了解广告位" page, in the same order as the ad spaces listed there. Change freely.

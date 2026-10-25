@@ -1,4 +1,4 @@
-/* 华邻网 app service worker: always tries the network first so content stays fresh,
+/* 华脉 app service worker: always tries the network first so content stays fresh,
    and falls back to the last saved copy when the phone is offline. */
 const CACHE = "hualin-v2";
 const SHELL = ["./", "index.html", "config.js", "manifest.webmanifest", "icons/icon-192.png"];

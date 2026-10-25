@@ -1,26 +1,26 @@
-/* 华邻网: About, Contact, Terms and Privacy pages. {phone} and {email} are filled in from config.js. */
+/* 华脉: About, Contact, Terms and Privacy pages. {phone} and {email} are filled in from config.js. */
 (function () {
   const HLC = window.HLC || (window.HLC = {});
   HLC.PAGES = {
     about: {
-      seal: { zh: "邻", en: "邻" },
+      seal: { zh: "脉", en: "脉" },
       zh: {
-        title: "关于华邻网",
-        intro: "天涯若比邻，有事找华邻。华邻网是给纽约华人用的生活信息网站：新闻、福利指南、优惠、商家黄页和分类信息，都用中文讲清楚。",
+        title: "关于华脉",
+        intro: "天涯若比邻，有事找华脉。华脉是给纽约华人用的生活信息网站：新闻、福利指南、优惠、商家黄页和分类信息，都用中文讲清楚。",
         items: [
           ["我们做什么", "**生活指南**：白卡、粮食券、公屋、入籍等福利，用中文讲清楚谁能申请、要什么材料、去哪里办。\n**新闻和行情**：每 30 分钟自动汇集各大中英文媒体的新闻，以及天气、汇率和美股行情。\n**本周优惠**：网购折扣、免费领取和纽约免费活动。\n**分类信息和商家黄页**：招聘、租房、买卖、服务，邻居之间免费发布。"],
           ["我们的原则", "**免费、中文、实用。** 新闻注明来源并链接原文；指南只引用政府和官方机构的公开资料；分类信息由用户自行发布，我们会删除诈骗、违法和色情内容。"],
-          ["与政府无关", "华邻网是独立的民间网站，**与任何政府机构都没有关系**。福利申请请以官方网站和工作人员的答复为准。"],
+          ["与政府无关", "华脉是独立的民间网站，**与任何政府机构都没有关系**。福利申请请以官方网站和工作人员的答复为准。"],
           ["联系我们", "有建议、发现错误或想合作，请看「联系我们」页面。"]
         ]
       },
       en: {
-        title: "About HuaLin",
-        intro: "A neighbor is never far. HuaLin (华邻网) is a local information site for the Chinese community in New York: news, benefit guides, deals, a business directory and classifieds, explained in plain Chinese.",
+        title: "About HuaMai",
+        intro: "A neighbor is never far. HuaMai (华脉) is a local information site for the Chinese community in New York: news, benefit guides, deals, a business directory and classifieds, explained in plain Chinese.",
         items: [
           ["What we do", "**Guides** to Medicaid, SNAP, public housing, citizenship and more: who qualifies, what to bring and where to go.\n**News and markets**, gathered automatically every 30 minutes from Chinese and English outlets, plus weather, exchange rates and US stocks.\n**Deals**: online discounts, freebies and free NYC events.\n**Classifieds and directory**: jobs, rentals, items and services, free to post."],
           ["Our principles", "**Free, in Chinese, and useful.** News always names and links its source; guides use public government information; listings are posted by users, and we remove scams, illegal and sexual content."],
-          ["Not a government site", "HuaLin is independent and **not affiliated with any government agency**. For benefits, the official agency's answer is the one that counts."],
+          ["Not a government site", "HuaMai is independent and **not affiliated with any government agency**. For benefits, the official agency's answer is the one that counts."],
           ["Contact", "Suggestions, corrections or partnerships: see the Contact page."]
         ]
       }
@@ -52,7 +52,7 @@
       seal: { zh: "约", en: "§" },
       zh: {
         title: "用户协议",
-        intro: "使用华邻网（hualin88.com 及华邻网 App）即表示你同意以下条款。",
+        intro: "使用华脉（huamai88.com 及华脉 App）即表示你同意以下条款。",
         items: [
           ["发布内容", "你对自己发布的信息、回复和图片负责，必须真实、合法，并且你有权发布。**禁止**：诈骗、虚假信息、色情或性服务、违法商品和服务、歧视和骚扰、侵犯他人版权或隐私、冒充他人或本站。"],
           ["我们的处理权", "我们可以不经通知删除违反本协议或收到举报的内容，并限制或停用相关账号。被多人举报的信息会自动隐藏，等待审核。"],
@@ -64,7 +64,7 @@
       },
       en: {
         title: "Terms of use",
-        intro: "By using HuaLin (hualin88.com and the HuaLin app) you agree to these terms.",
+        intro: "By using HuaMai (huamai88.com and the HuaMai app) you agree to these terms.",
         items: [
           ["What you post", "You are responsible for your listings, replies and photos. They must be true, lawful and yours to post. **Not allowed**: scams, false information, sexual content or services, illegal goods and services, discrimination or harassment, infringing others' copyright or privacy, or impersonating others or this site."],
           ["Our right to remove", "We may remove content that breaks these terms or is reported, and limit or close the related accounts. Listings reported by several people are hidden automatically pending review."],

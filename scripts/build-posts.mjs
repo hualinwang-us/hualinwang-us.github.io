@@ -12,7 +12,7 @@ const win = {};
 new Function("window", await read("config.js"))(win);
 new Function("window", "globalThis", await read("assets/common.js"))(win, win);
 const HLC = win.HLC;
-const BASE = (HLC.CFG.siteUrl || "https://hualin88.com/").replace(/\/?$/, "/");
+const BASE = (HLC.CFG.siteUrl || "https://huamai88.com/").replace(/\/?$/, "/");
 const tpl = await read("post.html");
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -44,7 +44,7 @@ for (const p of posts) {
   n++;
 }
 
-await fs.writeFile(`${OUT}/404.html`, fill({ TITLE: "华邻网 · 分类信息", DESC: "在美华人新闻与免费分类信息。", BASE: esc(BASE), URL: esc(BASE), JSON: "null", SSR: "" }));
+await fs.writeFile(`${OUT}/404.html`, fill({ TITLE: "华脉 · 分类信息", DESC: "在美华人新闻与免费分类信息。", BASE: esc(BASE), URL: esc(BASE), JSON: "null", SSR: "" }));
 
 // Guide pages: /g/<id>/ with both languages pre-rendered (good for sharing and search engines).
 new Function("window", "globalThis", await read("assets/guide-render.js"))(win, win);
@@ -77,10 +77,10 @@ for (const lg of ["zh", "en"]) for (const [sname, list] of Object.entries((newsD
   const body = `<span class="tag">${esc(SEC[lg][sname] || "")}</span><h1>${esc(i.t)}</h1><span class="meta"><span class="src">${esc(src)}</span>${when ? `<span>${esc(when)}</span>` : ""}</span>` +
     (i.img && /^https:\/\//.test(i.img) ? `<div class="art-img" data-hasimg><img src="${esc(i.img)}" alt="" referrerpolicy="no-referrer" onerror="this.parentNode.removeAttribute('data-hasimg')"></div>` : "") +
     (i.full ? await (async () => { try { const fb = JSON.parse(await read(`data/full/${i.id}.json`)); return `<div class="art-full">${(fb.body || []).map(b => b.startsWith("## ") ? `<h2>${esc(b.slice(3))}</h2>` : `<p>${esc(b)}</p>`).join("")}</div>`; } catch { return ""; } })() : "") +
-    `<p class="art-sum${i.s ? "" : " muted"}">${esc(i.s || (lg === "zh" ? "华邻网只收录新闻标题和摘要，全文请到原网站阅读。" : "HuaLin shows headlines and summaries only; read the full story on the original site."))}</p>`;
+    `<p class="art-sum${i.s ? "" : " muted"}">${esc(i.s || (lg === "zh" ? "华脉只收录新闻标题和摘要，全文请到原网站阅读。" : "HuaMai shows headlines and summaries only; read the full story on the original site."))}</p>`;
   const html = nfill({ TITLE: esc(i.t), DESC: esc((i.s || i.t).slice(0, 120)), BASE: esc(BASE), URL: esc(`${BASE}n/${i.id}/`), BODY: body,
     SRCURL: esc(/^https?:\/\//.test(i.u) ? i.u : BASE), READ: esc(lg === "zh" ? `前往 ${src} 阅读全文 →` : `Read the full story at ${src} →`),
-    COPY: esc(lg === "zh" ? `新闻版权归 ${src} 所有，华邻网仅收录标题与摘要并链接原文。` : `Copyright belongs to ${src}. HuaLin shows the headline and summary and links to the original.`) });
+    COPY: esc(lg === "zh" ? `新闻版权归 ${src} 所有，华脉仅收录标题与摘要并链接原文。` : `Copyright belongs to ${src}. HuaMai shows the headline and summary and links to the original.`) });
   await fs.mkdir(`${OUT}/n/${i.id}`, { recursive: true });
   await fs.writeFile(`${OUT}/n/${i.id}/index.html`, html);
   nn++;
@@ -91,15 +91,15 @@ console.log(`news pages: ${nn}`);
 const btpl = await read("board.html");
 const bfill = map => btpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : ""));
 const AREAS_TXT = "法拉盛、布鲁克林日落公园、曼哈顿华埠、艾姆赫斯特、本森赫斯特、长岛";
-const ldList = (name, url, items) => `<script type="application/ld+json">${json({ "@context": "https://schema.org", "@type": "CollectionPage", name, url, isPartOf: { "@type": "WebSite", name: "华邻网", url: BASE },
+const ldList = (name, url, items) => `<script type="application/ld+json">${json({ "@context": "https://schema.org", "@type": "CollectionPage", name, url, isPartOf: { "@type": "WebSite", name: "华脉", url: BASE },
   mainEntity: { "@type": "ItemList", itemListElement: items.slice(0, 20).map((p, k) => ({ "@type": "ListItem", position: k + 1, url: `${BASE}p/${p.id}/`, name: p.title })) } })}</script>`;
 const day = iso => String(iso || "").slice(0, 10);
 const boardLastmod = {};
 for (const b of HLC.BOARDS) {
   const list = posts.filter(p => p.board === b.id).slice(0, 60);
   const url = `${BASE}b/${b.id}/`;
-  const title = `纽约华人${b.zh} | 法拉盛 布鲁克林 华埠 ${b.zh}信息 - 华邻网`;
-  const desc = `纽约华人${b.zh}信息：${AREAS_TXT}等地区最新${b.zh}，${list.length ? `目前有 ${list.length} 条，` : ""}在华邻网免费发布，邻居们都看得到。`;
+  const title = `纽约华人${b.zh} | 法拉盛 布鲁克林 华埠 ${b.zh}信息 - 华脉`;
+  const desc = `纽约华人${b.zh}信息：${AREAS_TXT}等地区最新${b.zh}，${list.length ? `目前有 ${list.length} 条，` : ""}在华脉免费发布，邻居们都看得到。`;
   const rows = list.map(p => `<li><a href="${BASE}p/${p.id}/"><span class="rt">${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</span><span class="rd">${esc(day(p.created_at))}</span></a><p class="pb">${esc(p.body.replace(/\s+/g, " ").slice(0, 80))}${p.body.length > 80 ? "…" : ""}</p></li>`).join("");
   const others = HLC.BOARDS.filter(x => x.group === b.group && x.id !== b.id).map(x => `<a href="${BASE}b/${x.id}/">${esc(x.zh)}</a>`).join("");
   const zh = `<article class="guide sb-page"><div class="g-head"><span class="seal md" aria-hidden="true">${esc(b.glyph)}</span><div><h1>纽约华人${esc(b.zh)}</h1><p class="g-sum">${esc(desc)}</p></div></div>
@@ -113,11 +113,11 @@ for (const b of HLC.BOARDS) {
 {
   const groups = [...new Set(HLC.BOARDS.map(b => b.group))];
   const gname = g => ((HLC.GROUPS || []).find(x => x.id === g) || {}).zh || "";
-  const zh = `<article class="guide sb-page"><div class="g-head"><span class="seal md" aria-hidden="true">邻</span><div><h1>纽约华人分类信息</h1><p class="g-sum">招聘请人、房屋出租、房屋买卖、二手买卖、生意转让、生活服务……纽约华人免费发布，${AREAS_TXT}的邻居都看得到。</p></div></div>
+  const zh = `<article class="guide sb-page"><div class="g-head"><span class="seal md" aria-hidden="true">脉</span><div><h1>纽约华人分类信息</h1><p class="g-sum">招聘请人、房屋出租、房屋买卖、二手买卖、生意转让、生活服务……纽约华人免费发布，${AREAS_TXT}的邻居都看得到。</p></div></div>
     ${groups.map(g => `<h2>${esc(gname(g))}</h2><p class="sb-rel">${HLC.BOARDS.filter(b => b.group === g).map(b => `<a href="${BASE}b/${b.id}/">${esc(b.zh)}</a>`).join("")}</p>`).join("")}</article>`;
-  const title = "纽约华人分类信息大全 | 招聘 租房 买卖 生意转让 - 华邻网";
+  const title = "纽约华人分类信息大全 | 招聘 租房 买卖 生意转让 - 华脉";
   await fs.mkdir(`${OUT}/b`, { recursive: true });
-  await fs.writeFile(`${OUT}/b/index.html`, bfill({ TITLE: esc(title), DESC: esc("纽约华人免费分类信息：招聘请人、餐馆请人、房屋出租、房屋买卖、二手买卖、生意转让、搬家装修等，在华邻网免费发布。"), BASE: esc(BASE), URL: esc(`${BASE}b/`), GO: esc(BASE), ZH: zh, EN: `<article class="guide"><h1>New York Chinese community classifieds</h1></article>`, LD: ldList(title, `${BASE}b/`, posts) }));
+  await fs.writeFile(`${OUT}/b/index.html`, bfill({ TITLE: esc(title), DESC: esc("纽约华人免费分类信息：招聘请人、餐馆请人、房屋出租、房屋买卖、二手买卖、生意转让、搬家装修等，在华脉免费发布。"), BASE: esc(BASE), URL: esc(`${BASE}b/`), GO: esc(BASE), ZH: zh, EN: `<article class="guide"><h1>New York Chinese community classifieds</h1></article>`, LD: ldList(title, `${BASE}b/`, posts) }));
 }
 console.log(`board pages: ${HLC.BOARDS.length}`);
 

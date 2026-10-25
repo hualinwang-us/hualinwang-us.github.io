@@ -1,4 +1,4 @@
-// 华邻网 news + market fetcher. Runs in GitHub Actions (free), no API keys, no dependencies.
+// 华脉 news + market fetcher. Runs in GitHub Actions (free), no API keys, no dependencies.
 // Writes data/news.json and data/market.json. If a feed fails, the previous items are kept.
 import fs from "node:fs/promises";
 import crypto from "node:crypto";

@@ -1,4 +1,4 @@
-/* 华邻网 single-listing page (/p/<id>/). Works from the pre-built page data or, for brand-new listings, loads it live. */
+/* 华脉 single-listing page (/p/<id>/). Works from the pre-built page data or, for brand-new listings, loads it live. */
 (function () {
   "use strict";
   const HLC = window.HLC;
@@ -9,7 +9,7 @@
       reported: "已收到举报，谢谢你帮忙把关", reportFail: "举报失败，请稍后再试", alreadyReported: "你已经举报过这条信息",
       linkCopied: "链接已复制，打开微信粘贴到群里即可", shareManual: "长按下面的链接复制：", scamH: "防骗提醒",
       scamP: "这条信息提到{x}。正规雇主和房东不会要求你先付钱或提供证件号码。见面确认前不要转账。",
-      safety: "请当面交易，切勿预付定金或转账给陌生人。", moreIn: "更多{b}信息", home: "回到华邻网首页", loading: "载入中…",
+      safety: "请当面交易，切勿预付定金或转账给陌生人。", moreIn: "更多{b}信息", home: "回到华脉首页", loading: "载入中…",
       gone: "这条信息已经删除或下架。", footLegal: "免责声明", footLegalP: "本信息由用户发布，本站未核实其内容，也不参与交易。", footLegalLink: "阅读完整免责声明 →", notFound: "找不到这个页面。", del: "删除我的信息", delSure: "确认删除？", deleted: "已删除", delFail: "删除失败，请稍后再试" },
     en: { tagline: "News & community listings for Chinese Americans", postFree: "Post Free", foot1: "News and free listings for Chinese Americans.",
       footSafeH: "Stay safe", footSafe: "Listings are posted by users. Verify details, meet in person and never send deposits to strangers.",
@@ -17,7 +17,7 @@
       reportH: "Why are you reporting this?", reportSend: "Send report", reported: "Thanks, we got your report", reportFail: "Couldn't send the report. Please try again.",
       alreadyReported: "You already reported this listing", linkCopied: "Link copied. Paste it into a chat to share.", shareManual: "Press and hold to copy the link:",
       scamH: "Scam warning", scamP: "This listing mentions {x}. Real employers and landlords don't ask you to pay first or share ID numbers. Don't send money before meeting in person.",
-      safety: "Meet in person. Never prepay or wire money to strangers.", moreIn: "More in {b}", home: "Back to HuaLin home", loading: "Loading…",
+      safety: "Meet in person. Never prepay or wire money to strangers.", moreIn: "More in {b}", home: "Back to HuaMai home", loading: "Loading…",
       gone: "This listing has been removed.", footLegal: "Disclaimer", footLegalP: "Posted by a user. We haven't verified it and aren't part of any transaction.", footLegalLink: "Read the full disclaimer →", notFound: "Page not found.", del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again." }
   };
   let lang = "zh"; try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
@@ -48,7 +48,7 @@
     const hitText = lang === "zh" ? "“" + hits.map(h => h.zh).join("”“") + "”" : hits.map(h => h.en).join(", ");
     const tel = (p.phone || "").replace(/[^\d+]/g, "");
     const myKey = HLC.keys.get(p.id);
-    document.title = (p.area ? "[" + p.area + "] " : "") + p.title + " - 华邻网";
+    document.title = (p.area ? "[" + p.area + "] " : "") + p.title + " - 华脉";
     box.innerHTML = `<article class="pcard">
       <span class="tag">${esc(bn)}${p.area ? " · " + esc(p.area) : ""} · ${esc(new Date(p.created_at).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US"))}</span>
       <h1>${esc(p.title)}</h1>
@@ -69,7 +69,7 @@
         <button type="button" class="btn" id="repSend">${esc(t("reportSend"))}</button></div>
     </article>
     <div class="pmore">${b ? `<a href="${esc(base)}#b-${esc(b.id)}">${esc(t("moreIn").replace("{b}", bn))} →</a>` : ""}<a href="${esc(base)}">${esc(t("home"))} →</a></div>`;
-    $("#shareBtn").onclick = () => HLShare.open({ url: HLC.postUrl(p.id), title: (p.area ? "[" + p.area + "] " : "") + p.title, text: (p.area ? "[" + p.area + "] " : "") + p.title + " - 华邻网" });
+    $("#shareBtn").onclick = () => HLShare.open({ url: HLC.postUrl(p.id), title: (p.area ? "[" + p.area + "] " : "") + p.title, text: (p.area ? "[" + p.area + "] " : "") + p.title + " - 华脉" });
     $("#repBtn").onclick = () => { if (HLC.reported.get(p.id)) { toast(t("alreadyReported")); return; } $("#repBox").hidden = !$("#repBox").hidden; };
     $("#repSend").onclick = async () => {
       const btn = $("#repSend"); btn.disabled = true;

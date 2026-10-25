@@ -12,7 +12,7 @@
         <package android:name="com.tencent.mm" />
     </queries>
     <application
-        android:label="华邻网"
+        android:label="华脉"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
         android:allowBackup="true"
@@ -33,6 +33,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="huamai88.com" />
+                <data android:scheme="https" android:host="www.huamai88.com" />
                 <data android:scheme="https" android:host="hualin88.com" />
                 <data android:scheme="https" android:host="www.hualin88.com" />
             </intent-filter>

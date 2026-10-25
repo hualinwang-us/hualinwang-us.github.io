@@ -1,4 +1,4 @@
-/* 华邻网 share image: turns a listing into a phone-sized picture (title, price, photo, contact, QR code)
+/* 华脉 share image: turns a listing into a phone-sized picture (title, price, photo, contact, QR code)
    that posters can save or send to WeChat groups and Moments. Everything is drawn in the browser. */
 (function () {
   "use strict";
@@ -64,10 +64,10 @@
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, 200);
     ctx.fillStyle = "#fff"; rr(ctx, PAD, 48, 104, 104, 18); ctx.fill();
     ctx.strokeStyle = "#c8372c"; ctx.lineWidth = 3; rr(ctx, PAD + 8, 56, 88, 88, 12); ctx.stroke();
-    ctx.fillStyle = "#c8372c"; ctx.font = `900 66px ${SERIF}`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("邻", PAD + 52, 102);
+    ctx.fillStyle = "#c8372c"; ctx.font = `900 66px ${SERIF}`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("脉", PAD + 52, 102);
     ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
-    ctx.fillStyle = "#fff"; ctx.font = `900 50px ${SERIF}`; ctx.fillText("华邻网", PAD + 128, 104);
-    ctx.fillStyle = "#ffe3c2"; ctx.font = `600 27px ${SERIF}`; ctx.fillText("有事找华邻 · 纽约华人生活信息", PAD + 130, 146);
+    ctx.fillStyle = "#fff"; ctx.font = `900 50px ${SERIF}`; ctx.fillText("华脉", PAD + 128, 104);
+    ctx.fillStyle = "#ffe3c2"; ctx.font = `600 27px ${SERIF}`; ctx.fillText("有事找华脉 · 纽约华人生活信息", PAD + 130, 146);
     // card
     const cx = PAD, cy = 170, cw = W - PAD * 2;
     ctx.save(); ctx.shadowColor = "rgba(60,20,10,.14)"; ctx.shadowBlur = 30; ctx.shadowOffsetY = 10; ctx.fillStyle = "#fff"; rr(ctx, cx, cy, cw, cardH, 24); ctx.fill(); ctx.restore();
@@ -100,10 +100,10 @@
     const fy = cy + cardH + 40;
     ctx.fillStyle = "#fff"; rr(ctx, PAD, fy, W - PAD * 2, 250, 24); ctx.fill();
     if (qr) { ctx.drawImage(qr, PAD + 24, fy + 15, 220, 220); }
-    else { ctx.fillStyle = "#c8372c"; rr(ctx, PAD + 24, fy + 15, 220, 220, 18); ctx.fill(); ctx.fillStyle = "#fff"; ctx.font = `900 120px ${SERIF}`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("邻", PAD + 134, fy + 125); ctx.textAlign = "left"; ctx.textBaseline = "alphabetic"; }
+    else { ctx.fillStyle = "#c8372c"; rr(ctx, PAD + 24, fy + 15, 220, 220, 18); ctx.fill(); ctx.fillStyle = "#fff"; ctx.font = `900 120px ${SERIF}`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("脉", PAD + 134, fy + 125); ctx.textAlign = "left"; ctx.textBaseline = "alphabetic"; }
     ctx.fillStyle = "#121a2b"; ctx.font = `900 40px ${SERIF}`; ctx.fillText("扫码查看详情", PAD + 280, fy + 88);
     ctx.fillStyle = "#c8372c"; ctx.font = `700 28px ${SANS}`; ctx.fillText("招聘 · 租房 · 二手 · 免费发布", PAD + 280, fy + 140);
-    ctx.fillStyle = "#8a8f9c"; ctx.font = `400 22px ${SANS}`; ctx.fillText("华邻网 · 纽约华人新闻与分类信息", PAD + 280, fy + 186);
+    ctx.fillStyle = "#8a8f9c"; ctx.font = `400 22px ${SANS}`; ctx.fillText("华脉 · 纽约华人新闻与分类信息", PAD + 280, fy + 186);
     return c;
   }
   window.HLPoster = { make };

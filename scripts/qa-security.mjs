@@ -49,7 +49,7 @@ r = await req("DELETE", "/storage/v1/object/post-images/p/anything.jpg"); check(
 r = await req("GET", "/rest/v1/posts?select=*&limit=1"); check("select=* doesn't leak secret columns", r.s >= 400 || (Array.isArray(r.j) && !(r.j[0] && ("delete_key" in r.j[0]))), r);
 
 // site checks
-for (const u of ["https://hualin88.com/", "https://www.hualin88.com/", "https://hualinwang-us.github.io/"]) {
+for (const u of ["https://huamai88.com/", "https://www.huamai88.com/", "https://hualinwang-us.github.io/"]) {
   try { const s = await fetch(u, { redirect: "manual" }); out.push({ name: "Site answers: " + u, ok: s.status < 400, status: s.status, detail: s.headers.get("location") || "" }); }
   catch (e) { out.push({ name: "Site answers: " + u, ok: false, status: 0, detail: String(e.message).slice(0, 120) }); }
 }

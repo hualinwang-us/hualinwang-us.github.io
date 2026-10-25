@@ -24,10 +24,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-/** 华邻网 Android app: the site full screen, with calls, texts, WeChat sharing and the back button working like a normal app. */
+/** 华脉 Android app: the site full screen, with calls, texts, WeChat sharing and the back button working like a normal app. */
 public class MainActivity extends Activity {
-    static final String HOME = "https://hualin88.com/";
-    static final String HOST = "hualin88.com";
+    static final String HOME = "https://huamai88.com/";
+    static final String HOST = "huamai88.com";
     WebView web;
     String geoOrigin; GeolocationPermissions.Callback geoCb;
     @Override public void onRequestPermissionsResult(int code, String[] perms, int[] res) {
@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
     /** Site pages stay in the app; phone, text, email, WeChat and other websites open in their own apps. */
     boolean route(Uri u) {
         String scheme = u.getScheme() == null ? "" : u.getScheme();
-        if ((scheme.equals("https") || scheme.equals("http")) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost()) || "hualinwang-us.github.io".equals(u.getHost()))) return false;
+        if ((scheme.equals("https") || scheme.equals("http")) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost()) || "hualinwang-us.github.io".equals(u.getHost()) || "hualin88.com".equals(u.getHost()) || "www.hualin88.com".equals(u.getHost()))) return false;
         try {
             if (scheme.equals("intent")) {
                 Intent it = Intent.parseUri(u.toString(), Intent.URI_INTENT_SCHEME);
@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
             runOnUiThread(() -> startActivity(Intent.createChooser(send, "分享到")));
         }
         @JavascriptInterface public String version() { return BuildConfig.VERSION_NAME; }
-        /** Saves a picture (data: URL) to the phone's Photos, in a 华邻网 album. */
+        /** Saves a picture (data: URL) to the phone's Photos, in a 华脉 album. */
         @JavascriptInterface public void saveImage(String dataUrl, String name, String tok) { if (!token.equals(tok)) return; Uri u = store(dataUrl, name); runOnUiThread(() -> Toast.makeText(MainActivity.this, u != null ? "已保存到相册" : "保存失败", Toast.LENGTH_SHORT).show()); }
         /** Saves the picture, then opens the share sheet with it (WeChat, WhatsApp...). */
         @JavascriptInterface public void shareImage(String dataUrl, String name, String text, String tok) {
@@ -133,7 +133,7 @@ public class MainActivity extends Activity {
             ContentValues v = new ContentValues();
             v.put(MediaStore.Images.Media.DISPLAY_NAME, name);
             v.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-            if (Build.VERSION.SDK_INT >= 29) v.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/华邻网");
+            if (Build.VERSION.SDK_INT >= 29) v.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/华脉");
             Uri u = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, v);
             if (u == null) return null;
             try (OutputStream o = getContentResolver().openOutputStream(u)) { o.write(bytes); }

@@ -1,4 +1,4 @@
-/* 华邻网 sign-in (Supabase Auth over plain HTTPS, no library).
+/* 华脉 sign-in (Supabase Auth over plain HTTPS, no library).
    Email: 6-digit code sent by email (or the magic link in the same email). Google: Supabase-hosted OAuth.
    Session kept in this browser (localStorage) and refreshed automatically. */
 (function () {

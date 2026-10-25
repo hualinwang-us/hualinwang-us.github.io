@@ -1,4 +1,4 @@
-# 华邻网 HuaLin
+# 华脉 HuaMai
 
 在美华人新闻与分类信息网站。纯静态网页，托管在 GitHub Pages，全部免费。
 

@@ -1,4 +1,4 @@
-/* 华邻网 share sheet: WeChat (copy link / QR code / in-WeChat hint), WhatsApp, Facebook, LINE, X, SMS, email, copy.
+/* 华脉 share sheet: WeChat (copy link / QR code / in-WeChat hint), WhatsApp, Facebook, LINE, X, SMS, email, copy.
    Used on every page: HLShare.open({ url, title, text }). */
 (function () {
   "use strict";
