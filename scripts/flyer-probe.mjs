@@ -1,25 +1,16 @@
-// One-off reconnaissance: find each NY Chinese supermarket's OFFICIAL website and whether it publishes a weekly flyer.
-const UA = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36" };
-const get = async u => { const r = await fetch(u, { headers: UA, redirect: "follow" }); return { ok: r.ok, status: r.status, url: r.url, text: await r.text() }; };
-const home = await get("https://www.chaoshiweekly.com/");
-const slugs = [...new Set([...home.text.matchAll(/href="\/store\/([a-z0-9-]+)"/g)].map(m => m[1]))];
-console.log(`::notice title=slugs::${slugs.length} ${slugs.join(",")}`);
-const sites = {};
-for (const s of slugs) {
+const UA = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36", "accept-language": "zh-CN,zh;q=0.9,en;q=0.8" };
+const get = async u => { const r = await fetch(u, { headers: UA, redirect: "follow" }); return { status: r.status, url: r.url, text: await r.text() }; };
+const pages = ["https://www.newworldmallnyc.com/jmart-weekly-special", "https://www.hualiansupermarket.com/weeklysales", "https://www.hualiansupermarket.com/feature-items", "https://www.sf-supermarket.com/weeklyad",
+  "https://yongfasupermarket.com/", "https://littlenecksupermarket.com/en/weekly-specials/", "https://gofresh365.com/weekly-special-offers/", "https://www.walfoodmarket.com/", "https://www.gw-supermarket.com/",
+  "https://www.99ranch.com/", "https://www.skyfoods.com/", "http://www.skyfoods.com/", "https://skyfoods.com/", "https://www.amart-ny.com/", "http://amart-ny.com/", "https://super-fl-mart.com/", "https://newagemarket.net/"];
+for (const p of pages) {
   try {
-    const p = await get("https://www.chaoshiweekly.com/store/" + s);
-    const ext = [...p.text.matchAll(/href="(https?:\/\/[^"]+)"/g)].map(m => m[1]).filter(u => !/chaoshiweekly|google\.com|googleapis|gstatic|schema\.org/.test(u));
-    const name = (p.text.match(/<h1[^>]*>([^<]+)/) || [])[1] || "";
-    sites[s] = { name: name.trim(), ext: [...new Set(ext)].slice(0, 4) };
-    console.log(`::notice title=${s}::${sites[s].name} | ${sites[s].ext.join(" ")}`);
-  } catch (e) { console.log(`::warning title=${s}::${e.message}`); }
-}
-const official = [...new Set(Object.values(sites).flatMap(v => v.ext).filter(u => !/facebook|instagram|yelp|wechat|weixin|twitter|x\.com|apple\.com|play\.google/.test(u)).map(u => new URL(u).origin))];
-for (const o of official) {
-  try {
-    const r = await get(o);
-    const links = [...r.text.matchAll(/(?:href|src|data-src)="([^"]+)"/g)].map(m => m[1]).filter(u => /flyer|weekly|special|ad[s_-]|promo|circular|sale|特价|优惠|deal/i.test(u)).slice(0, 12);
-    const imgs = [...r.text.matchAll(/(?:src|href)="([^"]+\.(?:jpe?g|png|webp|pdf))"/gi)].map(m => m[1]).slice(0, 6);
-    console.log(`::notice title=${o}::status=${r.status} links=${links.join(" ")} || imgs=${imgs.join(" ")}`.slice(0, 1500));
-  } catch (e) { console.log(`::warning title=${o}::${e.message}`); }
+    const r = await get(p);
+    const imgs = [...new Set([...r.text.matchAll(/https?:\/\/[^"'\s)\\]+?\.(?:jpe?g|png|webp|pdf)/gi)].map(m => m[0]))]
+      .filter(u => !/favicon|logo|icon|dummy|cropped-|w_32|w_180|w_192/i.test(u));
+    const wix = [...new Set([...r.text.matchAll(/static\.wixstatic\.com\/media\/([a-z0-9_]+~mv2[^"\/\s]*)/gi)].map(m => m[1]))];
+    const hrefs = [...new Set([...r.text.matchAll(/href="([^"]+)"/g)].map(m => m[1]).filter(u => /week|special|flyer|ad\b|sale|promo|deal|特价|优惠/i.test(u)))].slice(0, 10);
+    const title = (r.text.match(/<title[^>]*>([^<]*)/) || [])[1];
+    console.log(`\n=== ${p} status=${r.status} final=${r.url} title=${title} len=${r.text.length}\nHREFS ${hrefs.join(" ")}\nWIX ${wix.slice(0, 25).join(" ")}\nIMGS ${imgs.slice(0, 25).join(" ")}\nAPI ${[...new Set([...r.text.matchAll(/["'](\/api\/[^"']+|https?:\/\/[^"']*api[^"']*)["']/g)].map(m => m[1]))].slice(0, 10).join(" ")}`);
+  } catch (e) { console.log(`\n=== ${p} ERROR ${e.message} ${e.cause ? e.cause.code || e.cause.message : ""}`); }
 }
