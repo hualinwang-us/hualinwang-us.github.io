@@ -351,6 +351,7 @@
     }
     const seen = new Set(); return out.sort((a, b) => a.t - b.t).filter(v => { const k = v.t + v.dest; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 15);
   }
+  const stamp = () => `<div class="tr-stamp"><span>🕒 更新于 <b>${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "America/New_York" })}</b> · 每 30 秒自动刷新</span><button type="button" class="linkbtn" data-trrefresh>立即刷新</button></div>`;
   function transitHtml() {
     return `<div class="tl-tabs" role="tablist">${[["bus", "公交车"], ["lirr", "长岛铁路"], ["mnr", "北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
       <p class="tl-note">数据来自纽约大都会运输署（MTA）实时数据，每 30 秒自动刷新。实际以车站显示和广播为准。定位只用来找附近车站，不会保存。</p>`;
@@ -373,10 +374,10 @@
         try {
           const d = await fnGet({ op: "bus", stop: s.id });
           const L = el.querySelector("#trList"); if (!L) return;
-          L.innerHTML = d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = v.eta ? Math.round((Date.parse(v.eta) - Date.now()) / 60000) : null; return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>往 ${esc(v.dest)}</b><span>${esc(/at stop/i.test(v.away || "") ? "已到站" : /approaching/i.test(v.away || "") ? "马上进站" : v.stops != null ? "还有 " + v.stops + " 站" : (v.away || "").replace(/miles? away/i, "英里外"))}</span></div><em>${m == null ? "—" : m <= 0 ? "到站" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">${esc(d.note || "现在没有即将到站的车。")}</p>`;
+          L.innerHTML = stamp() + (d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = v.eta ? Math.round((Date.parse(v.eta) - Date.now()) / 60000) : null; return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>往 ${esc(v.dest)}</b><span>${esc(/at stop/i.test(v.away || "") ? "已到站" : /approaching/i.test(v.away || "") ? "马上进站" : v.stops != null ? "还有 " + v.stops + " 站" : (v.away || "").replace(/miles? away/i, "英里外"))}</span></div><em>${m == null ? "—" : m <= 0 ? "到站" : m + " 分钟"}${m != null && m > 0 ? `<small>约 ${new Date(Date.parse(v.eta)).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "America/New_York" })} 到</small>` : ""}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">${esc(d.note || "现在没有即将到站的车。")}</p>`);
         } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
       };
-      load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
+      TR.reload = load; load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
       return;
     }
     // rail
@@ -389,11 +390,11 @@
       try {
         let d = { list: [] }; try { d = await fnGet({ op: "rail", sys: TR.mode, stop: TR.railStop }); } catch (er) {}
         const L = el.querySelector("#trList"); if (!L) return;
-        if (!d.list.length) { const sc = await schedFor(TR.mode, TR.railStop); if (sc.length) { L.innerHTML = `<p class="tl-note">实时数据暂时没有更新，下面是官方时刻表的班次（不含临时晚点）。</p><ul class="tr-arr">${sc.map(v => { const m = minsTo(v.t); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>时刻表</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>`; return; } }
-        L.innerHTML = d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = minsTo(v.t), late = Math.round((v.delay || 0) / 60); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>${late > 1 ? `<i class="tr-late">晚点 ${late} 分钟</i>` : "准点"}</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">接下来一段时间这个站没有列车。</p>`;
+        if (!d.list.length) { const sc = await schedFor(TR.mode, TR.railStop); if (sc.length) { L.innerHTML = stamp() + `<p class="tl-note">实时数据暂时没有更新，下面是官方时刻表的班次（不含临时晚点）。</p><ul class="tr-arr">${sc.map(v => { const m = minsTo(v.t); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>时刻表</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>`; return; } }
+        L.innerHTML = stamp() + (d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = minsTo(v.t), late = Math.round((v.delay || 0) / 60); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>${late > 1 ? `<i class="tr-late">晚点 ${late} 分钟</i>` : "准点"}</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">接下来一段时间这个站没有列车。</p>`);
       } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
     };
-    load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
+    TR.reload = load; load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
   }
   async function transitClick(e, el) {
     const md = e.target.closest("[data-trmode]"); if (md) { TR.mode = md.dataset.trmode; el.querySelectorAll("[data-trmode]").forEach(b => b.classList.toggle("on", b === md)); paintTransit(el); return true; }
@@ -404,6 +405,7 @@
       paintTransit(el); return true;
     }
     const st = e.target.closest("[data-trstop]"); if (st) { TR.stopSel = TR.stops[Number(st.dataset.trstop)]; paintTransit(el); return true; }
+    if (e.target.closest("[data-trrefresh]")) { const b = e.target.closest("[data-trrefresh]"); b.textContent = "刷新中…"; if (TR.reload) TR.reload(); return true; }
     if (e.target.closest("[data-trback]")) { TR.stopSel = null; paintTransit(el); return true; }
     if (e.target.closest("[data-trnear]")) {
       try { const p = await locate(); const L = (TR.rail[TR.mode] || []); let best = null, bd = 1e9; for (const s of L) { const d = dist(p, s); if (d < bd) { bd = d; best = s; } } if (best) { TR.railStop = best.id; paintTransit(el); } } catch (er) {}

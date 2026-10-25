@@ -1342,3 +1342,8 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 :root[data-theme="dark"] .logo-wide{filter:invert(1) hue-rotate(180deg) brightness(1.1)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo-wide{filter:invert(1) hue-rotate(180deg) brightness(1.1)}}
 .tl-tabs [data-trmode]{white-space:nowrap}
+
+.tr-stamp{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 8px;font-size:13.5px;color:var(--muted)}
+.tr-stamp b{color:var(--ink);font-variant-numeric:tabular-nums}
+.tr-stamp .linkbtn{font-size:13.5px}
+.tr-arr em small{display:block;font-size:12px;font-weight:600;color:var(--muted);text-align:right;margin-top:2px}
