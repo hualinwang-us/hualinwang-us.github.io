@@ -922,3 +922,16 @@ footer,.foot{background:#171b26;color:#cfc8bb}
 .foot a{color:#e0c58f}
 .foot .muted,.foot small{color:#a9a294}
 .ir-frame{height:min(1600px,calc(100svh - 72px))}
+
+/* quick opening (later opens on the same day): seal + 有事找华邻, about 1.5 seconds */
+.hl-quick .splash{animation:sp-exit .5s cubic-bezier(.76,0,.24,1) 1.35s forwards}
+.hl-quick .sp-poem,.hl-quick .sp-sky,.hl-quick .sp-foot,.hl-quick .sp-rule{display:none}
+.hl-quick .sp-bg{animation-duration:1.2s}
+.hl-quick .sp-seal{animation:sp-settle .7s cubic-bezier(.2,.8,.2,1) both}
+.hl-quick .sp-frame rect{animation:sp-draw .35s cubic-bezier(.65,0,.35,1) 0s forwards}
+.hl-quick .sp-frame rect.in{animation:sp-draw .3s cubic-bezier(.65,0,.35,1) .3s forwards,sp-fade .01s linear .3s forwards}
+.hl-quick .sp-ink{animation:sp-ink .35s cubic-bezier(.3,.7,.2,1) .12s forwards}
+.hl-quick .sp-char{animation:sp-brush .3s cubic-bezier(.6,0,.2,1) .3s forwards}
+.hl-quick .sp-name span{animation:sp-letter .4s cubic-bezier(.2,.8,.2,1) .4s forwards}
+.hl-quick .sp-name{margin-bottom:14px}
+.hl-quick .sp-poem+.sp-slogan{font-size:19px;animation:sp-brush .4s cubic-bezier(.6,0,.2,1) .6s forwards}

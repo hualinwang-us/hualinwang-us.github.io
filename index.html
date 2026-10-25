@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 <script>if(window.top!==window.self){try{window.top.location=window.self.location.href}catch(e){document.documentElement.style.display="none"}}</script>
-<script>(function(){try{var app=/HuaLinApp/.test(navigator.userAgent)||matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;var seen=sessionStorage.getItem("hl-splash");if(sessionStorage.getItem("hl-splash-replay")){seen=null;sessionStorage.removeItem("hl-splash-replay");}if(app&&!seen&&!/[?&]nosplash/.test(location.search)){document.documentElement.classList.add("hl-launch");sessionStorage.setItem("hl-splash","1");}}catch(e){}})();</script>
+<script>(function(){try{var app=/HuaLinApp/.test(navigator.userAgent)||matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;var seen=sessionStorage.getItem("hl-splash");if(sessionStorage.getItem("hl-splash-replay")){seen=null;sessionStorage.removeItem("hl-splash-replay");}if(app&&!seen&&!/[?&]nosplash/.test(location.search)){var d=new Date().toDateString(),last=null;try{last=localStorage.getItem("hl-splash-day");localStorage.setItem("hl-splash-day",d);}catch(e){}document.documentElement.classList.add("hl-launch");if(last===d)document.documentElement.classList.add("hl-quick");sessionStorage.setItem("hl-splash","1");}}catch(e){}})();</script>
 </head>
 <body>
 <div class="splash" id="splash" aria-hidden="true">
