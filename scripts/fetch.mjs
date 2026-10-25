@@ -603,6 +603,5 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop()
   await buildNews();
   await buildMarket();
   try { await buildDeals(); } catch (e) { console.log("deals failed:", e.message); }
-  try { await buildListings(); } catch (e) { console.log("listings failed:", e.message); }
   await trSave();
 }

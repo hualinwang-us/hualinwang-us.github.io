@@ -165,7 +165,7 @@
     return r.json();
   }
   async function loadData() {
-    const [n, m, a, gd, w, dl, ol] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), getJSON("data/deals.json"), getJSON("data/listings.json")]);
+    const [n, m, a, gd, w, dl, ol] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), getJSON("data/deals.json"), Promise.resolve(null)]); // official listings turned off
     if (ol && ol.status === "fulfilled" && ol.value) official = ol.value;
     if (dl.status === "fulfilled" && dl.value && dl.value.sections) deals = dl.value;
     if (gd.status === "fulfilled" && gd.value && Array.isArray(gd.value.guides)) guides = gd.value;
