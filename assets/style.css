@@ -104,7 +104,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .bh.big h2{font-size:22px}
 
 /* news */
-.lead-wrap{display:grid;gap:18px}
+.lead-wrap{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
 @media (min-width:720px){.lead-wrap{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}}
 .lead{display:flex;flex-direction:column;gap:8px;min-width:0}
 .lead .img{aspect-ratio:16/9;max-width:100%;border-radius:6px;background:var(--line-2) center/cover no-repeat}
@@ -543,3 +543,49 @@ a.spon.empty:hover{border-color:var(--gold)}
 .app-help li{margin-bottom:6px}
 .app-or{margin:16px 0 0;font-weight:700;font-size:14px}
 .app-help .btn.ghost{margin-top:4px}
+
+/* ===== phone layout pass ===== */
+.bnav{display:none}
+@media (max-width:719px){
+  /* app-style bottom bar replaces the floating share button */
+  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+  .bnav a,.bnav button{display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;color:var(--muted);font:500 11.5px/1.2 var(--body);text-decoration:none;padding:2px 0;cursor:pointer}
+  .bnav .bi{display:grid;place-items:center;width:28px;height:24px;font:900 17px/1 var(--display)}
+  .bnav a.on{color:var(--accent)}
+  .bnav .bn-post .bi{width:40px;height:30px;border-radius:999px;background:var(--accent);color:#fff;font:700 22px/1 var(--body);margin-top:-2px}
+  .bnav .bn-post{color:var(--accent)}
+  .bnav .bi.wx{width:24px;height:24px;border-radius:50%;background:#07c160;color:#fff;font:700 12px/1 var(--body)}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .fab-share{display:none!important}
+  .toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))!important}
+
+  /* top bar on one line */
+  #siteShare{display:none}
+  .util-in{flex-wrap:nowrap;gap:8px;min-height:40px}
+  .util-mid{flex-wrap:nowrap;overflow:hidden}
+
+  /* guides hero: buttons + one swipeable row of popular guides */
+  .g-home{padding:18px 16px;gap:14px}
+  .g-home-r{display:flex!important;overflow-x:auto;gap:8px;margin-inline:-16px;padding:2px 16px 4px;scroll-snap-type:x proximity;scrollbar-width:none}
+  .g-home-r::-webkit-scrollbar{display:none}
+  .g-home-r .g-chip{flex:0 0 auto;max-width:72vw;white-space:nowrap;scroll-snap-align:start}
+
+  /* fewer, tighter items so the page isn't endless */
+  #vHome .nl:not(.compact)>li:nth-child(n+6){display:none}
+  #vHome .nl.compact>li:nth-child(n+5){display:none}
+  #vHome .nl.two-col>li:nth-child(n+5){display:none}
+  .spon-banner:has(.spon.empty){display:none}
+  #sponTop>:nth-child(n+2){display:none}
+  #sponRail>:nth-child(n+2){display:none}
+  #sponRail{order:5}
+  .col-rail .block:has(#latest .empty){display:none}
+  #fxTable tr:nth-child(n+5){display:none}
+  .block{padding:14px 16px}
+
+  /* all boards as an app-style icon grid */
+  .bchips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 6px;padding:16px 10px}
+  .bchips b{grid-column:1/-1;margin:0 0 2px 6px}
+  .bchips a{flex-direction:column;gap:6px;padding:0;border:0;font-size:12.5px;text-align:center;line-height:1.25;background:none}
+  .bchips a .seal.sm{width:40px;height:40px;font-size:19px;border-radius:10px}
+  .bchips a:hover{background:none}
+}

@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
       appIosH: "安装到 iPhone 桌面", appIosSteps: ["用 Safari 浏览器打开本站（微信里请先点右上角 ··· 选“在浏览器打开”）", "点屏幕下方的“分享”按钮（方框加向上箭头）", "往下滑，点“添加到主屏幕”", "点右上角“添加”，桌面上就有华邻网的图标了"],
       appWxH: "请先在浏览器打开", appWxSteps: ["点右上角 ··· ", "选择“在浏览器打开”（安卓）或“在 Safari 中打开”（iPhone）", "打开后再点“安装App”"],
       appAndH: "安装到手机桌面", appAndSteps: ["点浏览器右上角的菜单（⋮）", "选择“安装应用”或“添加到主屏幕”", "点“安装”，桌面上就有华邻网的图标了"], appDone: "知道了", apkBtn: "下载安卓App（APK）", apkNote: "下载后点开安装。第一次安装手机会问“允许安装未知来源应用”，选允许即可。", apkOr: "或者不用下载，直接装到桌面：", apkFoot: "安卓App下载", offTag: "官方", offFrom: "来源", offApply: "去官网免费申请", offJobHow: "打开官网后，在搜索框输入职位编号 {id} 即可找到这个职位并在线申请（免费）。", offUntil: "截止", offPay: "工资", offLoc: "地点", offOrg: "机构", offEnShow: "看英文原文", offNote: "官方信息每天自动更新，来自纽约市政府公开数据。申请永远免费，任何人向你收费都要小心。", pinned: "置顶", pinAsk: "想让你的信息排在本板块最上面？付费置顶请致电", moreBoards: "全部板块",
@@ -112,7 +112,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
       appIosH: "Add to iPhone home screen", appIosSteps: ["Open this site in Safari (in WeChat, tap ··· and choose Open in Safari)", "Tap the Share button at the bottom (square with an arrow)", "Scroll down and tap \"Add to Home Screen\"", "Tap \"Add\" at the top right"],
       appWxH: "Open in your browser first", appWxSteps: ["Tap ··· at the top right", "Choose Open in Browser / Open in Safari", "Then tap \"Get the app\""],
       appAndH: "Add to home screen", appAndSteps: ["Tap the browser menu (⋮)", "Choose \"Install app\" or \"Add to Home screen\"", "Tap Install"], appDone: "Got it", apkBtn: "Download Android app (APK)", apkNote: "Open the file to install. Allow installing from unknown sources if asked.", apkOr: "Or add it to your home screen without downloading:", apkFoot: "Android app", offTag: "Official", offFrom: "Source", offApply: "Apply free on the official site", offJobHow: "On the site, search for job ID {id} to find this posting and apply online (free).", offUntil: "Deadline", offPay: "Pay", offLoc: "Location", offOrg: "Agency", offEnShow: "Show original", offNote: "Official listings update daily from NYC Open Data. Applying is always free.", pinned: "Pinned", pinAsk: "Want your listing at the top of this board? For paid pinning call", moreBoards: "All boards",
@@ -746,6 +746,8 @@
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();
     renderTabs();
+    const bn = route.view === "home" ? "home" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : route.view === "deals" ? "deals" : "";
+    document.querySelectorAll("#bnav [data-bn]").forEach(a => a.classList.toggle("on", a.dataset.bn === bn));
     if (h === "classifieds") { const el = document.querySelector(".boards-sec"); if (el) el.scrollIntoView({ block: "start" }); }
     else if (route.view !== "home" || h === "") window.scrollTo(0, 0);
   }
@@ -898,6 +900,7 @@
     return HLShare.open({ url: base, title: "华邻网 HuaLin", text: t("shareSiteText") });
   }
   $("#fabShare").onclick = shareCurrent;
+  $("#bnShare").onclick = shareCurrent;
   document.addEventListener("click", e => { if (e.target.closest("[data-share-check]")) HLShare.open({ url: HLC.siteBase() + "#check", title: t("ckShareTitle"), text: t("ckShareText") }); });
   $("#siteShare").onclick = () => HLShare.open({ url: HLC.siteBase(), title: "华邻网 HuaLin", text: t("shareSiteText") });
   const fs2 = $("#footShare"); if (fs2) fs2.onclick = () => HLShare.open({ url: HLC.siteBase(), title: "华邻网 HuaLin", text: t("shareSiteText") });
