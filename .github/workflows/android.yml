@@ -26,16 +26,14 @@ jobs:
         env:
           KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
-          if [ -n "$KS_PASS" ]; then
-            gradle -p android :app:assembleRelease --no-daemon
-            cp android/app/build/outputs/apk/release/app-release.apk hualin.apk
-            echo "KIND=release" >> $GITHUB_ENV
-          else
-            echo "No signing password yet: building a test version"
-            gradle -p android :app:assembleDebug --no-daemon
-            cp android/app/build/outputs/apk/debug/app-debug.apk hualin.apk
-            echo "KIND=test" >> $GITHUB_ENV
+          set -o pipefail
+          if [ -n "$KS_PASS" ]; then TASK=assembleRelease; OUT=release/app-release.apk; echo "KIND=release" >> $GITHUB_ENV
+          else echo "No signing password yet: building a test version"; TASK=assembleDebug; OUT=debug/app-debug.apk; echo "KIND=test" >> $GITHUB_ENV; fi
+          if ! gradle -p android :app:$TASK --no-daemon 2>&1 | tee build.log; then
+            grep -E "error|What went wrong|wrong|Exception|failed" -A4 build.log | head -40 | while IFS= read -r l; do echo "::error::$l"; done
+            exit 1
           fi
+          cp android/app/build/outputs/apk/$OUT hualin.apk
           ls -la hualin.apk
       - uses: actions/upload-artifact@v4
         with:
