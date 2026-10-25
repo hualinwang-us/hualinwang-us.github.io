@@ -1636,6 +1636,18 @@
     }
   });
 
+  /* ---------- version line at the very bottom (app version + website build) ---------- */
+  (function showVersion() {
+    const el = $("#footVer"); if (!el) return;
+    const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || "";
+    const web = meta("hl-date") === "dev" ? "开发版" : meta("hl-date"), sha = meta("hl-build");
+    let app = "";
+    try { if (window.HuaLinApp && HuaLinApp.version) app = "安卓 App 版本 " + HuaLinApp.version(); } catch (e) {}
+    if (!app && IS_APP && isIOS) app = "iPhone 版";
+    else if (!app && IS_APP) app = "App 版";
+    el.textContent = (app ? app + " · " : "") + "网页版本 " + web + (sha && sha !== "dev" ? " (" + sha.slice(0, 7) + ")" : "");
+  })();
+
   // If the phone shows a cached older page, reload once to get the newest version.
   (function checkVersion() {
     const mine = (document.querySelector('meta[name="hl-build"]') || {}).content;
