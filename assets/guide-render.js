@@ -44,7 +44,7 @@
       ${contacts ? `<section><h2>${esc(u.contacts)}</h2><ul class="g-contacts">${contacts}</ul></section>` : ""}
       ${LA(g.myths, lang).length ? `<section class="g-myths"><h2>${esc(u.myths)}</h2>${list(LA(g.myths, lang))}</section>` : ""}
       ${(g.sources || []).length ? `<section class="g-src"><h2>${esc(u.sources)}</h2><ul>${g.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(L(s.name, lang) || s.url)}</a></li>`).join("")}</ul></section>` : ""}
-      <p class="g-fine">${esc(u.verified)} ${esc(g.verified || "")} · ${esc(u.disclaimer)}</p>
+      <p class="g-fine">${esc(u.disclaimer)}</p>
     </article>`;
   }
 
