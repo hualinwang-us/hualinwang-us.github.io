@@ -22,7 +22,8 @@ const FEEDS = {
     local: [["纽约华人", gnSearch("纽约 华人", "zh")], ["法拉盛", gnSearch("法拉盛", "zh")], ["布碌崙", gnSearch("布鲁克林 OR 布碌崙 OR 日落公园 华人", "zh")]],
     immigration: [["移民", gnSearch("美国 移民", "zh")], ["绿卡", gnSearch("绿卡 OR 入籍 OR 公民身份", "zh")], ["签证", gnSearch("美国 签证 OR H-1B 签证 OR 留学生 签证", "zh")], ["ICE", gnSearch("ICE 移民局 OR 移民执法 OR 遣返", "zh")]],
     uschina: [["中美关系", gnSearch("中美关系 OR 中美贸易 OR 关税 中国 美国", "zh")]],
-    china: [["BBC中文", ["https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"]], ["RFI中文", ["https://www.rfi.fr/cn/rss"]], ["DW中文", ["https://rss.dw.com/rdf/rss-chi-all"]], ["中国新闻", gnSearch("中国", "zh")], ["中国经济", gnSearch("中国 经济 OR 楼市 OR 股市 OR 消费", "zh")], ["中国社会", gnSearch("中国 社会 OR 民生 OR 国内 新闻", "zh")]],
+    // BBC, RFI and DW don't allow their pages inside other sites, so they're not used.
+    china: [["中国新闻", gnSearch("中国", "zh")], ["中国经济", gnSearch("中国 经济 OR 楼市 OR 股市 OR 消费", "zh")], ["中国社会", gnSearch("中国 社会 OR 民生 OR 国内 新闻", "zh")]],
     business: [["美股", gnSearch("美股 OR 华尔街 OR 美联储 OR 道琼斯", "zh")], ["美国经济", gnSearch("美国经济 OR 房贷利率 OR 油价 OR 通胀", "zh")], ["华人理财", gnSearch("报税 OR 退休金 OR 社安金 OR 理财 美国", "zh")], ["财经频道", gnTopic("BUSINESS", "zh")]],
     health: [["养生", gnSearch("养生 OR 医生提醒 OR 健康饮食 OR 失智 OR 糖尿病 OR 高血压", "zh")], ["医疗保险", gnSearch("白卡 OR 红蓝卡 OR 医疗保险 OR 疫苗 美国", "zh")], ["健康频道", gnTopic("HEALTH", "zh")]],
     ent: [["娱乐", gnSearch("明星 OR 女星 OR 影帝 OR 娱乐圈 OR 好莱坞 OR 演唱会", "zh")], ["体育", gnSearch("NBA OR 足球 OR 网球 OR 体育", "zh")], ["娱乐频道", gnTopic("ENTERTAINMENT", "zh")], ["体育频道", gnTopic("SPORTS", "zh")]]
