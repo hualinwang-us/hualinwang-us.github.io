@@ -242,6 +242,32 @@
       <div class="tl-opts">${it.opts.map((o, k) => { const st = Q.picked < 0 ? "" : k === it.ok ? " right" : k === Q.picked ? " wrong" : ""; return `<button type="button" class="tl-opt${st}" data-opt="${k}"${Q.picked >= 0 ? " disabled" : ""}><b>${esc(o[0])}</b><span>${esc(o[1])}</span></button>`; }).join("")}</div>
       ${Q.picked >= 0 ? `<div class="tl-why ${Q.picked === it.ok ? "ok" : "no"}"><b>${esc(Q.picked === it.ok ? (z ? "答对了" : "Correct") : (z ? "答错了" : "Not quite"))}</b>${it.why ? `<p>${esc(it.why)}</p>` : ""}${it.num ? `<p class="tl-qe">${esc(z ? "官方题号" : "Official #")} ${it.num}</p>` : ""}<button type="button" class="btn" data-qnext>${esc(Q.i + 1 < Q.list.length ? (z ? "下一题" : "Next") : (z ? "看成绩" : "See score"))}</button></div>` : ""}</div>`;
   }
+  // Study mode for the permit test: key facts to memorize, the sign shapes, then every question with its answer and reason.
+  const PERMIT_FACTS = [
+    ["限速", "纽约市默认 25 英里/小时；施工区和学校区要特别减速，施工区超速罚款加倍。"],
+    ["酒驾", "21 岁以上血液酒精 0.08% 以上是醉驾（DWI）；21 岁以下 0.02% 起就受“零容忍”处罚。拒绝酒精测试会被吊销驾照。"],
+    ["校车", "校车停下闪红灯，不论同向对向都要停车，等红灯熄灭再走。"],
+    ["红灯右转", "纽约市内默认不可以红灯右转，除非有标志允许；纽约州其他地方停稳确认安全后可以。"],
+    ["信号灯", "闪红灯 = 停车标志；闪黄灯 = 减速小心通过。"],
+    ["打灯", "转弯或变道前至少提前 100 英尺打方向灯。"],
+    ["让行", "四向停车同时到达，让右边的车先走；左转让对面直行车和行人；从车道或停车场开上马路，让所有车和行人。"],
+    ["紧急车辆", "听到警笛靠右停车让行；路边停着闪灯的警车、救护车、拖车，要减速并在安全时换到远离它的车道（让道法）。"],
+    ["手机", "开车时手持手机通话、发短信、看手机都违法，等红灯也不行。"],
+    ["安全带", "车内所有人都要系安全带，包括后座；小孩要用合适的安全座椅。"],
+    ["大灯", "日落到日出、能见度低于 1000 英尺、因天气开雨刷时都要开大灯；对向来车 500 英尺内换近光灯。"],
+    ["停车距离", "消防栓 15 英尺内、路口人行横道 20 英尺内禁止停车。"],
+    ["跟车", "至少保持 2 秒距离，下雨下雪要更远。"],
+    ["打滑", "水漂打滑时松油门、别猛刹；后轮打滑时往你想让车头去的方向轻打方向盘。"],
+    ["学车证", "练车时副驾驶必须是 21 岁以上、持有效驾照的人。"],
+    ["车祸报告", "有人受伤或损失超过 1000 美元，10 天内向 DMV 交车祸报告（MV-104）。"]
+  ];
+  const SIGN_SHAPES = [["stop", "八角形 = 停车"], ["yield", "倒三角 = 让行"], ["school", "五边形 = 学校区"], ["rr", "圆形 = 铁路道口预告"], ["warn", "黄色菱形 = 警告"], ["work", "橙色菱形 = 施工区"], ["noentry", "禁止进入"], ["noturn", "红圈斜杠 = 禁止"]];
+  function permitStudy(lang) {
+    return `<section class="tl-learn"><h2>① 要点速记</h2><ul class="tl-facts">${PERMIT_FACTS.map(([h, p]) => `<li><b>${esc(h)}</b><span>${esc(p)}</span></li>`).join("")}</ul></section>
+      <section class="tl-learn"><h2>② 看形状认标志</h2><p class="tl-note">标志的形状和颜色就能告诉你意思，考试一定会考。</p><div class="tl-signs">${SIGN_SHAPES.map(([k, n]) => `<figure><div class="tl-sign">${SIGN[k]}</div><figcaption>${esc(n)}</figcaption></figure>`).join("")}</div>
+      <p class="tl-note">颜色规律：红色 = 停止或禁止；黄色 = 警告；橙色 = 施工；绿色 = 方向指示；蓝色 = 服务设施；棕色 = 景点休闲。</p></section>
+      <section class="tl-learn"><h2>③ 全部题目和答案</h2><ol class="tl-allq">${PERMIT.map(p => `<li>${p[5] ? `<div class="tl-sign sm">${SIGN[p[5]]}</div>` : ""}<div><b>${esc(p[0])}</b><em>✓ ${esc(p[2][p[3]][0])}</em><span>${esc(p[4])}</span></div></li>`).join("")}</ol></section>`;
+  }
   function civicsStudy(lang) {
     const z = lang === "zh", all = window.HL_CIVICS || [];
     return `<details class="tl-study"><summary>${esc(z ? "查看全部 128 题和答案" : "All 128 questions and answers")}</summary><ol>${all.map(x => `<li${x[4] ? ' class="star"' : ""}><b>${esc(x[2])}</b><span>${esc(x[0])}</span><em>${esc(x[3])} · ${esc(x[1])}</em><button type="button" class="tl-say sm" data-say="${esc(x[0] + " " + x[1])}" aria-label="Read aloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></button></li>`).join("")}</ol></details>`;
@@ -274,7 +300,10 @@
     else if (id === "civics") body = `<p class="tl-note">${esc(z ? "2025 年 10 月 20 日或之后递交入籍申请（N-400）的人考新版：题库 128 题，面试时最多问 20 题，答对 12 题及格。65 岁以上且拿绿卡满 20 年的人，只从标星号的 20 题里考 10 题，答对 6 题及格。之前递交的人考旧版 100 题。每题官方有多个可接受答案，这里列出其中一个；现任官员的名字会变，考前请到移民局官网核对。" : "For N-400s filed on or after Oct 20, 2025: 128 questions, up to 20 asked, 12 correct to pass. 65/20 applicants: 10 of the 20 starred questions, 6 to pass.")}</p>
       <div class="tl-pills"><button type="button" class="btn" data-qstart="civics:20">${esc(z ? "模拟考试（20 题）" : "Practice test (20)")}</button><button type="button" class="btn ghost" data-qstart="civics:6520">${esc(z ? "65/20 简化版（10 题）" : "65/20 version (10)")}</button><button type="button" class="btn ghost" data-qstart="civics:all">${esc(z ? "按顺序练全部 128 题" : "All 128 in order")}</button></div><div id="tlQuiz"></div>${civicsStudy(lang)}`;
     else if (id === "permit") body = `<p class="tl-note">${esc(z ? "纽约州 DMV 笔试可以选中文。正式考试 20 题，要答对 14 题，其中 4 道交通标志题至少答对 2 道。下面是我们根据纽约驾驶手册内容编写的练习题，正式规定以纽约州 DMV 驾驶手册为准。" : "The NY written test is 20 questions; you need 14 correct, including at least 2 of the 4 road-sign questions. Practice questions written from the NY Driver's Manual.")}</p>
-      <div class="tl-pills"><button type="button" class="btn" data-qstart="permit:20">${esc(z ? "开始练习（随机 20 题）" : "Start (20 random)")}</button></div><div id="tlQuiz"></div>`;
+      <div class="tl-tabs" role="tablist"><button type="button" class="on" data-ptab="learn">学习</button><button type="button" data-ptab="quiz">练习考试</button></div>
+      <div id="ptLearn">${permitStudy(lang)}<p class="tl-pills"><button type="button" class="btn" data-ptab="quiz">学完了，去练习 →</button></p></div>
+      <div id="ptQuiz" hidden><div class="tl-pills"><button type="button" class="btn" data-qstart="permit:20">${esc(z ? "开始练习（随机 20 题）" : "Start (20 random)")}</button></div><div id="tlQuiz"></div></div>
+      <p class="tl-note">完整规则请看纽约州 DMV 中文版驾驶手册（Driver's Manual），DMV 官网可以免费下载。</p>`;
     el.innerHTML = head + body;
     const calcEl = el.querySelector("[data-calc]");
     if (calcEl) { const run = () => { calcEl.querySelector(".tl-result").innerHTML = CALC[id].calc(calcEl, z); }; calcEl.addEventListener("input", run); calcEl.addEventListener("change", run); run();
@@ -283,6 +312,7 @@
       const other = box.querySelector(`[data-side="${inp.dataset.side === "a" ? "b" : "a"}"]`); other.value = isFinite(v) ? fmt(inp.dataset.side === "a" ? u.ab(v) : u.ba(v)) : ""; };
     el.onclick = e => {
       const s = e.target.closest("[data-say]"); if (s) { try { const u = new SpeechSynthesisUtterance(s.dataset.say); u.lang = "en-US"; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} return; }
+      const pt = e.target.closest("[data-ptab]"); if (pt) { const q = pt.dataset.ptab === "quiz"; el.querySelector("#ptLearn").hidden = q; el.querySelector("#ptQuiz").hidden = !q; el.querySelectorAll(".tl-tabs [data-ptab]").forEach(b => b.classList.toggle("on", b.dataset.ptab === pt.dataset.ptab)); el.querySelector(".tl-tabs").scrollIntoView({ behavior: "smooth", block: "start" }); if (q && !Q.list.length) { startQuiz("permit", "20"); paint(); } return; }
       const st = e.target.closest("[data-qstart]"); if (st) { const [k, m] = st.dataset.qstart.split(":"); startQuiz(k, m); paint(); el.querySelector("#tlQuiz").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
       const o = e.target.closest("[data-opt]"); if (o && Q.picked < 0) { Q.picked = Number(o.dataset.opt); if (Q.picked === Q.list[Q.i].ok) Q.right++; paint(); return; }
       if (e.target.closest("[data-qnext]")) { Q.i++; Q.picked = -1; if (Q.i >= Q.list.length) Q.done = true; paint(); return; }
