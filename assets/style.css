@@ -541,3 +541,5 @@ a.spon.empty:hover{border-color:var(--gold)}
 .app-help img{border-radius:14px;margin:4px auto 8px;display:block}
 .app-help ol{text-align:left;margin:12px 0 18px;padding-left:22px;line-height:1.7;font-size:15.5px}
 .app-help li{margin-bottom:6px}
+.app-or{margin:16px 0 0;font-weight:700;font-size:14px}
+.app-help .btn.ghost{margin-top:4px}

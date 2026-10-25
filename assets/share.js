@@ -57,7 +57,7 @@
       ${inWeChat ? `<div class="sh-wx-hint">${esc(t.inWechat)}</div>` : ""}
       <div class="sh-grid">
         <button type="button" class="sh-btn wx" data-sh="wechat"><span class="sh-ic">微</span>${esc(t.wechat)}</button>
-        ${navigator.share && !inWeChat ? `<button type="button" class="sh-btn" data-sh="system"><span class="sh-ic">⇪</span>${esc(t.system)}</button>` : ""}
+        ${(navigator.share || window.HuaLinApp) && !inWeChat ? `<button type="button" class="sh-btn" data-sh="system"><span class="sh-ic">⇪</span>${esc(t.system)}</button>` : ""}
         ${links.map(([label, cls, href]) => `<a class="sh-btn ${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><span class="sh-ic">${esc(label.slice(0, 1))}</span>${esc(label)}</a>`).join("")}
         <button type="button" class="sh-btn" data-sh="copy"><span class="sh-ic">⧉</span>${esc(t.copy)}</button>
       </div>
@@ -71,6 +71,7 @@
       if (e.target === dlg || e.target.closest("[data-sh-close]")) { dlg.close(); return; }
       const b = e.target.closest("[data-sh]"); if (!b) return;
       const k = b.dataset.sh;
+      if ((k === "wechat" || k === "system") && window.HuaLinApp && window.HuaLinApp.share) { try { window.HuaLinApp.share(msg); dlg.close(); return; } catch (err) {} }
       if (k === "wechat") {
         const ok = await copy(msg);
         say(ok ? t.wechatTip : "");

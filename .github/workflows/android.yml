@@ -1,0 +1,51 @@
+name: Build Android app
+
+on:
+  push:
+    branches: [main]
+    paths: ["android/**", ".github/workflows/android.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.7"
+      - name: Build APK
+        env:
+          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KS_PASS" ]; then
+            gradle -p android :app:assembleRelease --no-daemon
+            cp android/app/build/outputs/apk/release/app-release.apk hualin.apk
+            echo "KIND=release" >> $GITHUB_ENV
+          else
+            echo "No signing password yet: building a test version"
+            gradle -p android :app:assembleDebug --no-daemon
+            cp android/app/build/outputs/apk/debug/app-debug.apk hualin.apk
+            echo "KIND=test" >> $GITHUB_ENV
+          fi
+          ls -la hualin.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hualin-apk
+          path: hualin.apk
+      - name: Publish download
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-${{ github.run_number }}
+          name: 华邻网 Android ${{ env.KIND == 'release' && '正式版' || '测试版' }} 1.0.${{ github.run_number }}
+          body: 下载 hualin.apk，在安卓手机上打开安装。第一次安装时手机会提示“允许安装未知来源的应用”，选允许即可。
+          files: hualin.apk
+          make_latest: true
