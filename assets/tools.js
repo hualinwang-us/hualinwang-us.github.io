@@ -10,7 +10,7 @@
 
   const CATS = [
     { id: "go", zh: "出行交通", en: "Getting around", tools: ["transit"] },
-    { id: "scam", zh: "防诈骗", en: "Scam alerts", tools: ["scam"] },
+    { id: "scam", zh: "华人防骗", en: "Scam alerts", tools: ["scam"] },
     { id: "imm", zh: "移民入籍", en: "Immigration", tools: ["civics", "natdate", "visa"] },
     { id: "drive", zh: "驾照考试", en: "Driver's license", tools: ["permit"] },
     { id: "loan", zh: "贷款计算器", en: "Loan calculators", tools: ["mortgage", "carloan"] },
@@ -20,7 +20,7 @@
   ];
   const TOOLS = {
     transit: { g: "车", t: L("实时到站", "Real-time arrivals"), d: L("附近公交车、长岛铁路、北方铁路，实时更新", "Nearby buses, LIRR, Metro-North, live") },
-    scam: { g: "防", t: L("防诈骗提醒", "Scam alerts"), d: L("华人最常遇到的 14 种骗局，骗子怎么说、怎么识破", "14 common scams and how to spot them") },
+    scam: { g: "防", t: L("专骗华人的 14 种骗局", "Scams targeting Chinese"), d: L("骗子怎么说、怎么骗、怎么识破，转给爸妈看", "14 common scams and how to spot them") },
     civics: { g: "问", t: L("入籍考试练习", "Citizenship test practice"), d: L("2025 新版 128 题，中英对照，模拟考试", "2025 test, 128 questions, bilingual") },
     natdate: { g: "籍", t: L("入籍时间计算", "Naturalization date"), d: L("拿绿卡几年后可以申请入籍", "When you can file N-400") },
     visa: { g: "排", t: L("移民排期查询", "Visa bulletin"), d: L("中国出生，每月自动更新", "China-born, updated monthly") },
@@ -442,7 +442,7 @@
       const other = box.querySelector(`[data-side="${inp.dataset.side === "a" ? "b" : "a"}"]`); other.value = isFinite(v) ? fmt(inp.dataset.side === "a" ? u.ab(v) : u.ba(v)) : ""; };
     el.onclick = e => {
       if (id === "transit") { transitClick(e, el); }
-      if (e.target.closest("[data-scamshare]")) { if (window.HLShare) window.HLShare.open({ url: location.origin + "/#t-scam", title: "防诈骗提醒：华人最常遇到的 14 种骗局", text: "防诈骗提醒：华人最常遇到的 14 种骗局，骗子怎么说、怎么识破 - 华脉" }); return; }
+      if (e.target.closest("[data-scamshare]")) { if (window.HLShare) window.HLShare.open({ url: location.origin + "/#t-scam", title: "专骗华人的 14 种骗局，转给爸妈看", text: "防诈骗提醒：华人最常遇到的 14 种骗局，骗子怎么说、怎么识破 - 华脉" }); return; }
       const s = e.target.closest("[data-say]"); if (s) { try { const u = new SpeechSynthesisUtterance(s.dataset.say); u.lang = "en-US"; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} return; }
       const pt = e.target.closest("[data-ptab]"); if (pt) { const q = pt.dataset.ptab === "quiz"; el.querySelector("#ptLearn").hidden = q; el.querySelector("#ptQuiz").hidden = !q; el.querySelectorAll(".tl-tabs [data-ptab]").forEach(b => b.classList.toggle("on", b.dataset.ptab === pt.dataset.ptab)); el.querySelector(".tl-tabs").scrollIntoView({ behavior: "smooth", block: "start" }); if (q && !Q.list.length) { startQuiz("permit", "20"); paint(); } return; }
       const st = e.target.closest("[data-qstart]"); if (st) { const [k, m] = st.dataset.qstart.split(":"); startQuiz(k, m); paint(); el.querySelector("#tlQuiz").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
