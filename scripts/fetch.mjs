@@ -198,8 +198,9 @@ function bigrams(t) {
   const set = new Set(); for (let k = 0; k < c.length - 1; k++) set.add(c.slice(k, k + 2)); return set;
 }
 function similar(a, b) {
+  if (a.size < 8 || b.size < 8) return 0;
   let inter = 0; for (const x of a) if (b.has(x)) inter++;
-  return inter / Math.max(1, Math.min(a.size, b.size));
+  return inter / (a.size + b.size - inter); // Jaccard: share of all two-character pieces the titles have in common
 }
 function preferEmbeddable(out) {
   let swapped = 0;
@@ -211,7 +212,7 @@ function preferEmbeddable(out) {
       out.sections[lang][sec] = list.filter(i => {
         if (i.fr !== 0) return true;
         const g = bigrams(i.t);
-        const twin = ok.find(o => o.i !== i && similar(g, o.g) >= 0.6);
+        const twin = ok.find(o => o.i !== i && similar(g, o.g) >= 0.5);
         if (twin) { swapped++; return false; }
         return true;
       });
