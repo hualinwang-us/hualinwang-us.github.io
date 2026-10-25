@@ -15,7 +15,9 @@ for (const sys of ["lirr", "mnr"]) {
       const r = await fetch(u); if (!r.ok) throw new Error("HTTP " + r.status);
       await fs.writeFile(`/tmp/${sys}.zip`, Buffer.from(await r.arrayBuffer()));
       execSync(`rm -rf /tmp/${sys} && mkdir -p /tmp/${sys} && unzip -o -q /tmp/${sys}.zip -d /tmp/${sys}`);
-      const stops = csv(await fs.readFile(`/tmp/${sys}/stops.txt`, "utf8"));
+      const raw = await fs.readFile(`/tmp/${sys}/stops.txt`, "utf8");
+      console.log(`::notice title=${sys} head::${JSON.stringify(raw.slice(0, 300))}`);
+      const stops = csv(raw).map(o => Object.fromEntries(Object.entries(o).map(([k, v]) => [k.trim(), (v || "").trim()])));
       out[sys] = stops.filter(s => !s.location_type || s.location_type === "0" || s.location_type === "1").map(s => ({ id: s.stop_id, n: s.stop_name, lat: +(+s.stop_lat).toFixed(5), lon: +(+s.stop_lon).toFixed(5) })).filter(s => s.lat);
       console.log(`::notice title=${sys} static::${u} stops=${out[sys].length} sample=${JSON.stringify(out[sys].slice(0, 3))}`);
       ok = true; break;
