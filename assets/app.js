@@ -298,7 +298,8 @@
   }
 
   /* ---------- render: news ---------- */
-  const sec = s => ((news && news.sections && news.sections[lang] && news.sections[lang][s]) || []);
+  // Only stories that can be read in full on our site (embeddable pages or official full text).
+  const sec = s => ((news && news.sections && news.sections[lang] && news.sections[lang][s]) || []).filter(i => i.fr === 1 || i.full);
   function metaHtml(i) { const a = ago(i.d); return `<span class="meta">${i.src ? `<span class="src">${esc(i.src)}</span>` : ""}${a ? `<span>${esc(a)}</span>` : ""}</span>`; }
   const imgTag = (i, cls) => `<img class="${cls}" src="${esc(i.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('[data-hasimg]')&&this.closest('[data-hasimg]').removeAttribute('data-hasimg');this.remove()">`;
   // In Chinese mode, show the Chinese translation when we have one.
