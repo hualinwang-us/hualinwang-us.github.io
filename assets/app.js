@@ -23,7 +23,7 @@
       ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
       ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
       readHere: "阅读全文", rdNew: "显示空白？点这里新窗口打开", zhDetail: "看中文版详情", enOrig: "去商家页面（英文原页）", zhDetailNote: "中文版由 Google 翻译自动生成，仅供参考，价格和条件以商家英文原页为准。", mtNote: "以上中文为机器翻译，仅供参考。", irNote: "以下全文由 {src} 网站提供", irFull: "全屏阅读", openOrig: "在原网站打开", rdBack: "← 返回华邻网", rdNote: "以下内容由原网站提供", readAt: "前往 {src} 阅读全文 →", artNoSum: "这家媒体不允许在其他网站内显示全文，请点下方按钮阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
-      dealsTab: "本周优惠", dealsH: "本周优惠和免费", dealsNote: "每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。", dl_local: "华人商家优惠", dl_zh: "华人社区免费和优惠", dl_free: "免费领取", dl_online: "网购折扣", dl_events: "纽约免费活动", dl_postCta: "商家免费发布优惠 →", dl_none: "暂时没有，过几个小时再来看看。", dl_en: "英文",
+      dealsTab: "本周优惠", dealsH: "本周优惠和免费", dealsNote: "每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。", dl_local: "华人商家优惠", dl_biz: "华人商家优惠", sGuides: "相关福利指南", sNews: "相关新闻", sPosts: "分类信息", dl_zh: "华人社区免费和优惠", dl_free: "免费领取", dl_online: "网购折扣", dl_events: "纽约免费活动", dl_postCta: "商家免费发布优惠 →", dl_none: "暂时没有，过几个小时再来看看。", dl_en: "英文",
       ckShare: "把这个自测分享给亲友", ckShareTitle: "我能申请什么？华邻网福利自测", ckShareText: "白卡、粮食券、公屋、老人福利……回答 6 个问题，看看你家可能申请哪些福利（免费、匿名）", shareSite: "分享本站", shareSiteText: "华邻网：在美华人新闻、生活指南、本周优惠和免费分类信息",
       shareWx: "分享到微信", shareCheckWx: "把自测分享到微信", shareShort: "分享",
       newsTab: "新闻",
@@ -32,14 +32,14 @@
       lgSent: "验证码已发到 {e}，请查收邮件（也看看垃圾邮件箱）。邮件里的链接也可以直接点开登录。", lgAgree: "登录即表示同意本站", lgBadEmail: "请输入正确的电子邮箱。", lgBadCode: "验证码不对或已过期，请重新发送。", lgFail: "暂时无法登录，请稍后再试。", lgWait: "发送太频繁，请过一分钟再试。", lgOk: "登录成功", lgOut: "已退出", eLogin: "请先登录再发布。",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
-      tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
+      tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索：白卡、绿卡、租房、法拉盛…", searchBtn: "搜索", postFree: "免费发布",
       directory: "分类目录", more: "更多", home: "首页", classifiedsTab: "分类信息",
       sec_top: "新闻速递", sec_local: "纽约本地", sec_immigration: "移民签证", sec_uschina: "中美关系", sec_china: "中国",
       sec_business: "财经", sec_health: "健康养生", sec_ent: "娱乐体育", sec_official: "政府公告", offNote: "美国联邦政府发布的内容属于公有领域，本站全文收录（英文原文，标题和摘要为机器翻译）。", offNoteZh: "美国联邦政府发布的内容属于公有领域，本站全文收录。中文为机器翻译，以英文原文为准。", showEn: "看英文原文", showZh: "看中文翻译", offLink: "查看官方原文", loadingFull: "全文载入中…",
       ctaH: "免费发布分类信息", ctaP: "招聘、租房、生意转让、二手买卖……无需注册，一分钟发布。", postNow: "立即发布",
       latest: "最新信息", fx: "货币兑换率", weather: "纽约天气", classifieds: "分类信息", classHint: "点击板块查看全部",
       back: "← 返回首页", postHere: "在本板块发布", filterPh: "在本板块中筛选",
-      foot1: "新闻每小时自动汇集自各大中英文媒体，点击标题阅读原文。", footAds: "广告刊登", footAdsP: "首页及侧栏广告位招租，欢迎商家联系。",
+      foot1: "新闻、天气、汇率和优惠每30分钟自动更新，汇集自各大中英文媒体。", footAds: "广告刊登", footAdsP: "首页及侧栏广告位招租，欢迎商家联系。",
       footSafe: "安全提示", foot2: "分类信息由用户自行发布，请自行核实；交易当面确认，切勿预付定金，谨防诈骗。",
       postH: "发布分类信息", postOff: "发布功能即将开放，敬请期待。", fBoard: "板块", fArea: "地区", areaPh: "如：法拉盛",
       fTitle: "标题", titlePh: "如：法拉盛餐馆请炒锅，包吃住", fBody: "详细内容", bodyPh: "薪资、要求、价格、时间等",
@@ -78,7 +78,7 @@
       ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
       ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
       readHere: "Read full story", rdNew: "Blank? Open in a new window", zhDetail: "Read in Chinese", enOrig: "Open the store page", zhDetailNote: "The Chinese version is made by Google Translate; prices and terms on the store's page apply.", mtNote: "Machine translation, for reference only.", irNote: "Full story below is provided by {src}", irFull: "Full screen", openOrig: "Open original site", rdBack: "← Back to HuaLin", rdNote: "Content below is provided by the original site", readAt: "Read the full story at {src} →", artNoSum: "This publisher doesn't allow its stories to be shown inside other sites; use the button below to read it.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
-      dealsTab: "Deals", dealsH: "Deals and freebies this week", dealsNote: "Online deals, freebies and free NYC events gathered daily; local businesses can post deals for free. Deals can end any time; check the store's page.", dl_local: "Local business deals", dl_zh: "Community freebies & deals", dl_free: "Freebies", dl_online: "Online deals", dl_events: "Free NYC events", dl_postCta: "Businesses: post a deal for free →", dl_none: "Nothing right now; check back in a few hours.", dl_en: "EN",
+      dealsTab: "Deals", dealsH: "Deals and freebies this week", dealsNote: "Online deals, freebies and free NYC events gathered daily; local businesses can post deals for free. Deals can end any time; check the store's page.", dl_local: "Local business deals", dl_biz: "Local business deals", sGuides: "Benefits guides", sNews: "News", sPosts: "Listings", dl_zh: "Community freebies & deals", dl_free: "Freebies", dl_online: "Online deals", dl_events: "Free NYC events", dl_postCta: "Businesses: post a deal for free →", dl_none: "Nothing right now; check back in a few hours.", dl_en: "EN",
       ckShare: "Share this check with family and friends", ckShareTitle: "What can I apply for? HuaLin benefits check", ckShareText: "Medicaid, SNAP, public housing, senior help: answer 6 questions to see what your family may qualify for (free, anonymous)", shareSite: "Share HuaLin", shareSiteText: "HuaLin: news, life guides, weekly deals and free listings for Chinese Americans",
       shareWx: "Share", shareCheckWx: "Share this check", shareShort: "Share",
       newsTab: "News",
@@ -87,14 +87,14 @@
       lgSent: "We sent a code to {e}. Check your inbox (and spam). You can also tap the link in that email.", lgAgree: "By signing in you agree to our", lgBadEmail: "Enter a valid email address.", lgBadCode: "That code is wrong or expired. Send a new one.", lgFail: "Couldn't sign in right now. Please try again.", lgWait: "Too many requests. Wait a minute and try again.", lgOk: "Signed in", lgOut: "Signed out", eLogin: "Please sign in to post.",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
-      tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
+      tagline: "News & community listings for Chinese Americans", searchPh: "Search: Medicaid, rentals, Flushing…", searchBtn: "Search", postFree: "Post Free",
       directory: "Directory", more: "More", home: "Home", classifiedsTab: "Classifieds",
       sec_top: "Top Stories", sec_local: "New York", sec_immigration: "Immigration", sec_uschina: "US–China", sec_china: "China",
       sec_business: "Business", sec_health: "Health", sec_ent: "Entertainment & Sports", sec_official: "Official notices", offNote: "U.S. federal government works are in the public domain; shown here in full.", offNoteZh: "U.S. federal government works are in the public domain; shown here in full.", showEn: "Show English original", showZh: "Show Chinese translation", offLink: "View official source", loadingFull: "Loading full text…",
       ctaH: "Post a free listing", ctaP: "Jobs, rentals, businesses for sale, used items. No sign-up, done in a minute.", postNow: "Post now",
       latest: "Latest Listings", fx: "Exchange Rates", weather: "NYC Weather", classifieds: "Classifieds", classHint: "Open a board to see everything",
       back: "← Back to home", postHere: "Post in this board", filterPh: "Filter this board",
-      foot1: "News is gathered every hour from Chinese- and English-language outlets. Click a headline to read the original.",
+      foot1: "News, weather, exchange rates and deals update every 30 minutes from Chinese- and English-language outlets.",
       footAds: "Advertise", footAdsP: "Homepage and sidebar ad spaces are available.", footSafe: "Stay safe",
       foot2: "Listings are posted by users. Verify details, meet in person and never send deposits to strangers.",
       postH: "Post a Listing", postOff: "Posting opens soon.", fBoard: "Board", fArea: "Area", areaPh: "e.g. Flushing",
@@ -241,7 +241,7 @@
     clearTimeout(megaTimer);
     megaIdx = Number(a.dataset.mi);
     mega.innerHTML = it.menu();
-    mega.hidden = false;
+    mega.hidden = false; megaOpenedAt = Date.now();
     const nav = document.querySelector(".tabs").getBoundingClientRect(), r = a.getBoundingClientRect();
     const w = Math.min(mega.offsetWidth, window.innerWidth - 32);
     mega.style.left = Math.max(16, Math.min(r.left, window.innerWidth - w - 16)) + "px";
@@ -258,11 +258,14 @@
     const a = e.target.closest("a.has-menu"); if (!a) return;
     if (!canHover) { e.preventDefault(); if (megaIdx === Number(a.dataset.mi)) closeMega(); else openMega(a); }
   });
-  $("#tabs").addEventListener("focusin", e => { const a = e.target.closest("a.has-menu"); if (a) openMega(a); });
+  // Keyboard focus opens the menu on desktop. On phones a tap focuses the tab just before the click,
+  // which used to open and then immediately close the menu, so focus is ignored there.
+  $("#tabs").addEventListener("focusin", e => { const a = e.target.closest("a.has-menu"); if (a && canHover) openMega(a); });
   mega.addEventListener("click", e => { if (e.target.closest("a")) setTimeout(closeMega, 0); });
   document.addEventListener("click", e => { if (!mega.hidden && !e.target.closest("#mega,#tabs")) closeMega(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeMega(); });
-  $("#tabs").addEventListener("scroll", closeMega, { passive: true });
+  let megaOpenedAt = 0;
+  $("#tabs").addEventListener("scroll", () => { if (Date.now() - megaOpenedAt > 400) closeMega(); }, { passive: true });
   window.addEventListener("hashchange", closeMega);
   window.addEventListener("scroll", () => { if (!mega.hidden) { const nav = document.querySelector(".tabs").getBoundingClientRect(); mega.style.top = nav.bottom + "px"; } }, { passive: true });
 
@@ -445,9 +448,19 @@
   function renderSearch() {
     const q = searchQ.trim().toLowerCase();
     const words = q.split(/\s+/).filter(Boolean);
-    const list = words.length ? posts.filter(p => { const hay = [p.title, p.area, p.body, p.contact, bName(boardById(p.board))].join(" ").toLowerCase(); return words.every(w => hay.includes(w)); }) : [];
-    $("#sTitle").textContent = `${t("searchFor")}${searchQ} · ${list.length} ${t("results")}`;
-    $("#sList").innerHTML = list.length ? list.map(p => pitemHtml(p, true)).join("") : `<li><div class="empty">${esc(t("noMatch"))}</div></li>`;
+    const hit = hay => words.length && words.every(w => hay.toLowerCase().includes(w));
+    const list = words.length ? posts.filter(p => hit([p.title, p.area, p.body, p.contact, bName(boardById(p.board))].join(" "))) : [];
+    // Also search the benefits guides and today's news, so "白卡" or "绿卡" finds something useful.
+    const gl = (guides && guides.guides || []).filter(g => hit([HLG.L(g.title, lang), HLG.L(g.short, lang), HLG.L(g.summary, lang), g.id].join(" "))).slice(0, 6);
+    const seen = new Set();
+    const nl = SECTIONS.flatMap(s => sec(s)).filter(i => { const k = i.id || i.u; if (seen.has(k)) return false; seen.add(k); return hit([disp(i), dsum(i)].join(" ")); }).slice(0, 10);
+    const total = list.length + gl.length + nl.length;
+    $("#sTitle").textContent = `${t("searchFor")}${searchQ} · ${total} ${t("results")}`;
+    $("#sList").innerHTML =
+      (gl.length ? `<li class="s-sec"><h2>${esc(t("sGuides"))}</h2><div class="g-home-r">${gl.map(g => `<a class="g-chip" href="#g-${esc(g.id)}"><span class="seal sm" aria-hidden="true">${esc(g.glyph || "指")}</span>${esc(HLG.L(g.title, lang))}</a>`).join("")}</div></li>` : "") +
+      (nl.length ? `<li class="s-sec"><h2>${esc(t("sNews"))}</h2><ul class="nl">${nl.map(x => liHtml(x, false)).join("")}</ul></li>` : "") +
+      (list.length ? `<li class="s-sec"><h2>${esc(t("sPosts"))}</h2></li>` + list.map(p => pitemHtml(p, true)).join("") : "") +
+      (total ? "" : `<li><div class="empty">${esc(t("noMatch"))}</div></li>`);
   }
 
   /* ---------- guides ---------- */
