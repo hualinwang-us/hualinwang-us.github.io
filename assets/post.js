@@ -68,11 +68,7 @@
         <button type="button" class="btn" id="repSend">${esc(t("reportSend"))}</button></div>
     </article>
     <div class="pmore">${b ? `<a href="${esc(base)}#b-${esc(b.id)}">${esc(t("moreIn").replace("{b}", bn))} →</a>` : ""}<a href="${esc(base)}">${esc(t("home"))} →</a></div>`;
-    $("#shareBtn").onclick = async () => {
-      const r = await HLC.share(HLC.postUrl(p.id), (p.area ? "[" + p.area + "] " : "") + p.title);
-      if (r === "copied") toast(t("linkCopied"));
-      else if (r === "manual") { const m = $("#manualBox"); m.hidden = false; const i = m.querySelector("input"); i.focus(); i.select(); }
-    };
+    $("#shareBtn").onclick = () => HLShare.open({ url: HLC.postUrl(p.id), title: (p.area ? "[" + p.area + "] " : "") + p.title, text: (p.area ? "[" + p.area + "] " : "") + p.title + " - 华邻网" });
     $("#repBtn").onclick = () => { if (HLC.reported.get(p.id)) { toast(t("alreadyReported")); return; } $("#repBox").hidden = !$("#repBox").hidden; };
     $("#repSend").onclick = async () => {
       const btn = $("#repSend"); btn.disabled = true;

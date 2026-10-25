@@ -48,6 +48,7 @@
   <div><b data-zh="免责声明" data-en="Disclaimer">免责声明</b><p data-zh="本站内容仅供参考，不构成法律或专业意见，与政府机构无关。" data-en="General information only, not legal or professional advice. Not affiliated with any government agency.">本站内容仅供参考，不构成法律或专业意见，与政府机构无关。</p><p><a class="flink" href="{{BASE}}#disclaimer" data-zh="阅读完整免责声明 →" data-en="Read the full disclaimer →">阅读完整免责声明 →</a></p></div>
 </div></footer>
 <div class="toast" id="toast" role="status" hidden></div>
+<script src="{{BASE}}assets/share.js"></script>
 <script>
 (function () {
   var lang = "zh"; try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
@@ -62,10 +63,7 @@
   document.getElementById("lzh").onclick = function () { set("zh"); };
   document.getElementById("len").onclick = function () { set("en"); };
   document.getElementById("shareBtn").onclick = function () {
-    var url = "{{URL}}", title = document.title;
-    function toast(m) { var el = document.getElementById("toast"); el.textContent = m; el.hidden = false; setTimeout(function () { el.hidden = true; }, 2400); }
-    if (navigator.share && !/MicroMessenger/i.test(navigator.userAgent)) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
-    if (navigator.clipboard) navigator.clipboard.writeText(title + "\n" + url).then(function () { toast(lang === "zh" ? "链接已复制，打开微信粘贴到群里即可" : "Link copied"); }, function () { prompt("", url); });
+    if (window.HLShare) window.HLShare.open({ url: "{{URL}}", title: document.title, text: document.title });
   };
   apply();
 })();
