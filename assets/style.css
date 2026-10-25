@@ -648,7 +648,7 @@ a.spon.empty:hover{border-color:var(--gold)}
 .splash{display:none}
 .hl-launch body{overflow:hidden}
 .hl-launch .splash{display:flex;position:fixed;inset:0;z-index:1000;flex-direction:column;align-items:center;justify-content:center;color:#fff;overflow:hidden;background:#0e1320;
-  --gold:#e3c48a;--red:#c8372c;animation:sp-exit .75s cubic-bezier(.76,0,.24,1) 3.45s forwards}
+  --gold:#e3c48a;--red:#c8372c;animation:sp-exit .75s cubic-bezier(.76,0,.24,1) 3.75s forwards}
 .sp-bg{position:absolute;inset:0;background:
   radial-gradient(60% 42% at 50% 40%,rgba(200,55,44,.42),rgba(200,55,44,0) 70%),
   radial-gradient(120% 90% at 50% 110%,#1d2740 0%,rgba(29,39,64,0) 60%),#0e1320;animation:sp-breathe 3.4s ease-in-out both}
@@ -851,3 +851,73 @@ html[data-fz="1"] .util-fz,html[data-fz="2"] .util-fz{background:rgba(255,255,25
 .util-me{color:#fff;text-decoration:none;font-weight:700}
 .bh h2 small{font:400 13px var(--body);color:var(--muted)}
 @media (max-width:719px){.fab-share{display:flex!important;bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
+
+/* ===== Design system v3: warm paper, ink and vermilion seal (overrides above) ===== */
+:root{
+  --bg:#f5f1ea; --paper:#fffdf9; --ink:#1b1f2a; --ink-2:#343a4a; --muted:#5d6272; --line:#e7e0d4; --line-2:#f0ebe2;
+  --accent:#b8312a; --accent-ink:#fff; --accent-soft:#f8ebe7; --gold:#9c7536; --gold-soft:#f6eedf; --link:#24407e;
+  --ad-bg:#fbf6ec; --ad-line:#e8dcc4;
+  --r:12px; --shadow:0 1px 0 rgba(27,31,42,.03),0 10px 30px -14px rgba(60,45,20,.14);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1116; --paper:#171a21; --ink:#ece8e1; --ink-2:#cfc9bf; --muted:#a29c92; --line:#2a2e38; --line-2:#20242c;
+  --accent:#e2574a; --accent-soft:#3a1f1c; --gold:#d4b071; --gold-soft:#2a2418; --link:#a9bdf0;
+  --ad-bg:#1d1b17; --ad-line:#3a3326; --shadow:none }}
+body{background:var(--bg);letter-spacing:.01em}
+::selection{background:color-mix(in srgb,var(--accent) 22%,transparent)}
+
+/* top bar and masthead */
+.util{background:#171b26;color:#d9d3c7}
+.util .pill{border-color:rgba(214,190,140,.22)}
+.seg button[aria-pressed="true"]{background:#efe6d4;color:#171b26}
+.mast{background:var(--paper);border-bottom:0;box-shadow:inset 0 -1px 0 var(--line)}
+.seal{background:var(--accent);border-radius:8px;box-shadow:inset 0 0 0 3px var(--accent),inset 0 0 0 4px rgba(255,240,220,.55),0 6px 16px -8px rgba(184,49,42,.6)}
+.logo-txt b{letter-spacing:.1em}
+.logo-txt small{color:var(--gold);letter-spacing:.18em}
+.search{background:var(--bg);border-color:var(--line)}
+.btn{box-shadow:0 6px 16px -10px color-mix(in srgb,var(--accent) 80%,transparent)}
+.btn.ghost{box-shadow:inset 0 0 0 1px var(--line);background:var(--paper)}
+.tabs{background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px)}
+.tabs a{font-weight:600;color:var(--ink-2);letter-spacing:.04em}
+.tabs a.on{color:var(--accent);border-bottom-width:2px}
+
+/* cards and section headings */
+.block,.dir{border-color:var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.bh{position:relative;border-bottom-color:var(--line-2);padding-bottom:12px;margin-bottom:8px}
+.bh::after{content:"";position:absolute;left:0;bottom:-1px;width:44px;height:2px;background:var(--accent);border-radius:2px}
+.bh h2{letter-spacing:.06em}
+.bh h2::before{width:9px;height:9px;border-radius:2px;background:var(--accent);transform:rotate(45deg);box-shadow:none;margin-right:2px}
+.bh.big::after{display:none}
+.bh a{color:var(--gold);font-weight:600}
+
+/* ad slots: one calm, consistent look (gold label, warm card, phone number easy to read) */
+.spon{border-radius:var(--r);border:1px solid var(--ad-line);background:var(--ad-bg)}
+.spon .lab{display:inline-block;align-self:flex-start;padding:1px 8px;border-radius:999px;border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);
+  color:var(--gold);font-size:10.5px;letter-spacing:.2em;font-weight:700;background:transparent}
+.spon.empty{opacity:1;border:1px solid var(--ad-line);background:
+  linear-gradient(135deg,color-mix(in srgb,var(--gold) 7%,transparent),transparent 55%),var(--ad-bg);transition:border-color .2s,transform .2s}
+.spon.empty h3{font:800 16px/1.35 var(--display);color:var(--ink);letter-spacing:.08em}
+.spon.empty p{color:var(--muted)}
+a.spon.empty:hover{border-color:var(--gold);transform:translateY(-1px)}
+/* the row of three between sections becomes one tidy strip */
+.spons.mid{gap:0!important;border:1px solid var(--ad-line);border-radius:var(--r);background:var(--ad-bg);overflow:hidden}
+.spons.mid>.spon{border:0;border-radius:0;background:transparent}
+.spons.mid>.spon+.spon{border-left:1px solid var(--ad-line)}
+@media (max-width:719px){.spons.mid>.spon+.spon{border-left:0;border-top:1px solid var(--ad-line)}}
+.spon-banner .spon{border-left:3px solid var(--gold)}
+.feed-ad .spon{background:var(--ad-bg)}
+
+/* footer */
+footer,.foot{background:#171b26;color:#cfc8bb}
+
+/* bottom nav on phones */
+.bnav{background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+
+/* splash: 天涯若比邻 (brush-revealed in white) then 有事找华邻 (gold shimmer) */
+.sp-poem{font:700 26px/1.3 "Noto Serif SC","Songti SC","STSong",serif;color:#fff;letter-spacing:.55em;padding-left:.55em;margin-bottom:12px;
+  clip-path:inset(0 100% 0 0);animation:sp-brush .9s cubic-bezier(.6,0,.2,1) 2.1s forwards}
+.sp-poem+.sp-slogan{font-size:17px;letter-spacing:.6em;padding-left:.6em;animation:sp-brush .8s cubic-bezier(.6,0,.2,1) 2.75s forwards,sp-shine 1s ease-in-out 3.2s forwards}
+.foot{border-top:3px solid var(--accent)}
+.foot b{color:#f4eee3}
+.foot a{color:#e0c58f}
+.foot .muted,.foot small{color:#a9a294}
