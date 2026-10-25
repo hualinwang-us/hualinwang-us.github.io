@@ -59,6 +59,25 @@
     onChange(fn) { listeners.push(fn); },
     async sendCode(email) { await call("otp", { email, create_user: true }); },
     async verifyCode(email, code) { save(fromTokenResponse(await call("verify", { type: "email", email, token: code }))); return user(); },
+    // Email + password
+    async signIn(email, password) { save(fromTokenResponse(await call("token?grant_type=password", { email, password }))); return user(); },
+    // Sign up: Supabase emails a 6-digit code (Confirm signup template); a session comes back only after the code is entered.
+    async signUp(email, password, name) { const d = await call("signup", { email, password, data: { full_name: name || "" } }); if (d && d.access_token) save(fromTokenResponse(d)); return d; },
+    async verifySignup(email, code) {
+      try { save(fromTokenResponse(await call("verify", { type: "signup", email, token: code }))); }
+      catch (e) { save(fromTokenResponse(await call("verify", { type: "email", email, token: code }))); }
+      return user();
+    },
+    async resendSignup(email) { await call("resend", { type: "signup", email }); },
+    // Forgot password: code by email (Reset password template), then a new password
+    async sendReset(email) { await call("recover", { email }); },
+    async resetWithCode(email, code, password) {
+      save(fromTokenResponse(await call("verify", { type: "recovery", email, token: code })));
+      const t = await token();
+      const r = await fetch(URL0 + "/auth/v1/user", { method: "PUT", headers: { apikey: KEY, "Content-Type": "application/json", Authorization: "Bearer " + t }, body: JSON.stringify({ password }) });
+      if (!r.ok) { const e = new Error("password update failed"); e.status = r.status; throw e; }
+      return user();
+    },
     google() {
       const back = HLC.siteBase();
       location.href = URL0 + "/auth/v1/authorize?provider=google&redirect_to=" + encodeURIComponent(back);

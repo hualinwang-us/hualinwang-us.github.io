@@ -27,8 +27,8 @@
       ckShare: "把这个自测分享给亲友", ckShareTitle: "我能申请什么？华邻网福利自测", ckShareText: "白卡、粮食券、公屋、老人福利……回答 6 个问题，看看你家可能申请哪些福利（免费、匿名）", shareSite: "分享本站", shareSiteText: "华邻网：在美华人新闻、生活指南、本周优惠和免费分类信息",
       shareWx: "分享到微信", shareCheckWx: "把自测分享到微信", shareShort: "分享",
       newsTab: "新闻",
-      login: "登录 / 注册", logout: "退出", loginH: "登录 / 注册华邻网", loginWhy: "登录后才能发布信息，也能在任何设备上管理自己的信息。第一次登录会自动注册。", loginNeed: "登录后可以不限次数发布，并随时管理自己的信息；也可以游客身份发布，每天一条。",
-      lgGuest: "以游客身份发布", lgGuestNote: "不用注册，每天限发一条", eGuest: "游客每天只能发一条。登录后可以发更多，也能随时管理自己的信息。", lgGoogle: "用 Google（Gmail）账号登录", lgWechat: "微信登录（即将开放）", lgOr: "或用电子邮箱", lgEmail: "电子邮箱", lgSend: "发送验证码", lgCode: "验证码（6 位数字）", lgBack: "换个邮箱", lgVerify: "登录",
+      login: "登录 / 注册", logout: "退出", loginH: "登录 / 注册华邻网", loginWhy: "登录后可以发布更多信息，也能在任何设备上管理自己的信息。", loginNeed: "登录后可以不限次数发布，并随时管理自己的信息；也可以游客身份发布，每天一条。",
+      lgGuest: "以游客身份发布", lgGuestNote: "不用注册，每天限发一条", eGuest: "游客每天只能发一条。登录后可以发更多，也能随时管理自己的信息。", lgGoogle: "用 Google（Gmail）账号登录", lgWechat: "微信登录（即将开放）", lgOr: "或用电子邮箱", lgEmail: "电子邮箱", lgSend: "发送验证码", lgCode: "验证码（6 位数字）", lgTabIn: "登录", lgFgSent: "验证码已发送，请查收邮件（也看看垃圾邮件）。", lgTabUp: "注册新账号", lgPw: "密码", lgPwNew: "设置密码（至少 6 位）", lgName: "昵称", lgNamePh: "别人看到的名字，如：王先生", lgUpBtn: "注册，发验证码到邮箱", lgCodeBtn: "完成注册", lgResend: "没收到？重新发送", lgResent: "已重新发送，请查收邮件（也看看垃圾邮件）。", lgForgot: "忘记密码？", lgForgotHint: "输入注册时用的邮箱，我们会发一个验证码给你，用来设置新密码。", lgFgBtn: "设置新密码并登录", lgBackIn: "← 返回登录", lgCodeSent: "验证码已发到 {e}，请查收邮件（也看看垃圾邮件）。如果一直收不到，可能这个邮箱已经注册过，请直接登录或找回密码。", lgWrongPw: "邮箱或密码不对。忘记密码可以点下面“忘记密码？”。", lgNotConfirmed: "这个账号还没完成注册，验证码已重新发到你的邮箱。", lgShortPw: "密码至少 6 位。", lgNeedName: "请填一个昵称。", lgPwOk: "新密码已设置，已登录。", lgUpOk: "注册成功，已登录！", lgBack: "换个邮箱", lgVerify: "登录",
       lgSent: "验证码已发到 {e}，请查收邮件（也看看垃圾邮件箱）。邮件里的链接也可以直接点开登录。", lgAgree: "登录即表示同意本站", lgBadEmail: "请输入正确的电子邮箱。", lgBadCode: "验证码不对或已过期，请重新发送。", lgFail: "暂时无法登录，请稍后再试。", lgWait: "发送太频繁，请过一分钟再试。", lgOk: "登录成功", lgOut: "已退出", eLogin: "请先登录再发布。",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
@@ -88,7 +88,7 @@
       shareWx: "Share", shareCheckWx: "Share this check", shareShort: "Share",
       newsTab: "News",
       login: "Sign in", logout: "Sign out", loginH: "Sign in to HuaLin", loginWhy: "Sign in to post listings and manage them from any device. Your first sign-in creates your account.", loginNeed: "Sign in to post without limits and manage your listings, or post as a guest (one a day).",
-      lgGuest: "Post as a guest", lgGuestNote: "No sign-up, one listing per day", eGuest: "Guests can post one listing a day. Sign in to post more and manage your listings.", lgGoogle: "Continue with Google (Gmail)", lgWechat: "WeChat sign-in (coming soon)", lgOr: "or use email", lgEmail: "Email", lgSend: "Send code", lgCode: "Code (6 digits)", lgBack: "Use another email", lgVerify: "Sign in",
+      lgGuest: "Post as a guest", lgGuestNote: "No sign-up, one listing per day", eGuest: "Guests can post one listing a day. Sign in to post more and manage your listings.", lgGoogle: "Continue with Google (Gmail)", lgWechat: "WeChat sign-in (coming soon)", lgOr: "or use email", lgEmail: "Email", lgSend: "Send code", lgCode: "Code (6 digits)", lgTabIn: "Sign in", lgFgSent: "Code sent. Check your inbox and spam folder.", lgTabUp: "Create account", lgPw: "Password", lgPwNew: "Choose a password (6+ characters)", lgName: "Nickname", lgNamePh: "Shown to others, e.g. Mr. Wang", lgUpBtn: "Sign up and email me a code", lgCodeBtn: "Finish sign-up", lgResend: "Didn't get it? Send again", lgResent: "Sent again. Check your inbox and spam folder.", lgForgot: "Forgot password?", lgForgotHint: "Enter the email you signed up with and we'll send a code to set a new password.", lgFgBtn: "Set new password and sign in", lgBackIn: "← Back to sign in", lgCodeSent: "We sent a code to {e}. Check your inbox and spam folder. If it never arrives, this email may already have an account: sign in or reset your password.", lgWrongPw: "Wrong email or password. Use Forgot password if needed.", lgNotConfirmed: "This account isn't finished yet. We sent a new code to your email.", lgShortPw: "Password must be at least 6 characters.", lgNeedName: "Please enter a nickname.", lgPwOk: "New password set. You're signed in.", lgUpOk: "Account created. You're signed in!", lgBack: "Use another email", lgVerify: "Sign in",
       lgSent: "We sent a code to {e}. Check your inbox (and spam). You can also tap the link in that email.", lgAgree: "By signing in you agree to our", lgBadEmail: "Enter a valid email address.", lgBadCode: "That code is wrong or expired. Send a new one.", lgFail: "Couldn't sign in right now. Please try again.", lgWait: "Too many requests. Wait a minute and try again.", lgOk: "Signed in", lgOut: "Signed out", eLogin: "Please sign in to post.",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
@@ -1068,7 +1068,6 @@
     $("#loginBtn").hidden = !!u || !LOGIN_ON; $("#userBox").hidden = !u;
     $("#lgGoogle").hidden = !CFG.loginGoogle;
     document.querySelector(".login-sep").hidden = !(CFG.loginEmail && CFG.loginGoogle);
-    $("#lgStep1").dataset.off = CFG.loginEmail ? "" : "1";
     if (u) $("#userName").textContent = u.name || u.email;
   }
   async function loadMine() {
@@ -1077,35 +1076,64 @@
     try { const ids = await HLC.rpc("my_post_ids", {}); (ids || []).forEach(x => myIds.add(typeof x === "object" ? Object.values(x)[0] : x)); } catch (e) {}
   }
   let guestOk = false;
+  function lgMode(m) {
+    document.querySelectorAll("#loginDlg [data-pane]").forEach(p => (p.hidden = !CFG.loginEmail || p.dataset.pane !== m));
+    document.querySelectorAll("#lgTabs [data-lgmode]").forEach(b => b.classList.toggle("on", b.dataset.lgmode === m));
+    $("#lgTabs").hidden = !CFG.loginEmail || m === "code" || m === "forgot";
+    $("#lgErr").textContent = "";
+  }
   function openLogin(why, offerGuest) {
-    $("#lgErr").textContent = ""; $("#lgStep1").hidden = !CFG.loginEmail; $("#lgStep2").hidden = true;
+    lgMode("in"); $("#lgFgStep2").hidden = true;
     $("#lgGuest").hidden = !offerGuest;
     $("#loginWhy").textContent = why || t("loginWhy");
     $("#loginDlg").showModal();
   }
+  function lgDone(msg) { $("#loginDlg").close(); toast(msg || t("lgOk")); if (afterLogin) { const f = afterLogin; afterLogin = null; f(); } }
   if (A) {
     A.onChange(() => { renderUser(); loadMine(); });
     $("#loginBtn").onclick = () => { afterLogin = null; openLogin(); };
     $("#lgGuest").onclick = () => { guestOk = true; const f = afterLogin; afterLogin = null; $("#loginDlg").close(); if (f) f(); };
     $("#logoutBtn").onclick = async () => { await A.signOut(); toast(t("lgOut")); };
     $("#lgGoogle").onclick = () => { try { sessionStorage.setItem("hl-after-login", afterLogin ? "post" : ""); } catch (e) {} A.google(); };
-    let lgEmail = "";
-    $("#lgSend").onclick = async () => {
-      const e = $("#lgEmail").value.trim();
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) { $("#lgErr").textContent = t("lgBadEmail"); return; }
-      const b = $("#lgSend"); b.disabled = true; $("#lgErr").textContent = "";
-      try { await A.sendCode(e); lgEmail = e; $("#lgSent").textContent = t("lgSent").replace("{e}", e); $("#lgStep1").hidden = true; $("#lgStep2").hidden = false; $("#lgCode").focus(); }
-      catch (err) { $("#lgErr").textContent = err.status === 429 ? t("lgWait") : t("lgFail"); }
-      finally { b.disabled = false; }
-    };
-    $("#lgBack").onclick = () => { $("#lgStep1").hidden = false; $("#lgStep2").hidden = true; };
-    $("#lgVerify").onclick = async () => {
+    $("#loginDlg").addEventListener("click", e => { const m = e.target.closest("[data-lgmode]"); if (m) lgMode(m.dataset.lgmode); });
+    const okEmail = e => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);
+    const busy = async (btn, fn) => { btn.disabled = true; $("#lgErr").textContent = ""; try { await fn(); } finally { btn.disabled = false; } };
+    let codeEmail = "";
+    const toCode = e => { codeEmail = e; $("#lgCodeHint").textContent = t("lgCodeSent").replace("{e}", e); $("#lgCode").value = ""; lgMode("code"); setTimeout(() => $("#lgCode").focus(), 30); };
+    $("#lgInBtn").onclick = () => busy($("#lgInBtn"), async () => {
+      const e = $("#lgInEmail").value.trim(), p = $("#lgInPw").value;
+      if (!okEmail(e)) { $("#lgErr").textContent = t("lgBadEmail"); return; }
+      try { await A.signIn(e, p); lgDone(); }
+      catch (err) {
+        if (/not.?confirmed/i.test(err.code + " " + err.message)) { try { await A.resendSignup(e); } catch (x) {} toCode(e); $("#lgErr").textContent = t("lgNotConfirmed"); }
+        else $("#lgErr").textContent = err.status === 429 ? t("lgWait") : t("lgWrongPw");
+      }
+    });
+    $("#lgInPw").addEventListener("keydown", e => { if (e.key === "Enter") $("#lgInBtn").click(); });
+    $("#lgUpBtn").onclick = () => busy($("#lgUpBtn"), async () => {
+      const n = $("#lgUpName").value.trim(), e = $("#lgUpEmail").value.trim(), p = $("#lgUpPw").value;
+      if (!n) { $("#lgErr").textContent = t("lgNeedName"); return; }
+      if (!okEmail(e)) { $("#lgErr").textContent = t("lgBadEmail"); return; }
+      if (p.length < 6) { $("#lgErr").textContent = t("lgShortPw"); return; }
+      try { const d = await A.signUp(e, p, n); if (A.user()) lgDone(t("lgUpOk")); else toCode(e); }
+      catch (err) { $("#lgErr").textContent = err.status === 429 ? t("lgWait") : /registered|exists/i.test(err.message) ? t("lgWrongPw") : t("lgFail"); }
+    });
+    $("#lgCodeBtn").onclick = () => busy($("#lgCodeBtn"), async () => {
       const c = $("#lgCode").value.replace(/\D/g, "");
-      const b = $("#lgVerify"); b.disabled = true; $("#lgErr").textContent = "";
-      try { await A.verifyCode(lgEmail, c); $("#loginDlg").close(); toast(t("lgOk")); if (afterLogin) { const f = afterLogin; afterLogin = null; f(); } }
-      catch (err) { $("#lgErr").textContent = t("lgBadCode"); }
-      finally { b.disabled = false; }
-    };
+      try { await A.verifySignup(codeEmail, c); lgDone(t("lgUpOk")); } catch (err) { $("#lgErr").textContent = t("lgBadCode"); }
+    });
+    $("#lgResend").onclick = () => busy($("#lgResend"), async () => { try { await A.resendSignup(codeEmail); $("#lgErr").textContent = t("lgResent"); } catch (err) { $("#lgErr").textContent = err.status === 429 ? t("lgWait") : t("lgFail"); } });
+    $("#lgFgSend").onclick = () => busy($("#lgFgSend"), async () => {
+      const e = $("#lgFgEmail").value.trim();
+      if (!okEmail(e)) { $("#lgErr").textContent = t("lgBadEmail"); return; }
+      try { await A.sendReset(e); $("#lgFgStep2").hidden = false; $("#lgErr").textContent = t("lgFgSent"); setTimeout(() => $("#lgFgCode").focus(), 30); }
+      catch (err) { $("#lgErr").textContent = err.status === 429 ? t("lgWait") : t("lgFail"); }
+    });
+    $("#lgFgBtn").onclick = () => busy($("#lgFgBtn"), async () => {
+      const e = $("#lgFgEmail").value.trim(), c = $("#lgFgCode").value.replace(/\D/g, ""), p = $("#lgFgPw").value;
+      if (p.length < 6) { $("#lgErr").textContent = t("lgShortPw"); return; }
+      try { await A.resetWithCode(e, c, p); lgDone(t("lgPwOk")); } catch (err) { $("#lgErr").textContent = t("lgBadCode"); }
+    });
   }
 
   function openForm(board) {

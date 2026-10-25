@@ -367,19 +367,40 @@
   <div class="dl login">
     <button type="button" class="x" data-close aria-label="Close">×</button>
     <h3 id="loginH" data-i18n="loginH">登录 / 注册华邻网</h3>
-    <p class="hint" id="loginWhy" data-i18n="loginWhy">登录后才能发布信息，也能在任何设备上管理自己的信息。第一次登录会自动注册。</p>
+    <p class="hint" id="loginWhy" data-i18n="loginWhy">登录后可以发布更多信息，也能在任何设备上管理自己的信息。</p>
     <button type="button" class="login-opt guest" id="lgGuest" hidden><span class="lo-ic">游</span><span><span data-i18n="lgGuest">以游客身份发布</span><small data-i18n="lgGuestNote">不用注册，每天限发一条</small></span></button>
     <button type="button" class="login-opt google" id="lgGoogle"><span class="lo-ic">G</span><span data-i18n="lgGoogle">用 Google（Gmail）账号登录</span></button>
-    <button type="button" class="login-opt wechat" disabled><span class="lo-ic">微</span><span data-i18n="lgWechat">微信登录（即将开放）</span></button>
+    <button type="button" class="login-opt wechat" disabled hidden><span class="lo-ic">微</span><span data-i18n="lgWechat">微信登录（即将开放）</span></button>
     <div class="login-sep"><span data-i18n="lgOr">或用电子邮箱</span></div>
-    <div id="lgStep1" class="login-step">
-      <div class="field"><label for="lgEmail" data-i18n="lgEmail">电子邮箱</label><input id="lgEmail" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com"></div>
-      <button type="button" class="btn" id="lgSend" data-i18n="lgSend">发送验证码</button>
+    <div class="lg-tabs" id="lgTabs" role="tablist"><button type="button" data-lgmode="in" class="on" data-i18n="lgTabIn">登录</button><button type="button" data-lgmode="up" data-i18n="lgTabUp">注册新账号</button></div>
+    <div class="login-step" data-pane="in">
+      <div class="field"><label for="lgInEmail" data-i18n="lgEmail">电子邮箱</label><input id="lgInEmail" type="email" autocomplete="username" inputmode="email" placeholder="name@example.com"></div>
+      <div class="field"><label for="lgInPw" data-i18n="lgPw">密码</label><input id="lgInPw" type="password" autocomplete="current-password"></div>
+      <button type="button" class="btn lg-main" id="lgInBtn" data-i18n="lgTabIn">登录</button>
+      <button type="button" class="linkbtn lg-link" data-lgmode="forgot" data-i18n="lgForgot">忘记密码？</button>
     </div>
-    <div id="lgStep2" class="login-step" hidden>
-      <p class="hint" id="lgSent"></p>
+    <div class="login-step" data-pane="up" hidden>
+      <div class="field"><label for="lgUpName" data-i18n="lgName">昵称</label><input id="lgUpName" maxlength="20" autocomplete="nickname" data-i18n-ph="lgNamePh" placeholder="别人看到的名字，如：王先生"></div>
+      <div class="field"><label for="lgUpEmail" data-i18n="lgEmail">电子邮箱</label><input id="lgUpEmail" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com"></div>
+      <div class="field"><label for="lgUpPw" data-i18n="lgPwNew">设置密码（至少 6 位）</label><input id="lgUpPw" type="password" autocomplete="new-password" minlength="6"></div>
+      <button type="button" class="btn lg-main" id="lgUpBtn" data-i18n="lgUpBtn">注册，发验证码到邮箱</button>
+    </div>
+    <div class="login-step" data-pane="code" hidden>
+      <p class="hint" id="lgCodeHint"></p>
       <div class="field"><label for="lgCode" data-i18n="lgCode">验证码（6 位数字）</label><input id="lgCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="123456"></div>
-      <div class="actions"><button type="button" class="btn ghost" id="lgBack" data-i18n="lgBack">换个邮箱</button><button type="button" class="btn" id="lgVerify" data-i18n="lgVerify">登录</button></div>
+      <button type="button" class="btn lg-main" id="lgCodeBtn" data-i18n="lgCodeBtn">完成注册</button>
+      <button type="button" class="linkbtn lg-link" id="lgResend" data-i18n="lgResend">没收到？重新发送</button>
+    </div>
+    <div class="login-step" data-pane="forgot" hidden>
+      <p class="hint" data-i18n="lgForgotHint">输入注册时用的邮箱，我们会发一个验证码给你，用来设置新密码。</p>
+      <div class="field"><label for="lgFgEmail" data-i18n="lgEmail">电子邮箱</label><input id="lgFgEmail" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com"></div>
+      <button type="button" class="btn lg-main" id="lgFgSend" data-i18n="lgSend">发送验证码</button>
+      <div id="lgFgStep2" hidden>
+        <div class="field"><label for="lgFgCode" data-i18n="lgCode">验证码（6 位数字）</label><input id="lgFgCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="123456"></div>
+        <div class="field"><label for="lgFgPw" data-i18n="lgPwNew">设置密码（至少 6 位）</label><input id="lgFgPw" type="password" autocomplete="new-password" minlength="6"></div>
+        <button type="button" class="btn lg-main" id="lgFgBtn" data-i18n="lgFgBtn">设置新密码并登录</button>
+      </div>
+      <button type="button" class="linkbtn lg-link" data-lgmode="in" data-i18n="lgBackIn">← 返回登录</button>
     </div>
     <p class="err" id="lgErr" role="alert"></p>
     <p class="hint"><span data-i18n="lgAgree">登录即表示同意本站</span> <a class="flink" href="#disclaimer" data-close data-i18n="footLegal">免责声明</a></p>
