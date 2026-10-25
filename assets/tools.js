@@ -9,6 +9,7 @@
   const L = (zh, en) => ({ zh, en });
 
   const CATS = [
+    { id: "go", zh: "出行交通", en: "Getting around", tools: ["transit"] },
     { id: "scam", zh: "防诈骗", en: "Scam alerts", tools: ["scam"] },
     { id: "imm", zh: "移民入籍", en: "Immigration", tools: ["civics", "natdate", "visa"] },
     { id: "drive", zh: "驾照考试", en: "Driver's license", tools: ["permit"] },
@@ -18,6 +19,7 @@
     { id: "life", zh: "生活工具", en: "Everyday", tools: ["units", "sizes", "tip"] }
   ];
   const TOOLS = {
+    transit: { g: "车", t: L("实时到站", "Real-time arrivals"), d: L("附近公交车、长岛铁路、北方铁路，实时更新", "Nearby buses, LIRR, Metro-North, live") },
     scam: { g: "防", t: L("防诈骗提醒", "Scam alerts"), d: L("华人最常遇到的 14 种骗局，骗子怎么说、怎么识破", "14 common scams and how to spot them") },
     civics: { g: "问", t: L("入籍考试练习", "Citizenship test practice"), d: L("2025 新版 128 题，中英对照，模拟考试", "2025 test, 128 questions, bilingual") },
     natdate: { g: "籍", t: L("入籍时间计算", "Naturalization date"), d: L("拿绿卡几年后可以申请入籍", "When you can file N-400") },
@@ -322,13 +324,89 @@
       <div class="sc-share"><button type="button" class="btn wx-btn" data-scamshare>分享给家人，特别是长辈</button></div>`;
   }
 
+  /* ---------- 实时到站 (via our Supabase relay) ---------- */
+  const TR = { mode: "bus", stops: null, stopSel: null, rail: null, railSys: "lirr", railStop: "", timer: 0, pos: null };
+  const fnUrl = () => (window.HLC && window.HLC.SB_URL ? window.HLC.SB_URL : "") + "/functions/v1/transit";
+  async function fnGet(params) {
+    const key = window.HLC && window.HLC.SB_KEY, h = key ? { apikey: key } : {};
+    if (key && !/^sb_publishable_/.test(key)) h.Authorization = "Bearer " + key;
+    const r = await fetch(fnUrl() + "?" + new URLSearchParams(params), { headers: h });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || ("HTTP " + r.status));
+    return d;
+  }
+  const RAIL_POP = { lirr: ["56", "237", "349", "102", "1"], mnr: ["1", "4"] };
+  const dist = (a, b) => { const x = (b.lon - a.lon) * Math.cos(a.lat * Math.PI / 180), y = b.lat - a.lat; return Math.sqrt(x * x + y * y) * 111; };
+  const minsTo = t => Math.round((t * 1000 - Date.now()) / 60000);
+  const hm = t => new Date(t * 1000).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "America/New_York" });
+  function transitHtml() {
+    return `<div class="tl-tabs" role="tablist">${[["bus", "🚌 公交车"], ["lirr", "🚆 长岛铁路"], ["mnr", "🚆 北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
+      <p class="tl-note">数据来自纽约大都会运输署（MTA）实时数据，每 30 秒自动刷新。实际以车站显示和广播为准。定位只用来找附近车站，不会保存。</p>`;
+  }
+  function locate() {
+    return new Promise((ok, no) => { if (!navigator.geolocation) return no(new Error("no geo")); navigator.geolocation.getCurrentPosition(p => ok({ lat: p.coords.latitude, lon: p.coords.longitude }), no, { timeout: 10000, maximumAge: 300000 }); });
+  }
+  async function paintTransit(el) {
+    clearInterval(TR.timer);
+    const box = el.querySelector("#trBox"); if (!box) return;
+    if (TR.mode === "bus") {
+      if (!TR.stopSel) {
+        box.innerHTML = `<div class="tr-find"><button type="button" class="btn" data-trlocate>${esc("📍 定位，找附近的公交站")}</button><form class="tr-code" data-trcode><input inputmode="numeric" maxlength="6" placeholder="或输入站牌上的 6 位站号" aria-label="站号"><button class="btn ghost" type="submit">查询</button></form></div>
+          ${TR.stops ? (TR.stops.length ? `<ul class="tr-stops">${TR.stops.map((s, k) => `<li><button type="button" data-trstop="${k}"><b>${esc(s.name)}</b><span>${esc(s.dir ? "往 " + s.dir + " · " : "")}${esc(s.routes.join("、"))}</span><em>${s.km != null ? Math.round(s.km * 1000) + " 米" : ""}</em></button></li>`).join("")}</ul>` : `<p class="tl-note">附近没找到公交站。</p>`) : ""}`;
+        return;
+      }
+      const s = TR.stopSel;
+      box.innerHTML = `<div class="tr-head"><button type="button" class="linkbtn" data-trback>← 换一个站</button><h3>${esc(s.name)}</h3><span>${esc(s.routes ? s.routes.join("、") : "")}</span></div><div id="trList"><div class="skel"><i></i><i></i><i></i></div></div>`;
+      const load = async () => {
+        try {
+          const d = await fnGet({ op: "bus", stop: s.id });
+          const L = el.querySelector("#trList"); if (!L) return;
+          L.innerHTML = d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = v.eta ? Math.round((Date.parse(v.eta) - Date.now()) / 60000) : null; return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>往 ${esc(v.dest)}</b><span>${esc(/at stop/i.test(v.away || "") ? "已到站" : /approaching/i.test(v.away || "") ? "马上进站" : v.stops != null ? "还有 " + v.stops + " 站" : (v.away || "").replace(/miles? away/i, "英里外"))}</span></div><em>${m == null ? "—" : m <= 0 ? "到站" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">${esc(d.note || "现在没有即将到站的车。")}</p>`;
+        } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
+      };
+      load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
+      return;
+    }
+    // rail
+    if (!TR.rail) { try { TR.rail = await (await fetch("data/rail-stops.json")).json(); } catch (e) { TR.rail = {}; } }
+    const list = (TR.rail[TR.mode] || []).slice().sort((a, b) => a.n.localeCompare(b.n));
+    if (!TR.railStop || !list.some(x => x.id === TR.railStop)) TR.railStop = RAIL_POP[TR.mode][0];
+    const names = Object.fromEntries((TR.rail[TR.mode] || []).map(x => [x.id, x.n]));
+    box.innerHTML = `<div class="tr-find"><label class="tl-f"><span>出发车站</span><select data-trrail>${list.map(x => `<option value="${esc(x.id)}"${x.id === TR.railStop ? " selected" : ""}>${esc(x.n)}</option>`).join("")}</select></label><button type="button" class="btn ghost" data-trnear>📍 最近的车站</button></div><div id="trList"><div class="skel"><i></i><i></i><i></i></div></div>`;
+    const load = async () => {
+      try {
+        const d = await fnGet({ op: "rail", sys: TR.mode, stop: TR.railStop });
+        const L = el.querySelector("#trList"); if (!L) return;
+        L.innerHTML = d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = minsTo(v.t), late = Math.round((v.delay || 0) / 60); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>${late > 1 ? `<i class="tr-late">晚点 ${late} 分钟</i>` : "准点"}</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">接下来一段时间这个站没有列车。</p>`;
+      } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
+    };
+    load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
+  }
+  async function transitClick(e, el) {
+    const md = e.target.closest("[data-trmode]"); if (md) { TR.mode = md.dataset.trmode; el.querySelectorAll("[data-trmode]").forEach(b => b.classList.toggle("on", b === md)); paintTransit(el); return true; }
+    if (e.target.closest("[data-trlocate]")) {
+      const b = e.target.closest("[data-trlocate]"); b.disabled = true; b.textContent = "正在定位…";
+      try { const p = await locate(); TR.pos = p; const d = await fnGet({ op: "stops", lat: p.lat.toFixed(5), lon: p.lon.toFixed(5) }); TR.stops = d.stops.map(s => ({ ...s, km: dist(p, s) })).sort((a, b) => a.km - b.km).slice(0, 12); }
+      catch (er) { TR.stops = null; b.disabled = false; b.textContent = "定位失败，请允许位置权限后再试"; return true; }
+      paintTransit(el); return true;
+    }
+    const st = e.target.closest("[data-trstop]"); if (st) { TR.stopSel = TR.stops[Number(st.dataset.trstop)]; paintTransit(el); return true; }
+    if (e.target.closest("[data-trback]")) { TR.stopSel = null; paintTransit(el); return true; }
+    if (e.target.closest("[data-trnear]")) {
+      try { const p = await locate(); const L = (TR.rail[TR.mode] || []); let best = null, bd = 1e9; for (const s of L) { const d = dist(p, s); if (d < bd) { bd = d; best = s; } } if (best) { TR.railStop = best.id; paintTransit(el); } } catch (er) {}
+      return true;
+    }
+    return false;
+  }
+
   /* ---------- render a tool page ---------- */
   function render(id, el, lang) {
     const z = lang === "zh", x = TOOLS[id];
     if (!x) { el.innerHTML = hub(lang); return; }
     const head = `<div class="tl-head"><span class="tl-ic" aria-hidden="true">${esc(x.g)}</span><div><h1>${esc(tl(x.t, lang))}</h1><p>${esc(tl(x.d, lang))}</p></div></div>`;
     let body = "";
-    if (id === "scam") body = scamHtml(lang);
+    if (id === "transit") body = transitHtml();
+    else if (id === "scam") body = scamHtml(lang);
     else if (CALC[id]) body = `<div class="tl-calc" data-calc="${id}">${CALC[id].form(z)}<div class="tl-result"></div><p class="tl-note">${esc(tl(CALC[id].note, lang))}</p></div>`;
     else if (id === "units") body = unitsHtml(lang);
     else if (id === "sizes") body = `<p class="tl-note">${esc(z ? "不同品牌尺码有差别，以商家尺码表为准。" : "Sizes vary by brand.")}</p>` + sizesHtml(lang);
@@ -348,6 +426,7 @@
     el.oninput = id !== "units" ? null : e => { const inp = e.target.closest("[data-side]"); if (!inp) return; const box = inp.closest("[data-u]"), u = UNITS.find(v => v.k === box.dataset.u), v = parseFloat(inp.value);
       const other = box.querySelector(`[data-side="${inp.dataset.side === "a" ? "b" : "a"}"]`); other.value = isFinite(v) ? fmt(inp.dataset.side === "a" ? u.ab(v) : u.ba(v)) : ""; };
     el.onclick = e => {
+      if (id === "transit") { transitClick(e, el); }
       if (e.target.closest("[data-scamshare]")) { if (window.HLShare) window.HLShare.open({ url: location.origin + "/#t-scam", title: "防诈骗提醒：华人最常遇到的 14 种骗局", text: "防诈骗提醒：华人最常遇到的 14 种骗局，骗子怎么说、怎么识破 - 华脉" }); return; }
       const s = e.target.closest("[data-say]"); if (s) { try { const u = new SpeechSynthesisUtterance(s.dataset.say); u.lang = "en-US"; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} return; }
       const pt = e.target.closest("[data-ptab]"); if (pt) { const q = pt.dataset.ptab === "quiz"; el.querySelector("#ptLearn").hidden = q; el.querySelector("#ptQuiz").hidden = !q; el.querySelectorAll(".tl-tabs [data-ptab]").forEach(b => b.classList.toggle("on", b.dataset.ptab === pt.dataset.ptab)); el.querySelector(".tl-tabs").scrollIntoView({ behavior: "smooth", block: "start" }); if (q && !Q.list.length) { startQuiz("permit", "20"); paint(); } return; }
@@ -356,6 +435,11 @@
       if (e.target.closest("[data-qnext]")) { Q.i++; Q.picked = -1; if (Q.i >= Q.list.length) Q.done = true; paint(); return; }
       if (e.target.closest("[data-qrestart]")) { startQuiz(Q.kind, Q.mode); paint(); }
     };
+    if (id === "transit") {
+      el.onchange = e => { const sel = e.target.closest("[data-trrail]"); if (sel) { TR.railStop = sel.value; paintTransit(el); } };
+      el.onsubmit = e => { const f = e.target.closest("[data-trcode]"); if (!f) return; e.preventDefault(); const v = f.querySelector("input").value.trim(); if (/^\d{6}$/.test(v)) { TR.stopSel = { id: v, name: "站号 " + v, routes: [] }; paintTransit(el); } };
+      paintTransit(el);
+    } else { el.onchange = null; el.onsubmit = null; clearInterval(TR.timer); }
     function paint() { const q = el.querySelector("#tlQuiz"); if (q) q.innerHTML = quizHtml(lang); }
     if ((id === "civics" || id === "permit") && Q.kind === id && Q.list.length) paint(); else { Q.list = []; Q.kind = ""; }
   }
