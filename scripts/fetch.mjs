@@ -174,7 +174,11 @@ async function findImage(item) {
   try {
     const r = await fetch(url, { headers: { "User-Agent": UA, "Accept": "text/html,*/*" }, signal: ctl.signal, redirect: "follow" });
     if (!r.ok) throw new Error("HTTP " + r.status);
-    const html = await r.text();
+    const buf = new Uint8Array(await r.arrayBuffer());
+    let cs = ((r.headers.get("content-type") || "").match(/charset=([\w-]+)/i) || [])[1];
+    if (!cs) cs = (new TextDecoder("latin1").decode(buf.slice(0, 4000)).match(/<meta[^>]+charset=["']?([\w-]+)/i) || [])[1];
+    cs = (cs || "utf-8").toLowerCase(); if (cs === "gb2312") cs = "gbk";
+    let html; try { html = new TextDecoder(cs).decode(buf); } catch { html = new TextDecoder("utf-8").decode(buf); }
     const finalUrl = r.url || url;
     return { img: ogImage(html, finalUrl), desc: ogDesc(html), real: finalUrl, frame: /^https:/.test(finalUrl) && frameable(r.headers) };
   } finally { clearTimeout(timer); }
@@ -190,6 +194,7 @@ async function enrichImages(out) {
   const cache = await readJSON(IMG_CACHE, {});
   const now = Date.now();
   for (const k of Object.keys(cache)) if (now - (cache[k].t || 0) > 5 * 86400e3) delete cache[k];
+  for (const k of Object.keys(cache)) if (/\uFFFD/.test(cache[k].desc || "")) delete cache[k];
   const want = [];
   for (const lang of ["zh", "en"]) {
     for (const [sec, list] of Object.entries(out.sections[lang])) {

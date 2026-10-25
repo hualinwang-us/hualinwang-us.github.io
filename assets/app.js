@@ -140,12 +140,12 @@
     const [n, m, a, gd, w] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json")]);
     if (gd.status === "fulfilled" && gd.value && Array.isArray(gd.value.guides)) guides = gd.value;
     if (w.status === "fulfilled" && w.value) watch = w.value.pages || {};
-    renderGuides();
     if (n.status === "fulfilled") news = n.value;
     if (m.status === "fulfilled") market = m.value;
     if (a.status === "fulfilled" && a.value && Array.isArray(a.value.slots)) ads = a.value;
     news = news || { sections: {} };
-    renderNews(); renderMarket(); renderAds(); renderNewsView(); renderArticle();
+    // Each part renders on its own, so one problem can't blank out the rest of the page.
+    [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
   }
 
   function sbHeaders(extra) {
@@ -239,9 +239,8 @@
       $("#sec-" + s).innerHTML = show.map((i, n) => n === 0 && feat ? liHtml(i, false, true).replace("<li", '<li data-feat') : liHtml(i, false)).join("");
       $("#sec-" + s).closest(".block").hidden = !show.length; // hide a section that has no stories right now
     });
-    const off = sec("official").slice(0, 6);
-    $("#sec-official").innerHTML = off.map(i => liHtml(i, false)).join("");
-    $("#sec-official").closest(".block").hidden = !off.length;
+    const off = sec("official").slice(0, 6), offEl = $("#sec-official");
+    if (offEl) { offEl.innerHTML = off.map(i => liHtml(i, false)).join(""); offEl.closest(".block").hidden = !off.length; }
     const e = withFeature(sec("ent").slice(0, 12), 6);
     const ent = e.list.slice(0, 10);
     $("#sec-ent").innerHTML = ent.map((i, n) => n < 2 && i.img ? liHtml(i, false, true) : liHtml(i, false)).join("");
