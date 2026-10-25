@@ -368,7 +368,7 @@ async function buildDeals() {
     const FREE_ZH = /免费|免費|优惠|優惠|折扣|特价|特價|半价|半價|赠送|贈送|买一送一|買一送一|领取|領取|讲座|講座|福利|补助|補助/;
     if (sec === "zh") items = items.filter(i => isChinese(i.t) && FREE_ZH.test(i.t));
     if (sec === "free") items = items.filter(i => /\bfree\b|freebie|\$0\b|no cost/i.test(i.t));
-    if (sec === "events") items = items.filter(i => /\bfree\b/i.test(i.t));
+    if (sec === "events") items = items.filter(i => /(^|[^-\w])free\b/i.test(i.t) && !/(gluten|sugar|tax|dairy|smoke|crime|hands)[- ]free/i.test(i.t));
     items.sort((a, b) => (b.d || "").localeCompare(a.d || ""));
     const seen = new Set(), list = [];
     for (const i of items) { const k = key(i.t); if (k.length < 4 || seen.has(k)) continue; seen.add(k); i.id = crypto.createHash("sha1").update(k).digest("hex").slice(0, 10); list.push(i); if (list.length >= 24) break; }
