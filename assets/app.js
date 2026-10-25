@@ -25,6 +25,7 @@
       readHere: "阅读全文", irNote: "以下全文由 {src} 网站提供", irFull: "全屏阅读", openOrig: "在原网站打开", rdBack: "← 返回华邻网", rdNote: "以下内容由原网站提供", readAt: "前往 {src} 阅读全文 →", artNoSum: "这家媒体不允许在其他网站内显示全文，请点下方按钮阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
       dealsTab: "本周优惠", dealsH: "本周优惠和免费", dealsNote: "每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。", dl_local: "华人商家优惠", dl_zh: "华人社区免费和优惠", dl_free: "免费领取", dl_online: "网购折扣", dl_events: "纽约免费活动", dl_postCta: "商家免费发布优惠 →", dl_none: "暂时没有，过几个小时再来看看。", dl_en: "英文",
       ckShare: "把这个自测分享给亲友", ckShareTitle: "我能申请什么？华邻网福利自测", ckShareText: "白卡、粮食券、公屋、老人福利……回答 6 个问题，看看你家可能申请哪些福利（免费、匿名）", shareSite: "分享本站", shareSiteText: "华邻网：在美华人新闻、生活指南、本周优惠和免费分类信息",
+      shareWx: "分享到微信", shareCheckWx: "把自测分享到微信", shareShort: "分享",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
@@ -71,6 +72,7 @@
       readHere: "Read full story", irNote: "Full story below is provided by {src}", irFull: "Full screen", openOrig: "Open original site", rdBack: "← Back to HuaLin", rdNote: "Content below is provided by the original site", readAt: "Read the full story at {src} →", artNoSum: "This publisher doesn't allow its stories to be shown inside other sites; use the button below to read it.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
       dealsTab: "Deals", dealsH: "Deals and freebies this week", dealsNote: "Online deals, freebies and free NYC events gathered daily; local businesses can post deals for free. Deals can end any time; check the store's page.", dl_local: "Local business deals", dl_zh: "Community freebies & deals", dl_free: "Freebies", dl_online: "Online deals", dl_events: "Free NYC events", dl_postCta: "Businesses: post a deal for free →", dl_none: "Nothing right now; check back in a few hours.", dl_en: "EN",
       ckShare: "Share this check with family and friends", ckShareTitle: "What can I apply for? HuaLin benefits check", ckShareText: "Medicaid, SNAP, public housing, senior help: answer 6 questions to see what your family may qualify for (free, anonymous)", shareSite: "Share HuaLin", shareSiteText: "HuaLin: news, life guides, weekly deals and free listings for Chinese Americans",
+      shareWx: "Share", shareCheckWx: "Share this check", shareShort: "Share",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
@@ -599,6 +601,17 @@
   }
 
   /* ---------- events ---------- */
+  // The floating button shares whatever the reader is looking at.
+  function shareCurrent() {
+    const base = HLC.siteBase();
+    if (route.view === "article") { const h = findStory(route.id); if (h) return HLShare.open({ url: base + "n/" + h.i.id + "/", title: h.i.t, text: h.i.t + " - 华邻网" }); }
+    if (route.view === "guideOne" && guides) { const g = guides.guides.find(x => x.id === route.id); if (g) return HLShare.open({ url: base + "g/" + g.id + "/", title: HLG.L(g.title, lang), text: HLG.L(g.title, lang) + " - 华邻网生活指南" }); }
+    if (route.view === "check") return HLShare.open({ url: base + "#check", title: t("ckShareTitle"), text: t("ckShareText") });
+    if (route.view === "deals") return HLShare.open({ url: base + "#deals", title: t("dealsH") + " - 华邻网", text: t("dealsH") + " - 华邻网" });
+    return HLShare.open({ url: base, title: "华邻网 HuaLin", text: t("shareSiteText") });
+  }
+  $("#fabShare").onclick = shareCurrent;
+  document.addEventListener("click", e => { if (e.target.closest("[data-share-check]")) HLShare.open({ url: HLC.siteBase() + "#check", title: t("ckShareTitle"), text: t("ckShareText") }); });
   $("#siteShare").onclick = () => HLShare.open({ url: HLC.siteBase(), title: "华邻网 HuaLin", text: t("shareSiteText") });
   const fs2 = $("#footShare"); if (fs2) fs2.onclick = () => HLShare.open({ url: HLC.siteBase(), title: "华邻网 HuaLin", text: t("shareSiteText") });
   $("#lzh").onclick = () => setLang("zh");

@@ -58,7 +58,7 @@
       <span class="lab" data-i18n="gHomeLab">纽约华人生活指南</span>
       <h2 data-i18n="gHomeH">白卡、粮食券、公屋、绿卡……我能申请什么？</h2>
       <p data-i18n="gHomeP">用中文讲清楚谁能申请、要什么材料、去哪里办。回答几个问题，马上看到你可能符合的福利。</p>
-      <div class="g-home-btns"><a class="btn" href="#check" data-i18n="gCheckBtn">开始自测</a><a class="btn ghost" href="#guide" data-i18n="gAllBtn">浏览全部指南</a></div>
+      <div class="g-home-btns"><a class="btn" href="#check" data-i18n="gCheckBtn">开始自测</a><a class="btn ghost" href="#guide" data-i18n="gAllBtn">浏览全部指南</a><button type="button" class="btn wx-btn" data-share-check><span aria-hidden="true">微</span> <span data-i18n="shareWx">分享到微信</span></button></div>
     </div>
     <div class="g-home-r" id="gHomeList"></div>
   </section>
@@ -145,6 +145,7 @@
     <h1 data-i18n="gIndexH">纽约华人生活指南</h1>
     <p class="vh-note" data-i18n="gIndexP">福利申请和办事流程，用中文讲清楚。规定经常变化，每篇都附官方链接和核实日期。</p>
   </div>
+  <div class="g-share-row"><button type="button" class="btn wx-btn" data-share-check><span aria-hidden="true">微</span> <span data-i18n="shareCheckWx">把自测分享到微信</span></button></div>
   <a class="g-check-cta" href="#check"><b data-i18n="gCheckH">我能申请什么？</b><span data-i18n="gCheckP">回答 6 个问题，看看你家可能符合哪些福利 →</span></a>
   <div id="gIndex"></div>
 </main>
@@ -267,6 +268,7 @@
 </dialog>
 
 <dialog id="viewDlg"><div class="dl" id="viewBody"></div></dialog>
+<button type="button" class="fab-share" id="fabShare" aria-label="分享"><span class="fab-ic" aria-hidden="true">微</span><span data-i18n="shareShort">分享</span></button>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script src="config.js"></script>
