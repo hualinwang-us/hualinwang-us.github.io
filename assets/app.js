@@ -544,8 +544,9 @@
     const box = $("#dealsHome"); if (!box) return;
     const ds = (deals && deals.sections) || {};
     const local = localDeals().slice(0, 5);
+    const biz = (ds.biz || []).slice(0, Math.max(0, 5 - local.length));
     const cols = [];
-    cols.push(`<section class="block dcol"><div class="bh"><h2>${esc(t("dl_local"))}</h2><a href="#b-deals">${esc(t("more"))}</a></div>${local.length ? `<ul class="rows">${local.map(p => rowHtml(p, false)).join("")}</ul>` : ""}<button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></section>`);
+    cols.push(`<section class="block dcol"><div class="bh"><h2>${esc(t("dl_local"))}</h2><a href="#deals">${esc(t("more"))}</a></div>${local.length ? `<ul class="rows">${local.map(p => rowHtml(p, false)).join("")}</ul>` : ""}${biz.length ? `<ul class="nl">${biz.map(i => dealLi(i, false)).join("")}</ul>` : ""}<button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></section>`);
     for (const k of DEAL_SECS) {
       const list = (ds[k] || []).slice(0, 5);
       if (!list.length) continue;
@@ -555,7 +556,8 @@
     box.hidden = false;
     if (route.view === "deals") {
       const all = localDeals();
-      $("#dealsFull").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("dl_local"))}</h2><button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div>${all.length ? `<ul class="plist">${all.map(p => pitemHtml(p, false)).join("")}</ul>` : `<p class="empty">${esc(t("dl_none"))}</p>`}</section>` +
+      const bizAll = ds.biz || [];
+      $("#dealsFull").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("dl_local"))}</h2><button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div>${all.length ? `<ul class="plist">${all.map(p => pitemHtml(p, false)).join("")}</ul>` : ""}${bizAll.length ? `<ul class="nl full">${bizAll.map(i => dealLi(i, false)).join("")}</ul>` : ""}${!all.length && !bizAll.length ? `<p class="empty">${esc(t("dl_none"))}</p>` : ""}</section>` +
         DEAL_SECS.map(k => `<section class="block"><div class="bh"><h2>${esc(t("dl_" + k))}</h2></div>${(ds[k] || []).length ? `<ul class="nl full">${ds[k].map(i => dealLi(i, k !== "zh")).join("")}</ul>` : `<p class="empty">${esc(t("dl_none"))}</p>`}</section>`).join("");
     }
   }

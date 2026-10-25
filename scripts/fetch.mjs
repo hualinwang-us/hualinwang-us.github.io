@@ -451,7 +451,11 @@ const DEAL_FEEDS = {
   online: [["Slickdeals", ["https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"]], ["Hip2Save", ["https://hip2save.com/feed/"]]],
   free: [["The Freebie Guy", ["https://thefreebieguy.com/feed/"]], ["Hip2Save 免费", ["https://hip2save.com/category/freebies/feed/"]]],
   events: [["NYC free events", gnSearch("\"free\" events NYC this weekend", "en")], ["Free things to do NYC", gnSearch("free things to do in NYC", "en")]],
-  zh: [["纽约免费活动", gnSearch("纽约 免费 活动 OR 免费 领取 OR 免费 讲座", "zh")], ["华人优惠", gnSearch("法拉盛 OR 华埠 OR 布碌崙 优惠 OR 折扣 OR 特价 OR 免费", "zh")]]
+  zh: [["纽约免费活动", gnSearch("纽约 免费 活动 OR 免费 领取 OR 免费 讲座", "zh")], ["华人优惠", gnSearch("法拉盛 OR 华埠 OR 布碌崙 优惠 OR 折扣 OR 特价 OR 免费", "zh")]],
+  biz: [["商家开业优惠", gnSearch("法拉盛 OR 华埠 OR 八大道 OR 艾姆赫斯特 开业 OR 开幕 优惠 OR 折扣 OR 特价", "zh")],
+        ["超市特价", gnSearch("华人超市 OR 亚洲超市 特价 OR 优惠 OR 折扣 纽约 OR 新泽西", "zh")],
+        ["餐馆优惠", gnSearch("纽约 餐厅 OR 餐馆 OR 奶茶 OR 火锅 优惠 OR 折扣 OR 买一送一 OR 开业", "zh")],
+        ["商家活动", gnSearch("读者 购物 特价 OR 优惠 OR 赠送 世界日报 OR 星岛", "zh")]]
 };
 async function buildDeals() {
   const prev = await readJSON("data/deals.json", { sections: {} });
@@ -465,11 +469,13 @@ async function buildDeals() {
       out.feeds.push({ sec, name, ok: got.length > 0, n: got.length, ...(err && !got.length ? { err } : {}) });
       items.push(...got);
     }
-    const maxAge = sec === "events" ? 30 : 7; // events list upcoming dates; deals expire fast
+    const maxAge = sec === "events" ? 30 : sec === "biz" ? 21 : 7; // events list upcoming dates; deals expire fast
     items = items.filter(i => !i.d || now - Date.parse(i.d) < maxAge * 86400e3);
     // Keep only items that are actually about free stuff or discounts.
     const FREE_ZH = /免费|免費|优惠|優惠|折扣|特价|特價|半价|半價|赠送|贈送|买一送一|買一送一|领取|領取|讲座|講座|福利|补助|補助/;
     if (sec === "zh") items = items.filter(i => isChinese(i.t) && FREE_ZH.test(i.t));
+    if (sec === "biz") items = items.filter(i => isChinese(i.t) && /优惠|優惠|折扣|特价|特價|半价|半價|赠送|贈送|买一送一|買一送一|开业|開業|开幕|開幕|促销|促銷|大减价|大減價|免费|免費|折|送/.test(i.t) && !/诈骗|詐騙|起诉|起訴|逮捕|死亡|枪|槍/.test(i.t));
+    const maxAgeBiz = sec === "biz" ? 21 : null;
     if (sec === "free") items = items.filter(i => /\bfree\b|freebie|\$0\b|no cost/i.test(i.t));
     if (sec === "events") items = items.filter(i => /(^|[^-\w])free\b/i.test(i.t) && !/(gluten|sugar|tax|dairy|smoke|crime|hands)[- ]free/i.test(i.t));
     items.sort((a, b) => (b.d || "").localeCompare(a.d || ""));
