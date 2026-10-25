@@ -22,7 +22,7 @@
       fl_reg: "住在租金稳定（rent-stabilized）公寓", ckGo: "看结果", ckLikely: "很可能符合", ckMaybe: "可能符合，要看具体情况", ckInfo: "建议了解",
       ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
       ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
-      readHere: "阅读全文", irNote: "以下全文由 {src} 网站提供", irFull: "全屏阅读", openOrig: "在原网站打开", rdBack: "← 返回华邻网", rdNote: "以下内容由原网站提供", readAt: "前往 {src} 阅读全文 →", artNoSum: "这家媒体不允许在其他网站内显示全文，请点下方按钮阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
+      readHere: "阅读全文", rdNew: "显示空白？点这里新窗口打开", zhDetail: "看中文版详情", enOrig: "去商家页面（英文原页）", zhDetailNote: "中文版由 Google 翻译自动生成，仅供参考，价格和条件以商家英文原页为准。", mtNote: "以上中文为机器翻译，仅供参考。", irNote: "以下全文由 {src} 网站提供", irFull: "全屏阅读", openOrig: "在原网站打开", rdBack: "← 返回华邻网", rdNote: "以下内容由原网站提供", readAt: "前往 {src} 阅读全文 →", artNoSum: "这家媒体不允许在其他网站内显示全文，请点下方按钮阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
       dealsTab: "本周优惠", dealsH: "本周优惠和免费", dealsNote: "每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。", dl_local: "华人商家优惠", dl_zh: "华人社区免费和优惠", dl_free: "免费领取", dl_online: "网购折扣", dl_events: "纽约免费活动", dl_postCta: "商家免费发布优惠 →", dl_none: "暂时没有，过几个小时再来看看。", dl_en: "英文",
       ckShare: "把这个自测分享给亲友", ckShareTitle: "我能申请什么？华邻网福利自测", ckShareText: "白卡、粮食券、公屋、老人福利……回答 6 个问题，看看你家可能申请哪些福利（免费、匿名）", shareSite: "分享本站", shareSiteText: "华邻网：在美华人新闻、生活指南、本周优惠和免费分类信息",
       shareWx: "分享到微信", shareCheckWx: "把自测分享到微信", shareShort: "分享",
@@ -70,7 +70,7 @@
       fl_reg: "We live in a rent-stabilized apartment", ckGo: "See results", ckLikely: "Likely eligible", ckMaybe: "Possibly, depends on details", ckInfo: "Worth reading",
       ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
       ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
-      readHere: "Read full story", irNote: "Full story below is provided by {src}", irFull: "Full screen", openOrig: "Open original site", rdBack: "← Back to HuaLin", rdNote: "Content below is provided by the original site", readAt: "Read the full story at {src} →", artNoSum: "This publisher doesn't allow its stories to be shown inside other sites; use the button below to read it.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
+      readHere: "Read full story", rdNew: "Blank? Open in a new window", zhDetail: "Read in Chinese", enOrig: "Open the store page", zhDetailNote: "The Chinese version is made by Google Translate; prices and terms on the store's page apply.", mtNote: "Machine translation, for reference only.", irNote: "Full story below is provided by {src}", irFull: "Full screen", openOrig: "Open original site", rdBack: "← Back to HuaLin", rdNote: "Content below is provided by the original site", readAt: "Read the full story at {src} →", artNoSum: "This publisher doesn't allow its stories to be shown inside other sites; use the button below to read it.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
       dealsTab: "Deals", dealsH: "Deals and freebies this week", dealsNote: "Online deals, freebies and free NYC events gathered daily; local businesses can post deals for free. Deals can end any time; check the store's page.", dl_local: "Local business deals", dl_zh: "Community freebies & deals", dl_free: "Freebies", dl_online: "Online deals", dl_events: "Free NYC events", dl_postCta: "Businesses: post a deal for free →", dl_none: "Nothing right now; check back in a few hours.", dl_en: "EN",
       ckShare: "Share this check with family and friends", ckShareTitle: "What can I apply for? HuaLin benefits check", ckShareText: "Medicaid, SNAP, public housing, senior help: answer 6 questions to see what your family may qualify for (free, anonymous)", shareSite: "Share HuaLin", shareSiteText: "HuaLin: news, life guides, weekly deals and free listings for Chinese Americans",
       shareWx: "Share", shareCheckWx: "Share this check", shareShort: "Share",
@@ -213,7 +213,8 @@
   function renderTabs() {
     const items = menuItems();
     const curBoard = route.view === "board" ? boardById(route.board) : null;
-    const cur = route.view === "news" || route.view === "article" ? "n-top" : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : curBoard ? "grp:" + curBoard.group : route.view === "home" ? "" : null;
+    const artDeal = route.view === "article" && deals && Object.values(deals.sections || {}).some(l => l.some(x => x.id === route.id));
+    const cur = artDeal ? "deals" : route.view === "news" || route.view === "article" ? "n-top" : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : curBoard ? "grp:" + curBoard.group : route.view === "home" ? "" : null;
     $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.h}" data-mi="${k}" class="${(it.group ? "grp:" + it.group : it.h) === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
   }
   const mega = document.getElementById("mega");
@@ -447,7 +448,19 @@
   }
   $("#ckForm").addEventListener("submit", e => { e.preventDefault(); showCheck(); });
 
+  // Google's own page-translation service: shows any English page in Chinese.
+  function gtrans(u) {
+    try {
+      const x = new URL(u);
+      x.hostname = x.hostname.replace(/-/g, "--").replace(/\./g, "-") + ".translate.goog";
+      x.searchParams.set("_x_tr_sl", "auto"); x.searchParams.set("_x_tr_tl", "zh-CN"); x.searchParams.set("_x_tr_hl", "zh-CN"); x.searchParams.set("_x_tr_pto", "wapp");
+      return x.href;
+    } catch (e) { return u; }
+  }
+  const isEnglish = i => !/[\u3400-\u9fff]/.test(i.t || "");
   function findStory(id) {
+    const ds = (deals && deals.sections) || {};
+    for (const [k, list] of Object.entries(ds)) { const i = list.find(x => x.id === id); if (i) return { i, sname: "deal_" + k, lg: "zh", deal: true }; }
     for (const lg of [lang, lang === "zh" ? "en" : "zh"]) {
       const secs = (news && news.sections && news.sections[lg]) || {};
       for (const [sname, list] of Object.entries(secs)) { const i = list.find(x => x.id === id); if (i) return { i, sname, lg }; }
@@ -465,16 +478,20 @@
       return;
     }
     const { i, sname } = hit;
-    $("#aBack").textContent = t("newsBack").replace("{s}", secName(sname)); $("#aBack").setAttribute("href", "#n-" + sname);
+    const secLabel = hit.deal ? t("dl_" + sname.slice(5)) : secName(sname);
+    $("#aBack").textContent = t("newsBack").replace("{s}", hit.deal ? t("dealsTab") : secName(sname)); $("#aBack").setAttribute("href", hit.deal ? "#deals" : "#n-" + sname);
+    const zhView = lang === "zh" && isEnglish(i) && !i.full;   // English page, Chinese reader: show it through Google Translate
+    const readUrl = zhView ? gtrans(i.u) : i.u;
     const src = i.src || (lang === "zh" ? "原网站" : "the publisher");
-    $("#aBody").innerHTML = `<span class="tag">${esc(secName(sname))}</span>
+    $("#aBody").innerHTML = `<span class="tag">${esc(secLabel)}</span>
       <h1>${esc(disp(i))}</h1>
       ${lang === "zh" && i.tz ? `<p class="orig-t">${esc(i.t)}</p>` : ""}
       ${metaHtml(i)}
       ${i.img ? `<div class="art-img" data-hasimg>${imgTag(i, "")}</div>` : ""}
-      ${i.full ? `${lang === "zh" && i.sz ? `<p class="art-sum">${esc(i.sz)}</p>` : ""}<p class="g-notice">${esc(lang === "zh" && i.fullzh ? t("offNoteZh") : t("offNote"))}</p><div class="art-full" id="aFull"><p class="muted">${esc(t("loadingFull"))}</p></div>` : i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
-      ${i.fr && !i.full ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
-      <div class="post-actions">${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(src)}">${esc(t("irFull"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
+      ${i.full ? `${lang === "zh" && i.sz ? `<p class="art-sum">${esc(i.sz)}</p>` : ""}<p class="g-notice">${esc(lang === "zh" && i.fullzh ? t("offNoteZh") : t("offNote"))}</p><div class="art-full" id="aFull"><p class="muted">${esc(t("loadingFull"))}</p></div>` : dsum(i) ? `<p class="art-sum">${esc(dsum(i))}</p>${zhView ? `<p class="g-notice">${esc(t("mtNote"))}</p>` : ""}` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
+      ${zhView ? `<div class="post-actions"><button type="button" class="btn" data-reader="${esc(readUrl)}" data-src="${esc(src)}">${esc(t("zhDetail"))}</button><a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("enOrig"))}</a></div><p class="g-fine">${esc(t("zhDetailNote"))}</p>` : ""}
+      ${i.fr && !i.full && !zhView ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
+      <div class="post-actions"${zhView ? " hidden" : ""}>${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(src)}">${esc(t("irFull"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
@@ -513,7 +530,7 @@
   function dealLi(i, en) {
     const title = lang === "zh" && i.tz ? i.tz : i.t;
     const showEn = en && !(lang === "zh" && i.tz) && lang === "zh";
-    const link = i.fr ? `href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(i.src || "")}"` : `href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer"`;
+    const link = i.id ? `href="#a-${esc(i.id)}"` : `href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer"`;
     return `<li><a class="t" ${link}>${showEn ? `<span class="en-tag">${esc(t("dl_en"))}</span>` : ""}${esc(title)}</a>${metaHtml(i)}</li>`;
   }
   function localDeals() { return posts.filter(p => p.board === "deals"); }
@@ -680,7 +697,7 @@
   $("#bPost").onclick = () => openForm(route.board);
   $("#searchForm").addEventListener("submit", e => { e.preventDefault(); searchQ = $("#q").value.trim(); if (!searchQ) return; if (location.hash === "#search") go(); else location.hash = "search"; });
   document.addEventListener("click", e => {
-    const rdl = e.target.closest("a[data-reader]");
+    const rdl = e.target.closest("[data-reader]");
     if (rdl) { e.preventDefault(); openReaderUrl(rdl.dataset.reader, rdl.dataset.src); return; }
     const el = e.target.closest("[data-pid],[data-postto],[data-post],[data-home],[data-close],[data-copy]");
     if (!el) { if (e.target.tagName === "DIALOG") e.target.close(); return; }

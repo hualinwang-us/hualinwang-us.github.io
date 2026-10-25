@@ -482,12 +482,14 @@ async function buildDeals() {
   try { await translateTitles(allDeals); } catch (e) { console.log("translation failed:", e.message); }
   try {
     const dc = await readJSON("data/deal-cache.json", {});
-    const todo = allDeals.filter(i => !(i.u in dc)).slice(0, 80).map(i => async () => {
-      try { const r = await findImage(i); dc[i.u] = { fr: r.frame ? 1 : 0, real: r.real, img: r.img, t: Date.now() }; }
+    const todo = allDeals.filter(i => !(i.u in dc) || !("desc" in dc[i.u])).slice(0, 90).map(i => async () => {
+      try { const r = await findImage(i); dc[i.u] = { fr: r.frame ? 1 : 0, real: r.real, img: r.img, desc: r.desc, t: Date.now() }; }
       catch (e) { dc[i.u] = { fr: 0, t: Date.now() }; }
     });
     await pool(todo, 8);
-    for (const i of allDeals) { const c = dc[i.u]; if (!c) continue; i.fr = c.fr; if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; if (!i.img && c.img) i.img = c.img; }
+    for (const i of allDeals) { const c = dc[i.u]; if (!c) continue; i.fr = c.fr; if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; if (!i.img && c.img) i.img = c.img; if (!i.s && c.desc) i.s = c.desc; }
+    // Chinese summaries for English deals (titles were translated above).
+    for (const i of allDeals) { if (i.s && !isChinese(i.s)) { const z = await tr(i.s); if (z) i.sz = z; } }
     for (const k of Object.keys(dc)) if (Date.now() - (dc[k].t || 0) > 21 * 86400e3) delete dc[k];
     await fs.writeFile("data/deal-cache.json", JSON.stringify(dc));
   } catch (e) { console.log("deal page check failed:", e.message); }
