@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
     /** Site pages stay in the app; phone, text, email, WeChat and other websites open in their own apps. */
     boolean route(Uri u) {
         String scheme = u.getScheme() == null ? "" : u.getScheme();
-        if ((scheme.equals("https") || scheme.equals("http")) && HOST.equals(u.getHost()) && u.getPath() != null && u.getPath().startsWith("/hualin")) return false;
+        if ((scheme.equals("https") || scheme.equals("http")) && HOST.equals(u.getHost())) return false;
         try {
             if (scheme.equals("intent")) {
                 Intent it = Intent.parseUri(u.toString(), Intent.URI_INTENT_SCHEME);
