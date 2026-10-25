@@ -164,7 +164,7 @@ async function enrichImages(out) {
   const want = [];
   for (const lang of ["zh", "en"]) {
     for (const [sec, list] of Object.entries(out.sections[lang])) {
-      const n = sec === "top" ? 8 : 4;
+      const n = sec === "top" ? 10 : 6;
       list.slice(0, n).forEach(i => { if (!i.img) want.push(i); });
     }
   }
@@ -173,7 +173,7 @@ async function enrichImages(out) {
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
     if (cache[k]) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
-    if (todo.length >= 70) continue; // cap new lookups per run; the rest wait for the next run
+    if (todo.length >= 90) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
       try { const r = await findImage(i); cache[k] = { img: r.img, t: now }; if (r.img) { i.img = r.img; found++; } }

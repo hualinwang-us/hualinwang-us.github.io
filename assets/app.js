@@ -200,12 +200,12 @@
         <ul class="nl compact">${rest.map(i => liHtml(i, false)).join("")}</ul>`;
     }
     ["local", "immigration", "uschina", "china", "business", "health"].forEach(s => {
-      const { list, feat } = withFeature(sec(s).slice(0, 10), 4);
+      const { list, feat } = withFeature(sec(s).slice(0, 10), 6);
       const show = list.slice(0, 7);
       $("#sec-" + s).innerHTML = show.map((i, n) => n === 0 && feat ? liHtml(i, false, true).replace("<li", '<li data-feat') : liHtml(i, false)).join("");
       $("#sec-" + s).closest(".block").hidden = !show.length; // hide a section that has no stories right now
     });
-    const e = withFeature(sec("ent").slice(0, 12), 4);
+    const e = withFeature(sec("ent").slice(0, 12), 6);
     const ent = e.list.slice(0, 10);
     $("#sec-ent").innerHTML = ent.map((i, n) => n < 2 && i.img ? liHtml(i, false, true) : liHtml(i, false)).join("");
     $("#sec-ent").closest(".block").hidden = !ent.length;
