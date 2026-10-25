@@ -5,7 +5,13 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.content.ContentValues;
+import android.provider.MediaStore;
+import android.util.Base64;
+import android.widget.Toast;
+import java.io.OutputStream;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
@@ -82,6 +88,29 @@ public class MainActivity extends Activity {
             runOnUiThread(() -> startActivity(Intent.createChooser(send, "分享到")));
         }
         @JavascriptInterface public String version() { return BuildConfig.VERSION_NAME; }
+        /** Saves a picture (data: URL) to the phone's Photos, in a 华邻网 album. */
+        @JavascriptInterface public void saveImage(String dataUrl, String name) { Uri u = store(dataUrl, name); runOnUiThread(() -> Toast.makeText(MainActivity.this, u != null ? "已保存到相册" : "保存失败", Toast.LENGTH_SHORT).show()); }
+        /** Saves the picture, then opens the share sheet with it (WeChat, WhatsApp...). */
+        @JavascriptInterface public void shareImage(String dataUrl, String name, String text) {
+            Uri u = store(dataUrl, name); if (u == null) return;
+            Intent send = new Intent(Intent.ACTION_SEND); send.setType("image/jpeg");
+            send.putExtra(Intent.EXTRA_STREAM, u); send.putExtra(Intent.EXTRA_TEXT, text); send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            runOnUiThread(() -> startActivity(Intent.createChooser(send, "分享到")));
+        }
+    }
+
+    Uri store(String dataUrl, String name) {
+        try {
+            byte[] bytes = Base64.decode(dataUrl.substring(dataUrl.indexOf(',') + 1), Base64.DEFAULT);
+            ContentValues v = new ContentValues();
+            v.put(MediaStore.Images.Media.DISPLAY_NAME, name);
+            v.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+            if (Build.VERSION.SDK_INT >= 29) v.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/华邻网");
+            Uri u = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, v);
+            if (u == null) return null;
+            try (OutputStream o = getContentResolver().openOutputStream(u)) { o.write(bytes); }
+            return u;
+        } catch (Exception e) { return null; }
     }
 
     @Override public void onBackPressed() { if (web.canGoBack()) web.goBack(); else super.onBackPressed(); }

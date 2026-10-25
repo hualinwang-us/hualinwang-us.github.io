@@ -710,3 +710,9 @@ a.spon.empty:hover{border-color:var(--gold)}
 .col-main #sponTop{margin:0}
 .stk-home #stkHome{height:300px}
 @media (max-width:719px){.stk-home #stkHome{height:320px}}
+
+/* listing share image */
+.pst-btn{background:#1d7a3e}
+.pst-btn.pulse{animation:pst-pulse 1.2s ease-in-out 3}
+@keyframes pst-pulse{50%{box-shadow:0 0 0 8px rgba(29,122,62,.25)}}
+.pst-img{display:block;width:100%;max-width:420px;margin:10px auto 4px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15)}
