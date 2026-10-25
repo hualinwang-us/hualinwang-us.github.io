@@ -26,12 +26,13 @@
       dealsTab: "本周优惠", dealsH: "本周优惠和免费", dealsNote: "每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。", dl_local: "华人商家优惠", dl_zh: "华人社区免费和优惠", dl_free: "免费领取", dl_online: "网购折扣", dl_events: "纽约免费活动", dl_postCta: "商家免费发布优惠 →", dl_none: "暂时没有，过几个小时再来看看。", dl_en: "英文",
       ckShare: "把这个自测分享给亲友", ckShareTitle: "我能申请什么？华邻网福利自测", ckShareText: "白卡、粮食券、公屋、老人福利……回答 6 个问题，看看你家可能申请哪些福利（免费、匿名）", shareSite: "分享本站", shareSiteText: "华邻网：在美华人新闻、生活指南、本周优惠和免费分类信息",
       shareWx: "分享到微信", shareCheckWx: "把自测分享到微信", shareShort: "分享",
+      newsTab: "新闻",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
       directory: "分类目录", more: "更多", home: "首页", classifiedsTab: "分类信息",
       sec_top: "新闻速递", sec_local: "纽约本地", sec_immigration: "移民签证", sec_uschina: "中美关系", sec_china: "中国",
-      sec_business: "财经", sec_health: "健康养生", sec_ent: "娱乐体育", sec_official: "政府公告", offNote: "美国联邦政府发布的内容属于公有领域，本站全文收录（英文原文）。", offLink: "查看官方原文", loadingFull: "全文载入中…",
+      sec_business: "财经", sec_health: "健康养生", sec_ent: "娱乐体育", sec_official: "政府公告", offNote: "美国联邦政府发布的内容属于公有领域，本站全文收录（英文原文，标题和摘要为机器翻译）。", offNoteZh: "美国联邦政府发布的内容属于公有领域，本站全文收录。中文为机器翻译，以英文原文为准。", showEn: "看英文原文", showZh: "看中文翻译", offLink: "查看官方原文", loadingFull: "全文载入中…",
       ctaH: "免费发布分类信息", ctaP: "招聘、租房、生意转让、二手买卖……无需注册，一分钟发布。", postNow: "立即发布",
       latest: "最新信息", fx: "货币兑换率", weather: "纽约天气", classifieds: "分类信息", classHint: "点击板块查看全部",
       back: "← 返回首页", postHere: "在本板块发布", filterPh: "在本板块中筛选",
@@ -73,12 +74,13 @@
       dealsTab: "Deals", dealsH: "Deals and freebies this week", dealsNote: "Online deals, freebies and free NYC events gathered daily; local businesses can post deals for free. Deals can end any time; check the store's page.", dl_local: "Local business deals", dl_zh: "Community freebies & deals", dl_free: "Freebies", dl_online: "Online deals", dl_events: "Free NYC events", dl_postCta: "Businesses: post a deal for free →", dl_none: "Nothing right now; check back in a few hours.", dl_en: "EN",
       ckShare: "Share this check with family and friends", ckShareTitle: "What can I apply for? HuaLin benefits check", ckShareText: "Medicaid, SNAP, public housing, senior help: answer 6 questions to see what your family may qualify for (free, anonymous)", shareSite: "Share HuaLin", shareSiteText: "HuaLin: news, life guides, weekly deals and free listings for Chinese Americans",
       shareWx: "Share", shareCheckWx: "Share this check", shareShort: "Share",
+      newsTab: "News",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
       directory: "Directory", more: "More", home: "Home", classifiedsTab: "Classifieds",
       sec_top: "Top Stories", sec_local: "New York", sec_immigration: "Immigration", sec_uschina: "US–China", sec_china: "China",
-      sec_business: "Business", sec_health: "Health", sec_ent: "Entertainment & Sports", sec_official: "Official notices", offNote: "U.S. federal government works are in the public domain; shown here in full.", offLink: "View official source", loadingFull: "Loading full text…",
+      sec_business: "Business", sec_health: "Health", sec_ent: "Entertainment & Sports", sec_official: "Official notices", offNote: "U.S. federal government works are in the public domain; shown here in full.", offNoteZh: "U.S. federal government works are in the public domain; shown here in full.", showEn: "Show English original", showZh: "Show Chinese translation", offLink: "View official source", loadingFull: "Loading full text…",
       ctaH: "Post a free listing", ctaP: "Jobs, rentals, businesses for sale, used items. No sign-up, done in a minute.", postNow: "Post now",
       latest: "Latest Listings", fx: "Exchange Rates", weather: "NYC Weather", classifieds: "Classifieds", classHint: "Open a board to see everything",
       back: "← Back to home", postHere: "Post in this board", filterPh: "Filter this board",
@@ -193,11 +195,59 @@
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
-  function renderTabs() {
-    const items = [["", t("home")], ["guide", t("guideTab")], ["deals", t("dealsTab")]].concat(SECTIONS.map(s => ["n-" + s, t("sec_" + s)])).concat([["classifieds", t("classifiedsTab")]]);
-    const cur = route.view === "news" ? "n-" + route.sec : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : "";
-    $("#tabs").innerHTML = items.map(([h, label]) => `<a href="#${h}" class="${h === cur ? "on" : ""}">${esc(label)}</a>`).join("");
+  // Top menu: each item shows all of its sub-items when you hover (or tap on a phone).
+  function menuItems() {
+    const count = id => posts.filter(p => p.board === id).length;
+    const items = [
+      { h: "", label: t("home") },
+      { h: "guide", label: t("guideTab"), menu: () => `<a class="mm-cta" href="#check">${esc(t("gCheckH"))} →</a>` + (guides ? `<div class="mm-cols">${guides.groups.map(gr => {
+          const gs = guides.guides.filter(g => g.group === gr.id); if (!gs.length) return "";
+          return `<div><b>${esc(HLG.L(gr, lang))}</b>${gs.map(g => `<a href="#g-${esc(g.id)}">${esc(HLG.L(g.title, lang))}</a>`).join("")}</div>`; }).join("")}</div>` : "") },
+      { h: "deals", label: t("dealsTab"), menu: () => `<div class="mm-cols"><div>${["local", "zh", "free", "online", "events"].map(k => `<a href="${k === "local" ? "#b-deals" : "#deals"}">${esc(t("dl_" + k))}</a>`).join("")}<button type="button" class="mm-cta linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div></div>` },
+      { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div></div>` }
+    ];
+    for (const g of GROUPS) items.push({ h: "b-" + g.boards[0][0], label: lang === "zh" ? g.zh : g.en, group: g.id,
+      menu: () => `<div class="mm-cols"><div>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}<button type="button" class="mm-cta linkbtn" data-postto="${g.boards[0][0]}">${esc(t("postFree"))} →</button></div></div>` });
+    return items;
   }
+  function renderTabs() {
+    const items = menuItems();
+    const curBoard = route.view === "board" ? boardById(route.board) : null;
+    const cur = route.view === "news" || route.view === "article" ? "n-top" : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : curBoard ? "grp:" + curBoard.group : route.view === "home" ? "" : null;
+    $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.h}" data-mi="${k}" class="${(it.group ? "grp:" + it.group : it.h) === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
+  }
+  const mega = document.getElementById("mega");
+  let megaTimer = null, megaIdx = -1;
+  function openMega(a) {
+    const it = menuItems()[Number(a.dataset.mi)]; if (!it || !it.menu) { closeMega(); return; }
+    clearTimeout(megaTimer);
+    megaIdx = Number(a.dataset.mi);
+    mega.innerHTML = it.menu();
+    mega.hidden = false;
+    const nav = document.querySelector(".tabs").getBoundingClientRect(), r = a.getBoundingClientRect();
+    const w = Math.min(mega.offsetWidth, window.innerWidth - 32);
+    mega.style.left = Math.max(16, Math.min(r.left, window.innerWidth - w - 16)) + "px";
+    mega.style.top = (nav.bottom) + "px";
+    document.querySelectorAll("#tabs a.open").forEach(x => x.classList.remove("open")); a.classList.add("open");
+  }
+  function closeMega() { mega.hidden = true; megaIdx = -1; document.querySelectorAll("#tabs a.open").forEach(x => x.classList.remove("open")); }
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  $("#tabs").addEventListener("mouseover", e => { const a = e.target.closest("a[data-mi]"); if (a && canHover) openMega(a); });
+  $("#tabs").addEventListener("mouseleave", () => { if (canHover) megaTimer = setTimeout(closeMega, 220); });
+  mega.addEventListener("mouseenter", () => clearTimeout(megaTimer));
+  mega.addEventListener("mouseleave", () => { if (canHover) megaTimer = setTimeout(closeMega, 220); });
+  $("#tabs").addEventListener("click", e => {
+    const a = e.target.closest("a.has-menu"); if (!a) return;
+    if (!canHover) { e.preventDefault(); if (megaIdx === Number(a.dataset.mi)) closeMega(); else openMega(a); }
+  });
+  $("#tabs").addEventListener("focusin", e => { const a = e.target.closest("a.has-menu"); if (a) openMega(a); });
+  mega.addEventListener("click", e => { if (e.target.closest("a")) setTimeout(closeMega, 0); });
+  document.addEventListener("click", e => { if (!mega.hidden && !e.target.closest("#mega,#tabs")) closeMega(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeMega(); });
+  $("#tabs").addEventListener("scroll", closeMega, { passive: true });
+  window.addEventListener("hashchange", closeMega);
+  window.addEventListener("scroll", () => { if (!mega.hidden) { const nav = document.querySelector(".tabs").getBoundingClientRect(); mega.style.top = nav.bottom + "px"; } }, { passive: true });
+
   function renderDir() {
     const count = id => posts.filter(p => p.board === id).length;
     $("#dir").innerHTML = GROUPS.map(g => `<div class="dg"><h3>${esc(lang === "zh" ? g.zh : g.en)}</h3><ul>${g.boards.map(b => {
@@ -214,11 +264,14 @@
   const sec = s => ((news && news.sections && news.sections[lang] && news.sections[lang][s]) || []);
   function metaHtml(i) { const a = ago(i.d); return `<span class="meta">${i.src ? `<span class="src">${esc(i.src)}</span>` : ""}${a ? `<span>${esc(a)}</span>` : ""}</span>`; }
   const imgTag = (i, cls) => `<img class="${cls}" src="${esc(i.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('[data-hasimg]')&&this.closest('[data-hasimg]').removeAttribute('data-hasimg');this.remove()">`;
+  // In Chinese mode, show the Chinese translation when we have one.
+  const disp = i => (lang === "zh" && i.tz) ? i.tz : i.t;
+  const dsum = i => (lang === "zh" && i.sz) ? i.sz : i.s;
   // Stories open on our own article page (#a-<id>); the article page links out to the full story.
   const nhref = i => i.id ? `href="#a-${esc(i.id)}"` : `href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer"`;
   function liHtml(i, withSummary, withThumb) {
     const thumb = withThumb && i.img;
-    return `<li${thumb ? ' class="thumbed" data-hasimg' : ""}>${thumb ? `<a class="th-link" ${nhref(i)} tabindex="-1" aria-hidden="true">${imgTag(i, "th")}</a>` : ""}<div class="tx"><a class="t" ${nhref(i)}>${esc(i.t)}</a>${withSummary && i.s ? `<span class="s">${esc(i.s)}</span>` : ""}${metaHtml(i)}</div></li>`;
+    return `<li${thumb ? ' class="thumbed" data-hasimg' : ""}>${thumb ? `<a class="th-link" ${nhref(i)} tabindex="-1" aria-hidden="true">${imgTag(i, "th")}</a>` : ""}<div class="tx"><a class="t" ${nhref(i)}>${esc(disp(i))}</a>${withSummary && dsum(i) ? `<span class="s">${esc(dsum(i))}</span>` : ""}${metaHtml(i)}</div></li>`;
   }
   // Move the first story that has a picture (among the first few) to the top and show it as a feature.
   function withFeature(list, look) {
@@ -237,7 +290,7 @@
       const lead = top[leadIdx > 0 ? leadIdx : 0];
       const rest = top.filter(i => i !== lead).slice(0, 8);
       lw.innerHTML = `<article class="lead">${lead.img ? `<a ${nhref(lead)} class="img" tabindex="-1" aria-hidden="true">${imgTag(lead, "")}</a>` : ""}
-        <h3><a ${nhref(lead)}>${esc(lead.t)}</a></h3>${lead.s ? `<p>${esc(lead.s)}</p>` : ""}${metaHtml(lead)}</article>
+        <h3><a ${nhref(lead)}>${esc(disp(lead))}</a></h3>${dsum(lead) ? `<p>${esc(dsum(lead))}</p>` : ""}${metaHtml(lead)}</article>
         <ul class="nl compact">${rest.map(i => liHtml(i, false)).join("")}</ul>`;
     }
     ["local", "immigration", "uschina", "china", "business", "health"].forEach(s => {
@@ -415,10 +468,11 @@
     $("#aBack").textContent = t("newsBack").replace("{s}", secName(sname)); $("#aBack").setAttribute("href", "#n-" + sname);
     const src = i.src || (lang === "zh" ? "原网站" : "the publisher");
     $("#aBody").innerHTML = `<span class="tag">${esc(secName(sname))}</span>
-      <h1>${esc(i.t)}</h1>
+      <h1>${esc(disp(i))}</h1>
+      ${lang === "zh" && i.tz ? `<p class="orig-t">${esc(i.t)}</p>` : ""}
       ${metaHtml(i)}
       ${i.img ? `<div class="art-img" data-hasimg>${imgTag(i, "")}</div>` : ""}
-      ${i.full ? `<p class="g-notice">${esc(t("offNote"))}</p><div class="art-full" id="aFull"><p class="muted">${esc(t("loadingFull"))}</p></div>` : i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
+      ${i.full ? `${lang === "zh" && i.sz ? `<p class="art-sum">${esc(i.sz)}</p>` : ""}<p class="g-notice">${esc(lang === "zh" && i.fullzh ? t("offNoteZh") : t("offNote"))}</p><div class="art-full" id="aFull"><p class="muted">${esc(t("loadingFull"))}</p></div>` : i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
       ${i.fr && !i.full ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
       <div class="post-actions">${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(src)}">${esc(t("irFull"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
@@ -429,7 +483,10 @@
     const rd = $("#aRead"); if (rd) rd.onclick = () => openReader(i, src);
     if (i.full) getJSON("data/full/" + i.id + ".json").then(f => {
       const box = $("#aFull"); if (!box || route.id !== i.id) return;
-      box.innerHTML = (f.body || []).map(b => b.startsWith("## ") ? `<h2>${esc(b.slice(3))}</h2>` : b.startsWith("• ") ? `<p class="li">${esc(b)}</p>` : `<p>${esc(b)}</p>`).join("");
+      const useZh = lang === "zh" && f.body_zh && !box.dataset.en;
+      const body = useZh ? f.body_zh : (f.body || []);
+      box.innerHTML = (useZh || f.body_zh ? `<p><button type="button" class="linkbtn" id="aLangSw">${esc(useZh ? t("showEn") : t("showZh"))}</button></p>` : "") + body.map(b => b.startsWith("## ") ? `<h2>${esc(b.slice(3))}</h2>` : b.startsWith("• ") ? `<p class="li">${esc(b)}</p>` : `<p>${esc(b)}</p>`).join("");
+      const sw = $("#aLangSw"); if (sw) sw.onclick = () => { if (box.dataset.en) delete box.dataset.en; else box.dataset.en = "1"; renderArticle(); };
     }).catch(() => { const box = $("#aFull"); if (box) box.innerHTML = ""; });
     $("#aShare").onclick = () => HLShare.open({ url: HLC.siteBase() + "n/" + i.id + "/", title: i.t, text: i.t + " - 华邻网" });
   }

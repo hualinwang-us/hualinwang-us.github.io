@@ -324,6 +324,16 @@ async function buildOfficial(out) {
   } catch (e) { out.feeds.push({ lang: "en", sec: "official", name: "Federal Register USCIS", ok: false, n: 0, err: String(e.message || e) }); }
 
   items.sort((a, b) => (b.d || "").localeCompare(a.d || ""));
+  for (const i of items) { const z = await tr(i.t); if (z) i.tz = z; const sz = await tr(i.s); if (sz) i.sz = sz; }
+  // Chinese full text for the travel advisories (short); long Federal Register rules keep English text with a Chinese title and summary.
+  for (const i of items.filter(x => /Department of State/.test(x.src))) {
+    try {
+      const f = JSON.parse(await fs.readFile(`data/full/${i.id}.json`, "utf8"));
+      const zh = [];
+      for (const b of f.body) { const h = b.startsWith("## ") ? "## " : b.startsWith("• ") ? "• " : ""; const z = await tr(b.slice(h.length)); if (!z) { zh.length = 0; break; } zh.push(h + z); }
+      if (zh.length === f.body.length) { f.body_zh = zh; await fs.writeFile(`data/full/${i.id}.json`, JSON.stringify(f)); i.fullzh = 1; }
+    } catch (e) {}
+  }
   out.sections.zh.official = items;
   out.sections.en.official = items;
   console.log(`official notices: ${items.length}`);
@@ -377,27 +387,57 @@ async function buildNews() {
 
 
 
-/* ---------- translation (free MyMemory service; each title translated once and cached) ---------- */
+/* ---------- translation into Chinese (free MyMemory service; every text translated once and cached) ----------
+   Daily free allowance: about 5,000 characters, or 50,000 if config.js has translateEmail. */
 const TR_CACHE = "data/tr-cache.json";
-async function translateTitles(items, budget = 150) {
-  const cache = await readJSON(TR_CACHE, {});
-  let used = 0, quota = false;
-  const todo = items.filter(i => !isChinese(i.t));
-  for (const i of todo) {
-    if (cache[i.t]) { i.tz = cache[i.t].z; continue; }
-    if (quota || used >= budget) continue;
-    used++;
-    try {
-      const r = await get("https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&q=" + encodeURIComponent(i.t.slice(0, 450)), "json");
-      if (r.quotaFinished || /QUOTA|LIMIT/i.test(r.responseDetails || "")) { quota = true; continue; }
-      const z = clean((r.responseData && r.responseData.translatedText) || "");
-      if (z && isChinese(z)) { cache[i.t] = { z, t: Date.now() }; i.tz = z; }
-    } catch (e) { /* try again next run */ }
-  }
-  for (const k of Object.keys(cache)) if (Date.now() - (cache[k].t || 0) > 14 * 86400e3) delete cache[k];
-  await fs.writeFile(TR_CACHE, JSON.stringify(cache));
-  console.log(`translation: ${used} new${quota ? ", daily free quota reached" : ""}`);
+const TR = { cache: null, daily: 0, day: "", quota: false, fresh: 0 };
+let TR_EMAIL = "";
+try { TR_EMAIL = ((await fs.readFile("config.js", "utf8")).match(/translateEmail:\s*"([^"]*)"/) || [])[1] || ""; } catch {}
+const TR_LIMIT = TR_EMAIL ? 45000 : 4800;
+async function trInit() {
+  if (TR.cache) return;
+  TR.cache = await readJSON(TR_CACHE, {});
+  TR.day = new Date().toISOString().slice(0, 10);
+  const u = TR.cache.__usage || {};
+  TR.daily = u.day === TR.day ? (u.chars || 0) : 0;
 }
+function trChunks(text) {
+  const parts = text.match(/[^.!?;]+[.!?;]*\s*/g) || [text];
+  const out = []; let cur = "";
+  for (const p of parts) { if ((cur + p).length > 440 && cur) { out.push(cur); cur = ""; } cur += p.length > 440 ? p.slice(0, 440) : p; }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+export async function tr(text) {
+  text = String(text || "").trim();
+  if (!text || isChinese(text)) return "";
+  await trInit();
+  const hit = TR.cache[text]; if (hit) { hit.t = Date.now(); return hit.z; }
+  if (TR.quota || TR.daily + text.length > TR_LIMIT) return "";
+  const pieces = [];
+  for (const chunk of trChunks(text)) {
+    try {
+      const url = "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&q=" + encodeURIComponent(chunk) + (TR_EMAIL ? "&de=" + encodeURIComponent(TR_EMAIL) : "");
+      const r = await get(url, "json");
+      TR.daily += chunk.length;
+      if (r.quotaFinished || /QUOTA|LIMIT EXCEEDED/i.test(r.responseDetails || "")) { TR.quota = true; return ""; }
+      const z = clean((r.responseData && r.responseData.translatedText) || "");
+      if (!z || !isChinese(z)) return "";
+      pieces.push(z);
+    } catch (e) { return ""; }
+  }
+  const z = pieces.join("");
+  TR.cache[text] = { z, t: Date.now() }; TR.fresh++;
+  return z;
+}
+async function trSave() {
+  if (!TR.cache) return;
+  for (const k of Object.keys(TR.cache)) if (k !== "__usage" && Date.now() - (TR.cache[k].t || 0) > 21 * 86400e3) delete TR.cache[k];
+  TR.cache.__usage = { day: TR.day, chars: TR.daily };
+  await fs.writeFile(TR_CACHE, JSON.stringify(TR.cache));
+  console.log(`translation: ${TR.fresh} new today-run, ${TR.daily}/${TR_LIMIT} chars used today${TR.quota ? " (free quota reached)" : ""}`);
+}
+async function translateTitles(items) { for (const i of items) { const z = await tr(i.t); if (z) i.tz = z; } }
 
 /* ---------- this week's deals and free stuff ---------- */
 const DEAL_FEEDS = {
@@ -471,4 +511,5 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop()
   await buildNews();
   await buildMarket();
   try { await buildDeals(); } catch (e) { console.log("deals failed:", e.message); }
+  await trSave();
 }
