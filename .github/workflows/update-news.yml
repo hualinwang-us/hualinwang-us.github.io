@@ -50,7 +50,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir -p _site
-          cp -r index.html config.js assets data _site/
+          cp -r index.html config.js assets data icons manifest.webmanifest sw.js _site/
           touch _site/.nojekyll
       - name: Build a page for every listing
         run: node scripts/build-posts.mjs _site

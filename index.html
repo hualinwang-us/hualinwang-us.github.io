@@ -4,16 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>华邻网 · 在美华人新闻与分类信息</title>
-<meta name="description" content="华邻网：每小时更新的在美华人新闻、纽约本地资讯、移民签证动态，以及招聘、租房、生意转让等免费分类信息。">
+<meta name="description" content="华邻网：每30分钟更新的在美华人新闻、纽约本地资讯、移民签证动态，以及招聘、租房、生意转让等免费分类信息。">
 <meta name="theme-color" content="#121a2b">
 <meta name="referrer" content="no-referrer">
 <meta name="hl-build" content="dev">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="华邻网">
 <meta property="og:title" content="华邻网 · 在美华人新闻与分类信息">
-<meta property="og:description" content="每小时更新的在美华人新闻，免费发布招聘、租房、生意转让等分类信息。">
+<meta property="og:description" content="每30分钟更新的在美华人新闻，免费发布招聘、租房、生意转让等分类信息。">
 <meta property="og:image" content="https://hualinwang-us.github.io/assets/share.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23c2362b'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='white' font-family='serif' font-weight='900'%3E%E9%82%BB%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="华邻网">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
@@ -29,6 +35,7 @@
   </span>
   <button type="button" class="util-share" id="loginBtn" data-i18n="login">登录 / 注册</button>
   <span class="util-user" id="userBox" hidden><span id="userName"></span> <button type="button" class="linkbtn util-out" id="logoutBtn" data-i18n="logout">退出</button></span>
+  <button type="button" class="util-share util-app" id="appBtn" hidden data-i18n="appInstall">安装App</button>
   <button type="button" class="util-share" id="siteShare" data-i18n="shareSite">分享本站</button>
   <div class="seg" role="group" aria-label="Language / 语言">
     <button type="button" id="lzh" aria-pressed="true">中文</button>
@@ -52,6 +59,7 @@
 <div class="mega" id="mega" hidden></div>
 
 <main class="shell" id="vHome">
+  <div class="app-bar" id="appBar" hidden></div>
 
   <section class="g-home" id="gHome" hidden>
     <div class="g-home-l">

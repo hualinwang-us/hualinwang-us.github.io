@@ -526,3 +526,18 @@ a.spon.empty:hover{border-color:var(--gold)}
 .off-how{background:var(--gold-soft);border-radius:8px;padding:10px 12px;font-size:14px}
 .off-en{margin:8px 0;font-size:14px}
 .off-en summary{cursor:pointer;color:var(--link)}
+
+/* app install */
+.util-app{border-color:#f3c9c4;color:#fff;background:var(--accent)}
+.app-bar{display:flex;align-items:center;gap:12px;margin-top:14px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 2px 10px rgba(18,26,43,.05)}
+.app-bar[hidden]{display:none}
+.app-bar img{border-radius:10px;flex:none}
+.app-bar div{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35}
+.app-bar b{font-size:15px}
+.app-bar span{font-size:12.5px;color:var(--muted)}
+.app-bar .btn.sm{padding:6px 16px;font-size:14px}
+.app-bar .x{position:static;flex:none;width:28px;height:28px;font-size:20px}
+.app-help{text-align:center}
+.app-help img{border-radius:14px;margin:4px auto 8px;display:block}
+.app-help ol{text-align:left;margin:12px 0 18px;padding-left:22px;line-height:1.7;font-size:15.5px}
+.app-help li{margin-bottom:6px}

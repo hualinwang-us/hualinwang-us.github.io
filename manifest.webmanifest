@@ -1,0 +1,22 @@
+{
+  "name": "华邻网 · 在美华人新闻与生活信息",
+  "short_name": "华邻网",
+  "description": "纽约华人每日新闻、福利指南、本周优惠和免费分类信息",
+  "lang": "zh-CN",
+  "start_url": "./?source=app",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f4f7",
+  "theme_color": "#c2362b",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "我能申请什么", "url": "./#check", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "本周优惠", "url": "./#deals", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "免费发布", "url": "./#post", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
