@@ -224,6 +224,70 @@ async function enrichImages(out) {
   out.imageStats = { found, tried, errors: [...new Set(errs)].slice(0, 5) };
 }
 
+
+/* ---------- official notices (U.S. federal government works are public domain, 17 U.S.C. §105) ----------
+   Full text is saved to data/full/<id>.json and shown on our own page. */
+export function htmlToBlocks(html, max = 60000) {
+  let h = html.replace(/<(script|style|noscript|svg|figure)[\s\S]*?<\/\1>/gi, " ").replace(/<img[^>]*>/gi, " ");
+  h = h.replace(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi, (m, x) => "\n\n## " + stripTags(x) + "\n\n")
+       .replace(/<li[^>]*>/gi, "\n• ").replace(/<\/(p|div|li|ul|ol|table|tr|section|br)>|<br\s*\/?>/gi, "\n\n");
+  const text = decode(h.replace(/<[^>]+>/g, " "));
+  const blocks = [];
+  let total = 0;
+  for (let b of text.split(/\n\s*\n/)) {
+    b = b.replace(/[ \t ]+/g, " ").replace(/\s*\n\s*/g, " ").trim();
+    if (!b || b === "•") continue;
+    blocks.push(b); total += b.length;
+    if (total > max) { blocks.push("…"); break; }
+  }
+  return blocks;
+}
+
+async function buildOfficial(out) {
+  const items = [];
+  const saveFull = async (id, data) => { await fs.writeFile(`data/full/${id}.json`, JSON.stringify(data)); };
+  await fs.rm("data/full", { recursive: true, force: true });
+  await fs.mkdir("data/full", { recursive: true });
+  const hid = s => crypto.createHash("sha1").update(s).digest("hex").slice(0, 10);
+
+  // 1) State Department travel advisories for China, Hong Kong, Macau, Taiwan (full text in the feed).
+  try {
+    const xml = await get("https://travel.state.gov/_res/rss/TAsTWs.xml");
+    const blocks = xml.match(/<item[\s>][\s\S]*?<\/item>/gi) || [];
+    for (const b of blocks) {
+      const title = clean(tag(b, "title"));
+      if (!/\b(China|Hong Kong|Macau|Taiwan)\b/i.test(title)) continue;
+      const link = clean(tag(b, "link"));
+      const date = clean(tag(b, "pubDate"));
+      const body = htmlToBlocks(decode(unCdata(tag(b, "description"))));
+      if (!body.length) continue;
+      const id = "o" + hid(title);
+      await saveFull(id, { t: title, u: link, src: "U.S. Department of State", d: date, body });
+      items.push({ id, t: title, u: link, s: body[0].slice(0, 160), src: "美国国务院 U.S. Department of State", d: Number.isFinite(Date.parse(date)) ? new Date(date).toISOString() : "", full: 1, pd: 1 });
+    }
+  } catch (e) { out.feeds.push({ lang: "en", sec: "official", name: "State travel advisories", ok: false, n: 0, err: String(e.message || e) }); }
+
+  // 2) Latest USCIS documents in the Federal Register (rules, notices), full text from the API.
+  try {
+    const api = "https://www.federalregister.gov/api/v1/documents.json?per_page=6&order=newest&conditions%5Bagencies%5D%5B%5D=u-s-citizenship-and-immigration-services&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=html_url&fields%5B%5D=body_html_url&fields%5B%5D=publication_date&fields%5B%5D=type";
+    const res = await get(api, "json");
+    for (const r of (res.results || [])) {
+      let body = [];
+      try { body = htmlToBlocks(await get(r.body_html_url)); } catch (e) { body = r.abstract ? [r.abstract] : []; }
+      if (!body.length) continue;
+      const id = "o" + hid(r.html_url);
+      const t = `${r.type ? r.type + ": " : ""}${r.title}`;
+      await saveFull(id, { t, u: r.html_url, src: "Federal Register (USCIS)", d: r.publication_date, body });
+      items.push({ id, t, u: r.html_url, s: (r.abstract || body[0] || "").slice(0, 160), src: "联邦公报 Federal Register · USCIS", d: r.publication_date ? new Date(r.publication_date + "T12:00:00Z").toISOString() : "", full: 1, pd: 1 });
+    }
+  } catch (e) { out.feeds.push({ lang: "en", sec: "official", name: "Federal Register USCIS", ok: false, n: 0, err: String(e.message || e) }); }
+
+  items.sort((a, b) => (b.d || "").localeCompare(a.d || ""));
+  out.sections.zh.official = items;
+  out.sections.en.official = items;
+  console.log(`official notices: ${items.length}`);
+}
+
 async function buildNews() {
   const prev = await readJSON("data/news.json", { sections: {} });
   const out = { updatedAt: new Date().toISOString(), sections: { zh: {}, en: {} }, feeds: [] };
@@ -263,6 +327,7 @@ async function buildNews() {
     }
   }
   try { await enrichImages(out); } catch (e) { console.log("images failed:", e.message); }
+  try { await buildOfficial(out); } catch (e) { console.log("official failed:", e.message); }
   await fs.writeFile("data/news.json", JSON.stringify(out));
   const ok = out.feeds.filter(f => f.ok).length;
   console.log(`news: ${ok}/${out.feeds.length} feeds ok`);

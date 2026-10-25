@@ -6,7 +6,7 @@
   const { GROUPS, BOARDS, boardById } = HLC;
   const FEATURED = ["jobs", "rest", "seek", "rent", "share", "house", "biz", "sale", "car", "move", "reno", "law"];
 
-  const SECTIONS = ["top", "local", "immigration", "uschina", "china", "business", "health", "ent"];
+  const SECTIONS = ["top", "local", "immigration", "uschina", "china", "business", "health", "ent", "official"];
 
   /* ---------- text ---------- */
   const T = {
@@ -28,7 +28,7 @@
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
       directory: "分类目录", more: "更多", home: "首页", classifiedsTab: "分类信息",
       sec_top: "新闻速递", sec_local: "纽约本地", sec_immigration: "移民签证", sec_uschina: "中美关系", sec_china: "中国",
-      sec_business: "财经", sec_health: "健康养生", sec_ent: "娱乐体育",
+      sec_business: "财经", sec_health: "健康养生", sec_ent: "娱乐体育", sec_official: "政府公告", offNote: "美国联邦政府发布的内容属于公有领域，本站全文收录（英文原文）。", offLink: "查看官方原文", loadingFull: "全文载入中…",
       ctaH: "免费发布分类信息", ctaP: "招聘、租房、生意转让、二手买卖……无需注册，一分钟发布。", postNow: "立即发布",
       latest: "最新信息", fx: "货币兑换率", weather: "纽约天气", classifieds: "分类信息", classHint: "点击板块查看全部",
       back: "← 返回首页", postHere: "在本板块发布", filterPh: "在本板块中筛选",
@@ -72,7 +72,7 @@
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
       directory: "Directory", more: "More", home: "Home", classifiedsTab: "Classifieds",
       sec_top: "Top Stories", sec_local: "New York", sec_immigration: "Immigration", sec_uschina: "US–China", sec_china: "China",
-      sec_business: "Business", sec_health: "Health", sec_ent: "Entertainment & Sports",
+      sec_business: "Business", sec_health: "Health", sec_ent: "Entertainment & Sports", sec_official: "Official notices", offNote: "U.S. federal government works are in the public domain; shown here in full.", offLink: "View official source", loadingFull: "Loading full text…",
       ctaH: "Post a free listing", ctaP: "Jobs, rentals, businesses for sale, used items. No sign-up, done in a minute.", postNow: "Post now",
       latest: "Latest Listings", fx: "Exchange Rates", weather: "NYC Weather", classifieds: "Classifieds", classHint: "Open a board to see everything",
       back: "← Back to home", postHere: "Post in this board", filterPh: "Filter this board",
@@ -239,6 +239,9 @@
       $("#sec-" + s).innerHTML = show.map((i, n) => n === 0 && feat ? liHtml(i, false, true).replace("<li", '<li data-feat') : liHtml(i, false)).join("");
       $("#sec-" + s).closest(".block").hidden = !show.length; // hide a section that has no stories right now
     });
+    const off = sec("official").slice(0, 6);
+    $("#sec-official").innerHTML = off.map(i => liHtml(i, false)).join("");
+    $("#sec-official").closest(".block").hidden = !off.length;
     const e = withFeature(sec("ent").slice(0, 12), 6);
     const ent = e.list.slice(0, 10);
     $("#sec-ent").innerHTML = ent.map((i, n) => n < 2 && i.img ? liHtml(i, false, true) : liHtml(i, false)).join("");
@@ -407,14 +410,18 @@
       <h1>${esc(i.t)}</h1>
       ${metaHtml(i)}
       ${i.img ? `<div class="art-img" data-hasimg>${imgTag(i, "")}</div>` : ""}
-      ${i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
-      <div class="post-actions">${i.fr ? `<button type="button" class="btn" id="aRead">${esc(t("readHere"))}</button><a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("openOrig"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
+      ${i.full ? `<p class="g-notice">${esc(t("offNote"))}</p><div class="art-full" id="aFull"><p class="muted">${esc(t("loadingFull"))}</p></div>` : i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
+      <div class="post-actions">${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("offLink"))}</a>` : i.fr ? `<button type="button" class="btn" id="aRead">${esc(t("readHere"))}</button><a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("openOrig"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
     $("#aSide").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("moreNews").replace("{s}", secName(sname)))}</h2></div><ul class="nl">${others.map(x => liHtml(x, false, !!x.img)).join("")}</ul></section>
       <a class="g-check-cta" href="#check"><b>${esc(t("gCheckH"))}</b><span>${esc(t("gCheckP"))}</span></a>`;
     const rd = $("#aRead"); if (rd) rd.onclick = () => openReader(i, src);
+    if (i.full) getJSON("data/full/" + i.id + ".json").then(f => {
+      const box = $("#aFull"); if (!box || route.id !== i.id) return;
+      box.innerHTML = (f.body || []).map(b => b.startsWith("## ") ? `<h2>${esc(b.slice(3))}</h2>` : b.startsWith("• ") ? `<p class="li">${esc(b)}</p>` : `<p>${esc(b)}</p>`).join("");
+    }).catch(() => { const box = $("#aFull"); if (box) box.innerHTML = ""; });
     $("#aShare").onclick = async () => {
       const r = await HLC.share(HLC.siteBase() + "n/" + i.id + "/", i.t);
       if (r === "copied") toast(t("linkCopied"));
