@@ -518,3 +518,11 @@ a.spon.empty:hover{border-color:var(--gold)}
   .fab-share [data-i18n="shareShort"]{display:none}
   .fab-ic{width:30px;height:30px;font-size:15px;background:none}
 }
+
+/* official listings */
+.pin.off{background:#1f5fa8}
+.off-facts{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 12px;font-size:14px}
+.off-facts b{color:var(--muted);font-weight:500}
+.off-how{background:var(--gold-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.off-en{margin:8px 0;font-size:14px}
+.off-en summary{cursor:pointer;color:var(--link)}

@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", pinned: "置顶", pinAsk: "想让你的信息排在本板块最上面？付费置顶请致电", moreBoards: "全部板块",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", offTag: "官方", offFrom: "来源", offApply: "去官网免费申请", offJobHow: "打开官网后，在搜索框输入职位编号 {id} 即可找到这个职位并在线申请（免费）。", offUntil: "截止", offPay: "工资", offLoc: "地点", offOrg: "机构", offEnShow: "看英文原文", offNote: "官方信息每天自动更新，来自纽约市政府公开数据。申请永远免费，任何人向你收费都要小心。", pinned: "置顶", pinAsk: "想让你的信息排在本板块最上面？付费置顶请致电", moreBoards: "全部板块",
       house: [["#check", "我能申请什么？", "白卡、粮食券、公屋……回答几个问题马上知道"], ["#deals", "本周免费和打折", "每天自动更新，全部翻译成中文"], ["#b-deals", "商家免费发布优惠", "超市、餐馆、店铺每周特价，一分钟发好"], ["#guide", "纽约华人生活指南", "25 项福利，白话讲清楚怎么申请"], ["#post", "免费发布分类信息", "招聘、租房、二手买卖，一分钟发布"]],
       adsTitle: "在华邻网投放广告", adsIntro: "华邻网每天更新纽约华人关心的新闻、福利指南和本周优惠，读者都是在美华人家庭。以下广告位可以单独或组合投放，价格面议，新开张商家有优惠。",
       adsPos: "广告位一览", adsHow: "怎么投放", adsHowP: "把店名、一句话介绍、电话/微信、想放的位置和时间发给我们，当天就能上线。到期自动下架，不用操心。", adsNoContact: "联系方式即将公布。也可以先在“商家优惠”免费发布优惠信息。",
@@ -109,7 +109,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", pinned: "Pinned", pinAsk: "Want your listing at the top of this board? For paid pinning call", moreBoards: "All boards",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", offTag: "Official", offFrom: "Source", offApply: "Apply free on the official site", offJobHow: "On the site, search for job ID {id} to find this posting and apply online (free).", offUntil: "Deadline", offPay: "Pay", offLoc: "Location", offOrg: "Agency", offEnShow: "Show original", offNote: "Official listings update daily from NYC Open Data. Applying is always free.", pinned: "Pinned", pinAsk: "Want your listing at the top of this board? For paid pinning call", moreBoards: "All boards",
       house: [["#check", "What can I apply for?", "Medicaid, SNAP, housing: answer a few questions"], ["#deals", "Free & on sale this week", "Updated daily"], ["#b-deals", "Businesses: post deals free", "Weekly specials in a minute"], ["#guide", "NY benefits guides", "25 programs in plain language"], ["#post", "Post a free listing", "Jobs, rentals, buy & sell"]],
       adsTitle: "Advertise on 华邻网", adsIntro: "华邻网 publishes daily news, benefits guides and weekly deals for Chinese families in New York. These spaces can be booked alone or together; prices are negotiable, with discounts for newly opened businesses.",
       adsPos: "Ad spaces", adsHow: "How to book", adsHowP: "Send us your business name, a one-line description, phone/WeChat, and the space and dates you want. It can go live the same day and comes down automatically when it ends.", adsNoContact: "Contact details coming soon. Meanwhile, you can post deals for free in Local Deals.",
@@ -128,7 +128,7 @@
   let lang = "zh";
   try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
   let guides = null, watch = {}, deals = null;
-  let news = null, market = null, ads = { slots: [] }, posts = [], postsLoaded = false;
+  let news = null, market = null, ads = { slots: [] }, posts = [], postsLoaded = false, official = { jobs: [], housing: [] };
   let route = { view: "home" }, searchQ = "";
 
   const $ = s => document.querySelector(s);
@@ -159,7 +159,8 @@
     return r.json();
   }
   async function loadData() {
-    const [n, m, a, gd, w, dl] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), getJSON("data/deals.json")]);
+    const [n, m, a, gd, w, dl, ol] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), getJSON("data/deals.json"), getJSON("data/listings.json")]);
+    if (ol && ol.status === "fulfilled" && ol.value) official = ol.value;
     if (dl.status === "fulfilled" && dl.value && dl.value.sections) deals = dl.value;
     if (gd.status === "fulfilled" && gd.value && Array.isArray(gd.value.guides)) guides = gd.value;
     if (w.status === "fulfilled" && w.value) watch = w.value.pages || {};
@@ -169,6 +170,7 @@
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
     [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    if (postsLoaded) { try { renderPostsAll(); } catch (e) { console.error(e); } }
   }
 
   function sbHeaders(extra) {
@@ -410,6 +412,39 @@
   }
 
   /* ---------- render: posts ---------- */
+  /* ---------- official listings (NYC jobs, housing lotteries) ---------- */
+  const offAll = () => (official.jobs || []).concat(official.housing || []);
+  const offFor = board => offAll().filter(o => o.board === board);
+  const offTitle = o => lang === "zh" ? o.t : (o.te + (o.pay ? " · " + o.pay.en : ""));
+  const offArea = o => lang === "zh" ? o.area : o.area_en;
+  function offRow(o) {
+    return `<li><button type="button" class="row" data-oid="${esc(o.id)}"><span class="rt"><span class="pin off">${esc(t("offTag"))}</span>${o.area && !offTitle(o).includes(offArea(o)) ? `[${esc(offArea(o))}] ` : ""}${esc(offTitle(o))}</span><span class="rd">${o.until ? esc(t("offUntil") + " " + o.until.slice(5)) : ""}</span></button></li>`;
+  }
+  function offItem(o) {
+    const sum = lang === "zh" ? (o.kind === "job" ? [o.az, o.ft && o.ft[0], o.dz].filter(Boolean).join(" · ") : (o.bz || "").split("\n").slice(0, 2).join(" · ")) : (o.kind === "job" ? [o.ae, o.ft && o.ft[1], o.be].filter(Boolean).join(" · ") : (o.be || "").split("\n").slice(0, 2).join(" · "));
+    return `<li><button type="button" class="pitem" data-oid="${esc(o.id)}"><div class="pt"><span class="pin off">${esc(t("offTag"))}</span>${o.area && !offTitle(o).includes(offArea(o)) ? `[${esc(offArea(o))}] ` : ""}${esc(offTitle(o))}</div><div class="pm"><span>${esc(o.src)}</span>${o.until ? `<span>${esc(t("offUntil"))} ${esc(o.until)}</span>` : ""}</div><div class="pb">${esc(sum)}</div></button></li>`;
+  }
+  function openOfficial(id) {
+    const o = offAll().find(x => x.id === id); if (!o) return;
+    const zh = lang === "zh";
+    let rows = "";
+    if (o.kind === "job") {
+      rows = [[t("offOrg"), zh ? (o.az || o.ae) : o.ae], [t("offPay"), o.pay && (zh ? o.pay.zh : o.pay.en)], [t("offLoc"), o.loc], ["", zh ? o.ft[0] : o.ft[1]], [t("offUntil"), o.until]].filter(x => x[1]).map(([k, v]) => `<span>${k ? `<b>${esc(k)}</b> ` : ""}${esc(v)}</span>`).join("");
+    }
+    const body = o.kind === "job" ? (zh && o.dz ? o.dz + "…" : o.be) : (zh ? o.bz : o.be);
+    const how = o.kind === "job" ? `<p class="off-how">${esc(t("offJobHow").replace("{id}", o.jobId))}</p>` : "";
+    $("#viewBody").innerHTML = `<button type="button" class="x" data-close aria-label="Close">×</button>
+      <span class="tag"><span class="pin off">${esc(t("offTag"))}</span>${esc(bName(boardById(o.board)))}${o.area ? " · " + esc(offArea(o)) : ""}</span>
+      <h3>${esc(offTitle(o))}</h3>
+      ${rows ? `<div class="off-facts">${rows}</div>` : ""}
+      <div class="detail-body">${esc(body || "")}</div>
+      ${zh && o.kind === "job" && o.be ? `<details class="off-en"><summary>${esc(t("offEnShow"))}</summary><div class="detail-body">${esc(o.be)}</div></details>` : ""}
+      ${how}
+      <div class="post-actions"><a class="btn" href="${esc(safeUrl(o.url))}" target="_blank" rel="noopener">${esc(t("offApply"))}</a><button type="button" class="btn ghost" id="offShare">${esc(t("share"))}</button></div>
+      <p class="warn">${esc(t("offFrom"))}：${esc(o.src)}。${esc(t("offNote"))}</p>`;
+    const dlg = $("#viewDlg"); if (!dlg.open) dlg.showModal();
+    $("#offShare").onclick = () => HLShare.open({ url: HLC.siteBase() + "#b-" + o.board, title: offTitle(o), text: offTitle(o) + " - 华邻网" });
+  }
   function rowHtml(p, seal) {
     const b = boardById(p.board);
     return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
@@ -421,11 +456,12 @@
   function renderPostsAll() {
     const latest = posts.slice(0, 12);
     $("#latest").innerHTML = !postsLoaded ? `<div class="empty">${esc(t("loading"))}</div>` : latest.length ? latest.map(p => rowHtml(p, true)).join("") : `<div class="empty">${esc(t("noLatest"))}</div>`;
-    const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id));
+    const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id) || offFor(b.id).length);
     const order = FEATURED.map(boardById).filter(b => withPosts.includes(b)).concat(withPosts.filter(b => !FEATURED.includes(b.id)));
     const cards = order.slice(0, 11).map(b => {
       const list = posts.filter(p => p.board === b.id).sort((a, c) => (c.pin ? 1 : 0) - (a.pin ? 1 : 0)).slice(0, 6);
-      return `<section class="board"><header><span class="seal sm">${esc(b.glyph)}</span><h3>${esc(bName(b))}</h3><a href="#b-${b.id}">${esc(t("more"))} ›</a></header><ul>${list.map(p => rowHtml(p, false)).join("")}</ul></section>`;
+      const offs = offFor(b.id).slice(0, Math.max(0, 6 - list.length));
+      return `<section class="board"><header><span class="seal sm">${esc(b.glyph)}</span><h3>${esc(bName(b))}</h3><a href="#b-${b.id}">${esc(t("more"))} ›</a></header><ul>${list.map(p => rowHtml(p, false)).join("")}${offs.map(offRow).join("")}</ul></section>`;
     });
     if (cards.length) cards.splice(Math.min(3, cards.length), 0, `<div class="board board-ad">${liveSlots("board").filter(x => !x.boards || !x.boards.length)[0] ? adCard(liveSlots("board")[0]) : emptyAd()}</div>`);
     const rest = HLC.BOARDS.filter(b => !order.slice(0, 11).includes(b));
@@ -442,7 +478,9 @@
     renderBoardAds();
     const c = CFG.adContact || {};
     $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("pinAsk"))} <a href="tel:${esc(c.phone.replace(/[^0-9+]/g, ""))}">${esc(c.phone)}</a>${esc(t("adSms"))}` : "";
-    $("#bList").innerHTML = list.length ? list.map((p, i) => pitemHtml(p, false) + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (list.length < 6 ? feedAd(0) : "") :
+    const offs = offFor(b.id).filter(o => !q || [o.t, o.te, o.area, o.bz, o.be, o.az].join(" ").toLowerCase().includes(q));
+    const items = list.map(p => pitemHtml(p, false)).concat(offs.map(offItem));
+    $("#bList").innerHTML = items.length ? items.map((h, i) => h + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (items.length < 6 ? feedAd(0) : "") :
       `<li><div class="empty">${q ? esc(t("noMatch")) : esc(t("noPosts")) + `<button type="button" class="linkbtn" data-postto="${b.id}">${esc(t("beFirst"))}</button>`}</div></li>`;
   }
   function renderSearch() {
@@ -454,12 +492,13 @@
     const gl = (guides && guides.guides || []).filter(g => hit([HLG.L(g.title, lang), HLG.L(g.short, lang), HLG.L(g.summary, lang), g.id].join(" "))).slice(0, 6);
     const seen = new Set();
     const nl = SECTIONS.flatMap(s => sec(s)).filter(i => { const k = i.id || i.u; if (seen.has(k)) return false; seen.add(k); return hit([disp(i), dsum(i)].join(" ")); }).slice(0, 10);
-    const total = list.length + gl.length + nl.length;
+    const ol = words.length ? offAll().filter(o => hit([o.t, o.te, o.area, o.az, o.ae, o.bz].join(" "))).slice(0, 20) : [];
+    const total = list.length + gl.length + nl.length + ol.length;
     $("#sTitle").textContent = `${t("searchFor")}${searchQ} · ${total} ${t("results")}`;
     $("#sList").innerHTML =
       (gl.length ? `<li class="s-sec"><h2>${esc(t("sGuides"))}</h2><div class="g-home-r">${gl.map(g => `<a class="g-chip" href="#g-${esc(g.id)}"><span class="seal sm" aria-hidden="true">${esc(g.glyph || "指")}</span>${esc(HLG.L(g.title, lang))}</a>`).join("")}</div></li>` : "") +
       (nl.length ? `<li class="s-sec"><h2>${esc(t("sNews"))}</h2><ul class="nl">${nl.map(x => liHtml(x, false)).join("")}</ul></li>` : "") +
-      (list.length ? `<li class="s-sec"><h2>${esc(t("sPosts"))}</h2></li>` + list.map(p => pitemHtml(p, true)).join("") : "") +
+      (list.length || ol.length ? `<li class="s-sec"><h2>${esc(t("sPosts"))}</h2></li>` + list.map(p => pitemHtml(p, true)).join("") + ol.map(offItem).join("") : "") +
       (total ? "" : `<li><div class="empty">${esc(t("noMatch"))}</div></li>`);
   }
 
@@ -832,6 +871,7 @@
   document.addEventListener("click", e => {
     const rdl = e.target.closest("[data-reader]");
     if (rdl) { e.preventDefault(); openReaderUrl(rdl.dataset.reader, rdl.dataset.src); return; }
+    const oe = e.target.closest("[data-oid]"); if (oe) { openOfficial(oe.dataset.oid); return; }
     const el = e.target.closest("[data-pid],[data-postto],[data-post],[data-home],[data-close],[data-copy]");
     if (!el) { if (e.target.tagName === "DIALOG") e.target.close(); return; }
     if (el.dataset.pid) openPost(el.dataset.pid);

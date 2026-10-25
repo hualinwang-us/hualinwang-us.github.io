@@ -522,9 +522,86 @@ async function buildMarket() {
   console.log("market:", out.rates ? "rates ok" : "no rates", out.weather ? "weather ok" : "no weather");
 }
 
+
+/* ---------- official listings: NYC government jobs and affordable-housing lotteries (NYC Open Data, free to reuse) ---------- */
+const BORO_ZH = { manhattan: "曼哈顿", brooklyn: "布鲁克林", queens: "皇后区", bronx: "布朗克斯", "staten island": "史泰登岛" };
+const money = n => "$" + Math.round(Number(n) || 0).toLocaleString("en-US");
+async function buildListings() {
+  const prev = await readJSON("data/listings.json", { jobs: [], housing: [] });
+  const out = { updated: new Date().toISOString(), jobs: prev.jobs || [], housing: prev.housing || [] };
+  const today = new Date().toISOString().slice(0, 10);
+  const SODA = "https://data.cityofnewyork.us/resource/";
+  // Affordable-housing lotteries that are still open for applications.
+  try {
+    const rows = await get(SODA + "vy5i-a666.json?$limit=2000&$order=lottery_end_date%20DESC", "json");
+    const open = rows.filter(r => r.lottery_end_date && r.lottery_end_date.slice(0, 10) >= today).slice(0, 80);
+    out.housing = open.map(r => {
+      const boro = (r.borough || "").trim(), bz = BORO_ZH[boro.toLowerCase()] || boro;
+      const end = r.lottery_end_date.slice(0, 10);
+      const units = Number(r.unit_count) || 0;
+      const types = [["studio", "开间", "Studio"], ["1bed", "一房", "1 BR"], ["2bed", "两房", "2 BR"], ["3bed", "三房", "3 BR"], ["4bed", "四房以上", "4+ BR"]]
+        .map(([k, z, e]) => [Number(r["unit_distribution_" + k]) || 0, z, e]).filter(x => x[0] > 0);
+      const inc = [["ext_low", "极低收入", "Extremely low"], ["very_low", "很低收入", "Very low"], ["low", "低收入", "Low"], ["moderate", "中等收入", "Moderate"], ["middle", "中高收入", "Middle"], ["above", "较高收入", "Above middle"]]
+        .filter(([k]) => /^(yes|true|1)$/i.test(String(r["applied_income_ami_" + k] || "")) || Number(r["applied_income_ami_" + k]) > 0);
+      const senior = Number(r.lottery_62_percent) >= 100;
+      const pref = [["lottery_community_board_percent", "本社区居民", "community board residents"], ["lottery_62_percent", "62岁以上老人", "seniors 62+"], ["lottery_nycha_percent", "NYCHA 住户", "NYCHA residents"], ["lottery_mobility_percent", "行动不便人士", "mobility disabilities"], ["lottery_vision_hearing_percent", "视力/听力障碍人士", "vision/hearing disabilities"], ["lottery_municipal_employee_percent", "市政员工/退伍军人", "city employees/veterans"]]
+        .filter(([k]) => Number(r[k]) > 0).map(([k, z, e]) => [Number(r[k]), z, e]);
+      const url = "https://housingconnect.nyc.gov/PublicWeb/details/" + encodeURIComponent(r.lottery_id);
+      return {
+        id: "h" + r.lottery_id, board: senior ? "rent" : "rent", kind: "housing", senior,
+        area: bz, area_en: boro, d: (r.lottery_start_date || "").slice(0, 10), until: end, url,
+        t: `${senior ? "【老人公寓】" : ""}${bz}平价房抽签：${(r.lottery_name || "").trim()}${units ? `（${units} 套）` : ""}`,
+        te: `${senior ? "[Senior] " : ""}${boro} affordable housing lottery: ${(r.lottery_name || "").trim()}${units ? ` (${units} units)` : ""}`,
+        bz: [`申请截止：${end}`, types.length ? `户型：${types.map(x => `${x[1]} ${x[0]} 套`).join("、")}` : "", inc.length ? `收入类别：${inc.map(x => x[1]).join("、")}（具体收入范围以官网为准）` : "", pref.length ? `优先名额：${pref.map(x => `${x[1]} ${x[0]}%`).join("、")}` : "", `怎么申请：上 NYC Housing Connect（housingconnect.nyc.gov）免费注册申请，可以选中文。一户只能申请一次，重复申请会被取消。`, `注意：申请完全免费，任何收费“代抽签”“保证中签”都是骗局。`].filter(Boolean).join("\n"),
+        be: [`Deadline: ${end}`, types.length ? `Units: ${types.map(x => `${x[2]} ${x[0]}`).join(", ")}` : "", inc.length ? `Income bands: ${inc.map(x => x[2]).join(", ")} (see the listing for exact limits)` : "", pref.length ? `Preferences: ${pref.map(x => `${x[2]} ${x[0]}%`).join(", ")}` : "", "How to apply: free on NYC Housing Connect (housingconnect.nyc.gov). One application per household.", "Applying is free. Anyone charging a fee or promising a win is a scam."].filter(Boolean).join("\n"),
+        src: "NYC HPD Housing Connect"
+      };
+    });
+    console.log("housing lotteries:", out.housing.length);
+  } catch (e) { console.log("housing failed:", e.message); }
+  // City government job openings that the public can apply for.
+  try {
+    let rows;
+    try { rows = await get(SODA + "kpav-sd4t.json?$limit=1500&$where=posting_type=%27External%27&$order=posting_date%20DESC", "json"); }
+    catch (e) { rows = await get(SODA + "kpav-sd4t.json?$limit=1500", "json"); }
+    const seen = new Set(), jobs = [];
+    for (const r of rows) {
+      if (!r.job_id || seen.has(r.job_id) || (r.posting_type && !/external/i.test(r.posting_type))) continue;
+      if (r.post_until && r.post_until.slice(0, 10) < today) continue;
+      seen.add(r.job_id); jobs.push(r);
+      if (jobs.length >= 120) break;
+    }
+    const prevById = Object.fromEntries((prev.jobs || []).map(j => [j.id, j]));
+    out.jobs = [];
+    for (const [i, r] of jobs.entries()) {
+      const id = "j" + r.job_id, old = prevById[id];
+      const title = (r.business_title || r.civil_service_title || "").trim();
+      const pay = r.salary_range_from ? `${money(r.salary_range_from)}${r.salary_range_to && r.salary_range_to !== r.salary_range_from ? "–" + money(r.salary_range_to) : ""}` : "";
+      const per = { annual: ["年薪", "/yr"], hourly: ["时薪", "/hr"], daily: ["日薪", "/day"] }[String(r.salary_frequency || "").toLowerCase()] || ["工资", ""];
+      const ft = /^f/i.test(r.full_time_part_time_indicator || "") ? ["全职", "Full-time"] : /^p/i.test(r.full_time_part_time_indicator || "") ? ["兼职", "Part-time"] : ["", ""];
+      const desc = clean(r.job_description || "").replace(/\s+/g, " ");
+      const tz = (old && old.tz) || await tr(title);
+      const az = (old && old.az) || await tr((r.agency || "").trim());
+      const dz = (old && old.dz) || (i < 40 ? await tr(desc.slice(0, 420)) : "");
+      out.jobs.push({
+        id, board: "jobs", kind: "job", jobId: r.job_id, area: "纽约市政府", area_en: "NYC government",
+        d: (r.posting_date || "").slice(0, 10), until: (r.post_until || "").slice(0, 10),
+        tz, az, dz, te: title, ae: (r.agency || "").trim(),
+        t: `${tz || title}${pay ? ` · ${per[0]} ${pay}` : ""}`,
+        pay: pay ? { zh: `${per[0]} ${pay}`, en: `${pay}${per[1]}` } : null, ft,
+        loc: (r.work_location || "").trim(), cat: (r.job_category || "").trim(),
+        be: desc.slice(0, 1600), url: "https://cityjobs.nyc.gov/", src: "NYC Jobs (DCAS)"
+      });
+    }
+    console.log("city jobs:", out.jobs.length);
+  } catch (e) { console.log("jobs failed:", e.message); }
+  await fs.writeFile("data/listings.json", JSON.stringify(out));
+}
+
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop())) {
   await buildNews();
   await buildMarket();
   try { await buildDeals(); } catch (e) { console.log("deals failed:", e.message); }
+  try { await buildListings(); } catch (e) { console.log("listings failed:", e.message); }
   await trSave();
 }
