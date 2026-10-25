@@ -13,3 +13,14 @@ jobs:
             OUT=$(curl -s -m 30 -H "apikey: $KEY" "$URL/functions/v1/transit?$q" | head -c 600 | tr '\n' ' ')
             echo "::notice title=$q::$OUT"
           done
+      - name: LIRR stop ids in feed
+        run: |
+          npm i --no-save gtfs-realtime-bindings@1.1.1 >/dev/null 2>&1
+          node -e '
+          const G=require("gtfs-realtime-bindings");
+          (async()=>{const r=await fetch("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/lirr%2Fgtfs-lirr");
+          const f=G.transit_realtime.FeedMessage.decode(new Uint8Array(await r.arrayBuffer()));
+          const tus=f.entity.filter(e=>e.tripUpdate);const ids=new Map();
+          for(const e of tus)for(const s of e.tripUpdate.stopTimeUpdate||[])ids.set(s.stopId,(ids.get(s.stopId)||0)+1);
+          const ex=tus[0]?JSON.stringify(tus[0].tripUpdate.stopTimeUpdate.slice(0,3)):"none";
+          console.log("::notice title=lirr::trips="+tus.length+" ids="+[...ids].slice(0,40).map(x=>x.join(":")).join(",")+" ex="+ex.slice(0,500));})()'
