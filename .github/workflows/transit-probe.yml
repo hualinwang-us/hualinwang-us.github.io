@@ -22,5 +22,5 @@ jobs:
           const f=G.transit_realtime.FeedMessage.decode(new Uint8Array(await r.arrayBuffer()));
           const tus=f.entity.filter(e=>e.tripUpdate);const ids=new Map();
           for(const e of tus)for(const s of e.tripUpdate.stopTimeUpdate||[])ids.set(s.stopId,(ids.get(s.stopId)||0)+1);
-          const ex=tus[0]?JSON.stringify(tus[0].tripUpdate.stopTimeUpdate.slice(0,3)):"none";
+          const now=Date.now()/1000;const t56=[];for(const e of tus)for(const s of e.tripUpdate.stopTimeUpdate||[])if(s.stopId==="56")t56.push(Math.round(((Number(s.departure?.time||s.arrival?.time))-now)/60)+"m/"+e.tripUpdate.trip.startDate);console.log("::notice title=lirr56::hdr="+f.header.timestamp+" now="+Math.round(now)+" "+t56.join(","));const ex=tus[0]?JSON.stringify(tus[0].tripUpdate.stopTimeUpdate.slice(0,3)):"none";
           console.log("::notice title=lirr::trips="+tus.length+" ids="+[...ids].slice(0,40).map(x=>x.join(":")).join(",")+" ex="+ex.slice(0,500));})()'
