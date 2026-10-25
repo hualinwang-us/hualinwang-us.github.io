@@ -32,3 +32,14 @@
 
 `position` 可选 `top`（目录下方三格）或 `rail`（右侧栏）。过了 `until` 日期自动下架。
 在 `config.js` 的 `adContact` 填你的电话或微信，空广告位上会显示，方便商家联系你。
+
+## 举报与防骗
+
+`supabase/02-reports.sql` 增加举报功能：同一条信息被 3 个不同访客举报后自动隐藏。
+在 Supabase → Table Editor → reports 查看举报，要恢复某条信息就把 posts 里的 `hidden` 改回 false。
+信息里出现“定金、先付款、转账、礼品卡、证件号”等字眼时，页面会自动显示防骗提醒（规则在 `assets/common.js` 的 SCAM 列表）。
+
+## 每条信息的独立页面
+
+GitHub Actions 每 30 分钟为每条信息生成 `p/<编号>/` 页面，转发到微信时会显示信息标题和摘要。
+刚发布、还没生成页面的信息，由 `404.html` 实时载入，链接一样能打开。

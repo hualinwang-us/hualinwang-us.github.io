@@ -1,42 +1,10 @@
 /* 华邻网 front end. Plain JS, no build step. */
 (function () {
   "use strict";
-  const CFG = window.HL_CONFIG || {};
-  const SB_URL = (CFG.supabaseUrl || "").replace(/\/$/, "");
-  const SB_KEY = CFG.supabaseKey || "";
-  const POSTS_ON = !!(SB_URL && SB_KEY);
-
-  /* ---------- boards ---------- */
-  const GROUPS = [
-    { id: "work", zh: "工作", en: "Jobs", boards: [
-      ["jobs", "聘", "招聘请人", "Help Wanted"], ["rest", "餐", "餐馆请人", "Restaurant Jobs"],
-      ["salon", "甲", "美甲美容请人", "Salon Jobs"], ["seek", "职", "求职", "Jobs Wanted"]] },
-    { id: "home", zh: "房屋", en: "Housing", boards: [
-      ["rent", "租", "房屋出租", "Rentals"], ["share", "合", "室友合租", "Roommates"],
-      ["house", "房", "房屋买卖", "Homes for Sale"], ["shop", "铺", "店面写字楼", "Commercial Space"]] },
-    { id: "trade", zh: "买卖", en: "Buy & Sell", boards: [
-      ["biz", "商", "生意转让", "Businesses for Sale"], ["sale", "物", "二手买卖", "Buy & Sell"],
-      ["car", "车", "汽车买卖", "Cars"], ["furn", "家", "家具家电", "Furniture & Appliances"]] },
-    { id: "svc", zh: "生活服务", en: "Services", boards: [
-      ["move", "搬", "搬家运输", "Moving"], ["reno", "修", "装修维修", "Renovation & Repair"],
-      ["clean", "洁", "家政清洁", "Cleaning"], ["nanny", "护", "保姆月嫂", "Nannies & Caregivers"],
-      ["ship", "递", "快递货运", "Shipping"], ["sign", "印", "印刷招牌", "Printing & Signs"]] },
-    { id: "pro", zh: "专业服务", en: "Professional", boards: [
-      ["law", "律", "律师移民", "Lawyers & Immigration"], ["tax", "税", "会计报税", "Tax & Accounting"],
-      ["loan", "贷", "贷款保险", "Loans & Insurance"], ["realtor", "经", "地产经纪", "Realtors"],
-      ["drive", "驾", "驾校考牌", "Driving Schools"]] },
-    { id: "health", zh: "健康美容", en: "Health & Beauty", boards: [
-      ["clinic", "医", "医疗诊所", "Clinics"], ["tcm", "针", "中医针灸", "Chinese Medicine"],
-      ["beauty", "美", "美容美发", "Beauty & Hair"]] },
-    { id: "life", zh: "教育社区", en: "Education & Community", boards: [
-      ["edu", "教", "补习培训", "Tutoring & Classes"], ["kids", "托", "托儿老人", "Childcare & Seniors"],
-      ["events", "会", "社区活动", "Community Events"], ["travel", "旅", "旅游机票", "Travel"],
-      ["other", "杂", "其他", "Other"]] }
-  ];
-  const BOARDS = [];
-  GROUPS.forEach(g => g.boards.forEach(([id, glyph, zh, en]) => BOARDS.push({ id, glyph, zh, en, group: g.id })));
+  const HLC = window.HLC;
+  const CFG = HLC.CFG, SB_URL = HLC.SB_URL, SB_KEY = HLC.SB_KEY, POSTS_ON = HLC.POSTS_ON;
+  const { GROUPS, BOARDS, boardById } = HLC;
   const FEATURED = ["jobs", "rest", "seek", "rent", "share", "house", "biz", "sale", "car", "move", "reno", "law"];
-  const boardById = id => BOARDS.find(b => b.id === id);
 
   const SECTIONS = ["top", "local", "immigration", "uschina", "china", "business", "health", "ent"];
 
@@ -66,7 +34,11 @@
       adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：",
       sponsored: "推荐", rateNames: { CNY: "人民币", HKD: "港币", TWD: "新台币", EUR: "欧元", GBP: "英镑", CAD: "加元", JPY: "日元", KRW: "韩元", AUD: "澳元", SGD: "新加坡元" },
       wx_codes: { 0: "晴", 1: "晴间多云", 2: "多云", 3: "阴", 45: "雾", 48: "雾", 51: "毛毛雨", 53: "毛毛雨", 55: "毛毛雨", 61: "小雨", 63: "中雨", 65: "大雨", 66: "冻雨", 67: "冻雨", 71: "小雪", 73: "中雪", 75: "大雪", 77: "雪粒", 80: "阵雨", 81: "阵雨", 82: "强阵雨", 85: "阵雪", 86: "阵雪", 95: "雷雨", 96: "雷雨", 99: "雷雨" },
-      today: "今天", newsSrc: "新闻来源：各媒体原文，标题链接至原网站。"
+      today: "今天", newsSrc: "新闻来源：各媒体原文，标题链接至原网站。",
+      share: "分享到微信", linkCopied: "链接已复制，打开微信粘贴到群里即可", shareManual: "长按下面的链接复制：", call: "拨打",
+      report: "举报", reportH: "举报原因", reportSend: "提交举报", reported: "已收到举报，谢谢你帮忙把关", reportFail: "举报失败，请稍后再试",
+      alreadyReported: "你已经举报过这条信息", scamH: "防骗提醒", scamP: "这条信息提到{x}。正规雇主和房东不会要求你先付钱或提供证件号码。见面确认前不要转账。",
+      postedShare: "发布成功！转发到微信群和朋友圈，让更多人看到。", pageLink: "信息链接"
     },
     en: {
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
@@ -94,7 +66,11 @@
       adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad",
       rateNames: { CNY: "Chinese yuan", HKD: "HK dollar", TWD: "NT dollar", EUR: "Euro", GBP: "Pound", CAD: "Canadian dollar", JPY: "Yen", KRW: "Won", AUD: "Australian dollar", SGD: "Singapore dollar" },
       wx_codes: { 0: "Clear", 1: "Mostly clear", 2: "Partly cloudy", 3: "Overcast", 45: "Fog", 48: "Fog", 51: "Drizzle", 53: "Drizzle", 55: "Drizzle", 61: "Light rain", 63: "Rain", 65: "Heavy rain", 66: "Freezing rain", 67: "Freezing rain", 71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains", 80: "Showers", 81: "Showers", 82: "Heavy showers", 85: "Snow showers", 86: "Snow showers", 95: "Thunderstorms", 96: "Thunderstorms", 99: "Thunderstorms" },
-      today: "Today", newsSrc: "Headlines link to the original publishers."
+      today: "Today", newsSrc: "Headlines link to the original publishers.",
+      share: "Share", linkCopied: "Link copied. Paste it into a chat to share.", shareManual: "Press and hold to copy the link:", call: "Call",
+      report: "Report", reportH: "Why are you reporting this?", reportSend: "Send report", reported: "Thanks, we got your report", reportFail: "Couldn't send the report. Please try again.",
+      alreadyReported: "You already reported this listing", scamH: "Scam warning", scamP: "This listing mentions {x}. Real employers and landlords don't ask you to pay first or share ID numbers. Don't send money before meeting in person.",
+      postedShare: "Posted! Share it to your WeChat groups so more people see it.", pageLink: "Link"
     }
   };
 
@@ -162,11 +138,8 @@
     if (!r.ok) { const err = new Error((data && (data.message || data.hint)) || ("HTTP " + r.status)); err.raw = txt; throw err; }
     return data;
   }
-  const keys = {
-    all() { try { return JSON.parse(localStorage.getItem("hl-keys") || "{}"); } catch (e) { return {}; } },
-    set(id, k) { const a = keys.all(); a[id] = k; try { localStorage.setItem("hl-keys", JSON.stringify(a)); } catch (e) {} },
-    drop(id) { const a = keys.all(); delete a[id]; try { localStorage.setItem("hl-keys", JSON.stringify(a)); } catch (e) {} }
-  };
+  const keys = HLC.keys;
+
 
   /* ---------- render: chrome ---------- */
   function applyLang() {
@@ -316,6 +289,7 @@
   /* ---------- routing ---------- */
   function go() {
     const h = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+    if (h === "post") { try { history.replaceState(null, "", location.pathname); } catch (e) {} setTimeout(() => openForm(), 0); }
     if (h.startsWith("b-") && boardById(h.slice(2))) route = { view: "board", board: h.slice(2) };
     else if (h.startsWith("n-") && SECTIONS.includes(h.slice(2))) route = { view: "news", sec: h.slice(2) };
     else if (h === "search" && searchQ) route = { view: "search" };
@@ -331,20 +305,49 @@
   }
 
   /* ---------- post detail ---------- */
-  function openPost(id) {
+  function openPost(id, opts) {
+    opts = opts || {};
     const p = posts.find(x => String(x.id) === String(id)); if (!p) return;
     const b = boardById(p.board);
-    const myKey = keys.all()[p.id];
+    const myKey = keys.get(p.id);
+    const hits = HLC.scamHits(p.title + " " + p.body);
+    const url = HLC.postUrl(p.id);
+    const tel = (p.phone || "").replace(/[^\d+]/g, "");
+    const hitText = lang === "zh" ? "“" + hits.map(h => h.zh).join("”“") + "”" : hits.map(h => h.en).join(", ");
     $("#viewBody").innerHTML = `<button type="button" class="x" data-close aria-label="Close">×</button>
+      ${opts.justPosted ? `<div class="justposted">${esc(t("postedShare"))}</div>` : ""}
       <span class="tag">${esc(bName(b))}${p.area ? " · " + esc(p.area) : ""} · ${esc(new Date(p.ts).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US"))}</span>
       <h3>${esc(p.title)}</h3>
       <div class="detail-body">${esc(p.body)}</div>
       <div class="contact"><b>${esc(t("contact"))}</b>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}
-        ${p.phone ? `<span>${esc(t("phone"))} <span class="v" id="cpP">${esc(p.phone)}</span></span><button type="button" class="copy" data-copy="cpP">${esc(t("copy"))}</button>` : ""}
+        ${p.phone ? `<span>${esc(t("phone"))} <span class="v" id="cpP">${esc(p.phone)}</span></span><button type="button" class="copy" data-copy="cpP">${esc(t("copy"))}</button>${tel.length >= 7 ? `<a class="copy call" href="tel:${esc(tel)}">${esc(t("call"))}</a>` : ""}` : ""}
         ${p.wechat ? `<span>${esc(t("wx"))} <span class="v" id="cpW">${esc(p.wechat)}</span></span><button type="button" class="copy" data-copy="cpW">${esc(t("copy"))}</button>` : ""}</div>
-      <p class="warn">${esc(t("safety"))}</p>
-      ${myKey ? `<div class="actions"><button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button></div>` : ""}`;
-    $("#viewDlg").showModal();
+      ${hits.length ? `<div class="scam" role="note"><b>${esc(t("scamH"))}</b><p>${esc(t("scamP").replace("{x}", hitText))}</p></div>` : `<p class="warn">${esc(t("safety"))}</p>`}
+      <div class="post-actions">
+        <button type="button" class="btn" id="shareBtn">${esc(t("share"))}</button>
+        <button type="button" class="btn ghost" id="repBtn">${esc(t("report"))}</button>
+        ${myKey ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
+      </div>
+      <div class="manual" id="manualBox" hidden><span>${esc(t("shareManual"))}</span><input readonly value="${esc(url)}" aria-label="${esc(t("pageLink"))}"></div>
+      <div class="reasons" id="repBox" hidden><b>${esc(t("reportH"))}</b>
+        ${HLC.REPORT_REASONS.map(([k, zh, en], i) => `<label><input type="radio" name="rr" value="${k}" ${i === 0 ? "checked" : ""}> ${esc(lang === "zh" ? zh : en)}</label>`).join("")}
+        <button type="button" class="btn" id="repSend">${esc(t("reportSend"))}</button></div>`;
+    const dlg = $("#viewDlg"); if (!dlg.open) dlg.showModal();
+    $("#shareBtn").onclick = async () => {
+      const r = await HLC.share(url, (p.area ? "[" + p.area + "] " : "") + p.title);
+      if (r === "copied") toast(t("linkCopied"));
+      else if (r === "manual") { const box = $("#manualBox"); box.hidden = false; const inp = box.querySelector("input"); inp.focus(); inp.select(); }
+    };
+    $("#repBtn").onclick = () => {
+      if (HLC.reported.get(p.id)) { toast(t("alreadyReported")); return; }
+      $("#repBox").hidden = !$("#repBox").hidden;
+    };
+    $("#repSend").onclick = async () => {
+      const btn = $("#repSend"); btn.disabled = true;
+      const picked = document.querySelector('#repBox input[name="rr"]:checked');
+      try { await HLC.rpc("report_post", { p_id: p.id, p_reason: picked ? picked.value : "other" }); HLC.reported.set(p.id, 1); $("#repBox").hidden = true; toast(t("reported")); }
+      catch (e) { btn.disabled = false; toast(t("reportFail")); }
+    };
     const del = $("#delBtn");
     if (del) del.onclick = async () => {
       if (!del.dataset.sure) { del.dataset.sure = "1"; del.textContent = t("delSure"); del.style.color = "var(--accent)"; return; }
@@ -378,9 +381,10 @@
       const res = await rpc("create_post", d);
       const row = Array.isArray(res) ? res[0] : res;
       if (row && row.id) keys.set(row.id, row.delete_key);
-      $("#postDlg").close(); toast(t("posted"));
+      $("#postDlg").close();
       await loadPosts();
       location.hash = "b-" + d.p_board;
+      if (row && row.id) setTimeout(() => openPost(row.id, { justPosted: true }), 60); else toast(t("posted"));
     } catch (er) {
       const m = String(er.message || "") + String(er.raw || "");
       $("#fErr").textContent = t(/too_many_posts/.test(m) ? "eFlood" : /site_busy/.test(m) ? "eBusy" : "eSave");

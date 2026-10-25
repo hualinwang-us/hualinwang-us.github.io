@@ -1,5 +1,8 @@
 /* 华邻网 settings — edit this file on GitHub to change them. */
 window.HL_CONFIG = {
+  // Public address of the site (used for share links). Change this when you add your own domain.
+  siteUrl: "https://hualinwang-us.github.io/",
+
   // Supabase (free) for classifieds. Fill both to turn on posting.
   supabaseUrl: "https://wkiviznpdcjubyqfovfx.supabase.co",
   supabaseKey: "sb_publishable_IeP_U-Y62FQ02vrENmlmwg_LtZxVL6G",   // the "publishable" / anon key, safe to be public

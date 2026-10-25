@@ -2,7 +2,7 @@ name: Update news and deploy
 
 on:
   schedule:
-    - cron: "17 * * * *"   # every hour (UTC); free on public repos
+    - cron: "17,47 * * * *"   # every 30 minutes (UTC); free on public repos
   push:
     branches: [main]
   workflow_dispatch:
@@ -47,6 +47,8 @@ jobs:
           mkdir -p _site
           cp -r index.html config.js assets data _site/
           touch _site/.nojekyll
+      - name: Build a page for every listing
+        run: node scripts/build-posts.mjs _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
