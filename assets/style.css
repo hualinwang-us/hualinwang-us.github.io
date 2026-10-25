@@ -701,7 +701,7 @@ a.spon.empty:hover{border-color:var(--gold)}
 .stk-disc{margin:8px 0 24px}
 .bh-links{display:flex;gap:14px;align-items:center}
 .stk-link{font-weight:700;color:var(--accent)!important}
-@media (max-width:719px){#stkOverview,#stkHot,#stkChart{height:460px!important}}
+@media (max-width:719px){#stkOverview,#stkHot,#stkChart{height:440px!important}#stkQuotes{height:600px!important}}
 
 /* homepage blocks in the main column */
 .col-main .g-home{margin:0}
