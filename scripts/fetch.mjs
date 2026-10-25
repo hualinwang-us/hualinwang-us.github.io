@@ -524,7 +524,8 @@ async function buildMarket() {
 
 
 /* ---------- official listings: NYC government jobs and affordable-housing lotteries (NYC Open Data, free to reuse) ---------- */
-const BORO_ZH = { manhattan: "曼哈顿", brooklyn: "布鲁克林", queens: "皇后区", bronx: "布朗克斯", "staten island": "史泰登岛" };
+const BORO_ZH = { manhattan: "曼哈顿", brooklyn: "布鲁克林", queens: "皇后区", bronx: "布朗克斯", "staten island": "史泰登岛", mn: "曼哈顿", bk: "布鲁克林", qn: "皇后区", bx: "布朗克斯", si: "史泰登岛" };
+const BORO_EN = { mn: "Manhattan", bk: "Brooklyn", qn: "Queens", bx: "Bronx", si: "Staten Island" };
 const money = n => "$" + Math.round(Number(n) || 0).toLocaleString("en-US");
 async function buildListings() {
   const prev = await readJSON("data/listings.json", { jobs: [], housing: [] });
@@ -536,7 +537,7 @@ async function buildListings() {
     const rows = await get(SODA + "vy5i-a666.json?$limit=2000&$order=lottery_end_date%20DESC", "json");
     const open = rows.filter(r => r.lottery_end_date && r.lottery_end_date.slice(0, 10) >= today).slice(0, 80);
     out.housing = open.map(r => {
-      const boro = (r.borough || "").trim(), bz = BORO_ZH[boro.toLowerCase()] || boro;
+      const b0 = (r.borough || "").trim(), boro = BORO_EN[b0.toLowerCase()] || b0, bz = BORO_ZH[b0.toLowerCase()] || b0;
       const end = r.lottery_end_date.slice(0, 10);
       const units = Number(r.unit_count) || 0;
       const types = [["studio", "开间", "Studio"], ["1bed", "一房", "1 BR"], ["2bed", "两房", "2 BR"], ["3bed", "三房", "3 BR"], ["4bed", "四房以上", "4+ BR"]]
