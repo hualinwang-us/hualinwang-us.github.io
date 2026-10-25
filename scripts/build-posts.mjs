@@ -87,7 +87,43 @@ for (const lg of ["zh", "en"]) for (const [sname, list] of Object.entries((newsD
 }
 console.log(`news pages: ${nn}`);
 
+// Board pages: /b/<board>/ (e.g. 纽约华人招聘) listing the newest listings, plus a hub /b/ — what people find when they search.
+const btpl = await read("board.html");
+const bfill = map => btpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : ""));
+const AREAS_TXT = "法拉盛、布鲁克林日落公园、曼哈顿华埠、艾姆赫斯特、本森赫斯特、长岛";
+const ldList = (name, url, items) => `<script type="application/ld+json">${json({ "@context": "https://schema.org", "@type": "CollectionPage", name, url, isPartOf: { "@type": "WebSite", name: "华邻网", url: BASE },
+  mainEntity: { "@type": "ItemList", itemListElement: items.slice(0, 20).map((p, k) => ({ "@type": "ListItem", position: k + 1, url: `${BASE}p/${p.id}/`, name: p.title })) } })}</script>`;
+const day = iso => String(iso || "").slice(0, 10);
+const boardLastmod = {};
+for (const b of HLC.BOARDS) {
+  const list = posts.filter(p => p.board === b.id).slice(0, 60);
+  const url = `${BASE}b/${b.id}/`;
+  const title = `纽约华人${b.zh} | 法拉盛 布鲁克林 华埠 ${b.zh}信息 - 华邻网`;
+  const desc = `纽约华人${b.zh}信息：${AREAS_TXT}等地区最新${b.zh}，${list.length ? `目前有 ${list.length} 条，` : ""}在华邻网免费发布，邻居们都看得到。`;
+  const rows = list.map(p => `<li><a href="${BASE}p/${p.id}/"><span class="rt">${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</span><span class="rd">${esc(day(p.created_at))}</span></a><p class="pb">${esc(p.body.replace(/\s+/g, " ").slice(0, 80))}${p.body.length > 80 ? "…" : ""}</p></li>`).join("");
+  const others = HLC.BOARDS.filter(x => x.group === b.group && x.id !== b.id).map(x => `<a href="${BASE}b/${x.id}/">${esc(x.zh)}</a>`).join("");
+  const zh = `<article class="guide sb-page"><div class="g-head"><span class="seal md" aria-hidden="true">${esc(b.glyph)}</span><div><h1>纽约华人${esc(b.zh)}</h1><p class="g-sum">${esc(desc)}</p></div></div>
+    ${rows ? `<ul class="sb-list">${rows}</ul>` : `<p class="g-sum">这个板块还没有信息，欢迎免费发布第一条。</p>`}
+    ${others ? `<h2>相关板块</h2><p class="sb-rel">${others}</p>` : ""}<p class="sb-rel"><a href="${BASE}b/">全部分类信息板块 →</a></p></article>`;
+  const en = `<article class="guide"><h1>${esc(b.en)} · New York Chinese community</h1><p class="g-sum">Free listings for the Chinese community in New York. ${list.length} current listings.</p></article>`;
+  await fs.mkdir(`${OUT}/b/${b.id}`, { recursive: true });
+  await fs.writeFile(`${OUT}/b/${b.id}/index.html`, bfill({ TITLE: esc(title), DESC: esc(desc), BASE: esc(BASE), URL: esc(url), GO: esc(`${BASE}#b-${b.id}`), ZH: zh, EN: en, LD: ldList(title, url, list) }));
+  boardLastmod[b.id] = list.length ? day(list[0].created_at) : "";
+}
+{
+  const groups = [...new Set(HLC.BOARDS.map(b => b.group))];
+  const gname = g => ((HLC.GROUPS || []).find(x => x.id === g) || {}).zh || "";
+  const zh = `<article class="guide sb-page"><div class="g-head"><span class="seal md" aria-hidden="true">邻</span><div><h1>纽约华人分类信息</h1><p class="g-sum">招聘请人、房屋出租、房屋买卖、二手买卖、生意转让、生活服务……纽约华人免费发布，${AREAS_TXT}的邻居都看得到。</p></div></div>
+    ${groups.map(g => `<h2>${esc(gname(g))}</h2><p class="sb-rel">${HLC.BOARDS.filter(b => b.group === g).map(b => `<a href="${BASE}b/${b.id}/">${esc(b.zh)}</a>`).join("")}</p>`).join("")}</article>`;
+  const title = "纽约华人分类信息大全 | 招聘 租房 买卖 生意转让 - 华邻网";
+  await fs.mkdir(`${OUT}/b`, { recursive: true });
+  await fs.writeFile(`${OUT}/b/index.html`, bfill({ TITLE: esc(title), DESC: esc("纽约华人免费分类信息：招聘请人、餐馆请人、房屋出租、房屋买卖、二手买卖、生意转让、搬家装修等，在华邻网免费发布。"), BASE: esc(BASE), URL: esc(`${BASE}b/`), GO: esc(BASE), ZH: zh, EN: `<article class="guide"><h1>New York Chinese community classifieds</h1></article>`, LD: ldList(title, `${BASE}b/`, posts) }));
+}
+console.log(`board pages: ${HLC.BOARDS.length}`);
+
 const urls = [`<url><loc>${BASE}</loc><changefreq>hourly</changefreq></url>`]
+  .concat([`<url><loc>${BASE}b/</loc><changefreq>hourly</changefreq></url>`])
+  .concat(HLC.BOARDS.map(b => `<url><loc>${BASE}b/${b.id}/</loc>${boardLastmod[b.id] ? `<lastmod>${boardLastmod[b.id]}</lastmod>` : ""}<changefreq>hourly</changefreq></url>`))
   .concat((guides.guides || []).map(g => `<url><loc>${BASE}g/${g.id}/</loc><lastmod>${g.verified || ""}</lastmod></url>`))
   .concat(posts.map(p => `<url><loc>${BASE}p/${p.id}/</loc><lastmod>${String(p.created_at).slice(0, 10)}</lastmod></url>`));
 await fs.writeFile(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);

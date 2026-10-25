@@ -974,3 +974,13 @@ footer,.foot{background:#171b26;color:#cfc8bb}
 .foot-links a{color:#e0c58f;font-size:13px}
 .foot-links a:hover{text-decoration:underline;text-underline-offset:3px}
 .foot-copy{margin:0;color:#a9a294;font-size:12.5px;letter-spacing:.04em}
+
+/* static board pages (/b/...) */
+.sb-list{list-style:none;margin:14px 0;padding:0}
+.sb-list li{padding:12px 0;border-bottom:1px solid var(--line-2)}
+.sb-list a{display:flex;justify-content:space-between;gap:12px;color:var(--ink);font-weight:600}
+.sb-list a:hover .rt{color:var(--accent)}
+.sb-list .rd{flex:none;color:var(--muted);font-weight:400;font-size:13px}
+.sb-list .pb{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+.sb-rel{display:flex;flex-wrap:wrap;gap:8px 16px}
+.sb-rel a{color:var(--link)}
