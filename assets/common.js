@@ -31,8 +31,10 @@
       ["beauty", "美", "美容美发", "Beauty & Hair"]] },
     { id: "life", zh: "教育社区", en: "Education & Community", boards: [
       ["edu", "教", "补习培训", "Tutoring & Classes"], ["kids", "托", "托儿老人", "Childcare & Seniors"],
-      ["events", "会", "社区活动", "Community Events"], ["dating", "友", "同城交友", "Meet Locals"], ["travel", "旅", "旅游机票", "Travel"],
-      ["other", "杂", "其他", "Other"]] }
+      ["events", "会", "社区活动", "Community Events"], ["travel", "旅", "旅游机票", "Travel"],
+      ["other", "杂", "其他", "Other"]] },
+    { id: "social", zh: "同城交友", en: "Meet Locals", boards: [
+      ["dating", "友", "同城交友", "Meet Locals"]] }
   ];
   const BOARDS = [];
   GROUPS.forEach(g => g.boards.forEach(([id, glyph, zh, en]) => BOARDS.push({ id, glyph, zh, en, group: g.id })));

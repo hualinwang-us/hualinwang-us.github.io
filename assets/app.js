@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", fImg: "图片（选填，最多4张）", fImgAdd: "加图片", imgUp: "正在上传图片…", imgFail: "信息已发布，但图片没传上去，请稍后再试。", recPosts: "最新分类信息", recSame: "{b}最新信息", recNews: "推荐阅读", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", areaPick: "请选择地区", areaOther: "其他地区（自己填写）", areaOtherPh: "请填写地区", eArea: "请选择地区。", fImg: "图片（选填，最多4张）", fImgAdd: "加图片", imgUp: "正在上传图片…", imgFail: "信息已发布，但图片没传上去，请稍后再试。", recPosts: "最新分类信息", recSame: "{b}最新信息", recNews: "推荐阅读", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
       flyerH: "免费发布招聘 · 租房 · 二手 · 商家优惠", flyerSub: "纽约华人自己的分类信息网站", flyerPts: ["不用注册，一分钟发好", "可转发到微信，亲友都能看到", "每天还有华人新闻、福利指南、本周免费和打折"], flyerScan: "手机扫码立即发布", flyerDai: "不会打字？拍照发短信到 {p}，我们免费帮你发", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
       appIosH: "安装到 iPhone 桌面", appIosSteps: ["用 Safari 浏览器打开本站（微信里请先点右上角 ··· 选“在浏览器打开”）", "点屏幕下方的“分享”按钮（方框加向上箭头）", "往下滑，点“添加到主屏幕”", "点右上角“添加”，桌面上就有华邻网的图标了"],
       appWxH: "请先在浏览器打开", appWxSteps: ["点右上角 ··· ", "选择“在浏览器打开”（安卓）或“在 Safari 中打开”（iPhone）", "打开后再点“安装App”"],
@@ -113,7 +113,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", fImg: "Photos (optional, up to 4)", fImgAdd: "Add photos", imgUp: "Uploading photos…", imgFail: "Posted, but the photos didn't upload. Please try again later.", recPosts: "Latest listings", recSame: "Latest in {b}", recNews: "Recommended", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", areaPick: "Choose an area", areaOther: "Other (type it in)", areaOtherPh: "Type the area", eArea: "Please choose an area.", fImg: "Photos (optional, up to 4)", fImgAdd: "Add photos", imgUp: "Uploading photos…", imgFail: "Posted, but the photos didn't upload. Please try again later.", recPosts: "Latest listings", recSame: "Latest in {b}", recNews: "Recommended", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
       flyerH: "Post jobs, rentals, buy & sell, deals: free", flyerSub: "Classifieds for Chinese New Yorkers", flyerPts: ["No sign-up, done in a minute", "Share to WeChat", "Daily news, benefits guides and deals too"], flyerScan: "Scan to post now", flyerDai: "Text a photo to {p} and we'll post it for you", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
       appIosH: "Add to iPhone home screen", appIosSteps: ["Open this site in Safari (in WeChat, tap ··· and choose Open in Safari)", "Tap the Share button at the bottom (square with an arrow)", "Scroll down and tap \"Add to Home Screen\"", "Tap \"Add\" at the top right"],
       appWxH: "Open in your browser first", appWxSteps: ["Tap ··· at the top right", "Choose Open in Browser / Open in Safari", "Then tap \"Get the app\""],
@@ -235,7 +235,7 @@
       { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div></div>` }
     ];
     for (const g of GROUPS) items.push({ h: "b-" + g.boards[0][0], label: lang === "zh" ? g.zh : g.en, group: g.id,
-      menu: () => `<div class="mm-cols"><div>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}<button type="button" class="mm-cta linkbtn" data-postto="${g.boards[0][0]}">${esc(t("postFree"))} →</button></div></div>` });
+      menu: g.boards.length < 2 ? null : () => `<div class="mm-cols"><div>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}<button type="button" class="mm-cta linkbtn" data-postto="${g.boards[0][0]}">${esc(t("postFree"))} →</button></div></div>` });
     return items;
   }
   function renderTabs() {
@@ -911,9 +911,66 @@
     $("#postForm").reset(); $("#fErr").textContent = "";
     $("#postOff").hidden = POSTS_ON; $("#postFields").hidden = !POSTS_ON;
     $("#fBoard").value = board || (route.view === "board" ? route.board : "jobs");
+    renderAreaSel(); $("#fArea").hidden = true; boardExamples();
     $("#postDlg").showModal();
     if (POSTS_ON) setTimeout(() => $("#fTitle").focus(), 30);
   }
+  /* ---------- post form: area list and examples that fit each board ---------- */
+  // Areas ordered roughly by size of the Chinese community, largest first.
+  const AREAS = [
+    ["法拉盛", "Flushing"], ["布鲁克林八大道 / 日落公园", "Brooklyn Sunset Park / 8th Ave"], ["布鲁克林 86街 / 本森赫斯特", "Brooklyn 86th St / Bensonhurst"],
+    ["曼哈顿华埠", "Manhattan Chinatown"], ["艾姆赫斯特", "Elmhurst"], ["布鲁克林 U大道 / 羊头湾", "Brooklyn Ave U / Sheepshead Bay"],
+    ["贝赛 / 白石 / 大颈", "Bayside / Whitestone / Great Neck"], ["新鲜草原 / 佛洛帕兰", "Fresh Meadows / Flushing south"],
+    ["森林小丘 / 雷哥公园", "Forest Hills / Rego Park"], ["可乐娜 / 杰克逊高地", "Corona / Jackson Heights"], ["布鲁克林湾脊 / 戴克高地", "Bay Ridge / Dyker Heights"],
+    ["皇后区其他", "Queens (other)"], ["布鲁克林其他", "Brooklyn (other)"], ["曼哈顿其他", "Manhattan (other)"], ["史泰登岛", "Staten Island"], ["布朗克斯", "Bronx"],
+    ["长岛", "Long Island"], ["新泽西", "New Jersey"], ["威郡 / 纽约上州", "Westchester / Upstate"], ["网上 / 不限地区", "Online / anywhere"]
+  ];
+  const EX = {
+    jobs: ["如：法拉盛日料店请寿司师傅，包吃住", "工资、工作时间、要求、是否包吃住、联系时间"],
+    rest: ["如：布鲁克林外卖店请炒锅、打杂，周薪面议", "职位、周薪、上班天数、是否包住、有无车接送"],
+    salon: ["如：长岛美甲店请熟手，底薪加提成", "职位、底薪/提成、要不要牌照、上班天数、接送"],
+    seek: ["如：女，45岁，找保姆或住家工作，有经验", "年龄、经验、会的技能、可工作时间、希望地区"],
+    rent: ["如：法拉盛 Main St 附近一房一厅出租，$1,800", "租金、几房几厅、包不包水电、入住时间、近哪个车站"],
+    share: ["如：艾姆赫斯特近地铁单人房出租，限女生", "房间大小、租金、合租几人、要求（性别/不抽烟等）、入住时间"],
+    house: ["如：贝赛独立屋出售，三房两卫带车库", "价格、房型、面积、年份、学区、看房时间"],
+    shop: ["如：八大道临街店面出租，适合餐馆", "面积、租金、适合行业、租约年限、看铺时间"],
+    biz: ["如：法拉盛奶茶店转让，生意稳定", "转让价、月营业额、房租、租约剩余、转让原因"],
+    sale: ["如：九成新沙发低价出售，$150，自取", "物品、新旧程度、价格、取货地点"],
+    car: ["如：2019 丰田凯美瑞，4万英里，$18,000", "年份、里程、车况、价格、看车地点"],
+    furn: ["如：搬家出售餐桌、床架、冰箱", "物品清单、价格、新旧程度、取货时间"],
+    deals: ["如：法拉盛XX超市本周特价，猪肉 $1.99/磅", "特价商品和价格、活动时间、店铺地址"],
+    move: ["如：搬家、长途搬运，价格公道，有保险", "服务范围、价格、车辆大小、可预约时间"],
+    reno: ["如：装修厨房浴室、油漆、铺地板，持牌", "服务项目、是否持牌、报价方式、服务地区"],
+    clean: ["如：家庭清洁、开荒清洁，按小时收费", "服务内容、价格、可预约时间、服务地区"],
+    nanny: ["如：月嫂，有证书，经验丰富", "经验、证书、服务内容、价格、可上户时间"],
+    law: ["如：移民律师，绿卡、入籍、庇护咨询", "专业领域、收费方式、办公地址、语言"],
+    tax: ["如：报税、会计记账、公司注册", "服务项目、收费、办公地址、营业时间"],
+    edu: ["如：小学数学一对一补习，周末上课", "科目、年级、上课方式、收费、上课时间"],
+    kids: ["如：家庭托儿，有执照，接送上下学", "年龄范围、时间、收费、地点、是否有执照"],
+    events: ["如：本周六法拉盛图书馆免费健康讲座", "时间、地点、内容、是否收费、如何报名"],
+    dating: ["如：35岁男，在纽约工作，想认识聊得来的朋友", "简单介绍自己、兴趣爱好、希望认识什么样的人（不要写身份证、住址等隐私）"],
+    ship: ["如：中美快递、海运，上门取件", "服务路线、价格、时效、取件方式"],
+    sign: ["如：印刷名片、招牌制作，当天取货", "服务项目、价格、交货时间、地址"],
+    loan: ["如：房屋贷款、汽车保险，中文服务", "产品类型、服务地区、是否持牌、联系方式"],
+    realtor: ["如：持牌地产经纪，买房卖房免费咨询", "服务地区、专长、执照号码、联系时间"],
+    drive: ["如：驾校教车，中文教练，包考路考", "课程、价格、上课地点、可约时间"],
+    clinic: ["如：家庭医生诊所，接受白卡和医保", "科别、接受哪些保险、地址、营业时间"],
+    tcm: ["如：中医针灸推拿，接受保险", "服务项目、收费、是否接受保险、地址"],
+    beauty: ["如：美发店剪发烫染，新客八折", "服务项目、价格、优惠、地址、营业时间"],
+    other: ["如：请写清楚你要发布的内容", "详细说明、价格或要求、联系时间"],
+    travel: ["如：12月回国机票，纽约—上海，往返 $1,200", "行程、日期、价格、包含内容"]
+  };
+  function renderAreaSel() {
+    const zh = lang === "zh";
+    $("#fAreaSel").innerHTML = `<option value="">${esc(t("areaPick"))}</option>` + AREAS.map(([z, e]) => `<option value="${esc(z)}">${esc(zh ? z : e)}</option>`).join("") + `<option value="__other">${esc(t("areaOther"))}</option>`;
+  }
+  function boardExamples() {
+    const ex = EX[$("#fBoard").value];
+    $("#fTitle").placeholder = ex ? (lang === "zh" ? ex[0] : t("titlePh")) : t("titlePh");
+    $("#fBody").placeholder = ex ? (lang === "zh" ? ex[1] : t("bodyPh")) : t("bodyPh");
+  }
+  $("#fBoard").addEventListener("change", boardExamples);
+  $("#fAreaSel").addEventListener("change", () => { const o = $("#fAreaSel").value === "__other"; $("#fArea").hidden = !o; if (o) $("#fArea").focus(); });
   /* ---------- listing photos: shrunk in the browser, uploaded to Supabase Storage ---------- */
   let picked = [];
   function showPicked() {
@@ -956,7 +1013,9 @@
     if (!POSTS_ON) return;
     const v = id => $(id).value.trim();
     if (v("#fSite")) { $("#postDlg").close(); return; } // honeypot
-    const d = { p_board: v("#fBoard"), p_title: v("#fTitle"), p_body: v("#fBody"), p_area: v("#fArea"), p_contact: v("#fName"), p_phone: v("#fPhone"), p_wechat: v("#fWx") };
+    const areaSel = $("#fAreaSel").value;
+    if (!areaSel || (areaSel === "__other" && !v("#fArea"))) { $("#fErr").textContent = t("eArea"); return; }
+    const d = { p_board: v("#fBoard"), p_title: v("#fTitle"), p_body: v("#fBody"), p_area: areaSel === "__other" ? v("#fArea") : areaSel, p_contact: v("#fName"), p_phone: v("#fPhone"), p_wechat: v("#fWx") };
     const err = d.p_title.length < 2 ? "eTitle" : d.p_body.length < 2 ? "eBody" : (!d.p_phone && !d.p_wechat) ? "eContact" : HLC.BANNED.test(d.p_title + " " + d.p_body) ? "eBanned" : null;
     if (err) { $("#fErr").textContent = t(err); return; }
     const btn = $("#fSubmit"); btn.disabled = true; btn.textContent = t("posting");
