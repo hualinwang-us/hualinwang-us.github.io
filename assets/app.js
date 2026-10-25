@@ -358,6 +358,7 @@
     }
     if (route.view === "check") restoreCheck();
   }
+  $("#gShareTop").onclick = () => $("#gShare").click();
   $("#gShare").onclick = () => {
     const g = guides && guides.guides.find(x => x.id === route.id); if (!g) return;
     HLShare.open({ url: HLC.siteBase() + "g/" + g.id + "/", title: HLG.L(g.title, lang) + " - 华邻网", text: HLG.L(g.title, lang) + " - 华邻网生活指南" });

@@ -409,3 +409,12 @@ body.noscroll{overflow:hidden}
 .fab-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.25);font-size:13px;line-height:1}
 body.noscroll .fab-share{display:none}
 .foot{padding-bottom:70px}
+
+/* guide steps */
+.g-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.g-steps li{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:15.5px;line-height:1.75}
+.g-stepn{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--accent);border-radius:999px;padding:1px 10px}
+.g-tips{padding:14px 16px;border-radius:8px;background:#eef8f1;border:1px solid #cfe9d8}
+.g-tips h2{border:0!important;padding:0!important;color:#1a7f3c}
+@media (prefers-color-scheme:dark){.g-tips{background:#122a1c;border-color:#1f4a31}.g-tips h2{color:#7fd39a}}
+.guide .g-list{font-size:15px;line-height:1.75}

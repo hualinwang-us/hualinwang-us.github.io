@@ -9,11 +9,11 @@
   const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
 
   const UI = {
-    zh: { who: "谁能申请", docs: "需要准备的材料", how: "怎么申请", contacts: "电话与网址", myths: "常见误区", news: "最新变化",
+    zh: { who: "谁能申请", docs: "需要准备的材料", how: "怎么申请（一步一步来）", after: "申请之后会怎样", tips: "小贴士", step: "第{n}步", contacts: "电话与网址", myths: "常见误区", news: "最新变化",
       sources: "官方资料来源", verified: "本文核实于", changed: "官方页面在 {d} 有更新，本文内容可能需要复核，请以官方网站为准。",
       disclaimer: "本指南为一般信息，不是法律或专业意见。各项规定经常调整，申请前请以官方网站或工作人员的说明为准。",
       notice: "重要提示：本指南仅供一般参考，不构成法律、移民或其他专业意见。规定可能已经改变，申请前请向官方机构确认。", noticeLink: "免责声明", share: "分享到微信", all: "全部指南", back: "← 返回指南目录", phone: "电话", web: "网站", chinese: "有中文服务" },
-    en: { who: "Who can apply", docs: "Documents to prepare", how: "How to apply", contacts: "Phone & websites", myths: "Common mistakes", news: "What changed recently",
+    en: { who: "Who can apply", docs: "Documents to prepare", how: "How to apply, step by step", after: "After you apply", tips: "Tips", step: "Step {n}", contacts: "Phone & websites", myths: "Common mistakes", news: "What changed recently",
       sources: "Official sources", verified: "Checked on", changed: "The official page changed on {d}. This guide may need review; the official site is the final word.",
       disclaimer: "This guide is general information, not legal or professional advice. Rules change often; confirm with the official website or agency staff before applying.",
       notice: "Important: this guide is general information, not legal, immigration or other professional advice. Rules may have changed; confirm with the agency before applying.", noticeLink: "Disclaimer", share: "Share", all: "All guides", back: "← Back to guides", phone: "Phone", web: "Website", chinese: "Chinese available" }
@@ -37,8 +37,10 @@
       ${changed ? `<div class="g-alert">${esc(u.changed.replace("{d}", changed))}</div>` : ""}
       ${LA(g.news, lang).length ? `<section class="g-news"><h2>${esc(u.news)}</h2>${list(LA(g.news, lang))}</section>` : ""}
       ${LA(g.who, lang).length ? `<section><h2>${esc(u.who)}</h2>${list(LA(g.who, lang))}</section>` : ""}
-      ${LA(g.how, lang).length ? `<section><h2>${esc(u.how)}</h2>${list(LA(g.how, lang), true)}</section>` : ""}
+      ${LA(g.how, lang).length ? `<section><h2>${esc(u.how)}</h2><ol class="g-steps">${LA(g.how, lang).map((x, k) => `<li><span class="g-stepn">${esc(u.step.replace("{n}", k + 1))}</span><span>${rich(x)}</span></li>`).join("")}</ol></section>` : ""}
       ${LA(g.docs, lang).length ? `<section><h2>${esc(u.docs)}</h2>${list(LA(g.docs, lang))}</section>` : ""}
+      ${LA(g.after, lang).length ? `<section><h2>${esc(u.after)}</h2>${list(LA(g.after, lang))}</section>` : ""}
+      ${LA(g.tips, lang).length ? `<section class="g-tips"><h2>${esc(u.tips)}</h2>${list(LA(g.tips, lang))}</section>` : ""}
       ${contacts ? `<section><h2>${esc(u.contacts)}</h2><ul class="g-contacts">${contacts}</ul></section>` : ""}
       ${LA(g.myths, lang).length ? `<section class="g-myths"><h2>${esc(u.myths)}</h2>${list(LA(g.myths, lang))}</section>` : ""}
       ${(g.sources || []).length ? `<section class="g-src"><h2>${esc(u.sources)}</h2><ul>${g.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(L(s.name, lang) || s.url)}</a></li>`).join("")}</ul></section>` : ""}
