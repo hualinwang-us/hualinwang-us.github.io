@@ -12,7 +12,7 @@ window.HL_CONFIG = {
   loginGoogle: false,
 
   // Optional: an email address raises the free translation allowance from about 5,000 to 50,000 characters a day.
-  translateEmail: "",
+  translateEmail: "huamai.us@gmail.com",
 
   // Shown on empty ad spaces and in the footer so businesses can reach you.
   adContact: { phone: "", wechat: "", email: "" }
