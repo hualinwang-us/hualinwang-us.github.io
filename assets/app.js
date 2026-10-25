@@ -19,7 +19,7 @@
       ckIncomeHint: "包括工资、生意收入、社安金、退休金等；没有收入填 0", ckStatus: "5. 你的身份", st_citizen: "美国公民", st_lpr5: "绿卡满 5 年",
       st_lpr: "绿卡未满 5 年", st_refugee: "难民 / 庇护已批准", st_other: "其他合法身份（工作签、学生签、申请中等）", st_none: "暂时没有合法身份",
       ckFlags: "6. 家里有以下情况吗？（可多选）", fl_preg: "孕妇或 5 岁以下孩子", fl_kids: "18 岁以下孩子", fl_dis: "有人残障", fl_rent: "租房住",
-      fl_reg: "住在租金稳定（rent-stabilized）公寓", ckGo: "看结果", ckLikely: "很可能符合", ckMaybe: "可能符合，要看身份细节",
+      fl_reg: "住在租金稳定（rent-stabilized）公寓", ckGo: "看结果", ckLikely: "很可能符合", ckMaybe: "可能符合，要看具体情况", ckInfo: "建议了解",
       ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
       ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
       gLoading: "指南载入中…",
@@ -61,7 +61,7 @@
       ckIncomeHint: "Wages, business income, Social Security, pensions, etc. Enter 0 if none.", ckStatus: "5. Your immigration status", st_citizen: "U.S. citizen", st_lpr5: "Green card, 5+ years",
       st_lpr: "Green card, under 5 years", st_refugee: "Refugee / asylum granted", st_other: "Other lawful status (work or student visa, pending case, etc.)", st_none: "No lawful status right now",
       ckFlags: "6. Does your household include… (check all that apply)", fl_preg: "Someone pregnant or a child under 5", fl_kids: "Children under 18", fl_dis: "Someone with a disability", fl_rent: "We rent our home",
-      fl_reg: "We live in a rent-stabilized apartment", ckGo: "See results", ckLikely: "Likely eligible", ckMaybe: "Possibly, depends on status details",
+      fl_reg: "We live in a rent-stabilized apartment", ckGo: "See results", ckLikely: "Likely eligible", ckMaybe: "Possibly, depends on details", ckInfo: "Worth reading",
       ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
       ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
       gLoading: "Loading guides…",
@@ -371,7 +371,7 @@
     const r = HLG.evaluate(guides, a);
     const money = Math.round(r.yearly).toLocaleString("en-US");
     const head = r.pct != null ? `<p class="ck-sum">${esc(t("ckSum").replace("{y}", money).replace("{p}", r.pct))}</p>` : "";
-    const rows = r.results.map(x => `<li><a href="#g-${esc(x.g.id)}"><span class="seal sm" aria-hidden="true">${esc(x.g.glyph || "指")}</span><span><b>${esc(HLG.L(x.g.title, lang))}</b><small>${esc(HLG.L(x.g.short || x.g.summary, lang))}</small></span><em class="lv ${x.level}">${esc(t(x.level === "likely" ? "ckLikely" : "ckMaybe"))}</em></a></li>`).join("");
+    const rows = r.results.map(x => `<li><a href="#g-${esc(x.g.id)}"><span class="seal sm" aria-hidden="true">${esc(x.g.glyph || "指")}</span><span><b>${esc(HLG.L(x.g.title, lang))}</b><small>${esc(HLG.L(x.g.short || x.g.summary, lang))}</small></span><em class="lv ${x.level}">${esc(t(x.level === "likely" ? "ckLikely" : x.level === "maybe" ? "ckMaybe" : "ckInfo"))}</em></a></li>`).join("");
     $("#ckOut").innerHTML = `<section class="ck-res">${head}${rows ? `<h2>${esc(t("ckHeads"))}</h2><ul>${rows}</ul>` : `<p>${esc(t("ckNone"))}</p>`}<p class="g-fine">${esc(t("ckFoot"))}</p></section>`;
     $("#ckOut").scrollIntoView({ block: "start", behavior: "smooth" });
   }

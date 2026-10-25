@@ -1,0 +1,2260 @@
+{
+ "updated": "2026-10-24",
+ "state": "NY",
+ "fpl": {
+  "year": 2026,
+  "table": [
+   15960,
+   21640,
+   27320,
+   33000,
+   38680,
+   44360,
+   50040,
+   55720
+  ],
+  "add": 5500
+ },
+ "ami80": [
+  95040,
+  108560,
+  122160,
+  135680,
+  146560,
+  157440
+ ],
+ "ami130": [
+  154440,
+  176410,
+  198510,
+  220480,
+  238160,
+  255840
+ ],
+ "groups": [
+  {
+   "id": "status",
+   "zh": "移民身份",
+   "en": "Immigration status"
+  },
+  {
+   "id": "health",
+   "zh": "医疗保险",
+   "en": "Health coverage"
+  },
+  {
+   "id": "food",
+   "zh": "食物与生活补助",
+   "en": "Food and money"
+  },
+  {
+   "id": "housing",
+   "zh": "住房与租房",
+   "en": "Housing"
+  },
+  {
+   "id": "senior",
+   "zh": "老人服务",
+   "en": "Seniors"
+  },
+  {
+   "id": "family",
+   "zh": "家庭与日常",
+   "en": "Family and daily life"
+  }
+ ],
+ "guides": [
+  {
+   "id": "public-charge",
+   "group": "status",
+   "glyph": "负",
+   "title": {
+    "zh": "公共负担：领福利会影响绿卡吗？（2026年新规）",
+    "en": "Public charge: will benefits affect my green card? (2026 rule)"
+   },
+   "short": {
+    "zh": "2026年9月18日起规定改变，申请绿卡前必读",
+    "en": "Rules changed Sept 18, 2026: read before applying for a green card"
+   },
+   "summary": {
+    "zh": "“公共负担”是移民局审查**绿卡申请**时，判断申请人将来会不会依赖政府福利的标准。**2026 年 9 月 18 日起规定改变了**：旧规只看现金补助和长期护理，新规下白卡、粮食券、WIC、公屋等以收入审核的福利都**可能**被考虑。但很多人**根本不受公共负担影响**，先看下面谁不受影响。",
+    "en": "\"Public charge\" is the test immigration officers use on **green card applications** to judge whether someone may depend on government benefits. **It changed on September 18, 2026**: the old rule counted only cash aid and long-term care; under the new approach, means-tested benefits such as Medicaid, SNAP, WIC and public housing **may** be considered. But many people **aren't subject to public charge at all**; check below first."
+   },
+   "news": {
+    "zh": [
+     "2026 年 7 月 20 日联邦公布最终规定，**废除 2022 年的规则**，改由移民官员**综合个案判断**，没有固定清单。",
+     "**2026 年 9 月 18 日或之后**递交的绿卡申请适用新标准；之前递交的仍按旧规。",
+     "**9 月 18 日以前领取的福利**，仍按旧规判断：只有现金补助（SSI、TANF 等）和长期护理才算。",
+     "纽约州联合 21 个州和华盛顿特区、纽约市等城市已经起诉，目前法院尚未阻止新规。"
+    ],
+    "en": [
+     "A final rule published July 20, 2026 **rescinded the 2022 rule**; officers now decide **case by case** with no fixed list.",
+     "Green card applications filed **on or after Sept 18, 2026** use the new standard; earlier filings use the old rule.",
+     "**Benefits received before Sept 18, 2026** are still judged under the old rule: only cash aid (SSI, TANF, etc.) and long-term care count.",
+     "New York, 21 other states, DC, NYC and other cities have sued; no court had blocked the rule as of this writing."
+    ]
+   },
+   "who": {
+    "zh": [
+     "**不受公共负担影响的人**：已经有绿卡、申请入籍（入籍不审查公共负担）、难民、庇护者、SIJ 少年、T 签证和 U 签证持有人、VAWA 自我申请者等",
+     "**主要受影响**：通过亲属移民或其他途径**正在或准备申请绿卡**的人",
+     "**一般不算福利**：社安退休金、政府退休金、失业金、退伍军人福利等非收入审核的项目",
+     "家人（例如美国出生的孩子）领福利会不会被算进去，目前还不清楚"
+    ],
+    "en": [
+     "**Not subject to public charge**: people who already have a green card, naturalization applicants, refugees, asylees, SIJ youth, T and U visa holders, VAWA self-petitioners and others",
+     "**Mainly affected**: people **applying or planning to apply for a green card** through family or other routes",
+     "**Not counted**: Social Security, government pensions, unemployment insurance, veterans' benefits and other non-means-tested benefits",
+     "Whether benefits used by family members (e.g., U.S.-citizen children) count is not yet clear"
+    ]
+   },
+   "how": {
+    "zh": [
+     "**先判断自己属不属于受影响的人**；已有绿卡准备入籍的，不受影响",
+     "准备申请绿卡、又需要或正在领福利的，**先打免费移民法律热线咨询**，不要自己贸然退掉孩子的保险或食物补助",
+     "急诊、疫苗、学校午餐等基本保障，不要因为害怕而放弃"
+    ],
+    "en": [
+     "**First check whether you're affected**; green card holders applying for citizenship are not",
+     "If you're applying for a green card and use or need benefits, **call a free immigration legal hotline first**; don't cancel your children's coverage or food help on your own",
+     "Don't skip emergency care, vaccines or school meals out of fear"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "纽约州新美国人热线（免费、匿名，有中文）",
+      "en": "NYS New Americans Hotline (free, anonymous)"
+     },
+     "phone": "1-800-566-7636"
+    },
+    {
+     "label": {
+      "zh": "纽约市移民法律支援热线（有中文）",
+      "en": "NYC Immigration Legal Support Hotline"
+     },
+     "phone": "800-354-0365",
+     "chinese": true
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“领了福利就不能入籍”：入籍不审查公共负担",
+     "“有绿卡的人领福利会被取消绿卡”：公共负担审查的是申请绿卡的人，已有绿卡者一般不受影响",
+     "“新规公布后以前领的都算”：9 月 18 日前领的按旧规，只有现金补助和长期护理算"
+    ],
+    "en": [
+     "\"Benefits block citizenship\": naturalization has no public charge test",
+     "\"Green card holders lose their cards for using benefits\": the test applies to green card applicants, not people who already have one",
+     "\"Everything I used before counts now\": benefits before Sept 18, 2026 are judged under the old rule"
+    ]
+   },
+   "sources": [
+    {
+     "name": "联邦公报：公共负担最终规定（2026-07-20）",
+     "url": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility"
+    },
+    {
+     "name": "CLINIC：新公共负担规定",
+     "url": "https://www.cliniclegal.org/resources/ground-inadmissibility-and-deportability/public-charge/new-public-charge-rule-file"
+    }
+   ],
+   "watch": [
+    "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "naturalization",
+   "group": "status",
+   "glyph": "籍",
+   "title": {
+    "zh": "申请入籍（N-400）",
+    "en": "Becoming a U.S. citizen (N-400)"
+   },
+   "short": {
+    "zh": "绿卡满5年（配偶3年）可申请；费用可能大涨",
+    "en": "Green card 5 years (3 if married to a citizen); fees may rise sharply"
+   },
+   "summary": {
+    "zh": "持绿卡满 **5 年**（与美国公民结婚并同住满 **3 年**）就可以申请入籍，可提前 90 天递交。入籍后可以投票、为父母子女申请绿卡、拿美国护照。**移民局已提议大幅提高入籍费并取消减费**，打算申请的人值得早做准备。",
+    "en": "After **5 years** with a green card (**3 years** if married to and living with a U.S. citizen) you can apply for citizenship, up to 90 days early. Citizens can vote, sponsor parents and children, and get a U.S. passport. **USCIS has proposed a big fee increase and ending reduced fees**, so plan ahead."
+   },
+   "news": {
+    "zh": [
+     "**费用提案（尚未定案）**：入籍费拟提高到网上 $1,280、纸本 $1,330，并**取消减费和免费申请**。",
+     "**新公民考试**：2025 年 10 月 20 日或之后递交的申请，用新版考试：从 128 题中考 20 题，答对 12 题及格。",
+     "2026 年第二季度入籍批准数大跌，排队案件增加，审理可能变慢。"
+    ],
+    "en": [
+     "**Fee proposal (not final)**: $1,280 online and $1,330 on paper, **ending reduced fees and fee waivers**.",
+     "**New civics test**: applications filed on or after Oct 20, 2025 take the 2025 test: 20 questions from 128, 12 correct to pass.",
+     "Approvals dropped sharply in spring 2026 and backlogs grew, so processing may be slower."
+    ]
+   },
+   "who": {
+    "zh": [
+     "18 岁以上",
+     "绿卡满 5 年；或与公民结婚同住满 3 年",
+     "过去 5 年内在美国住满 30 个月（3 年途径为 18 个月）",
+     "出境 1 年以上会中断连续居住；6–12 个月可能被认为中断",
+     "递交前在本州住满 3 个月",
+     "**英文考试豁免**：50 岁以上且绿卡满 20 年，或 55 岁以上且满 15 年，可以免考英文；65 岁以上且满 20 年，公民考试题目更少，可用母语"
+    ],
+    "en": [
+     "Age 18+",
+     "Green card 5 years, or 3 years married to and living with a citizen",
+     "Physically present 30 months of the last 5 years (18 of 3)",
+     "A trip of 1 year+ breaks continuous residence; 6–12 months may",
+     "3 months in your state before filing",
+     "**English exemptions**: 50+ with 20 years as a green card holder, or 55+ with 15 years; 65+ with 20 years gets a shorter civics test in their own language"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上 USCIS 网站建立账户，网上递交 N-400（网上比纸本便宜）",
+     "目前费用：网上 $710、纸本 $760；家庭收入在贫困线 150–400% 可申请减费 $380（以 USCIS 官网为准）",
+     "**2025 年 10 月 28 日起移民局不收支票和汇票**，要用信用卡或银行转账",
+     "按通知去打指纹、面试，通过后参加宣誓"
+    ],
+    "en": [
+     "Create a USCIS online account and file N-400 online (cheaper than paper)",
+     "Current fee: $710 online, $760 paper; $380 reduced fee for income 150–400% of poverty (confirm on uscis.gov)",
+     "**Since Oct 28, 2025 USCIS doesn't accept checks or money orders**; pay by card or bank debit",
+     "Attend biometrics and interview, then the oath ceremony"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "绿卡正反面",
+     "过去 5 年的出入境记录",
+     "婚姻证明（3 年途径）",
+     "报税记录，如有逮捕或法庭记录要准备文件"
+    ],
+    "en": [
+     "Green card (both sides)",
+     "Travel history for 5 years",
+     "Marriage proof (3-year route)",
+     "Tax records; court records if you were ever arrested"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "USCIS 客服",
+      "en": "USCIS Contact Center"
+     },
+     "phone": "1-800-375-5283",
+     "url": "https://www.uscis.gov/n-400"
+    },
+    {
+     "label": {
+      "zh": "免费入籍协助：ActionNYC",
+      "en": "Free help: ActionNYC"
+     },
+     "phone": "311"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“领过福利不能入籍”：入籍不审查公共负担",
+     "“找中介比律师好”：只有律师或司法部认可代表才能代理，中介只能填表翻译"
+    ],
+    "en": [
+     "\"Benefits block citizenship\": naturalization has no public charge test",
+     "\"A notario is as good as a lawyer\": only lawyers or DOJ-accredited representatives may represent you"
+    ]
+   },
+   "sources": [
+    {
+     "name": "USCIS N-400 说明",
+     "url": "https://www.uscis.gov/sites/default/files/files/form/n-400instr.pdf"
+    },
+    {
+     "name": "USCIS 费用表 G-1055",
+     "url": "https://www.uscis.gov/g-1055"
+    },
+    {
+     "name": "AILA：2026 年费用提案",
+     "url": "https://www.aila.org/library/uscis-91-fr-37500-6-23-26"
+    }
+   ],
+   "watch": [
+    "https://www.uscis.gov/n-400"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "green-card",
+   "group": "status",
+   "glyph": "绿",
+   "title": {
+    "zh": "申请绿卡（I-485 调整身份）基本知识",
+    "en": "Green card basics (I-485 adjustment of status)"
+   },
+   "short": {
+    "zh": "主要途径、费用和2026年新变化",
+    "en": "Main paths, fees and 2026 changes"
+   },
+   "summary": {
+    "zh": "在美国境内申请绿卡叫“调整身份”（I-485）。主要途径有**亲属移民、职业移民、难民/庇护转绿卡、抽签**等。成人 I-485 费用 **$1,440**。2026 年有新表格版本和公共负担新规，递交前务必确认。",
+    "en": "Applying for a green card from inside the U.S. is \"adjustment of status\" (I-485). Main paths are **family, employment, refugee/asylum, and the diversity lottery**. The adult I-485 fee is **$1,440**. A new form edition and public charge rule took effect in 2026, so double-check before filing."
+   },
+   "news": {
+    "zh": [
+     "**2026 年 9 月 18 日起只收新版 I-485**（版本日期 09/18/26），旧版会被退回，没有宽限期。",
+     "同日起适用新的公共负担标准，请先看《公共负担》指南。",
+     "部分国家国民的申请被暂停审理；中国、香港、澳门**不在**名单上。"
+    ],
+    "en": [
+     "**Only the 09/18/26 edition of I-485 is accepted from Sept 18, 2026**; older editions are rejected, with no grace period.",
+     "The new public charge standard applies from the same date; see our public charge guide.",
+     "Cases from some travel-ban countries were put on hold; China, Hong Kong and Macau are **not** on the list."
+    ]
+   },
+   "who": {
+    "zh": [
+     "亲属移民：美国公民或绿卡持有人的配偶、子女、父母（公民 21 岁以上可申请父母）、兄弟姐妹等",
+     "职业移民：雇主担保或特殊人才",
+     "难民和庇护者：获批 1 年后可申请",
+     "抽签移民：2027 年度抽签目前因诉讼尚未开放"
+    ],
+    "en": [
+     "Family: spouses, children, parents (if the citizen is 21+), siblings of citizens or green card holders",
+     "Employment: employer-sponsored or extraordinary ability",
+     "Refugees and asylees: after 1 year",
+     "Diversity lottery: DV-2027 registration not open yet due to litigation"
+    ]
+   },
+   "how": {
+    "zh": [
+     "确认途径和排期（亲属和职业移民要看每月的签证公告）",
+     "用**最新版**表格；费用参考：I-485 成人 $1,440、14 岁以下随父母 $950；I-130 网上 $625、纸本 $675；随 I-485 申请工卡 $260、回美证 $630（以 USCIS 官网为准）",
+     "只能用信用卡或银行转账付款",
+     "用收据号码在 USCIS 网站查进度"
+    ],
+    "en": [
+     "Confirm your path and priority date (check the monthly Visa Bulletin)",
+     "Use the **current** forms. Reference fees: I-485 $1,440 adult, $950 child under 14 with a parent; I-130 $625 online, $675 paper; work permit with I-485 $260; advance parole $630 (confirm on uscis.gov)",
+     "Pay by card or bank debit only",
+     "Track your case with the receipt number on the USCIS site"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "护照、出生证明、I-94 入境记录",
+     "体检表 I-693",
+     "经济担保 I-864",
+     "照片",
+     "亲属关系或工作证明"
+    ],
+    "en": [
+     "Passport, birth certificate, I-94",
+     "Medical exam I-693",
+     "Affidavit of support I-864",
+     "Photos",
+     "Proof of relationship or job"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "查案件进度",
+      "en": "Case status"
+     },
+     "url": "https://egov.uscis.gov/casestatus"
+    },
+    {
+     "label": {
+      "zh": "USCIS 客服",
+      "en": "USCIS Contact Center"
+     },
+     "phone": "1-800-375-5283"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“交钱可以加快排期”：排期由法律和签证公告决定，任何人都不能收钱插队",
+     "“随便找人填表就好”：表格版本、付款方式出错都会被退件，复杂个案请找律师"
+    ],
+    "en": [
+     "\"Pay to speed up\": priority dates are set by law; nobody can sell you a faster place",
+     "\"Anyone can fill the forms\": wrong editions or payment methods get rejected; see a lawyer for complex cases"
+    ]
+   },
+   "sources": [
+    {
+     "name": "USCIS 费用表 G-1055",
+     "url": "https://www.uscis.gov/g-1055"
+    },
+    {
+     "name": "USA.gov：查移民案件进度",
+     "url": "https://www.usa.gov/immigration-case-status"
+    }
+   ],
+   "watch": [
+    "https://www.uscis.gov/i-485"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "legal-help",
+   "group": "status",
+   "glyph": "援",
+   "title": {
+    "zh": "免费移民法律帮助和防移民诈骗",
+    "en": "Free immigration legal help and avoiding fraud"
+   },
+   "short": {
+    "zh": "免费热线、中文服务机构，教你识别假律师",
+    "en": "Free hotlines, Chinese-language groups, spotting fake lawyers"
+   },
+   "summary": {
+    "zh": "移民案件出错可能影响一辈子。纽约州和纽约市都有**免费、保密、有中文**的移民法律热线，法拉盛、华埠也有多家中文非营利机构。注意：**公证人（notario）不是律师**，只有律师或司法部认可的代表才能代理移民案件。",
+    "en": "Immigration mistakes can last a lifetime. New York State and City run **free, confidential hotlines with Chinese**, and several Chinese-language nonprofits serve Flushing and Chinatown. Remember: **a notary (\"notario\") is not a lawyer**; only lawyers or DOJ-accredited representatives may handle immigration cases."
+   },
+   "who": {
+    "zh": [
+     "任何移民，不论身份",
+     "部分市政府法律中心服务收入在贫困线 200% 以内的家庭"
+    ],
+    "en": [
+     "Any immigrant, any status",
+     "Some City legal centers serve households under 200% of poverty"
+    ]
+   },
+   "how": {
+    "zh": [
+     "先打免费热线说明情况，会转介合适的律师或机构",
+     "带齐所有移民文件和收到的信件",
+     "签约前要求书面合同（英文和你的语言），并拿回所有原件"
+    ],
+    "en": [
+     "Call a free hotline first; they'll refer you to a lawyer or organization",
+     "Bring all immigration papers and letters",
+     "Before paying anyone, get a written contract in English and your language, and keep your originals"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "纽约州新美国人热线（免费、匿名、200多种语言）",
+      "en": "NYS New Americans Hotline (free, anonymous, 200+ languages)"
+     },
+     "phone": "1-800-566-7636",
+     "note": {
+      "zh": "周一至五 8am–8pm，周末 9am–5pm",
+      "en": "Mon–Fri 8am–8pm, weekends 9am–5pm"
+     }
+    },
+    {
+     "label": {
+      "zh": "纽约市移民法律支援热线",
+      "en": "NYC Immigration Legal Support Hotline"
+     },
+     "phone": "800-354-0365",
+     "chinese": true,
+     "note": {
+      "zh": "或打 311 说 “Immigration Legal”",
+      "en": "Or call 311 and say \"Immigration Legal\""
+     }
+    },
+    {
+     "label": {
+      "zh": "ActionNYC 免费入籍和绿卡协助",
+      "en": "ActionNYC"
+     },
+     "phone": "311",
+     "note": {
+      "zh": "打 311 说 “ActionNYC”",
+      "en": "Call 311 and say \"ActionNYC\""
+     }
+    },
+    {
+     "label": {
+      "zh": "华人策划协会（CPC）法拉盛",
+      "en": "Chinese-American Planning Council, Flushing"
+     },
+     "phone": "718-358-8899",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "民权中心 MinKwon Center，法拉盛",
+      "en": "MinKwon Center, Flushing"
+     },
+     "phone": "718-460-5600",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "华人进步会（曼哈顿华埠，粤语/普通话）",
+      "en": "Chinese Progressive Association (Manhattan)"
+     },
+     "phone": "212-274-1891",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "举报移民诈骗：纽约州检察长热线",
+      "en": "Report immigration fraud: NY Attorney General"
+     },
+     "phone": "1-800-771-7755"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“公证人能办移民”：公证人不是律师，只能填表和翻译",
+     "“保证批准”：任何保证结果、说有内部关系的都是警讯",
+     "“先签空白表格”：绝对不要签空白或内容不实的表格"
+    ],
+    "en": [
+     "\"A notario can handle my case\": notaries aren't lawyers and may only fill forms and translate",
+     "\"Guaranteed approval\": promises or \"inside connections\" are red flags",
+     "\"Just sign the blank form\": never sign blank or false forms"
+    ]
+   },
+   "sources": [
+    {
+     "name": "纽约州新美国人热线公告",
+     "url": "https://dos.ny.gov/news/new-york-state-office-new-americans-announces-expanded-new-americans-hotline-serve-more"
+    },
+    {
+     "name": "纽约市移民事务办公室：法律支援热线",
+     "url": "https://www.nyc.gov/site/immigrants/about/press-releases/nyc-moia-launches-campaign-highlighting-immigration-legal-support-hotline.page"
+    },
+    {
+     "name": "纽约州检察长：移民服务诈骗",
+     "url": "https://ag.ny.gov/publications/immigration-services-fraud"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "medicaid",
+   "group": "health",
+   "glyph": "白",
+   "title": {
+    "zh": "白卡（纽约州 Medicaid）",
+    "en": "Medicaid in New York"
+   },
+   "short": {
+    "zh": "低收入免费医疗保险；2026年10月起对移民规定有变",
+    "en": "Free health coverage for low income; rules for immigrants changed Oct 2026"
+   },
+   "summary": {
+    "zh": "白卡（Medicaid）是给低收入人士的免费医疗保险，看病、住院、买药基本不用自己付钱。19–64 岁成人的收入标准是联邦贫困线的 **138%**，单人每月约 **$1,836**。2026 年起联邦新法案改了不少规定，下面先看“最新变化”。",
+    "en": "Medicaid is free health coverage for people with low income: doctor visits, hospital care and prescriptions with little or no cost. Adults 19–64 qualify up to **138% of the poverty line**, about **$1,836 a month** for one person. A 2025 federal law changed several rules; see \"What changed recently\" first."
+   },
+   "news": {
+    "zh": [
+     "**2026 年 10 月 1 日起**，难民、庇护者、假释入境者等不再享有联邦白卡；纽约州表示会把他们转到 Essential Plan，福利不变。儿童和孕妇不受影响。",
+     "**2027 年 1 月 1 日起**，19–64 岁的扩展白卡成人需要每月工作、上学、培训或做义工满 **80 小时**（或月收入至少 $580），并改为**每 6 个月续一次**。65 岁以上、孕妇、残障、照顾 14 岁以下孩子等人豁免。",
+     "**小提示**：在 2027 年 3 月 1 日前申请或续期的人，会先获得 12 个月保障。"
+    ],
+    "en": [
+     "**From Oct 1, 2026**, refugees, asylees, parolees and some others lost federally funded Medicaid; New York says they move to the Essential Plan with the same benefits. Children and pregnant people are not affected.",
+     "**From Jan 1, 2027**, expansion adults 19–64 must work, study, train or volunteer **80 hours a month** (or earn at least $580) and renew **every 6 months**. People 65+, pregnant, disabled, caring for a child under 14 and others are exempt.",
+     "**Tip**: people who apply or renew before March 1, 2027 get 12 months of coverage first."
+    ]
+   },
+   "who": {
+    "zh": [
+     "19–64 岁成人：月收入不超过 1人 $1,836、2人 $2,489、3人 $3,142、4人 $3,795、5人 $4,449、6人 $5,102（2026 年）",
+     "65 岁以上、失明或残障：单人月收入 $1,836、两人 $2,489 以下，资产单人 $33,038、两人 $44,796 以下",
+     "**身份**：公民、满 5 年的绿卡持有人、古巴/海地入境者等可获联邦白卡",
+     "**没有身份的 65 岁以上长者、孕妇（含产后 2 年内）和儿童**，纽约州用州政府资金提供白卡或儿童保险",
+     "DACA、PRUCOL 等身份按收入可获州资助白卡；绿卡未满 5 年的，可能由州资金覆盖，申请时请确认",
+     "其他没有身份的成人可申请**紧急白卡**（急诊）"
+    ],
+    "en": [
+     "Adults 19–64: monthly income up to 1 person $1,836, 2 $2,489, 3 $3,142, 4 $3,795, 5 $4,449, 6 $5,102 (2026)",
+     "65+, blind or disabled: income up to $1,836 (1) or $2,489 (2) a month; assets up to $33,038 (1) or $44,796 (2)",
+     "**Status**: citizens, green card holders past the 5-year wait, Cuban/Haitian entrants and some others get federal Medicaid",
+     "**Undocumented people 65+, pregnant people (up to 2 years after birth) and children** get state-funded coverage in New York",
+     "DACA and PRUCOL may get state-funded Medicaid based on income; green card holders under 5 years may be covered by state funds, so ask when you apply",
+     "Other undocumented adults can get **Emergency Medicaid**"
+    ]
+   },
+   "how": {
+    "zh": [
+     "**65 岁以下**：上 NY State of Health（nystateofhealth.ny.gov）网上申请，或打电话，可以要求免费中文翻译",
+     "**纽约市 65 岁以上**或有 Medicare 而没有未成年子女：向 HRA 申请，可网上（ACCESS HRA）、电话、到办公室或邮寄",
+     "纽约市以外：向所在县的社会服务局（DSS）申请",
+     "收到续期信件一定要按时回复，否则会断保"
+    ],
+    "en": [
+     "**Under 65**: apply at NY State of Health (nystateofhealth.ny.gov) or by phone; ask for a free interpreter",
+     "**NYC, 65+** or on Medicare without minor children: apply with HRA online (ACCESS HRA), by phone, in person or by mail",
+     "Outside NYC: your county Department of Social Services",
+     "Always answer renewal letters on time or coverage ends"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "身份证明（护照、绿卡等）",
+     "收入证明（工资单、雇主信、报税表）",
+     "住址证明",
+     "65 岁以上需要银行等资产证明"
+    ],
+    "en": [
+     "ID (passport, green card, etc.)",
+     "Proof of income (pay stubs, employer letter, tax return)",
+     "Proof of address",
+     "For 65+, proof of assets such as bank statements"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NY State of Health（65岁以下）",
+      "en": "NY State of Health (under 65)"
+     },
+     "phone": "1-855-355-5777",
+     "url": "https://nystateofhealth.ny.gov"
+    },
+    {
+     "label": {
+      "zh": "HRA 医疗保险热线（纽约市65岁以上）",
+      "en": "HRA helpline (NYC 65+)"
+     },
+     "phone": "888-692-6116",
+     "url": "https://www.nyc.gov/site/hra/help/public-health-insurance.page"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“没身份不能看病”：儿童、孕妇、65 岁以上长者在纽约不论身份都有保障，任何人都能用紧急白卡看急诊",
+     "“领白卡会影响绿卡”：2026 年 9 月起公共负担规定有变，正在申请或准备申请绿卡的人请先看《公共负担》指南并咨询免费律师",
+     "“一次批准一直有效”：要按时续期，2027 年起成人每 6 个月一次"
+    ],
+    "en": [
+     "\"No status, no care\": in NY, children, pregnant people and seniors 65+ are covered regardless of status, and anyone can use Emergency Medicaid",
+     "\"Medicaid will hurt my green card\": public charge rules changed in Sept 2026; if you're applying for a green card, read our public charge guide and talk to a free lawyer first",
+     "\"Approved once, covered forever\": you must renew; adults every 6 months from 2027"
+    ]
+   },
+   "sources": [
+    {
+     "name": "纽约州 2026 年白卡收入标准（26MA05）",
+     "url": "https://healthweb-back.health.ny.gov/health_care/medicaid/publications/docs/gis/26ma05_att1.pdf"
+    },
+    {
+     "name": "NY State of Health：Stay Covered",
+     "url": "https://info.nystateofhealth.ny.gov/stay-covered"
+    },
+    {
+     "name": "HRA 公共医疗保险",
+     "url": "https://www.nyc.gov/site/hra/help/public-health-insurance.page"
+    }
+   ],
+   "watch": [
+    "https://info.nystateofhealth.ny.gov/stay-covered",
+    "https://www.nyc.gov/site/hra/help/public-health-insurance.page"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "essential-plan",
+   "group": "health",
+   "glyph": "保",
+   "title": {
+    "zh": "Essential Plan 基本医疗计划",
+    "en": "Essential Plan"
+   },
+   "short": {
+    "zh": "收入略高于白卡标准的成人，保费 $0",
+    "en": "$0 premium coverage for adults just above Medicaid income"
+   },
+   "summary": {
+    "zh": "Essential Plan 是纽约州给 19–64 岁、收入在联邦贫困线 **200% 以下**但不符合白卡的人的医疗保险，**保费 $0**。单人年收入约 **$31,920** 以下。",
+    "en": "The Essential Plan covers adults 19–64 with income up to **200% of the poverty line** who don't qualify for Medicaid, with a **$0 premium**. That's about **$31,920 a year** for one person."
+   },
+   "news": {
+    "zh": [
+     "**2026 年 7 月 1 日起**，收入在贫困线 200–250% 的约 45 万人离开 Essential Plan，转到市场上的保险计划（QHP）。",
+     "**2026 年 10 月起**，失去联邦白卡的难民、庇护者等转到 Essential Plan，福利不变。",
+     "部分 DACA 人士可能失去保障，请尽快联络 NY State of Health 或免费的保险协助员。"
+    ],
+    "en": [
+     "**Since July 1, 2026**, about 450,000 people at 200–250% of poverty moved from the Essential Plan to marketplace plans (QHPs).",
+     "**Since October 2026**, refugees and asylees who lost federal Medicaid move to the Essential Plan with the same benefits.",
+     "Some DACA recipients may lose coverage; contact NY State of Health or a free navigator soon."
+    ]
+   },
+   "who": {
+    "zh": [
+     "19–64 岁",
+     "收入在联邦贫困线 200% 以内，且不符合白卡",
+     "合法居留的移民（包括绿卡、难民、庇护等）",
+     "**没有身份的成人不符合**（可看《NYC Care》）"
+    ],
+    "en": [
+     "Ages 19–64",
+     "Income up to 200% of poverty and not Medicaid-eligible",
+     "Lawfully present immigrants, including green card holders, refugees and asylees",
+     "**Undocumented adults are not eligible** (see NYC Care)"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上 NY State of Health 网上申请，或打电话，可要求中文翻译",
+     "全年都可以申请",
+     "收入改变要主动更新资料"
+    ],
+    "en": [
+     "Apply at NY State of Health online or by phone; ask for an interpreter",
+     "You can apply any time of year",
+     "Report income changes"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NY State of Health",
+      "en": "NY State of Health"
+     },
+     "phone": "1-855-355-5777",
+     "url": "https://nystateofhealth.ny.gov"
+    }
+   ],
+   "sources": [
+    {
+     "name": "纽约州卫生厅 2026 年 3 月新闻稿",
+     "url": "https://healthweb-back.health.ny.gov/press/releases/2026/2026-03-23_federal_approval_to_preserve_health_coverage.htm"
+    },
+    {
+     "name": "NY State of Health：Stay Connected",
+     "url": "https://info.nystateofhealth.ny.gov/stay-connected"
+    }
+   ],
+   "watch": [
+    "https://info.nystateofhealth.ny.gov/stay-connected"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "child-health-plus",
+   "group": "health",
+   "glyph": "童",
+   "title": {
+    "zh": "儿童医疗保险（Child Health Plus）",
+    "en": "Child Health Plus"
+   },
+   "short": {
+    "zh": "19岁以下孩子不论身份都能投保，很多家庭免费",
+    "en": "Coverage for kids under 19 regardless of status; free for many families"
+   },
+   "summary": {
+    "zh": "纽约州 19 岁以下的孩子，**不论移民身份**，只要不符合白卡又没有其他保险，就能参加 Child Health Plus。收入较低的家庭**免费**，较高的每个孩子每月 $15 起，**没有自付额**，全年都能申请。",
+    "en": "Children under 19 in New York, **regardless of immigration status**, can join Child Health Plus if they don't qualify for Medicaid and have no other insurance. Lower-income families pay **nothing**; others pay from $15 per child a month, with **no copays**. Enroll any time."
+   },
+   "who": {
+    "zh": [
+     "19 岁以下、住在纽约州",
+     "不符合白卡、没有其他保险",
+     "不问移民身份",
+     "免费的月收入上限约：2人 $4,004、3人 $5,055、4人 $6,105（2026 年，以官方为准）；超过的按收入分级付保费，每家最多付 3 个孩子"
+    ],
+    "en": [
+     "Under 19 and living in New York",
+     "Not Medicaid-eligible, no other insurance",
+     "Any immigration status",
+     "Free up to about $4,004 (2), $5,055 (3), $6,105 (4) a month in 2026 (confirm officially); above that, premiums by income, for at most 3 children"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上 NY State of Health 申请，或找医院、保险公司的协助员",
+     "全年都可以申请"
+    ],
+    "en": [
+     "Apply through NY State of Health, or with a hospital or plan navigator",
+     "Enrollment is open all year"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NY State of Health",
+      "en": "NY State of Health"
+     },
+     "phone": "1-855-355-5777",
+     "url": "https://nystateofhealth.ny.gov"
+    }
+   ],
+   "sources": [
+    {
+     "name": "Child Health Plus 简介卡",
+     "url": "https://info.nystateofhealth.ny.gov/sites/default/files/Child%20Health%20Plus%20At%20a%20Glance%20Card%20-%20English.pdf"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "nyc-care",
+   "group": "health",
+   "glyph": "医",
+   "title": {
+    "zh": "NYC Care 纽约市医疗服务计划",
+    "en": "NYC Care"
+   },
+   "short": {
+    "zh": "没有保险、也买不到保险的人，不问身份看病",
+    "en": "Care for people who can't get insurance, regardless of status"
+   },
+   "summary": {
+    "zh": "NYC Care 不是保险，而是纽约市公立医院（NYC Health + Hospitals）的**看病计划**，给不符合任何保险的人。**不问移民身份**，按收入浮动收费，可以低到 **$0**，有自己的家庭医生。",
+    "en": "NYC Care is not insurance; it's a care program at NYC Health + Hospitals for people who can't get any health plan. **Status isn't asked**, costs slide by income starting at **$0**, and you get your own primary care doctor."
+   },
+   "who": {
+    "zh": [
+     "住在纽约市五大区",
+     "不符合纽约州任何医疗保险，也没有雇主保险",
+     "不问移民身份"
+    ],
+    "en": [
+     "Lives in the five boroughs",
+     "Not eligible for any NY health plan and no job-based insurance",
+     "Immigration status isn't asked"
+    ]
+   },
+   "how": {
+    "zh": [
+     "打 646-NYC-CARE（646-692-2273）",
+     "或到任何 NYC Health + Hospitals 医院登记",
+     "带身份证明、住址证明、收入和家庭人数资料"
+    ],
+    "en": [
+     "Call 646-NYC-CARE (646-692-2273)",
+     "Or enroll at any NYC Health + Hospitals location",
+     "Bring ID, proof of address, income and household size"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NYC Care 热线",
+      "en": "NYC Care"
+     },
+     "phone": "646-692-2273",
+     "url": "https://access.nyc.gov/programs/nyc-care/"
+    }
+   ],
+   "sources": [
+    {
+     "name": "ACCESS NYC：NYC Care",
+     "url": "https://access.nyc.gov/programs/nyc-care/"
+    }
+   ],
+   "watch": [
+    "https://access.nyc.gov/programs/nyc-care/"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "medicare-help",
+   "group": "senior",
+   "glyph": "红",
+   "title": {
+    "zh": "红蓝卡（Medicare）省钱方案：MSP、EPIC、Extra Help",
+    "en": "Help with Medicare costs: MSP, EPIC, Extra Help"
+   },
+   "short": {
+    "zh": "65岁以上：帮付 Medicare 保费和药费",
+    "en": "65+: help paying Medicare premiums and drug costs"
+   },
+   "summary": {
+    "zh": "有红蓝卡的长者，收入不高的话可以申请三种帮助：**Medicare 储蓄计划（MSP）**帮你付每月保费，**EPIC** 是纽约州的老人药费补助，**Extra Help** 帮付处方药费用。",
+    "en": "Seniors on Medicare with modest income can get three kinds of help: the **Medicare Savings Program (MSP)** pays monthly premiums, **EPIC** is New York's senior drug program, and **Extra Help** lowers prescription costs."
+   },
+   "news": {
+    "zh": [
+     "联邦新法规定，难民、庇护者、TPS 等身份将失去 Medicare（绿卡满 5 年者不受影响），社安退休金不变。具体时间表尚未最终确定，收到社安局信件请尽快找免费律师。"
+    ],
+    "en": [
+     "Under the new federal law, refugees, asylees, TPS holders and some others will lose Medicare (green card holders past 5 years are not affected); Social Security checks don't change. The timeline isn't final; if you get a letter from SSA, see a free lawyer soon."
+    ]
+   },
+   "who": {
+    "zh": [
+     "MSP：单人月收入约 $2,474、两人 $3,355 以下（2026 年），**纽约没有资产限制**",
+     "EPIC：65 岁以上并有 Part D 药物计划；单身年收入 $75,000、夫妇 $100,000 以下",
+     "Extra Help：单人月收入 $1,995、夫妇 $2,705 以下，资产单人 $18,090、夫妇 $36,100 以下"
+    ],
+    "en": [
+     "MSP: monthly income up to about $2,474 (1) or $3,355 (2) in 2026; **New York has no asset test**",
+     "EPIC: 65+ with a Part D plan; income up to $75,000 single or $100,000 married",
+     "Extra Help: income up to $1,995 (single) or $2,705 (couple) a month; assets up to $18,090 or $36,100"
+    ]
+   },
+   "how": {
+    "zh": [
+     "MSP：纽约市向 HRA 申请（有中文表格），其他地区向县社会服务局",
+     "EPIC：打 EPIC 热线索取申请表",
+     "Extra Help：向社安局（SSA）申请"
+    ],
+    "en": [
+     "MSP: in NYC apply with HRA (Chinese forms available); elsewhere, your county DSS",
+     "EPIC: call the EPIC helpline for an application",
+     "Extra Help: apply with Social Security"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "EPIC 热线",
+      "en": "EPIC helpline"
+     },
+     "phone": "1-800-332-3742"
+    },
+    {
+     "label": {
+      "zh": "HRA 医疗保险热线",
+      "en": "HRA helpline"
+     },
+     "phone": "888-692-6116"
+    },
+    {
+     "label": {
+      "zh": "社安局",
+      "en": "Social Security"
+     },
+     "phone": "1-800-772-1213",
+     "url": "https://www.ssa.gov/medicare/part-d/extra-help"
+    }
+   ],
+   "sources": [
+    {
+     "name": "纽约州 EPIC 2026",
+     "url": "https://healthweb-back.health.ny.gov/health_care/epic/member_info/program_highlights_2026.htm"
+    },
+    {
+     "name": "纽约州 2026 年收入标准（26MA05）",
+     "url": "https://healthweb-back.health.ny.gov/health_care/medicaid/publications/docs/gis/26ma05_att1.pdf"
+    }
+   ],
+   "watch": [
+    "https://healthweb-back.health.ny.gov/health_care/epic/member_info/program_highlights_2026.htm"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "snap",
+   "group": "food",
+   "glyph": "粮",
+   "title": {
+    "zh": "粮食券（SNAP）",
+    "en": "SNAP food benefits"
+   },
+   "short": {
+    "zh": "每月充值到卡里买食物；2026年移民资格有大变化",
+    "en": "Monthly food money on a card; big 2026 changes for immigrants"
+   },
+   "summary": {
+    "zh": "粮食券（SNAP）每月把钱充到 EBT 卡上，在超市买食物用。2026 年 10 月起单人每月最多 **$306**、4 人最多 **$1,023**。联邦新法收紧了移民资格和工作要求，下面先看“最新变化”。",
+    "en": "SNAP puts money on an EBT card each month for groceries. From October 2026 the maximum is **$306** for one person and **$1,023** for four. A federal law tightened rules for immigrants and work; read \"What changed recently\" first."
+   },
+   "news": {
+    "zh": [
+     "**移民资格收窄**：现在只有**绿卡持有人**、古巴/海地入境者等可以领。难民、庇护者等**拿到绿卡之前**不再符合。纽约从 2026 年 4 月起对新申请执行，已在领的人在下次续期时生效。",
+     "**法院判决**：2026 年 9 月联邦法院判决，原本是难民或庇护、后来拿到绿卡的人，仍然符合资格，而且不用等 5 年。是否会上诉还不确定。",
+     "**工作要求**：18–64 岁、家里没有 14 岁以下孩子的成人，每月要工作、培训或做义工满 **80 小时**，否则 3 年内只能领 3 个月。纽约市 2026 年 3 月起执行。"
+    ],
+    "en": [
+     "**Fewer immigrants qualify**: now mainly **green card holders**, Cuban/Haitian entrants and COFA citizens. Refugees and asylees **without a green card** no longer qualify. NY applied this to new applicants from April 2026; current cases change at recertification.",
+     "**Court ruling**: in Sept 2026 a federal court ruled that people who were refugees or asylees and later got a green card still qualify, without the 5-year wait. An appeal is possible.",
+     "**Work rule**: adults 18–64 with no child under 14 at home must work, train or volunteer **80 hours a month**, or SNAP is limited to 3 months in 3 years. NYC has enforced this since March 2026."
+    ]
+   },
+   "who": {
+    "zh": [
+     "收入标准（2026 年 10 月前的数字，每月税前）：有工作收入的家庭约 1人 $1,957、2人 $2,644、3人 $3,332、4人 $4,019；家里有老人、残障或付托儿费的，上限更高：1人 $2,608、4人 $5,358",
+     "身份：公民、绿卡持有人（一般要满 5 年；**18 岁以下孩子、领残障福利者、工作满 40 季的人不用等**）、古巴/海地入境者",
+     "**混合身份家庭**：父母没有身份，在美国出生的孩子仍然可以领，父母可以替孩子申请，不会问父母的身份"
+    ],
+    "en": [
+     "Income (monthly, before tax, figures before Oct 2026): households with earnings about 1 person $1,957, 2 $2,644, 3 $3,332, 4 $4,019; households with a senior, disabled member or child-care costs: up to $2,608 (1) or $5,358 (4)",
+     "Status: citizens, green card holders (usually after 5 years; **no wait for children under 18, people on disability benefits, or people with 40 work quarters**), Cuban/Haitian entrants",
+     "**Mixed-status families**: U.S.-born children can get SNAP even if parents have no status; parents can apply for the children without giving their own status"
+    ]
+   },
+   "how": {
+    "zh": [
+     "纽约市：用 ACCESS HRA 网站或手机 App 申请，网站有简体和繁体中文",
+     "或打 718-SNAP-NOW（718-762-7669），周一至五 8:30am–5pm，有免费翻译",
+     "申请后会有电话面谈，按时接听",
+     "批准后会寄 EBT 卡，每月自动充值"
+    ],
+    "en": [
+     "NYC: apply on the ACCESS HRA website or app, available in Chinese",
+     "Or call 718-SNAP-NOW (718-762-7669), Mon–Fri 8:30am–5pm, free interpreters",
+     "Answer the phone interview on time",
+     "Your EBT card is mailed and reloaded monthly"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "身份证明",
+     "全家收入证明",
+     "房租、水电账单（可以增加扣除额，领得更多）",
+     "移民身份文件（申请人本人）"
+    ],
+    "en": [
+     "ID",
+     "Income proof for the household",
+     "Rent and utility bills (deductions raise your benefit)",
+     "Immigration documents (for the person applying for themselves)"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "ACCESS HRA",
+      "en": "ACCESS HRA"
+     },
+     "url": "https://a069-access.nyc.gov/accesshra/",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "SNAP 电话",
+      "en": "SNAP phone"
+     },
+     "phone": "718-762-7669",
+     "chinese": true
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“领了粮食券会被遣返”：粮食券不会通报移民执法；但正在申请绿卡的人，请先看《公共负担》指南",
+     "“家里有人没身份就都不能领”：有资格的家人（如美国出生的孩子）仍然可以领",
+     "“有工作就不能领”：收入不超过标准就可以，有工作的家庭标准反而较宽"
+    ],
+    "en": [
+     "\"SNAP gets you deported\": SNAP isn't an immigration enforcement tool; if you're applying for a green card, read our public charge guide first",
+     "\"One undocumented member disqualifies everyone\": eligible members such as U.S.-born children can still get it",
+     "\"Working families can't get it\": if income is under the limit you can, and working households have a higher limit"
+    ]
+   },
+   "sources": [
+    {
+     "name": "纽约州 SNAP 2026 财年标准",
+     "url": "https://www.otda.ny.gov/policy/gis/2025/25DC059.pdf"
+    },
+    {
+     "name": "USDA 2027 财年 SNAP 调整",
+     "url": "https://www.usda.gov/sites/default/files/guidance-documents/fna.snap-cola2027.pdf"
+    },
+    {
+     "name": "纽约市 SNAP 工作要求",
+     "url": "https://www.nyc.gov/site/hra/help/able-bodied-adults-without-dependents.page"
+    }
+   ],
+   "watch": [
+    "https://www.nyc.gov/site/hra/help/able-bodied-adults-without-dependents.page"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "wic",
+   "group": "food",
+   "glyph": "婴",
+   "title": {
+    "zh": "WIC 妇婴营养补助",
+    "en": "WIC for moms, babies and young kids"
+   },
+   "short": {
+    "zh": "孕妇和5岁以下孩子，不问身份",
+    "en": "Pregnant people and kids under 5, any status"
+   },
+   "summary": {
+    "zh": "WIC 给**孕妇、产后妈妈和 5 岁以下孩子**提供牛奶、婴儿配方奶粉、蔬果等食物，以及营养和喂奶指导。**不问移民身份**。正在申请绿卡的家庭，请先看《公共负担》指南。",
+    "en": "WIC gives **pregnant people, new moms and children under 5** milk, formula, fruits, vegetables and more, plus nutrition and breastfeeding support. **Immigration status isn't asked.** If your family is applying for a green card, read our public charge guide first."
+   },
+   "who": {
+    "zh": [
+     "孕妇、产后 6 个月内的妈妈、哺乳 1 年内的妈妈、5 岁以下孩子（父亲、祖父母等主要照顾者都能替孩子申请）",
+     "家里有人领白卡、粮食券或现金补助的，自动符合收入标准",
+     "否则年收入在贫困线 185% 以内：1人 $29,526、2人 $40,034、3人 $50,542、4人 $61,050"
+    ],
+    "en": [
+     "Pregnant people, moms up to 6 months after birth (1 year if breastfeeding), children under 5; any main caregiver can apply for a child",
+     "Automatically income-eligible if someone has Medicaid, SNAP or cash assistance",
+     "Otherwise yearly income up to 185% of poverty: $29,526 (1), $40,034 (2), $50,542 (3), $61,050 (4)"
+    ]
+   },
+   "how": {
+    "zh": [
+     "打 Growing Up Healthy 热线 1-800-522-5006 找附近 WIC 中心",
+     "或在纽约州 WIC 网站用线上助手登记"
+    ],
+    "en": [
+     "Call the Growing Up Healthy Hotline at 1-800-522-5006 to find a WIC site",
+     "Or sign up with the online assistant on the NYS WIC site"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "Growing Up Healthy 热线",
+      "en": "Growing Up Healthy Hotline"
+     },
+     "phone": "1-800-522-5006"
+    },
+    {
+     "label": {
+      "zh": "ACCESS NYC：WIC",
+      "en": "ACCESS NYC: WIC"
+     },
+     "url": "https://access.nyc.gov/programs/women-infants-and-children-wic/"
+    }
+   ],
+   "sources": [
+    {
+     "name": "ACCESS NYC：WIC",
+     "url": "https://access.nyc.gov/programs/women-infants-and-children-wic/"
+    }
+   ],
+   "watch": [
+    "https://access.nyc.gov/programs/women-infants-and-children-wic/"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "school-meals",
+   "group": "family",
+   "glyph": "餐",
+   "title": {
+    "zh": "公立学校免费早餐和午餐",
+    "en": "Free school breakfast and lunch"
+   },
+   "short": {
+    "zh": "纽约州所有公立学校学生免费，不看收入",
+    "en": "Free for every public school student in NY"
+   },
+   "summary": {
+    "zh": "从 2025–26 学年起，**纽约州所有公立学校**学生的早餐和午餐都**免费**，不看家庭收入，不问身份，**不用申请**。州政府 2027 财年预算继续拨款。",
+    "en": "Since the 2025–26 school year, **every public school student in New York State** gets free breakfast and lunch, regardless of income or status, **with no application**. The state's FY2027 budget continues the funding."
+   },
+   "who": {
+    "zh": [
+     "纽约州公立学校学生"
+    ],
+    "en": [
+     "Public school students in New York State"
+    ]
+   },
+   "how": {
+    "zh": [
+     "不用申请，直接在学校领取",
+     "学校如果寄来家庭收入表，仍建议填写，可能帮学校争取更多经费"
+    ],
+    "en": [
+     "No application; just eat at school",
+     "If the school sends an income form, filling it in can still help the school's funding"
+    ]
+   },
+   "sources": [
+    {
+     "name": "纽约州长 2026 年 6 月公告",
+     "url": "https://governor.ny.gov/news/governor-hochul-announces-396-million-free-school-meals-served-statewide-2025-2026-school-year"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "cash-assistance",
+   "group": "food",
+   "glyph": "现",
+   "title": {
+    "zh": "现金补助和 SSI 老人残障补助金",
+    "en": "Cash assistance and SSI"
+   },
+   "short": {
+    "zh": "收入很低时的生活费补助；65岁以上或残障可申请SSI",
+    "en": "Help with living costs for very low income; SSI for 65+ or disabled"
+   },
+   "summary": {
+    "zh": "收入很低、难以维持生活的家庭，可以向 HRA 申请**现金补助**（Cash Assistance）。65 岁以上、失明或残障且收入很低的人，可以向社安局申请 **SSI**，2026 年在纽约独居单人每月最多 **$1,081**。",
+    "en": "Households with very low income can apply to HRA for **Cash Assistance**. People 65+, blind or disabled with very low income can apply to Social Security for **SSI**: up to **$1,081 a month** for one person living alone in New York in 2026."
+   },
+   "who": {
+    "zh": [
+     "现金补助：收入和资产很低；纽约州的 Safety Net 计划对移民较宽，包括庇护申请中、TPS、DACA 等身份",
+     "SSI：65 岁以上、失明或残障，收入和资产很低",
+     "SSI 移民规定较严：难民和庇护者最多 7 年；绿卡持有人一般需要工作满 40 季或符合其他例外"
+    ],
+    "en": [
+     "Cash Assistance: very low income and assets; NY's Safety Net Assistance is broader for immigrants, including pending asylum, TPS, DACA and others",
+     "SSI: 65+, blind or disabled with very low income and assets",
+     "SSI immigrant rules are strict: refugees and asylees up to 7 years; green card holders usually need 40 work quarters or another exception"
+    ]
+   },
+   "how": {
+    "zh": [
+     "现金补助：用 ACCESS HRA 网上申请，或到 HRA 求职中心（Job Center）",
+     "SSI：打社安局电话预约，或到当地社安局办公室",
+     "两者都会有面谈，按时出席"
+    ],
+    "en": [
+     "Cash Assistance: apply on ACCESS HRA or at an HRA Job Center",
+     "SSI: call Social Security for an appointment or visit a local office",
+     "Both include an interview; attend on time"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "ACCESS HRA",
+      "en": "ACCESS HRA"
+     },
+     "url": "https://a069-access.nyc.gov/accesshra/",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "社安局（可要求中文翻译）",
+      "en": "Social Security (interpreters available)"
+     },
+     "phone": "1-800-772-1213"
+    }
+   ],
+   "sources": [
+    {
+     "name": "纽约州 2026 年 SSI 金额",
+     "url": "https://www.otda.ny.gov/programs/ssp/2026-Maximum-Monthly-Benefit-Amounts.pdf"
+    },
+    {
+     "name": "社安局：移民领取 SSI 规定",
+     "url": "https://secure.ssa.gov/POMS.NSF/lnx/0500604023"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "heap",
+   "group": "food",
+   "glyph": "暖",
+   "title": {
+    "zh": "冬季暖气补助（HEAP）",
+    "en": "Heating help (HEAP)"
+   },
+   "short": {
+    "zh": "2026年11月2日开放，先到先得",
+    "en": "Opens Nov 2, 2026, first come, first served"
+   },
+   "summary": {
+    "zh": "HEAP 帮低收入家庭付冬天的暖气费。**2026–27 年度一般补助 11 月 2 日开放**，紧急补助 2027 年 1 月 4 日开放，**先到先得**，钱用完就停，要早申请。4 口之家年收入 $82,230 以下可以申请。",
+    "en": "HEAP helps lower-income households pay heating costs. **Regular HEAP for 2026–27 opens November 2**, Emergency HEAP on January 4, 2027. It's **first come, first served** until funds run out, so apply early. A family of four can earn up to $82,230 a year."
+   },
+   "who": {
+    "zh": [
+     "收入在标准以内（4 口之家年收入 $82,230）",
+     "领粮食券或现金补助的家庭大多自动获得",
+     "家里有 60 岁以上、6 岁以下或残障人士的，可多拿补助"
+    ],
+    "en": [
+     "Income under the limit ($82,230 a year for 4)",
+     "Most SNAP or cash assistance households get it automatically",
+     "Extra for households with someone 60+, under 6, or disabled"
+    ]
+   },
+   "how": {
+    "zh": [
+     "纽约市：用 ACCESS HRA 申请",
+     "其他地区：向县社会服务局申请",
+     "长者可打 NY Connects 求助"
+    ],
+    "en": [
+     "NYC: apply through ACCESS HRA",
+     "Elsewhere: your county DSS",
+     "Seniors can call NY Connects for help"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "纽约州 HEAP 热线",
+      "en": "NYS HEAP hotline"
+     },
+     "phone": "1-800-342-3009"
+    },
+    {
+     "label": {
+      "zh": "NY Connects（长者）",
+      "en": "NY Connects (seniors)"
+     },
+     "phone": "1-800-342-9871"
+    }
+   ],
+   "sources": [
+    {
+     "name": "纽约州长 2026 年 10 月 HEAP 公告",
+     "url": "https://governor.ny.gov/news/governor-hochul-announces-15-million-new-yorkers-can-receive-hundreds-dollars-help-cover-home"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "fair-fares",
+   "group": "family",
+   "glyph": "铁",
+   "title": {
+    "zh": "半价地铁巴士卡（Fair Fares）",
+    "en": "Half-price subway and bus (Fair Fares)"
+   },
+   "short": {
+    "zh": "18–64岁低收入纽约市民，地铁巴士半价",
+    "en": "Half-price transit for lower-income New Yorkers 18–64"
+   },
+   "summary": {
+    "zh": "Fair Fares 让低收入纽约市民坐地铁和巴士**半价**。目前收入标准是联邦贫困线 **150%**，市政府已提议放宽到 **200%**（单人约 $32,000、4 人约 $66,000），尚未生效。",
+    "en": "Fair Fares gives lower-income New Yorkers **half-price** subway and bus rides. The income limit is **150% of the poverty line**; the City has proposed raising it to **200%** (about $32,000 for 1, $66,000 for 4), not yet in effect."
+   },
+   "who": {
+    "zh": [
+     "住在纽约市、18–64 岁",
+     "收入在贫困线 150% 以内：1人约 $23,940、4人约 $49,500（2026 年估算）",
+     "没有从 HRA 领全额车费、也没有其他交通优惠"
+    ],
+    "en": [
+     "NYC resident aged 18–64",
+     "Income up to 150% of poverty: about $23,940 (1) or $49,500 (4) in 2026",
+     "Not getting full carfare from HRA or another transit discount"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上 nyc.gov/fairfares 或 ACCESS HRA 申请",
+     "10 天内上传证明文件，30 天内审核",
+     "需要帮助打 311"
+    ],
+    "en": [
+     "Apply at nyc.gov/fairfares or on ACCESS HRA",
+     "Upload documents within 10 days; decisions take up to 30 days",
+     "Call 311 for help"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "Fair Fares NYC",
+      "en": "Fair Fares NYC"
+     },
+     "url": "https://www.nyc.gov/site/fairfares/index.page"
+    },
+    {
+     "label": {
+      "zh": "电话",
+      "en": "Phone"
+     },
+     "phone": "311"
+    }
+   ],
+   "sources": [
+    {
+     "name": "Fair Fares 150% 规则",
+     "url": "https://rules.cityofnewyork.us/rule/eligibility-for-fair-fares-program-increasing-income-eligibility-to-150-fpl/"
+    },
+    {
+     "name": "Fair Fares 修订提案",
+     "url": "https://rules.cityofnewyork.us/rule/amendments-to-the-fair-fares-nyc-program/"
+    }
+   ],
+   "watch": [
+    "https://rules.cityofnewyork.us/rule/amendments-to-the-fair-fares-nyc-program/"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "free-tax",
+   "group": "family",
+   "glyph": "税",
+   "title": {
+    "zh": "免费报税和退税福利（EITC、儿童税抵免）",
+    "en": "Free tax prep and tax credits"
+   },
+   "short": {
+    "zh": "免费报税；有ITIN也能领纽约州儿童税抵免",
+    "en": "Free filing; ITIN filers can get NY's child credit"
+   },
+   "summary": {
+    "zh": "纽约市提供**免费报税服务**，家庭年收入 $97,000 以下（有受抚养人）或 $68,000 以下（没有）都能用，有中文服务点。很多低收入家庭能拿回**劳动所得税抵免（EITC）**，**用 ITIN 报税的家庭也能领纽约州儿童税抵免**。",
+    "en": "NYC offers **free tax preparation** for households earning up to $97,000 with dependents or $68,000 without, including sites with Chinese service. Many low-income workers get the **Earned Income Tax Credit**, and **ITIN filers can claim New York's Empire State Child Credit**."
+   },
+   "who": {
+    "zh": [
+     "免费报税（2026 报税季标准）：有受抚养人 $97,000、没有 $68,000 以下",
+     "联邦 EITC：需要社安号（SSN）；2026 税年最多 $664（没有孩子）到 $8,231（3 个以上孩子）",
+     "纽约州儿童税抵免：**SSN 或 ITIN 都可以**；2026 税年 4 岁以下每个孩子 $1,000、4–16 岁 $500"
+    ],
+    "en": [
+     "Free tax prep (2026 season): up to $97,000 with dependents, $68,000 without",
+     "Federal EITC: requires an SSN; tax year 2026 maximum from $664 (no children) to $8,231 (3+ children)",
+     "Empire State Child Credit: **SSN or ITIN**; tax year 2026: $1,000 per child under 4, $500 for ages 4–16"
+    ]
+   },
+   "how": {
+    "zh": [
+     "每年 1 月底到 4 月 15 日报税季，上 NYC Free Tax Prep 网站按语言找中文服务点",
+     "带齐 W-2、1099、身份证明、孩子的 SSN 或 ITIN、去年的报税表",
+     "填纽约州表格 IT-213 申请儿童税抵免"
+    ],
+    "en": [
+     "During tax season (late January to April 15), use the NYC Free Tax Prep finder to search by language",
+     "Bring W-2s, 1099s, ID, SSNs or ITINs for children, and last year's return",
+     "Claim the child credit on NY form IT-213"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NYC Free Tax Prep",
+      "en": "NYC Free Tax Prep"
+     },
+     "url": "https://www.nyc.gov/site/dca/talk-money/file-your-taxes-faqs.page"
+    },
+    {
+     "label": {
+      "zh": "纽约州儿童税抵免说明",
+      "en": "Empire State Child Credit"
+     },
+     "url": "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“收入低就不用报税”：不报就拿不到 EITC 等退税，很多人因此少拿几千元",
+     "“报税会暴露身份”：ITIN 报税是合法的，纽约州儿童税抵免接受 ITIN"
+    ],
+    "en": [
+     "\"Low income means no need to file\": you can't get EITC refunds without filing",
+     "\"Filing exposes my status\": filing with an ITIN is legal and NY's child credit accepts ITINs"
+    ]
+   },
+   "sources": [
+    {
+     "name": "纽约市免费报税常见问题",
+     "url": "https://www.nyc.gov/site/dca/talk-money/file-your-taxes-faqs.page"
+    },
+    {
+     "name": "纽约州 EITC 参数",
+     "url": "https://www.tax.ny.gov/pit/credits/eitc-parameters.htm"
+    },
+    {
+     "name": "纽约州儿童税抵免",
+     "url": "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm"
+    }
+   ],
+   "watch": [
+    "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "lifeline",
+   "group": "family",
+   "glyph": "话",
+   "title": {
+    "zh": "Lifeline 电话和上网优惠",
+    "en": "Lifeline phone and internet discount"
+   },
+   "short": {
+    "zh": "每月上网费最多减 $9.25",
+    "en": "Up to $9.25 off internet each month"
+   },
+   "summary": {
+    "zh": "Lifeline 是联邦的电话或上网优惠，每户每月上网最多减 **$9.25**，只有电话的减 $5.25。家里有人领白卡、粮食券等就符合。",
+    "en": "Lifeline is a federal discount of up to **$9.25 a month** on internet (or $5.25 for voice-only), one per household. You qualify if someone gets Medicaid, SNAP or similar benefits."
+   },
+   "news": {
+    "zh": [
+     "联邦通讯委员会（FCC）2026 年 2 月提议限制移民申请 Lifeline，**目前尚未定案**。"
+    ],
+    "en": [
+     "In February 2026 the FCC proposed limiting Lifeline by immigration status; **it isn't final**."
+    ]
+   },
+   "who": {
+    "zh": [
+     "收入在贫困线 135% 以内，或家里有人领白卡、粮食券等",
+     "每户只能一个"
+    ],
+    "en": [
+     "Income up to 135% of poverty, or someone on Medicaid, SNAP or similar",
+     "One per household"
+    ]
+   },
+   "how": {
+    "zh": [
+     "向参加 Lifeline 的电话或网络公司申请，或上联邦 Lifeline 网站查资格"
+    ],
+    "en": [
+     "Apply through a participating phone or internet company, or check on the federal Lifeline site"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "Lifeline 官方网站",
+      "en": "Lifeline"
+     },
+     "url": "https://www.lifelinesupport.org"
+    }
+   ],
+   "sources": [
+    {
+     "name": "国会研究处 Lifeline 报告",
+     "url": "https://www.everycrsreport.com/reports/IF13283.html"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "nycha",
+   "group": "housing",
+   "glyph": "屋",
+   "title": {
+    "zh": "申请纽约公屋（NYCHA）",
+    "en": "NYCHA public housing"
+   },
+   "short": {
+    "zh": "房租约为收入的30%，等候时间很长，要尽早排队",
+    "en": "Rent is about 30% of income; the wait is long, so get on the list early"
+   },
+   "summary": {
+    "zh": "纽约市房屋局（NYCHA）的公屋，房租约为家庭收入的 **30%**，大部分包水电暖气。申请免费、网上就能办，但轮候名单很长，官方也无法估计要等多久，所以越早申请越好。",
+    "en": "NYCHA public housing rent is about **30% of household income**, with most utilities included. Applying is free and online, but the waiting list is very long and NYCHA can't estimate wait times, so apply early."
+   },
+   "news": {
+    "zh": [
+     "**Section 8 租房券目前不接受新申请**：NYCHA 和 HPD 的 Section 8 轮候名单都已关闭，只接受特定转介。网上自称“代办 Section 8”的多为骗局。"
+    ],
+    "en": [
+     "**Section 8 vouchers are closed to new applicants**: both the NYCHA and HPD waiting lists are closed except for specific referrals. Anyone offering to \"get you Section 8\" for a fee is likely a scam."
+    ]
+   },
+   "who": {
+    "zh": [
+     "家庭年收入不超过上限（2026 年）：1人 $95,000、2人 $108,600、3人 $122,150、4人 $135,700、5人 $146,600、6人 $157,450",
+     "**不一定要是公民**：家里至少一人是公民或有合格身份（如绿卡、难民、庇护）即可",
+     "混合身份家庭也能申请，房租会按有合格身份的人数比例计算",
+     "住在或在纽约市工作的人优先",
+     "老人公屋：单人申请须 62 岁以上；多人家庭的户主和所有成员都须 62 岁以上"
+    ],
+    "en": [
+     "Household income under the 2026 limits: 1 person $95,000, 2 $108,600, 3 $122,150, 4 $135,700, 5 $146,600, 6 $157,450",
+     "**You don't have to be a citizen**: at least one household member needs to be a citizen or have eligible status (green card, refugee, asylee)",
+     "Mixed-status families can apply; rent is prorated by the number of eligible members",
+     "People who live or work in NYC get priority",
+     "Senior buildings: a single applicant must be 62+; in larger households the head and every member must be 62+"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上网到 **ApplyNYCHA**（selfserve.nycha.info）建立账户并填写申请，申请时不需要上传文件",
+     "不会上网的，可以打电话请 NYCHA 寄纸本申请表",
+     "记下申请编号，之后用同一网站更新地址、收入和家庭人数",
+     "**每 24 个月要上网更新一次**，否则会被移出名单；更新不会改变你原来的排队日期",
+     "轮到你时会通知面谈，届时带齐原件"
+    ],
+    "en": [
+     "Go to **ApplyNYCHA** (selfserve.nycha.info), create an account and fill in the application. No documents are needed to apply",
+     "If you can't apply online, call NYCHA and ask for a paper application",
+     "Keep your application number and use the same site to update your address, income or household",
+     "**Renew every 24 months** or you'll be dropped from the list; renewing keeps your original filing date",
+     "When your turn comes you'll be called for an interview; bring originals"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "面谈时需要：全家人的身份证件和出生证明",
+     "社安卡或身份证明文件",
+     "收入证明（工资单、W-2、社安金或退休金信函）",
+     "目前住址证明"
+    ],
+    "en": [
+     "At the interview: ID and birth certificates for everyone",
+     "Social Security cards or immigration documents",
+     "Proof of income (pay stubs, W-2, benefit letters)",
+     "Proof of current address"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "ApplyNYCHA 网上申请",
+      "en": "ApplyNYCHA online"
+     },
+     "url": "https://selfserve.nycha.info"
+    },
+    {
+     "label": {
+      "zh": "NYCHA 客服中心（周一至五 8am–5pm）",
+      "en": "NYCHA Customer Contact Center (Mon–Fri 8am–5pm)"
+     },
+     "phone": "718-707-7771"
+    },
+    {
+     "label": {
+      "zh": "或拨 311，说 Public Housing",
+      "en": "Or call 311 and say \"Public Housing\""
+     },
+     "phone": "311"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“交钱可以插队”：NYCHA 申请完全免费，没有任何付费加快的方法",
+     "“没有身份就不能申请”：只要家里有一人有合格身份就能申请",
+     "“申请一次就不用管了”：24 个月不更新会被移出名单"
+    ],
+    "en": [
+     "\"Pay to jump the line\": applying is free and nobody can speed it up for a fee",
+     "\"No status, no chance\": one eligible member is enough",
+     "\"Apply once and forget it\": if you don't renew every 24 months you're removed"
+    ]
+   },
+   "sources": [
+    {
+     "name": "NYCHA 申请常见问题",
+     "url": "https://www.nyc.gov/site/nycha/eligibility/public-housing-applicant-faq.page"
+    },
+    {
+     "name": "ACCESS NYC：公屋",
+     "url": "https://access.nyc.gov/programs/public-housing/"
+    },
+    {
+     "name": "NYCHA Section 8 申请说明",
+     "url": "https://www.nyc.gov/site/nycha/section-8/guide-for-applicants-and-tenants.page"
+    }
+   ],
+   "watch": [
+    "https://www.nyc.gov/site/nycha/eligibility/public-housing-applicant-faq.page",
+    "https://www.nyc.gov/site/nycha/section-8/guide-for-applicants-and-tenants.page"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "housing-connect",
+   "group": "housing",
+   "glyph": "抽",
+   "title": {
+    "zh": "抽签平价房（Housing Connect）",
+    "en": "Affordable housing lotteries (Housing Connect)"
+   },
+   "short": {
+    "zh": "不论身份都能抽，房租约为收入三分之一",
+    "en": "Open to everyone regardless of status; rent about one-third of income"
+   },
+   "summary": {
+    "zh": "纽约市的平价房通过 **NYC Housing Connect** 网站抽签分配，**不论公民或移民身份都可以申请**。每个楼盘都有收入下限和上限，只有收入落在范围内才有机会。",
+    "en": "NYC affordable apartments are assigned by lottery through **NYC Housing Connect**, and **anyone can apply regardless of citizenship or immigration status**. Each building has a minimum and maximum income; you only qualify where your income fits both."
+   },
+   "who": {
+    "zh": [
+     "任何人都可以注册申请，不问身份",
+     "收入要在该楼盘的范围内。2026 年标准（年收入上限）举例：1人 80% AMI 为 $95,040、130% AMI 为 $154,440；4人 80% AMI 为 $135,680、130% AMI 为 $220,480",
+     "部分楼盘优先给老人、残障人士和本社区居民"
+    ],
+    "en": [
+     "Anyone can register and apply; status isn't asked",
+     "Your income must fit the building's range. 2026 examples (yearly maximum): 1 person 80% AMI $95,040, 130% AMI $154,440; 4 people 80% AMI $135,680, 130% AMI $220,480",
+     "Some buildings give priority to seniors, people with disabilities and neighborhood residents"
+    ]
+   },
+   "how": {
+    "zh": [
+     "到 housingconnect.nyc.gov 注册账户，填好家庭人数和收入",
+     "浏览正在开放的楼盘，只申请收入范围符合的",
+     "**每个楼盘都可以申请，多申请几个机会更大**，申请完全免费",
+     "被抽中后会收到通知，需要在期限内交材料并面谈",
+     "另外留意“二次出租”（re-rental），是先到先得"
+    ],
+    "en": [
+     "Register at housingconnect.nyc.gov and enter your household size and income",
+     "Browse open lotteries and apply only where your income fits",
+     "**You can apply to every eligible building, and more applications mean better odds.** It's free",
+     "If selected you'll be notified to submit documents and interview by a deadline",
+     "Also watch re-rentals, which are first-come, first-served"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "被抽中后才需要：工资单、W-2、福利信函",
+     "银行和投资账户月结单",
+     "租房记录，可能会查信用",
+     "全家人的身份证件和出生证明"
+    ],
+    "en": [
+     "Only if selected: pay stubs, W-2s, benefit letters",
+     "Bank and investment statements",
+     "Rental history; credit may be checked",
+     "IDs and birth certificates for everyone"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NYC Housing Connect",
+      "en": "NYC Housing Connect"
+     },
+     "url": "https://housingconnect.nyc.gov"
+    },
+    {
+     "label": {
+      "zh": "ACCESS NYC 中文说明",
+      "en": "ACCESS NYC overview"
+     },
+     "url": "https://access.nyc.gov/programs/nyc-housing-connect"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“收入越低越好”：每个楼盘有收入下限，收入太低反而不合资格",
+     "“找中介可以保证抽中”：抽签是随机的，任何收费保证抽中的都是骗局",
+     "“填多一点收入比较好”：收入资料必须真实，被抽中后会严格核查"
+    ],
+    "en": [
+     "\"Lower income is always better\": each building has a minimum income too",
+     "\"An agent can guarantee a win\": lotteries are random; paid guarantees are scams",
+     "\"Round your income up\": figures must be accurate and are checked if you're selected"
+    ]
+   },
+   "sources": [
+    {
+     "name": "ACCESS NYC：Housing Connect",
+     "url": "https://access.nyc.gov/programs/nyc-housing-connect"
+    },
+    {
+     "name": "NYC HDC 2026 收入与房租表",
+     "url": "https://www.nychdc.com/sites/default/files/2026-05/2026%20Income%20Limit%20and%20Rent%20Charts.pdf"
+    }
+   ],
+   "watch": [
+    "https://access.nyc.gov/programs/nyc-housing-connect"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "scrie",
+   "group": "housing",
+   "glyph": "冻",
+   "title": {
+    "zh": "老人和残障人士租金冻结（SCRIE / DRIE）",
+    "en": "Rent freeze for seniors and people with disabilities (SCRIE/DRIE)"
+   },
+   "short": {
+    "zh": "62岁以上、收入5万以下，租金可以冻结不再涨",
+    "en": "62+ with income $50,000 or less: your rent stops going up"
+   },
+   "summary": {
+    "zh": "如果你住在租金管制公寓，62 岁以上（SCRIE）或有残障（DRIE），家庭年收入 **$50,000 或以下**，而且房租超过收入的三分之一，就能申请把房租冻结在现在的水平，以后房东加租的部分由市政府抵税补上。",
+    "en": "If you live in a rent-regulated apartment, are 62+ (SCRIE) or have a qualifying disability (DRIE), have household income of **$50,000 or less**, and pay more than one-third of income in rent, your rent can be frozen at its current level. Future increases are covered by a city tax credit to your landlord."
+   },
+   "news": {
+    "zh": [
+     "**2026 年租金稳定公寓全面冻租**：租金指导委员会 2026 年 6 月表决，10 月 1 日起开始的 1 年和 2 年租约**都不加租**。SCRIE/DRIE 则能让你的房租长期冻结，两者不冲突。"
+    ],
+    "en": [
+     "**2026 rent freeze for stabilized apartments**: in June 2026 the Rent Guidelines Board voted a 0% increase for 1- and 2-year leases starting October 1, 2026. SCRIE/DRIE freezes your rent long-term, so it's still worth applying."
+    ]
+   },
+   "who": {
+    "zh": [
+     "SCRIE：62 岁以上，名字在租约上",
+     "DRIE：18 岁以上，并领取 SSI、SSDI、退伍军人残障金，或曾领 SSI/SSDI 而现在领残障白卡",
+     "全家年收入 $50,000 或以下",
+     "房租超过月收入的三分之一",
+     "住在租金稳定（rent-stabilized）、租金管制（rent-controlled）或其他受管制公寓；DRIE 也包括 Mitchell-Lama 等",
+     "**不适用**：NYCHA 公屋、Section 8 单位、分租和非管制公寓"
+    ],
+    "en": [
+     "SCRIE: 62+ and named on the lease",
+     "DRIE: 18+ and receiving SSI, SSDI, VA disability, or disability-related Medicaid after SSI/SSDI",
+     "Household income $50,000 or less",
+     "Rent more than one-third of monthly income",
+     "Rent-stabilized, rent-controlled or other regulated apartment (DRIE also covers Mitchell-Lama and similar)",
+     "**Not eligible**: NYCHA, Section 8 units, sublets, unregulated apartments"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上网申请最快：搜索 “NYC Rent Freeze”，在官方网站填写",
+     "也可以用纸本表格，**有中文版**，寄复印件，不要寄原件",
+     "批准后房租冻结在申请时的金额",
+     "到期前 60 天可在网上 Tenant Access Portal 续期，记得按时续"
+    ],
+    "en": [
+     "Online is fastest: search \"NYC Rent Freeze\" and apply on the official site",
+     "Paper forms are available, **including in Chinese**. Mail copies, not originals",
+     "Once approved, rent is frozen at the amount when you applied",
+     "Renew through the Tenant Access Portal starting 60 days before it expires"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "现在的租约和续约",
+     "全家人去年的收入证明（报税表、社安金信函等）",
+     "年龄证明；DRIE 需要残障福利证明"
+    ],
+    "en": [
+     "Current lease and renewal",
+     "Last year's income proof for everyone (tax returns, benefit letters)",
+     "Proof of age; for DRIE, proof of disability benefits"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "NYC Rent Freeze 官方网站",
+      "en": "NYC Rent Freeze program"
+     },
+     "url": "https://www.nyc.gov/site/rentfreeze/index.page"
+    },
+    {
+     "label": {
+      "zh": "中文申请表（PDF）",
+      "en": "Application in Chinese (PDF)"
+     },
+     "url": "https://www.nyc.gov/assets/finance/downloads/pdf/translations/scrie-drie_chinese.pdf",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "电话咨询",
+      "en": "Questions"
+     },
+     "phone": "311"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“公屋也能申请”：NYCHA 和 Section 8 单位不适用",
+     "“申请了就永久有效”：要按时续期，否则会失效",
+     "“房东会因此赶我走”：这是合法福利，房东通过抵税拿回差价"
+    ],
+    "en": [
+     "\"It covers NYCHA too\": NYCHA and Section 8 units aren't eligible",
+     "\"It lasts forever\": you must renew on time",
+     "\"My landlord will push me out\": it's a legal benefit and the landlord gets a tax credit"
+    ]
+   },
+   "sources": [
+    {
+     "name": "Rent Freeze 资格",
+     "url": "https://www.nyc.gov/site/rentfreeze/qualifications/qualifications.page"
+    },
+    {
+     "name": "Rent Freeze 申请与续期",
+     "url": "https://www.nyc.gov/site/rentfreeze/apply/apply-renew.page"
+    }
+   ],
+   "watch": [
+    "https://www.nyc.gov/site/rentfreeze/qualifications/qualifications.page"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "tenant-help",
+   "group": "housing",
+   "glyph": "律",
+   "title": {
+    "zh": "被房东告上法庭：免费律师（Right to Counsel）",
+    "en": "Facing eviction: free lawyer (Right to Counsel)"
+   },
+   "short": {
+    "zh": "收入在贫困线2倍以内，被告驱逐可免费请律师",
+    "en": "Free eviction lawyer if income is under 200% of poverty line"
+   },
+   "summary": {
+    "zh": "在纽约市，如果房东在房屋法庭（Housing Court）告你欠租或要你搬走，收入在联邦贫困线 **200% 以内**的家庭可以**免费请律师全程代表**，**不论移民身份**。收入较高的也可以得到免费法律咨询。",
+    "en": "In NYC, if your landlord takes you to Housing Court for unpaid rent or to evict you, households under **200% of the federal poverty line** get a **free lawyer for the whole case, regardless of immigration status**. Others can get free brief legal advice."
+   },
+   "who": {
+    "zh": [
+     "住在纽约市的租客，包括 NYCHA 居民",
+     "全家收入在联邦贫困线 200% 以内可获全程代表：2026 年约 1 人 $31,920、4 人 $66,000",
+     "收入较高者可获简短法律咨询",
+     "不问移民身份"
+    ],
+    "en": [
+     "NYC tenants, including NYCHA residents",
+     "Full representation if income is under 200% of poverty: about $31,920 for 1 person and $66,000 for 4 in 2026",
+     "Brief advice for others",
+     "Immigration status doesn't matter"
+    ]
+   },
+   "how": {
+    "zh": [
+     "**收到法庭文件不要不理**，不出庭会自动判你输",
+     "拨 311，说 “Tenant Helpline”",
+     "或打 Housing Court Answers 热线",
+     "第一次出庭时，直接向法庭要求免费律师"
+    ],
+    "en": [
+     "**Never ignore court papers**; missing court means you lose by default",
+     "Call 311 and ask for the \"Tenant Helpline\"",
+     "Or call Housing Court Answers",
+     "At your first court date, ask the court for a free lawyer"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "法庭文件（Petition、Notice）",
+     "租约和交租记录",
+     "收入证明"
+    ],
+    "en": [
+     "Court papers (petition, notice)",
+     "Lease and rent receipts",
+     "Proof of income"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "租客热线",
+      "en": "Tenant Helpline"
+     },
+     "phone": "311"
+    },
+    {
+     "label": {
+      "zh": "Housing Court Answers",
+      "en": "Housing Court Answers"
+     },
+     "phone": "212-962-4795"
+    },
+    {
+     "label": {
+      "zh": "Legal Services NYC",
+      "en": "Legal Services NYC"
+     },
+     "phone": "917-661-4500"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“房东可以自己换锁赶人”：在纽约这是违法的，只有法院执行官才能执行驱逐",
+     "“没身份不能上法庭”：房屋法庭不问身份，也不会通报移民局"
+    ],
+    "en": [
+     "\"My landlord can change the locks\": illegal in NY; only a court marshal can evict",
+     "\"Without status I can't go to court\": Housing Court doesn't ask about immigration status"
+    ]
+   },
+   "sources": [
+    {
+     "name": "Legal Services NYC：Right to Counsel",
+     "url": "https://www.legalservicesnyc.org/resources/how-to-get-a-lawyer-under-the-new-york-city-right-to-counsel-rtc-law/"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "senior-housing",
+   "group": "senior",
+   "glyph": "老",
+   "title": {
+    "zh": "老人住房：老人公屋和老人平价楼",
+    "en": "Senior housing in NYC"
+   },
+   "short": {
+    "zh": "62岁以上可申请老人公屋、HUD 202 老人楼和老人抽签房",
+    "en": "62+: NYCHA senior buildings, HUD 202 buildings and senior lotteries"
+   },
+   "summary": {
+    "zh": "62 岁以上的长者有三条路：NYCHA **老人公屋**、联邦 **HUD 202** 老人楼（直接向每栋楼排队），以及 Housing Connect 上**优先给老人的抽签楼盘**。三条路可以同时走。",
+    "en": "Seniors 62+ have three routes: NYCHA **senior buildings**, federal **HUD Section 202** buildings (apply to each building's waitlist), and **senior-priority lotteries** on Housing Connect. Use all three at once."
+   },
+   "who": {
+    "zh": [
+     "NYCHA 老人公屋：单人 62 岁以上，或全家都 62 岁以上；收入和身份规定同一般公屋",
+     "HUD 202：至少一人 62 岁以上，收入一般低于地区中位收入 50%；一般不要求公民身份",
+     "Housing Connect 老人楼盘：按各楼盘规定"
+    ],
+    "en": [
+     "NYCHA senior buildings: single applicant 62+ or everyone 62+; same income and status rules as public housing",
+     "HUD 202: at least one member 62+, income generally under 50% AMI; citizenship generally not required",
+     "Senior lotteries on Housing Connect: rules vary by building"
+    ]
+   },
+   "how": {
+    "zh": [
+     "在 ApplyNYCHA 申请公屋时选择老人楼（Senior Development）",
+     "HUD 202 要直接联系每栋楼的管理处登记轮候，可请 Aging Connect 帮忙找",
+     "在 Housing Connect 留意标明 senior 的楼盘"
+    ],
+    "en": [
+     "On ApplyNYCHA, choose senior developments",
+     "For HUD 202, contact each building's management office; Aging Connect can help you find them",
+     "On Housing Connect, watch for senior-designated lotteries"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "Aging Connect 老人服务热线",
+      "en": "Aging Connect"
+     },
+     "phone": "212-244-6469"
+    },
+    {
+     "label": {
+      "zh": "NYCHA 客服中心",
+      "en": "NYCHA Customer Contact Center"
+     },
+     "phone": "718-707-7771"
+    },
+    {
+     "label": {
+      "zh": "NYC Housing Connect",
+      "en": "NYC Housing Connect"
+     },
+     "url": "https://housingconnect.nyc.gov"
+    }
+   ],
+   "myths": {
+    "zh": [
+     "“老人楼只收公民”：HUD 202 一般不要求公民身份",
+     "“只能排一个名单”：可以同时登记多个名单"
+    ],
+    "en": [
+     "\"Senior buildings are for citizens only\": HUD 202 generally has no citizenship rule",
+     "\"Only one list at a time\": you can be on several lists"
+    ]
+   },
+   "sources": [
+    {
+     "name": "NYCHA 资格",
+     "url": "https://www.nyc.gov/site/nycha/eligibility/eligibility.page"
+    },
+    {
+     "name": "HPD 老人住房",
+     "url": "https://www.nyc.gov/site/hpd/services-and-information/senior-housing.page"
+    }
+   ],
+   "watch": [
+    "https://www.nyc.gov/site/nycha/eligibility/eligibility.page"
+   ],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "senior-services",
+   "group": "senior",
+   "glyph": "乐",
+   "title": {
+    "zh": "老人中心、送餐和老人服务",
+    "en": "Older adult centers, meals and senior services"
+   },
+   "short": {
+    "zh": "60岁以上免费：老人中心午餐、活动、上门送餐",
+    "en": "Free for 60+: center meals, activities, home-delivered meals"
+   },
+   "summary": {
+    "zh": "纽约市 60 岁以上长者可以免费到**老人中心**吃饭和参加活动，餐点会配合社区口味，很多华人区中心提供中餐。行动不便的可以申请**上门送餐**。一个电话 Aging Connect 就能查。",
+    "en": "New Yorkers 60+ can eat and join activities at **older adult centers** for free, with meals that fit the community's culture. Those who can't get out can get **home-delivered meals**. Start with one call to Aging Connect."
+   },
+   "who": {
+    "zh": [
+     "纽约市 60 岁以上居民",
+     "上门送餐：60 岁以上、外出困难，需经评估"
+    ],
+    "en": [
+     "NYC residents 60+",
+     "Home-delivered meals: 60+ and homebound, after an assessment"
+    ]
+   },
+   "how": {
+    "zh": [
+     "打 Aging Connect：212-AGING-NY（212-244-6469），说明需要中文翻译",
+     "或在 NYC Aging 网站用 “Find a center near you” 找附近老人中心",
+     "申请送餐：先电话登记，个案经理会上门评估"
+    ],
+    "en": [
+     "Call Aging Connect at 212-AGING-NY (212-244-6469); ask for an interpreter if needed",
+     "Or use \"Find a center near you\" on the NYC Aging site",
+     "For home-delivered meals: phone intake, then a case manager visits"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "Aging Connect",
+      "en": "Aging Connect"
+     },
+     "phone": "212-244-6469"
+    },
+    {
+     "label": {
+      "zh": "老人中心查询",
+      "en": "Find an older adult center"
+     },
+     "url": "https://www.nyc.gov/site/dfta/services/older-adult-center.page"
+    }
+   ],
+   "sources": [
+    {
+     "name": "NYC Aging 老人中心",
+     "url": "https://www.nyc.gov/site/dfta/services/older-adult-center.page"
+    },
+    {
+     "name": "NYC Aging 居家服务",
+     "url": "https://www.nyc.gov/site/dfta/services/in-home-services.page"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "idnyc",
+   "group": "family",
+   "glyph": "证",
+   "title": {
+    "zh": "纽约市身份证 IDNYC",
+    "en": "IDNYC city ID card"
+   },
+   "short": {
+    "zh": "免费、不问身份的市政府身份证",
+    "en": "Free city ID regardless of immigration status"
+   },
+   "summary": {
+    "zh": "IDNYC 是纽约市政府发的**免费身份证**，10 岁以上的纽约市居民都能办，**不问移民身份**。可以用来进出政府大楼、在部分银行开户、去图书馆，还有博物馆等优惠。",
+    "en": "IDNYC is a **free photo ID** from the City for residents 10+, **regardless of immigration status**. Use it to enter city buildings, open accounts at some banks, use libraries and get museum and other discounts."
+   },
+   "who": {
+    "zh": [
+     "住在纽约市、10 岁以上",
+     "不问移民身份"
+    ],
+    "en": [
+     "NYC residents age 10+",
+     "Immigration status doesn't matter"
+    ]
+   },
+   "how": {
+    "zh": [
+     "上 IDNYC 网站预约，或打 311 说 “IDNYC”；新预约每周五开放",
+     "部分办理点有固定日子可不预约（walk-in），如皇后区中央图书馆逢周五",
+     "带身份和住址证明去办理，可用网站上的 Document Calculator 查哪些文件算数",
+     "卡有效 5 年（16 岁以下 2 年）"
+    ],
+    "en": [
+     "Book on the IDNYC site or call 311 and say \"IDNYC\"; new slots open each Friday",
+     "Some centers take walk-ins on set days, e.g. Queens Central Library on Fridays",
+     "Bring proof of identity and NYC address; the Document Calculator shows what counts",
+     "Valid 5 years (2 years under 16)"
+    ]
+   },
+   "docs": {
+    "zh": [
+     "身份证明：护照、外国身份证、领事证等",
+     "纽约市住址证明：水电账单、租约、银行月结单等"
+    ],
+    "en": [
+     "Identity: passport, foreign ID, consular ID, etc.",
+     "NYC address: utility bill, lease, bank statement, etc."
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "IDNYC 官网",
+      "en": "IDNYC"
+     },
+     "url": "https://www.nyc.gov/site/idnyc/index.page"
+    },
+    {
+     "label": {
+      "zh": "预约",
+      "en": "Appointments"
+     },
+     "phone": "311"
+    }
+   ],
+   "sources": [
+    {
+     "name": "IDNYC 说明",
+     "url": "https://www.nyc.gov/site/idnyc/about/about.page"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  },
+  {
+   "id": "prek",
+   "group": "family",
+   "glyph": "学",
+   "title": {
+    "zh": "免费 3-K 和 Pre-K 幼儿园",
+    "en": "Free 3-K and Pre-K"
+   },
+   "short": {
+    "zh": "3岁和4岁孩子免费上学，不问收入和身份",
+    "en": "Free school for 3- and 4-year-olds, any income or status"
+   },
+   "summary": {
+    "zh": "纽约市为 **3 岁（3-K）和 4 岁（Pre-K）**的孩子提供**免费**全日制学前教育，**不论家庭收入、移民身份或语言**。每年年初截止申请，网上申请有中文版。",
+    "en": "NYC offers **free** full-day school for **3-year-olds (3-K) and 4-year-olds (Pre-K)**, **regardless of income, immigration status or language**. Applications close early in the year; the online form is available in Chinese."
+   },
+   "who": {
+    "zh": [
+     "当年满 3 岁或 4 岁、住在纽约市的孩子",
+     "不问收入和身份"
+    ],
+    "en": [
+     "NYC children turning 3 or 4 that year",
+     "No income or status requirement"
+    ]
+   },
+   "how": {
+    "zh": [
+     "到 MySchools（myschools.nyc）网上申请，有中文版",
+     "或到家庭欢迎中心（Family Welcome Center），或打 718-935-2009",
+     "按时申请的家庭都会获得学位，不是先到先得",
+     "2026–27 学年已于 2026 年 2 月 27 日截止；下一轮预计 2027 年初开放"
+    ],
+    "en": [
+     "Apply on MySchools (myschools.nyc), available in Chinese",
+     "Or visit a Family Welcome Center, or call 718-935-2009",
+     "Every family that applies on time gets an offer; it's not first-come",
+     "The 2026–27 deadline was Feb 27, 2026; the next round is expected to open in early 2027"
+    ]
+   },
+   "contacts": [
+    {
+     "label": {
+      "zh": "MySchools 申请",
+      "en": "MySchools"
+     },
+     "url": "https://www.myschools.nyc",
+     "chinese": true
+    },
+    {
+     "label": {
+      "zh": "教育局电话",
+      "en": "DOE phone"
+     },
+     "phone": "718-935-2009"
+    }
+   ],
+   "sources": [
+    {
+     "name": "纽约市长办公室 2026 年 2 月公告",
+     "url": "https://www.nyc.gov/mayors-office/news/2026/02/ahead-of-feb--27-deadline--mayor-mamdani-urges-families-to-apply.html"
+    }
+   ],
+   "watch": [],
+   "verified": "2026-10-24"
+  }
+ ]
+}

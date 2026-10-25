@@ -329,3 +329,4 @@ dialog::backdrop{background:rgba(8,12,20,.55);backdrop-filter:blur(2px)}
 .lv.maybe{background:var(--gold-soft);color:var(--gold)}
 @media (prefers-color-scheme:dark){.lv.likely{background:#173523;color:#7fd39a}}
 @media (max-width:560px){.ck-res li a{grid-template-columns:auto minmax(0,1fr)}.ck-res .lv{grid-column:2;justify-self:start}}
+.lv.info{background:var(--bg);color:var(--ink-2);border:1px solid var(--line)}

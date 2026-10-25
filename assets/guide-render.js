@@ -55,38 +55,73 @@
   }
 
   /* ---------- the check ----------
-     answers: { nyc: bool, age: number, size: 1-8, monthly: number, status: citizen|lpr5|lpr|refugee|other|none,
-                flags: { preg: bool, kids: bool, disabled: bool, renter: bool, regulated: bool } }
-     Each guide may carry `check`: { minAge, maxAge, maxFpl, maxYearly, nycOnly, status:[...], maybeStatus:[...], needs:[flag...] , anyOf:[flag...] } */
+     answers: { nyc, age, size, monthly, status: citizen|lpr5|lpr|refugee|other|none,
+                flags: { preg, kids, disabled, renter, regulated } }
+     Each rule returns "likely", "maybe", "info" or null. Numbers come from data/guides.json (fpl, ami80, ami130). */
+  const LAWFUL = ["citizen", "lpr5", "lpr", "refugee"];
+  const RULES = {
+    "medicaid": a => {
+      if (a.age < 19 || a.pct > 138) return null;
+      if (a.status === "citizen" || a.status === "lpr5") return "likely";
+      if (a.status === "none") return (a.age >= 65 || a.f.preg) ? "likely" : null;
+      return "maybe";
+    },
+    "essential-plan": a => (a.age >= 19 && a.age <= 64 && a.pct <= 200 && (a.pct > 138 || a.status === "refugee") && a.status !== "none")
+      ? (["citizen", "lpr5", "lpr", "refugee"].includes(a.status) ? "likely" : "maybe") : null,
+    "child-health-plus": a => (a.f.kids || a.f.preg) ? "likely" : null,
+    "nyc-care": a => a.nyc && (a.status === "none" || a.status === "other") ? "likely" : null,
+    "medicare-help": a => a.age >= 65 && a.status !== "none" ? (a.pct <= 186 ? "likely" : "maybe") : null,
+    "snap": a => {
+      const limit = (a.age >= 60 || a.f.disabled) ? 200 : 150;
+      if (a.pct > limit) return null;
+      if (a.status === "citizen" || a.status === "lpr5") return "likely";
+      if (a.status === "lpr") return a.f.kids ? "likely" : "maybe";
+      if (a.status === "refugee") return "maybe";
+      return a.f.kids ? "maybe" : null;
+    },
+    "wic": a => (a.f.preg && a.pct <= 185) ? "likely" : null,
+    "cash-assistance": a => {
+      if (a.pct > 100) return null;
+      if (LAWFUL.includes(a.status)) return "maybe";
+      return a.status === "other" || a.f.kids ? "maybe" : null;
+    },
+    "heap": a => a.pct <= 249 ? (LAWFUL.includes(a.status) ? "likely" : (a.f.kids ? "maybe" : null)) : null,
+    "fair-fares": a => (a.nyc && a.age >= 18 && a.age <= 64) ? (a.pct <= 150 ? "likely" : a.pct <= 200 ? "maybe" : null) : null,
+    "free-tax": a => a.yearly <= (a.f.kids ? 97000 : 68000) ? "likely" : null,
+    "lifeline": a => a.pct <= 135 ? "likely" : null,
+    "school-meals": a => a.f.kids ? "likely" : null,
+    "nycha": a => (a.nyc && a.yearly <= a.ami80) ? (LAWFUL.includes(a.status) ? "likely" : "maybe") : null,
+    "housing-connect": a => (a.nyc && a.yearly <= a.ami130) ? "likely" : null,
+    "scrie": a => (a.nyc && a.f.regulated && a.yearly <= 50000) ? (a.age >= 62 ? "likely" : a.f.disabled ? "maybe" : null) : null,
+    "tenant-help": a => (a.nyc && a.f.renter && a.pct <= 200) ? "likely" : null,
+    "senior-housing": a => (a.nyc && a.age >= 62 && a.yearly <= a.ami80) ? "likely" : null,
+    "senior-services": a => (a.nyc && a.age >= 60) ? "likely" : null,
+    "idnyc": a => (a.nyc && a.age >= 10 && ["none", "other", "refugee", "lpr"].includes(a.status)) ? "likely" : null,
+    "prek": a => (a.nyc && (a.f.kids || a.f.preg)) ? "likely" : null,
+    "naturalization": a => a.status === "lpr5" ? "likely" : a.status === "lpr" ? "maybe" : null,
+    "green-card": a => ["other", "refugee"].includes(a.status) ? "info" : null,
+    "public-charge": a => ["lpr", "other", "none", "refugee"].includes(a.status) ? "info" : null,
+    "legal-help": a => ["other", "none", "refugee", "lpr", "lpr5"].includes(a.status) ? "info" : null
+  };
   function fplYear(fpl, size) {
     if (!fpl) return null;
     const t = fpl.table || [];
     if (size <= t.length) return t[size - 1];
     return t[t.length - 1] + (size - t.length) * (fpl.add || 0);
   }
-  function evaluate(data, a) {
+  const fromTable = (t, size) => (!t || !t.length) ? Infinity : size <= t.length ? t[size - 1] : t[t.length - 1] * (1 + 0.08 * (size - t.length));
+  function evaluate(data, ans) {
+    const yearly = (Number(ans.monthly) || 0) * 12;
+    const fpl = fplYear(data.fpl, ans.size || 1);
+    const a = { nyc: !!ans.nyc, age: Number(ans.age) || 0, size: ans.size || 1, status: ans.status, f: ans.flags || {}, yearly,
+      pct: fpl ? yearly / fpl * 100 : 0, ami80: fromTable(data.ami80, ans.size || 1), ami130: fromTable(data.ami130, ans.size || 1) };
+    const order = { likely: 0, maybe: 1, info: 2 };
     const out = [];
-    const yearly = (Number(a.monthly) || 0) * 12;
-    const fpl = fplYear(data.fpl, a.size || 1);
     for (const g of data.guides || []) {
-      const c = g.check; if (!c) continue;
-      let level = "likely";
-      const reasons = [];
-      if (c.nycOnly && !a.nyc) continue;
-      if (c.minAge && a.age < c.minAge) continue;
-      if (c.maxAge && a.age > c.maxAge) continue;
-      if (c.needs && !c.needs.every(f => a.flags && a.flags[f])) continue;
-      if (c.anyOf && !c.anyOf.some(f => a.flags && a.flags[f])) continue;
-      if (c.maxFpl && fpl && yearly > fpl * c.maxFpl / 100) continue;
-      if (c.maxYearly && yearly > c.maxYearly) continue;
-      if (c.status) {
-        if (c.status.includes(a.status)) { /* ok */ }
-        else if (c.maybeStatus && c.maybeStatus.includes(a.status)) { level = "maybe"; reasons.push("status"); }
-        else continue;
-      }
-      out.push({ g, level, reasons });
+      const rule = RULES[g.id]; if (!rule) continue;
+      const level = rule(a); if (level) out.push({ g, level });
     }
-    out.sort((x, y) => (x.level === y.level ? 0 : x.level === "likely" ? -1 : 1));
+    out.sort((x, y) => order[x.level] - order[y.level]);
     return { results: out, yearly, fpl, pct: fpl ? Math.round(yearly / fpl * 100) : null };
   }
 
