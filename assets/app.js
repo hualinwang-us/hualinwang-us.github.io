@@ -237,8 +237,8 @@
     items.push({ h: "stocks", label: t("stkTab") });
     for (const g of GROUPS) items.push({ h: "b-" + g.boards[0][0], label: lang === "zh" ? g.zh : g.en, group: g.id,
       menu: g.boards.length < 2 ? null : () => `<div class="mm-cols"><div>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}<button type="button" class="mm-cta linkbtn" data-postto="${g.boards[0][0]}">${esc(t("postFree"))} →</button></div></div>` });
-    // Order tabs by how many readers want them: news, jobs, housing, benefits, deals, stocks, then the rest.
-    const ORDER = ["", "n-top", "grp:work", "grp:home", "guide", "deals", "stocks", "grp:trade", "grp:social", "grp:svc", "grp:pro", "grp:health", "grp:life"];
+    // Tab order matches the home page: benefits check, stocks, deals, news, then jobs, housing and the rest.
+    const ORDER = ["", "guide", "stocks", "deals", "n-top", "grp:work", "grp:home", "grp:trade", "grp:social", "grp:svc", "grp:pro", "grp:health", "grp:life"];
     const keyOf = it => it.group ? "grp:" + it.group : it.h;
     return items.sort((a, b) => { const x = ORDER.indexOf(keyOf(a)), y = ORDER.indexOf(keyOf(b)); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); });
   }
