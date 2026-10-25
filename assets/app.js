@@ -301,14 +301,13 @@
     ];
     items.push({ h: "stocks", label: t("stkTab") });
     items.push({ h: "city", label: t("cityCatTab"), menu: () => `<div class="mm-cols mm-city">${GROUPS.map(g => `<div><b>${esc(lang === "zh" ? g.zh : g.en)}</b>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}">${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}</div>`).join("")}<div><b>${esc(t("ypTab"))}</b>${t("ypCats").slice(0, 10).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div></div><a class="mm-cta" href="#city">${esc(t("cityAll"))} →</a>` });
-    if (!IS_APP) items.push({ h: "app", label: t("appTab"), app: true });
     items.push({ h: "b-dating", label: t("datingTab") });
     items.push({ h: "travel", label: t("travelTab"), menu: () => window.HLTravel ? `<div class="mm-cols"><div><b>${esc(t("trNear"))}</b>${HLTravel.T.filter(x => x.area === "near").map(x => `<a href="#tr-${x.id}">${esc(x.name)}</a>`).join("")}</div><div><b>${esc(t("trUsa"))}</b>${HLTravel.T.filter(x => x.area === "usa").map(x => `<a href="#tr-${x.id}">${esc(x.name)}</a>`).join("")}</div></div><a class="mm-cta" href="#travel">${esc(t("trAll"))} →</a>` : null });
     items.push({ h: "tools", label: t("toolsTab"), menu: () => window.HLTools ? `<div class="mm-cols">${HLTools.CATS.map(c => `<div><b>${esc(lang === "zh" ? c.zh : c.en)}</b>${c.tools.map(id => `<a href="#t-${id}">${esc(HLTools.title(id, lang))}</a>`).join("")}</div>`).join("")}</div><a class="mm-cta" href="#tools">${esc(t("toolsAll"))} →</a>` : null });
     items.push({ h: "events", label: t("eventsTab") });
     // Top bar: home (all local services), app, meet locals, news, deals, offline events.
     // The app keeps its home screen to three things (benefits check, tools, supermarket flyers); everything else lives in the tabs.
-    const ORDER = IS_APP ? ["", "city", "n-top", "stocks", "b-dating", "tools", "deals", "travel"] : ["", "app", "tools", "city", "deals", "n-top", "stocks", "travel", "b-dating"];
+    const ORDER = IS_APP ? ["", "city", "n-top", "stocks", "b-dating", "tools", "deals", "travel"] : ["", "tools", "city", "deals", "n-top", "stocks", "travel", "b-dating"];
     return items.filter(it => ORDER.includes(it.h)).sort((a, b) => ORDER.indexOf(a.h) - ORDER.indexOf(b.h));
   }
   function renderTabs() {
@@ -1155,7 +1154,7 @@
     $("#appBtn").hidden = !can;
     let off = false; try { off = localStorage.getItem("hl-appbar") === "off"; } catch (e) {}
     const bar = $("#appBar");
-    if (bar) { bar.hidden = !(can && isMobile && !off); if (!bar.hidden) bar.innerHTML = `<img src="icons/icon-192.png" alt="" width="40" height="40"><div><b>${esc(t("appBarH"))}</b><span>${esc(t("appBarP"))}</span></div><button type="button" class="btn sm" data-app-install>${esc(t("appBarBtn"))}</button><button type="button" class="x" data-app-later aria-label="${esc(t("appLater"))}">×</button>`; }
+    if (bar) bar.hidden = true; // install banner removed; the download page is linked from the top "安装App" button and the footer
   }
   function appSteps(h, steps, apk) {
     $("#viewBody").innerHTML = `<button type="button" class="x" data-close aria-label="Close">×</button><div class="app-help"><img src="icons/icon-192.png" alt="" width="56" height="56"><h3>${esc(h)}</h3>${apk ? `<a class="btn" href="${APK}">${esc(t("apkBtn"))}</a><p class="g-fine">${esc(t("apkNote"))}</p><p class="app-or">${esc(t("apkOr"))}</p>` : ""}<ol>${steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol><button type="button" class="btn ghost" data-close>${esc(t("appDone"))}</button></div>`;
