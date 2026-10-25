@@ -16,7 +16,7 @@ const STORES = [
   { id: "seasonfresh", name: "双福超市 SeasonFresh", en: "SeasonFresh", areas: ["fl", "el"], locs: ["法拉盛", "艾姆赫斯特 Elmhurst"],
     page: "https://www.sf-supermarket.com/weeklyad", home: "https://www.sf-supermarket.com/", keep: u => /wixstatic\.com\/media\/3ef6f0_/.test(u) },
   { id: "yongfa", name: "新中美超市", en: "Yongfa", areas: ["fl"], locs: ["法拉盛"],
-    page: "https://yongfasupermarket.com/index.php/weeklydeal/", home: "https://yongfasupermarket.com/index.php/about/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
+    page: "https://yongfasupermarket.com/index.php/weeklydeal/", home: "https://yongfasupermarket.com/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
   { id: "gofresh-eb", name: "Go新鲜超市（东百老汇店）", en: "Go Fresh East Broadway", areas: ["mh"], locs: ["曼哈顿华埠 East Broadway"],
     page: "https://gofresh365.com/new-york-east-broadway-special-offers/", home: "https://gofresh365.com/weekly-special-offers/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
   { id: "gofresh-mott", name: "Go新鲜超市（勿街店）", en: "Go Fresh Mott St", areas: ["mh"], locs: ["曼哈顿华埠 Mott St"],
@@ -42,6 +42,10 @@ for (const s of STORES) {
     try {
       homeCache[s.home] ||= new Set(imgsOf(await get(s.home)));
       const imgs = imgsOf(await get(s.page)).filter(u => s.keep(u) && !homeCache[s.home].has(u));
+      // WordPress sites keep old uploads on the page; prefer images uploaded in the last ~6 weeks.
+      const ym = u => { const m = u.match(/\/uploads\/(20\d\d)\/(\d\d)\//); return m ? new Date(+m[1], +m[2] - 1, 1).getTime() : null; };
+      const fresh = imgs.filter(u => { const t = ym(u); return t == null || Date.now() - t < 45 * 864e5; });
+      if (fresh.length) imgs.splice(0, imgs.length, ...fresh);
       o.imgs = imgs.slice(0, 12).map(u => /wixstatic\.com\/media\//.test(u) ? u.replace(/(\/media\/([^\/]+))$/, "$1/v1/fit/w_1400,h_6000,q_85/$2") : u);
       if (!o.imgs.length) throw new Error("no images found");
       o.got = new Date().toISOString();
