@@ -269,7 +269,7 @@ async function buildOfficial(out) {
 
   // 2) Latest USCIS documents in the Federal Register (rules, notices), full text from the API.
   try {
-    const api = "https://www.federalregister.gov/api/v1/documents.json?per_page=40&order=newest&conditions%5Bagencies%5D%5B%5D=u-s-citizenship-and-immigration-services&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=html_url&fields%5B%5D=body_html_url&fields%5B%5D=publication_date&fields%5B%5D=type";
+    const api = "https://www.federalregister.gov/api/v1/documents.json?per_page=20&order=newest&conditions%5Bagencies%5D%5B%5D=u-s-citizenship-and-immigration-services&conditions%5Bagencies%5D%5B%5D=homeland-security-department&conditions%5Btype%5D%5B%5D=RULE&conditions%5Btype%5D%5B%5D=PRORULE&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=html_url&fields%5B%5D=body_html_url&fields%5B%5D=publication_date&fields%5B%5D=type";
     const res = await get(api, "json");
     // Keep rules, proposed rules and real notices; skip routine paperwork ("information collection") notices.
     const useful = (res.results || []).filter(r => !/information collection|collection activities|currently approved collection/i.test(r.title || "")).slice(0, 6);
@@ -279,8 +279,8 @@ async function buildOfficial(out) {
       if (!body.length) continue;
       const id = "o" + hid(r.html_url);
       const t = `${r.type ? r.type + ": " : ""}${r.title}`;
-      await saveFull(id, { t, u: r.html_url, src: "Federal Register (USCIS)", d: r.publication_date, body });
-      items.push({ id, t, u: r.html_url, s: (r.abstract || body[0] || "").slice(0, 160), src: "联邦公报 Federal Register · USCIS", d: r.publication_date ? new Date(r.publication_date + "T12:00:00Z").toISOString() : "", full: 1, pd: 1 });
+      await saveFull(id, { t, u: r.html_url, src: "Federal Register (DHS/USCIS)", d: r.publication_date, body });
+      items.push({ id, t, u: r.html_url, s: (r.abstract || body[0] || "").slice(0, 160), src: "联邦公报 Federal Register · DHS/USCIS", d: r.publication_date ? new Date(r.publication_date + "T12:00:00Z").toISOString() : "", full: 1, pd: 1 });
     }
   } catch (e) { out.feeds.push({ lang: "en", sec: "official", name: "Federal Register USCIS", ok: false, n: 0, err: String(e.message || e) }); }
 
