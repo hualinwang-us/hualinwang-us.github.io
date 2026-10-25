@@ -205,7 +205,7 @@
     if (n.status !== "fulfilled" && !loadData.retried) { loadData.retried = true; setTimeout(() => loadData().catch(() => {}), 3000); } // phone network hiccup: try once more
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
-    [renderNews, renderPulse, renderPortal, renderNewcomer, renderLocateBar, renderEvents, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    [renderAppHome, renderNews, renderPulse, renderPortal, renderNewcomer, renderLocateBar, renderEvents, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
     if (postsLoaded) { try { renderPostsAll(); } catch (e) { console.error(e); } }
   }
 
@@ -248,7 +248,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); try { renderRegionBtn(); renderPortal(); renderNewcomer(); renderLocateBar(); if (route.view === "events") renderEvents(); if (route.view === "tools") renderTools(); } catch (e) {} try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "yp") renderYP(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); try { renderAppHome(); renderRegionBtn(); renderPortal(); renderNewcomer(); renderLocateBar(); if (route.view === "events") renderEvents(); if (route.view === "tools") renderTools(); } catch (e) {} try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "yp") renderYP(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); applyScript(); }
 
@@ -307,7 +307,8 @@
     items.push({ h: "tools", label: t("toolsTab"), menu: () => window.HLTools ? `<div class="mm-cols">${HLTools.CATS.map(c => `<div><b>${esc(lang === "zh" ? c.zh : c.en)}</b>${c.tools.map(id => `<a href="#t-${id}">${esc(HLTools.title(id, lang))}</a>`).join("")}</div>`).join("")}</div><a class="mm-cta" href="#tools">${esc(t("toolsAll"))} →</a>` : null });
     items.push({ h: "events", label: t("eventsTab") });
     // Top bar: home (all local services), app, meet locals, news, deals, offline events.
-    const ORDER = ["", "app", "tools", "city", "deals", "n-top", "stocks", "travel", "b-dating"];
+    // The app keeps its home screen to three things (benefits check, tools, supermarket flyers); everything else lives in the tabs.
+    const ORDER = IS_APP ? ["", "city", "n-top", "stocks", "b-dating", "tools", "deals", "travel"] : ["", "app", "tools", "city", "deals", "n-top", "stocks", "travel", "b-dating"];
     return items.filter(it => ORDER.includes(it.h)).sort((a, b) => ORDER.indexOf(a.h) - ORDER.indexOf(b.h));
   }
   function renderTabs() {
@@ -399,6 +400,17 @@
     document.title = (trip ? trip.name : t("travelTab")) + " - 华脉";
   }
   document.addEventListener("click", e => { const b = e.target.closest("[data-trshare]"); if (!b || !window.HLTravel) return; const n = HLTravel.title(b.dataset.trshare); HLShare.open({ url: HLC.siteBase() + "#tr-" + b.dataset.trshare, title: n + " 省钱攻略", text: n + " 省钱攻略 - 华脉" }); });
+  const TOOL_COL = { go: "#2f6fd6", scam: "#c8302a", imm: "#7a4fd0", drive: "#1f9d74", loan: "#d98a1c", afford: "#b8562a", eng: "#2a8fb8", life: "#5d6272" };
+  function renderAppHome() {
+    const el = $("#appHome"); if (!el || !IS_APP) return;
+    document.documentElement.classList.add("app-lite"); el.hidden = false;
+    const T = window.HLTools, zh = lang === "zh";
+    const tools = T ? `<div class="ah-tools">${T.CATS.map(c => c.tools.map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[c.id] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")).join("")}</div>` : "";
+    el.innerHTML = `
+      <a class="ah-hero" href="#check"><span class="ah-lab">${esc(zh ? "福利自测" : "Benefits check")}</span><b>${esc(zh ? "白卡、粮食券、公屋……我能申请什么？" : "Medicaid, SNAP, housing: what can I get?")}</b><span>${esc(zh ? "回答几个问题，马上看到你可能符合的福利" : "Answer a few questions to see what you may qualify for")}</span><em>${esc(zh ? "开始自测 →" : "Start →")}</em></a>
+      <a class="ah-cs" href="#chaoshi"><span class="ah-cs-ic">🛒</span><div><b>${esc(zh ? "华人超市特价单" : "Supermarket flyers")}</b><span>${esc(zh ? "法拉盛、华埠、布鲁克林本周特价，选超市直接看" : "This week's flyers from Chinese supermarkets")}</span></div><i>›</i></a>
+      <section class="ah-tools-sec"><div class="bh"><h2>${esc(t("toolsTab"))}</h2><a href="#tools">${esc(t("more"))}</a></div>${tools}</section>`;
+  }
   function renderTools() {
     if (!window.HLTools || route.view !== "tools") return;
     const T = window.HLTools, zh = lang === "zh";

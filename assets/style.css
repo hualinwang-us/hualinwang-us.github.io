@@ -1370,3 +1370,20 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .cs-links em{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;color:var(--accent);font-weight:700;font-size:13.5px}
 .deal-cs{display:flex;align-items:center;gap:12px;padding:14px 16px;margin:0 0 14px;border-radius:var(--r);background:linear-gradient(135deg,#B8312A,#d2553a);color:#fff;text-decoration:none}
 .deal-cs b{font-size:17px;display:block}.deal-cs span{font-size:13px;opacity:.9}.deal-cs i{margin-left:auto;font-style:normal;font-weight:800;font-size:20px}
+/* 精简版 App 首页 */
+.app-lite #vHome > :not(#appHome){display:none!important}
+.app-home{padding-top:14px;display:grid;gap:14px}
+.ah-hero{display:grid;gap:6px;padding:20px 18px;border-radius:18px;color:#fff;text-decoration:none;background:linear-gradient(140deg,#1B1F2A 0%,#2b3346 55%,#8e2a24 140%);box-shadow:0 14px 30px -18px rgba(27,31,42,.8)}
+.ah-lab{display:inline-block;justify-self:start;font-size:12.5px;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.14)}
+.ah-hero b{font:800 21px/1.35 var(--display)}
+.ah-hero span:not(.ah-lab){font-size:14px;opacity:.85}
+.ah-hero em{justify-self:start;margin-top:6px;font-style:normal;font-weight:800;background:#fff;color:#1B1F2A;border-radius:999px;padding:9px 18px;font-size:15px}
+.ah-cs{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#B8312A,#d8603a)}
+.ah-cs .ah-cs-ic{font-size:30px;opacity:1}.ah-cs b{display:block;font-size:17px}.ah-cs div span{font-size:13px;opacity:.9}.ah-cs i{margin-left:auto;font-style:normal;font-weight:800;font-size:22px}
+.ah-tools-sec{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 12px 4px}
+.ah-tools-sec .ah-tools{margin-top:12px}
+.ah-cat h3{font-size:13px;color:var(--muted);font-weight:700;margin:6px 0 8px}
+.ah-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 6px;margin-bottom:12px}
+.ah-tools a{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink);text-align:center}
+.ah-ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font:800 21px/1 var(--display);color:#fff;background:var(--c);box-shadow:0 6px 14px -8px var(--c)}
+.ah-tools b{font-size:12.5px;font-weight:600;line-height:1.3}
