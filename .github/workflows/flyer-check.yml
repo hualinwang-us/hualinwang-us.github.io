@@ -7,11 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: pip install pillow requests -q
+      - shell: python
+        run: |
+          import json, io, requests, os
+          from PIL import Image
+          os.makedirs("/tmp/t", exist_ok=True); d = json.load(open("data/flyers.json")); i = 0
+          for s in d["stores"]:
+              for u in s["imgs"]:
+                  i += 1
+                  try:
+                      r = requests.get(u, headers={"User-Agent": "Mozilla/5.0", "Referer": "https://huamai88.com/"}, timeout=60)
+                      im = Image.open(io.BytesIO(r.content)).convert("RGB"); print(s["id"], r.status_code, im.size)
+                      im.thumbnail((420, 1400)); im.save(f"/tmp/t/{i:02d}-{s['id']}.jpg", quality=70)
+                  except Exception as e: print(s["id"], "FAIL", e)
       - run: |
-          mkdir -p /tmp/t; i=0
-          for u in $(node -e 'const d=require("./data/flyers.json");for(const s of d.stores)for(const u of s.imgs)console.log(s.id+"|"+encodeURI(decodeURI(u)))'); do
-            id=${u%%|*}; url=${u#*|}; i=$((i+1))
-            curl -sL -m 60 -A "Mozilla/5.0" -e "https://huamai88.com/" "$url" -o /tmp/raw && convert /tmp/raw[0] -resize 360x /tmp/t/$(printf %02d $i)-$id.jpg && echo "$id $(identify -format '%wx%h' /tmp/raw[0] 2>/dev/null)" || echo "$id FAIL $url"
-          done
           git config user.name a; git config user.email a@a
           git checkout --orphan flyer-check; git rm -rqf --cached .; cp /tmp/t/* .; git add *.jpg; git commit -qm c; git push -f origin flyer-check
