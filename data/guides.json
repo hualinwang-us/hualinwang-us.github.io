@@ -110,14 +110,24 @@
    },
    "how": {
     "zh": [
-     "**先判断自己属不属于受影响的人**；已有绿卡准备入籍的，不受影响",
-     "准备申请绿卡、又需要或正在领福利的，**先打免费移民法律热线咨询**，不要自己贸然退掉孩子的保险或食物补助",
-     "急诊、疫苗、学校午餐等基本保障，不要因为害怕而放弃"
+     "**第一步：先判断你受不受影响。**已经有绿卡、准备入籍的，不受影响。难民、庇护者、T 签证、U 签证、VAWA 自我申请、SIJ 少年转绿卡，以及 DACA、TPS 申请或续期，一般也不审查。",
+     "**会被审查的主要是**：通过亲属、雇主或抽签**申请绿卡（I-485）**的人、申请签证入境的人，以及**出国 180 天或以上**再回美国的绿卡持有人。",
+     "**第二步：看你的申请日期。**2026 年 9 月 18 日或之后递交的绿卡申请适用新标准；之前递交的可能适用不同规则。9 月 18 日以前领的福利，只看现金补助和长期护理。",
+     "**第三步：打免费热线问清楚。**纽约市移民法律支援热线 **800-354-0365**（免费、保密、有翻译），或打 **311** 说 “Immigration Legal”；也可以打纽约州新美国人热线 **1-800-566-7636**（匿名）。接通后说 “Chinese, please”。",
+     "**打电话前先写下来**：你现在是什么身份、准备申请什么、什么时候递交、全家谁在领什么福利（白卡、粮食券、WIC、公屋等）、从什么时候开始领。",
+     "**第四步：不要自己停掉福利。**市政府明确建议：在跟可信的法律服务人员谈过之前，**不要停用你或家人需要的福利和市政府服务**。孩子的保险和食物补助尤其不要贸然退掉。",
+     "**急诊、疫苗、学校午餐等基本保障**，不要因为害怕而放弃。",
+     "热线会给你资讯，并可能转介免费律师；不保证一定有人接你的全部案子，所以**早点打**。"
     ],
     "en": [
-     "**First check whether you're affected**; green card holders applying for citizenship are not",
-     "If you're applying for a green card and use or need benefits, **call a free immigration legal hotline first**; don't cancel your children's coverage or food help on your own",
-     "Don't skip emergency care, vaccines or school meals out of fear"
+     "**Step 1: Check whether you're affected.** Green card holders applying for citizenship are not. Green cards through refugee or asylee status, T or U visas, VAWA self-petitions or SIJ status, and DACA or TPS applications and renewals, generally aren't reviewed either.",
+     "**Mainly reviewed**: people **applying for a green card (I-485)** through family, an employer or the lottery, people applying for visas to enter, and green card holders returning after **180 days or more** abroad.",
+     "**Step 2: Look at your filing date.** Green card applications filed on or after Sept 18, 2026 use the new standard; earlier filings may follow different rules. Benefits used before Sept 18 count only if they were cash aid or long-term care.",
+     "**Step 3: Call a free hotline.** NYC Immigration Legal Support Hotline **800-354-0365** (free, confidential, interpreters available), or call **311** and say \"Immigration Legal\"; or the NYS New Americans Hotline **1-800-566-7636** (anonymous). When connected, say \"Chinese, please\".",
+     "**Before you call, write down**: your current status, what you plan to apply for and when, and who in your family uses which benefits (Medicaid, SNAP, WIC, public housing, etc.) and since when.",
+     "**Step 4: Don't drop benefits on your own.** The City's advice is clear: **don't stop benefits or City services you or your family need** until you've talked to a trusted legal provider. Be especially careful not to cancel children's coverage or food help.",
+     "**Don't skip emergency care, vaccines or school meals** out of fear.",
+     "The hotline gives information and may refer you to a free lawyer; full representation isn't guaranteed, so **call early**."
     ]
    },
    "contacts": [
@@ -157,12 +167,52 @@
     {
      "name": "CLINIC：新公共负担规定",
      "url": "https://www.cliniclegal.org/resources/ground-inadmissibility-and-deportability/public-charge/new-public-charge-rule-file"
+    },
+    {
+     "name": "纽约市移民事务办公室：公共负担（2026-10-23 更新）",
+     "url": "https://www.nyc.gov/publiccharge"
+    },
+    {
+     "name": "纽约市移民法律支援热线",
+     "url": "https://www.nyc.gov/site/immigrants/legal-resources/moia-immigration-legal-support-hotline.page"
+    },
+    {
+     "name": "纽约州新美国人办公室",
+     "url": "https://dos.ny.gov/office-new-americans"
     }
    ],
    "watch": [
     "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**打完热线之后**：热线本身不直接代理案子，也不帮你约时间；他们会告诉你去哪里找可信的免费法律服务。按他们给的转介联系机构。",
+     "**跟律师谈时**：带上你的移民文件、福利批准信或通知、全家收入资料。律师会根据**你自己的情况**告诉你该怎么做。",
+     "**规定还在变**：多个州和城市已起诉，市政府说会持续更新资讯。递交绿卡申请前，再上 **nyc.gov/publiccharge** 看最新消息。",
+     "你领福利的资格本身**没有改变**；能不能继续领、要不要继续领，要听律师按个案的意见。"
+    ],
+    "en": [
+     "**After calling**: the hotline doesn't represent you or book appointments; it tells you where to find trusted free legal help. Contact the place they refer you to.",
+     "**When you see a lawyer**: bring your immigration papers, benefit approval letters or notices, and household income records. The lawyer will advise you based on **your own situation**.",
+     "**The rules are still changing**: states and cities have sued, and the City says it will keep updating its information. Check **nyc.gov/publiccharge** again before filing a green card application.",
+     "Your eligibility for benefits itself **hasn't changed**; whether to keep using them is a case-by-case decision to make with a lawyer."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**社安金和联邦医疗保险（Medicare）不是以收入审核的福利**，不算在内。",
+     "家人领福利**不会自动**让你成为公共负担；但如果你对那个人有法律上的扶养责任，可能会被考虑。先问律师，再决定。",
+     "网上和微信群里的传言很多，以 nyc.gov/publiccharge 和免费热线说的为准。",
+     "有人收钱说能“包你不受影响”或“帮你删掉福利记录”，都是骗局。"
+    ],
+    "en": [
+     "**Social Security and Medicare are not means-tested** and don't count.",
+     "A relative's benefits **don't automatically** make you a public charge, but they may be considered if you're legally responsible for supporting that person. Ask a lawyer before deciding anything.",
+     "There are many rumors online and in WeChat groups; trust nyc.gov/publiccharge and the free hotlines.",
+     "Anyone charging money to \"guarantee you're safe\" or \"erase your benefit records\" is running a scam."
+    ]
+   }
   },
   {
    "id": "naturalization",
@@ -212,16 +262,26 @@
    },
    "how": {
     "zh": [
-     "上 USCIS 网站建立账户，网上递交 N-400（网上比纸本便宜）",
-     "目前费用：网上 $710、纸本 $760；家庭收入在贫困线 150–400% 可申请减费 $380（以 USCIS 官网为准）",
-     "**2025 年 10 月 28 日起移民局不收支票和汇票**，要用信用卡或银行转账",
-     "按通知去打指纹、面试，通过后参加宣誓"
+     "**先算日子**：拿绿卡满 5 年（与公民结婚同住满 3 年）。绿卡上的 “Resident Since” 日期就是起算日，可以提前 90 天递交。过去 5 年出国超过 6 个月的，先问免费律师。",
+     "**找免费帮手**：打 **311** 说 “ActionNYC”，或打纽约州新美国人热线 **1-800-566-7636**，说 “Chinese, please”。他们可以免费帮你看资格、填 N-400（入籍申请表）。",
+     "**准备文件**：绿卡正反面复印件、过去 5 年每次出入境的日期、婚姻证明（3 年途径）、报税记录；曾被逮捕或上过法庭的，要准备法庭文件。",
+     "**网上递交最便宜**：在 USCIS（移民局）网站建立网上账户（online account），网上填写并递交 N-400。现在费用：网上 $710、纸本 $760；收入在贫困线 150–400% 可申请减费 $380（以 USCIS 官网为准）。",
+     "**付款**：2025 年 10 月 28 日起移民局**不收支票和汇票**，要用信用卡、借记卡或银行转账。",
+     "**收到收据通知（receipt notice）**：上面有 13 位的**收据号码（receipt number）**。拍照保存，以后查进度用。",
+     "**指纹预约（biometrics，移民局采集指纹和照片）**：会寄来预约通知（I-797C）。按上面的日期、时间、地点去，带**预约通知和绿卡**（或护照）。去不了，一定要**在预约时间之前**打 USCIS 客服 **1-800-375-5283** 改期，并说明正当理由。",
+     "**入籍面谈（interview）**：会寄来面谈通知。带上**面谈通知、绿卡、护照**和申请时交过的文件原件。官员会让你宣誓说真话，逐项问 N-400 的内容，并考英文（说、读一句、写一句）和公民考试（2025 年 10 月 20 日或之后递交的：从 128 题中问 20 题，答对 12 题及格）。符合年龄和绿卡年限豁免的，可以免考英文。",
+     "**宣誓典礼（oath ceremony）**：获批后，有时当天就能宣誓，否则会寄通知。当天要交回绿卡、填 N-445 问卷、宣誓，拿到**入籍证书（Certificate of Naturalization）**。离开前检查证书上的名字和日期，有错当场说。"
     ],
     "en": [
-     "Create a USCIS online account and file N-400 online (cheaper than paper)",
-     "Current fee: $710 online, $760 paper; $380 reduced fee for income 150–400% of poverty (confirm on uscis.gov)",
-     "**Since Oct 28, 2025 USCIS doesn't accept checks or money orders**; pay by card or bank debit",
-     "Attend biometrics and interview, then the oath ceremony"
+     "**Count your time**: 5 years with a green card (3 if married to and living with a citizen). The \"Resident Since\" date on your green card is the start date; you can file up to 90 days early. If you were abroad more than 6 months at a time in the last 5 years, ask a free lawyer first.",
+     "**Get free help**: call **311** and say \"ActionNYC\", or call the NYS New Americans Hotline at **1-800-566-7636** and say \"Chinese, please\". They can check your eligibility and help fill out the N-400 (citizenship application) for free.",
+     "**Gather documents**: copies of both sides of your green card, the dates of every trip in the last 5 years, marriage proof (3-year route), tax records, and court papers if you were ever arrested or went to court.",
+     "**Filing online is cheapest**: create a USCIS online account and file N-400 online. Current fee: $710 online, $760 paper; $380 reduced fee for income 150–400% of poverty (confirm on uscis.gov).",
+     "**Payment**: since Oct 28, 2025 USCIS **doesn't accept checks or money orders**; pay by credit or debit card or bank transfer.",
+     "**Receipt notice**: it has a 13-character **receipt number**. Take a photo; you'll use it to check your status.",
+     "**Biometrics appointment** (USCIS takes your fingerprints and photo): you'll get a notice (I-797C). Go on the date, time and place shown and bring **the notice and your green card** (or passport). If you can't go, call the USCIS Contact Center at **1-800-375-5283** **before the appointment time** to reschedule, with a good reason.",
+     "**Interview**: you'll get an interview notice. Bring **the notice, your green card, passport** and originals of documents you submitted. The officer puts you under oath, goes through your N-400, and gives the English test (speaking, reading one sentence, writing one sentence) and the civics test (filed on or after Oct 20, 2025: 20 questions from 128, 12 correct to pass). If you qualify for an age-and-years exemption, you can skip the English test.",
+     "**Oath ceremony**: once approved, you may take the oath the same day, or get a notice by mail. At the ceremony you hand back your green card, complete the N-445 questionnaire, take the oath and receive your **Certificate of Naturalization**. Check the name and dates before you leave and report errors on the spot."
     ]
    },
    "docs": {
@@ -277,12 +337,68 @@
     {
      "name": "AILA：2026 年费用提案",
      "url": "https://www.aila.org/library/uscis-91-fr-37500-6-23-26"
+    },
+    {
+     "name": "USCIS：入籍 10 个步骤",
+     "url": "https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization"
+    },
+    {
+     "name": "USCIS：指纹预约须知",
+     "url": "https://www.uscis.gov/forms/filing-guidance/preparing-for-your-biometric-services-appointment"
+    },
+    {
+     "name": "USCIS 政策手册：面谈结果与重考",
+     "url": "https://www.uscis.gov/policy-manual/volume-12-part-b-chapter-4"
+    },
+    {
+     "name": "USCIS 政策手册：拒绝后申请复审（N-336）",
+     "url": "https://www.uscis.gov/policy-manual/volume-12-part-b-chapter-6"
+    },
+    {
+     "name": "USCIS N-336 表",
+     "url": "https://www.uscis.gov/n-336"
+    },
+    {
+     "name": "USCIS 处理时间",
+     "url": "https://egov.uscis.gov/processing-times/"
     }
    ],
    "watch": [
     "https://www.uscis.gov/n-400"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**查进度**：在 **egov.uscis.gov/casestatus** 输入 13 位收据号码；或登录你的 USCIS 网上账户看通知；或打 1-800-375-5283。等待时间可在 USCIS 处理时间网页（processing times）查，超过时间还没消息，可以网上提出查询。",
+     "**面谈当天的结果**：官员会给你一张结果通知（N-652）。可能是**批准**、**延期**（例如要补文件，会发 N-14 补件通知，一般 30 天内要回复），或**拒绝**。",
+     "**考试没过**：会给你**第二次机会**，一般在 60 到 90 天内重考没过的部分。",
+     "移民局一般要在**第一次面谈后 120 天内**作出决定。",
+     "**被拒绝怎么办**：可以在收到拒绝通知后 **30 天内**（邮寄的话 33 天）交 **N-336** 表要求复审听证，费用 $700；不能网上交。超过期限会被拒收。一定先找免费律师帮你看。"
+    ],
+    "en": [
+     "**Check status**: enter your 13-character receipt number at **egov.uscis.gov/casestatus**, log in to your USCIS online account, or call 1-800-375-5283. See typical wait times on the USCIS processing times page; if your case is past that time, you can submit an online inquiry.",
+     "**Result at the interview**: the officer gives you a results notice (N-652). It may be **approved**, **continued** (for example, you need to send more documents; you'll get an N-14 request and usually have 30 days to respond), or **denied**.",
+     "**If you fail a test**: you get a **second chance**, usually within 60 to 90 days, to retake the part you failed.",
+     "USCIS generally must decide **within 120 days of your first interview**.",
+     "**If denied**: you can file **Form N-336** within **30 days** of receiving the denial (33 if it was mailed) to ask for a hearing. The fee is $700 and it can't be filed online. Late filings are rejected. See a free lawyer first."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**早点开始练习**：用 USCIS 网站的公民考试学习材料练习，请家人每天问你几题。",
+     "**说真话、跟申请表一致**：面谈时官员会对照你的 N-400 问，答案不一致会有麻烦。逮捕、出国、报税等问题，不确定就先问律师。",
+     "入籍**不审查公共负担**，领过白卡、粮食券不影响入籍。",
+     "搬家后要在 USCIS 网上改地址，否则面谈通知可能寄不到。",
+     "只找律师或司法部认可的代表办案。中介只能帮你填表翻译。"
+    ],
+    "en": [
+     "**Start practicing early**: use the USCIS civics study materials and have family quiz you a few questions every day.",
+     "**Tell the truth and match your form**: the officer checks your answers against your N-400. If you're unsure about arrests, trips or taxes, ask a lawyer first.",
+     "Naturalization has **no public charge test**; having used Medicaid or SNAP doesn't block citizenship.",
+     "If you move, change your address online with USCIS, or your interview notice may not reach you.",
+     "Only let a lawyer or DOJ-accredited representative handle your case. A notario may only fill forms and translate."
+    ]
+   }
   },
   {
    "id": "green-card",
@@ -328,16 +444,26 @@
    },
    "how": {
     "zh": [
-     "确认途径和排期（亲属和职业移民要看每月的签证公告）",
-     "用**最新版**表格；费用参考：I-485 成人 $1,440、14 岁以下随父母 $950；I-130 网上 $625、纸本 $675；随 I-485 申请工卡 $260、回美证 $630（以 USCIS 官网为准）",
-     "只能用信用卡或银行转账付款",
-     "用收据号码在 USCIS 网站查进度"
+     "**先确认你走哪条路**：亲属移民、职业移民、难民/庇护转绿卡等。走亲属或职业移民的，先查每月的**签证公告（Visa Bulletin）**，看你的排期日（priority date）到了没有。",
+     "**递交前先打免费热线**：纽约州新美国人热线 **1-800-566-7636** 或纽约市移民法律支援热线 **800-354-0365**，说 “Chinese, please”。2026 年 9 月 18 日起有新的公共负担标准，正在领福利的更要先问。",
+     "**用最新版表格**：2026 年 9 月 18 日起只收版本日期 09/18/26 的 I-485，旧版会被退回。在 uscis.gov/i-485 下载，并按你的类别找正确的递交地址。",
+     "**准备文件**：护照、出生证明、I-94 入境记录、照片、体检表 I-693（找移民局指定医生做）、经济担保 I-864、亲属关系或工作证明。外文文件要附英文翻译。",
+     "**一起递交工卡和回美证**（如需要）：工卡（I-765）随 I-485 $260、回美证（advance parole，I-131）$630；I-485 成人 $1,440（以 USCIS 官网为准）。只能用信用卡或银行转账付款。",
+     "**签名**：每份表格都要签名，没签名会被退件。全部复印一套自己留着。",
+     "**收到收据通知**：记下 13 位收据号码，拍照保存。",
+     "**指纹预约（biometrics，移民局采集指纹、照片和签名）**：按通知去，带**预约通知和带照片的身份证件**（例如护照）。去不了，**在预约之前**打 **1-800-375-5283** 改期。没去又没改期，申请可能会被当作放弃而被拒绝。",
+     "**面谈（如果需要）**：不是每个人都要面谈。有面谈的话，要宣誓回答问题，并带上**所有递交过的文件的原件**。"
     ],
     "en": [
-     "Confirm your path and priority date (check the monthly Visa Bulletin)",
-     "Use the **current** forms. Reference fees: I-485 $1,440 adult, $950 child under 14 with a parent; I-130 $625 online, $675 paper; work permit with I-485 $260; advance parole $630 (confirm on uscis.gov)",
-     "Pay by card or bank debit only",
-     "Track your case with the receipt number on the USCIS site"
+     "**Confirm your path**: family, employment, refugee/asylum and so on. For family or employment cases, check the monthly **Visa Bulletin** to see if your priority date is current.",
+     "**Call a free hotline before filing**: the NYS New Americans Hotline **1-800-566-7636** or the NYC Immigration Legal Support Hotline **800-354-0365**, and say \"Chinese, please\". A new public charge standard applies from Sept 18, 2026, so ask first if you use benefits.",
+     "**Use the current form**: from Sept 18, 2026 only the 09/18/26 edition of I-485 is accepted; older editions are rejected. Download it at uscis.gov/i-485 and find the right filing address for your category.",
+     "**Gather documents**: passport, birth certificate, I-94, photos, medical exam I-693 (from a USCIS-designated doctor), affidavit of support I-864, and proof of relationship or job. Foreign-language documents need English translations.",
+     "**File a work permit and travel document with it** if needed: work permit (I-765) with I-485 $260, advance parole (I-131) $630; I-485 adult $1,440 (confirm on uscis.gov). Pay by card or bank debit only.",
+     "**Sign**: sign every form; unsigned forms are rejected. Keep a full copy for yourself.",
+     "**Receipt notice**: write down the 13-character receipt number and take a photo.",
+     "**Biometrics** (USCIS takes fingerprints, photo and signature): go as the notice says and bring **the notice and a photo ID** (such as a passport). If you can't go, call **1-800-375-5283** **before the appointment** to reschedule. Missing it without rescheduling can get your case treated as abandoned and denied.",
+     "**Interview (if required)**: not everyone is interviewed. If you are, you'll answer questions under oath and must bring **originals of every document you submitted**."
     ]
    },
    "docs": {
@@ -390,12 +516,62 @@
     {
      "name": "USA.gov：查移民案件进度",
      "url": "https://www.usa.gov/immigration-case-status"
+    },
+    {
+     "name": "USCIS：调整身份流程",
+     "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status"
+    },
+    {
+     "name": "USCIS 政策手册：离境与放弃申请",
+     "url": "https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-3"
+    },
+    {
+     "name": "USCIS：指纹预约须知",
+     "url": "https://www.uscis.gov/forms/filing-guidance/preparing-for-your-biometric-services-appointment"
+    },
+    {
+     "name": "USCIS 处理时间",
+     "url": "https://egov.uscis.gov/processing-times/"
+    },
+    {
+     "name": "USCIS 网上改地址（AR-11）",
+     "url": "https://www.uscis.gov/ar-11"
     }
    ],
    "watch": [
     "https://www.uscis.gov/i-485"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**查进度**：在 **egov.uscis.gov/casestatus** 输入 13 位收据号码，可以订阅自动更新；或打 1-800-375-5283。可在 USCIS 处理时间网页查一般要等多久，超过时间可以网上提出查询。",
+     "**补件通知（RFE，Request for Evidence）**：移民局觉得缺文件时会寄来，**一定要在期限内回复**，否则可能被拒绝。",
+     "**等候期间不要随便出国**：I-485 审理中，没有先拿到回美证（advance parole）就离开美国，申请一般会被当作**放弃**。",
+     "**批准后**：先收到批准通知，过一段时间绿卡会寄到你家。搬家要上 USCIS 网上改地址，免得绿卡寄丢。",
+     "**被拒绝怎么办**：I-485 被拒绝一般**不能上诉**，但可能可以用 I-290B 表提出重新审理或重新考虑的动议（motion）。有期限，**马上找免费律师**。"
+    ],
+    "en": [
+     "**Check status**: enter your 13-character receipt number at **egov.uscis.gov/casestatus** and sign up for automatic updates, or call 1-800-375-5283. The USCIS processing times page shows typical waits; if you're past it, you can submit an online inquiry.",
+     "**Request for Evidence (RFE)**: if USCIS needs more documents it sends one. **Answer by the deadline**, or your case may be denied.",
+     "**Don't travel abroad casually while waiting**: if you leave the U.S. while your I-485 is pending without advance parole first, your application is generally treated as **abandoned**.",
+     "**After approval**: you get an approval notice first, and the green card arrives by mail a little later. If you move, change your address online with USCIS so the card isn't lost.",
+     "**If denied**: you generally **can't appeal** an I-485 denial, but you may be able to file a motion to reopen or reconsider on Form I-290B. There are deadlines, so **see a free lawyer right away**."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "排期由法律和签证公告决定，**任何人都不能收钱帮你插队**。",
+     "把移民局的每一封信按日期放进同一个文件夹，信封也留着。",
+     "递交前请免费律师或 ActionNYC 帮你检查一次表格版本、签名和付款方式，这三样最常出错被退件。",
+     "已经领福利或打算申请福利的，不要自己停掉，先看《公共负担》指南并打免费热线。"
+    ],
+    "en": [
+     "Priority dates are set by law and the Visa Bulletin; **no one can sell you a faster place**.",
+     "Keep every USCIS letter in one folder by date, envelopes too.",
+     "Before filing, have a free lawyer or ActionNYC check the form edition, signatures and payment method; these are the most common reasons for rejection.",
+     "If you use or plan to use benefits, don't stop on your own; read our public charge guide and call a free hotline first."
+    ]
+   }
   },
   {
    "id": "legal-help",
@@ -425,14 +601,24 @@
    },
    "how": {
     "zh": [
-     "先打免费热线说明情况，会转介合适的律师或机构",
-     "带齐所有移民文件和收到的信件",
-     "签约前要求书面合同（英文和你的语言），并拿回所有原件"
+     "**先打免费热线**：纽约州新美国人热线 **1-800-566-7636**（周一至五 8am–8pm，周末 9am–5pm，匿名、200 多种语言），或纽约市移民法律支援热线 **800-354-0365**（也可以打 311 说 “Immigration Legal”）。接通后说 “Chinese, please”。",
+     "纽约市热线时间：周一、周三 9am–8pm；周二、周四、周五 9am–6pm；每月最后一个星期六 9am–5pm。",
+     "**打之前先准备**：写下你的问题、你的身份、收到过哪些移民局或法庭的信，以及信上的日期和期限。手边准备纸笔。",
+     "**跟热线说清楚**：你住在哪一区、需要什么帮助（例如入籍、绿卡、收到法庭通知），有没有紧急期限。热线会告诉你去哪里找**市政府资助、免费、安全**的法律服务。",
+     "**办入籍或绿卡**：打 **311** 说 “ActionNYC”，预约免费协助。",
+     "**也可以直接联系中文机构**：华人策划协会法拉盛 718-358-8899、民权中心法拉盛 718-460-5600、华人进步会（曼哈顿华埠）212-274-1891。",
+     "**见律师时带齐**：护照、绿卡或其他身份证件、所有移民局和法庭的信件（连信封）、以前递交过的表格副本。",
+     "**付钱之前**：确认对方是**律师或司法部认可的代表**，要求英文和中文的书面合同，写清楚收费和服务内容；原件自己保管，只给复印件。"
     ],
     "en": [
-     "Call a free hotline first; they'll refer you to a lawyer or organization",
-     "Bring all immigration papers and letters",
-     "Before paying anyone, get a written contract in English and your language, and keep your originals"
+     "**Call a free hotline first**: the NYS New Americans Hotline **1-800-566-7636** (Mon–Fri 8am–8pm, weekends 9am–5pm; anonymous; 200+ languages), or the NYC Immigration Legal Support Hotline **800-354-0365** (or call 311 and say \"Immigration Legal\"). When connected, say \"Chinese, please\".",
+     "NYC hotline hours: Mon and Wed 9am–8pm; Tue, Thu and Fri 9am–6pm; last Saturday of the month 9am–5pm.",
+     "**Before calling, prepare**: write down your question, your status, and any USCIS or court letters you got, with their dates and deadlines. Keep a pen and paper ready.",
+     "**Tell the hotline clearly**: your borough, what you need (citizenship, green card, a court notice, etc.) and any urgent deadline. They'll tell you where to find **City-funded, free and safe** legal help.",
+     "**For citizenship or green card help**: call **311** and say \"ActionNYC\" to get free assistance.",
+     "**You can also contact Chinese-language groups directly**: Chinese-American Planning Council, Flushing 718-358-8899; MinKwon Center, Flushing 718-460-5600; Chinese Progressive Association (Manhattan Chinatown) 212-274-1891.",
+     "**Bring to the lawyer**: passport, green card or other ID, every USCIS and court letter (with envelopes), and copies of forms you filed before.",
+     "**Before paying anyone**: make sure they are a **lawyer or DOJ-accredited representative**, get a written contract in English and Chinese stating fees and services, and keep your originals, giving only copies."
     ]
    },
    "contacts": [
@@ -526,10 +712,46 @@
     {
      "name": "纽约州检察长：移民服务诈骗",
      "url": "https://ag.ny.gov/publications/immigration-services-fraud"
+    },
+    {
+     "name": "纽约市移民法律支援热线",
+     "url": "https://www.nyc.gov/site/immigrants/legal-resources/moia-immigration-legal-support-hotline.page"
+    },
+    {
+     "name": "纽约州新美国人办公室",
+     "url": "https://dos.ny.gov/office-new-americans"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**热线不直接代理案子**：纽约市热线不提供法律服务、也不帮你约时间，会告诉你去哪里找可信的机构；不一定能马上安排审核，也**不保证**有人接下你的全部案子。",
+     "**被转介后**：尽快按转介打电话或预约。机构会先问你的情况和收入，看能不能帮你。",
+     "**一家没空就换一家**：继续问其他热线和中文机构，特别是你的信上有期限的时候。",
+     "**遇到诈骗**：打纽约州检察长热线 **1-800-771-7755** 举报，或打新美国人热线 1-800-566-7636 报告。"
+    ],
+    "en": [
+     "**The hotlines don't take your case themselves**: the NYC hotline doesn't provide legal services or book appointments; it points you to trusted providers. A screening isn't guaranteed right away, and **no one guarantees** full representation.",
+     "**After a referral**: call or book as soon as possible. The organization will ask about your situation and income to see if they can help.",
+     "**If one place is full, try another**: keep calling other hotlines and Chinese-language groups, especially if your letter has a deadline.",
+     "**If you're scammed**: report it to the NY Attorney General at **1-800-771-7755**, or to the New Americans Hotline at 1-800-566-7636."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**公证人（notario）不是律师**，只能帮你填表和翻译，不能给你法律意见。",
+     "说“保证批准”“有内部关系”“先签空白表格”的，都是警讯，马上离开。",
+     "任何时候都**不要把原件交给别人保管**，只给复印件。",
+     "移民局的信有期限，收到看不懂，当天就打热线，不要等。"
+    ],
+    "en": [
+     "**A notary (\"notario\") is not a lawyer**; they may only fill forms and translate, not give legal advice.",
+     "\"Guaranteed approval\", \"inside connections\" or \"just sign this blank form\" are red flags; walk away.",
+     "**Never hand over your original documents** for someone to keep; give copies only.",
+     "USCIS letters have deadlines. If you can't read one, call a hotline that same day."
+    ]
+   }
   },
   {
    "id": "medicaid",
@@ -579,16 +801,26 @@
    },
    "how": {
     "zh": [
-     "**65 岁以下**：上 NY State of Health（nystateofhealth.ny.gov）网上申请，或打电话，可以要求免费中文翻译",
-     "**纽约市 65 岁以上**或有 Medicare 而没有未成年子女：向 HRA 申请，可网上（ACCESS HRA）、电话、到办公室或邮寄",
-     "纽约市以外：向所在县的社会服务局（DSS）申请",
-     "收到续期信件一定要按时回复，否则会断保"
+     "**先看你走哪条路**：65 岁以下（包括孕妇、孩子、19–64 岁成人）向 **NY State of Health**（纽约州官方医保市场）申请；纽约市 65 岁以上、因残障或失明申请、或有 Medicare 而且没有未成年孩子的人，向 **HRA**（纽约市人力资源管理局）申请。纽约市以外的长者，向所在县的社会服务局（DSS）申请。",
+     "**准备资料**：每个家人的出生日期、社安号（SSN）或移民文件号码、工作和收入情况、现有保险情况。再准备身份证明、收入证明（如最近 4 周工资单）、住址证明的复印件。65 岁以上还要准备银行等资产证明。",
+     "**65 岁以下——网上申请**：上 nystateofhealth.ny.gov，建立账户，按提示填写申请，最后提交。不会用电脑可以跳过这一步，用下面的电话或协助员。",
+     "**65 岁以下——电话申请**：打 **1-855-355-5777**（周一至周五早 8 点到晚 8 点，周六早 9 点到下午 1 点）。听到英文录音后说 “**Chinese, Mandarin please**” 或 “**Cantonese please**”，要求免费中文翻译，请工作人员帮你在电话里填申请。",
+     "**65 岁以下——找人当面帮你**：在 NY State of Health 网站找 “Find Local Help”，找附近的**协助员**（assistor，经过培训的免费帮手）。他们在社区机构和医院，会讲多种语言，平日、晚上和周末都有，**全部免费**。",
+     "**纽约市 65 岁以上——找 HRA**：可以网上用 ACCESS HRA 申请；或打 HRA 热线 **888-692-6116** 要一份申请表寄到家；或亲自去 HRA 医疗保险办公室（Medicaid Office）。华人常去的**华埠办公室**：115 Chrystie Street 5 楼，电话 212-274-4719，周一至周五 9 点到 5 点。其他办公室地址在 HRA 网站上。",
+     "**纽约市 65 岁以上——邮寄或传真**：填好表后寄到 Initial Eligibility Unit, HRA/Medical Assistance Program, PO Box 24390, Brooklyn, NY 11202，或传真到 917-639-0732。只寄**复印件**，原件自己留着。",
+     "**不用面谈**：申请白卡**不需要面谈**（interview），寄表或交表就可以。你也可以主动去办公室或打电话请人帮你填表。",
+     "**提交后马上记录**：写下申请日期、你的账户号码（NY State of Health 的账户号码以 “AC” 开头），拍照或复印你交出去的所有文件。"
     ],
     "en": [
-     "**Under 65**: apply at NY State of Health (nystateofhealth.ny.gov) or by phone; ask for a free interpreter",
-     "**NYC, 65+** or on Medicare without minor children: apply with HRA online (ACCESS HRA), by phone, in person or by mail",
-     "Outside NYC: your county Department of Social Services",
-     "Always answer renewal letters on time or coverage ends"
+     "**First, find your route**: under 65 (including pregnant people, children and adults 19–64) apply through **NY State of Health** (New York's official health marketplace). In NYC, people 65+, people applying because of disability or blindness, and people on Medicare without minor children apply through **HRA** (NYC Human Resources Administration). Seniors outside NYC apply at their county Department of Social Services (DSS).",
+     "**Get your information ready**: each family member's birth date, Social Security number (SSN) or immigration document number, job and income details, and current insurance. Also have copies of ID, proof of income (such as the last 4 weeks of pay stubs) and proof of address. If you are 65+, also bring proof of assets such as bank statements.",
+     "**Under 65 – apply online**: go to nystateofhealth.ny.gov, create an account, follow the steps and submit. If you don't use a computer, skip this and use the phone or a helper below.",
+     "**Under 65 – apply by phone**: call **1-855-355-5777** (Mon–Fri 8am–8pm, Sat 9am–1pm). After the English recording, say \"**Chinese, Mandarin please**\" or \"**Cantonese please**\" to get a free interpreter, and ask the worker to fill out the application with you on the phone.",
+     "**Under 65 – get in-person help**: on the NY State of Health website, use \"Find Local Help\" to find an **assistor** (a trained, free helper) near you. They work at community groups and hospitals, speak many languages, have weekday, evening and weekend hours, and **all help is free**.",
+     "**NYC, 65+ – go through HRA**: apply online with ACCESS HRA; or call the HRA Helpline at **888-692-6116** to get an application mailed to you; or go in person to an HRA Medicaid Office. The **Chinatown office** is at 115 Chrystie Street, 5th Floor, phone 212-274-4719, Mon–Fri 9am–5pm. Other office addresses are on the HRA website.",
+     "**NYC, 65+ – mail or fax**: send the completed form to Initial Eligibility Unit, HRA/Medical Assistance Program, PO Box 24390, Brooklyn, NY 11202, or fax it to 917-639-0732. Send **copies** only and keep the originals.",
+     "**No interview needed**: Medicaid **does not require an interview**. You can just mail or drop off the form. You can still go to an office or call if you want someone to help you fill it out.",
+     "**Write things down right away**: note the date you applied and your account number (NY State of Health account numbers start with \"AC\"), and photograph or copy every document you hand in."
     ]
    },
    "docs": {
@@ -647,13 +879,83 @@
     {
      "name": "HRA 公共医疗保险",
      "url": "https://www.nyc.gov/site/hra/help/public-health-insurance.page"
+    },
+    {
+     "name": "NY State of Health：Enrollment（怎么申请）",
+     "url": "https://info.nystateofhealth.ny.gov/enrollment"
+    },
+    {
+     "name": "NY State of Health：Request an Appeal（申请上诉）",
+     "url": "https://info.nystateofhealth.ny.gov/request-appeal"
+    },
+    {
+     "name": "NY State of Health：Informal Review and Appeal Hearings",
+     "url": "https://info.nystateofhealth.ny.gov/informal-review-process-and-appeal-hearings"
+    },
+    {
+     "name": "NY State of Health：How to Renew",
+     "url": "https://info.nystateofhealth.ny.gov/how-renew-your-health-insurance"
+    },
+    {
+     "name": "NY State of Health：Reporting Changes",
+     "url": "https://info.nystateofhealth.ny.gov/reporting-changes"
+    },
+    {
+     "name": "NY State of Health：Find an Assistor（找免费协助员）",
+     "url": "https://info.nystateofhealth.ny.gov/findassistor"
+    },
+    {
+     "name": "HRA Medicaid 办公室地址",
+     "url": "https://www.nyc.gov/site/hra/locations/medicaid-locations.page"
+    },
+    {
+     "name": "纽约州卫生厅 10 OHIP/ADM-4（取消面谈、决定时限）",
+     "url": "https://healthweb-back.health.ny.gov/health_care/medicaid/publications/docs/adm/10adm-4.pdf"
+    },
+    {
+     "name": "纽约州 OTDA：申请公平听证",
+     "url": "https://otda.ny.gov/hearings/request/"
     }
    ],
    "watch": [
     "https://info.nystateofhealth.ny.gov/stay-covered",
     "https://www.nyc.gov/site/hra/help/public-health-insurance.page"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**多久有结果**：你会收到书面通知（notice），告诉你批准、拒绝或要补交什么。向 HRA 或县社会服务局申请的，一般应在 **45 天内**决定；孕妇和 19 岁以下孩子 **30 天内**；需要审核残障的，最长 **90 天**。",
+     "**要补材料**：如果通知说缺材料，要在通知写的期限前交上（至少会给你 10 天）。NY State of Health 的可以登录账户上传，或用手机 App “**NYSOH Mobile Upload**” 拍照上传，也可以找协助员帮你。",
+     "**批准之后**：大多数人要选一家保险公司的计划（health plan）。选之前可以用纽约州的 “Provider & Health Plan Look-Up” 查你的医生在不在这个计划里。之后要用计划里的医生看病。",
+     "**被拒绝或被减少怎么办**：NY State of Health 的决定，从通知日期起 **60 天内**可以申请上诉（appeal），打 1-855-355-5777、邮寄或传真到 1-855-900-5557 都可以。HRA 或县社会服务局的决定，**60 天内**申请公平听证（fair hearing），打通知上写的电话，或打州政府听证热线 1-800-342-3334。",
+     "**想在上诉期间不断保**：如果你本来有白卡、现在要被停掉或减少，要在**通知写的生效日期之前**（或通知晚到时，在寄出日期后 **10 天内**）申请上诉，并要求“**继续保留福利**”（aid continuing）。",
+     "**续保**（renewal，定期重新确认资格）：快到期时会收到信、短信或电邮。网上登录后点 “Update Application”，或打电话、找协助员办理。2027 年 1 月 1 日起，19–64 岁成人大多改为**每 6 个月**续一次。如果没续上被停保，**90 天内**补交资料还可以申请恢复。"
+    ],
+    "en": [
+     "**How long it takes**: you will get a written notice saying you are approved, denied, or need to send more papers. If you applied through HRA or your county DSS, a decision is generally due within **45 days**; within **30 days** for pregnant people and children under 19; up to **90 days** if a disability review is needed.",
+     "**If they ask for more papers**: send them by the deadline in the notice (you get at least 10 days). With NY State of Health, you can log in and upload them, use the phone app \"**NYSOH Mobile Upload**\" to take a photo, or ask an assistor to help.",
+     "**After you are approved**: most people need to pick a health plan from an insurance company. Before you choose, use New York's \"Provider & Health Plan Look-Up\" to check whether your doctor is in the plan. After that, you see doctors in your plan.",
+     "**If you are denied or your coverage is cut**: for a NY State of Health decision, you can appeal within **60 days** of the notice date by calling 1-855-355-5777, by mail, or by fax to 1-855-900-5557. For an HRA or county DSS decision, ask for a fair hearing within **60 days**, using the phone number on your notice or the state hearing line at 1-800-342-3334.",
+     "**To keep coverage during an appeal**: if you already have Medicaid and it is being stopped or cut, appeal **before the effective date** on the notice (or within **10 days** of the mailing date if the notice came late) and ask to **keep your benefits** (\"aid continuing\").",
+     "**Renewal** (checking again that you still qualify): before it is due you will get a letter, text or email. Log in and click \"Update Application\", or call or see an assistor. From January 1, 2027, most adults 19–64 renew **every 6 months**. If your coverage ends because you missed it, you have **90 days** to send the information and ask to have it restored."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**申请前 3 个月的医药费单据要留着**：批准后可能可以报销（2027 年起，19–64 岁成人只追溯 1 个月，其他人 2 个月）。所以觉得自己符合就**尽早申请**。",
+     "**所有官方来信都要拆开看**，看不懂就拿给协助员或打热线问。很多人断保只是因为没回信。",
+     "**地址、电话换了马上更新**：NY State of Health 的可以网上登录、打电话或找协助员改；通过 HRA 或县社会服务局申请的，要联系他们改。",
+     "**申请完全免费**。不要付钱给任何人“代办”，也不要把社安号、账户密码交给陌生人。",
+     "想收到截止日期提醒，可以发短信 **START** 到 **1-866-988-0327**（NY State of Health 的提醒短信）。"
+    ],
+    "en": [
+     "**Keep medical bills from the 3 months before you apply**: once approved, they may be paid back (from 2027, adults 19–64 get only 1 month back and others 2 months). So if you think you qualify, **apply early**.",
+     "**Open every official letter.** If you can't read it, show it to an assistor or call the helpline. Many people lose coverage only because they didn't answer a letter.",
+     "**Update your address and phone right away**: for NY State of Health, log in, call, or see an assistor; if you applied through HRA or your county DSS, contact them.",
+     "**Applying is completely free.** Don't pay anyone to apply for you, and never give your Social Security number or account password to strangers.",
+     "To get deadline reminders, text **START** to **1-866-988-0327** (NY State of Health text alerts)."
+    ]
+   }
   },
   {
    "id": "essential-plan",
@@ -701,14 +1003,24 @@
    },
    "how": {
     "zh": [
-     "上 NY State of Health 网上申请，或打电话，可要求中文翻译",
-     "全年都可以申请",
-     "收入改变要主动更新资料"
+     "**先估一下收入**：2026 年，家庭年收入在这些数字以下可以考虑 Essential Plan：1 人 $31,920、2 人 $43,280、3 人 $54,640、4 人 $66,000。收入更低的，系统可能会直接判你符合白卡。",
+     "**准备资料**：每个家人的出生日期、社安号（SSN）或移民文件号码（如绿卡号码）、工作和收入情况、有没有雇主保险。",
+     "**网上申请**：上 nystateofhealth.ny.gov，建立账户，填写申请，提交。同一份申请会一起看你适合白卡、Essential Plan 还是别的计划。",
+     "**电话申请**：打 **1-855-355-5777**（周一至周五早 8 点到晚 8 点，周六早 9 点到下午 1 点）。说 “**Chinese, Mandarin please**” 或 “**Cantonese please**”，要免费中文翻译，请工作人员帮你填。",
+     "**找人当面帮**：在网站上点 “Find Local Help” 找附近的**协助员**（assistor）或经纪人（broker），**免费**，会讲多种语言。",
+     "**全年都可以申请**，不用等开放期（Open Enrollment）。",
+     "**选计划**：符合资格后，要选一家保险公司的计划。可以用 “Plans by County” 看你住的县有哪些计划，用 “Provider & Health Plan Look-Up” 查你的医生在不在里面。保费是 **$0**，年度自付额（deductible）也是 $0。",
+     "**提交后记下**：申请日期和账户号码（以 “AC” 开头），保存所有通知。"
     ],
     "en": [
-     "Apply at NY State of Health online or by phone; ask for an interpreter",
-     "You can apply any time of year",
-     "Report income changes"
+     "**Check your income first**: in 2026 you may qualify if yearly household income is under: 1 person $31,920, 2 people $43,280, 3 people $54,640, 4 people $66,000. If your income is lower, the system may find you eligible for Medicaid instead.",
+     "**Get your information ready**: each family member's birth date, Social Security number (SSN) or immigration document number (such as a green card number), job and income details, and whether you have job-based insurance.",
+     "**Apply online**: go to nystateofhealth.ny.gov, create an account, fill out the application and submit. One application checks you for Medicaid, the Essential Plan and other plans at the same time.",
+     "**Apply by phone**: call **1-855-355-5777** (Mon–Fri 8am–8pm, Sat 9am–1pm). Say \"**Chinese, Mandarin please**\" or \"**Cantonese please**\" for a free interpreter and ask the worker to fill it out with you.",
+     "**Get in-person help**: on the website, click \"Find Local Help\" to find an **assistor** or broker near you. It's **free** and they speak many languages.",
+     "**You can apply any time of year**; you don't have to wait for Open Enrollment.",
+     "**Pick a plan**: once you qualify, choose a plan from an insurance company. Use \"Plans by County\" to see plans where you live and \"Provider & Health Plan Look-Up\" to check if your doctor is in it. The premium is **$0** and the yearly deductible is $0.",
+     "**After you submit, write down** the date and your account number (it starts with \"AC\"), and keep every notice."
     ]
    },
    "contacts": [
@@ -729,12 +1041,70 @@
     {
      "name": "NY State of Health：Stay Connected",
      "url": "https://info.nystateofhealth.ny.gov/stay-connected"
+    },
+    {
+     "name": "NY State of Health：Enrollment（怎么申请）",
+     "url": "https://info.nystateofhealth.ny.gov/enrollment"
+    },
+    {
+     "name": "NY State of Health：Request an Appeal（申请上诉）",
+     "url": "https://info.nystateofhealth.ny.gov/request-appeal"
+    },
+    {
+     "name": "NY State of Health：Informal Review and Appeal Hearings",
+     "url": "https://info.nystateofhealth.ny.gov/informal-review-process-and-appeal-hearings"
+    },
+    {
+     "name": "NY State of Health：How to Renew",
+     "url": "https://info.nystateofhealth.ny.gov/how-renew-your-health-insurance"
+    },
+    {
+     "name": "NY State of Health：Reporting Changes",
+     "url": "https://info.nystateofhealth.ny.gov/reporting-changes"
+    },
+    {
+     "name": "NY State of Health：Find an Assistor（找免费协助员）",
+     "url": "https://info.nystateofhealth.ny.gov/findassistor"
+    },
+    {
+     "name": "NY State of Health：Essential Plan",
+     "url": "https://info.nystateofhealth.ny.gov/EssentialPlan"
     }
    ],
    "watch": [
     "https://info.nystateofhealth.ny.gov/stay-connected"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**结果通知**：你会收到通知，也会放在你的网上账户里，告诉你符合哪个计划，或要补交什么材料。",
+     "**补交材料**：按通知上的期限交。可以登录账户上传，或用手机 App “**NYSOH Mobile Upload**” 拍照上传，或找协助员帮忙。",
+     "**被拒绝怎么办**：从通知日期起 **60 天内**可以上诉（appeal）。打 1-855-355-5777，或邮寄到 NY State of Health, Appeals Unit, P.O. Box 11729, Albany, NY 12211，或传真 1-855-900-5557，或登录账户上传上诉表（DOH-5231）。上诉时可以同时要求**继续保留现有保险**。一般上诉大约 **90 天**有结果；病情紧急的可以附医生信要求加快。",
+     "**收入或家庭有变化**：要主动更新，网上登录、打电话或找协助员都可以。",
+     "**续保**：快到期会收到信、短信或电邮。登录后点 “Update Application”，或打电话、找协助员办理。没收到通知也要留意自己的到期日（登录后在 “Plans” 一栏可以看到）。"
+    ],
+    "en": [
+     "**Your result**: you get a notice, also posted in your online account, telling you which program you qualify for or what papers to send.",
+     "**Sending papers**: send them by the deadline on the notice. Log in and upload them, use the phone app \"**NYSOH Mobile Upload**\" to take a photo, or ask an assistor.",
+     "**If you are denied**: you can appeal within **60 days** of the notice date. Call 1-855-355-5777, mail NY State of Health, Appeals Unit, P.O. Box 11729, Albany, NY 12211, fax 1-855-900-5557, or upload the appeal form (DOH-5231) in your account. When you appeal you can also ask to **keep your current coverage**. A regular appeal takes about **90 days**; if your health can't wait, include a doctor's note and ask for a fast-track appeal.",
+     "**If your income or family changes**: update it yourself online, by phone, or with an assistor.",
+     "**Renewal**: before it is due you'll get a letter, text or email. Log in and click \"Update Application\", or call or see an assistor. Even without a notice, watch your end date (log in and look under the \"Plans\" tab)."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**移民身份规定 2026–2027 年变化很多**（见上方“最新变化”），收到任何关于身份的信，马上找协助员或打热线问清楚。",
+     "**申请完全免费**，不要付钱给任何人代办。",
+     "**把每封通知拍照存起来**，并写下账户号码（AC 开头），打电话时会用到。",
+     "想收到截止日期提醒，发短信 **START** 到 **1-866-988-0327**。"
+    ],
+    "en": [
+     "**Immigration rules are changing a lot in 2026–2027** (see \"What changed recently\" above). If you get any letter about your status, ask an assistor or call the helpline right away.",
+     "**Applying is completely free.** Don't pay anyone to apply for you.",
+     "**Take a photo of every notice** and write down your account number (starts with \"AC\"); you'll need it when you call.",
+     "For deadline reminders, text **START** to **1-866-988-0327**."
+    ]
+   }
   },
   {
    "id": "child-health-plus",
@@ -768,12 +1138,26 @@
    },
    "how": {
     "zh": [
-     "上 NY State of Health 申请，或找医院、保险公司的协助员",
-     "全年都可以申请"
+     "**孩子没有身份也可以申请**。19 岁以下、住在纽约州、没有其他保险就可以。",
+     "**准备资料**：家里每个人的出生日期、社安号（SSN）或移民文件号码（**没有的可以不填**）、工作和收入情况、现有保险情况。",
+     "**统一在 NY State of Health 申请**：保险公司已经**不收**纸本、传真或电邮申请，都要通过 NY State of Health。",
+     "**网上申请**：上 nystateofhealth.ny.gov，建立账户，填写孩子的资料，提交。系统会同时看孩子适合儿童白卡还是 Child Health Plus。",
+     "**电话申请**：打 **1-855-355-5777**（周一至周五早 8 点到晚 8 点，周六早 9 点到下午 1 点），说 “**Chinese, Mandarin please**” 或 “**Cantonese please**”，要免费中文翻译。",
+     "**找人当面帮**：在网站点 “Find Local Help” 找**协助员**（assistor），医院、社区机构和保险公司都有，**免费**。",
+     "**有问题也可以打州卫生厅儿童保险热线**：1-800-698-4543（1-800-698-4KIDS），问 Child Health Plus 和儿童白卡的问题。",
+     "**选计划**：符合资格后要选一家保险公司的计划。用 “Plans by County” 看你住的县有哪些计划，用 “Provider & Health Plan Look-Up” 查孩子的医生在不在里面。",
+     "**全年都可以申请**，不用等。"
     ],
     "en": [
-     "Apply through NY State of Health, or with a hospital or plan navigator",
-     "Enrollment is open all year"
+     "**Children can apply even without immigration status.** Any child under 19 who lives in New York and has no other insurance can apply.",
+     "**Get your information ready**: each household member's birth date, Social Security number (SSN) or immigration document number (**leave it blank if you don't have one**), job and income details, and current insurance.",
+     "**Apply only through NY State of Health**: health plans **no longer accept** paper, fax or email applications.",
+     "**Apply online**: go to nystateofhealth.ny.gov, create an account, enter your child's information and submit. The system checks your child for both children's Medicaid and Child Health Plus.",
+     "**Apply by phone**: call **1-855-355-5777** (Mon–Fri 8am–8pm, Sat 9am–1pm) and say \"**Chinese, Mandarin please**\" or \"**Cantonese please**\" for a free interpreter.",
+     "**Get in-person help**: click \"Find Local Help\" on the website to find an **assistor** at a hospital, community group or health plan. It's **free**.",
+     "**For questions, you can also call the state children's health line**: 1-800-698-4543 (1-800-698-4KIDS), for Child Health Plus and children's Medicaid.",
+     "**Pick a plan**: once eligible, choose a plan from an insurance company. Use \"Plans by County\" to see plans where you live and \"Provider & Health Plan Look-Up\" to check if your child's doctor is in it.",
+     "**You can apply any time of year.**"
     ]
    },
    "contacts": [
@@ -790,10 +1174,72 @@
     {
      "name": "Child Health Plus 2026 简介卡",
      "url": "https://info.nystateofhealth.ny.gov/sites/default/files/Child%20Health%20Plus%20At%20a%20Glance%20-%202026%20English.pdf"
+    },
+    {
+     "name": "NY State of Health：Enrollment（怎么申请）",
+     "url": "https://info.nystateofhealth.ny.gov/enrollment"
+    },
+    {
+     "name": "NY State of Health：Request an Appeal（申请上诉）",
+     "url": "https://info.nystateofhealth.ny.gov/request-appeal"
+    },
+    {
+     "name": "NY State of Health：Informal Review and Appeal Hearings",
+     "url": "https://info.nystateofhealth.ny.gov/informal-review-process-and-appeal-hearings"
+    },
+    {
+     "name": "NY State of Health：How to Renew",
+     "url": "https://info.nystateofhealth.ny.gov/how-renew-your-health-insurance"
+    },
+    {
+     "name": "NY State of Health：Reporting Changes",
+     "url": "https://info.nystateofhealth.ny.gov/reporting-changes"
+    },
+    {
+     "name": "NY State of Health：Find an Assistor（找免费协助员）",
+     "url": "https://info.nystateofhealth.ny.gov/findassistor"
+    },
+    {
+     "name": "NY State of Health：Child Health Plus",
+     "url": "https://info.nystateofhealth.ny.gov/ChildHealthPlus"
+    },
+    {
+     "name": "纽约州卫生厅：Child Health Plus",
+     "url": "https://healthweb-back.health.ny.gov/health_care/child_health_plus/"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**结果通知**：你会收到通知，也会放在网上账户里，告诉你孩子符合什么计划、每月要不要交保费，或需要补交什么。",
+     "**补交材料**：按通知上的期限交。可以登录上传，或用手机 App “**NYSOH Mobile Upload**” 拍照上传。",
+     "**保费**：收入较低的家庭**不用交**；其他家庭按收入每个孩子每月 $15、$30、$45 或 $60，最多算 3 个孩子。看病**没有自付额**。",
+     "**不同意结果**：从通知日期起 **60 天内**可以上诉。打 1-855-355-5777，或邮寄到 NY State of Health, Appeals Unit, P.O. Box 11729, Albany, NY 12211，或传真 1-855-900-5557。上诉时可以要求**继续保留现有保险**。",
+     "**续保**：快到期会收到信、短信或电邮。登录点 “Update Application”，或打电话、找协助员办理。"
+    ],
+    "en": [
+     "**Your result**: you get a notice, also posted in your online account, saying which program your child qualifies for, whether there is a monthly premium, or what papers to send.",
+     "**Sending papers**: send them by the deadline on the notice. Log in to upload, or use the phone app \"**NYSOH Mobile Upload**\" to take a photo.",
+     "**Premiums**: lower-income families **pay nothing**; other families pay $15, $30, $45 or $60 per child a month by income, for at most 3 children. There are **no copays** for care.",
+     "**If you disagree**: you can appeal within **60 days** of the notice date. Call 1-855-355-5777, mail NY State of Health, Appeals Unit, P.O. Box 11729, Albany, NY 12211, or fax 1-855-900-5557. When you appeal you can ask to **keep your current coverage**.",
+     "**Renewal**: before it is due you'll get a letter, text or email. Log in and click \"Update Application\", or call or see an assistor."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**给孩子申请不会问家长的移民身份**，不要因为担心身份而不给孩子买保险。",
+     "**收入有变化要主动更新**，收入降低了，保费可能会减少甚至免费。",
+     "**申请完全免费**，不要付钱给任何人代办。",
+     "**保存每封通知**，写下账户号码（AC 开头）。"
+    ],
+    "en": [
+     "**Child Health Plus does not depend on immigration status.** Don't skip coverage for your child because you worry about status.",
+     "**Update your income when it changes**; if it goes down, your premium may go down or become free.",
+     "**Applying is completely free.** Don't pay anyone to apply for you.",
+     "**Keep every notice** and write down your account number (starts with \"AC\")."
+    ]
+   }
   },
   {
    "id": "nyc-care",
@@ -825,14 +1271,24 @@
    },
    "how": {
     "zh": [
-     "打 646-NYC-CARE（646-692-2273）",
-     "或到任何 NYC Health + Hospitals 医院登记",
-     "带身份证明、住址证明、收入和家庭人数资料"
+     "**先确认你适合**：住在纽约市五大区，没有雇主保险，也不符合纽约州任何医疗保险。**不问移民身份**。",
+     "**准备身份证明**（任选一种）：驾照或非驾驶身份证、**IDNYC 市民卡**、护照、绿卡、工卡或出生证明。",
+     "**准备收入证明**（任选一种）：最近 4 周的工资单、雇主信，或退休金、SSI、失业金的批准信或支票。",
+     "**准备住址证明**（任选一种）：有邮戳的信封、最近 90 天的水电煤账单、租约或房贷账单。如果你之前已经在 NY State of Health 查过保险资格，把结果也带上。",
+     "**缺资料也先去**：资料不齐，NYC Care 也可能帮你登记。",
+     "**选一种方式登记**：① 打 **646-NYC-CARE（646-692-2273）**，说 “**Chinese, Mandarin please**” 或 “**Cantonese please**”；② 去任何一家 NYC Health + Hospitals 公立医院找**财务顾问**（financial counselor）；③ 去 MetroPlusHealth 办公室；④ 去 NYC Care 合作的社区机构。",
+     "**电话登记的**：资料可以上传到 **MyChart**（公立医院的病人网上系统），或在看病时带去。",
+     "**已经是公立医院病人的**：如果过去 6 个月内已经做过保险资格检查，可能可以**快速登记**，打电话或到场时问一下。"
     ],
     "en": [
-     "Call 646-NYC-CARE (646-692-2273)",
-     "Or enroll at any NYC Health + Hospitals location",
-     "Bring ID, proof of address, income and household size"
+     "**Check that it fits you**: you live in the five boroughs, have no job-based insurance, and don't qualify for any New York State health plan. **Immigration status isn't asked.**",
+     "**Bring proof of identity** (any one): driver's license or non-driver ID, **IDNYC**, passport, green card, work permit or birth certificate.",
+     "**Bring proof of income** (any one): pay stubs from the last 4 weeks, an employer letter, or an award letter or check for pension, SSI or unemployment.",
+     "**Bring proof of address** (any one): a postmarked envelope, a utility bill from the last 90 days, a lease or a mortgage statement. If you were already screened by NY State of Health, bring that result too.",
+     "**Go even if you're missing papers**: NYC Care may still be able to enroll you.",
+     "**Choose how to enroll**: (1) call **646-NYC-CARE (646-692-2273)** and say \"**Chinese, Mandarin please**\" or \"**Cantonese please**\"; (2) see a **financial counselor** at any NYC Health + Hospitals location; (3) visit a MetroPlusHealth office; or (4) visit an NYC Care community partner.",
+     "**If you enroll by phone**: upload your papers to **MyChart** (the public hospitals' online patient portal), or bring them to your appointment.",
+     "**If you're already a public-hospital patient**: if you were screened for insurance in the last 6 months, you may get **fast-track enrollment**; ask when you call or visit."
     ]
    },
    "contacts": [
@@ -849,12 +1305,54 @@
     {
      "name": "ACCESS NYC：NYC Care",
      "url": "https://access.nyc.gov/programs/nyc-care/"
+    },
+    {
+     "name": "NYC Care：Enroll（登记与所需文件）",
+     "url": "https://www.nyccare.nyc/enroll/"
+    },
+    {
+     "name": "NYC Care：FAQ（续期、语言服务）",
+     "url": "https://www.nyccare.nyc/faq/"
+    },
+    {
+     "name": "NYC Care：Membership Card",
+     "url": "https://www.nyccare.nyc/membership-card/"
     }
    ],
    "watch": [
     "https://access.nyc.gov/programs/nyc-care/"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**会员卡寄到家**：卡上写着你看病要付多少钱，以及有效期（effective through）。每次看病都要带着。",
+     "**第一次看病**：ACCESS NYC 说，登记后一般 **两周内**可以约到第一次门诊，你会有自己的家庭医生。",
+     "**费用**：按收入和家庭人数收费，**最低 $0**，没有会员费、月费或保费。",
+     "**每 12 个月续一次**：财务顾问会再帮你查一次有没有资格买保险。可以在卡到期前 **30 天**内办理，带上当初登记用的资料。",
+     "**语言**：公立医院有 **250 多种语言**的免费翻译，当面或电话都可以，书面材料也可以翻译。"
+    ],
+    "en": [
+     "**Your card comes in the mail**: it shows what you pay for care and the date it expires (\"effective through\"). Bring it every time you get care.",
+     "**Your first visit**: ACCESS NYC says you should get your first appointment within **two weeks**, with your own primary care doctor.",
+     "**Costs**: based on income and family size, **starting at $0**, with no membership fee, monthly fee or premium.",
+     "**Renew every 12 months**: a financial counselor checks again whether you qualify for insurance. You can renew up to **30 days** before your card expires; bring the papers you used to enroll.",
+     "**Language**: the public hospitals offer free interpreters in **more than 250 languages and dialects**, in person or by phone, plus written translations."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**NYC Care 说你的资料不会交给移民官员**，可以放心登记。",
+     "**NYC Care 只在 NYC Health + Hospitals 公立医院和诊所用**，去私立医院或诊所不算。",
+     "**记下卡上的到期日**，提前 30 天去续，免得中断。",
+     "**登记免费**，不要付钱给任何人代办。"
+    ],
+    "en": [
+     "**NYC Care says your information is not shared with immigration officials**, so you can enroll safely.",
+     "**NYC Care works only at NYC Health + Hospitals locations**, not at private hospitals or clinics.",
+     "**Write down the expiration date on your card** and renew 30 days early so care isn't interrupted.",
+     "**Enrollment is free.** Don't pay anyone to enroll you."
+    ]
+   }
   },
   {
    "id": "medicare-help",
@@ -894,14 +1392,26 @@
    },
    "how": {
     "zh": [
-     "MSP：纽约市向 HRA 申请（有中文表格），其他地区向县社会服务局",
-     "EPIC：打 EPIC 热线索取申请表",
-     "Extra Help：向社安局（SSA）申请"
+     "**MSP（Medicare 储蓄计划）——拿表**：用纽约州表格 **DOH-4328**（有中文填表说明）。纽约市的人可以打 HRA 热线 **888-692-6116** 要表，或到 HRA 医疗保险办公室拿，如华埠办公室：115 Chrystie Street 5 楼。",
+     "**MSP——附上复印件**：红蓝卡正反面、出生日期证明（如护照、绿卡）、住址证明（6 个月内的租约、水电账单或有邮戳的信封，不能是邮政信箱）、收入证明（如社安金或退休金的通知信）、非公民的移民文件。夫妻一起申请的，配偶也要。**纽约 MSP 不查资产**，不用交银行证明。",
+     "**MSP——交表**：纽约市寄给或送到 HRA；纽约市以外交给县社会服务局（DSS）。寄出前把整份申请复印一份留着。",
+     "**Extra Help（处方药补助）——先看是否自动有**：已经有全额白卡、MSP 或 SSI 的人，会**自动**得到 Extra Help，不用另外申请。",
+     "**Extra Help——申请**：上社安局网站 ssa.gov/extrahelp 网上申请；或打社安局 **1-800-772-1213**（周一至周五早 8 点到晚 7 点），要求预约申请 Extra Help。打电话时**听到英文录音不要出声，等真人接听**，再说 “**Chinese, Mandarin please**”，社安局会免费找翻译。",
+     "**Extra Help——准备**：你和配偶的银行月结单、报税表、退休金、IRA/401(k) 结余、年金等资料。",
+     "**EPIC（纽约州老人药费补助）——拿表**：打 EPIC 热线 **1-800-332-3742**（周一至周五早 8 点到下午 5 点）要申请表，有**简体中文**表格；也可以在 EPIC 网站上网上申请。全年都可以申请。",
+     "**EPIC——填表寄回**：按表上的地址寄回或传真。**不用附任何文件**，EPIC 会自己向社安局和纽约州税务局核对你的收入。记住：要有或能参加 Medicare Part D 药物计划才能用 EPIC。",
+     "**不会填表就找免费顾问**：打纽约州 **HIICAP** 热线 **1-800-701-0501**，说出你住的区，会转给当地的免费 Medicare 顾问。"
     ],
     "en": [
-     "MSP: in NYC apply with HRA (Chinese forms available); elsewhere, your county DSS",
-     "EPIC: call the EPIC helpline for an application",
-     "Extra Help: apply with Social Security"
+     "**MSP (Medicare Savings Program) – get the form**: use New York form **DOH-4328** (Chinese instructions are available). In NYC, call the HRA Helpline at **888-692-6116** for a form, or pick one up at an HRA Medicaid Office, such as the Chinatown office at 115 Chrystie Street, 5th Floor.",
+     "**MSP – attach copies**: front and back of your Medicare card, proof of birth date (such as a passport or green card), proof of address (lease, utility bill or postmarked envelope from the last 6 months, not a P.O. Box), proof of income (such as a Social Security or pension letter), and immigration papers if you're not a citizen. If your spouse applies too, include theirs. **New York's MSP has no asset test**, so no bank statements are needed.",
+     "**MSP – hand it in**: in NYC, mail or bring it to HRA; outside NYC, to your county Department of Social Services (DSS). Make a copy of the whole application before you send it.",
+     "**Extra Help (drug cost help) – check if you already have it**: people with full Medicaid, MSP or SSI get Extra Help **automatically** and don't need to apply.",
+     "**Extra Help – apply**: apply online at ssa.gov/extrahelp, or call Social Security at **1-800-772-1213** (Mon–Fri 8am–7pm) and ask for an appointment to apply for Extra Help. When you call, **stay silent during the English recording until a person answers**, then say \"**Chinese, Mandarin please**\"; Social Security will get a free interpreter.",
+     "**Extra Help – have ready**: bank statements, tax returns, and pension, IRA/401(k) and annuity statements for you and your spouse.",
+     "**EPIC (New York's senior drug program) – get the form**: call the EPIC Helpline at **1-800-332-3742** (Mon–Fri 8am–5pm) for an application; a **Simplified Chinese** form is available. You can also apply online from the EPIC website. You can apply any time of year.",
+     "**EPIC – fill it out and send it**: mail or fax it to the address on the form. **No documents are needed**; EPIC checks your income with Social Security and the NYS Department of Taxation. Remember: you must have, or be able to join, a Medicare Part D drug plan to use EPIC.",
+     "**Need help with forms? Get a free counselor**: call New York's **HIICAP** line at **1-800-701-0501**, say which county or borough you live in, and you'll be connected to a free local Medicare counselor."
     ]
    },
    "contacts": [
@@ -936,12 +1446,74 @@
     {
      "name": "纽约州 2026 年收入标准（26MA05）",
      "url": "https://healthweb-back.health.ny.gov/health_care/medicaid/publications/docs/gis/26ma05_att1.pdf"
+    },
+    {
+     "name": "纽约州 MSP 申请表 DOH-4328 中文说明",
+     "url": "https://Health.NY.Gov/forms/instructions/doh-4328_instructions_ch.pdf"
+    },
+    {
+     "name": "社安局：Extra Help 申请",
+     "url": "https://www.ssa.gov/extrahelp"
+    },
+    {
+     "name": "社安局：免费翻译服务",
+     "url": "https://ssa.gov/multilanguage/interpreter.html"
+    },
+    {
+     "name": "Medicare.gov：Extra Help",
+     "url": "https://www.medicare.gov/basics/costs/help/drug-costs"
+    },
+    {
+     "name": "纽约州 EPIC：申请与联系方式",
+     "url": "https://healthweb-back.health.ny.gov/health_care/epic/application_contact.htm"
+    },
+    {
+     "name": "纽约州 EPIC 首页",
+     "url": "https://healthweb-back.health.ny.gov/health_care/epic/"
+    },
+    {
+     "name": "纽约州老人局：HIICAP 免费 Medicare 咨询",
+     "url": "https://aging.ny.gov/health-insurance-information-counseling-and-assistance-program-hiicap"
+    },
+    {
+     "name": "纽约州 OTDA：申请公平听证",
+     "url": "https://otda.ny.gov/hearings/request/"
     }
    ],
    "watch": [
     "https://healthweb-back.health.ny.gov/health_care/epic/member_info/program_highlights_2026.htm"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**MSP**：交表后 **45 天内**会收到决定通知（Notice of Action），告诉你批不批。批准后**每年要续一次**；如果没收到续期信，要主动联系 HRA 或县社会服务局。",
+     "**MSP 被拒绝**：从决定起 **60 天内**可以申请公平听证（fair hearing），打通知上写的电话，或打州政府听证热线 1-800-342-3334。",
+     "**Extra Help**：会寄信告诉你结果和要付多少。如果你还没有药物计划，Medicare 会**自动帮你加入**一个 Part D 计划，你也可以自己换别的计划；有 Extra Help 的人可能**每月**都可以换一次。社安局还会把你的资料转给纽约州，帮你开始申请 MSP（除非你在表上选不要）。",
+     "**Extra Help 的有效期**：批准后当年一直有效，就算收入变了也一样；第二年继续有，除非收到信说有变化。问自己是哪一级补助，可以打 1-800-MEDICARE（1-800-633-4227）。",
+     "**EPIC**：如果不同意 EPIC 的决定（包括被拒），可以写信给 EPIC 或打热线，要求**重新考虑**（reconsideration），会收到书面答复。"
+    ],
+    "en": [
+     "**MSP**: within **45 days** of applying you'll get a decision letter (Notice of Action). Once approved, you must **renew every year**; if no renewal letter comes, contact HRA or your county DSS yourself.",
+     "**If MSP is denied**: you can ask for a fair hearing within **60 days** of the decision, using the phone number on your notice or the state hearing line at 1-800-342-3334.",
+     "**Extra Help**: you'll get a letter with your result and what you'll pay. If you don't have a drug plan, Medicare **enrolls you in one automatically**, and you can switch to a different plan; with Extra Help you may be able to change plans **once a month**. Social Security also sends your information to New York to start an MSP application, unless you opt out on the form.",
+     "**How long Extra Help lasts**: once approved, it lasts the rest of the year even if your income changes, and continues next year unless you get a letter saying otherwise. To ask which level you have, call 1-800-MEDICARE (1-800-633-4227).",
+     "**EPIC**: if you disagree with an EPIC decision (including a denial), write to EPIC or call the Helpline to ask for a **reconsideration**; you'll get a written answer."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**三种可以一起申请**：有 MSP 就自动有 Extra Help；有全额 Extra Help 的人，EPIC 的年费也会免掉。",
+     "**寄出的所有表格都先复印一份**，写下寄出日期。",
+     "**申请都是免费的**。不要付钱给人代办，也不要相信打电话来要你社安号或红蓝卡号码的陌生人。",
+     "**每年秋天**看看你的药物计划还适不适合，不懂可以打 HIICAP 1-800-701-0501 免费咨询。"
+    ],
+    "en": [
+     "**You can get more than one**: MSP gives you Extra Help automatically, and people with full Extra Help don't pay the EPIC yearly fee.",
+     "**Copy every form before you send it** and write down the date you mailed it.",
+     "**Applying is free.** Don't pay anyone to apply, and don't trust strangers who call asking for your Social Security or Medicare number.",
+     "**Every fall**, check whether your drug plan still fits you; for free advice call HIICAP at 1-800-701-0501."
+    ]
+   }
   },
   {
    "id": "snap",
@@ -985,16 +1557,26 @@
    },
    "how": {
     "zh": [
-     "纽约市：用 ACCESS HRA 网站或手机 App 申请，网站有简体和繁体中文",
-     "或打 718-SNAP-NOW（718-762-7669），周一至五 8:30am–5pm，有免费翻译",
-     "申请后会有电话面谈，按时接听",
-     "批准后会寄 EBT 卡，每月自动充值"
+     "**先准备文件**：身份证明、全家近期收入证明（如 30 天内的工资单）、租约或房租单、水电账单。房租和水电账单可以让你**领得更多**。",
+     "**网上申请（最方便）**：打开 ACCESS HRA 网站（a069-access.nyc.gov/accesshra），或在手机下载 **ACCESS HRA** App。页面右上角可以选**简体中文**。点“申请福利”，选 SNAP。",
+     "**尽量填完整**。不会填的地方可以先空着，HRA 之后还会问你。填完按“提交”，你**签名提交的那一天就是申请日**（下班时间以后提交，算下一个工作日）。",
+     "**不会上网**：可以到 SNAP 中心（SNAP Center）当面申请，也可以请社区机构帮你填，或者打印纸质表格寄去或传真。",
+     "**用 App 上传文件**：在 ACCESS HRA App 里拍照上传，最快。也可以拿到 SNAP 中心交，或邮寄、传真。",
+     "**自己打电话做面谈**：HRA **不会打电话给你约面谈**，要你自己打。打 **718-SNAP-NOW（718-762-7669）**，周一到周五 8:30am–5pm，不用预约。接通后说 **“Chinese, please”**，会有免费中文翻译。",
+     "**面谈大约 30 分钟**，会问收入、开支、身份和家庭情况。打电话前先把文件准备在手边。官方建议**周四、周五下午**打比较容易接通。",
+     "**越早面谈越好**：申请后 **7 天内**完成面谈，才可能拿到**紧急粮食券**（expedited SNAP，加急处理）。**30 天内**还没面谈，申请会被拒绝。",
+     "**想当面谈**：任何一个 SNAP 中心都可以要求当面面谈，不管你是怎么申请的，他们**不能拒绝你**。"
     ],
     "en": [
-     "NYC: apply on the ACCESS HRA website or app, available in Chinese",
-     "Or call 718-SNAP-NOW (718-762-7669), Mon–Fri 8:30am–5pm, free interpreters",
-     "Answer the phone interview on time",
-     "Your EBT card is mailed and reloaded monthly"
+     "**Get documents ready**: ID, recent income proof for everyone (such as pay stubs from the last 30 days), lease or rent bill, and utility bills. Rent and utility bills can **raise your benefit**.",
+     "**Apply online (easiest)**: go to the ACCESS HRA website (a069-access.nyc.gov/accesshra) or download the **ACCESS HRA** app. You can choose **Chinese** at the top. Choose to apply for benefits, then SNAP.",
+     "**Fill in as much as you can.** You can leave hard parts blank; HRA will ask later. Press submit. **The day you sign and submit is your filing date** (after business hours it counts as the next business day).",
+     "**If you can't go online**: apply in person at a SNAP Center, get help from a community organization, or print the paper form and mail or fax it.",
+     "**Upload documents in the app**: taking photos in the ACCESS HRA app is fastest. You can also bring them to a SNAP Center, or mail or fax them.",
+     "**Call for your interview yourself**: HRA **will not call you to schedule it**. Call **718-SNAP-NOW (718-762-7669)**, Mon–Fri 8:30am–5pm, no appointment needed. Say **\"Chinese, please\"** to get a free interpreter.",
+     "**The interview takes about 30 minutes** and covers income, expenses, status and household. Keep your documents next to you. The City says **Thursday or Friday afternoon** is the best time to call.",
+     "**Do the interview early**: finish it **within 7 days** of applying to be considered for **expedited SNAP** (fast-track). If you don't finish it **within 30 days**, the application is denied.",
+     "**Want to meet in person?** Any SNAP Center must give you an in-person interview if you ask, however you applied. **They cannot turn you away.**"
     ]
    },
    "docs": {
@@ -1053,12 +1635,62 @@
     {
      "name": "纽约市 SNAP 工作要求",
      "url": "https://www.nyc.gov/site/hra/help/able-bodied-adults-without-dependents.page"
+    },
+    {
+     "name": "纽约市 SNAP 申请指南（nyc.gov）",
+     "url": "https://www.nyc.gov/main/services/snap-benefits"
+    },
+    {
+     "name": "HRA SNAP 申请常见问题",
+     "url": "https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page"
+    },
+    {
+     "name": "HRA SNAP 面谈说明",
+     "url": "https://www.nyc.gov/site/hra/help/snap-interview-instructions.page"
+    },
+    {
+     "name": "纽约州 OTDA 公平听证申请",
+     "url": "https://otda.ny.gov/hearings/request/"
+    },
+    {
+     "name": "OTDA 通知书样本（听证期限：SNAP 90 天、现金补助 60 天）",
+     "url": "https://www.otda.ny.gov/policy/directives/2016/INF/16-INF-15-Attachment-33.pdf"
     }
    ],
    "watch": [
     "https://www.nyc.gov/site/hra/help/able-bodied-adults-without-dependents.page"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**多久有结果**：一般 **30 天内**给你答复。符合紧急条件的，**7 天内**先发一次紧急粮食券。",
+     "**EBT 卡**：批准后通常 **5 个工作日内**寄到家。等不及或卡丢了，可以到任何 SNAP 中心领**临时卡**。",
+     "**怎么查进度**：登录 ACCESS HRA，在首页点 **“View My Cases”**（查看我的个案），再点 **“Show Info”**。也可以打 DSS 总机 **718-557-1399**（周一至五 8am–5pm，有翻译）。",
+     "**续期**（recertification，定期重新确认资格）：一般**每年一次**。到期前 60 天就可以办。ACCESS HRA 上显示 **“Expiring Soon”**（快到期）时，要交续期表、做面谈、交文件，否则会停发。",
+     "**被拒绝或被减少**：先看通知信上的原因。不同意可以申请**公平听证**（fair hearing，州政府复查）：SNAP 要在**通知日期起 90 天内**申请，打 **1-800-342-3334**。也可以随时重新申请。"
+    ],
+    "en": [
+     "**When you'll hear**: usually **within 30 days**. If you qualify for expedited SNAP, a one-time benefit comes **within 7 days**.",
+     "**EBT card**: usually mailed **within 5 business days** of approval. If you can't wait or lose it, get a **temporary card** at any SNAP Center.",
+     "**Check your status**: log in to ACCESS HRA, click **\"View My Cases\"** on the home screen, then **\"Show Info\"**. Or call the DSS OneNumber **718-557-1399** (Mon–Fri 8am–5pm, interpreters available).",
+     "**Recertification** (renewing your eligibility): usually **once a year**. You can do it up to 60 days early. When ACCESS HRA shows **\"Expiring Soon\"**, send the form, do the interview and send documents, or benefits stop.",
+     "**Denied or cut?** Read the reason in the notice. If you disagree, ask for a **fair hearing** (a State review) **within 90 days of the notice date** by calling **1-800-342-3334**. You can also reapply any time."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**重要信件只寄到你登记的邮寄地址**，搬家后马上在 ACCESS HRA 改地址，不然会错过面谈和续期通知。",
+     "**保护 EBT 卡**：常查余额，常换密码（PIN）。不用时可以在 ebtEDGE 网站或 App 把卡**冻结**，防止被盗刷。",
+     "**全家都领 SSI** 的话，可以直接在社安局办公室申请 SNAP。",
+     "需要别人（例如子女）帮你问个案情况，要先签 HRA 的**授权同意书**（Client Consent Form）。"
+    ],
+    "en": [
+     "**Some important letters only go to your mailing address on file.** Update your address in ACCESS HRA right after you move, or you may miss interview and renewal notices.",
+     "**Protect your EBT card**: check your balance often and change your PIN. You can **freeze** the card in ebtEDGE when not using it to stop theft.",
+     "**If everyone at home gets SSI**, you can apply for SNAP at the Social Security office.",
+     "If someone (like your adult child) needs to ask HRA about your case, you must first sign HRA's **Client Consent Form**."
+    ]
+   }
   },
   {
    "id": "wic",
@@ -1090,12 +1722,24 @@
    },
    "how": {
     "zh": [
-     "打 Growing Up Healthy 热线 1-800-522-5006 找附近 WIC 中心",
-     "或在纽约州 WIC 网站用线上助手登记"
+     "**先确认符合**：孕妇、生完孩子不久的妈妈、5 岁以下孩子。**不问移民身份**。",
+     "**找 WIC 办公室**：打 **Growing Up Healthy 热线 1-800-522-5006**，说 **“Chinese, please”** 要中文翻译，请他们帮你找附近的 WIC 办公室，约时间。",
+     "**或者网上登记**：打开纽约州 WIC 网站（health.ny.gov/prevention/nutrition/wic），点网页上的**聊天图标**，跟线上助手 **Wanda** 回答几个问题，它会把你转给附近的 WIC 办公室。",
+     "**也可以直接打给附近的 WIC 办公室**：办公室名单在 WIC 网站的 “WIC Offices” 页面。",
+     "**约面谈**：可以选**电话面谈**或**当面面谈**。",
+     "**准备 4 类证明，每类一份**：① 全家收入（有白卡、粮食券或现金补助通知书就可以代替）② 怀孕、哺乳或孩子的证明（如医生填的 WIC 转介表、出生证明）③ 身份证明 ④ 住址证明。",
+     "**请医生填表**：带上 **WIC 医疗转介表**（WIC Medical Referral Form）给医生，填身高、体重、验血等资料。",
+     "**参加面谈**：工作人员核对文件，给孩子或你做简单健康检查，讲营养知识，然后按你家需要定好**食物配额**。"
     ],
     "en": [
-     "Call the Growing Up Healthy Hotline at 1-800-522-5006 to find a WIC site",
-     "Or sign up with the online assistant on the NYS WIC site"
+     "**Check you qualify**: pregnant, recently gave birth, or a child under 5. **Immigration status isn't asked.**",
+     "**Find a WIC office**: call the **Growing Up Healthy Hotline at 1-800-522-5006**, say **\"Chinese, please\"** for an interpreter, and ask them to find a nearby WIC office and set up a time.",
+     "**Or sign up online**: open the NYS WIC website (health.ny.gov/prevention/nutrition/wic), click the **chat icon**, answer a few questions from the online assistant **Wanda**, and it connects you to a local WIC office.",
+     "**You can also call a local WIC office directly**: the list is on the \"WIC Offices\" page of the WIC website.",
+     "**Book an appointment**: choose **by phone** or **in person**.",
+     "**Bring 4 kinds of proof, one of each**: (1) household income (a Medicaid, SNAP or cash assistance notice can count instead) (2) proof of pregnancy, breastfeeding or the child (such as a WIC referral form from the doctor, or a birth certificate) (3) identity (4) address.",
+     "**Ask your doctor to fill in a form**: bring the **WIC Medical Referral Form** so the doctor can record height, weight, bloodwork and so on.",
+     "**Go to the appointment**: staff check your papers, do a quick health check, talk about nutrition, and set up a **food package** for your family."
     ]
    },
    "contacts": [
@@ -1118,12 +1762,52 @@
     {
      "name": "ACCESS NYC：WIC",
      "url": "https://access.nyc.gov/programs/women-infants-and-children-wic/"
+    },
+    {
+     "name": "纽约州 WIC：如何申请",
+     "url": "https://www.health.ny.gov/prevention/nutrition/wic/how_to_apply.htm"
+    },
+    {
+     "name": "纽约州 WIC：申请要带的文件",
+     "url": "https://www.health.ny.gov/publications/19044.pdf"
+    },
+    {
+     "name": "纽约州 WIC 办公室名单",
+     "url": "https://www.health.ny.gov/prevention/nutrition/wic/local_agencies.htm"
     }
    ],
    "watch": [
     "https://access.nyc.gov/programs/women-infants-and-children-wic/"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**面谈当天就知道结果**：符合的话，工作人员当场帮你开通福利。",
+     "**拿到 eWIC 卡**：像借记卡一样用，在超市和药房买 WIC 批准的食物。",
+     "**还会有营养指导**：WIC 也提供喂母乳的帮助，并可以转介你去其他服务。",
+     "**续期**（recertification，重新确认资格）：到期前要再联系你的 WIC 办公室，用同样方法再办一次。"
+    ],
+    "en": [
+     "**You find out at the appointment**: if you qualify, staff set up your benefits then.",
+     "**You get an eWIC card**: it works like a debit card for WIC-approved foods at grocery stores and pharmacies.",
+     "**Ongoing support**: WIC also gives nutrition counseling, breastfeeding help and referrals to other services.",
+     "**Recertification** (renewing eligibility): contact your WIC office again and go through the same steps."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**一份文件可以证明好几样**：例如一封写有你名字、地址和收入的信，可以同时当身份、住址和收入证明。",
+     "**没有收入**也可以申请，签一份声明就行。",
+     "**家里有人领白卡、粮食券或现金补助**，带那张卡或通知书，就不用再交工资单。",
+     "爸爸、爷爷奶奶等**主要照顾孩子的人**，都可以带孩子去申请。"
+    ],
+    "en": [
+     "**One document can prove several things**: a letter with your name, address and income can count for identity, address and income.",
+     "**No income?** You can still apply by signing a statement.",
+     "**If someone has Medicaid, SNAP or cash assistance**, bring that card or notice instead of pay stubs.",
+     "Fathers, grandparents or any **main caregiver** can bring the child to apply."
+    ]
+   }
   },
   {
    "id": "school-meals",
@@ -1151,22 +1835,50 @@
    },
    "how": {
     "zh": [
-     "不用申请，直接在学校领取",
-     "学校如果寄来家庭收入表，仍建议填写，可能帮学校争取更多经费"
+     "**不用申请**：孩子在纽约州公立学校上学，就可以每天免费吃**早餐和午餐**。",
+     "纽约市公立学校还有免费的**课后餐**（afterschool meals）。",
+     "学校如果寄来**家庭收入表**，建议照样填好交回，可能帮学校多拿经费。"
     ],
     "en": [
-     "No application; just eat at school",
-     "If the school sends an income form, filling it in can still help the school's funding"
+     "**No application**: if your child goes to a New York State public school, breakfast and lunch are free every day.",
+     "NYC public schools also give free **afterschool meals**.",
+     "If the school sends a **household income form**, fill it in anyway; it may help the school get more funding."
     ]
    },
    "sources": [
     {
      "name": "纽约州长 2026 年 6 月公告",
      "url": "https://governor.ny.gov/news/governor-hochul-announces-396-million-free-school-meals-served-statewide-2025-2026-school-year"
+    },
+    {
+     "name": "纽约市公立学校：学校餐",
+     "url": "https://www.schools.nyc.gov/school-life/food/school-meals"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**不用等结果**：开学第一天就可以吃。",
+     "每天的**菜单**可以在纽约市教育局网站的学校餐页面查看。",
+     "孩子在学校吃饭有问题，可以先问学校办公室。"
+    ],
+    "en": [
+     "**Nothing to wait for**: your child can eat from the first day of school.",
+     "Daily **menus** are on the NYC Public Schools school-meals page.",
+     "If there's a problem with meals, ask the school office first."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "免费吃饭**不看收入、不问身份**，请放心让孩子吃。",
+     "收入表上的资料用于学校经费统计，不是用来查身份。"
+    ],
+    "en": [
+     "Free meals **don't depend on income or status**; let your child eat with confidence.",
+     "The income form is used for school funding counts, not to check status."
+    ]
+   }
   },
   {
    "id": "cash-assistance",
@@ -1198,14 +1910,24 @@
    },
    "how": {
     "zh": [
-     "现金补助：用 ACCESS HRA 网上申请，或到 HRA 求职中心（Job Center）",
-     "SSI：打社安局电话预约，或到当地社安局办公室",
-     "两者都会有面谈，按时出席"
+     "**现金补助：网上申请**。打开 ACCESS HRA（a069-access.nyc.gov/accesshra）或手机 App，选中文，申请现金补助（Cash Assistance）。**同一份申请也会帮你看能不能领白卡和粮食券。**",
+     "**也可以当面去**：到 HRA 的求职中心（Job Center，也叫 Benefits Access Center）申请。",
+     "**提交后打电话做面谈**：打 **929-273-1872**，周一到周五 8:30am–5pm。接通后说 **“Chinese, please”** 要中文翻译。",
+     "**用 App 上传文件**：HRA 有一张文件清单（W-119D，有多种语言），会告诉你要交哪些。交**复印件**，不要交原件。",
+     "**急需用钱**（例如快断电、要被赶出去）：网上申请时说明是紧急情况，可能要**当天面谈**。",
+     "**SSI：打电话约时间**。打社安局 **1-800-772-1213**（周一至五 8am–7pm），说 **“Chinese, please”**，要求**免费中文翻译**，约电话申请或到办公室申请。",
+     "**SSI 要带原件**：社安号、年龄证明、绿卡或其他移民文件、收入和银行存款证明、租约或房租收据；因残障申请的，还要医生名字、电话和用药资料。社安局**不收复印件**，看完会还给你。",
+     "**先打电话，别等文件齐**：社安局**可能把你第一次联系的日期当成申请日**。缺文件他们会给你时间补，也会帮你找文件。"
     ],
     "en": [
-     "Cash Assistance: apply on ACCESS HRA or at an HRA Job Center",
-     "SSI: call Social Security for an appointment or visit a local office",
-     "Both include an interview; attend on time"
+     "**Cash Assistance: apply online.** Open ACCESS HRA (a069-access.nyc.gov/accesshra) or the app, choose Chinese, and apply for Cash Assistance. **The same application also checks you for Medicaid and SNAP.**",
+     "**Or go in person** to an HRA Job Center (also called a Benefits Access Center).",
+     "**After you submit, call for your interview**: **929-273-1872**, Mon–Fri 8:30am–5pm. Say **\"Chinese, please\"** for an interpreter.",
+     "**Upload documents in the app**: HRA's list (W-119D, in several languages) shows what you may need. Send **copies**, not originals.",
+     "**Need money urgently** (for example a shut-off or eviction)? Say it's an emergency when you apply; you may have a **same-day interview**.",
+     "**SSI: call for an appointment.** Call Social Security at **1-800-772-1213** (Mon–Fri 8am–7pm), say **\"Chinese, please\"**, ask for a **free interpreter**, and book a phone or office appointment.",
+     "**SSI needs originals**: Social Security number, proof of age, green card or other immigration papers, income and bank records, lease or rent receipts; for disability, doctors' names, phone numbers and medicines. Social Security **doesn't take photocopies** and gives originals back.",
+     "**Call first; don't wait for every paper**: Social Security **may use the date you first contact them as your filing date**. They give you time to bring missing papers and will help you get them."
     ]
    },
    "contacts": [
@@ -1233,10 +1955,64 @@
     {
      "name": "社安局：移民领取 SSI 规定",
      "url": "https://secure.ssa.gov/POMS.NSF/lnx/0500604023"
+    },
+    {
+     "name": "HRA 现金补助",
+     "url": "https://www.nyc.gov/site/hra/help/cash-assistance.page"
+    },
+    {
+     "name": "ACCESS HRA 现金补助申请常见问题",
+     "url": "https://a069-access.nyc.gov/CuramStatic/html/cafaq/english.html"
+    },
+    {
+     "name": "社安局：如何申请 SSI",
+     "url": "https://www.ssa.gov/ssi/text-apply-ussi.htm"
+    },
+    {
+     "name": "社安局：申请 SSI 要带的文件",
+     "url": "https://www.ssa.gov/ssi/text-documents-ussi.htm"
+    },
+    {
+     "name": "社安局：SSI 权利与责任",
+     "url": "https://www.ssa.gov/ssi/spotlights/spot-rights-responsibilities.htm"
+    },
+    {
+     "name": "OTDA 通知书样本（听证期限）",
+     "url": "https://www.otda.ny.gov/policy/directives/2016/INF/16-INF-15-Attachment-33.pdf"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**现金补助多久有结果**：一般要 **30 到 45 天**，紧急情况可能更快。",
+     "**怎么查进度**：登录 ACCESS HRA 首页查看，或打 **718-557-1399**，或打电话、亲自去求职中心问。",
+     "**现金补助批准后**：会寄 EBT 卡给你。没收到可以去中心领临时卡。要按 ACCESS HRA 上显示的日期**续期**（recertification，定期重新确认资格）。",
+     "**SSI**：社安局会**寄信**告诉你结果。",
+     "**被拒绝怎么办**：现金补助可以随时重新申请；不同意可以在**通知日期起 60 天内**打 **1-800-342-3334** 申请**公平听证**（fair hearing）。SSI 不同意一般要在 **60 天内**向社安局提出**上诉**（appeal）。"
+    ],
+    "en": [
+     "**Cash Assistance timing**: usually **30 to 45 days**; emergencies can be faster.",
+     "**Check status**: see your case on the ACCESS HRA home page, call **718-557-1399**, or call or visit a Job Center.",
+     "**After Cash Assistance approval**: an EBT card is mailed. If it doesn't come, get a temporary card at a center. **Recertify** (renew eligibility) by the date shown in ACCESS HRA.",
+     "**SSI**: Social Security sends the decision **by mail**.",
+     "**If denied**: for Cash Assistance you can reapply any time, or ask for a **fair hearing within 60 days of the notice date** at **1-800-342-3334**. For SSI you generally have **60 days** to **appeal** to Social Security."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**现金补助被拒，不等于白卡和粮食券也被拒**，要分开看通知信。",
+     "**SSI 可以带人陪你**去社安局，帮你说明情况。",
+     "打社安局电话时，**把社安号准备好**。",
+     "现金补助的面谈错过了，会有电话和信通知你改期，**一定要回复**。"
+    ],
+    "en": [
+     "**A Cash Assistance denial doesn't mean Medicaid or SNAP is denied**; read each notice.",
+     "**You can bring someone with you** to Social Security to help explain.",
+     "**Have your Social Security number ready** when you call.",
+     "If you miss a Cash Assistance interview, you'll get a call and a letter to reschedule; **always respond**."
+    ]
+   }
   },
   {
    "id": "heap",
@@ -1268,14 +2044,24 @@
    },
    "how": {
     "zh": [
-     "纽约市：用 ACCESS HRA 申请",
-     "其他地区：向县社会服务局申请",
-     "长者可打 NY Connects 求助"
+     "**先看是不是自动有**：已经领粮食券或现金补助的家庭，**大多会自动拿到 HEAP**，不用另外申请。",
+     "**11 月 2 日起才能申请**，先到先得，**越早越好**。",
+     "**纽约市网上申请**：打开 ACCESS HRA（a069-access.nyc.gov/accesshra），选中文，申请 HEAP。用 ACCESS HRA App 拍照上传文件。",
+     "**寄信或传真**：下载 HEAP 申请表（LDSS-3421），填好寄到 **P.O. Box 1401, Church Street Station, New York, NY 10008**，或传真 **917-639-2900**。",
+     "**要纸表或问要带什么**：打 **718-557-1399**，说 **“Chinese, please”**，请他们寄申请表给你。",
+     "**当面申请**：可以去 HRA 的 HEAP 办公室或外展服务点（地址在 HRA 网站的 HEAP 地点页面）。",
+     "**可能会有电话面谈**：申请后 HRA 可能打电话给你核对资料，记得接电话。",
+     "**住在纽约市以外**：到 ny.gov/HEAP 看说明，向县社会服务局申请。长者可以打 NY Connects **1-800-342-9871** 请人帮忙。"
     ],
     "en": [
-     "NYC: apply through ACCESS HRA",
-     "Elsewhere: your county DSS",
-     "Seniors can call NY Connects for help"
+     "**Check if you get it automatically**: most households on SNAP or cash assistance **get HEAP without applying**.",
+     "**Applications open November 2**; first come, first served, so **apply early**.",
+     "**NYC online**: open ACCESS HRA (a069-access.nyc.gov/accesshra), choose Chinese, and apply for HEAP. Upload documents with the ACCESS HRA app.",
+     "**By mail or fax**: download the HEAP application (LDSS-3421), fill it in and mail it to **P.O. Box 1401, Church Street Station, New York, NY 10008**, or fax **917-639-2900**.",
+     "**To get a paper form or ask what to bring**: call **718-557-1399** and say **\"Chinese, please\"**.",
+     "**In person**: go to an HRA HEAP office or outreach site (listed on HRA's HEAP locations page).",
+     "**There may be a phone interview**: HRA may call to check your information, so answer the phone.",
+     "**Outside NYC**: see ny.gov/HEAP and apply with your county social services office. Seniors can call NY Connects at **1-800-342-9871** for help."
     ]
    },
    "contacts": [
@@ -1298,10 +2084,50 @@
     {
      "name": "纽约州长 2026 年 10 月 HEAP 公告",
      "url": "https://governor.ny.gov/news/governor-hochul-announces-15-million-new-yorkers-can-receive-hundreds-dollars-help-cover-home"
+    },
+    {
+     "name": "HRA 能源补助（HEAP）",
+     "url": "https://www.nyc.gov/site/hra/help/energy-assistance.page"
+    },
+    {
+     "name": "OTDA HEAP 申请表",
+     "url": "https://otda.ny.gov/programs/applications/default.asp#heap"
+    },
+    {
+     "name": "OTDA HEAP 说明",
+     "url": "https://otda.ny.gov/programs/heap/"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**钱不会直接给你**：按用量收费的家庭，补助会**直接付给你家的暖气供应商**（电力、燃气或燃油公司），账单会减少。",
+     "**一般补助每个冬天只有一次**。",
+     "**快断气断电或燃油快用完**：2027 年 1 月 4 日起可以申请**紧急 HEAP**（Emergency HEAP）。",
+     "**有问题或想查进度**：打 **718-557-1399**（纽约市），或州 HEAP 热线 **1-800-342-3009**。"
+    ],
+    "en": [
+     "**The money doesn't come to you**: for households billed by usage, it's **paid straight to your heating supplier** (electric, gas or oil company), lowering your bill.",
+     "**Regular HEAP is once per winter.**",
+     "**Heat about to be shut off or running out of fuel?** **Emergency HEAP** opens January 4, 2027.",
+     "**Questions or status**: call **718-557-1399** (NYC) or the State HEAP hotline **1-800-342-3009**."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**钱用完就停**，11 月一开放就申请。",
+     "家里有 **60 岁以上、6 岁以下或残障**的人，申请时一定写上，可以多拿。",
+     "暖气锅炉要清洁检查，可以问 **Clean and Tune**（暖气设备清洁保养）补助，打 **718-557-1399**。",
+     "申请时手边准备好**暖气或电费账单**，上面有账号。"
+    ],
+    "en": [
+     "**Funds run out**, so apply as soon as it opens in November.",
+     "If someone at home is **60+, under 6, or disabled**, say so; you can get more.",
+     "If your heating equipment needs cleaning, ask about **Clean and Tune** at **718-557-1399**.",
+     "Keep your **heating or electric bill** handy; it has your account number."
+    ]
+   }
   },
   {
    "id": "fair-fares",
@@ -1333,14 +2159,22 @@
    },
    "how": {
     "zh": [
-     "上 nyc.gov/fairfares 或 ACCESS HRA 申请",
-     "10 天内上传证明文件，30 天内审核",
-     "需要帮助打 311"
+     "**先看条件**：住纽约市、18–64 岁、收入在标准以内、没有从 HRA 领全额车费，也没有其他交通优惠。",
+     "**上网申请**：打开 **nyc.gov/accessfairfares**（会进入 ACCESS HRA），选中文。没有账号先点“建立新账号”，填名字、电邮（或用户名）和密码。",
+     "**按页面提示填完申请**，提交。很多人**不用交任何文件**，系统会告诉你要不要交。",
+     "**要交文件的话，10 天内交**：用 **ACCESS HRA App** 拍照上传。**超过 10 个日历天**没交，就要重新申请。",
+     "**常用文件**：带照片的身份证件（如 IDNYC、护照、绿卡）；90 天内的纽约市住址证明（水电或电话账单、租约、银行月结单）；收入证明（去年的报税表 1040 全部页，或 30 天内的工资单）。",
+     "**选怎么用折扣**：可以等寄来的 Fair Fares OMNY 卡，也可以在 ACCESS HRA 选 **“Change Discount Selection”**，把折扣放到你自己的 OMNY 卡、信用卡/借记卡或手机上。",
+     "**不会上网**：打 **311**，或 Fair Fares 电话 **718-557-1399**（周一至五 8am–5pm），说 **“Chinese, please”** 要翻译，请人帮你申请。"
     ],
     "en": [
-     "Apply at nyc.gov/fairfares or on ACCESS HRA",
-     "Upload documents within 10 days; decisions take up to 30 days",
-     "Call 311 for help"
+     "**Check the rules**: NYC resident, 18–64, income under the limit, not getting full carfare from HRA or another transit discount.",
+     "**Apply online**: go to **nyc.gov/accessfairfares** (it opens ACCESS HRA) and choose Chinese. If you have no account, create one with your name, email (or a username) and a password.",
+     "**Follow the screens and submit.** Many people **don't need any documents**; the system tells you if you do.",
+     "**If documents are needed, send them within 10 days**: take photos in the **ACCESS HRA app**. After **10 calendar days** you must apply again.",
+     "**Common documents**: photo ID (such as IDNYC, passport, green card); NYC address proof from the last 90 days (utility or phone bill, lease, bank statement); income proof (all pages of last year's tax return 1040, or pay stubs from the last 30 days).",
+     "**Choose how to use the discount**: wait for the mailed Fair Fares OMNY card, or in ACCESS HRA choose **\"Change Discount Selection\"** to put it on your own OMNY card, credit/debit card or phone.",
+     "**Can't go online?** Call **311** or Fair Fares at **718-557-1399** (Mon–Fri 8am–5pm), say **\"Chinese, please\"**, and ask for help applying."
     ]
    },
    "contacts": [
@@ -1367,12 +2201,58 @@
     {
      "name": "Fair Fares 修订提案",
      "url": "https://rules.cityofnewyork.us/rule/amendments-to-the-fair-fares-nyc-program/"
+    },
+    {
+     "name": "311：Fair Fares 申请说明",
+     "url": "https://portal.311.nyc.gov/article/?kanumber=KA-03181"
+    },
+    {
+     "name": "Fair Fares 建议文件清单",
+     "url": "https://www.nyc.gov/assets/fairfares/downloads/pdf/FF-14-E.pdf"
+    },
+    {
+     "name": "Fair Fares OMNY 常见问题",
+     "url": "https://home4.nyc.gov/assets/fairfares/downloads/pdf/Fair-Fares-FAQ-OMNY-English.pdf"
+    },
+    {
+     "name": "Fair Fares 与 OMNY",
+     "url": "https://www.nyc.gov/site/fairfares/OMNY/omny.page"
     }
    ],
    "watch": [
     "https://rules.cityofnewyork.us/rule/amendments-to-the-fair-fares-nyc-program/"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**多久有结果**：文件交齐（或 10 天期限到了）后开始审核，**最多 30 天**。结果会**寄信**给你，也会显示在 ACCESS HRA 里。",
+     "**怎么查进度**：随时登录 ACCESS HRA 的 Fair Fares 账户查看。",
+     "**拿到卡**：Fair Fares OMNY 卡在批准后 **2 到 3 个星期**寄到，**不能自己去领**。用自己的 OMNY 卡、银行卡或手机的，**批准后马上可以用**。",
+     "**批准后有效 1 年**。到期要**续期**（renewal，重新申请确认资格），尽早办；错过期限就要重新申请。",
+     "**被拒绝**：可以打电话或当面要求复查，但要在**通知日期起 14 天内**提出。"
+    ],
+    "en": [
+     "**Timing**: review starts once documents are in (or the 10 days pass) and takes **up to 30 days**. You get a **letter**, and the result shows in ACCESS HRA.",
+     "**Check status** any time in your ACCESS HRA Fair Fares account.",
+     "**Your card**: the Fair Fares OMNY card arrives **2 to 3 weeks** after approval and **can't be picked up**. If you use your own OMNY card, bank card or phone, **you can use it right after approval**.",
+     "**Approval lasts 1 year.** **Renew** early; if you miss the deadline you must apply again.",
+     "**Denied?** Ask for a review by phone or in person **within 14 days of the notice date**."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**新卡里面是 $0**，要先充钱：可以在地铁站的 OMNY 售卡机、参与的商店，或网上 OMNY 账户充值。",
+     "**每次刷卡只扣半价**。连续 7 天内付费坐满 **12 次**，这一周剩下的车**免费**。转车免费，不算次数。",
+     "折扣只能放在**一张卡或一部手机**上，不能两样都用。",
+     "**报税表里的子女抚养费不用算**进收入。"
+    ],
+    "en": [
+     "**A new card has $0 on it.** Add money at OMNY machines in subway stations, at participating stores, or in your online OMNY account.",
+     "**Each tap costs half fare.** After **12 paid rides in 7 days in a row**, the rest of that week is **free**. Transfers are free and don't count.",
+     "The discount works on **one card or one phone**, not both.",
+     "**Don't count child support** as income."
+    ]
+   }
   },
   {
    "id": "free-tax",
@@ -1404,14 +2284,26 @@
    },
    "how": {
     "zh": [
-     "每年 1 月底到 4 月 15 日报税季，上 NYC Free Tax Prep 网站按语言找中文服务点",
-     "带齐 W-2、1099、身份证明、孩子的 SSN 或 ITIN、去年的报税表",
-     "填纽约州表格 IT-213 申请儿童税抵免"
+     "**看收入是否符合**：有受抚养人 $97,000 以下，没有 $68,000 以下。",
+     "**报税季开始后找服务点**：打开纽约市免费报税网站（nyc.gov/taxprep），用 **Site Finder 地图**，按语言选**中文**，找离你近的点。",
+     "**选服务方式**：① 当面和义工一起报（至少 30 分钟）② 把文件放下，之后回来取 ③ 视频通话报税 ④ 自己用软件报，有问题打电话或发电邮问义工。",
+     "**尽早预约**：很多点的预约很快就满，有些点只接受不预约直接去（walk-in），要看地图上每个点的说明。",
+     "**带身份证件**：带照片的身份证件（IDNYC 也可以）；你、配偶、孩子的**社安卡或 ITIN**（及 ITIN 通知信）和出生日期。",
+     "**带收入文件**：W-2、各种 1099（失业金是 1099-G，社安金是 SSA-1099）；自雇的带记账本和银行月结单，**不能只估个数**。",
+     "**带其他文件**：去年的报税表、托儿费收据（要有托儿人的名字、地址、税号），如有 IP PIN 也带上。",
+     "**想退税直接进银行**：带银行**路线号和账号**，最简单是带一张**空白支票**。夫妻合报，两个人都要签名。",
+     "**有孩子的**：义工会帮你填纽约州表格 **IT-213**，申请儿童税抵免。"
     ],
     "en": [
-     "During tax season (late January to April 15), use the NYC Free Tax Prep finder to search by language",
-     "Bring W-2s, 1099s, ID, SSNs or ITINs for children, and last year's return",
-     "Claim the child credit on NY form IT-213"
+     "**Check income**: up to $97,000 with dependents, $68,000 without.",
+     "**When tax season starts, find a site**: go to NYC's free tax prep site (nyc.gov/taxprep), use the **Site Finder map**, and search for **Chinese**.",
+     "**Pick a service**: (1) in person with a volunteer (at least 30 minutes) (2) drop off papers and come back later (3) by video call (4) do it yourself with software and get help by phone or email.",
+     "**Book early**: many sites fill up fast, and some are walk-in only. Check each site's details on the map.",
+     "**Bring ID**: photo ID (IDNYC works); **Social Security cards or ITINs** (and ITIN letters) and birth dates for you, your spouse and children.",
+     "**Bring income papers**: W-2s and 1099s (1099-G for unemployment, SSA-1099 for Social Security); if self-employed, your records and bank statements, **not rough guesses**.",
+     "**Bring other papers**: last year's return, child-care receipts (with the provider's name, address and tax ID), and your IP PIN if you have one.",
+     "**For direct deposit**: bring your bank **routing and account numbers**, easiest as a **blank check**. If married filing jointly, both spouses must sign.",
+     "**With children**: the volunteer will fill in NY form **IT-213** for the Empire State Child Credit."
     ]
    },
    "contacts": [
@@ -1452,12 +2344,56 @@
     {
      "name": "纽约州儿童税抵免",
      "url": "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm"
+    },
+    {
+     "name": "纽约市免费报税：要带的文件",
+     "url": "https://www.nyc.gov/site/dca/talk-money/file-your-taxes-documents.page"
+    },
+    {
+     "name": "纽约市免费报税",
+     "url": "https://www.nyc.gov/site/dca/talk-money/file-your-taxes.page"
+    },
+    {
+     "name": "IRS：查退税",
+     "url": "https://www.irs.gov/refunds"
+    },
+    {
+     "name": "纽约州税务局：查退税",
+     "url": "https://www.tax.ny.gov/pit/file/refund.htm"
     }
    ],
    "watch": [
     "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**联邦退税多久到**：网上报税一般约 **3 个星期**（21 天）；寄纸质表要 **6 个星期以上**。",
+     "**领 EITC 的人**：按法律，退税要**等到 2 月中**以后才发。",
+     "**查联邦退税**：上 irs.gov/refunds 用 **“Where's My Refund”**，网上报税 24 小时后可查。要准备社安号或 ITIN、报税身份和**准确的退税金额**。",
+     "**查纽约州退税**：上纽约州税务局网站用 **Check Refund Status**，或打 **518-457-5149**。要准备社安号和申请的退税金额。"
+    ],
+    "en": [
+     "**Federal refund timing**: about **3 weeks** (21 days) if filed online; **6 weeks or more** if mailed.",
+     "**If you claim EITC**: by law, refunds are **held until mid-February**.",
+     "**Check your federal refund** at irs.gov/refunds with **\"Where's My Refund\"**, 24 hours after e-filing. Have your SSN or ITIN, filing status and **exact refund amount**.",
+     "**Check your NY refund** with **Check Refund Status** on the NY tax website, or call **518-457-5149**. Have your SSN and the refund amount you asked for."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**报税单留一份**，查退税要用上面的金额。",
+     "申请自己不符合的抵免，纽约州可能要**多花几个月**才处理，照实填。",
+     "**自雇的人**先打电话问服务点能不能处理你的情况，再预约。",
+     "没有银行账户，可以打 **311** 约免费的**理财咨询中心**（Financial Empowerment Center），帮你开户。"
+    ],
+    "en": [
+     "**Keep a copy of your return**; you need the refund amount to check status.",
+     "Claiming a credit you don't qualify for can make NY take **months longer**; be accurate.",
+     "**If self-employed**, call the site first to make sure they can handle your return.",
+     "No bank account? Call **311** to book a free **Financial Empowerment Center** session to help open one."
+    ]
+   }
   },
   {
    "id": "lifeline",
@@ -1495,10 +2431,22 @@
    },
    "how": {
     "zh": [
-     "向参加 Lifeline 的电话或网络公司申请，或上联邦 Lifeline 网站查资格"
+     "**先确认符合**：家里有人领白卡、粮食券、SSI 或公共房屋补助等，或收入在贫困线 135% 以内。**每户只能领一个**。",
+     "**准备资料**：全名、出生日期、**社安号后 4 位**、住址。",
+     "**准备证明**：福利批准信或福利网站截图（要有你的名字、项目名称、12 个月内的日期）；或收入证明，如去年的报税表、社安福利证明。",
+     "**网上申请**：在 Lifeline 官方网站（lifelinesupport.org）点申请，会进入联邦申请网站（getinternet.gov）。",
+     "**或者寄信申请**：填 Lifeline 家庭表（Household Worksheet）和申请表，寄给 Lifeline 支援中心。",
+     "**或者请电话/网络公司帮你申请**：在 lifelinesupport.org 的 **“Companies Near Me”** 页面找参加的公司，向他们要 Lifeline 申请表。",
+     "**不会填**：打 Lifeline 支援中心 **1-800-234-9473**，每天 9am–9pm（美东时间）。"
     ],
     "en": [
-     "Apply through a participating phone or internet company, or check on the federal Lifeline site"
+     "**Check you qualify**: someone at home gets Medicaid, SNAP, SSI, federal public housing aid or similar, or income is at or below 135% of poverty. **One per household.**",
+     "**Have your details ready**: full name, date of birth, **last 4 digits of your Social Security number**, address.",
+     "**Have proof ready**: a benefit letter or a screenshot of your benefits website (showing your name, the program, and a date within 12 months); or income proof such as last year's tax return or a Social Security benefit statement.",
+     "**Apply online**: on the Lifeline site (lifelinesupport.org), click apply; it takes you to the federal site (getinternet.gov).",
+     "**Or apply by mail**: fill in the Lifeline Household Worksheet and application and mail them to the Lifeline Support Center.",
+     "**Or let a phone/internet company help**: use **\"Companies Near Me\"** on lifelinesupport.org and ask a company for a Lifeline application.",
+     "**Need help?** Call the Lifeline Support Center at **1-800-234-9473**, every day 9am–9pm Eastern."
     ]
    },
    "contacts": [
@@ -1514,10 +2462,56 @@
     {
      "name": "国会研究处 Lifeline 报告",
      "url": "https://www.everycrsreport.com/reports/IF13283.html"
+    },
+    {
+     "name": "Lifeline 官方网站",
+     "url": "https://www.lifelinesupport.org/"
+    },
+    {
+     "name": "Lifeline 证明文件",
+     "url": "https://www.lifelinesupport.org/supporting-documents/"
+    },
+    {
+     "name": "Lifeline：开始申请",
+     "url": "https://www.lifelinesupport.org/get-started/"
+    },
+    {
+     "name": "Lifeline 附近公司",
+     "url": "https://www.lifelinesupport.org/companies-near-me/"
+    },
+    {
+     "name": "Lifeline 重新确认",
+     "url": "https://www.lifelinesupport.org/recertify/"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**要补文件**的话，Lifeline 会联系你，告诉你怎么交。",
+     "**批准后要选公司**：联系一家参加 Lifeline 的电话或网络公司，由他们给你开通优惠，每月账单会减少。",
+     "**每年要重新确认**（recertify）：收到通知后有 **60 天**回复，不回复就会**失去优惠**，账单变贵或服务被停。可以在 lifelinesupport.org/recertify 办。",
+     "**搬家或不再符合**，要在 **30 天内**告诉你的电话或网络公司。"
+    ],
+    "en": [
+     "**If more documents are needed**, Lifeline will contact you and explain how to send them.",
+     "**After approval, pick a company**: contact a participating phone or internet company; they enroll you and your monthly bill goes down.",
+     "**Recertify every year**: you have **60 days** after the notice. If you don't respond you **lose the discount**, and your bill may rise or service may stop. Recertify at lifelinesupport.org/recertify.",
+     "**If you move or no longer qualify**, tell your company **within 30 days**."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**免费的手机服务**（自己不用付钱的）要**每 30 天至少用一次**（打电话、发短信或上网）。",
+     "Lifeline 的规定可能因联邦新提案改变，申请前先看本页“最新变化”。",
+     "一户就是**住在一起、一起分担收入和开支**的人；同住但分开过日子的，可能算不同户。"
+    ],
+    "en": [
+     "**If your service is free**, use it **at least once every 30 days** (call, text or go online).",
+     "Lifeline rules may change under a federal proposal; check \"What changed recently\" first.",
+     "A household is people who **live together and share income and expenses**; people who live together but keep money separate may count as different households."
+    ]
+   }
   },
   {
    "id": "nycha",
@@ -1561,18 +2555,26 @@
    },
    "how": {
     "zh": [
-     "上网到 **ApplyNYCHA**（selfserve.nycha.info）建立账户并填写申请，申请时不需要上传文件",
-     "不会上网的，可以打电话请 NYCHA 寄纸本申请表",
-     "记下申请编号，之后用同一网站更新地址、收入和家庭人数",
-     "**每 24 个月要上网更新一次**，否则会被移出名单；更新不会改变你原来的排队日期",
-     "轮到你时会通知面谈，届时带齐原件"
+     "**先准备好基本资料**：全家每个人的姓名、出生日期、社安号码（有的话）、全家一年大概收入、现在的地址和电话。申请时**不用交任何文件**。",
+     "**会上网的**：用手机或电脑打开 **selfserve.nycha.info**（ApplyNYCHA，公屋网上申请），点建立账户（register），记好用户名和密码。",
+     "登录后填写公屋申请（public housing application）：家里有几口人、收入多少、想住哪个区（borough）、为什么要申请（例如住得太挤、无家可归）。",
+     "**不会上网的**：打 NYCHA 客服中心 **718-707-7771**（周一至五 8am–5pm），请他们**寄纸本申请表**给你；或者预约到 NYCHA 接待中心（Walk-in Center），用那里的电脑机器申请。",
+     "也可以打 **311**，说 “Public Housing”，再说 “Chinese, please” 要中文翻译。",
+     "交了申请后，**30 天内**会收到一封确认信，上面有你的**个案号码（case number）**。没收到信，就打 718-707-7771 问。",
+     "把确认信和个案号码收好，拍照存在手机里。以后查进度、改资料都要用到。",
+     "搬家、换电话、收入变了、家里多了或少了人，都要**上 selfserve.nycha.info 更新**。",
+     "**每 24 个月要上网点 “Update/Renew My Case” 续一次**，不续会被移出名单；续了不会改变你原来的排队日期。留了电话或电邮的，NYCHA 会发提醒。"
     ],
     "en": [
-     "Go to **ApplyNYCHA** (selfserve.nycha.info), create an account and fill in the application. No documents are needed to apply",
-     "If you can't apply online, call NYCHA and ask for a paper application",
-     "Keep your application number and use the same site to update your address, income or household",
-     "**Renew every 24 months** or you'll be dropped from the list; renewing keeps your original filing date",
-     "When your turn comes you'll be called for an interview; bring originals"
+     "**Get your basic information ready**: each household member's name, date of birth and Social Security number (if any), your household's yearly income, and your current address and phone. **No documents are needed to apply.**",
+     "**If you can go online**: on a phone or computer open **selfserve.nycha.info** (ApplyNYCHA), click register to create an account, and write down your username and password.",
+     "After logging in, fill out the public housing application: how many people, how much income, which borough you prefer, and why you are applying (for example, overcrowding or homelessness).",
+     "**If you can't go online**: call the NYCHA Customer Contact Center at **718-707-7771** (Mon–Fri 8am–5pm) and ask them to **mail you a paper application**, or book an appointment at a NYCHA Walk-in Center and apply on a kiosk there.",
+     "You can also call **311**, say \"Public Housing\", then say \"Chinese, please\" for a Chinese interpreter.",
+     "Within **30 days** you should get a confirmation letter with your **case number**. If you don't, call 718-707-7771.",
+     "Keep the letter and case number safe and take a photo of them. You'll need them to check status or change your information.",
+     "If you move, change phone numbers, your income changes, or someone joins or leaves your household, **update it on selfserve.nycha.info**.",
+     "**Every 24 months, log in and click \"Update/Renew My Case\"**, or you'll be dropped from the list. Renewing keeps your original filing date. NYCHA sends reminders if you gave a phone number or email."
     ]
    },
    "docs": {
@@ -1636,13 +2638,51 @@
     {
      "name": "NYCHA Section 8 申请说明",
      "url": "https://www.nyc.gov/site/nycha/section-8/guide-for-applicants-and-tenants.page"
+    },
+    {
+     "name": "NYCHA：申请公屋之后会怎样",
+     "url": "https://www.nyc.gov/site/nycha/eligibility/public-housing-what-to-expect.page"
+    },
+    {
+     "name": "NYCHA 公屋优先类别",
+     "url": "https://www.nyc.gov/site/nycha/eligibility/public-housing-priority-codes.page"
     }
    ],
    "watch": [
     "https://www.nyc.gov/site/nycha/eligibility/public-housing-applicant-faq.page",
     "https://www.nyc.gov/site/nycha/section-8/guide-for-applicants-and-tenants.page"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**多久**：名单很长，NYCHA 说**无法估计**什么时候轮到你。排序看你的优先类别（priority code）、你选的区有没有合适大小的空房、以及你最早申请的日期。",
+     "**查进度**：登录 selfserve.nycha.info 就能看到申请状态。",
+     "**资格面谈（eligibility interview）**：轮到你时，NYCHA 资格部门会打电话约你**电话面谈**，有会说双语的工作人员。之后要交全家的**原件和复印件**：身份证明、出生证明、社安卡、移民身份证明、过去 12 个月的收入和存款记录、最近 6 个月的租金收据、租约、煤气或电费单等。",
+     "**有空房时**：NYCHA 会联系你过去 3 年的房东，并为家里 **16 岁以上**的人做犯罪背景调查。都通过后，大多数人会**得到 1 个单位的配房**（需要无障碍单位或紧急优先的有 2 个）。房租约为家庭收入的 30%（扣除可扣项目后）。",
+     "**被判不合资格**：你会收到写明原因的信。可以在**信上日期 90 天内**要求非正式听证（informal hearing），也可以到客服中心讨论。如果想以后再申请，要重新交一份新申请。"
+    ],
+    "en": [
+     "**How long**: the list is very long and NYCHA says it **can't estimate** when you'll be called. Order depends on your priority code, whether a right-size apartment is free in the borough you chose, and your original filing date.",
+     "**Check status**: log in to selfserve.nycha.info to see your application status.",
+     "**Eligibility interview**: when your turn comes, NYCHA's Eligibility Unit calls to schedule an **interview by phone**; bilingual staff are available. You'll then provide **originals and copies** for everyone: ID, birth certificates, Social Security cards, immigration status papers, 12 months of income and asset records, 6 months of rent receipts, your lease, and a recent gas or electric bill.",
+     "**When an apartment opens**: NYCHA contacts your landlords from the past 3 years and runs a criminal background check on household members **16 and older**. If everyone passes, most applicants get **one apartment offer** (two for accessible-unit or emergency priority). Rent is about 30% of household income after deductions.",
+     "**If found ineligible**: you get a letter explaining why. You can ask for an informal hearing **within 90 days of the letter**, or go to the Customer Contact Center to discuss it. To be considered again later, you must file a new application."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "NYCHA 申请**完全免费**。任何人收钱说能帮你插队或“代办 Section 8”都是骗子。",
+     "同一个家庭只交一份申请，资料要写真实；收入或人数写错，面谈时会被查出来。",
+     "把 NYCHA 寄来的所有信件放在同一个文件夹，信上有期限的事要马上办，看不懂就打 311 说 “Chinese, please” 请人帮你读。",
+     "面谈要的东西很多，**现在就开始收集**：工资单、银行月结单、租金收据，至少留 12 个月的记录。"
+    ],
+    "en": [
+     "Applying to NYCHA is **completely free**. Anyone who charges to move you up the list or \"get you Section 8\" is a scammer.",
+     "Submit only one application per household and make it accurate; wrong income or household size will be caught at the interview.",
+     "Keep every NYCHA letter in one folder. Act fast on any deadline. If you can't read a letter, call 311 and say \"Chinese, please\" for help.",
+     "The interview needs a lot of paperwork, so **start saving now**: pay stubs, bank statements and rent receipts, at least 12 months' worth."
+    ]
+   }
   },
   {
    "id": "housing-connect",
@@ -1674,18 +2714,24 @@
    },
    "how": {
     "zh": [
-     "到 housingconnect.nyc.gov 注册账户，填好家庭人数和收入",
-     "浏览正在开放的楼盘，只申请收入范围符合的",
-     "**每个楼盘都可以申请，多申请几个机会更大**，申请完全免费",
-     "被抽中后会收到通知，需要在期限内交材料并面谈",
-     "另外留意“二次出租”（re-rental），是先到先得"
+     "**先算好全家一年的总收入**（税前）：工资、社安金、退休金等都算。去年的报税表上大部分数字都有。",
+     "用手机或电脑打开 **housingconnect.nyc.gov**，建立账户（create account），记好电邮和密码。",
+     "填写**个人资料（profile）**：家里每个人、每份收入、存款、现在的房租。资料要真实，填完整。",
+     "点 **“See Open Lotteries”**（看正在开放的抽签）。每个楼盘都写着不同家庭人数的**收入下限和上限**，只申请你收入在范围内的楼盘。",
+     "在截止日期前点申请（Apply）。**截止前什么时候交都一样**，不是先到先得。",
+     "**每个楼盘只交一份申请**，不要同时交网上和纸本，重复申请会被取消资格。但不同的楼盘都可以申请，申请越多机会越大，全部免费。",
+     "不会上网的，可以找 **Housing Ambassadors**（市政府合作的非营利机构）免费帮你申请；也可以打 Housing Connect 热线 **212-863-7990**（可能要留言等回电）。",
+     "在网站上订阅电邮通知，有新楼盘开放时会通知你。另外留意**二次出租（re-rental）**，是先到先得的。"
     ],
     "en": [
-     "Register at housingconnect.nyc.gov and enter your household size and income",
-     "Browse open lotteries and apply only where your income fits",
-     "**You can apply to every eligible building, and more applications mean better odds.** It's free",
-     "If selected you'll be notified to submit documents and interview by a deadline",
-     "Also watch re-rentals, which are first-come, first-served"
+     "**Add up your household's total yearly income** (before tax): wages, Social Security, pensions and so on. Last year's tax return has most of these numbers.",
+     "On a phone or computer open **housingconnect.nyc.gov** and create an account. Write down your email and password.",
+     "Fill in your **profile**: every household member, every income source, savings, and your current rent. Be accurate and complete.",
+     "Click **\"See Open Lotteries\"**. Each building lists a **minimum and maximum income** for each household size; apply only where your income fits.",
+     "Apply before the deadline. **It doesn't matter when you apply as long as it's before the deadline**; it's not first-come, first-served.",
+     "**Send only one application per building**, and never both online and paper, or you may be disqualified. But you can apply to many different buildings, and more applications mean better odds. It's all free.",
+     "If you can't go online, a **Housing Ambassador** (a city-partnered nonprofit) can help you apply for free, or call the Housing Connect hotline at **212-863-7990** (you may need to leave a voicemail).",
+     "Sign up for email alerts for new lotteries. Also watch **re-rentals**, which are first-come, first-served."
     ]
    },
    "docs": {
@@ -1738,12 +2784,54 @@
     {
      "name": "NYC HDC 2026 收入与房租表",
      "url": "https://www.nychdc.com/sites/default/files/2026-05/2026%20Income%20Limit%20and%20Rent%20Charts.pdf"
+    },
+    {
+     "name": "HPD：Ready, Set, Apply! 申请准备指南",
+     "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/ready-set-apply-english.pdf"
+    },
+    {
+     "name": "HPD：NYC Housing Connect 申请指南",
+     "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/housing-connect-guidebook.pdf"
+    },
+    {
+     "name": "HPD：Housing Connect 申请指南页面",
+     "url": "https://www.nyc.gov/site/hpd/services-and-information/housing-connect-application-guides.page"
     }
    ],
    "watch": [
     "https://access.nyc.gov/programs/nyc-housing-connect"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**抽签**：截止后，电脑会给每份申请一个随机号码，叫**排号（log number）**。号码小的会先被联系。符合优先条件的（例如本社区居民、老人、残障人士）会先被考虑。",
+     "**多久**：要等**几个月，甚至一年或更久**。要常常登录 Housing Connect 看你的**控制面板（Dashboard）**；等的时候收入或家里人数有变化，要更新资料。",
+     "**被选中后**：会要你上传或交文件（身份证明、工资单等），做信用调查或提供交租记录，并参加**审核面谈（screening interview）**。**家里 18 岁以上要住进去的人都要去面谈**。要改时间，尽早打电话，多数要提前 24 小时。",
+     "**结果**：合格的可能直接签租约，也可能被放进**等候名单**（最长可达两年）。",
+     "**被拒绝怎么办**：拒绝信会写原因和上诉方法。**只有 10 个工作日**（从信封邮戳日期算起）可以上诉：写一封信说明为什么决定有错，附上证明文件，寄到拒绝信上的地址。上诉失败但你仍认为有错，可以在 5 个工作日内向 HPD 或 HDC 投诉。上诉期间也可以继续申请别的楼盘。"
+    ],
+    "en": [
+     "**The lottery**: after the deadline, a computer gives each application a random number called a **log number**. Lower numbers are contacted first. People who meet a preference (such as neighborhood residents, seniors, people with disabilities) are considered first.",
+     "**How long**: it can take **several months, even a year or longer**. Check your **Housing Connect Dashboard** often, and update your profile if your income or household changes while you wait.",
+     "**If selected**: you'll be asked to upload or provide documents (ID, pay stubs, etc.), complete a credit check or show rent payment history, and attend a **screening interview**. **Everyone 18+ who will live in the apartment must attend.** To reschedule, call as early as possible; most agents want at least 24 hours' notice.",
+     "**Result**: if you qualify you may be invited to sign a lease, or put on a **waitlist** that can last up to two years.",
+     "**If rejected**: the letter explains why and how to appeal. You have **only 10 business days from the postmark** to appeal: write a letter explaining why the decision is wrong, attach proof, and mail it to the address on the rejection letter. If the appeal fails and you still think it's wrong, you can complain to HPD or HDC within 5 business days. You can keep applying to other buildings meanwhile."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**现在就把文件准备好**：全家的出生证明、社安卡、带照片的身份证，工资单、报税表、福利信函，现在的租约、租金收据、煤气或电费单。",
+     "**先存钱**：被选中后可能很快要搬，至少存够**两个月房租**（第一个月租金加押金）。也先看看你现在的租约，搬走前要提前多久通知房东。",
+     "申请完全免费，抽签是随机的。任何人收钱说能保证抽中都是骗子。",
+     "Housing Connect 的信和电邮可能是英文的，收到看不懂就马上找 Housing Ambassador 或家人帮忙，**别错过 10 个工作日的上诉期限**。"
+    ],
+    "en": [
+     "**Get documents ready now**: birth certificates, Social Security cards and photo IDs for everyone; pay stubs, tax returns, benefit letters; your current lease, rent receipts and a gas or electric bill.",
+     "**Save money first**: if selected you may need to move quickly, so save at least **two months' rent** (first month plus security deposit). Also check how much notice your current lease requires before moving out.",
+     "Applying is free and the lottery is random. Anyone charging money to guarantee a win is a scammer.",
+     "Housing Connect letters and emails may be in English. If you can't read one, get help from a Housing Ambassador or family right away so you **don't miss the 10-business-day appeal deadline**."
+    ]
+   }
   },
   {
    "id": "scrie",
@@ -1791,16 +2879,24 @@
    },
    "how": {
     "zh": [
-     "上网申请最快：搜索 “NYC Rent Freeze”，在官方网站填写",
-     "也可以用纸本表格，**有中文版**，寄复印件，不要寄原件",
-     "批准后房租冻结在申请时的金额",
-     "到期前 60 天可在网上 Tenant Access Portal 续期，记得按时续"
+     "**先确认资格**：62 岁以上（SCRIE）或领残障福利（DRIE），名字在租约上，全家年收入 $50,000 或以下，房租超过收入三分之一，住的是租金稳定或租金管制公寓。不确定的话，可以在 nyc.gov/rentfreeze 用资格检查工具（Eligibility Tool）。",
+     "**准备文件的复印件**（**不要寄原件**）：年龄证明（护照、出生证明、州身份证或驾照任一份）；全家去年的收入证明（报税表、1099、社安金或退休金通知、银行年结单）；租金稳定公寓要上一份和现在的租约；DRIE 还要 SSI、SSDI 等残障福利的批准信（Notice of Award）。",
+     "**网上申请最快**：打开 **nyc.gov/rentfreeze**，点 “How to apply”（如何申请），进入网上系统填写。官方说网上申请处理得比较快。",
+     "**用纸本**：在同一网站下载申请表，**有中文版**。填好后连同文件复印件，寄到申请表上印的地址。",
+     "**要当面问**：可以到财政局曼哈顿服务中心（66 John Street 3 楼），最好先在 **nyc.gov/dofappointments** 预约。",
+     "**打电话问**：拨 **311**，说 “Rent Freeze”，再说 “Chinese, please” 要中文翻译。在纽约市外打，拨 212-639-9675。",
+     "住 Mitchell-Lama 或 HDFC 合作公寓的长者申请 SCRIE，要找房屋保护发展局（HPD）：100 Gold Street, Room 7M，电话 212-863-8494。",
+     "批准后要留意：家里人数变了、搬家、或房东加收大型维修费（MCI）等新费用，都要**通知财政局**。"
     ],
     "en": [
-     "Online is fastest: search \"NYC Rent Freeze\" and apply on the official site",
-     "Paper forms are available, **including in Chinese**. Mail copies, not originals",
-     "Once approved, rent is frozen at the amount when you applied",
-     "Renew through the Tenant Access Portal starting 60 days before it expires"
+     "**Check that you qualify**: 62+ (SCRIE) or receiving disability benefits (DRIE), named on the lease, household income $50,000 or less, rent more than one-third of income, and a rent-stabilized or rent-controlled apartment. If unsure, use the Eligibility Tool at nyc.gov/rentfreeze.",
+     "**Make copies of your documents** (**never send originals**): proof of age (any one: passport, birth certificate, state ID or driver's license); last year's income proof for everyone (tax returns, 1099s, Social Security or pension statements, bank year-end statements); for rent-stabilized apartments, your prior and current leases; for DRIE, your SSI/SSDI or other disability Notice of Award.",
+     "**Online is fastest**: open **nyc.gov/rentfreeze**, click \"How to apply\" and fill in the online application. The city says online applications are processed faster.",
+     "**On paper**: download the form from the same site, **available in Chinese**. Mail it with document copies to the address printed on the form.",
+     "**In person**: go to the Department of Finance Manhattan Assistance Center (66 John Street, 3rd Floor). It's best to book first at **nyc.gov/dofappointments**.",
+     "**By phone**: call **311**, say \"Rent Freeze\", then \"Chinese, please\" for an interpreter. From outside NYC, call 212-639-9675.",
+     "Seniors in Mitchell-Lama or HDFC co-op apartments apply for SCRIE through HPD: 100 Gold Street, Room 7M, phone 212-863-8494.",
+     "After approval, **tell the Department of Finance** if your household changes, you move, or your landlord adds new charges such as a major capital improvement (MCI) increase."
     ]
    },
    "docs": {
@@ -1859,12 +2955,66 @@
     {
      "name": "Rent Freeze 申请与续期",
      "url": "https://www.nyc.gov/site/rentfreeze/apply/apply-renew.page"
+    },
+    {
+     "name": "Rent Freeze：获取帮助",
+     "url": "https://www.nyc.gov/site/rentfreeze/help/help.page"
+    },
+    {
+     "name": "Rent Freeze：首次申请所需文件",
+     "url": "https://www.nyc.gov/site/rentfreeze/apply/first-time-applicants.page"
+    },
+    {
+     "name": "Rent Freeze：续期",
+     "url": "https://www.nyc.gov/site/rentfreeze/apply/renewing-your-benefit.page"
+    },
+    {
+     "name": "财政局 SCRIE/DRIE 规则",
+     "url": "https://www.nyc.gov/assets/finance/downloads/pdf/rules/scrie-drie-programs-rule.pdf"
+    },
+    {
+     "name": "SCRIE 上诉表",
+     "url": "https://www.nyc.gov/assets/finance/downloads/pdf/drie/scrie_appeal_application.pdf"
+    },
+    {
+     "name": "NYC TAP 租客系统使用指南",
+     "url": "https://www.nyc.gov/assets/rentfreeze/downloads/pdf/tap-tenant-user-guide.pdf"
     }
    ],
    "watch": [
     "https://www.nyc.gov/site/rentfreeze/qualifications/qualifications.page"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**从什么时候开始冻结**：批准后，从财政局**收到你申请的下一个月 1 号**起生效，房租冻结在那时的金额。",
+     "**查进度**：可以登录租客网上系统 NYC TAP（**nyc.gov/nyctap**，用寄给你的信上的 PIN 码登记），在 “Applications” 里看状态和还缺什么文件，也可以在那里上传 PDF 文件；或打 311 问。官方没有公布固定的处理时间。",
+     "**多久要续一次**：租金稳定公寓一般跟你的租约同期；租金管制公寓一般两年。到期前约 **60 天**会收到续期申请，可从到期前 60 天起在网上续。到期后 **6 个月内**续都可以补回；超过就要重新申请。连续批准满 5 年的，可以用较短的续期表。",
+     "**被拒绝怎么办**：拒绝信寄出后 **120 天内**可以用财政局的上诉表（Tenant Appeal Application）上诉，附上证明文件，寄到 NYC Department of Finance, Compliance Unit, P.O. Box 3179, Union NJ 07083。有正当理由可申请延期。同一个决定只能上诉一次。",
+     "收到决定后仍有问题，也可以联系 SCRIE 或 DRIE 的**申诉专员（ombudsperson）**；但他们不处理还在审核中的进度问题。"
+    ],
+    "en": [
+     "**When the freeze starts**: once approved, it takes effect on the **first day of the month after the Department of Finance receives your application**, and your rent is frozen at that amount.",
+     "**Check status**: log in to the tenant portal NYC TAP (**nyc.gov/nyctap**; register with the PIN from your letter) and open \"Applications\" to see the status and any missing documents. You can upload PDFs there too, or call 311. The city doesn't publish a fixed processing time.",
+     "**How often to renew**: for rent-stabilized apartments it usually matches your lease; for rent-controlled apartments it is usually two years. You'll get a renewal form about **60 days** before it ends and can renew online from 60 days before. You can still renew up to **6 months after** it expires and be covered back to the end date; after that you must apply again from scratch. If you've been approved 5 years in a row, you can use a shorter renewal form.",
+     "**If denied**: you can appeal **within 120 days** of the decision letter on the Department's Tenant Appeal Application, with supporting documents, mailed to NYC Department of Finance, Compliance Unit, P.O. Box 3179, Union NJ 07083. You can ask for more time with good cause. You can appeal the same decision only once.",
+     "After you get a decision, you can also contact the SCRIE or DRIE **ombudsperson**; they don't handle questions about applications still being processed."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**今年全面冻租也要申请 SCRIE/DRIE**：今年的冻租只管这一轮租约，SCRIE/DRIE 能长期保住你的房租。",
+     "寄任何东西都**只寄复印件**，自己留一套，并记下寄出的日期。",
+     "把财政局寄来的信都放好，特别是**续期信**；到期前 60 天就开始续，不要拖到最后。",
+     "因为生病住院、残障等原因来不及续期，可以打 311 或填写残障延期申请表，要求延长时间。"
+    ],
+    "en": [
+     "**Apply even with this year's rent freeze**: that freeze covers only this round of leases, while SCRIE/DRIE protects your rent long-term.",
+     "**Only ever mail copies**, keep a set for yourself, and note the date you mailed them.",
+     "Keep every letter from the Department of Finance, especially **renewal letters**. Start renewing 60 days before the end date; don't wait until the last minute.",
+     "If illness, hospitalization or a disability keeps you from renewing on time, call 311 or file the disability extension request form to ask for more time."
+    ]
+   }
   },
   {
    "id": "tenant-help",
@@ -1898,16 +3048,24 @@
    },
    "how": {
     "zh": [
-     "**收到法庭文件不要不理**，不出庭会自动判你输",
-     "拨 311，说 “Tenant Helpline”",
-     "或打 Housing Court Answers 热线",
-     "第一次出庭时，直接向法庭要求免费律师"
+     "**收到法庭文件不要怕，也不要丢**。看清楚是哪种案子：欠租案（nonpayment）还是要你搬走的案子（holdover）。看不懂就马上找人帮你读。",
+     "**欠租案要在收到文件后 10 天内答辩（answer）**：带着法庭文件和你的身份证件，到房屋法庭的书记官柜台（clerk's office）**口头答辩**就可以，书记官会给你一个出庭日期。holdover 案一般在开庭时答辩，但要看文件上有没有要求更早答辩。",
+     "**马上打电话找免费律师**：拨 **311**，说 “Tenant Helpline”，再说 “Chinese, please” 要中文翻译；或打 Housing Court Answers **212-962-4795** 或 **718-557-1379**（周一至五 9am–5pm）。",
+     "也可以发电邮到 **civiljustice@hra.nyc.gov**，写上你的名字、电话和法庭案件号（index number，有的话）。",
+     "**第一次出庭一定要去**，提早到，要过安检。到了法庭跟法庭人员说 **“I would like an attorney”**（我要一位律师），或找戴着青绿色 “Speak with a free lawyer” 徽章的人。免费律师的审核通常就在第一次出庭当天或之后不久。",
+     "**法庭提供免费翻译**：开庭时告诉法庭人员你需要中文（普通话或粤语）翻译。",
+     "**带齐文件**：法庭文件、租约和续约、交租证明（汇票存根、支票、银行月结单、收据）、收入证明。",
+     "如果在第一次开庭前**付清全部欠租**，欠租案就必须结束。需要租金补助的，可以问律师或 311。"
     ],
     "en": [
-     "**Never ignore court papers**; missing court means you lose by default",
-     "Call 311 and ask for the \"Tenant Helpline\"",
-     "Or call Housing Court Answers",
-     "At your first court date, ask the court for a free lawyer"
+     "**Don't panic and don't throw the court papers away.** Check what kind of case it is: nonpayment (unpaid rent) or holdover (asking you to move out). If you can't read them, get help right away.",
+     "**In a nonpayment case, answer within 10 days of receiving the papers**: bring the papers and your ID to the Housing Court clerk's counter and **answer out loud**; the clerk will give you a court date. In a holdover case you usually answer at the hearing, but check whether the papers ask for an earlier answer.",
+     "**Call for a free lawyer right away**: call **311**, ask for the \"Tenant Helpline\", then say \"Chinese, please\" for an interpreter; or call Housing Court Answers at **212-962-4795** or **718-557-1379** (Mon–Fri 9am–5pm).",
+     "You can also email **civiljustice@hra.nyc.gov** with your name, phone number and your Housing Court index number (if you have one).",
+     "**Always go to your first court date.** Arrive early for security. Tell court staff **\"I would like an attorney\"**, or look for someone wearing the teal \"Speak with a free lawyer\" button. Screening for a free lawyer usually happens on or shortly after the first court date.",
+     "**The court provides free interpreters**: tell court staff you need a Chinese (Mandarin or Cantonese) interpreter.",
+     "**Bring your papers**: court papers, lease and renewals, proof of rent paid (money order stubs, checks, bank statements, receipts) and proof of income.",
+     "If you **pay all the rent owed before the first court date**, a nonpayment case must end. Ask your lawyer or 311 about rent assistance."
     ]
    },
    "docs": {
@@ -1959,10 +3117,56 @@
     {
      "name": "Legal Services NYC：Right to Counsel",
      "url": "https://www.legalservicesnyc.org/resources/how-to-get-a-lawyer-under-the-new-york-city-right-to-counsel-rtc-law/"
+    },
+    {
+     "name": "HRA：租客法律服务（Right to Counsel）",
+     "url": "https://www.nyc.gov/site/hra/help/legal-services-for-tenants.page"
+    },
+    {
+     "name": "纽约州法院：答辩（Answering a Case）",
+     "url": "https://www.nycourts.gov/courtsnychousing/answering.shtml"
+    },
+    {
+     "name": "纽约州法院 CourtHelp：纽约市欠租案",
+     "url": "https://nycourts.gov/courthelp/Homes/NYCnonpayment.shtml"
+    },
+    {
+     "name": "纽约州法院：免费翻译服务",
+     "url": "https://www.nycourts.gov/courtinterpreter"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**有律师之后**：律师会代表你跟房东谈或上庭。案子先在调解庭（Resolution Part）处理，谈不拢才转到审判庭（Trial Part），由法官听证据后判决。",
+     "**没有分到全程律师**：法律机构可能只能给你建议，教你自己处理案子。法官也可以为特别弱势的租客特别要求安排律师。",
+     "**没去法庭或没答辩**：房东可以拿到**缺席判决（default judgment）**，再找法院执行官（marshal）驱逐你。",
+     "**收到执行官通知（Marshal's notice）**：不要等，**马上**联系律师或 Housing Court Answers，你可能还能撤销缺席判决或暂停驱逐。",
+     "想查开庭日期，可以打各区房屋法庭：曼哈顿 646-386-5500、布鲁克林 347-404-9201、皇后区 718-262-7145、布朗士 718-466-3025、史坦顿岛 718-675-8452。"
+    ],
+    "en": [
+     "**Once you have a lawyer**: they speak with the landlord or appear in court for you. Cases start in the Resolution Part; if not settled they go to a Trial Part, where a judge hears evidence and decides.",
+     "**If you don't get full representation**: a legal provider may only be able to advise you on handling the case yourself. A judge can also make a special request for a lawyer for a particularly vulnerable tenant.",
+     "**If you don't answer or don't come to court**: the landlord can get a **default judgment** and then use a city marshal to evict you.",
+     "**If you get a marshal's notice**: don't wait. Contact a lawyer or Housing Court Answers **right away**; you may still be able to undo the default or stop the eviction.",
+     "To check a court date, call the Housing Court in your borough: Manhattan 646-386-5500, Brooklyn 347-404-9201, Queens 718-262-7145, Bronx 718-466-3025, Staten Island 718-675-8452."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "免费律师（Right to Counsel）**不收任何费用**。有人自称律师却跟你要钱，多半是骗子。",
+     "一直保留交租证明：用汇票或支票交租，留好存根；付现金一定要收据。",
+     "房东自己换锁、断水断电赶你走是违法的。被锁在门外，打 311 或 Housing Court Answers。",
+     "自己请私人律师的话，要找专门做房屋法的律师。"
+    ],
+    "en": [
+     "Right to Counsel lawyers are **free**. Anyone claiming to be your lawyer who asks for money is likely a scammer.",
+     "Always keep proof of rent paid: pay by money order or check and keep the stubs; get a receipt for cash.",
+     "A landlord changing the locks or cutting utilities to force you out is illegal. If you're locked out, call 311 or Housing Court Answers.",
+     "If you hire a private lawyer, choose one who specializes in housing law."
+    ]
+   }
   },
   {
    "id": "senior-housing",
@@ -1994,14 +3198,24 @@
    },
    "how": {
     "zh": [
-     "在 ApplyNYCHA 申请公屋时选择老人楼（Senior Development）",
-     "HUD 202 要直接联系每栋楼的管理处登记轮候，可请 Aging Connect 帮忙找",
-     "在 Housing Connect 留意标明 senior 的楼盘"
+     "**三条路一起走**，越早排队越好：NYCHA 老人公屋、HUD 202 老人楼、Housing Connect 老人抽签楼盘。",
+     "**NYCHA 老人公屋**：上 **selfserve.nycha.info** 申请公屋，在选择楼宇时选老人楼（Senior Development）。不会上网，打 **718-707-7771** 请他们寄纸本表格。",
+     "记住老人公屋的年龄规定：单人要 62 岁以上；两人以上的家庭，户主和所有成员都要 62 岁以上。",
+     "**HUD 202 老人楼**：每栋楼自己管名单，要**一栋一栋**打电话或去管理处登记。打 **Aging Connect 212-244-6469**，说 “Chinese, please”，请他们帮你找附近的老人楼。",
+     "问每栋楼时，问清楚：收入上限多少、对移民身份有什么要求、名单开不开放、怎样登记、要不要定期更新。",
+     "**Housing Connect**：在 **housingconnect.nyc.gov** 建立账户，留意写着 senior（老人）的楼盘，收入符合就申请；可以申请很多个。",
+     "把每个名单的**申请编号、日期、电话**写在同一张纸上，放在家里显眼的地方，也给子女一份。",
+     "地址、电话改了，**每个名单都要更新**，不然通知寄不到你。"
     ],
     "en": [
-     "On ApplyNYCHA, choose senior developments",
-     "For HUD 202, contact each building's management office; Aging Connect can help you find them",
-     "On Housing Connect, watch for senior-designated lotteries"
+     "**Use all three routes at once**, and start early: NYCHA senior buildings, HUD 202 senior buildings, and senior lotteries on Housing Connect.",
+     "**NYCHA senior buildings**: apply for public housing at **selfserve.nycha.info** and choose a Senior Development. If you can't go online, call **718-707-7771** for a paper form.",
+     "Remember the age rule: a single applicant must be 62+; in larger households the head and every member must be 62+.",
+     "**HUD 202 buildings**: each building keeps its own list, so contact them **one by one**. Call **Aging Connect at 212-244-6469**, say \"Chinese, please\", and ask for help finding senior buildings near you.",
+     "Ask each building: What is the income limit? What immigration status is required? Is the list open? How do I sign up? Do I need to renew?",
+     "**Housing Connect**: create an account at **housingconnect.nyc.gov**, watch for lotteries marked senior, and apply wherever your income fits. You can apply to many.",
+     "Write each list's **application number, date and phone** on one sheet of paper, keep it somewhere easy to see, and give a copy to your children.",
+     "If your address or phone changes, **update every list**, or you'll miss their letters."
     ]
    },
    "contacts": [
@@ -2045,12 +3259,48 @@
     {
      "name": "HPD 老人住房",
      "url": "https://www.nyc.gov/site/hpd/services-and-information/senior-housing.page"
+    },
+    {
+     "name": "NYCHA：申请公屋之后会怎样",
+     "url": "https://www.nyc.gov/site/nycha/eligibility/public-housing-what-to-expect.page"
+    },
+    {
+     "name": "HPD：Ready, Set, Apply! 申请准备指南",
+     "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/ready-set-apply-english.pdf"
     }
    ],
    "watch": [
     "https://www.nyc.gov/site/nycha/eligibility/eligibility.page"
    ],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**NYCHA**：30 天内收到确认信和个案号码；**每 24 个月上网续一次**；轮到时会电话面谈，要交原件。被判不合资格，90 天内可以要求非正式听证。",
+     "**Housing Connect**：截止后随机给排号，可能要几个月甚至一年以上才有消息；被选中要交文件、面谈；被拒绝**只有 10 个工作日**上诉。",
+     "**HUD 202 老人楼**：每栋楼的名单、等候时间和联系方式都不同，要按那栋楼的要求定期跟进。",
+     "所有名单都等很久，等的时候可以先申请 **SCRIE 租金冻结**（如果住在受管制公寓），保住现在的房租。"
+    ],
+    "en": [
+     "**NYCHA**: a confirmation letter with your case number comes within 30 days; **renew online every 24 months**; when your turn comes there's a phone interview and you provide originals. If found ineligible, you can ask for an informal hearing within 90 days.",
+     "**Housing Connect**: after the deadline you get a random log number; it may take months or over a year to hear back. If selected you provide documents and interview. If rejected, you have **only 10 business days** to appeal.",
+     "**HUD 202 buildings**: each building's list, wait and contact method differ, so follow up as that building requires.",
+     "Every list is long. While you wait, apply for the **SCRIE rent freeze** (if you live in a regulated apartment) to protect your current rent."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "排名单**全部免费**。有人收钱说能帮你优先排进老人楼，就是骗子。",
+     "有子女或邻居帮忙的话，请他们帮你开一个电邮，并帮你看英文信件。",
+     "混合身份家庭不要先放弃，每栋楼的身份规定可能不同，逐栋问清楚。",
+     "同时也可以打 Aging Connect，问送餐、居家照顾等老人服务。"
+    ],
+    "en": [
+     "Getting on any list is **free**. Anyone charging to put you ahead for a senior building is a scammer.",
+     "If children or neighbors can help, ask them to set up an email for you and help read English letters.",
+     "Mixed-status families shouldn't give up early; status rules may differ by building, so ask each one.",
+     "While you're at it, call Aging Connect about meals, home care and other senior services."
+    ]
+   }
   },
   {
    "id": "senior-services",
@@ -2080,14 +3330,22 @@
    },
    "how": {
     "zh": [
-     "打 Aging Connect：212-AGING-NY（212-244-6469），说明需要中文翻译",
-     "或在 NYC Aging 网站用 “Find a center near you” 找附近老人中心",
-     "申请送餐：先电话登记，个案经理会上门评估"
+     "**先打 Aging Connect（老人服务热线）**：**212-AGING-NY（212-244-6469）**。接通后说 “Chinese, please”，等中文翻译接上。",
+     "跟接线员说清楚你需要什么：例如“我想找附近有中餐的老人中心”或“我出门困难，想申请送餐”。",
+     "**找老人中心**：也可以上 NYC Aging 网站，点 “Find a center near you”（找附近的中心），输入你的地址。",
+     "**直接去老人中心**：60 岁以上**免费参加**。第一次去时问工作人员：几点吃饭、要不要登记、有什么活动（太极、椅子操、电脑班、一日游等）。每个中心的时间和服务都不一样。",
+     "**申请上门送餐**：打 Aging Connect，或直接联系你住的社区的个案管理机构（case-management agency），先**电话登记（intake）**。",
+     "之后个案经理（case manager）会**到你家拜访**，评估你是否符合资格，并帮你安排服务。准备好你的身份证明、地址和健康状况，方便回答问题。",
+     "个案经理还能帮你**申请福利**、介绍社区资源、安排义工探访（Friendly Visiting）。"
     ],
     "en": [
-     "Call Aging Connect at 212-AGING-NY (212-244-6469); ask for an interpreter if needed",
-     "Or use \"Find a center near you\" on the NYC Aging site",
-     "For home-delivered meals: phone intake, then a case manager visits"
+     "**Start with Aging Connect**: call **212-AGING-NY (212-244-6469)**. When connected, say \"Chinese, please\" and wait for the interpreter.",
+     "Tell them what you need, for example: \"I want an older adult center near me with Chinese meals\" or \"I have trouble going out and want home-delivered meals.\"",
+     "**To find a center**: you can also go to the NYC Aging website, click \"Find a center near you\" and enter your address.",
+     "**Visit a center**: it's **free for people 60+**. On your first visit ask the staff: When are meals? Do I need to register? What activities are there (tai chi, chair exercise, computer classes, day trips and more)? Schedules and services differ by center.",
+     "**For home-delivered meals**: call Aging Connect or contact the case-management agency for your neighborhood for a **phone intake**.",
+     "A case manager will then **visit your home** to check eligibility and arrange services. Have your ID, address and health information ready.",
+     "Case managers can also help you **apply for benefits**, connect you to community resources and arrange a Friendly Visiting volunteer."
     ]
    },
    "contacts": [
@@ -2117,7 +3375,35 @@
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**送餐**：个案经理家访后决定你是否符合资格，再帮你安排送餐。",
+     "**费用**：个案经理不收费。有些服务会按收入请你付费或自愿捐款，具体问个案经理。",
+     "**居家照顾**：NYC Aging 资助的居家照顾包括个人护理（洗澡、穿衣）和家务（洗衣、买东西）；**已经有白卡（Medicaid）的人不能用这项**，要走白卡的居家照顾渠道。",
+     "情况变了（例如身体变差、需要更多帮忙），再打 Aging Connect 或联系你的个案经理。"
+    ],
+    "en": [
+     "**Meals**: after the home visit, the case manager decides if you qualify and arranges the meals.",
+     "**Cost**: case managers don't charge. For some services you may be asked for a fee or a suggested contribution based on income; ask your case manager.",
+     "**Home care**: NYC Aging-funded home care covers personal care (bathing, dressing) and housekeeping (laundry, shopping); **people on Medicaid can't use it** and should use Medicaid home care instead.",
+     "If things change (for example your health gets worse and you need more help), call Aging Connect or your case manager again."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "老人中心是交朋友、学东西的好地方，不只吃饭。可以请朋友一起去。",
+     "打热线时手边准备纸笔，记下接线员的名字、日期和对方说的下一步。",
+     "老人中心**对所有 60 岁以上的纽约市民免费开放**，不要因为不会英文而不敢去。",
+     "家人住得远的，可以替你打 Aging Connect 登记，再让个案经理直接联系你。"
+    ],
+    "en": [
+     "Older adult centers are a great place to make friends and learn, not just eat. Bring a friend.",
+     "Keep a pen and paper by the phone; write down the staff member's name, the date and the next step.",
+     "Older adult centers are **free and open to all New Yorkers 60+**; don't stay away because you don't speak English.",
+     "Family who live far away can call Aging Connect for you, and the case manager can then contact you directly."
+    ]
+   }
   },
   {
    "id": "idnyc",
@@ -2147,16 +3433,22 @@
    },
    "how": {
     "zh": [
-     "上 IDNYC 网站预约，或打 311 说 “IDNYC”；新预约每周五开放",
-     "部分办理点有固定日子可不预约（walk-in），如皇后区中央图书馆逢周五",
-     "带身份和住址证明去办理，可用网站上的 Document Calculator 查哪些文件算数",
-     "卡有效 5 年（16 岁以下 2 年）"
+     "**先查文件够不够**：IDNYC 用**分数制**，身份证明要凑够 **3 分**，住址证明要 **1 分**。用 IDNYC 网站上的 **Document Calculator**（文件计算器）选你有的文件，它会告诉你够不够。",
+     "**拿申请表**：可以在 IDNYC 网站打印，也可以在办理中心拿。",
+     "**预约**：上 IDNYC 网上预约系统，或打 **311** 说 **“IDNYC”**，再说 **“Chinese, please”** 要中文翻译。**每周五**放出下一周（周一到周五）的名额。",
+     "**每人只约一次**，不要重复预约。",
+     "**不想预约**：有些办理点在固定日子接受直接去（walk-in），**先到先得**，早点去排队。",
+     "**带原件去办理中心**：IDNYC **不接受邮寄申请**。工作人员看完文件，当场**还给你原件**，并给你**拍照**。",
+     "**10–13 岁孩子**：要有照顾人陪同。孩子带 2 分的身份文件（含出生日期）；照顾人带自己 3 分的身份文件（含带照片的证件），以及和孩子关系的证明，并在申请表上签名。"
     ],
     "en": [
-     "Book on the IDNYC site or call 311 and say \"IDNYC\"; new slots open each Friday",
-     "Some centers take walk-ins on set days, e.g. Queens Central Library on Fridays",
-     "Bring proof of identity and NYC address; the Document Calculator shows what counts",
-     "Valid 5 years (2 years under 16)"
+     "**Check your documents**: IDNYC uses **points**. You need **3 points** for identity and **1 point** for address. Use the **Document Calculator** on the IDNYC site to see if yours are enough.",
+     "**Get the application**: print it from the IDNYC site or pick one up at a center.",
+     "**Book an appointment**: use the IDNYC online portal, or call **311**, say **\"IDNYC\"**, then **\"Chinese, please\"** for an interpreter. **Every Friday** new slots open for the next Monday–Friday.",
+     "**Book only one appointment per person.**",
+     "**No appointment?** Some centers take walk-ins on set days, **first come, first served**; go early.",
+     "**Bring originals to the center**: IDNYC **doesn't accept mail applications**. Staff check your papers, **give them back right away**, and **take your photo**.",
+     "**Children 10–13**: come with a caretaker. The child brings 2 points of identity (with birth date); the caretaker brings 3 points of their own ID (including photo ID) plus proof of their relationship, and signs the form."
     ]
    },
    "docs": {
@@ -2189,10 +3481,48 @@
     {
      "name": "IDNYC 说明",
      "url": "https://www.nyc.gov/site/idnyc/about/about.page"
+    },
+    {
+     "name": "IDNYC 如何申请",
+     "url": "https://www.nyc.gov/site/idnyc/card/how-to-apply.page"
+    },
+    {
+     "name": "IDNYC 续期",
+     "url": "https://www.nyc.gov/site/idnyc/card/renew-your-idnyc-card.page"
+    },
+    {
+     "name": "IDNYC 10–13 岁申请表",
+     "url": "https://www.nyc.gov/assets/idnyc/downloads/pdf/10-13-apps/english-10-to-13-application.pdf"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**卡寄到家**：批准后 **10–14 个工作日**寄到。",
+     "**没有固定地址或担心安全**：可以选择到指定的 IDNYC 地点**自己领卡**。",
+     "**续期**（renewal，换新卡）：卡到期前 **60 天**到过期后 **6 个月**内都可以办，可以在 IDNYC 网上系统办，也可以带文件去中心办。"
+    ],
+    "en": [
+     "**Card by mail**: arrives **10–14 business days** after approval.",
+     "**No stable address or safety concerns?** You can choose to **pick up the card** at certain IDNYC locations.",
+     "**Renewal**: from **60 days before** to **6 months after** the expiration date, online through the IDNYC portal or in person with documents."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**周五一早**就上网或打 311 抢名额，好时段很快约满。",
+     "外国护照、领事证等都可以算身份证明，**不用有美国身份**。",
+     "住址证明要写着**你的名字和纽约市地址**，例如水电账单、租约、银行月结单。",
+     "卡**有效 5 年**（16 岁以下 2 年），记下到期日，提前续期。"
+    ],
+    "en": [
+     "**Go online or call 311 early on Friday**; good times fill up fast.",
+     "Foreign passports and consular IDs count for identity; **you don't need U.S. status**.",
+     "Address proof must show **your name and NYC address**, such as a utility bill, lease or bank statement.",
+     "The card is **valid 5 years** (2 years under 16); note the date and renew early."
+    ]
+   }
   },
   {
    "id": "prek",
@@ -2222,16 +3552,20 @@
    },
    "how": {
     "zh": [
-     "到 MySchools（myschools.nyc）网上申请，有中文版",
-     "或到家庭欢迎中心（Family Welcome Center），或打 718-935-2009",
-     "按时申请的家庭都会获得学位，不是先到先得",
-     "2026–27 学年已于 2026 年 2 月 27 日截止；下一轮预计 2027 年初开放"
+     "**看孩子哪年出生**：2027 年秋天入学，**2023 年出生**的孩子上 Pre-K，**2024 年出生**的上 3-K。",
+     "**留意开放时间**：下一轮预计 **2027 年初**开放（2026 年是 2 月 27 日截止）。截止前申请，**都会得到学位**，不是先到先得。",
+     "**网上申请**：打开 **MySchools（myschools.nyc）**，选中文，建立账号，加上孩子的资料。",
+     "**选学校**：把你想去的幼儿园按喜欢的顺序排好。**可以填很多个**，没有数量限制，多填几个更容易进到满意的学校。",
+     "**截止前可以改**：提交后在截止日之前还能修改。",
+     "**不会上网**：打 **718-935-2009**，有 200 多种语言翻译，说 **“Chinese, please”**；或到家庭欢迎中心（Family Welcome Center）请人帮你申请。"
     ],
     "en": [
-     "Apply on MySchools (myschools.nyc), available in Chinese",
-     "Or visit a Family Welcome Center, or call 718-935-2009",
-     "Every family that applies on time gets an offer; it's not first-come",
-     "The 2026–27 deadline was Feb 27, 2026; the next round is expected to open in early 2027"
+     "**Check your child's birth year**: for fall 2027, children **born in 2023** go to Pre-K and **born in 2024** go to 3-K.",
+     "**Watch for the opening**: the next round is expected to open in **early 2027** (the 2026 deadline was February 27). Everyone who applies by the deadline **gets an offer**; it's not first-come.",
+     "**Apply online**: go to **MySchools (myschools.nyc)**, choose Chinese, create an account and add your child.",
+     "**Choose programs**: list the programs you want in order of preference. **There's no limit**, so listing more helps you get one you like.",
+     "**You can make changes** until the deadline.",
+     "**Can't go online?** Call **718-935-2009** (interpreters in 200+ languages; say **\"Chinese, please\"**) or visit a Family Welcome Center for help."
     ]
    },
    "contacts": [
@@ -2255,10 +3589,52 @@
     {
      "name": "纽约市长办公室 2026 年 2 月公告",
      "url": "https://www.nyc.gov/mayors-office/news/2026/02/ahead-of-feb--27-deadline--mayor-mamdani-urges-families-to-apply.html"
+    },
+    {
+     "name": "ACCESS NYC：3-K",
+     "url": "https://access.nyc.gov/programs/3-k"
+    },
+    {
+     "name": "ACCESS NYC：Pre-K for All",
+     "url": "https://access.nyc.gov/programs/pre-k-for-all/"
+    },
+    {
+     "name": "纽约市公立学校 2026 年 3-K/Pre-K 招生单页",
+     "url": "https://www.phippsny.org/wp-content/uploads/2026/01/2026-3K-PreK-Admissions-One-Pager-English-ADA.pdf"
+    },
+    {
+     "name": "纽约市长办公室 2026 年 1 月 3-K/Pre-K 申请公告",
+     "url": "https://nyc.gov/mayors-office/news/2026/01/mamdani-administration-celebrates-launch-of-3-k---pre-k-applicat"
     }
    ],
    "watch": [],
-   "verified": "2026-10-24"
+   "verified": "2026-10-24",
+   "after": {
+    "zh": [
+     "**什么时候知道结果**：往年**5 月**发录取通知（2026 年 Pre-K 是 5 月 12 日、3-K 是 5 月 19 日）。",
+     "**接受学位**：按通知信上的日期接受，并去学校**预先注册**（pre-register），要带的文件看教育局的预先注册清单。",
+     "**候补名单**（waitlist）：没进到第一志愿的，整个夏天都可能接到学校的候补通知。",
+     "**有问题**：打 **718-935-2009**，或打 **311** 问 “3-K” 或 “Pre-K for All”。"
+    ],
+    "en": [
+     "**When you'll hear**: offers usually come in **May** (in 2026, Pre-K on May 12 and 3-K on May 19).",
+     "**Accept the offer** by the date on your offer letter and **pre-register** at the school; see the NYC Public Schools pre-registration checklist for documents.",
+     "**Waitlists**: if you didn't get your top choice, schools may contact you from the waitlist through the summer.",
+     "**Questions**: call **718-935-2009**, or call **311** and ask about \"3-K\" or \"Pre-K for All\"."
+    ]
+   },
+   "tips": {
+    "zh": [
+     "**不看收入、不问身份**，放心申请。",
+     "排序要**按真心想去的顺序**，不要把“容易进”的放前面。",
+     "把 2027 年初的申请时间记在日历上，**别错过截止日**。"
+    ],
+    "en": [
+     "**No income or status check**; apply with confidence.",
+     "Rank programs **in the order you really want them**, not by which seems easier to get.",
+     "Mark the early-2027 application dates on your calendar so you **don't miss the deadline**."
+    ]
+   }
   }
  ]
 }
