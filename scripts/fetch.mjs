@@ -266,14 +266,15 @@ async function enrichImages(out) {
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
     if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || cache[k].lv === 4)) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
-    if (todo.length >= 260) continue; // cap new lookups per run; the rest wait for the next run
+    if (cache[k] && cache[k].err && now - (cache[k].t || 0) < 6 * 3600e3) continue; // page refused us recently: don't spend lookups on it every run
+    if (todo.length >= 400) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
       try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, lv: 4, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
-  await pool(todo, 8);
+  await pool(todo, 12);
   // Apply cached pictures to every story, not just the ones looked up.
   for (const lang of ["zh", "en"]) for (const list of Object.values(out.sections[lang])) for (const i of list) {
     const c = cache[key(i.t) + "|" + (i.src || "")]; if (!c) continue;
@@ -528,7 +529,7 @@ async function buildDeals() {
       try { const r = await findImage(i); dc[i.u] = { fr: r.frame ? 1 : 0, real: r.real, img: r.img, desc: r.desc, t: Date.now() }; }
       catch (e) { dc[i.u] = { fr: 0, t: Date.now() }; }
     });
-    await pool(todo, 8);
+    await pool(todo, 12);
     for (const i of allDeals) { const c = dc[i.u]; if (!c) continue; i.fr = c.fr; if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; if (!i.img && c.img) i.img = c.img; if (!i.s && c.desc) i.s = c.desc; }
     // Chinese summaries for English deals (titles were translated above).
     for (const i of allDeals) { if (i.s && !isChinese(i.s)) { const z = await tr(i.s); if (z) i.sz = z; } }
