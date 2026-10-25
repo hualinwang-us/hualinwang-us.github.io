@@ -31,7 +31,7 @@
       ["beauty", "美", "美容美发", "Beauty & Hair"]] },
     { id: "life", zh: "教育社区", en: "Education & Community", boards: [
       ["edu", "教", "补习培训", "Tutoring & Classes"], ["kids", "托", "托儿老人", "Childcare & Seniors"],
-      ["events", "会", "社区活动", "Community Events"], ["travel", "旅", "旅游机票", "Travel"],
+      ["events", "会", "社区活动", "Community Events"], ["dating", "友", "同城交友", "Meet Locals"], ["travel", "旅", "旅游机票", "Travel"],
       ["other", "杂", "其他", "Other"]] }
   ];
   const BOARDS = [];
@@ -47,9 +47,12 @@
     { re: /培训费|服装费|报名费|中介费|手续费/, zh: "收取费用", en: "upfront fees" },
     { re: /身份证号|社安号|社会安全号|ssn|银行卡号|银行账号|护照号/i, zh: "索要证件或银行信息", en: "ID or bank details" },
     { re: /人在(外地|国外|中国|外州)|(不方便|无法)(看房|见面)|钥匙.{0,6}(寄|邮)/, zh: "无法见面", en: "can't meet in person" },
-    { re: /日赚|日入|月入\s*\d+\s*万|轻松月入|躺赚|无需经验.{0,6}高薪/, zh: "高薪轻松", en: "easy high pay" }
+    { re: /日赚|日入|月入\s*\d+\s*万|轻松月入|躺赚|无需经验.{0,6}高薪/, zh: "高薪轻松", en: "easy high pay" },
+    { re: /投资|炒币|虚拟货币|加密货币|usdt|比特币|带你赚钱|理财平台|内幕消息|稳赚/i, zh: "投资理财（杀猪盘常见话术）", en: "investment or crypto (a common romance-scam line)" }
   ];
   const scamHits = text => SCAM.filter(s => s.re.test(text || ""));
+  /* Sexual services and paid companionship are not allowed anywhere on the site. Posts matching these are refused. */
+  const BANNED = /上门服务|按摩上门|包夜|援交|约炮|一夜情|性服务|全套服务|特殊服务|小姐上门|伴游|陪睡|包养|sugar ?(daddy|baby)|escort|hookup/i;
 
   const REPORT_REASONS = [
     ["scam", "诈骗或虚假信息", "Scam or fake"],
@@ -142,6 +145,6 @@
       ] }
   };
 
-  root.HLC = { DISCLAIMER, CFG, SB_URL, SB_KEY, POSTS_ON, GROUPS, BOARDS, boardById, SCAM, scamHits, REPORT_REASONS,
+  root.HLC = { DISCLAIMER, CFG, SB_URL, SB_KEY, POSTS_ON, GROUPS, BOARDS, boardById, SCAM, scamHits, BANNED, REPORT_REASONS,
     sbHeaders, rpc, getPost, POST_COLS, siteBase, postUrl, share, keys: store("hl-keys"), reported: store("hl-reported") };
 })(typeof window !== "undefined" ? window : globalThis);

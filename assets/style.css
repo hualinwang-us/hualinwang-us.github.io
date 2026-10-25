@@ -620,3 +620,5 @@ a.spon.empty:hover{border-color:var(--gold)}
 .nl .feed-ad{padding:8px 0;border-bottom:1px dashed var(--line)}
 #vCheck .spons.mid{margin:16px 0!important}
 @media (max-width:719px){.foot-ads>:nth-child(n+3){display:none}.deals-ads>:nth-child(n+2){display:none}}
+.rules-note{margin:0 0 12px;padding:12px 14px;border-radius:var(--r);background:#fdecea;color:#7a1f17;font-size:14px;line-height:1.6;border:1px solid #f3c9c4}
+@media (prefers-color-scheme:dark){.rules-note{background:#3a1d1d;color:#f3c9c4;border-color:#5a2a2a}}
