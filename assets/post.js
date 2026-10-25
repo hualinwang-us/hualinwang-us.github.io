@@ -10,7 +10,7 @@
       linkCopied: "链接已复制，打开微信粘贴到群里即可", shareManual: "长按下面的链接复制：", scamH: "防骗提醒",
       scamP: "这条信息提到{x}。正规雇主和房东不会要求你先付钱或提供证件号码。见面确认前不要转账。",
       safety: "请当面交易，切勿预付定金或转账给陌生人。", moreIn: "更多{b}信息", home: "回到华邻网首页", loading: "载入中…",
-      gone: "这条信息已经删除或下架。", notFound: "找不到这个页面。", del: "删除我的信息", delSure: "确认删除？", deleted: "已删除", delFail: "删除失败，请稍后再试" },
+      gone: "这条信息已经删除或下架。", footLegal: "免责声明", footLegalP: "本信息由用户发布，本站未核实其内容，也不参与交易。", footLegalLink: "阅读完整免责声明 →", notFound: "找不到这个页面。", del: "删除我的信息", delSure: "确认删除？", deleted: "已删除", delFail: "删除失败，请稍后再试" },
     en: { tagline: "News & community listings for Chinese Americans", postFree: "Post Free", foot1: "News and free listings for Chinese Americans.",
       footSafeH: "Stay safe", footSafe: "Listings are posted by users. Verify details, meet in person and never send deposits to strangers.",
       contact: "Contact", phone: "Phone", wx: "WeChat", copy: "Copy", copied: "Copied", call: "Call", share: "Share", report: "Report",
@@ -18,7 +18,7 @@
       alreadyReported: "You already reported this listing", linkCopied: "Link copied. Paste it into a chat to share.", shareManual: "Press and hold to copy the link:",
       scamH: "Scam warning", scamP: "This listing mentions {x}. Real employers and landlords don't ask you to pay first or share ID numbers. Don't send money before meeting in person.",
       safety: "Meet in person. Never prepay or wire money to strangers.", moreIn: "More in {b}", home: "Back to HuaLin home", loading: "Loading…",
-      gone: "This listing has been removed.", notFound: "Page not found.", del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again." }
+      gone: "This listing has been removed.", footLegal: "Disclaimer", footLegalP: "Posted by a user. We haven't verified it and aren't part of any transaction.", footLegalLink: "Read the full disclaimer →", notFound: "Page not found.", del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again." }
   };
   let lang = "zh"; try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
   let post = window.HL_POST || null, state = post ? "ok" : "loading";
@@ -31,7 +31,7 @@
   function chrome() {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     $("#lzh").setAttribute("aria-pressed", String(lang === "zh")); $("#len").setAttribute("aria-pressed", String(lang === "en"));
-    ["tagline", "foot1", "footSafeH", "footSafe"].forEach(k => { const el = document.getElementById(k); if (el) el.textContent = t(k); });
+    ["tagline", "foot1", "footSafeH", "footSafe", "footLegal", "footLegalP", "footLegalLink"].forEach(k => { const el = document.getElementById(k); if (el) el.textContent = t(k); });
     $("#postLink").textContent = t("postFree");
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
   }

@@ -104,6 +104,40 @@
     };
   }
 
-  root.HLC = { CFG, SB_URL, SB_KEY, POSTS_ON, GROUPS, BOARDS, boardById, SCAM, scamHits, REPORT_REASONS,
+
+  /* Site disclaimer (shown at #disclaimer and linked from every page footer). */
+  const DISCLAIMER = {
+    updated: "2026-10-24",
+    zh: { title: "免责声明", intro: "使用华邻网（以下称“本站”）即表示你理解并同意以下内容。",
+      items: [
+        ["仅供一般参考", "本站的新闻、生活指南、“我能申请什么”自测结果及其他内容，只供一般参考，**不构成法律、移民、税务、医疗、财务或其他专业意见**，也不会因此建立律师与客户或任何专业服务关系。遇到具体问题，请咨询持牌律师或相关专业人士。"],
+        ["以官方为准", "我们尽力根据官方资料编写并标注核实日期，但政府规定经常变化，内容可能有延误、遗漏或错误。**一切以政府机构的官方网站、正式文件和工作人员的说明为准**。申请任何福利或递交移民文件前，请先向官方或专业人士确认。"],
+        ["自测结果不代表资格", "自测只按你提供的少量资料做粗略估算，**不保证你符合或不符合任何项目**，也不代表政府的决定。实际资格由主管机构审核决定。"],
+        ["与政府机构无关", "本站是独立的社区网站，**与任何政府机构没有关联**，不代表任何机构发言，也不代办任何申请。"],
+        ["新闻内容", "新闻由程序自动从第三方媒体汇集标题和摘要，版权归原媒体所有，内容和观点不代表本站立场，本站不对其准确性负责。"],
+        ["分类信息和广告", "分类信息和广告由用户或商家自行发布，**本站不核实其真实性、合法性或质量，也不参与任何交易**。因信息或交易产生的纠纷和损失，由交易双方自行负责。请当面交易，切勿预付定金或向陌生人转账。发现可疑信息请点“举报”，本站有权不经通知删除任何内容。"],
+        ["发布者责任", "发布信息即表示你保证内容真实合法、不侵犯他人权利，并对内容自行负责。请勿发布证件号码、银行账号等敏感个人资料。"],
+        ["外部链接", "本站包含指向政府网站、媒体和其他第三方网站的链接，本站不对这些网站的内容、隐私做法或可用性负责。"],
+        ["隐私", "自测答案只保存在你自己的手机或电脑上，不会上传。你发布的分类信息（包括联系方式）会公开显示给所有访客。"],
+        ["责任限制", "在法律允许的最大范围内，本站及其运营者不对因使用或依赖本站内容而造成的任何直接或间接损失承担责任。"],
+        ["更正", "如发现内容有误，欢迎联系站长，我们会尽快核实更正。"]
+      ] },
+    en: { title: "Disclaimer", intro: "By using HuaLin (\"this site\") you understand and agree to the following.",
+      items: [
+        ["General information only", "News, life guides, \"What can I apply for?\" results and other content are for general information only and are **not legal, immigration, tax, medical, financial or other professional advice**. No attorney-client or other professional relationship is created. For your specific situation, consult a licensed attorney or qualified professional."],
+        ["Official sources control", "We write from official sources and show when each guide was checked, but rules change often and content may be delayed, incomplete or wrong. **Government agencies' official websites, documents and staff are the final word.** Confirm with the agency or a professional before applying for benefits or filing immigration papers."],
+        ["Check results are not eligibility decisions", "The check is a rough estimate from a few answers. **It does not guarantee you do or don't qualify** and is not a government decision. Agencies decide eligibility."],
+        ["Not a government site", "This is an independent community site, **not affiliated with any government agency**. It does not speak for any agency or file applications for you."],
+        ["News", "Headlines and summaries are gathered automatically from third-party outlets, which own the copyright. Their content and views are not ours, and we are not responsible for their accuracy."],
+        ["Listings and ads", "Listings and ads are posted by users and businesses. **We don't verify their truth, legality or quality and are not part of any transaction.** Disputes and losses are between the parties. Meet in person and never prepay or send money to strangers. Report suspicious listings; we may remove any content without notice."],
+        ["Your responsibility when posting", "By posting you confirm your listing is true, lawful and doesn't infringe others' rights, and you are responsible for it. Don't post ID numbers, bank details or other sensitive data."],
+        ["External links", "We link to government sites, news outlets and other third parties and are not responsible for their content, privacy practices or availability."],
+        ["Privacy", "Your check answers stay on your own device and are never uploaded. Listings you post, including contact details, are public."],
+        ["Limitation of liability", "To the fullest extent permitted by law, this site and its operator are not liable for any direct or indirect loss from using or relying on its content."],
+        ["Corrections", "If you spot an error, please contact the site owner and we'll check and correct it."]
+      ] }
+  };
+
+  root.HLC = { DISCLAIMER, CFG, SB_URL, SB_KEY, POSTS_ON, GROUPS, BOARDS, boardById, SCAM, scamHits, REPORT_REASONS,
     sbHeaders, rpc, getPost, POST_COLS, siteBase, postUrl, share, keys: store("hl-keys"), reported: store("hl-reported") };
 })(typeof window !== "undefined" ? window : globalThis);

@@ -55,7 +55,7 @@ const gfill = map => gtpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k]
 for (const g of guides.guides || []) {
   const url = `${BASE}g/${g.id}/`;
   const html = gfill({ TITLE: esc(HLG.L(g.title, "zh")), DESC: esc(HLG.L(g.summary, "zh").replace(/\*\*/g, "").slice(0, 120)), BASE: esc(BASE), URL: esc(url),
-    ZH: HLG.renderGuide(g, "zh", { watch }), EN: HLG.renderGuide(g, "en", { watch }) });
+    ZH: HLG.renderGuide(g, "zh", { watch, base: BASE }), EN: HLG.renderGuide(g, "en", { watch, base: BASE }) });
   await fs.mkdir(`${OUT}/g/${g.id}`, { recursive: true });
   await fs.writeFile(`${OUT}/g/${g.id}/index.html`, html);
 }

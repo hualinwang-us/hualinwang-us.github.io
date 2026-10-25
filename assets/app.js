@@ -22,7 +22,8 @@
       fl_reg: "住在租金稳定（rent-stabilized）公寓", ckGo: "看结果", ckLikely: "很可能符合", ckMaybe: "可能符合，要看具体情况", ckInfo: "建议了解",
       ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
       ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
-      gLoading: "指南载入中…",
+      gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
+      formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
       directory: "分类目录", more: "更多", home: "首页", classifiedsTab: "分类信息",
       sec_top: "新闻速递", sec_local: "纽约本地", sec_immigration: "移民签证", sec_uschina: "中美关系", sec_china: "中国",
@@ -64,7 +65,8 @@
       fl_reg: "We live in a rent-stabilized apartment", ckGo: "See results", ckLikely: "Likely eligible", ckMaybe: "Possibly, depends on details", ckInfo: "Worth reading",
       ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
       ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
-      gLoading: "Loading guides…",
+      gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
+      formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
       directory: "Directory", more: "More", home: "Home", classifiedsTab: "Classifieds",
       sec_top: "Top Stories", sec_local: "New York", sec_immigration: "Immigration", sec_uschina: "US–China", sec_china: "China",
@@ -178,7 +180,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); if (route.view === "disc") renderDisc(); renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
@@ -377,6 +379,14 @@
   }
   $("#ckForm").addEventListener("submit", e => { e.preventDefault(); showCheck(); });
 
+  function renderDisc() {
+    const d = HLC.DISCLAIMER, x = d[lang] || d.zh;
+    const rich = v => esc(v).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+    $("#discBody").innerHTML = `<div class="g-head"><span class="seal md" aria-hidden="true">${lang === "zh" ? "责" : "!"}</span><div><h1>${esc(x.title)}</h1><p class="g-sum">${esc(x.intro)}</p></div></div>` +
+      x.items.map(([h, p], i) => `<section><h2>${i + 1}. ${esc(h)}</h2><p>${rich(p)}</p></section>`).join("") +
+      `<p class="g-fine">${esc(t("discUpdated"))} ${esc(d.updated)}</p>`;
+  }
+
   /* ---------- routing ---------- */
   function go() {
     const h = decodeURIComponent((location.hash || "").replace(/^#/, ""));
@@ -387,9 +397,11 @@
     else if (h === "guide") route = { view: "guide" };
     else if (h === "check") route = { view: "check" };
     else if (h.startsWith("g-")) route = { view: "guideOne", id: h.slice(2) };
+    else if (h === "disclaimer") route = { view: "disc" };
     else route = { view: "home" };
     $("#vHome").hidden = route.view !== "home"; $("#vBoard").hidden = route.view !== "board";
     $("#vNews").hidden = route.view !== "news"; $("#vSearch").hidden = route.view !== "search";
+    $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
     if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();
     if (route.view === "board") { $("#bFilter").value = ""; renderBoard(); }
@@ -419,6 +431,7 @@
         ${p.phone ? `<span>${esc(t("phone"))} <span class="v" id="cpP">${esc(p.phone)}</span></span><button type="button" class="copy" data-copy="cpP">${esc(t("copy"))}</button>${tel.length >= 7 ? `<a class="copy call" href="tel:${esc(tel)}">${esc(t("call"))}</a>` : ""}` : ""}
         ${p.wechat ? `<span>${esc(t("wx"))} <span class="v" id="cpW">${esc(p.wechat)}</span></span><button type="button" class="copy" data-copy="cpW">${esc(t("copy"))}</button>` : ""}</div>
       ${hits.length ? `<div class="scam" role="note"><b>${esc(t("scamH"))}</b><p>${esc(t("scamP").replace("{x}", hitText))}</p></div>` : `<p class="warn">${esc(t("safety"))}</p>`}
+      <p class="warn">${esc(t("postDisc"))} <a class="flink" href="#disclaimer" data-close>${esc(t("footLegal"))}</a></p>
       <div class="post-actions">
         <button type="button" class="btn" id="shareBtn">${esc(t("share"))}</button>
         <button type="button" class="btn ghost" id="repBtn">${esc(t("report"))}</button>

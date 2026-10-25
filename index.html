@@ -178,9 +178,15 @@
       <label><input type="checkbox" id="fDis"> <span data-i18n="fl_dis">有人残障</span></label>
       <label><input type="checkbox" id="fRent"> <span data-i18n="fl_rent">租房住</span></label>
       <label><input type="checkbox" id="fReg"> <span data-i18n="fl_reg">住在租金稳定（rent-stabilized）公寓</span></label></fieldset>
+    <p class="hint" data-i18n="ckDisc">自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。</p>
     <button class="btn" type="submit" data-i18n="ckGo">看结果</button>
   </form>
   <div id="ckOut"></div>
+</main>
+
+<main class="shell view" id="vDisc" hidden>
+  <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
+  <article class="guide" id="discBody"></article>
 </main>
 
 <main class="shell view" id="vSearch" hidden>
@@ -195,6 +201,7 @@
   <div><b>华邻网 HuaLin</b><p data-i18n="foot1">新闻每小时自动汇集自各大中英文媒体，点击标题阅读原文。</p></div>
   <div><b data-i18n="footAds">广告刊登</b><p id="adContact" data-i18n="footAdsP">首页及侧栏广告位招租，欢迎商家联系。</p></div>
   <div><b data-i18n="footSafe">安全提示</b><p data-i18n="foot2">分类信息由用户自行发布，请自行核实；交易当面确认，切勿预付定金，谨防诈骗。</p></div>
+  <div><b data-i18n="footLegal">免责声明</b><p data-i18n="footLegalP">本站内容仅供参考，不构成法律或专业意见，与政府机构无关。</p><p><a class="flink" href="#disclaimer" data-i18n="footLegalLink">阅读完整免责声明 →</a></p></div>
 </div></footer>
 
 <dialog id="postDlg" aria-labelledby="postH">
@@ -216,6 +223,7 @@
       </div>
       <div class="field"><label for="fWx" data-i18n="fWx">微信（选填）</label><input id="fWx" maxlength="30"></div>
       <div class="hp" aria-hidden="true"><label for="fSite">Website</label><input id="fSite" tabindex="-1" autocomplete="off"></div>
+      <p class="hint"><span data-i18n="formAgree">点击“发布”即表示你保证信息真实合法，并同意</span> <a class="flink" href="#disclaimer" data-close data-i18n="footLegal">免责声明</a></p>
       <p class="hint" data-i18n="formHint">电话和微信至少填一项。信息公开显示，请勿填写证件号等隐私。</p>
       <p class="err" id="fErr" role="alert"></p>
       <div class="actions">

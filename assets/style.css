@@ -330,3 +330,7 @@ dialog::backdrop{background:rgba(8,12,20,.55);backdrop-filter:blur(2px)}
 @media (prefers-color-scheme:dark){.lv.likely{background:#173523;color:#7fd39a}}
 @media (max-width:560px){.ck-res li a{grid-template-columns:auto minmax(0,1fr)}.ck-res .lv{grid-column:2;justify-self:start}}
 .lv.info{background:var(--bg);color:var(--ink-2);border:1px solid var(--line)}
+
+.g-notice{margin:0;padding:10px 14px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font-size:13.5px;color:var(--ink-2)}
+.g-notice a,.flink{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+#discBody section p{margin:0}
