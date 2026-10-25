@@ -921,3 +921,4 @@ footer,.foot{background:#171b26;color:#cfc8bb}
 .foot b{color:#f4eee3}
 .foot a{color:#e0c58f}
 .foot .muted,.foot small{color:#a9a294}
+.ir-frame{height:min(1600px,calc(100svh - 72px))}

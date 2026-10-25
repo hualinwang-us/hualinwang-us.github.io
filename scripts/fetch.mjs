@@ -165,15 +165,15 @@ function ogDesc(html) {
   return d;
 }
 
-// The opening of the article (first paragraphs), clipped to about 150 characters, shown as a lead above the embedded page.
+// The opening of the article (first paragraphs), clipped to about 200 characters, shown as a lead above the embedded page.
 function leadText(html) {
   const body = html.replace(/<(script|style|noscript|header|footer|nav|aside|figure|form)[\s\S]*?<\/\1>/gi, " ");
   const paras = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map(m => clean(m[1]).replace(/\s+/g, " ").trim())
     .filter(p => (p.match(/[\u4e00-\u9fff]/g) || []).length >= 25 || (!/[\u4e00-\u9fff]/.test(p) && p.length >= 80))
     .filter(p => !/版权|免责|声明|责任编辑|原标题|来源：|点击|关注|下载|扫码|copyright|all rights reserved|subscribe|cookie/i.test(p));
   let out = "";
-  for (const p of paras) { out += (out ? " " : "") + p; if (out.length >= 150) break; }
-  return out.length > 150 ? out.slice(0, 148).replace(/[，,、；;\s]+$/, "") + "…" : out;
+  for (const p of paras) { out += (out ? " " : "") + p; if (out.length >= 200) break; }
+  return out.length > 200 ? out.slice(0, 198).replace(/[，,、；;\s]+$/, "") + "…" : out;
 }
 
 // Can the publisher's page be shown inside our site? Only if it doesn't forbid framing.
@@ -257,11 +257,11 @@ async function enrichImages(out) {
   const todo = [];
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
-    if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || "lead" in cache[k])) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
+    if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || cache[k].lv === 2)) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
     if (todo.length >= 260) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
-      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
+      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, lv: 2, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
