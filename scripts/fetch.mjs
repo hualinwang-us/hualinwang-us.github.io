@@ -417,23 +417,34 @@ function trChunks(text) {
   if (cur.trim()) out.push(cur);
   return out;
 }
+// Google's free web translator first (no daily quota for normal use), MyMemory as a fallback.
+async function trGoogle(chunk) {
+  const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=zh-CN&dt=t&q=" + encodeURIComponent(chunk);
+  const r = await get(url, "json");
+  const z = clean((Array.isArray(r) && Array.isArray(r[0]) ? r[0].map(x => (x && x[0]) || "").join("") : ""));
+  return z && isChinese(z) ? z : "";
+}
+async function trMyMemory(chunk) {
+  if (TR.quota || TR.daily + chunk.length > TR_LIMIT) return "";
+  const url = "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&q=" + encodeURIComponent(chunk) + (TR_EMAIL ? "&de=" + encodeURIComponent(TR_EMAIL) : "");
+  const r = await get(url, "json");
+  TR.daily += chunk.length;
+  if (r.quotaFinished || /QUOTA|LIMIT EXCEEDED/i.test(r.responseDetails || "")) { TR.quota = true; return ""; }
+  const z = clean((r.responseData && r.responseData.translatedText) || "");
+  return z && isChinese(z) ? z : "";
+}
 export async function tr(text) {
   text = String(text || "").trim();
   if (!text || isChinese(text)) return "";
   await trInit();
   const hit = TR.cache[text]; if (hit) { hit.t = Date.now(); return hit.z; }
-  if (TR.quota || TR.daily + text.length > TR_LIMIT) return "";
   const pieces = [];
   for (const chunk of trChunks(text)) {
-    try {
-      const url = "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&q=" + encodeURIComponent(chunk) + (TR_EMAIL ? "&de=" + encodeURIComponent(TR_EMAIL) : "");
-      const r = await get(url, "json");
-      TR.daily += chunk.length;
-      if (r.quotaFinished || /QUOTA|LIMIT EXCEEDED/i.test(r.responseDetails || "")) { TR.quota = true; return ""; }
-      const z = clean((r.responseData && r.responseData.translatedText) || "");
-      if (!z || !isChinese(z)) return "";
-      pieces.push(z);
-    } catch (e) { return ""; }
+    let z = "";
+    if (!TR.gFail) { try { z = await trGoogle(chunk); } catch (e) { TR.gErr = (TR.gErr || 0) + 1; if (TR.gErr >= 5) TR.gFail = true; } }
+    if (!z) { try { z = await trMyMemory(chunk); } catch (e) {} }
+    if (!z) return "";
+    pieces.push(z);
   }
   const z = pieces.join("");
   TR.cache[text] = { z, t: Date.now() }; TR.fresh++;

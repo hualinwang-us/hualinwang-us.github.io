@@ -755,7 +755,7 @@
   }
   const isEnglish = i => !/[\u3400-\u9fff]/.test(i.t || "");
   function findStory(id) {
-    const ds = (deals && deals.sections) || {};
+    const ds = Object.fromEntries(Object.entries((deals && deals.sections) || {}).map(([k, v]) => [k, (v || []).filter(zhOk)]));
     for (const [k, list] of Object.entries(ds)) { const i = list.find(x => x.id === id); if (i) return { i, sname: "deal_" + k, lg: "zh", deal: true }; }
     for (const lg of [lang, lang === "zh" ? "en" : "zh"]) {
       const secs = (news && news.sections && news.sections[lg]) || {};
@@ -825,6 +825,8 @@
 
   /* ---------- deals ---------- */
   const DEAL_SECS = ["zh", "free", "online", "events"];
+  // In the Chinese version, only show deals that have a Chinese title (English-only ones wait until they're translated).
+  function zhOk(i) { return lang !== "zh" || !!i.tz || /[\u4e00-\u9fff]/.test(i.t || ""); }
   function dealLi(i, en) {
     const title = lang === "zh" && i.tz ? i.tz : i.t;
     const showEn = en && !(lang === "zh" && i.tz) && lang === "zh";
@@ -834,7 +836,7 @@
   function localDeals() { return posts.filter(p => p.board === "deals"); }
   function renderDeals() {
     const box = $("#dealsHome"); if (!box) return;
-    const ds = (deals && deals.sections) || {};
+    const ds = Object.fromEntries(Object.entries((deals && deals.sections) || {}).map(([k, v]) => [k, (v || []).filter(zhOk)]));
     const local = localDeals().slice(0, 5);
     const zhIds = new Set((ds.zh || []).map(i => i.u));
     const biz = (ds.biz || []).filter(i => !zhIds.has(i.u)).slice(0, Math.max(0, 5 - local.length));
