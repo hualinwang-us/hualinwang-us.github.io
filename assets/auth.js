@@ -41,6 +41,9 @@
   function takeTokensFromUrl() {
     const h = location.hash.replace(/^#/, "");
     if (!/access_token=|error_description=/.test(h)) return false;
+    // Only accept tokens we asked for (a crafted link could otherwise sign you into someone else's account).
+    let asked = false; try { asked = sessionStorage.getItem("hl-oauth") === "1"; sessionStorage.removeItem("hl-oauth"); } catch (e) {}
+    if (!asked) { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { location.hash = ""; } return false; }
     const p = new URLSearchParams(h);
     if (p.get("access_token")) {
       const s = { access_token: p.get("access_token"), refresh_token: p.get("refresh_token"), expires_at: Number(p.get("expires_at")) || Math.floor(Date.now() / 1000) + Number(p.get("expires_in") || 3600), user: null };
@@ -80,6 +83,7 @@
     },
     google() {
       const back = HLC.siteBase();
+      try { sessionStorage.setItem("hl-oauth", "1"); } catch (e) {}
       location.href = URL0 + "/auth/v1/authorize?provider=google&redirect_to=" + encodeURIComponent(back);
     },
     async signOut() { const t = session && session.access_token; save(null); if (t) { try { await call("logout", {}, t); } catch (e) {} } },

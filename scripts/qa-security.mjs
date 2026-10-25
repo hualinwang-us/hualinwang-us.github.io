@@ -30,6 +30,8 @@ r = await req("DELETE", `/rest/v1/posts?id=eq.${pid}`, null, { Prefer: "return=r
 r = await req("POST", "/rest/v1/rpc/delete_post", { p_id: pid, p_key: "00000000-0000-0000-0000-000000000000" }); check("Delete with a wrong key does nothing", r.j === false || r.s >= 400, r);
 r = await req("POST", "/rest/v1/rpc/delete_my_post", { p_id: pid }); check("Account delete needs sign-in", r.s >= 400 || r.j === false, r);
 r = await req("POST", "/rest/v1/rpc/set_post_images", { p_id: pid, p_key: "00000000-0000-0000-0000-000000000000", p_images: ["https://evil.example/x.png"] }); check("Can't attach outside images to a post", r.s >= 400 || r.j === false, r);
+r = await req("POST", "/rest/v1/rpc/report_post", { p_id: -1, p_reason: "spam" }); check("Reporting needs sign-in (stops fake mass reports)", r.s >= 400, r);
+r = await req("POST", "/storage/v1/object/post-images/p/qa-test.png", "x", { "Content-Type": "image/png" }); check("Anonymous photo uploads are blocked", r.s >= 400, r);
 r = await req("GET", "/rest/v1/reports?select=*&limit=1"); check("Reports list is private", refused(r), r);
 r = await req("POST", "/rest/v1/reports", { post_id: pid, reason: "spam" }, { Prefer: "return=minimal" }); check("Direct insert into reports is blocked", r.s >= 400, r);
 r = await req("GET", "/rest/v1/post_replies?select=user_id&limit=1"); check("Reply author account id is hidden", r.s >= 400, r);

@@ -71,7 +71,7 @@
       if (e.target === dlg || e.target.closest("[data-sh-close]")) { dlg.close(); return; }
       const b = e.target.closest("[data-sh]"); if (!b) return;
       const k = b.dataset.sh;
-      if ((k === "wechat" || k === "system") && window.HuaLinApp && window.HuaLinApp.share) { try { window.HuaLinApp.share(msg); dlg.close(); return; } catch (err) {} }
+      if ((k === "wechat" || k === "system") && window.HuaLinApp && window.HuaLinApp.share) { try { window.HuaLinApp.share(msg, window.__hlt || ""); dlg.close(); return; } catch (err) {} }
       if (k === "wechat") {
         const ok = await copy(msg);
         say(ok ? t.wechatTip : "");

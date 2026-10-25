@@ -24,6 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
 <link rel="stylesheet" href="assets/style.css">
+<script>if(window.top!==window.self){try{window.top.location=window.self.location.href}catch(e){document.documentElement.style.display="none"}}</script>
 <script>(function(){try{var app=/HuaLinApp/.test(navigator.userAgent)||matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;var seen=sessionStorage.getItem("hl-splash");if(app&&!seen&&!/[?&]nosplash/.test(location.search)){document.documentElement.classList.add("hl-launch");sessionStorage.setItem("hl-splash","1");}}catch(e){}})();</script>
 </head>
 <body>
@@ -355,7 +356,7 @@
       </div>
       <div class="field"><label for="fWx" data-i18n="fWx">微信（选填）</label><input id="fWx" maxlength="30"></div>
       <div class="field"><label for="fImg" data-i18n="fImg">图片（选填，最多4张）</label>
-        <div class="img-pick"><div class="img-prev" id="fImgPrev"></div><label class="img-add" for="fImg"><span aria-hidden="true">＋</span><span data-i18n="fImgAdd">加图片</span></label><input id="fImg" type="file" accept="image/*" multiple hidden></div></div>
+        <div class="img-pick"><div class="img-prev" id="fImgPrev"></div><label class="img-add" for="fImg"><span aria-hidden="true">＋</span><span data-i18n="fImgAdd">加图片</span></label><input id="fImg" type="file" accept="image/*" multiple hidden></div><p class="hint" id="fImgNote" hidden data-i18n="imgLogin">登录后可以上传图片</p></div>
       <div class="hp" aria-hidden="true"><label for="fSite">Website</label><input id="fSite" tabindex="-1" autocomplete="off"></div>
       <p class="hint"><span data-i18n="formAgree">点击“发布”即表示你保证信息真实合法，并同意</span> <a class="flink" href="#disclaimer" data-close data-i18n="footLegal">免责声明</a></p>
       <p class="hint" data-i18n="formHint">电话和微信至少填一项。信息公开显示，请勿填写证件号等隐私。</p>

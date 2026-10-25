@@ -27,6 +27,9 @@ public class MainActivity extends Activity {
     static final String HOME = "https://hualin88.com/";
     static final String HOST = "hualin88.com";
     WebView web;
+    // Secret handed only to our own top-level page; embedded third-party frames can't read it.
+    final String token = java.util.UUID.randomUUID().toString();
+    boolean ourPage(String url) { try { Uri u = Uri.parse(url); return "https".equals(u.getScheme()) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost())); } catch (Exception e) { return false; } }
 
     @Override protected void onCreate(Bundle saved) {
         super.onCreate(saved);
@@ -48,6 +51,7 @@ public class MainActivity extends Activity {
         web.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) { return route(r.getUrl()); }
             @Override public void onPageStarted(WebView v, String url, Bitmap fav) { super.onPageStarted(v, url, fav); }
+            @Override public void onPageFinished(WebView v, String url) { if (ourPage(url)) v.evaluateJavascript("window.__hlt='" + token + "';", null); }
             @Override public void onReceivedError(WebView v, WebResourceRequest r, WebResourceError e) {
                 if (r.isForMainFrame()) v.loadDataWithBaseURL(HOME, OFFLINE, "text/html", "utf-8", null);
             }
@@ -58,7 +62,8 @@ public class MainActivity extends Activity {
 
     void open(Intent i) {
         Uri u = i != null ? i.getData() : null;
-        web.loadUrl(u != null && HOST.equals(u.getHost()) ? u.toString() : HOME);
+        boolean ours = u != null && "https".equals(u.getScheme()) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost()));
+        web.loadUrl(ours ? u.toString() : HOME);
     }
 
     @Override protected void onNewIntent(Intent i) { super.onNewIntent(i); open(i); }
@@ -81,7 +86,8 @@ public class MainActivity extends Activity {
 
     class Bridge {
         /** Opens Android's share sheet (WeChat, WhatsApp, SMS...). */
-        @JavascriptInterface public void share(String text) {
+        @JavascriptInterface public void share(String text, String tok) {
+            if (!token.equals(tok) || text == null || text.length() > 2000) return;
             Intent send = new Intent(Intent.ACTION_SEND);
             send.setType("text/plain");
             send.putExtra(Intent.EXTRA_TEXT, text);
@@ -89,9 +95,10 @@ public class MainActivity extends Activity {
         }
         @JavascriptInterface public String version() { return BuildConfig.VERSION_NAME; }
         /** Saves a picture (data: URL) to the phone's Photos, in a 华邻网 album. */
-        @JavascriptInterface public void saveImage(String dataUrl, String name) { Uri u = store(dataUrl, name); runOnUiThread(() -> Toast.makeText(MainActivity.this, u != null ? "已保存到相册" : "保存失败", Toast.LENGTH_SHORT).show()); }
+        @JavascriptInterface public void saveImage(String dataUrl, String name, String tok) { if (!token.equals(tok)) return; Uri u = store(dataUrl, name); runOnUiThread(() -> Toast.makeText(MainActivity.this, u != null ? "已保存到相册" : "保存失败", Toast.LENGTH_SHORT).show()); }
         /** Saves the picture, then opens the share sheet with it (WeChat, WhatsApp...). */
-        @JavascriptInterface public void shareImage(String dataUrl, String name, String text) {
+        @JavascriptInterface public void shareImage(String dataUrl, String name, String text, String tok) {
+            if (!token.equals(tok)) return;
             Uri u = store(dataUrl, name); if (u == null) return;
             Intent send = new Intent(Intent.ACTION_SEND); send.setType("image/jpeg");
             send.putExtra(Intent.EXTRA_STREAM, u); send.putExtra(Intent.EXTRA_TEXT, text); send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -101,6 +108,8 @@ public class MainActivity extends Activity {
 
     Uri store(String dataUrl, String name) {
         try {
+            if (dataUrl == null || !dataUrl.startsWith("data:image/jpeg;base64,") || dataUrl.length() > 8_000_000) return null;
+            name = "hualin-" + System.currentTimeMillis() + ".jpg";
             byte[] bytes = Base64.decode(dataUrl.substring(dataUrl.indexOf(',') + 1), Base64.DEFAULT);
             ContentValues v = new ContentValues();
             v.put(MediaStore.Images.Media.DISPLAY_NAME, name);
