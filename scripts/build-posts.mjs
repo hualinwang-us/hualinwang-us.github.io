@@ -12,7 +12,7 @@ const win = {};
 new Function("window", await read("config.js"))(win);
 new Function("window", "globalThis", await read("assets/common.js"))(win, win);
 const HLC = win.HLC;
-const BASE = (HLC.CFG.siteUrl || "https://hualinwang-us.github.io/").replace(/\/?$/, "/");
+const BASE = (HLC.CFG.siteUrl || "https://hualin88.com/").replace(/\/?$/, "/");
 const tpl = await read("post.html");
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));

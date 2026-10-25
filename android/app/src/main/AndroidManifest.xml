@@ -32,7 +32,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="hualinwang-us.github.io" />
+                <data android:scheme="https" android:host="hualin88.com" />
+                <data android:scheme="https" android:host="www.hualin88.com" />
             </intent-filter>
         </activity>
     </application>

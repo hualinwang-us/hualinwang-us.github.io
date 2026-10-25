@@ -52,7 +52,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir -p _site
-          cp -r index.html config.js assets data icons manifest.webmanifest sw.js _site/
+          cp -r index.html config.js assets data icons manifest.webmanifest sw.js CNAME _site/
           for f in cn2t.js full.js; do if [ -f node_modules/opencc-js/dist/umd/$f ]; then cp node_modules/opencc-js/dist/umd/$f _site/assets/opencc-cn2t.js; break; fi; done
           if [ -f _site/assets/opencc-cn2t.js ]; then echo "::notice::converter ok $(wc -c < _site/assets/opencc-cn2t.js) bytes"; else echo "::warning::no converter file"; ls node_modules/opencc-js/dist/umd/ 2>&1 | head -20 | while read l; do echo "::warning::$l"; done; fi
           touch _site/.nojekyll

@@ -24,8 +24,8 @@ import android.webkit.WebViewClient;
 
 /** 华邻网 Android app: the site full screen, with calls, texts, WeChat sharing and the back button working like a normal app. */
 public class MainActivity extends Activity {
-    static final String HOME = "https://hualinwang-us.github.io/";
-    static final String HOST = "hualinwang-us.github.io";
+    static final String HOME = "https://hualin88.com/";
+    static final String HOST = "hualin88.com";
     WebView web;
 
     @Override protected void onCreate(Bundle saved) {
@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
     /** Site pages stay in the app; phone, text, email, WeChat and other websites open in their own apps. */
     boolean route(Uri u) {
         String scheme = u.getScheme() == null ? "" : u.getScheme();
-        if ((scheme.equals("https") || scheme.equals("http")) && HOST.equals(u.getHost())) return false;
+        if ((scheme.equals("https") || scheme.equals("http")) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost()) || "hualinwang-us.github.io".equals(u.getHost()))) return false;
         try {
             if (scheme.equals("intent")) {
                 Intent it = Intent.parseUri(u.toString(), Intent.URI_INTENT_SCHEME);
