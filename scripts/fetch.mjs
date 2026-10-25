@@ -177,6 +177,7 @@ function leadText(html) {
   const body = html.replace(/<(script|style|noscript|header|footer|nav|aside|figure|form)[\s\S]*?<\/\1>/gi, " ");
   const paras = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map(m => scrubLead(clean(m[1])))
     .filter(p => (p.match(/[\u4e00-\u9fff]/g) || []).length >= 25 || (!/[\u4e00-\u9fff]/.test(p) && p.length >= 80))
+    .filter(p => !/-->|网站地图|京报百科/.test(p) && !(!/[。，！？；,.!?]/.test(p) && p.split(" ").length > 5))
     .filter(p => !/版权|免责|声明|责任编辑|原标题|来源：|点击|关注|下载|扫码|copyright|all rights reserved|subscribe|cookie/i.test(p));
   let out = "";
   for (const p of paras) { out += (out ? " " : "") + p; if (out.length >= 200) break; }
@@ -264,11 +265,11 @@ async function enrichImages(out) {
   const todo = [];
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
-    if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || cache[k].lv === 3)) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
+    if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || cache[k].lv === 4)) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
     if (todo.length >= 260) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
-      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, lv: 3, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
+      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, lv: 4, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
@@ -280,6 +281,7 @@ async function enrichImages(out) {
     if (!i.s && c.desc && c.desc.replace(/\s/g, "") !== i.t.replace(/\s/g, "")) i.s = c.desc;
     // A fuller lead for stories read inside our site: use the article's opening if it says more than the short description.
     if (i.s) i.s = scrubLead(i.s);
+    if (i.s && (/-->|网站地图/.test(i.s) || (!/[。，！？；,.!?]/.test(i.s) && i.s.split(" ").length > 5))) i.s = "";
     if (c.lead && c.lead.length > (i.s || "").length + 20 && (lang === "en" || /[\u4e00-\u9fff]/.test(c.lead))) i.s = c.lead;
     if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; // link straight to the publisher
     if (c.frame) i.fr = 1; else if (c.frame === false) i.fr = 0;
