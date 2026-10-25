@@ -216,9 +216,16 @@ function preferEmbeddable(out) {
         if (twin) { swapped++; return false; }
         return true;
       });
-      // Within a section, a story that can't be shown inline sorts as if it were 6 hours older.
-      const score = i => (Date.parse(i.d) || 0) - (i.fr === 0 ? 6 * 3600e3 : 0);
-      out.sections[lang][sec].sort((a, b) => score(b) - score(a));
+      // Stories that can't be read on our site are left out, unless the section would get too thin;
+      // then only the ones with a summary are used to fill it, newest first.
+      const MIN = sec === "top" ? 14 : 8;
+      let keep = out.sections[lang][sec].filter(i => i.fr !== 0);
+      if (keep.length < MIN) {
+        const fill = out.sections[lang][sec].filter(i => i.fr === 0 && i.s).slice(0, MIN - keep.length);
+        keep = keep.concat(fill);
+      }
+      const score = i => (Date.parse(i.d) || 0) - (i.fr === 0 ? 12 * 3600e3 : 0);
+      out.sections[lang][sec] = keep.sort((a, b) => score(b) - score(a));
     }
   }
   console.log(`inline-friendly: replaced ${swapped} stories with another outlet's report of the same event`);
