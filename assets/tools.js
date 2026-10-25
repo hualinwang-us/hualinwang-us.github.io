@@ -339,8 +339,20 @@
   const dist = (a, b) => { const x = (b.lon - a.lon) * Math.cos(a.lat * Math.PI / 180), y = b.lat - a.lat; return Math.sqrt(x * x + y * y) * 111; };
   const minsTo = t => Math.round((t * 1000 - Date.now()) / 60000);
   const hm = t => new Date(t * 1000).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "America/New_York" });
+  const SCHED = {};
+  const nyParts = ms => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(ms)).map(x => [x.type, x.value]));
+  async function schedFor(sys, stop) {
+    if (!SCHED[sys]) { try { SCHED[sys] = await (await fetch("data/sched-" + sys + ".json")).json(); } catch (e) { SCHED[sys] = { dates: {} }; } }
+    const now = Date.now(), out = [];
+    for (const off of [-1, 0, 1]) {
+      const p = nyParts(now + off * 864e5), ymd = p.year + p.month + p.day, arr = (SCHED[sys].dates[ymd] || {})[stop]; if (!arr) continue;
+      const np = nyParts(now), nowMin = +np.hour * 60 + +np.minute, base = now - nowMin * 60000 + off * 864e5; // NY midnight of that service day (approx.)
+      for (let i = 0; i < arr.length; i += 2) { const t = Math.round((base + arr[i] * 60000) / 60000) * 60; if (t * 1000 > now - 60000 && t * 1000 < now + 4 * 3600e3) out.push({ t, dest: arr[i + 1] }); }
+    }
+    const seen = new Set(); return out.sort((a, b) => a.t - b.t).filter(v => { const k = v.t + v.dest; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 15);
+  }
   function transitHtml() {
-    return `<div class="tl-tabs" role="tablist">${[["bus", "🚌 公交车"], ["lirr", "🚆 长岛铁路"], ["mnr", "🚆 北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
+    return `<div class="tl-tabs" role="tablist">${[["bus", "公交车"], ["lirr", "长岛铁路"], ["mnr", "北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
       <p class="tl-note">数据来自纽约大都会运输署（MTA）实时数据，每 30 秒自动刷新。实际以车站显示和广播为准。定位只用来找附近车站，不会保存。</p>`;
   }
   function locate() {
@@ -375,8 +387,9 @@
     box.innerHTML = `<div class="tr-find"><label class="tl-f"><span>出发车站</span><select data-trrail>${list.map(x => `<option value="${esc(x.id)}"${x.id === TR.railStop ? " selected" : ""}>${esc(x.n)}</option>`).join("")}</select></label><button type="button" class="btn ghost" data-trnear>📍 最近的车站</button></div><div id="trList"><div class="skel"><i></i><i></i><i></i></div></div>`;
     const load = async () => {
       try {
-        const d = await fnGet({ op: "rail", sys: TR.mode, stop: TR.railStop });
+        let d = { list: [] }; try { d = await fnGet({ op: "rail", sys: TR.mode, stop: TR.railStop }); } catch (er) {}
         const L = el.querySelector("#trList"); if (!L) return;
+        if (!d.list.length) { const sc = await schedFor(TR.mode, TR.railStop); if (sc.length) { L.innerHTML = `<p class="tl-note">实时数据暂时没有更新，下面是官方时刻表的班次（不含临时晚点）。</p><ul class="tr-arr">${sc.map(v => { const m = minsTo(v.t); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>时刻表</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>`; return; } }
         L.innerHTML = d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = minsTo(v.t), late = Math.round((v.delay || 0) / 60); return `<li><span class="tr-rt tr-tm">${hm(v.t)}</span><div><b>开往 ${esc(names[v.dest] || v.dest)}</b><span>${late > 1 ? `<i class="tr-late">晚点 ${late} 分钟</i>` : "准点"}</span></div><em>${m <= 0 ? "即将发车" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">接下来一段时间这个站没有列车。</p>`;
       } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
     };
