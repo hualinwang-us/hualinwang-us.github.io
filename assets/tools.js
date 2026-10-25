@@ -10,7 +10,7 @@
 
   const CATS = [
     { id: "go", zh: "出行交通", en: "Getting around", tools: ["transit"] },
-    { id: "scam", zh: "华人防骗", en: "Scam alerts", tools: ["scam"] },
+    { id: "scam", zh: "防诈骗宝典", en: "Scam alerts", tools: ["scam"] },
     { id: "imm", zh: "移民入籍", en: "Immigration", tools: ["civics", "natdate", "visa"] },
     { id: "drive", zh: "驾照考试", en: "Driver's license", tools: ["permit"] },
     { id: "loan", zh: "贷款计算器", en: "Loan calculators", tools: ["mortgage", "carloan"] },
