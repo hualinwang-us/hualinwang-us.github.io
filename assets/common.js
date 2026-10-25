@@ -16,7 +16,8 @@
       ["house", "房", "房屋买卖", "Homes for Sale"], ["shop", "铺", "店面写字楼", "Commercial Space"]] },
     { id: "trade", zh: "买卖", en: "Buy & Sell", boards: [
       ["biz", "商", "生意转让", "Businesses for Sale"], ["sale", "物", "二手买卖", "Buy & Sell"],
-      ["car", "车", "汽车买卖", "Cars"], ["furn", "家", "家具家电", "Furniture & Appliances"]] },
+      ["car", "车", "汽车买卖", "Cars"], ["furn", "家", "家具家电", "Furniture & Appliances"],
+      ["deals", "惠", "商家优惠", "Local Deals"]] },
     { id: "svc", zh: "生活服务", en: "Services", boards: [
       ["move", "搬", "搬家运输", "Moving"], ["reno", "修", "装修维修", "Renovation & Repair"],
       ["clean", "洁", "家政清洁", "Cleaning"], ["nanny", "护", "保姆月嫂", "Nannies & Caregivers"],

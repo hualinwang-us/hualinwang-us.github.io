@@ -23,6 +23,7 @@
       ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
       ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
       readHere: "阅读全文", openOrig: "在原网站打开", rdBack: "← 返回华邻网", rdNote: "以下内容由原网站提供", readAt: "前往 {src} 阅读全文 →", artNoSum: "这家媒体不允许在其他网站内显示全文，请点下方按钮阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
+      dealsTab: "本周优惠", dealsH: "本周优惠和免费", dealsNote: "每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。", dl_local: "华人商家优惠", dl_zh: "华人社区免费和优惠", dl_free: "免费领取", dl_online: "网购折扣", dl_events: "纽约免费活动", dl_postCta: "商家免费发布优惠 →", dl_none: "暂时没有，过几个小时再来看看。", dl_en: "英文",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
@@ -67,6 +68,7 @@
       ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
       ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
       readHere: "Read full story", openOrig: "Open original site", rdBack: "← Back to HuaLin", rdNote: "Content below is provided by the original site", readAt: "Read the full story at {src} →", artNoSum: "This publisher doesn't allow its stories to be shown inside other sites; use the button below to read it.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
+      dealsTab: "Deals", dealsH: "Deals and freebies this week", dealsNote: "Online deals, freebies and free NYC events gathered daily; local businesses can post deals for free. Deals can end any time; check the store's page.", dl_local: "Local business deals", dl_zh: "Community freebies & deals", dl_free: "Freebies", dl_online: "Online deals", dl_events: "Free NYC events", dl_postCta: "Businesses: post a deal for free →", dl_none: "Nothing right now; check back in a few hours.", dl_en: "EN",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
@@ -105,7 +107,7 @@
   /* ---------- state ---------- */
   let lang = "zh";
   try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
-  let guides = null, watch = {};
+  let guides = null, watch = {}, deals = null;
   let news = null, market = null, ads = { slots: [] }, posts = [], postsLoaded = false;
   let route = { view: "home" }, searchQ = "";
 
@@ -137,7 +139,8 @@
     return r.json();
   }
   async function loadData() {
-    const [n, m, a, gd, w] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json")]);
+    const [n, m, a, gd, w, dl] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), getJSON("data/deals.json")]);
+    if (dl.status === "fulfilled" && dl.value && dl.value.sections) deals = dl.value;
     if (gd.status === "fulfilled" && gd.value && Array.isArray(gd.value.guides)) guides = gd.value;
     if (w.status === "fulfilled" && w.value) watch = w.value.pages || {};
     if (n.status === "fulfilled") news = n.value;
@@ -145,7 +148,7 @@
     if (a.status === "fulfilled" && a.value && Array.isArray(a.value.slots)) ads = a.value;
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
-    [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
   }
 
   function sbHeaders(extra) {
@@ -182,13 +185,13 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); if (route.view === "disc") renderDisc(); if (route.view === "article") renderArticle(); renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); if (route.view === "disc") renderDisc(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
   function renderTabs() {
-    const items = [["", t("home")], ["guide", t("guideTab")]].concat(SECTIONS.map(s => ["n-" + s, t("sec_" + s)])).concat([["classifieds", t("classifiedsTab")]]);
-    const cur = route.view === "news" ? "n-" + route.sec : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : "";
+    const items = [["", t("home")], ["guide", t("guideTab")], ["deals", t("dealsTab")]].concat(SECTIONS.map(s => ["n-" + s, t("sec_" + s)])).concat([["classifieds", t("classifiedsTab")]]);
+    const cur = route.view === "news" ? "n-" + route.sec : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : "";
     $("#tabs").innerHTML = items.map(([h, label]) => `<a href="#${h}" class="${h === cur ? "on" : ""}">${esc(label)}</a>`).join("");
   }
   function renderDir() {
@@ -313,7 +316,7 @@
       const b = boardById(id); const list = posts.filter(p => p.board === id).slice(0, 6);
       return `<section class="board"><header><span class="seal sm">${esc(b.glyph)}</span><h3>${esc(bName(b))}</h3><a href="#b-${id}">${esc(t("more"))} ›</a></header>${list.length ? `<ul>${list.map(p => rowHtml(p, false)).join("")}</ul>` : `<div class="none">${esc(t("noPosts"))}<button type="button" class="linkbtn" data-postto="${id}">${esc(t("beFirst"))}</button></div>`}</section>`;
     }).join("");
-    renderDir();
+    renderDir(); try { renderDeals(); } catch (e) {}
     if (route.view === "board") renderBoard();
     if (route.view === "search") renderSearch();
   }
@@ -443,6 +446,32 @@
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#reader").hidden) closeReader(); });
   window.addEventListener("hashchange", () => { if (!$("#reader").hidden) closeReader(); });
 
+  /* ---------- deals ---------- */
+  const DEAL_SECS = ["zh", "free", "online", "events"];
+  function dealLi(i, en) {
+    return `<li><a class="t" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${en ? `<span class="en-tag">${esc(t("dl_en"))}</span>` : ""}${esc(i.t)}</a>${metaHtml(i)}</li>`;
+  }
+  function localDeals() { return posts.filter(p => p.board === "deals"); }
+  function renderDeals() {
+    const box = $("#dealsHome"); if (!box) return;
+    const ds = (deals && deals.sections) || {};
+    const local = localDeals().slice(0, 5);
+    const cols = [];
+    cols.push(`<section class="block dcol"><div class="bh"><h2>${esc(t("dl_local"))}</h2><a href="#b-deals">${esc(t("more"))}</a></div>${local.length ? `<ul class="rows">${local.map(p => rowHtml(p, false)).join("")}</ul>` : ""}<button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></section>`);
+    for (const k of DEAL_SECS) {
+      const list = (ds[k] || []).slice(0, 5);
+      if (!list.length) continue;
+      cols.push(`<section class="block dcol"><div class="bh"><h2>${esc(t("dl_" + k))}</h2><a href="#deals">${esc(t("more"))}</a></div><ul class="nl">${list.map(i => dealLi(i, k !== "zh")).join("")}</ul></section>`);
+    }
+    $("#dealsGrid").innerHTML = cols.join("");
+    box.hidden = false;
+    if (route.view === "deals") {
+      const all = localDeals();
+      $("#dealsFull").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("dl_local"))}</h2><button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div>${all.length ? `<ul class="plist">${all.map(p => pitemHtml(p, false)).join("")}</ul>` : `<p class="empty">${esc(t("dl_none"))}</p>`}</section>` +
+        DEAL_SECS.map(k => `<section class="block"><div class="bh"><h2>${esc(t("dl_" + k))}</h2></div>${(ds[k] || []).length ? `<ul class="nl full">${ds[k].map(i => dealLi(i, k !== "zh")).join("")}</ul>` : `<p class="empty">${esc(t("dl_none"))}</p>`}</section>`).join("");
+    }
+  }
+
   function renderDisc() {
     const d = HLC.DISCLAIMER, x = d[lang] || d.zh;
     const rich = v => esc(v).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
@@ -462,11 +491,13 @@
     else if (h === "check") route = { view: "check" };
     else if (h.startsWith("g-")) route = { view: "guideOne", id: h.slice(2) };
     else if (h === "disclaimer") route = { view: "disc" };
+    else if (h === "deals") route = { view: "deals" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
     else route = { view: "home" };
     $("#vHome").hidden = route.view !== "home"; $("#vBoard").hidden = route.view !== "board";
     $("#vNews").hidden = route.view !== "news"; $("#vSearch").hidden = route.view !== "search";
     $("#vArticle").hidden = route.view !== "article"; if (route.view === "article") renderArticle();
+    $("#vDeals").hidden = route.view !== "deals"; if (route.view === "deals") renderDeals();
     $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
     if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();

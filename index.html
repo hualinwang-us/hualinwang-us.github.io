@@ -61,6 +61,11 @@
     <div class="g-home-r" id="gHomeList"></div>
   </section>
 
+  <section class="deals-home" id="dealsHome" hidden>
+    <div class="bh big"><h2 data-i18n="dealsH">本周优惠和免费</h2><a href="#deals" data-i18n="more">更多</a></div>
+    <div class="deals-grid" id="dealsGrid"></div>
+  </section>
+
   <section class="spons" id="sponTop" aria-label="Sponsors"></section>
 
   <div class="layout">
@@ -188,6 +193,15 @@
 <main class="shell view" id="vArticle" hidden>
   <div class="vh"><a class="back" id="aBack" href="#">← 返回</a></div>
   <div class="art-wrap"><article class="art" id="aBody"></article><aside class="art-side" id="aSide"></aside></div>
+</main>
+
+<main class="shell view" id="vDeals" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <h1 data-i18n="dealsH">本周优惠和免费</h1>
+    <p class="vh-note" data-i18n="dealsNote">每天自动汇集网购折扣、免费领取和纽约免费活动；本地华人商家也可以免费发布优惠。优惠可能随时结束，请以商家页面为准。</p>
+  </div>
+  <div class="deals-full" id="dealsFull"></div>
 </main>
 
 <main class="shell view" id="vDisc" hidden>
