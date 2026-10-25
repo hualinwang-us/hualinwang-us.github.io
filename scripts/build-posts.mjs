@@ -44,7 +44,25 @@ for (const p of posts) {
 
 await fs.writeFile(`${OUT}/404.html`, fill({ TITLE: "华邻网 · 分类信息", DESC: "在美华人新闻与免费分类信息。", BASE: esc(BASE), URL: esc(BASE), JSON: "null", SSR: "" }));
 
+// Guide pages: /g/<id>/ with both languages pre-rendered (good for sharing and search engines).
+new Function("window", "globalThis", await read("assets/guide-render.js"))(win, win);
+const HLG = win.HLG;
+let guides = { guides: [] }, watch = {};
+try { guides = JSON.parse(await read("data/guides.json")); } catch (e) { console.log("no guides:", e.message); }
+try { watch = JSON.parse(await read("data/watch.json")).pages || {}; } catch (e) {}
+const gtpl = await read("guide.html");
+const gfill = map => gtpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : ""));
+for (const g of guides.guides || []) {
+  const url = `${BASE}g/${g.id}/`;
+  const html = gfill({ TITLE: esc(HLG.L(g.title, "zh")), DESC: esc(HLG.L(g.summary, "zh").replace(/\*\*/g, "").slice(0, 120)), BASE: esc(BASE), URL: esc(url),
+    ZH: HLG.renderGuide(g, "zh", { watch }), EN: HLG.renderGuide(g, "en", { watch }) });
+  await fs.mkdir(`${OUT}/g/${g.id}`, { recursive: true });
+  await fs.writeFile(`${OUT}/g/${g.id}/index.html`, html);
+}
+console.log(`guide pages: ${(guides.guides || []).length}`);
+
 const urls = [`<url><loc>${BASE}</loc><changefreq>hourly</changefreq></url>`]
+  .concat((guides.guides || []).map(g => `<url><loc>${BASE}g/${g.id}/</loc><lastmod>${g.verified || ""}</lastmod></url>`))
   .concat(posts.map(p => `<url><loc>${BASE}p/${p.id}/</loc><lastmod>${String(p.created_at).slice(0, 10)}</lastmod></url>`));
 await fs.writeFile(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 await fs.writeFile(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\nSitemap: ${BASE}sitemap.xml\n`);

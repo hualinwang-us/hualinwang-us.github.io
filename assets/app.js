@@ -11,6 +11,18 @@
   /* ---------- text ---------- */
   const T = {
     zh: {
+      gHomeLab: "纽约华人生活指南", gHomeH: "白卡、粮食券、公屋、绿卡……我能申请什么？", gHomeP: "用中文讲清楚谁能申请、要什么材料、去哪里办。回答几个问题，马上看到你可能符合的福利。",
+      gCheckBtn: "开始自测", gAllBtn: "浏览全部指南", gIndexH: "纽约华人生活指南", gIndexP: "福利申请和办事流程，用中文讲清楚。规定经常变化，每篇都附官方链接和核实日期。",
+      gCheckH: "我能申请什么？", gCheckP: "回答 6 个问题，看看你家可能符合哪些福利 →", gBack: "← 返回指南目录", guideTab: "生活指南",
+      ckNote: "答案只保存在你的手机上，不会上传。结果只是初步参考，最终以政府审核为准。", ckWhere: "1. 你住在哪里？", ckNyc: "纽约市五大区", ckNys: "纽约州其他地方",
+      ckAge: "2. 你的年龄", ckSize: "3. 家里一共几口人（一起住、一起报税或一起开伙）", ckIncome: "4. 全家每月税前总收入（美元）",
+      ckIncomeHint: "包括工资、生意收入、社安金、退休金等；没有收入填 0", ckStatus: "5. 你的身份", st_citizen: "美国公民", st_lpr5: "绿卡满 5 年",
+      st_lpr: "绿卡未满 5 年", st_refugee: "难民 / 庇护已批准", st_other: "其他合法身份（工作签、学生签、申请中等）", st_none: "暂时没有合法身份",
+      ckFlags: "6. 家里有以下情况吗？（可多选）", fl_preg: "孕妇或 5 岁以下孩子", fl_kids: "18 岁以下孩子", fl_dis: "有人残障", fl_rent: "租房住",
+      fl_reg: "住在租金稳定（rent-stabilized）公寓", ckGo: "看结果", ckLikely: "很可能符合", ckMaybe: "可能符合，要看身份细节",
+      ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
+      ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
+      gLoading: "指南载入中…",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
       directory: "分类目录", more: "更多", home: "首页", classifiedsTab: "分类信息",
       sec_top: "新闻速递", sec_local: "纽约本地", sec_immigration: "移民签证", sec_uschina: "中美关系", sec_china: "中国",
@@ -41,6 +53,18 @@
       postedShare: "发布成功！转发到微信群和朋友圈，让更多人看到。", pageLink: "信息链接"
     },
     en: {
+      gHomeLab: "NYC Life Guides", gHomeH: "Medicaid, SNAP, public housing, green cards: what can I get?", gHomeP: "Plain-language guides on who qualifies, what to bring and where to apply. Answer a few questions to see what you may qualify for.",
+      gCheckBtn: "Start the check", gAllBtn: "Browse all guides", gIndexH: "NYC Life Guides", gIndexP: "Benefits and paperwork explained. Rules change often, so every guide links to the official source and shows when it was checked.",
+      gCheckH: "What can I apply for?", gCheckP: "Answer 6 questions to see which benefits your family may qualify for →", gBack: "← Back to guides", guideTab: "Life Guides",
+      ckNote: "Your answers stay on your phone and are never uploaded. Results are a first estimate; the agency makes the final decision.", ckWhere: "1. Where do you live?", ckNyc: "New York City (5 boroughs)", ckNys: "Elsewhere in New York State",
+      ckAge: "2. Your age", ckSize: "3. People in your household (living, filing taxes or buying food together)", ckIncome: "4. Household monthly income before tax (USD)",
+      ckIncomeHint: "Wages, business income, Social Security, pensions, etc. Enter 0 if none.", ckStatus: "5. Your immigration status", st_citizen: "U.S. citizen", st_lpr5: "Green card, 5+ years",
+      st_lpr: "Green card, under 5 years", st_refugee: "Refugee / asylum granted", st_other: "Other lawful status (work or student visa, pending case, etc.)", st_none: "No lawful status right now",
+      ckFlags: "6. Does your household include… (check all that apply)", fl_preg: "Someone pregnant or a child under 5", fl_kids: "Children under 18", fl_dis: "Someone with a disability", fl_rent: "We rent our home",
+      fl_reg: "We live in a rent-stabilized apartment", ckGo: "See results", ckLikely: "Likely eligible", ckMaybe: "Possibly, depends on status details",
+      ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
+      ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
+      gLoading: "Loading guides…",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
       directory: "Directory", more: "More", home: "Home", classifiedsTab: "Classifieds",
       sec_top: "Top Stories", sec_local: "New York", sec_immigration: "Immigration", sec_uschina: "US–China", sec_china: "China",
@@ -77,6 +101,7 @@
   /* ---------- state ---------- */
   let lang = "zh";
   try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
+  let guides = null, watch = {};
   let news = null, market = null, ads = { slots: [] }, posts = [], postsLoaded = false;
   let route = { view: "home" }, searchQ = "";
 
@@ -108,7 +133,10 @@
     return r.json();
   }
   async function loadData() {
-    const [n, m, a] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json")]);
+    const [n, m, a, gd, w] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json")]);
+    if (gd.status === "fulfilled" && gd.value && Array.isArray(gd.value.guides)) guides = gd.value;
+    if (w.status === "fulfilled" && w.value) watch = w.value.pages || {};
+    renderGuides();
     if (n.status === "fulfilled") news = n.value;
     if (m.status === "fulfilled") market = m.value;
     if (a.status === "fulfilled" && a.value && Array.isArray(a.value.slots)) ads = a.value;
@@ -150,14 +178,14 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
   function renderTabs() {
-    const items = [["", t("home")]].concat(SECTIONS.map(s => ["n-" + s, t("sec_" + s)])).concat([["classifieds", t("classifiedsTab")]]);
-    const cur = route.view === "news" ? "n-" + route.sec : route.view === "home" ? "" : "";
-    $("#tabs").innerHTML = items.map(([h, label]) => `<a href="#${h}" class="${h === cur && (route.view !== "home" || h === "") ? "on" : ""}">${esc(label)}</a>`).join("");
+    const items = [["", t("home")], ["guide", t("guideTab")]].concat(SECTIONS.map(s => ["n-" + s, t("sec_" + s)])).concat([["classifieds", t("classifiedsTab")]]);
+    const cur = route.view === "news" ? "n-" + route.sec : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : "";
+    $("#tabs").innerHTML = items.map(([h, label]) => `<a href="#${h}" class="${h === cur ? "on" : ""}">${esc(label)}</a>`).join("");
   }
   function renderDir() {
     const count = id => posts.filter(p => p.board === id).length;
@@ -297,6 +325,58 @@
     $("#sList").innerHTML = list.length ? list.map(p => pitemHtml(p, true)).join("") : `<li><div class="empty">${esc(t("noMatch"))}</div></li>`;
   }
 
+  /* ---------- guides ---------- */
+  const HLG = window.HLG;
+  const POPULAR = ["medicaid", "snap", "nycha", "naturalization", "public-charge", "scrie", "fair-fares", "nyc-care"];
+  function renderGuides() {
+    const ready = guides && guides.guides && guides.guides.length;
+    $("#gHome").hidden = !ready;
+    if (!ready) { $("#gIndex").innerHTML = `<div class="empty">${esc(t("gLoading"))}</div>`; return; }
+    const byId = id => guides.guides.find(g => g.id === id);
+    const pop = POPULAR.map(byId).filter(Boolean).concat(guides.guides).filter((g, i, a) => a.indexOf(g) === i).slice(0, 8);
+    $("#gHomeList").innerHTML = pop.map(g => `<a class="g-chip" href="#g-${esc(g.id)}"><span class="seal sm" aria-hidden="true">${esc(g.glyph || "指")}</span>${esc(HLG.L(g.title, lang))}</a>`).join("");
+    if (route.view === "guide") $("#gIndex").innerHTML = HLG.renderIndex(guides, lang, g => "#g-" + g.id);
+    if (route.view === "guideOne") {
+      const g = byId(route.id);
+      $("#gOne").innerHTML = g ? HLG.renderGuide(g, lang, { watch }) : `<div class="empty">${esc(t("noMatch"))}</div>`;
+      if (g) document.title = HLG.L(g.title, lang) + " - 华邻网";
+    }
+    if (route.view === "check") restoreCheck();
+  }
+  $("#gShare").onclick = async () => {
+    const g = guides && guides.guides.find(x => x.id === route.id); if (!g) return;
+    const r = await HLC.share(HLC.siteBase() + "g/" + g.id + "/", HLG.L(g.title, lang) + " - 华邻网");
+    if (r === "copied") toast(t("linkCopied"));
+  };
+  function readCheck() {
+    return {
+      nyc: (document.querySelector('input[name="ckNyc"]:checked') || {}).value !== "0",
+      age: Number($("#ckAge").value) || 0, size: Number($("#ckSize").value) || 1,
+      monthly: Math.max(0, Number($("#ckIncome").value) || 0), status: $("#ckStatus").value,
+      flags: { preg: $("#fPreg").checked, kids: $("#fKids").checked || $("#fPreg").checked, disabled: $("#fDis").checked, renter: $("#fRent").checked || $("#fReg").checked, regulated: $("#fReg").checked }
+    };
+  }
+  function restoreCheck() {
+    if (restoreCheck.done) return; restoreCheck.done = true;
+    let a = null; try { a = JSON.parse(localStorage.getItem("hl-check") || "null"); } catch (e) {}
+    if (!a) return;
+    const r = document.querySelector(`input[name="ckNyc"][value="${a.nyc ? 1 : 0}"]`); if (r) r.checked = true;
+    $("#ckAge").value = a.age; $("#ckSize").value = a.size; $("#ckIncome").value = a.monthly; $("#ckStatus").value = a.status;
+    $("#fPreg").checked = !!a.flags.preg; $("#fKids").checked = !!a.flags.kids; $("#fDis").checked = !!a.flags.disabled; $("#fRent").checked = !!a.flags.renter; $("#fReg").checked = !!a.flags.regulated;
+  }
+  function showCheck() {
+    if (!guides) return;
+    const a = readCheck();
+    try { localStorage.setItem("hl-check", JSON.stringify(a)); } catch (e) {}
+    const r = HLG.evaluate(guides, a);
+    const money = Math.round(r.yearly).toLocaleString("en-US");
+    const head = r.pct != null ? `<p class="ck-sum">${esc(t("ckSum").replace("{y}", money).replace("{p}", r.pct))}</p>` : "";
+    const rows = r.results.map(x => `<li><a href="#g-${esc(x.g.id)}"><span class="seal sm" aria-hidden="true">${esc(x.g.glyph || "指")}</span><span><b>${esc(HLG.L(x.g.title, lang))}</b><small>${esc(HLG.L(x.g.short || x.g.summary, lang))}</small></span><em class="lv ${x.level}">${esc(t(x.level === "likely" ? "ckLikely" : "ckMaybe"))}</em></a></li>`).join("");
+    $("#ckOut").innerHTML = `<section class="ck-res">${head}${rows ? `<h2>${esc(t("ckHeads"))}</h2><ul>${rows}</ul>` : `<p>${esc(t("ckNone"))}</p>`}<p class="g-fine">${esc(t("ckFoot"))}</p></section>`;
+    $("#ckOut").scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+  $("#ckForm").addEventListener("submit", e => { e.preventDefault(); showCheck(); });
+
   /* ---------- routing ---------- */
   function go() {
     const h = decodeURIComponent((location.hash || "").replace(/^#/, ""));
@@ -304,9 +384,14 @@
     if (h.startsWith("b-") && boardById(h.slice(2))) route = { view: "board", board: h.slice(2) };
     else if (h.startsWith("n-") && SECTIONS.includes(h.slice(2))) route = { view: "news", sec: h.slice(2) };
     else if (h === "search" && searchQ) route = { view: "search" };
+    else if (h === "guide") route = { view: "guide" };
+    else if (h === "check") route = { view: "check" };
+    else if (h.startsWith("g-")) route = { view: "guideOne", id: h.slice(2) };
     else route = { view: "home" };
     $("#vHome").hidden = route.view !== "home"; $("#vBoard").hidden = route.view !== "board";
     $("#vNews").hidden = route.view !== "news"; $("#vSearch").hidden = route.view !== "search";
+    $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
+    if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();
     if (route.view === "board") { $("#bFilter").value = ""; renderBoard(); }
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();

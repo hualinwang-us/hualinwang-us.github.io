@@ -51,6 +51,16 @@
     <div class="dir-grid" id="dir"></div>
   </section>
 
+  <section class="g-home" id="gHome" hidden>
+    <div class="g-home-l">
+      <span class="lab" data-i18n="gHomeLab">纽约华人生活指南</span>
+      <h2 data-i18n="gHomeH">白卡、粮食券、公屋、绿卡……我能申请什么？</h2>
+      <p data-i18n="gHomeP">用中文讲清楚谁能申请、要什么材料、去哪里办。回答几个问题，马上看到你可能符合的福利。</p>
+      <div class="g-home-btns"><a class="btn" href="#check" data-i18n="gCheckBtn">开始自测</a><a class="btn ghost" href="#guide" data-i18n="gAllBtn">浏览全部指南</a></div>
+    </div>
+    <div class="g-home-r" id="gHomeList"></div>
+  </section>
+
   <section class="spons" id="sponTop" aria-label="Sponsors"></section>
 
   <div class="layout">
@@ -121,6 +131,58 @@
   <ul class="nl full" id="nList"></ul>
 </main>
 
+<main class="shell view" id="vGuide" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <h1 data-i18n="gIndexH">纽约华人生活指南</h1>
+    <p class="vh-note" data-i18n="gIndexP">福利申请和办事流程，用中文讲清楚。规定经常变化，每篇都附官方链接和核实日期。</p>
+  </div>
+  <a class="g-check-cta" href="#check"><b data-i18n="gCheckH">我能申请什么？</b><span data-i18n="gCheckP">回答 6 个问题，看看你家可能符合哪些福利 →</span></a>
+  <div id="gIndex"></div>
+</main>
+
+<main class="shell view" id="vGuideOne" hidden>
+  <div class="vh"><a class="back" href="#guide" data-i18n="gBack">← 返回指南目录</a></div>
+  <div id="gOne"></div>
+  <div class="post-actions g-actions"><button type="button" class="btn" id="gShare" data-i18n="share">分享到微信</button><a class="btn ghost" href="#check" data-i18n="gCheckBtn">开始自测</a></div>
+</main>
+
+<main class="shell view" id="vCheck" hidden>
+  <div class="vh">
+    <a class="back" href="#guide" data-i18n="gBack">← 返回指南目录</a>
+    <h1 data-i18n="gCheckH">我能申请什么？</h1>
+    <p class="vh-note" data-i18n="ckNote">答案只保存在你的手机上，不会上传。结果只是初步参考，最终以政府审核为准。</p>
+  </div>
+  <form class="ck" id="ckForm" novalidate>
+    <fieldset><legend data-i18n="ckWhere">1. 你住在哪里？</legend>
+      <label><input type="radio" name="ckNyc" value="1" checked> <span data-i18n="ckNyc">纽约市五大区</span></label>
+      <label><input type="radio" name="ckNyc" value="0"> <span data-i18n="ckNys">纽约州其他地方</span></label></fieldset>
+    <fieldset><legend data-i18n="ckAge">2. 你的年龄</legend>
+      <input id="ckAge" type="number" inputmode="numeric" min="0" max="120" value="40"></fieldset>
+    <fieldset><legend data-i18n="ckSize">3. 家里一共几口人（一起住、一起报税或一起开伙）</legend>
+      <select id="ckSize"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></fieldset>
+    <fieldset><legend data-i18n="ckIncome">4. 全家每月税前总收入（美元）</legend>
+      <input id="ckIncome" type="number" inputmode="numeric" min="0" step="50" value="2500"><span class="hint" data-i18n="ckIncomeHint">包括工资、生意收入、社安金、退休金等；没有收入填 0</span></fieldset>
+    <fieldset><legend data-i18n="ckStatus">5. 你的身份</legend>
+      <select id="ckStatus">
+        <option value="citizen" data-i18n="st_citizen">美国公民</option>
+        <option value="lpr5" data-i18n="st_lpr5">绿卡满 5 年</option>
+        <option value="lpr" data-i18n="st_lpr">绿卡未满 5 年</option>
+        <option value="refugee" data-i18n="st_refugee">难民 / 庇护已批准</option>
+        <option value="other" data-i18n="st_other">其他合法身份（工作签、学生签、申请中等）</option>
+        <option value="none" data-i18n="st_none">暂时没有合法身份</option>
+      </select></fieldset>
+    <fieldset><legend data-i18n="ckFlags">6. 家里有以下情况吗？（可多选）</legend>
+      <label><input type="checkbox" id="fPreg"> <span data-i18n="fl_preg">孕妇或 5 岁以下孩子</span></label>
+      <label><input type="checkbox" id="fKids"> <span data-i18n="fl_kids">18 岁以下孩子</span></label>
+      <label><input type="checkbox" id="fDis"> <span data-i18n="fl_dis">有人残障</span></label>
+      <label><input type="checkbox" id="fRent"> <span data-i18n="fl_rent">租房住</span></label>
+      <label><input type="checkbox" id="fReg"> <span data-i18n="fl_reg">住在租金稳定（rent-stabilized）公寓</span></label></fieldset>
+    <button class="btn" type="submit" data-i18n="ckGo">看结果</button>
+  </form>
+  <div id="ckOut"></div>
+</main>
+
 <main class="shell view" id="vSearch" hidden>
   <div class="vh">
     <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
@@ -169,6 +231,7 @@
 
 <script src="config.js"></script>
 <script src="assets/common.js"></script>
+<script src="assets/guide-render.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

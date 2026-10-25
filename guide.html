@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{TITLE}} - 华邻网生活指南</title>
+<meta name="description" content="{{DESC}}">
+<meta name="theme-color" content="#121a2b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="华邻网">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:image" content="{{BASE}}assets/share.png">
+<meta property="og:url" content="{{URL}}">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="{{URL}}">
+<link rel="icon" href="{{BASE}}assets/share.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
+<link rel="stylesheet" href="{{BASE}}assets/style.css">
+</head>
+<body>
+<img class="wx-thumb" src="{{BASE}}assets/share.png" alt="" width="300" height="300">
+<div class="util"><div class="shell util-in">
+  <span class="util-mid"></span>
+  <div class="seg" role="group" aria-label="Language / 语言">
+    <button type="button" id="lzh" aria-pressed="true">中文</button>
+    <button type="button" id="len" aria-pressed="false">EN</button>
+  </div>
+</div></div>
+<header class="mast"><div class="shell mast-in">
+  <a class="logo" href="{{BASE}}">
+    <span class="seal" aria-hidden="true">邻</span>
+    <span class="logo-txt"><b>华邻网</b><small>在美华人 · 新闻与生活信息</small></span>
+  </a>
+  <a class="btn ghost" href="{{BASE}}#guide" data-zh="全部指南" data-en="All guides">全部指南</a>
+</div></header>
+<main class="shell view">
+  <div lang="zh-CN" data-lang="zh">{{ZH}}</div>
+  <div lang="en" data-lang="en" hidden>{{EN}}</div>
+  <div class="post-actions g-actions">
+    <button type="button" class="btn" id="shareBtn" data-zh="分享到微信" data-en="Share">分享到微信</button>
+    <a class="btn ghost" href="{{BASE}}#check" data-zh="我能申请什么？自测" data-en="What can I apply for?">我能申请什么？自测</a>
+  </div>
+</main>
+<footer class="foot"><div class="shell foot-in">
+  <div><b>华邻网 HuaLin</b><p data-zh="在美华人新闻、生活指南与免费分类信息。" data-en="News, life guides and free listings for Chinese Americans.">在美华人新闻、生活指南与免费分类信息。</p></div>
+</div></footer>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+(function () {
+  var lang = "zh"; try { lang = localStorage.getItem("hl-lang") || "zh"; } catch (e) {}
+  function apply() {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== lang; });
+    document.querySelectorAll("[data-zh]").forEach(function (el) { el.textContent = el.getAttribute("data-" + lang); });
+    document.getElementById("lzh").setAttribute("aria-pressed", String(lang === "zh"));
+    document.getElementById("len").setAttribute("aria-pressed", String(lang === "en"));
+  }
+  function set(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} apply(); }
+  document.getElementById("lzh").onclick = function () { set("zh"); };
+  document.getElementById("len").onclick = function () { set("en"); };
+  document.getElementById("shareBtn").onclick = function () {
+    var url = "{{URL}}", title = document.title;
+    function toast(m) { var el = document.getElementById("toast"); el.textContent = m; el.hidden = false; setTimeout(function () { el.hidden = true; }, 2400); }
+    if (navigator.share && !/MicroMessenger/i.test(navigator.userAgent)) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(title + "\n" + url).then(function () { toast(lang === "zh" ? "链接已复制，打开微信粘贴到群里即可" : "Link copied"); }, function () { prompt("", url); });
+  };
+  apply();
+})();
+</script>
+</body>
+</html>
