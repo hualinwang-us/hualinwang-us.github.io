@@ -1,7 +1,7 @@
 // 华脉 weekly report → huamai.us@gmail.com. Runs in GitHub Actions every Monday morning.
 // Needs repository secrets: SUPABASE_SERVICE_KEY (Supabase secret key) and GMAIL_APP_PASSWORD (Gmail app password).
 import fs from "node:fs/promises";
-import nodemailer from "nodemailer";
+
 
 const TO = process.env.REPORT_TO || "huamai.us@gmail.com";
 const SITE = "https://huamai88.com";
@@ -124,6 +124,7 @@ const subject = `华脉每周报告 ${nyDay(from)}–${nyDay(today)}${issues.len
 await fs.writeFile("weekly-report.html", html);
 const pass = process.env.GMAIL_APP_PASSWORD;
 if (!pass) { console.log("::warning title=report::GMAIL_APP_PASSWORD not set; report saved as artifact only"); process.exit(0); }
+const nodemailer = (await import("nodemailer")).default;
 const tr = nodemailer.createTransport({ host: "smtp.gmail.com", port: 465, secure: true, auth: { user: "huamai.us@gmail.com", pass: pass.replace(/\s+/g, "") } });
 await tr.sendMail({ from: '"华脉网站" <huamai.us@gmail.com>', to: TO, subject, html });
 console.log(`::notice title=report::sent to ${TO}: ${subject}`);
