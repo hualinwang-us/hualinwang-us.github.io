@@ -1196,3 +1196,10 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .cm-meta{display:flex;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
 .cm-meta b{color:var(--ink);font-size:14px}
 .cm-list p{margin:4px 0 0;white-space:pre-wrap;word-break:break-word}
+/* deals: even 2-column grid so no column is left hanging alone */
+@media (min-width:720px){
+  .deals-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:stretch}
+  .deals-grid>.dcol:last-child:nth-child(odd){grid-column:1/-1}
+  .deals-grid>.dcol:last-child:nth-child(odd) .nl{columns:2;column-gap:28px}
+  .deals-grid>.dcol:last-child:nth-child(odd) .nl li{break-inside:avoid}
+}
