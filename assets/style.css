@@ -1402,3 +1402,19 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .hl-quick .splash{animation:sp-exit .5s cubic-bezier(.76,0,.24,1) 1.55s forwards}
 .hl-quick .sp-poem+.sp-slogan{animation:sp-brush .4s cubic-bezier(.6,0,.2,1) 1.05s forwards!important}
 @media (prefers-reduced-motion:reduce){.sp-write .sp-full{opacity:1!important}}
+.cs-loc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px;font-size:14px}
+.cs-loc span{color:var(--muted);font-size:13px}
+.cs-step{font-weight:800;font-size:14.5px;margin:6px 0 6px}
+.cs-step small{font-weight:600;color:var(--muted);margin-left:6px}
+button.cs-img{padding:0;width:100%;cursor:zoom-in;font:inherit}
+.cs-view{position:fixed;inset:0;z-index:2000;background:#0b0e15;display:flex;flex-direction:column;color:#fff}
+.cs-vbar{display:flex;align-items:center;gap:10px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:#141927}
+.cs-vbar b{flex:1;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cs-vbar button,.cs-vnav button{min-height:40px;min-width:44px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.cs-vbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;display:flex;align-items:flex-start;justify-content:center}
+.cs-vbody img{width:100%;max-width:1000px;height:auto;display:block;cursor:zoom-in}
+.cs-vbody.z{display:block}.cs-vbody.z img{width:220%;max-width:none;cursor:zoom-out}
+.cs-vnav{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom));background:#141927}
+.cs-vnav button[disabled]{opacity:.35}
+.ah-all{font-weight:700;color:var(--accent)!important}
+.cs-head{display:block}.cs-head p{margin-top:4px}

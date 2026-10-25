@@ -405,11 +405,18 @@
     const el = $("#appHome"); if (!el || !IS_APP) return;
     document.documentElement.classList.add("app-lite"); el.hidden = false;
     const T = window.HLTools, zh = lang === "zh";
-    const tools = T ? `<div class="ah-tools">${T.CATS.map(c => c.tools.map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[c.id] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")).join("")}</div>` : "";
+    // The 8 tools people reach for most; the rest sit behind "全部工具".
+    const TOP_TOOLS = ["transit", "scam", "civics", "permit", "visa", "mortgage", "phrases", "tip"];
+    const catOf = id => (T.CATS.find(c => c.tools.includes(id)) || {}).id;
+    const tools = T ? `<div class="ah-tools">${TOP_TOOLS.filter(id => T.TOOLS[id]).map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[catOf(id)] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")}</div>` : "";
+    // The 8 most used local-service boards; the rest behind "全部分类".
+    const TOP_BOARDS = ["jobs", "rest", "rent", "share", "sale", "car", "reno", "clean"];
+    const boards = `<div class="ah-tools">${TOP_BOARDS.map(boardById).filter(Boolean).map(b => `<a href="#b-${b.id}"><span class="ah-ic" style="--c:${GCOL[b.group] || "#d2453a"}">${esc(b.glyph)}</span><b>${esc(zh ? b.zh : b.en)}</b></a>`).join("")}</div>`;
     el.innerHTML = `
       <a class="ah-hero" href="#check"><span class="ah-lab">${esc(zh ? "福利自测" : "Benefits check")}</span><b>${esc(zh ? "白卡、粮食券、公屋……我能申请什么？" : "Medicaid, SNAP, housing: what can I get?")}</b><span>${esc(zh ? "回答几个问题，马上看到你可能符合的福利" : "Answer a few questions to see what you may qualify for")}</span><em>${esc(zh ? "开始自测 →" : "Start →")}</em></a>
       <a class="ah-cs" href="#chaoshi"><span class="ah-cs-ic">🛒</span><div><b>${esc(zh ? "华人超市特价单" : "Supermarket flyers")}</b><span>${esc(zh ? "法拉盛、华埠、布鲁克林本周特价，选超市直接看" : "This week's flyers from Chinese supermarkets")}</span></div><i>›</i></a>
-      <section class="ah-tools-sec"><div class="bh"><h2>${esc(t("toolsTab"))}</h2><a href="#tools">${esc(t("more"))}</a></div>${tools}</section>`;
+      <section class="ah-tools-sec"><div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div>${tools}</section>
+      <section class="ah-tools-sec"><div class="bh"><h2>${esc(zh ? "同城服务" : "Local services")}</h2><a class="ah-all" href="#city">${esc(zh ? "全部分类" : "All categories")} ›</a></div>${boards}</section>`;
   }
   function renderTools() {
     if (!window.HLTools || route.view !== "tools") return;
