@@ -1085,3 +1085,13 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .hl-quick .sp-pulse circle{animation:sp-pop .25s ease .25s forwards}
 .hl-quick .sp-pulse circle:last-of-type{animation-delay:.65s}
 @media (prefers-reduced-motion:reduce){.sp-pulse path{stroke-dashoffset:0!important}.sp-pulse circle{transform:none!important}}
+
+/* area chips on board pages */
+.area-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:12px;padding-bottom:2px}
+.area-chips::-webkit-scrollbar{display:none}
+.area-chips .ac{flex:none;display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:14px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.area-chips .ac em{font-style:normal;font-size:11px;color:var(--accent)}
+.area-chips .ac.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.area-chips .ac.on em{color:#fff}
+@media (min-width:900px){.area-chips{flex-wrap:wrap;overflow:visible}}
+#vBoard #bArea{display:none}

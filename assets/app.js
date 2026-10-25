@@ -439,6 +439,16 @@
     lb.innerHTML = `${ic("pin")}<span>${esc(t("locAsk"))}</span><button type="button" class="btn sm" data-locate>${esc(t("locBtn"))}</button><button type="button" class="linkbtn" data-region>${esc(t("locPick"))}</button><button type="button" class="x" data-locx aria-label="Close">×</button>`;
     lb.hidden = false;
   }
+  // Area chips on board pages: tap a neighborhood to filter (also sets the site-wide area).
+  const AREA_SHORT = { "布鲁克林八大道 / 日落公园": "日落公园", "布鲁克林 86街 / 本森赫斯特": "86街", "布鲁克林 U大道 / 羊头湾": "羊头湾", "贝赛 / 白石 / 大颈": "贝赛/大颈",
+    "新鲜草原 / 佛洛帕兰": "新鲜草原", "森林小丘 / 雷哥公园": "森林小丘", "可乐娜 / 杰克逊高地": "可乐娜", "布鲁克林湾脊 / 戴克高地": "湾脊", "威郡 / 纽约上州": "威郡/上州" };
+  function renderAreaChips() {
+    const el = $("#bAreaChips"); if (!el || route.view !== "board") return;
+    const zh = lang === "zh", cur = $("#bArea").value, list = posts.filter(p => p.board === route.board);
+    const n = a => list.filter(p => p.area === a).length;
+    el.innerHTML = `<button type="button" class="ac${cur ? "" : " on"}" data-bareaset="">${esc(t("rgAll"))}<em>${list.length || ""}</em></button>` +
+      AREAS.filter(a => !/网上/.test(a[0])).map(([z, e]) => { const k = n(z); return `<button type="button" class="ac${cur === z ? " on" : ""}" data-bareaset="${esc(z)}">${esc(zh ? (AREA_SHORT[z] || z) : e)}${k ? `<em>${k}</em>` : ""}</button>`; }).join("");
+  }
   function regionLabel() { const a = AREAS.find(x => x[0] === curArea); return t("cityNY") + (a ? " · " + (lang === "zh" ? a[0] : a[1]) : ""); }
   function renderRegionBtn() { const b = $("#regionTxt"); if (b) b.textContent = regionLabel(); }
   function openRegion() {
@@ -455,6 +465,7 @@
       $("#viewDlg").close(); setArea(c.dataset.area); return;
     }
     if (e.target.closest("[data-appdl]")) { e.preventDefault(); installApp(); }
+    const bc = e.target.closest("[data-bareaset]"); if (bc) { setArea(bc.dataset.bareaset, true); $("#bArea").value = bc.dataset.bareaset; renderBoard(); renderAreaChips(); }
     if (e.target.closest("[data-locate]")) { e.preventDefault(); const d = $("#viewDlg"); if (d.open) d.close(); locateMe(); }
     if (e.target.closest("[data-locx]")) { try { localStorage.setItem("hl-located", "1"); } catch (er) {} renderPortal(); }
     if (e.target.closest("[data-ptmore]")) { const fromIcon = e.target.closest(".pt-hot"); portalOpen = fromIcon ? true : !portalOpen; renderPortal(); if (fromIcon) { const m = document.querySelector(".pt-more"); if (m) m.scrollIntoView({ behavior: "smooth", block: "nearest" }); } }
@@ -794,7 +805,7 @@
     el.hidden = true;
   }
   function renderPostsAll() {
-    try { renderPulse(); renderPortal(); if (route.view === "events") renderEvents(); if (route.view === "city") renderCity(); } catch (e) {}
+    try { renderAreaChips(); renderPulse(); renderPortal(); if (route.view === "events") renderEvents(); if (route.view === "city") renderCity(); } catch (e) {}
     const latest = posts.slice(0, 12);
     $("#latest").innerHTML = !postsLoaded ? `<div class="skel" aria-label="${esc(t("loading"))}"><i></i><i></i><i></i><i></i></div>` : latest.length ? latest.map(p => rowHtml(p, true)).join("") : `<div class="invite"><b>${esc(t("invH"))}</b><p>${esc(t("invP"))}</p><button type="button" class="btn sm" data-post>${esc(t("invBtn"))}</button></div>`;
     const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id) || offFor(b.id).length);
@@ -1121,7 +1132,7 @@
     $("#vYP").hidden = route.view !== "yp"; if (route.view === "yp") { $("#ypQ").value = ""; renderYP(); loadBiz(); }
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
     if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();
-    if (route.view === "board") { $("#bFilter").value = ""; $("#bArea").innerHTML = `<option value="">${esc(t("bAllAreas"))}</option>` + AREAS.map(([z, e]) => `<option value="${esc(z)}">${esc(lang === "zh" ? z : e)}</option>`).join(""); $("#bToday").checked = false; if (curArea && AREAS.some(a => a[0] === curArea)) $("#bArea").value = curArea; renderBoard(); }
+    if (route.view === "board") { $("#bFilter").value = ""; $("#bArea").innerHTML = `<option value="">${esc(t("bAllAreas"))}</option>` + AREAS.map(([z, e]) => `<option value="${esc(z)}">${esc(lang === "zh" ? z : e)}</option>`).join(""); $("#bToday").checked = false; if (curArea && AREAS.some(a => a[0] === curArea)) $("#bArea").value = curArea; renderBoard(); renderAreaChips(); }
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();
     renderTabs();
@@ -1520,7 +1531,7 @@
   window.addEventListener("hashchange", go);
   $("#postForm").addEventListener("submit", submitForm);
   $("#bFilter").addEventListener("input", renderBoard);
-  $("#bArea").addEventListener("change", renderBoard);
+  $("#bArea").addEventListener("change", () => { renderBoard(); renderAreaChips(); });
   $("#bToday").addEventListener("change", renderBoard);
   $("#bPost").onclick = () => openForm(route.board);
   $("#searchForm").addEventListener("submit", e => { e.preventDefault(); searchQ = $("#q").value.trim(); if (!searchQ) return; if (location.hash === "#search") go(); else location.hash = "search"; });

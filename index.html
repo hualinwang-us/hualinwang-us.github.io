@@ -97,7 +97,7 @@
 
   <div class="layout">
     <div class="col-main">
-      <section class="block latest-main">
+      <section class="block latest-main" hidden>
         <div class="bh"><h2 data-i18n="latest">最新信息</h2><a href="b/" data-i18n="pgAll">分类信息大全</a></div>
         <ul class="rows" id="latest"></ul>
       </section>
@@ -177,6 +177,7 @@
     <div class="bfilters"><input class="filter" id="bFilter" type="search" data-i18n-ph="filterPh" placeholder="在本板块中筛选">
       <select id="bArea" aria-label="地区"></select>
       <label class="chk"><input type="checkbox" id="bToday"> <span data-i18n="bToday">只看今天</span></label></div>
+    <div class="area-chips" id="bAreaChips" role="group" aria-label="地区"></div>
   </div>
   <section class="spons mid" id="sponBoard" aria-label="Sponsors"></section>
   <p class="rules-note" id="bRules" hidden></p>
