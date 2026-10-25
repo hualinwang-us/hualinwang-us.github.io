@@ -174,8 +174,17 @@
   /* ---------- render: news ---------- */
   const sec = s => ((news && news.sections && news.sections[lang] && news.sections[lang][s]) || []);
   function metaHtml(i) { const a = ago(i.d); return `<span class="meta">${i.src ? `<span class="src">${esc(i.src)}</span>` : ""}${a ? `<span>${esc(a)}</span>` : ""}</span>`; }
-  function liHtml(i, withSummary) {
-    return `<li><a class="t" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(i.t)}</a>${withSummary && i.s ? `<span class="s">${esc(i.s)}</span>` : ""}${metaHtml(i)}</li>`;
+  const imgTag = (i, cls) => `<img class="${cls}" src="${esc(i.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('[data-hasimg]')&&this.closest('[data-hasimg]').removeAttribute('data-hasimg');this.remove()">`;
+  function liHtml(i, withSummary, withThumb) {
+    const thumb = withThumb && i.img;
+    return `<li${thumb ? ' class="thumbed" data-hasimg' : ""}>${thumb ? `<a class="th-link" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${imgTag(i, "th")}</a>` : ""}<div class="tx"><a class="t" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(i.t)}</a>${withSummary && i.s ? `<span class="s">${esc(i.s)}</span>` : ""}${metaHtml(i)}</div></li>`;
+  }
+  // Move the first story that has a picture (among the first few) to the top and show it as a feature.
+  function withFeature(list, look) {
+    const k = list.slice(0, look).findIndex(i => i.img);
+    if (k <= 0) return { list, feat: k === 0 };
+    const copy = list.slice(); const [f] = copy.splice(k, 1); copy.unshift(f);
+    return { list: copy, feat: true };
   }
   function renderNews() {
     if (!news) { SECTIONS.forEach(s => { const el = $("#sec-" + s); if (el) el.innerHTML = `<div class="empty">${esc(t("loading"))}</div>`; }); return; }
@@ -183,20 +192,22 @@
     const lw = $("#sec-top");
     if (!top.length) lw.innerHTML = `<div class="empty">${esc(t("newsEmpty"))}</div>`;
     else {
-      const leadIdx = Math.max(0, top.findIndex(i => i.img));
-      const lead = top[leadIdx] || top[0];
+      const leadIdx = top.slice(0, 6).findIndex(i => i.img);
+      const lead = top[leadIdx > 0 ? leadIdx : 0];
       const rest = top.filter(i => i !== lead).slice(0, 8);
-      lw.innerHTML = `<article class="lead">${lead.img ? `<a href="${esc(safeUrl(lead.u))}" target="_blank" rel="noopener" class="img" style="background-image:url('${esc(lead.img).replace(/'/g, "%27")}')" aria-hidden="true" tabindex="-1"></a>` : ""}
+      lw.innerHTML = `<article class="lead">${lead.img ? `<a href="${esc(safeUrl(lead.u))}" target="_blank" rel="noopener" class="img" tabindex="-1" aria-hidden="true">${imgTag(lead, "")}</a>` : ""}
         <h3><a href="${esc(safeUrl(lead.u))}" target="_blank" rel="noopener">${esc(lead.t)}</a></h3>${lead.s ? `<p>${esc(lead.s)}</p>` : ""}${metaHtml(lead)}</article>
         <ul class="nl compact">${rest.map(i => liHtml(i, false)).join("")}</ul>`;
     }
     ["local", "immigration", "uschina", "china", "business", "health"].forEach(s => {
-      const list = sec(s).slice(0, 7);
-      $("#sec-" + s).innerHTML = list.map(i => liHtml(i, false)).join("");
-      $("#sec-" + s).closest(".block").hidden = !list.length; // hide a section that has no stories right now
+      const { list, feat } = withFeature(sec(s).slice(0, 10), 4);
+      const show = list.slice(0, 7);
+      $("#sec-" + s).innerHTML = show.map((i, n) => n === 0 && feat ? liHtml(i, false, true).replace("<li", '<li data-feat') : liHtml(i, false)).join("");
+      $("#sec-" + s).closest(".block").hidden = !show.length; // hide a section that has no stories right now
     });
-    const ent = sec("ent").slice(0, 10);
-    $("#sec-ent").innerHTML = ent.map(i => liHtml(i, false)).join("");
+    const e = withFeature(sec("ent").slice(0, 12), 4);
+    const ent = e.list.slice(0, 10);
+    $("#sec-ent").innerHTML = ent.map((i, n) => n < 2 && i.img ? liHtml(i, false, true) : liHtml(i, false)).join("");
     $("#sec-ent").closest(".block").hidden = !ent.length;
   }
   function renderNewsView() {
@@ -204,7 +215,7 @@
     $("#nTitle").textContent = t("sec_" + route.sec);
     $("#nNote").textContent = (news && news.updatedAt ? t("updated") + " " + ago(news.updatedAt) + " · " : "") + t("newsSrc");
     const list = sec(route.sec);
-    $("#nList").innerHTML = list.length ? list.map(i => liHtml(i, true)).join("") : `<div class="empty">${esc(news ? t("newsEmpty") : t("loading"))}</div>`;
+    $("#nList").innerHTML = list.length ? list.map(i => liHtml(i, true, true)).join("") : `<div class="empty">${esc(news ? t("newsEmpty") : t("loading"))}</div>`;
   }
 
   /* ---------- render: market ---------- */
