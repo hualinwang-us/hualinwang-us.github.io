@@ -470,3 +470,31 @@ a.spon.empty{text-decoration:none;color:inherit;transition:border-color .15s}
 a.spon.empty:hover{border-color:var(--gold)}
 .feed-ad{list-style:none}
 .art-side .spon-rail{margin-bottom:14px}
+
+/* house promos in empty ad spaces */
+.spon.house{text-decoration:none;color:inherit;background:linear-gradient(135deg,var(--accent-soft,#fbeeec),var(--paper) 75%);border-color:color-mix(in srgb,var(--accent) 22%,var(--line));transition:transform .15s,box-shadow .15s}
+.spon.house .lab{color:var(--accent)}
+.spon.house:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(18,26,43,.08)}
+.spon.house h3 span{color:var(--accent);font-family:var(--body)}
+/* sidebar ads follow the reader down the page */
+@media (min-width:980px){#sponRail{position:sticky;top:64px}}
+@media (max-width:719px){#sponTop>:nth-child(n+3){display:none}}
+.view-ad{margin:4px 0 16px!important}
+.view-ad:empty{display:none}
+/* boards: ad tile + chips for boards with no posts yet */
+.board-ad{padding:0;border:0;background:none;display:flex}
+.board-ad .spon{flex:1}
+.bchips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
+.bchips b{font-size:13px;color:var(--muted);margin-right:4px}
+.bchips a{display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 6px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-size:14px;transition:border-color .15s,background .15s}
+.bchips a:hover{border-color:var(--accent);background:var(--accent-soft,#fbeeec)}
+/* phones */
+@media (max-width:719px){
+  .deals-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-16px;padding:2px 16px 8px;scrollbar-width:none}
+  .deals-grid::-webkit-scrollbar{display:none}
+  .deals-grid>.dcol{flex:0 0 84%;scroll-snap-align:start}
+}
+@media (max-width:560px){
+  .g-home-r{grid-template-columns:1fr!important}
+  .util-date{display:none}
+}

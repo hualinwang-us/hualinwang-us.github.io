@@ -52,7 +52,8 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", moreBoards: "全部板块",
+      house: [["#check", "我能申请什么？", "白卡、粮食券、公屋……回答几个问题马上知道"], ["#deals", "本周免费和打折", "每天自动更新，全部翻译成中文"], ["#b-deals", "商家免费发布优惠", "超市、餐馆、店铺每周特价，一分钟发好"], ["#guide", "纽约华人生活指南", "25 项福利，白话讲清楚怎么申请"], ["#post", "免费发布分类信息", "招聘、租房、二手买卖，一分钟发布"]],
       adsTitle: "在华邻网投放广告", adsIntro: "华邻网每天更新纽约华人关心的新闻、福利指南和本周优惠，读者都是在美华人家庭。以下广告位可以单独或组合投放，价格面议，新开张商家有优惠。",
       adsPos: "广告位一览", adsHow: "怎么投放", adsHowP: "把店名、一句话介绍、电话/微信、想放的位置和时间发给我们，当天就能上线。到期自动下架，不用操心。", adsNoContact: "联系方式即将公布。也可以先在“商家优惠”免费发布优惠信息。",
       adsList: [["横幅广告", "首页最上方通栏，访客打开第一眼看到"], ["首页推荐（3个）", "首页顶部三张推荐卡片"], ["新闻中间（4个）", "首页新闻栏目之间，读新闻时自然看到"], ["侧栏（3个）", "首页右侧，电脑版全程可见"], ["分类板块页（可指定板块）", "例如只出现在“房屋出租”或“招聘”板块顶部"], ["信息流", "分类信息列表中每隔几条出现一次"], ["指南和文章页", "福利指南、新闻文章下方，读者停留时间最长"]],
@@ -108,7 +109,8 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", moreBoards: "All boards",
+      house: [["#check", "What can I apply for?", "Medicaid, SNAP, housing: answer a few questions"], ["#deals", "Free & on sale this week", "Updated daily"], ["#b-deals", "Businesses: post deals free", "Weekly specials in a minute"], ["#guide", "NY benefits guides", "25 programs in plain language"], ["#post", "Post a free listing", "Jobs, rentals, buy & sell"]],
       adsTitle: "Advertise on 华邻网", adsIntro: "华邻网 publishes daily news, benefits guides and weekly deals for Chinese families in New York. These spaces can be booked alone or together; prices are negotiable, with discounts for newly opened businesses.",
       adsPos: "Ad spaces", adsHow: "How to book", adsHowP: "Send us your business name, a one-line description, phone/WeChat, and the space and dates you want. It can go live the same day and comes down automatically when it ends.", adsNoContact: "Contact details coming soon. Meanwhile, you can post deals for free in Local Deals.",
       adsList: [["Banner", "Full-width at the very top of the home page"], ["Home featured (3)", "Three featured cards at the top of the home page"], ["Between news (4)", "Between the home-page news sections"], ["Sidebar (3)", "Right side of the home page, always visible on desktop"], ["Board pages (choose boards)", "E.g. only at the top of Rentals or Jobs"], ["In-feed", "Every few listings inside classified lists"], ["Guide & article pages", "Below benefits guides and news articles, where readers stay longest"]],
@@ -359,7 +361,10 @@
     const inner = `<span class="lab">${esc(t("adLabel"))}</span><h3>${esc(L(s.name))}</h3>${L(s.desc) ? `<p>${esc(L(s.desc))}</p>` : ""}${contact ? `<p>${contact}</p>` : ""}`;
     return s.url ? `<a class="spon paid ${cls || ""}" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener sponsored">${inner}</a>` : `<div class="spon paid ${cls || ""}">${inner}</div>`;
   }
+  let adN = 0;
   function emptyAd(sm) {
+    const k = adN++;
+    if (k % 2 === 1) { const h = t("house")[(k >> 1) % t("house").length]; return `<a class="spon house ${sm ? "sm" : ""}" href="${h[0]}"><span class="lab">${esc(t("houseLab"))}</span><h3>${esc(h[1])} <span aria-hidden="true">→</span></h3><p>${esc(h[2])}</p></a>`; }
     const c = CFG.adContact || {};
     const parts = [c.phone && (c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
     return `<a class="spon empty ${sm ? "sm" : ""}" href="#advertise"><span class="lab">${esc(t("sponsored"))}</span><h3>${esc(t("adEmptyH"))}</h3><p>${sm ? "" : esc(t("adEmptyP")) + "<br>"}${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adMore"))}</p></a>`;
@@ -375,6 +380,7 @@
     return `<li class="feed-ad">${s ? adCard(s, "sm") : emptyAd(true)}</li>`;
   }
   function renderAds() {
+    adN = 0;
     fillAds("#sponBanner", "banner", 1, false);
     fillAds("#sponTop", "top", 3, false);
     fillAds("#sponMid1", "mid", 2, true, (s, i) => true);
@@ -382,6 +388,7 @@
     $("#sponMid2").innerHTML = mids.slice(2, 4).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - mids.slice(2, 4).length) }, () => emptyAd(true)).join("");
     fillAds("#sponRail", "rail", 3, false);
     fillAds("#sponGuide", "article", 2, true);
+    document.querySelectorAll(".view-ad").forEach(el => { el.innerHTML = liveSlots("section").slice(0, 2).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - liveSlots("section").slice(0, 2).length) }, () => emptyAd(true)).join(""); });
     renderBoardAds();
   }
   function renderBoardAds() {
@@ -408,10 +415,15 @@
   function renderPostsAll() {
     const latest = posts.slice(0, 12);
     $("#latest").innerHTML = !postsLoaded ? `<div class="empty">${esc(t("loading"))}</div>` : latest.length ? latest.map(p => rowHtml(p, true)).join("") : `<div class="empty">${esc(t("noLatest"))}</div>`;
-    $("#bgrid").innerHTML = FEATURED.map(id => {
-      const b = boardById(id); const list = posts.filter(p => p.board === id).slice(0, 6);
-      return `<section class="board"><header><span class="seal sm">${esc(b.glyph)}</span><h3>${esc(bName(b))}</h3><a href="#b-${id}">${esc(t("more"))} ›</a></header>${list.length ? `<ul>${list.map(p => rowHtml(p, false)).join("")}</ul>` : `<div class="none">${esc(t("noPosts"))}<button type="button" class="linkbtn" data-postto="${id}">${esc(t("beFirst"))}</button></div>`}</section>`;
-    }).join("");
+    const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id));
+    const order = FEATURED.map(boardById).filter(b => withPosts.includes(b)).concat(withPosts.filter(b => !FEATURED.includes(b.id)));
+    const cards = order.slice(0, 11).map(b => {
+      const list = posts.filter(p => p.board === b.id).slice(0, 6);
+      return `<section class="board"><header><span class="seal sm">${esc(b.glyph)}</span><h3>${esc(bName(b))}</h3><a href="#b-${b.id}">${esc(t("more"))} ›</a></header><ul>${list.map(p => rowHtml(p, false)).join("")}</ul></section>`;
+    });
+    if (cards.length) cards.splice(Math.min(3, cards.length), 0, `<div class="board board-ad">${liveSlots("board").filter(x => !x.boards || !x.boards.length)[0] ? adCard(liveSlots("board")[0]) : emptyAd()}</div>`);
+    const rest = HLC.BOARDS.filter(b => !order.slice(0, 11).includes(b));
+    $("#bgrid").innerHTML = cards.join("") + (rest.length ? `<nav class="bchips" aria-label="${esc(t("moreBoards"))}"><b>${esc(t("moreBoards"))}</b>${rest.map(b => `<a href="#b-${b.id}"><span class="seal sm" aria-hidden="true">${esc(b.glyph)}</span>${esc(bName(b))}</a>`).join("")}</nav>` : "");
     renderDir(); try { renderDeals(); } catch (e) {}
     if (route.view === "board") renderBoard();
     if (route.view === "search") renderSearch();
@@ -604,6 +616,12 @@
       `<p class="g-fine">${esc(t("discUpdated"))} ${esc(d.updated)}</p>`;
   }
 
+  document.querySelectorAll("main.view").forEach(m => {
+    if (["vBoard", "vGuideOne", "vArticle"].includes(m.id)) return;
+    const vh = m.querySelector(".vh"); if (!vh) return;
+    const sec = document.createElement("section"); sec.className = "spons mid view-ad"; sec.setAttribute("aria-label", "Sponsors");
+    vh.after(sec);
+  });
   /* ---------- routing ---------- */
   function go() {
     const h = decodeURIComponent((location.hash || "").replace(/^#/, ""));
