@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">#C2362B</item>
+        <item name="android:statusBarColor">#121A2B</item>
         <item name="android:navigationBarColor">#FFFFFF</item>
-        <item name="android:windowBackground">#B8302A</item>
-        <item name="android:windowSplashScreenBackground">#B8302A</item>
+        <item name="android:windowBackground">#0E1320</item>
+        <item name="android:windowSplashScreenBackground">#0E1320</item>
         <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
     </style>
 </resources>

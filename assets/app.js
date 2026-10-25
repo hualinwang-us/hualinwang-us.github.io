@@ -723,7 +723,7 @@
   });
   /* ---------- launch screen: remove it after it fades so it never blocks taps ---------- */
   if (document.documentElement.classList.contains("hl-launch")) {
-    setTimeout(() => { document.documentElement.classList.remove("hl-launch"); const sp = $("#splash"); if (sp) sp.remove(); }, 2350);
+    setTimeout(() => { document.documentElement.classList.remove("hl-launch"); const sp = $("#splash"); if (sp) sp.remove(); }, 4300);
     $("#splash").addEventListener("click", () => { document.documentElement.classList.remove("hl-launch"); });
   }
   /* ---------- app install (PWA) ---------- */
