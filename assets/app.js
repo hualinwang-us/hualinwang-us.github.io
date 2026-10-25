@@ -422,7 +422,7 @@
   let adN = 0;
   function emptyAd(sm) {
     const k = adN++;
-    if (k % 2 === 1) { const h = t("house")[(k >> 1) % t("house").length]; return `<a class="spon house ${sm ? "sm" : ""}" href="${h[0]}"><span class="lab">${esc(t("houseLab"))}</span><h3>${esc(h[1])} <span aria-hidden="true">→</span></h3><p>${esc(h[2])}</p></a>`; }
+    if (false) { const h = t("house")[(k >> 1) % t("house").length]; return `<a class="spon house ${sm ? "sm" : ""}" href="${h[0]}"><span class="lab">${esc(t("houseLab"))}</span><h3>${esc(h[1])} <span aria-hidden="true">→</span></h3><p>${esc(h[2])}</p></a>`; }
     const c = CFG.adContact || {};
     const parts = [c.phone && (c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
     return `<a class="spon empty ${sm ? "sm" : ""}" href="#advertise"><span class="lab">${esc(t("sponsored"))}</span><h3>${esc(t("adEmptyH"))}</h3><p>${sm ? "" : esc(t("adEmptyP")) + "<br>"}${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adMore"))}</p></a>`;
@@ -444,20 +444,20 @@
     adN = 0;
     fillAds("#sponBanner", "banner", 1, false);
     fillAds("#sponTop", "top", 3, false);
-    fillAds("#sponMid1", "mid", 2, true, (s, i) => true);
+    fillAds("#sponMid1", "mid", 3, true, (s, i) => true);
     const mids = liveSlots("mid");
-    $("#sponMid2").innerHTML = mids.slice(2, 4).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - mids.slice(2, 4).length) }, () => emptyAd(true)).join("");
-    fillAds("#sponRail", "rail", 3, false);
-    fillAds("#sponGuide", "article", 2, true);
-    fillAds("#sponGuideTop", "article", 2, true);
-    fillAds("#sponFoot", "foot", 4, true);
+    $("#sponMid2").innerHTML = mids.slice(3, 6).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 3 - mids.slice(3, 6).length) }, () => emptyAd(true)).join("");
+    fillAds("#sponRail", "rail", 6, false);
+    fillAds("#sponGuide", "article", 3, true);
+    fillAds("#sponGuideTop", "article", 3, true);
+    fillAds("#sponFoot", "foot", 6, true);
     fillAds("#sponDeals", "mid", 3, true);
-    document.querySelectorAll(".view-ad").forEach(el => { el.innerHTML = liveSlots("section").slice(0, 2).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - liveSlots("section").slice(0, 2).length) }, () => emptyAd(true)).join(""); });
+    document.querySelectorAll(".view-ad").forEach(el => { el.innerHTML = liveSlots("section").slice(0, 3).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 3 - liveSlots("section").slice(0, 3).length) }, () => emptyAd(true)).join(""); });
     renderBoardAds();
   }
   function renderBoardAds() {
     if (route.view !== "board") return;
-    fillAds("#sponBoard", "board", 2, true, s => !s.boards || !s.boards.length || s.boards.includes(route.board));
+    fillAds("#sponBoard", "board", 3, true, s => !s.boards || !s.boards.length || s.boards.includes(route.board));
   }
   /* ---------- business directory (商家黄页) ---------- */
   let bizSeed = null, bizLive = [], bizLoaded = false;

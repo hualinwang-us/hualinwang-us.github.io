@@ -820,3 +820,6 @@ html[data-fz="1"] .util-fz,html[data-fz="2"] .util-fz{background:rgba(255,255,25
 .lg-tabs button.on{background:var(--paper);color:var(--ink);box-shadow:0 1px 4px rgba(18,26,43,.12)}
 .login .lg-main{width:100%;margin-top:4px}
 .login .lg-link{display:block;margin:10px auto 0}
+
+/* ad rows: three across on wide screens */
+@media (min-width:720px){.spons.mid{grid-template-columns:repeat(3,minmax(0,1fr))}.foot-ads{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
