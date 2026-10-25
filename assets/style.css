@@ -1334,3 +1334,10 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .tr-arr div span{color:var(--muted);font-size:13px}
 .tr-arr em{font-style:normal;font-weight:800;color:var(--accent);font-size:16px;white-space:nowrap}
 .tr-late{font-style:normal;color:var(--accent);font-weight:700}
+/* 书法横版 logo */
+.logo-wide{height:52px;width:auto;flex:none;display:block}
+.logo:has(.logo-wide) .logo-txt b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.logo:has(.logo-wide){gap:8px}
+@media (max-width:719px){.logo-wide{height:42px}}
+:root[data-theme="dark"] .logo-wide{filter:invert(1) hue-rotate(180deg) brightness(1.1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo-wide{filter:invert(1) hue-rotate(180deg) brightness(1.1)}}
