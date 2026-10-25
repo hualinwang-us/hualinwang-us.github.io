@@ -1,0 +1,296 @@
+/* 华脉 实用工具: calculators, practice tests and phrase cards. Everything runs in the browser. */
+(function () {
+  "use strict";
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const money = n => isFinite(n) ? "$" + Math.round(n).toLocaleString("en-US") : "—";
+  const money2 = n => isFinite(n) ? "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—";
+  const num = (el, sel) => { const v = parseFloat(String((el.querySelector(sel) || {}).value || "").replace(/[$,\s]/g, "")); return isFinite(v) ? v : 0; };
+  const pmt = (principal, ratePct, months) => { if (principal <= 0 || months <= 0) return 0; const r = ratePct / 100 / 12; return r ? principal * r / (1 - Math.pow(1 + r, -months)) : principal / months; };
+  const L = (zh, en) => ({ zh, en });
+
+  const CATS = [
+    { id: "imm", zh: "移民入籍", en: "Immigration", tools: ["civics", "natdate", "visa"] },
+    { id: "drive", zh: "驾照考试", en: "Driver's license", tools: ["permit"] },
+    { id: "loan", zh: "贷款计算器", en: "Loan calculators", tools: ["mortgage", "carloan"] },
+    { id: "afford", zh: "可负担计算", en: "Affordability", tools: ["rent40", "homeafford"] },
+    { id: "eng", zh: "英语学习", en: "English", tools: ["phrases"] },
+    { id: "life", zh: "生活工具", en: "Everyday", tools: ["units", "sizes", "tip"] }
+  ];
+  const TOOLS = {
+    civics: { g: "问", t: L("入籍考试练习", "Citizenship test practice"), d: L("2025 新版 128 题，中英对照，模拟考试", "2025 test, 128 questions, bilingual") },
+    natdate: { g: "籍", t: L("入籍时间计算", "Naturalization date"), d: L("拿绿卡几年后可以申请入籍", "When you can file N-400") },
+    visa: { g: "排", t: L("移民排期查询", "Visa bulletin"), d: L("中国出生，每月自动更新", "China-born, updated monthly") },
+    permit: { g: "驾", t: L("纽约驾照笔试练习", "NY permit test practice"), d: L("中文题目，交通标志和规则", "Signs and rules, in Chinese") },
+    mortgage: { g: "房", t: L("房贷月供计算器", "Mortgage calculator"), d: L("含房产税、保险、物业费", "With tax, insurance, HOA") },
+    carloan: { g: "车", t: L("车贷月供计算器", "Car loan calculator"), d: L("含纽约销售税", "With NYC sales tax") },
+    rent40: { g: "租", t: L("租房收入要求", "Rent income check"), d: L("纽约房东常用的 40 倍规则", "NYC 40x rent rule") },
+    homeafford: { g: "买", t: L("买得起多少钱的房子", "How much house can I afford"), d: L("按收入和负债估算", "Based on income and debts") },
+    phrases: { g: "英", t: L("常用英语急救卡", "English phrase cards"), d: L("看病、报警、租房、上班，可朗读", "Doctor, police, rent, work, read aloud") },
+    units: { g: "换", t: L("单位换算", "Unit converter"), d: L("温度、斤磅、尺寸、加仑", "Temperature, weight, length, volume") },
+    sizes: { g: "码", t: L("中美尺码换算", "US–China sizes"), d: L("衣服、鞋子", "Clothes and shoes") },
+    tip: { g: "费", t: L("小费计算", "Tip calculator"), d: L("一键算小费，多人平分", "Tip and split the bill") }
+  };
+  const tl = (o, lang) => o[lang] || o.zh;
+
+  /* ---------- hub ---------- */
+  function hub(lang, cat) {
+    const cats = CATS.filter(c => !cat || c.id === cat);
+    return `<div class="tl-hub">${cats.map(c => `<section class="tl-cat"><h2>${esc(tl(c, lang))}</h2><div class="tl-grid">${c.tools.map(id => {
+      const x = TOOLS[id]; return `<a class="tl-card" href="#t-${id}"><span class="tl-ic" aria-hidden="true">${esc(x.g)}</span><b>${esc(tl(x.t, lang))}</b><span>${esc(tl(x.d, lang))}</span></a>`;
+    }).join("")}</div></section>`).join("")}</div>`;
+  }
+
+  /* ---------- field helpers ---------- */
+  const field = (id, label, val, pre, suf, step) => `<label class="tl-f"><span>${label}</span><span class="tl-in">${pre ? `<i>${pre}</i>` : ""}<input id="${id}" type="number" inputmode="decimal" value="${val}" step="${step || "any"}" min="0">${suf ? `<i>${suf}</i>` : ""}</span></label>`;
+  const out = rows => `<div class="tl-out">${rows.map(([k, v, big]) => `<div class="${big ? "big" : ""}"><span>${k}</span><b>${v}</b></div>`).join("")}</div>`;
+
+  /* ---------- calculators ---------- */
+  const CALC = {
+    mortgage: {
+      form: z => `<div class="tl-form">${field("m_price", z ? "房价" : "Home price", 650000, "$")}${field("m_down", z ? "首付比例" : "Down payment", 20, "", "%")}${field("m_rate", z ? "年利率" : "Interest rate", 6.5, "", "%", "0.01")}${field("m_years", z ? "贷款年数" : "Loan term", 30, "", z ? "年" : "yrs")}${field("m_tax", z ? "房产税（每年）" : "Property tax / yr", 6500, "$")}${field("m_ins", z ? "房屋保险（每年）" : "Insurance / yr", 1500, "$")}${field("m_hoa", z ? "物业费 HOA / 公寓管理费（每月）" : "HOA / common charges / mo", 0, "$")}</div>`,
+      calc(el, z) {
+        const price = num(el, "#m_price"), downPct = num(el, "#m_down"), rate = num(el, "#m_rate"), yrs = num(el, "#m_years");
+        const down = price * downPct / 100, loan = Math.max(0, price - down), pi = pmt(loan, rate, yrs * 12);
+        const pmi = downPct < 20 && loan > 0 ? loan * 0.005 / 12 : 0; // rough private mortgage insurance estimate
+        const tax = num(el, "#m_tax") / 12, ins = num(el, "#m_ins") / 12, hoa = num(el, "#m_hoa"), total = pi + tax + ins + hoa + pmi;
+        return out([[z ? "每月总支出（估算）" : "Total monthly (est.)", money(total), 1], [z ? "本金+利息" : "Principal & interest", money(pi)], [z ? "房产税" : "Property tax", money(tax)], [z ? "保险" : "Insurance", money(ins)], [z ? "物业费" : "HOA", money(hoa)]]
+          .concat(pmi ? [[z ? "贷款保险 PMI（首付不足 20%，估算）" : "PMI (under 20% down, est.)", money(pmi)]] : [])
+          .concat([[z ? "首付" : "Down payment", money(down)], [z ? "贷款金额" : "Loan amount", money(loan)], [z ? "总利息" : "Total interest", money(pi * yrs * 12 - loan)]]));
+      },
+      note: L("房产税因地区差别很大，纽约市独立屋一般按房价约 0.8%–1.2% 估算，以税单为准；公寓（Co-op/Condo）的管理费可能包含部分房产税。贷款保险 PMI 按贷款额每年约 0.5% 粗估。结果仅供参考，实际以银行报价为准。", "Property tax varies by location; check the actual tax bill. PMI is a rough 0.5%/yr estimate. For reference only; lenders' quotes govern.")
+    },
+    carloan: {
+      form: z => `<div class="tl-form">${field("c_price", z ? "车价" : "Car price", 32000, "$")}${field("c_down", z ? "首付" : "Down payment", 4000, "$")}${field("c_trade", z ? "旧车抵价" : "Trade-in", 0, "$")}${field("c_tax", z ? "销售税" : "Sales tax", 8.875, "", "%", "0.001")}${field("c_fees", z ? "上牌和其他费用" : "Fees", 600, "$")}${field("c_rate", z ? "年利率 APR" : "APR", 7, "", "%", "0.01")}${field("c_months", z ? "贷款月数" : "Term", 60, "", z ? "个月" : "months")}</div>`,
+      calc(el, z) {
+        const price = num(el, "#c_price"), trade = num(el, "#c_trade"), tax = Math.max(0, price - trade) * num(el, "#c_tax") / 100;
+        const loan = Math.max(0, price - trade + tax + num(el, "#c_fees") - num(el, "#c_down")), m = num(el, "#c_months"), pay = pmt(loan, num(el, "#c_rate"), m);
+        return out([[z ? "每月还款" : "Monthly payment", money2(pay), 1], [z ? "销售税" : "Sales tax", money(tax)], [z ? "贷款金额" : "Amount financed", money(loan)], [z ? "总利息" : "Total interest", money(pay * m - loan)], [z ? "总共要还" : "Total of payments", money(pay * m)]]);
+      },
+      note: L("纽约市销售税为 8.875%（纽约州其他地区不同）。在纽约州，用旧车抵价时一般只按差价交销售税。结果仅供参考，以车行和贷款机构的合同为准。", "NYC sales tax is 8.875%. In New York, a trade-in usually reduces the taxable price. For reference only.")
+    },
+    rent40: {
+      form: z => `<div class="tl-form">${field("r_rent", z ? "月租" : "Monthly rent", 2400, "$")}${field("r_income", z ? "或者：你的年收入（税前）" : "Or: your annual income (pre-tax)", 85000, "$")}</div>`,
+      calc(el, z) {
+        const rent = num(el, "#r_rent"), inc = num(el, "#r_income");
+        return out([[z ? "租这个房子需要的年收入（40 倍）" : "Income needed (40x rent)", money(rent * 40), 1], [z ? "担保人需要的年收入（常见 80 倍）" : "Guarantor income (often 80x)", money(rent * 80)],
+          [z ? "按你的收入，最多租得起（每月）" : "With your income, max rent", money(inc / 40), 1], [z ? "也就是收入的" : "Share of income", inc ? Math.round(rent * 12 / inc * 100) + "%" : "—"]]);
+      },
+      note: L("纽约很多房东和中介要求租客年收入至少是月租的 40 倍，担保人至少 80 倍。这是行业习惯，不是法律，各家要求不同。收入不够时可以找担保人、多付押金（纽约法律规定押金最多一个月租金）或找室友合租。", "Many NYC landlords want annual income of 40x the rent, guarantors 80x. This is common practice, not law.")
+    },
+    homeafford: {
+      form: z => `<div class="tl-form">${field("h_income", z ? "家庭年收入（税前）" : "Household income (pre-tax)", 120000, "$")}${field("h_debt", z ? "每月其他还款（车贷、卡债、学贷）" : "Other monthly debts", 400, "$")}${field("h_down", z ? "首付存款" : "Savings for down payment", 100000, "$")}${field("h_rate", z ? "年利率" : "Interest rate", 6.5, "", "%", "0.01")}${field("h_years", z ? "贷款年数" : "Loan term", 30, "", z ? "年" : "yrs")}${field("h_cost", z ? "房产税+保险（房价的每年百分比）" : "Tax + insurance (% of price / yr)", 1.3, "", "%", "0.1")}</div>`,
+      calc(el, z) {
+        const mInc = num(el, "#h_income") / 12, debt = num(el, "#h_debt"), down = num(el, "#h_down"), r = num(el, "#h_rate") / 100 / 12, n = num(el, "#h_years") * 12, costPct = num(el, "#h_cost") / 100 / 12;
+        const budget = Math.max(0, Math.min(mInc * 0.28, mInc * 0.36 - debt)); // classic 28/36 rule
+        const factor = r ? r / (1 - Math.pow(1 + r, -n)) : 1 / n; // monthly P&I per $1 borrowed
+        // price P: (P - down) * factor + P * costPct = budget
+        const price = Math.max(down, (budget + down * factor) / (factor + costPct));
+        const loan = Math.max(0, price - down);
+        return out([[z ? "大约买得起的房价" : "Home price you can afford (est.)", money(price), 1], [z ? "每月住房支出上限" : "Monthly housing budget", money(budget)], [z ? "贷款金额" : "Loan amount", money(loan)], [z ? "首付占比" : "Down payment share", price ? Math.round(down / price * 100) + "%" : "—"]]);
+      },
+      note: L("用银行常见的 28/36 原则估算：每月住房支出（月供+房产税+保险）不超过税前月收入的 28%，加上其他负债不超过 36%。实际能批多少要看信用分数、工作年限和银行政策，请找贷款经纪人预批（pre-approval）。", "Uses the 28/36 rule. Actual approval depends on credit, job history and the lender; get a pre-approval.")
+    },
+    natdate: {
+      form: z => `<div class="tl-form"><label class="tl-f"><span>${z ? "绿卡上的“Resident Since”日期" : "Green card \"Resident Since\" date"}</span><span class="tl-in"><input id="n_date" type="date" value="2022-03-15"></span></label><label class="tl-chk"><input id="n_married" type="checkbox"> <span>${z ? "跟美国公民结婚并同住，且对方当了 3 年以上公民" : "Married to and living with a U.S. citizen (citizen for 3+ years)"}</span></label></div>`,
+      calc(el, z) {
+        const v = (el.querySelector("#n_date") || {}).value; if (!v) return "";
+        const yrs = el.querySelector("#n_married").checked ? 3 : 5;
+        const d = new Date(v + "T12:00:00"); const full = new Date(d); full.setFullYear(d.getFullYear() + yrs);
+        const early = new Date(full); early.setDate(early.getDate() - 90);
+        const f = x => x.toLocaleDateString(z ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric" });
+        const now = new Date(), days = Math.ceil((early - now) / 864e5);
+        return out([[z ? "最早可以递交 N-400 的日期" : "Earliest N-400 filing date", f(early), 1], [z ? `满 ${yrs} 年的日期` : `${yrs}-year date`, f(full)], [z ? "距离今天" : "From today", days > 0 ? (z ? `还有 ${days} 天` : `${days} days`) : (z ? "现在就可以递交" : "You can file now")]]);
+      },
+      note: L("一般绿卡满 5 年可申请入籍；跟美国公民结婚并同住满 3 年的可以 3 年申请。可以在满期前 90 天递交。另外要满足：在美国实际居住满一半时间、在本州或本区住满 3 个月、品行良好等。长期出境（超过 6 个月）可能打断连续居住。具体请咨询移民律师或免费法律援助。", "Usually 5 years (3 if married to a citizen); you may file 90 days early. Other requirements apply (physical presence, residence, good moral character).")
+    },
+    tip: {
+      form: z => `<div class="tl-form">${field("t_bill", z ? "账单金额（税前）" : "Bill (before tax)", 80, "$")}${field("t_pct", z ? "小费比例" : "Tip", 18, "", "%")}${field("t_people", z ? "几个人分" : "Split between", 2, "", z ? "人" : "")}${field("t_tax", z ? "销售税" : "Sales tax", 8.875, "", "%", "0.001")}</div><div class="tl-pills">${[15, 18, 20, 22].map(p => `<button type="button" class="tl-pill" data-tip="${p}">${p}%</button>`).join("")}</div>`,
+      calc(el, z) {
+        const bill = num(el, "#t_bill"), tip = bill * num(el, "#t_pct") / 100, tax = bill * num(el, "#t_tax") / 100, ppl = Math.max(1, num(el, "#t_people")), total = bill + tip + tax;
+        return out([[z ? "每人要付" : "Each person pays", money2(total / ppl), 1], [z ? "小费" : "Tip", money2(tip)], [z ? "税" : "Tax", money2(tax)], [z ? "总共" : "Total", money2(total)]]);
+      },
+      note: L("在美国餐馆，小费一般按税前金额的 15%–20% 给，服务好可以多给。外卖自取一般不强制给小费。有些餐馆账单已经自动加了服务费（service charge / gratuity），看清楚再给。", "Restaurant tips are usually 15–20% of the pre-tax bill. Check if a service charge is already included.")
+    }
+  };
+
+  /* ---------- unit and size converters ---------- */
+  const UNITS = [
+    { k: "temp", zh: "温度", en: "Temperature", a: ["°F", "°F"], b: ["°C", "°C"], ab: v => (v - 32) * 5 / 9, ba: v => v * 9 / 5 + 32, v: 75 },
+    { k: "lb", zh: "重量：磅 ↔ 公斤", en: "Pounds ↔ kg", a: ["磅 lb", "lb"], b: ["公斤 kg", "kg"], ab: v => v * 0.45359237, ba: v => v / 0.45359237, v: 150 },
+    { k: "jin", zh: "重量：磅 ↔ 斤", en: "Pounds ↔ jin", a: ["磅 lb", "lb"], b: ["斤", "jin"], ab: v => v * 0.45359237 * 2, ba: v => v / 2 / 0.45359237, v: 1 },
+    { k: "oz", zh: "重量：盎司 ↔ 克", en: "Ounces ↔ grams", a: ["盎司 oz", "oz"], b: ["克 g", "g"], ab: v => v * 28.349523, ba: v => v / 28.349523, v: 16 },
+    { k: "ft", zh: "长度：英尺 ↔ 米", en: "Feet ↔ meters", a: ["英尺 ft", "ft"], b: ["米 m", "m"], ab: v => v * 0.3048, ba: v => v / 0.3048, v: 10 },
+    { k: "in", zh: "长度：英寸 ↔ 厘米", en: "Inches ↔ cm", a: ["英寸 in", "in"], b: ["厘米 cm", "cm"], ab: v => v * 2.54, ba: v => v / 2.54, v: 12 },
+    { k: "mi", zh: "距离：英里 ↔ 公里", en: "Miles ↔ km", a: ["英里 mi", "mi"], b: ["公里 km", "km"], ab: v => v * 1.609344, ba: v => v / 1.609344, v: 5 },
+    { k: "sqft", zh: "面积：平方英尺 ↔ 平方米", en: "Sq ft ↔ m²", a: ["平方英尺", "sq ft"], b: ["平方米", "m²"], ab: v => v * 0.09290304, ba: v => v / 0.09290304, v: 800 },
+    { k: "gal", zh: "容量：加仑 ↔ 升", en: "Gallons ↔ liters", a: ["加仑 gal", "gal"], b: ["升 L", "L"], ab: v => v * 3.785411784, ba: v => v / 3.785411784, v: 10 },
+    { k: "mpg", zh: "油耗：英里/加仑 ↔ 升/百公里", en: "MPG ↔ L/100km", a: ["MPG", "MPG"], b: ["升/百公里", "L/100km"], ab: v => v ? 235.214583 / v : 0, ba: v => v ? 235.214583 / v : 0, v: 30 }
+  ];
+  const fmt = v => isFinite(v) ? (Math.abs(v) >= 100 ? v.toFixed(1) : v.toFixed(2)).replace(/\.?0+$/, "") : "";
+  function unitsHtml(lang) {
+    const z = lang === "zh";
+    return `<div class="tl-units">${UNITS.map(u => `<div class="tl-unit" data-u="${u.k}"><h3>${esc(z ? u.zh : u.en)}</h3><div class="tl-pair"><label class="tl-in"><input type="number" inputmode="decimal" data-side="a" value="${u.v}"><i>${esc(z ? u.a[0] : u.a[1])}</i></label><span aria-hidden="true">=</span><label class="tl-in"><input type="number" inputmode="decimal" data-side="b" value="${fmt(u.ab(u.v))}"><i>${esc(z ? u.b[0] : u.b[1])}</i></label></div></div>`).join("")}</div>`;
+  }
+  const SIZES = {
+    women: { zh: "女装（上衣/连衣裙）", en: "Women's clothing", head: ["US", "中国 China", "国际 Intl"], rows: [["2", "155/80A", "XS"], ["4", "160/84A", "S"], ["6", "165/88A", "M"], ["8", "170/92A", "L"], ["10", "175/96A", "XL"], ["12", "180/100A", "XXL"]] },
+    men: { zh: "男装（上衣）", en: "Men's tops", head: ["US", "中国 China", "胸围 Chest (in)"], rows: [["S", "165/88A", "34–36"], ["M", "170/92A", "38–40"], ["L", "175/96A", "42–44"], ["XL", "180/100A", "46–48"], ["XXL", "185/104A", "50–52"]] },
+    wshoe: { zh: "女鞋", en: "Women's shoes", head: ["US", "中国 China", "脚长 cm"], rows: [["5", "35", "22.5"], ["6", "36", "23"], ["6.5", "37", "23.5"], ["7.5", "38", "24"], ["8.5", "39", "24.5"], ["9", "40", "25"], ["10", "41", "25.5"]] },
+    mshoe: { zh: "男鞋", en: "Men's shoes", head: ["US", "中国 China", "脚长 cm"], rows: [["7", "40", "25"], ["8", "41", "25.5"], ["8.5", "42", "26"], ["9.5", "43", "26.5"], ["10.5", "44", "27"], ["11", "45", "27.5"], ["12", "46", "28.5"]] },
+    kids: { zh: "童装（按身高）", en: "Kids' clothing", head: ["US", "中国身高 cm", "年龄 Age"], rows: [["2T", "90", "2"], ["3T", "100", "3"], ["4T", "110", "4"], ["5", "110–115", "5"], ["6", "120", "6"], ["7", "125", "7"], ["8", "130", "8"], ["10", "140", "9–10"], ["12", "150", "11–12"]] }
+  };
+  function sizesHtml(lang) {
+    const z = lang === "zh";
+    return Object.values(SIZES).map(s => `<section class="tl-size"><h3>${esc(z ? s.zh : s.en)}</h3><div class="tl-tbl"><table><thead><tr>${s.head.map(h => `<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${s.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>`).join("");
+  }
+
+  /* ---------- English phrase cards ---------- */
+  const PHRASES = [
+    ["看病", "At the doctor", [["我需要看医生。", "I need to see a doctor."], ["我不会说英语，请给我中文翻译。", "I don't speak English. I need a Chinese interpreter, please."], ["我这里疼。", "It hurts here."], ["我发烧了，咳嗽。", "I have a fever and a cough."], ["我对青霉素过敏。", "I'm allergic to penicillin."], ["我有高血压 / 糖尿病。", "I have high blood pressure / diabetes."], ["这个药一天吃几次？", "How many times a day should I take this medicine?"], ["我有保险 / 我没有保险。", "I have insurance. / I don't have insurance."]]],
+    ["紧急求助", "Emergency", [["请帮我叫救护车！", "Please call an ambulance!"], ["救命！", "Help!"], ["我需要报警。", "I need to call the police."], ["有人受伤了。", "Someone is hurt."], ["我的东西被偷了。", "My things were stolen."], ["我迷路了，这是哪里？", "I'm lost. Where am I?"], ["我需要中文翻译。", "I need a Chinese interpreter."]]],
+    ["租房", "Renting", [["这个房子还在出租吗？", "Is this apartment still available?"], ["每个月房租多少钱？包水电吗？", "How much is the rent? Are utilities included?"], ["押金是多少？", "How much is the security deposit?"], ["我什么时候可以看房？", "When can I see the apartment?"], ["暖气坏了，请尽快修理。", "The heat is not working. Please fix it as soon as possible."], ["请给我一份租约的副本。", "Please give me a copy of the lease."]]],
+    ["找工作", "At work", [["你们在招人吗？", "Are you hiring?"], ["我可以做全职 / 兼职。", "I can work full-time / part-time."], ["每小时工资多少？", "What is the hourly pay?"], ["几点上班，几点下班？", "What are the working hours?"], ["加班有加班费吗？", "Do you pay overtime?"], ["我什么时候可以开始上班？", "When can I start?"]]],
+    ["购物和日常", "Everyday", [["多少钱？", "How much is it?"], ["可以刷卡吗？", "Can I pay by card?"], ["我可以退货吗？", "Can I return this?"], ["请说慢一点。", "Please speak slowly."], ["请再说一遍。", "Could you say that again, please?"], ["请帮我写下来。", "Could you write it down for me?"], ["洗手间在哪里？", "Where is the restroom?"]]],
+    ["交通", "Getting around", [["这辆车去法拉盛吗？", "Does this bus go to Flushing?"], ["地铁站在哪里？", "Where is the subway station?"], ["我要在这一站下车。", "I want to get off at this stop."], ["请带我去这个地址。", "Please take me to this address."], ["开到这里多少钱？", "How much to go here?"]]]
+  ];
+  function phrasesHtml(lang) {
+    const z = lang === "zh";
+    return `<p class="tl-note">${esc(z ? "点喇叭按钮，手机会用英语读出来，可以直接给对方听。" : "Tap the speaker to hear the English read aloud.")}</p>` + PHRASES.map(([zh, en, list]) => `<section class="tl-ph"><h3>${esc(z ? zh : en)}</h3>${list.map(([c, e]) => `<div class="tl-phr"><div><b>${esc(e)}</b><span>${esc(c)}</span></div><button type="button" class="tl-say" data-say="${esc(e)}" aria-label="Read aloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>`).join("")}</section>`).join("");
+  }
+
+  /* ---------- NY permit test practice (original questions based on New York traffic rules) ---------- */
+  const SIGN = {
+    stop: '<svg viewBox="0 0 100 100"><polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" fill="#c8302a" stroke="#fff" stroke-width="4"/><text x="50" y="60" font-size="26" font-weight="800" fill="#fff" text-anchor="middle" font-family="Arial">STOP</text></svg>',
+    yield: '<svg viewBox="0 0 100 100"><polygon points="4,8 96,8 50,92" fill="#fff" stroke="#c8302a" stroke-width="10"/><text x="50" y="40" font-size="15" font-weight="800" fill="#c8302a" text-anchor="middle" font-family="Arial">YIELD</text></svg>',
+    school: '<svg viewBox="0 0 100 100"><polygon points="50,4 94,40 94,96 6,96 6,40" fill="#cddc39" stroke="#222" stroke-width="3"/><circle cx="40" cy="48" r="6" fill="#222"/><rect x="34" y="56" width="12" height="22" fill="#222"/><circle cx="62" cy="52" r="5" fill="#222"/><rect x="57" y="59" width="10" height="19" fill="#222"/></svg>',
+    rr: '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ffd200" stroke="#222" stroke-width="3"/><path d="M20 20 L80 80 M80 20 L20 80" stroke="#222" stroke-width="7"/><text x="22" y="58" font-size="16" font-weight="800" fill="#222" font-family="Arial">R</text><text x="68" y="58" font-size="16" font-weight="800" fill="#222" font-family="Arial">R</text></svg>',
+    warn: '<svg viewBox="0 0 100 100"><polygon points="50,4 96,50 50,96 4,50" fill="#ffd200" stroke="#222" stroke-width="3"/><path d="M40 70 V45 L60 30 M60 30 L52 31 M60 30 L59 38" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/></svg>',
+    work: '<svg viewBox="0 0 100 100"><polygon points="50,4 96,50 50,96 4,50" fill="#f57c00" stroke="#222" stroke-width="3"/><circle cx="50" cy="34" r="6" fill="#222"/><path d="M50 42 L46 62 L38 74 M46 62 L56 74 M48 48 L62 56" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/></svg>',
+    noentry: '<svg viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" fill="#fff" stroke="#222" stroke-width="2"/><circle cx="50" cy="50" r="40" fill="#c8302a"/><rect x="18" y="42" width="64" height="16" fill="#fff"/></svg>',
+    noturn: '<svg viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" fill="#fff" stroke="#222" stroke-width="2"/><path d="M40 82 V45 Q40 30 55 30 H66" stroke="#222" stroke-width="8" fill="none"/><path d="M62 18 L76 30 L62 42 Z" fill="#222"/><circle cx="50" cy="50" r="38" fill="none" stroke="#c8302a" stroke-width="8"/><path d="M23 77 L77 23" stroke="#c8302a" stroke-width="8"/></svg>'
+  };
+  // [题目, Question, [[选项, option]...], 正确答案序号, 解释, sign]
+  const PERMIT = [
+    ["这个标志是什么意思？", "What does this sign mean?", [["完全停车", "Come to a full stop"], ["减速慢行", "Slow down"], ["让行", "Yield"], ["禁止进入", "Do not enter"]], 0, "八角形红色标志是“停车”标志，必须在停车线前完全停下，确认安全再走。", "stop"],
+    ["这个倒三角形标志表示：", "This upside-down triangle means:", [["必须停车", "Stop"], ["减速，必要时停车，让其他车辆和行人先行", "Slow down and yield; stop if needed"], ["前方学校", "School ahead"], ["单行道", "One way"]], 1, "倒三角形是“让行”标志。", "yield"],
+    ["五边形的标志代表：", "A five-sided (pentagon) sign means:", [["前方施工", "Work zone"], ["学校区域或学童过马路", "School zone or school crossing"], ["铁路道口", "Railroad crossing"], ["医院", "Hospital"]], 1, "五边形标志专门用于学校区域和学童过街。", "school"],
+    ["圆形黄色、画着 X 和 RR 的标志表示：", "A round yellow sign with an X and RR means:", [["前方有铁路道口", "Railroad crossing ahead"], ["禁止右转", "No right turn"], ["休息区", "Rest area"], ["道路封闭", "Road closed"]], 0, "圆形标志是铁路道口预告标志，要减速、注意看听有没有火车。", "rr"],
+    ["菱形黄色标志一般表示：", "A yellow diamond-shaped sign usually is a:", [["警告标志，提醒前方路况", "Warning about road conditions ahead"], ["限速标志", "Speed limit"], ["方向指示", "Direction guide"], ["停车位", "Parking"]], 0, "黄色菱形是警告标志，例如弯道、交叉口、路滑。", "warn"],
+    ["橙色菱形标志表示：", "An orange diamond sign means:", [["施工区，要减速注意工人", "Work zone ahead"], ["学校", "School"], ["休闲景点", "Recreation area"], ["医院", "Hospital"]], 0, "橙色是施工区专用颜色，施工区超速罚款加倍。", "work"],
+    ["这个标志表示：", "This sign means:", [["禁止进入（不能从这边开进去）", "Do not enter"], ["停车场", "Parking"], ["前方道路变窄", "Road narrows"], ["让行", "Yield"]], 0, "红圆中间一条白杠是“禁止进入”，通常是单行道逆向入口。", "noentry"],
+    ["这个标志表示：", "This sign means:", [["禁止右转", "No right turn"], ["只准右转", "Right turn only"], ["前方右弯", "Curve right"], ["可以掉头", "U-turn allowed"]], 0, "红圈加斜杠表示禁止，画的是右转箭头。", "noturn"],
+    ["除非有标志另行规定，纽约市内的一般限速是：", "Unless posted otherwise, the speed limit in New York City is:", [["每小时 25 英里", "25 mph"], ["每小时 30 英里", "30 mph"], ["每小时 35 英里", "35 mph"], ["每小时 40 英里", "40 mph"]], 0, "纽约市默认限速是 25 英里/小时。"],
+    ["在纽约州，21 岁以上司机血液酒精浓度达到多少即构成醉驾（DWI）？", "For drivers 21 and over, DWI is a blood alcohol content of:", [["0.08% 或以上", "0.08% or more"], ["0.05%", "0.05%"], ["0.10%", "0.10%"], ["0.15%", "0.15%"]], 0, "0.08% 或以上是醉驾；0.05% 以上也可能被控酒后驾驶能力受损（DWAI）。"],
+    ["21 岁以下的司机，血液酒精浓度多少就会受到“零容忍”法处罚？", "Drivers under 21 face the Zero Tolerance law at a BAC of:", [["0.02% 至 0.07%", "0.02% to 0.07%"], ["只有 0.08% 以上", "Only 0.08% or more"], ["0.10%", "0.10%"], ["不适用", "It does not apply"]], 0, "未满 21 岁，0.02%–0.07% 就会被吊销驾照。"],
+    ["校车停下并闪红灯时，你应该：", "When a school bus stops with red lights flashing, you must:", [["无论哪个方向都要停车，直到红灯熄灭", "Stop, from either direction, until the lights stop flashing"], ["只有在校车后面才需要停", "Stop only if behind the bus"], ["减速慢慢通过", "Pass slowly"], ["按喇叭后通过", "Honk and pass"]], 0, "在纽约，不论对向还是同向、多车道还是有中间分隔的公路，都要停下。"],
+    ["在纽约市，红灯时可以右转吗？", "In New York City, can you turn right on red?", [["不可以，除非有标志允许", "No, unless a sign permits it"], ["可以，停车确认安全后就行", "Yes, after a full stop"], ["只有晚上可以", "Only at night"], ["只有出租车可以", "Only taxis"]], 0, "纽约州其他地方停稳后可以红灯右转（有禁止标志除外），但纽约市内默认禁止。"],
+    ["红灯闪烁时，你应该：", "At a flashing red light, you must:", [["当作停车标志：完全停下，确认安全再走", "Treat it as a stop sign"], ["减速通过", "Slow down and go"], ["直接通过", "Go through"], ["等它变绿", "Wait for green"]], 0, "闪红灯等于停车标志；闪黄灯是减速小心通过。"],
+    ["黄灯闪烁表示：", "A flashing yellow light means:", [["减速，小心通过", "Slow down and proceed with caution"], ["必须停车", "Stop"], ["加速通过", "Speed up"], ["禁止通行", "Do not go"]], 0, "闪黄灯提醒小心，不必停车。"],
+    ["转弯或变道前，至少要提前多远打方向灯？", "How far ahead must you signal before turning?", [["100 英尺", "100 feet"], ["20 英尺", "20 feet"], ["50 英尺", "50 feet"], ["不需要", "No need"]], 0, "纽约规定至少提前 100 英尺打灯。"],
+    ["四向停车路口，两辆车同时到达，应该：", "At a four-way stop, two cars arrive at the same time. Who goes first?", [["左边的车让右边的车先走", "The driver on the left yields to the driver on the right"], ["大车先走", "The larger vehicle"], ["右边的车让左边先走", "The driver on the right yields"], ["谁快谁走", "Whoever is faster"]], 0, "同时到达时让右边的车先走；先到先走。"],
+    ["左转时遇到对面直行车，应该：", "When turning left, you must yield to:", [["让对面直行和右转的车先走", "Oncoming traffic going straight or turning right"], ["你有优先权", "No one; you have the right of way"], ["按喇叭让对方停", "Honk so they stop"], ["加速抢先转", "Speed up and turn first"]], 0, "左转车要让对面来车和行人。"],
+    ["听到救护车、消防车警笛靠近，你应该：", "When an ambulance or fire truck with a siren approaches, you should:", [["靠右边停车，等它通过", "Pull over to the right and stop"], ["加速让开", "Speed up"], ["原地停在路中间", "Stop in your lane"], ["跟在后面开", "Follow it"]], 0, "靠右停车让行，但不要停在路口中间。"],
+    ["路边停着闪灯的警车、救护车或拖车时（“让道法 Move Over Law”），你应该：", "Under the Move Over Law, when you see a stopped emergency vehicle with lights flashing, you should:", [["减速，安全的话换到远离它的车道", "Slow down and, if safe, move over a lane"], ["保持原速", "Keep your speed"], ["停在它后面", "Stop behind it"], ["按喇叭", "Honk"]], 0, "纽约让道法要求减速并在安全时换道远离。"],
+    ["在纽约州开车时用手拿手机通话或打字：", "Using a hand-held phone while driving in New York is:", [["违法", "Illegal"], ["红灯时可以", "Allowed at red lights"], ["速度慢时可以", "Allowed at low speed"], ["只有打字违法", "Only texting is illegal"]], 0, "开车时手持电话通话、发短信、看手机都违法，等红灯也不行。"],
+    ["关于安全带，纽约州的规定是：", "New York's seat belt law requires:", [["司机和所有乘客都要系，包括后座", "Driver and all passengers, including the back seat"], ["只有司机", "Only the driver"], ["只有前座", "Only front seats"], ["只有小孩", "Only children"]], 0, "纽约要求车内所有人系安全带；年幼儿童要用合适的儿童安全座椅。"],
+    ["什么时候必须开大灯？", "When must you turn on your headlights?", [["日落到日出、能见度低于 1000 英尺、下雨开雨刷时", "Sunset to sunrise, visibility under 1,000 feet, and when wipers are on for weather"], ["只有晚上 10 点以后", "Only after 10 p.m."], ["只在高速公路上", "Only on highways"], ["想开就开", "Whenever you like"]], 0, "因天气开雨刷时也必须开大灯。"],
+    ["对面有车开来，距离多少以内要把远光灯换成近光灯？", "Dim your high beams when an oncoming vehicle is within:", [["500 英尺", "500 feet"], ["100 英尺", "100 feet"], ["50 英尺", "50 feet"], ["不用换", "Never"]], 0, "对向来车 500 英尺内、跟车 200 英尺内要用近光灯。"],
+    ["停车时，离消防栓至少要多远？", "You may not park within how many feet of a fire hydrant?", [["15 英尺", "15 feet"], ["5 英尺", "5 feet"], ["10 英尺", "10 feet"], ["30 英尺", "30 feet"]], 0, "消防栓 15 英尺内禁止停车。"],
+    ["停车时，离路口的人行横道至少要多远？", "You may not park within how many feet of a crosswalk at an intersection?", [["20 英尺", "20 feet"], ["5 英尺", "5 feet"], ["10 英尺", "10 feet"], ["50 英尺", "50 feet"]], 0, "路口人行横道 20 英尺内禁止停车。"],
+    ["跟车距离，一般建议至少保持：", "A safe following distance is at least:", [["前车后面 2 秒以上的距离，路况差时更多", "2 seconds or more behind the car ahead"], ["1 辆车长", "One car length"], ["越近越好", "As close as possible"], ["半秒", "Half a second"]], 0, "用“2 秒规则”，下雨下雪时要拉得更长。"],
+    ["下雨路面积水，车开始打滑（水漂）时，你应该：", "If your car starts to hydroplane, you should:", [["松开油门，不要猛踩刹车，稳住方向", "Ease off the gas, don't brake hard, steer straight"], ["猛踩刹车", "Brake hard"], ["加速", "Speed up"], ["猛打方向盘", "Turn sharply"]], 0, "轻放油门让车速降下来，避免猛刹。"],
+    ["车子后轮打滑时，你应该把方向盘：", "If your rear wheels skid, steer:", [["往你希望车头去的方向打", "In the direction you want the front of the car to go"], ["往反方向猛打", "Hard the other way"], ["不动方向盘", "Don't steer"], ["猛踩刹车", "Brake hard"]], 0, "朝想去的方向轻柔修正，不要过度。"],
+    ["高速公路上一般应该开在：", "On a multi-lane highway, you should usually drive in:", [["右边车道，超车时才用左边车道", "The right lane, using the left lane to pass"], ["最左边车道", "The far left lane"], ["路肩", "The shoulder"], ["随便", "Any lane"]], 0, "靠右行驶，左道用来超车。"],
+    ["路中间的黄色实线在你这一侧，表示：", "A solid yellow line on your side of the center means:", [["禁止超车", "No passing"], ["可以超车", "You may pass"], ["停车线", "Stop here"], ["自行车道", "Bike lane"]], 0, "你这一侧是实线就不能越线超车。"],
+    ["学车证（learner permit）上路练车时，副驾驶必须是：", "With a learner permit, you must be supervised by:", [["21 岁以上、持有效驾照的人", "A licensed driver age 21 or older"], ["任何成年人", "Any adult"], ["18 岁以上朋友", "Any friend 18+"], ["不需要人陪", "No one"]], 0, "陪练者须 21 岁以上并持有该车型的有效驾照。"],
+    ["行人在人行横道上过马路时，你应该：", "When a pedestrian is in a crosswalk, you must:", [["停车让行人先走", "Yield and let them cross"], ["按喇叭催他快走", "Honk"], ["从他身后绕过去", "Drive around"], ["加速通过", "Speed up"]], 0, "人行横道上的行人有优先权。"],
+    ["从私人车道或停车场开上马路时，你应该：", "When entering a road from a driveway or parking lot, you must:", [["让路上所有车辆和行人先走", "Yield to all traffic and pedestrians"], ["直接开出去", "Pull out right away"], ["按喇叭", "Honk"], ["打双闪", "Use hazard lights"]], 0, "从非公路处进入马路要让所有人先行。"],
+    ["警察要求你做酒精测试，你拒绝，后果是：", "If you refuse a chemical (alcohol) test, your license:", [["会被吊销，并有罚款", "Will be revoked, with a civil penalty"], ["没有影响", "Is not affected"], ["只会被警告", "Gets a warning"], ["只有罚款", "Only a fine"]], 0, "纽约有“默示同意法”，拒绝测试会被吊销驾照。"],
+    ["发生车祸，有人受伤或财产损失超过 1000 美元，要在几天内向 DMV 报告？", "After a crash with injury or over $1,000 damage, report it to DMV within:", [["10 天", "10 days"], ["30 天", "30 days"], ["24 小时", "24 hours"], ["不用报", "No need"]], 0, "要在 10 天内交 MV-104 车祸报告。"]
+  ];
+
+  /* ---------- quiz engine ---------- */
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const Q = { kind: "", list: [], i: 0, right: 0, done: false, picked: -1, mode: "" };
+  function civicsItems(onlyStar) {
+    const all = window.HL_CIVICS || [];
+    const pool = onlyStar ? all.filter(x => x[4]) : all;
+    return pool.map(x => {
+      const idx = all.indexOf(x);
+      const others = shuffle(all.filter((y, k) => k !== idx && y[1] !== x[1])).slice(0, 3);
+      const opts = shuffle([x, ...others]);
+      return { q: x[2], qe: x[0], opts: opts.map(o => [o[3], o[1]]), ok: opts.indexOf(x), why: "", num: idx + 1 };
+    });
+  }
+  function permitItems() { return PERMIT.map(p => { const order = shuffle(p[2].map((o, k) => k)); return { q: p[0], qe: p[1], opts: order.map(k => p[2][k]), ok: order.indexOf(p[3]), why: p[4], sign: p[5] }; }); }
+  function startQuiz(kind, mode) {
+    Q.kind = kind; Q.mode = mode; Q.i = 0; Q.right = 0; Q.done = false; Q.picked = -1;
+    if (kind === "civics") Q.list = mode === "all" ? civicsItems(false) : mode === "6520" ? shuffle(civicsItems(true)).slice(0, 10) : shuffle(civicsItems(false)).slice(0, 20);
+    else Q.list = shuffle(permitItems()).slice(0, 20);
+  }
+  function quizHtml(lang) {
+    const z = lang === "zh";
+    if (!Q.list.length) return "";
+    const pass = Q.kind === "permit" ? 14 : (Q.mode === "6520" ? 6 : 12);
+    if (Q.done) {
+      const ok = Q.right >= pass;
+      return `<div class="tl-res ${ok ? "ok" : "no"}"><b>${Q.right} / ${Q.list.length}</b><p>${esc(ok ? (z ? "及格了！继续保持。" : "Passed! Keep it up.") : (z ? `还差一点，及格要答对 ${pass} 题，再练一次吧。` : `Not yet: you need ${pass} correct. Try again.`))}</p><button type="button" class="btn" data-qrestart>${esc(z ? "再练一次" : "Try again")}</button></div>`;
+    }
+    const it = Q.list[Q.i];
+    return `<div class="tl-quiz"><div class="tl-qtop"><span>${Q.i + 1} / ${Q.list.length}</span><span>${esc(z ? "答对" : "Correct")} ${Q.right}</span></div>
+      ${it.sign ? `<div class="tl-sign">${SIGN[it.sign]}</div>` : ""}
+      <h3>${esc(it.q)}</h3><p class="tl-qe">${esc(it.qe)}</p>
+      <div class="tl-opts">${it.opts.map((o, k) => { const st = Q.picked < 0 ? "" : k === it.ok ? " right" : k === Q.picked ? " wrong" : ""; return `<button type="button" class="tl-opt${st}" data-opt="${k}"${Q.picked >= 0 ? " disabled" : ""}><b>${esc(o[0])}</b><span>${esc(o[1])}</span></button>`; }).join("")}</div>
+      ${Q.picked >= 0 ? `<div class="tl-why ${Q.picked === it.ok ? "ok" : "no"}"><b>${esc(Q.picked === it.ok ? (z ? "答对了" : "Correct") : (z ? "答错了" : "Not quite"))}</b>${it.why ? `<p>${esc(it.why)}</p>` : ""}${it.num ? `<p class="tl-qe">${esc(z ? "官方题号" : "Official #")} ${it.num}</p>` : ""}<button type="button" class="btn" data-qnext>${esc(Q.i + 1 < Q.list.length ? (z ? "下一题" : "Next") : (z ? "看成绩" : "See score"))}</button></div>` : ""}</div>`;
+  }
+  function civicsStudy(lang) {
+    const z = lang === "zh", all = window.HL_CIVICS || [];
+    return `<details class="tl-study"><summary>${esc(z ? "查看全部 128 题和答案" : "All 128 questions and answers")}</summary><ol>${all.map(x => `<li${x[4] ? ' class="star"' : ""}><b>${esc(x[2])}</b><span>${esc(x[0])}</span><em>${esc(x[3])} · ${esc(x[1])}</em><button type="button" class="tl-say sm" data-say="${esc(x[0] + " " + x[1])}" aria-label="Read aloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></button></li>`).join("")}</ol></details>`;
+  }
+
+  /* ---------- visa bulletin ---------- */
+  let visa = null, visaTried = false;
+  function visaHtml(lang) {
+    const z = lang === "zh";
+    if (!visa) return `<p class="tl-note">${esc(visaTried ? (z ? "排期数据暂时没有拿到，请直接看美国国务院官网。" : "The bulletin isn't available right now; see the State Department site.") : (z ? "载入中…" : "Loading…"))}</p><p><a class="btn ghost" href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" target="_blank" rel="noopener">${esc(z ? "打开官网排期表" : "Open the official bulletin")}</a></p>`;
+    const NAMES = { F1: "F1 公民的未婚成年子女", F2A: "F2A 绿卡持有人的配偶和未成年子女", F2B: "F2B 绿卡持有人的未婚成年子女", F3: "F3 公民的已婚子女", F4: "F4 公民的兄弟姐妹",
+      "1st": "EB-1 杰出人才", "2nd": "EB-2 高学历/特殊能力", "3rd": "EB-3 专业/技术工人", "Other Workers": "EB-3 其他工人", "4th": "EB-4 特殊移民", "5th": "EB-5 投资移民（非预留）" };
+    const tbl = (rows, title) => rows && rows.length ? `<section class="tl-visa"><h3>${esc(title)}</h3><div class="tl-tbl"><table><thead><tr><th>${esc(z ? "类别" : "Category")}</th><th>${esc(z ? "排期（批准日）" : "Final action")}</th><th>${esc(z ? "递件日" : "Dates for filing")}</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(z ? (NAMES[r.c] || r.c) : r.c)}</td><td>${esc(r.fa || "—")}</td><td>${esc(r.df || "—")}</td></tr>`).join("")}</tbody></table></div></section>` : "";
+    return `<p class="tl-note">${esc(z ? `${visa.month} 排期表 · 中国大陆出生 · “C”表示无需排期（Current）。每月中旬官方公布下个月的排期，本页每天自动检查更新。` : `${visa.month} bulletin · China mainland-born · "C" means current.`)}</p>
+      ${tbl(visa.family, z ? "亲属移民" : "Family-sponsored")}${tbl(visa.employment, z ? "职业移民" : "Employment-based")}
+      <p class="tl-note">${esc(z ? "递件时用哪张表（批准日或递件日），以移民局每月公告为准。" : "USCIS says each month which chart to use for filing.")} <a href="${esc(visa.url)}" target="_blank" rel="noopener">${esc(z ? "官方原文" : "Official bulletin")}</a></p>`;
+  }
+
+  /* ---------- render a tool page ---------- */
+  function render(id, el, lang) {
+    const z = lang === "zh", x = TOOLS[id];
+    if (!x) { el.innerHTML = hub(lang); return; }
+    const head = `<div class="tl-head"><span class="tl-ic" aria-hidden="true">${esc(x.g)}</span><div><h1>${esc(tl(x.t, lang))}</h1><p>${esc(tl(x.d, lang))}</p></div></div>`;
+    let body = "";
+    if (CALC[id]) body = `<div class="tl-calc" data-calc="${id}">${CALC[id].form(z)}<div class="tl-result"></div><p class="tl-note">${esc(tl(CALC[id].note, lang))}</p></div>`;
+    else if (id === "units") body = unitsHtml(lang);
+    else if (id === "sizes") body = `<p class="tl-note">${esc(z ? "不同品牌尺码有差别，以商家尺码表为准。" : "Sizes vary by brand.")}</p>` + sizesHtml(lang);
+    else if (id === "phrases") body = phrasesHtml(lang);
+    else if (id === "visa") { body = `<div id="tlVisa">${visaHtml(lang)}</div>`; if (!visa && !visaTried) fetch("data/visa.json?v=" + Math.floor(Date.now() / 3600e3)).then(r => r.ok ? r.json() : null).then(v => { visaTried = true; visa = v && v.month ? v : null; const b = document.getElementById("tlVisa"); if (b) b.innerHTML = visaHtml(lang); }).catch(() => { visaTried = true; const b = document.getElementById("tlVisa"); if (b) b.innerHTML = visaHtml(lang); }); }
+    else if (id === "civics") body = `<p class="tl-note">${esc(z ? "2025 年 10 月 20 日或之后递交入籍申请（N-400）的人考新版：题库 128 题，面试时最多问 20 题，答对 12 题及格。65 岁以上且拿绿卡满 20 年的人，只从标星号的 20 题里考 10 题，答对 6 题及格。之前递交的人考旧版 100 题。每题官方有多个可接受答案，这里列出其中一个；现任官员的名字会变，考前请到移民局官网核对。" : "For N-400s filed on or after Oct 20, 2025: 128 questions, up to 20 asked, 12 correct to pass. 65/20 applicants: 10 of the 20 starred questions, 6 to pass.")}</p>
+      <div class="tl-pills"><button type="button" class="btn" data-qstart="civics:20">${esc(z ? "模拟考试（20 题）" : "Practice test (20)")}</button><button type="button" class="btn ghost" data-qstart="civics:6520">${esc(z ? "65/20 简化版（10 题）" : "65/20 version (10)")}</button><button type="button" class="btn ghost" data-qstart="civics:all">${esc(z ? "按顺序练全部 128 题" : "All 128 in order")}</button></div><div id="tlQuiz"></div>${civicsStudy(lang)}`;
+    else if (id === "permit") body = `<p class="tl-note">${esc(z ? "纽约州 DMV 笔试可以选中文。正式考试 20 题，要答对 14 题，其中 4 道交通标志题至少答对 2 道。下面是我们根据纽约驾驶手册内容编写的练习题，正式规定以纽约州 DMV 驾驶手册为准。" : "The NY written test is 20 questions; you need 14 correct, including at least 2 of the 4 road-sign questions. Practice questions written from the NY Driver's Manual.")}</p>
+      <div class="tl-pills"><button type="button" class="btn" data-qstart="permit:20">${esc(z ? "开始练习（随机 20 题）" : "Start (20 random)")}</button></div><div id="tlQuiz"></div>`;
+    el.innerHTML = head + body;
+    const calcEl = el.querySelector("[data-calc]");
+    if (calcEl) { const run = () => { calcEl.querySelector(".tl-result").innerHTML = CALC[id].calc(calcEl, z); }; calcEl.addEventListener("input", run); calcEl.addEventListener("change", run); run();
+      calcEl.addEventListener("click", e => { const b = e.target.closest("[data-tip]"); if (b) { calcEl.querySelector("#t_pct").value = b.dataset.tip; run(); } }); }
+    el.oninput = id !== "units" ? null : e => { const inp = e.target.closest("[data-side]"); if (!inp) return; const box = inp.closest("[data-u]"), u = UNITS.find(v => v.k === box.dataset.u), v = parseFloat(inp.value);
+      const other = box.querySelector(`[data-side="${inp.dataset.side === "a" ? "b" : "a"}"]`); other.value = isFinite(v) ? fmt(inp.dataset.side === "a" ? u.ab(v) : u.ba(v)) : ""; };
+    el.onclick = e => {
+      const s = e.target.closest("[data-say]"); if (s) { try { const u = new SpeechSynthesisUtterance(s.dataset.say); u.lang = "en-US"; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} return; }
+      const st = e.target.closest("[data-qstart]"); if (st) { const [k, m] = st.dataset.qstart.split(":"); startQuiz(k, m); paint(); el.querySelector("#tlQuiz").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+      const o = e.target.closest("[data-opt]"); if (o && Q.picked < 0) { Q.picked = Number(o.dataset.opt); if (Q.picked === Q.list[Q.i].ok) Q.right++; paint(); return; }
+      if (e.target.closest("[data-qnext]")) { Q.i++; Q.picked = -1; if (Q.i >= Q.list.length) Q.done = true; paint(); return; }
+      if (e.target.closest("[data-qrestart]")) { startQuiz(Q.kind, Q.mode); paint(); }
+    };
+    function paint() { const q = el.querySelector("#tlQuiz"); if (q) q.innerHTML = quizHtml(lang); }
+    if ((id === "civics" || id === "permit") && Q.kind === id && Q.list.length) paint(); else { Q.list = []; Q.kind = ""; }
+  }
+
+  window.HLTools = { CATS, TOOLS, hub, render, title: (id, lang) => TOOLS[id] ? tl(TOOLS[id].t, lang) : "" };
+})();

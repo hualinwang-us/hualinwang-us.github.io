@@ -640,9 +640,44 @@ async function buildListings() {
   await fs.writeFile("data/listings.json", JSON.stringify(out));
 }
 
+/* ---------- visa bulletin (U.S. State Department), China mainland-born column ---------- */
+export function parseBulletin(html) {
+  const cell = c => clean(c).replace(/\s+/g, " ").trim();
+  const tables = (html.match(/<table[\s\S]*?<\/table>/gi) || []).map(t => (t.match(/<tr[\s\S]*?<\/tr>/gi) || []).map(r => (r.match(/<t[dh][^>]*>[\s\S]*?<\/t[dh]>/gi) || []).map(cell)));
+  const fam = [], emp = [];
+  for (const rows of tables) {
+    if (!rows.length) continue;
+    const head = rows[0], col = head.findIndex(h => /CHINA/i.test(h));
+    if (col < 0) continue;
+    const kind = /family/i.test(head[0]) ? fam : /employ/i.test(head[0]) ? emp : null;
+    if (!kind) continue;
+    const list = rows.slice(1).filter(r => r[col]).map(r => {
+      let c = r[0].replace(/\s*\(.*$/, "").trim();
+      if (/^5th Unreserved/i.test(r[0])) c = "5th";
+      return { c, v: r[col] };
+    }).filter(x => /^(F1|F2A|F2B|F3|F4|1st|2nd|3rd|Other Workers|4th|5th)$/i.test(x.c));
+    kind.push(list);
+  }
+  const merge = (pair) => { const [fa = [], df = []] = pair; return fa.map(r => ({ c: r.c, fa: r.v, df: (df.find(d => d.c === r.c) || {}).v || "" })); };
+  return { family: merge(fam), employment: merge(emp) };
+}
+async function buildVisa() {
+  const base = "https://travel.state.gov";
+  const idx = await get(base + "/content/travel/en/legal/visa-law0/visa-bulletin.html");
+  const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+  const links = [...new Set((idx.match(/\/content\/travel\/en\/legal\/visa-law0\/visa-bulletin\/\d{4}\/visa-bulletin-for-[a-z]+-\d{4}\.html/gi) || []))]
+    .map(u => { const m = u.match(/for-([a-z]+)-(\d{4})/i); return { u, y: +m[2], m: MONTHS.indexOf(m[1].toLowerCase()) }; }).filter(x => x.m >= 0).sort((a, b) => (b.y * 12 + b.m) - (a.y * 12 + a.m));
+  if (!links.length) throw new Error("no bulletin links");
+  const pick = links[0], html = await get(base + pick.u), data = parseBulletin(html);
+  if (!data.family.length && !data.employment.length) throw new Error("bulletin tables not found");
+  await fs.writeFile("data/visa.json", JSON.stringify({ month: `${pick.y}年${pick.m + 1}月`, monthEn: `${MONTHS[pick.m]} ${pick.y}`, url: base + pick.u, checked: new Date().toISOString(), ...data }));
+  console.log("visa bulletin:", pick.u, data.family.length, data.employment.length);
+}
+
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop())) {
   await buildNews();
   await buildMarket();
   try { await buildDeals(); } catch (e) { console.log("deals failed:", e.message); }
+  try { await buildVisa(); } catch (e) { console.log("visa bulletin failed:", e.message); }
   await trSave();
 }
