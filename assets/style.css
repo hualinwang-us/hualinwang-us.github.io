@@ -1289,3 +1289,22 @@ button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
 .hl-quick .sp-logo{animation:sp-ink .4s cubic-bezier(.3,.7,.2,1) .12s forwards}
 @media (prefers-reduced-motion:reduce){.sp-logo{clip-path:none!important}}
 .sp-name{display:none!important}.sp-rule{margin-top:22px!important}
+
+/* 同城分类 page */
+.cc-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.cc-top h1{font:900 28px/1.2 var(--display);margin:0 0 4px}
+.cc-top p{margin:0;color:var(--muted)}
+.cc-sec{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.cc-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cc-h h2{font:800 18px/1.3 var(--display);margin:0;padding-left:10px;border-left:4px solid var(--c)}
+.cc-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(108px,1fr))}
+.cc-it{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:12px;color:var(--ink);text-align:center;transition:background .15s}
+.cc-it:hover{background:var(--bg)}
+.cc-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;color:#fff;font:900 21px/1 var(--display);background:linear-gradient(145deg,color-mix(in srgb,var(--c) 80%,#fff),var(--c));box-shadow:0 6px 14px -8px var(--c)}
+.cc-it b{font-size:13.5px;font-weight:600;line-height:1.3}
+.cc-it em{position:absolute;top:6px;right:14px;font-style:normal;font-size:11px;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;padding:0 6px;min-width:18px}
+@media (max-width:560px){.cc-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.cc-ic{width:42px;height:42px;font-size:19px}.cc-it b{font-size:12.5px}}
+.cc-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 18px;border-radius:var(--r);background:#1B1F2A;color:#F4EEE3;margin-bottom:20px}
+.cc-cta div{display:flex;flex-direction:column;gap:2px}
+.cc-cta b{font:800 17px/1.3 var(--display)}
+.cc-cta span{font-size:13.5px;opacity:.8}
