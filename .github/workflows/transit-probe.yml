@@ -1,0 +1,15 @@
+name: Transit probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Call transit function
+        run: |
+          URL=$(node -e 'global.window={};require("./config.js");const c=window.HL_CONFIG;console.log(c.supabaseUrl.replace(/\/rest\/v1\/?$/,"").replace(/\/$/,""))')
+          KEY=$(node -e 'global.window={};require("./config.js");const c=window.HL_CONFIG;console.log(c.supabaseKey)')
+          for q in "op=rail&sys=lirr&stop=56" "op=rail&sys=mnr&stop=1" "op=stops&lat=40.7590&lon=-73.8300" "op=bus&stop=501627"; do
+            OUT=$(curl -s -m 30 -H "apikey: $KEY" "$URL/functions/v1/transit?$q" | head -c 600 | tr '\n' ' ')
+            echo "::notice title=$q::$OUT"
+          done
