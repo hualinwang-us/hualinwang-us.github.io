@@ -22,7 +22,7 @@
       fl_reg: "住在租金稳定（rent-stabilized）公寓", ckGo: "看结果", ckLikely: "很可能符合", ckMaybe: "可能符合，要看具体情况", ckInfo: "建议了解",
       ckSum: "你家年收入约 ${y}，约为联邦贫困线的 {p}%。", ckNone: "根据你的回答，暂时没有找到明显符合的项目。可以浏览全部指南，或拨打 311 询问。",
       ckFoot: "这只是初步估算：实际资格还要看资产、开支、具体身份和家庭情况。很多项目即使超出一点也值得申请试试。", ckOpen: "看指南", ckHeads: "你可能可以申请：",
-      readAt: "前往 {src} 阅读全文 →", artNoSum: "华邻网只收录新闻标题和摘要，全文请到原网站阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
+      readHere: "阅读全文", openOrig: "在原网站打开", rdBack: "← 返回华邻网", rdNote: "以下内容由原网站提供", readAt: "前往 {src} 阅读全文 →", artNoSum: "这家媒体不允许在其他网站内显示全文，请点下方按钮阅读。", artCopy: "新闻版权归 {src} 所有，华邻网仅收录标题与摘要并链接原文。", moreNews: "更多{s}新闻", artGone: "这条新闻已经更新下架，看看其他新闻吧。", newsBack: "← 返回{s}",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
@@ -66,7 +66,7 @@
       fl_reg: "We live in a rent-stabilized apartment", ckGo: "See results", ckLikely: "Likely eligible", ckMaybe: "Possibly, depends on details", ckInfo: "Worth reading",
       ckSum: "Your household earns about ${y} a year, about {p}% of the federal poverty line.", ckNone: "Nothing clearly matched your answers. Browse all guides, or call 311 for help.",
       ckFoot: "This is a rough estimate: assets, expenses and status details also matter. If you're close to a limit, it's often still worth applying.", ckOpen: "Read guide", ckHeads: "You may be able to get:",
-      readAt: "Read the full story at {src} →", artNoSum: "HuaLin shows headlines and summaries only; read the full story on the original site.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
+      readHere: "Read full story", openOrig: "Open original site", rdBack: "← Back to HuaLin", rdNote: "Content below is provided by the original site", readAt: "Read the full story at {src} →", artNoSum: "This publisher doesn't allow its stories to be shown inside other sites; use the button below to read it.", artCopy: "Copyright belongs to {src}. HuaLin shows the headline and summary and links to the original.", moreNews: "More {s}", artGone: "This story has rotated out. Here are the latest.", newsBack: "← Back to {s}",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
@@ -407,18 +407,36 @@
       <h1>${esc(i.t)}</h1>
       ${metaHtml(i)}
       ${i.img ? `<div class="art-img" data-hasimg>${imgTag(i, "")}</div>` : ""}
-      ${i.s ? `<p class="art-sum">${esc(i.s)}</p>` : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
-      <div class="post-actions"><a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("readAt").replace("{src}", src))}</a><button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
+      ${i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
+      <div class="post-actions">${i.fr ? `<button type="button" class="btn" id="aRead">${esc(t("readHere"))}</button><a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("openOrig"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
     $("#aSide").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("moreNews").replace("{s}", secName(sname)))}</h2></div><ul class="nl">${others.map(x => liHtml(x, false, !!x.img)).join("")}</ul></section>
       <a class="g-check-cta" href="#check"><b>${esc(t("gCheckH"))}</b><span>${esc(t("gCheckP"))}</span></a>`;
+    const rd = $("#aRead"); if (rd) rd.onclick = () => openReader(i, src);
     $("#aShare").onclick = async () => {
       const r = await HLC.share(HLC.siteBase() + "n/" + i.id + "/", i.t);
       if (r === "copied") toast(t("linkCopied"));
     };
   }
+  // Reader: shows the publisher's own page inside our site (only for sites that allow being embedded).
+  function openReader(i, src) {
+    const r = $("#reader");
+    $("#rdSrc").textContent = src;
+    $("#rdOrig").setAttribute("href", safeUrl(i.u));
+    $("#rdFrame").setAttribute("src", safeUrl(i.u));
+    r.hidden = false; document.body.classList.add("noscroll");
+    $("#rdClose").focus();
+  }
+  function closeReader() {
+    $("#reader").hidden = true; document.body.classList.remove("noscroll");
+    $("#rdFrame").setAttribute("src", "about:blank");
+  }
+  $("#rdClose").onclick = closeReader;
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#reader").hidden) closeReader(); });
+  window.addEventListener("hashchange", () => { if (!$("#reader").hidden) closeReader(); });
+
   function renderDisc() {
     const d = HLC.DISCLAIMER, x = d[lang] || d.zh;
     const rich = v => esc(v).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");

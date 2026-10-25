@@ -209,6 +209,15 @@
   <div><b data-i18n="footLegal">免责声明</b><p data-i18n="footLegalP">本站内容仅供参考，不构成法律或专业意见，与政府机构无关。</p><p><a class="flink" href="#disclaimer" data-i18n="footLegalLink">阅读完整免责声明 →</a></p></div>
 </div></footer>
 
+<div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-label="Reader">
+  <div class="rd-bar">
+    <button type="button" class="rd-close" id="rdClose" data-i18n="rdBack">← 返回华邻网</button>
+    <span class="rd-src"><span data-i18n="rdNote">以下内容由原网站提供</span> · <b id="rdSrc"></b></span>
+    <a class="rd-orig" id="rdOrig" href="#" target="_blank" rel="noopener" data-i18n="openOrig">在原网站打开</a>
+  </div>
+  <iframe id="rdFrame" title="Article" src="about:blank" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"></iframe>
+</div>
+
 <dialog id="postDlg" aria-labelledby="postH">
   <form class="dl" id="postForm" novalidate>
     <button type="button" class="x" data-close aria-label="Close">×</button>

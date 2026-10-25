@@ -158,10 +158,26 @@ function ogDesc(html) {
   return d;
 }
 
+// Can the publisher's page be shown inside our site? Only if it doesn't forbid framing.
+function frameable(headers) {
+  const xfo = (headers.get("x-frame-options") || "").toLowerCase();
+  if (xfo) return false;
+  const csp = (headers.get("content-security-policy") || "").toLowerCase();
+  const fa = csp.match(/frame-ancestors([^;]*)/);
+  if (fa && !/(^|\s)\*(\s|$)/.test(fa[1])) return false;
+  return true;
+}
+
 async function findImage(item) {
   const url = /news\.google\.com/.test(item.u) ? await resolveGoogleNews(item.u) : item.u;
-  const html = await get(url);
-  return { img: ogImage(html, url), desc: ogDesc(html), real: url };
+  const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const r = await fetch(url, { headers: { "User-Agent": UA, "Accept": "text/html,*/*" }, signal: ctl.signal, redirect: "follow" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const html = await r.text();
+    const finalUrl = r.url || url;
+    return { img: ogImage(html, finalUrl), desc: ogDesc(html), real: finalUrl, frame: /^https:/.test(finalUrl) && frameable(r.headers) };
+  } finally { clearTimeout(timer); }
 }
 
 async function pool(tasks, size) {
@@ -185,11 +201,11 @@ async function enrichImages(out) {
   const todo = [];
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
-    if (cache[k] && "desc" in cache[k]) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
+    if (cache[k] && "frame" in cache[k]) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
     if (todo.length >= 120) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
-      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, real: r.real, t: now }; if (r.img) { i.img = r.img; found++; } }
+      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
@@ -200,6 +216,7 @@ async function enrichImages(out) {
     if (!i.img && c.img) i.img = c.img;
     if (!i.s && c.desc && c.desc.replace(/\s/g, "") !== i.t.replace(/\s/g, "")) i.s = c.desc;
     if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; // link straight to the publisher
+    if (c.frame) i.fr = 1;
   }
   await fs.writeFile(IMG_CACHE, JSON.stringify(cache));
   const errs = Object.values(cache).filter(c => c.err).map(c => c.err);
