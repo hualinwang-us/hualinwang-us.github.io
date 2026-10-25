@@ -8,7 +8,7 @@ window.HL_CONFIG = {
   supabaseKey: "sb_publishable_IeP_U-Y62FQ02vrENmlmwg_LtZxVL6G",   // the "publishable" / anon key, safe to be public
 
   // Sign-in methods. Turn each on after it's set up in Supabase (see README).
-  loginEmail: false,
+  loginEmail: true,
   loginGoogle: false,
 
   // Optional: an email address raises the free translation allowance from about 5,000 to 50,000 characters a day.
