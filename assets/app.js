@@ -183,6 +183,7 @@
     if (n.status === "fulfilled") news = n.value;
     if (m.status === "fulfilled") market = m.value;
     if (a.status === "fulfilled" && a.value && Array.isArray(a.value.slots)) ads = a.value;
+    if (n.status !== "fulfilled" && !loadData.retried) { loadData.retried = true; setTimeout(() => loadData().catch(() => {}), 3000); } // phone network hiccup: try once more
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
     [renderNews, renderPulse, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
@@ -659,8 +660,8 @@
     const nDeals = Object.values((deals && deals.sections) || {}).reduce((a, v) => a + (v || []).filter(zhOk).length, 0);
     const nPosts = postsLoaded ? posts.filter(p => now - ((typeof p.ts === "number" ? p.ts : Date.parse(p.ts)) || 0) < 7 * 86400e3).length : 0;
     const upd = Date.parse(news.updatedAt);
-    const parts = [ids.size && t("pNews").replace("{n}", `<b>${ids.size}</b>`), nDeals && t("pDeals").replace("{n}", `<b>${nDeals}</b>`), nPosts && t("pPosts").replace("{n}", `<b>${nPosts}</b>`)].filter(Boolean);
-    if (!parts.length) { el.hidden = true; return; }
+    const parts = [ids.size && t("pNews").replace("{n}", `<b>${ids.size}</b>`), nDeals && t("pDeals").replace("{n}", `<b>${nDeals}</b>`), nPosts >= 3 && t("pPosts").replace("{n}", `<b>${nPosts}</b>`)].filter(Boolean);
+    if (!ids.size) { el.hidden = true; return; } // only show the line once the news has loaded
     el.innerHTML = `<span class="pl-dot" aria-hidden="true"></span><span class="pl-t">${parts.join('<i aria-hidden="true">·</i>')}</span>${upd ? `<span class="pl-u">${esc(t("pUpd").replace("{t}", ago(news.updatedAt)))}</span>` : ""}`;
     el.hidden = false;
   }
