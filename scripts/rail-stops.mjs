@@ -6,7 +6,7 @@ import GtfsRealtimeBindings from "gtfs-realtime-bindings";
 const STATIC = { lirr: ["https://rrgtfsfeeds.s3.amazonaws.com/gtfslirr.zip", "http://web.mta.info/developers/data/lirr/google_transit.zip"],
                  mnr: ["https://rrgtfsfeeds.s3.amazonaws.com/gtfsmnr.zip", "http://web.mta.info/developers/data/mnr/google_transit.zip"] };
 const RT = { lirr: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/lirr%2Fgtfs-lirr", mnr: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/mnr%2Fgtfs-mnr" };
-const csv = txt => { const lines = txt.replace(/\r/g, "").split("\n").filter(Boolean); const head = lines[0].replace(/^﻿/, "").split(","); return lines.slice(1).map(l => { const v = []; let cur = "", q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === "," && !q) { v.push(cur); cur = ""; } else cur += ch; } v.push(cur); return Object.fromEntries(head.map((h, i) => [h, v[i]])); }); };
+const csv = txt => { const lines = txt.replace(/\r/g, "").split("\n").filter(Boolean); const head = lines[0].replace(/^\uFEFF/, "").split(",").map(h => h.replace(/"/g, "").trim()); return lines.slice(1).map(l => { const v = []; let cur = "", q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === "," && !q) { v.push(cur); cur = ""; } else cur += ch; } v.push(cur); return Object.fromEntries(head.map((h, i) => [h, v[i]])); }); };
 const out = {};
 for (const sys of ["lirr", "mnr"]) {
   let ok = false;

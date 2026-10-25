@@ -307,14 +307,14 @@
     items.push({ h: "tools", label: t("toolsTab"), menu: () => window.HLTools ? `<div class="mm-cols">${HLTools.CATS.map(c => `<div><b>${esc(lang === "zh" ? c.zh : c.en)}</b>${c.tools.map(id => `<a href="#t-${id}">${esc(HLTools.title(id, lang))}</a>`).join("")}</div>`).join("")}</div><a class="mm-cta" href="#tools">${esc(t("toolsAll"))} →</a>` : null });
     items.push({ h: "events", label: t("eventsTab") });
     // Top bar: home (all local services), app, meet locals, news, deals, offline events.
-    const ORDER = ["", "app", "tools", "deals", "n-top", "travel", "b-dating"];
+    const ORDER = ["", "app", "tools", "deals", "n-top", "stocks", "travel", "b-dating"];
     return items.filter(it => ORDER.includes(it.h)).sort((a, b) => ORDER.indexOf(a.h) - ORDER.indexOf(b.h));
   }
   function renderTabs() {
     const items = menuItems();
     const curBoard = route.view === "board" ? boardById(route.board) : null;
     const artDeal = route.view === "article" && deals && Object.values(deals.sections || {}).some(l => l.some(x => x.id === route.id));
-    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article" || route.view === "stocks") ? "n-top" : route.view === "deals" ? "deals" : route.view === "events" ? "events" : route.view === "tools" ? "tools" : route.view === "travel" ? "travel" : (curBoard && curBoard.id === "dating") ? "b-dating" : (route.view === "home" || route.view === "city" || route.view === "yp" || curBoard || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
+    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article") ? "n-top" : route.view === "stocks" ? "stocks" : route.view === "deals" ? "deals" : route.view === "events" ? "events" : route.view === "tools" ? "tools" : route.view === "travel" ? "travel" : (curBoard && curBoard.id === "dating") ? "b-dating" : (route.view === "home" || route.view === "city" || route.view === "yp" || curBoard || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
     $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.app ? "" : it.h}"${it.app ? " data-appdl" : ""} data-mi="${k}" class="${it.h === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
   }
   const mega = document.getElementById("mega");
@@ -849,7 +849,7 @@
     const c = CFG.adContact || {};
     const tel = c.phone ? c.phone.replace(/[^0-9+]/g, "") : "";
     $("#bRules").hidden = b.id !== "dating"; $("#bRules").textContent = b.id === "dating" ? t("datingRules") : "";
-    $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("earlyPin"))}${CFG.pinPrice ? ` <a href="#advertise">${esc(t("pinAfter").replace("{p}", CFG.pinPrice))}</a>` : ""}<br><a class="daifa" href="sms:${esc(tel)}">${ic("mail")}${esc(t("daifa").replace("{p}", c.phone))}</a>` : "";
+    $("#bPin").innerHTML = c.phone ? `<a class="daifa" href="sms:${esc(tel)}">${ic("mail")}${esc(t("daifa").replace("{p}", c.phone))}</a>` : "";
     const offs = offFor(b.id).filter(o => !q || [o.t, o.te, o.area, o.bz, o.be, o.az].join(" ").toLowerCase().includes(q));
     const items = list.map(p => pitemHtml(p, false)).concat(offs.map(offItem));
     $("#bList").innerHTML = items.length ? items.map((h, i) => h + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (items.length < 6 ? feedAd(0) : "") :
