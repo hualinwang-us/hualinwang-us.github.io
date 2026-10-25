@@ -72,6 +72,7 @@
     <div class="deals-grid" id="dealsGrid"></div>
   </section>
 
+  <section class="spon-banner" id="sponBanner" aria-label="Sponsors"></section>
   <section class="spons" id="sponTop" aria-label="Sponsors"></section>
 
   <div class="layout">
@@ -84,10 +85,12 @@
         <section class="block"><div class="bh"><h2 data-i18n="sec_local">纽约本地</h2><a href="#n-local" data-i18n="more">更多</a></div><ul class="nl" id="sec-local"></ul></section>
         <section class="block"><div class="bh"><h2 data-i18n="sec_immigration">移民签证</h2><a href="#n-immigration" data-i18n="more">更多</a></div><ul class="nl" id="sec-immigration"></ul></section>
       </div>
+      <section class="spons mid" id="sponMid1" aria-label="Sponsors"></section>
       <div class="pair">
         <section class="block"><div class="bh"><h2 data-i18n="sec_uschina">中美关系</h2><a href="#n-uschina" data-i18n="more">更多</a></div><ul class="nl" id="sec-uschina"></ul></section>
         <section class="block"><div class="bh"><h2 data-i18n="sec_china">中国</h2><a href="#n-china" data-i18n="more">更多</a></div><ul class="nl" id="sec-china"></ul></section>
       </div>
+      <section class="spons mid" id="sponMid2" aria-label="Sponsors"></section>
       <div class="pair">
         <section class="block"><div class="bh"><h2 data-i18n="sec_business">财经</h2><a href="#n-business" data-i18n="more">更多</a></div><ul class="nl" id="sec-business"></ul></section>
         <section class="block"><div class="bh"><h2 data-i18n="sec_health">健康养生</h2><a href="#n-health" data-i18n="more">更多</a></div><ul class="nl" id="sec-health"></ul></section>
@@ -131,6 +134,7 @@
       <button class="btn" type="button" id="bPost" data-i18n="postHere">在本板块发布</button></div>
     <input class="filter" id="bFilter" type="search" data-i18n-ph="filterPh" placeholder="在本板块中筛选">
   </div>
+  <section class="spons mid" id="sponBoard" aria-label="Sponsors"></section>
   <ul class="plist" id="bList"></ul>
 </main>
 
@@ -157,6 +161,7 @@
 <main class="shell view" id="vGuideOne" hidden>
   <div class="vh vh-row"><a class="back" href="#guide" data-i18n="gBack">← 返回指南目录</a><button type="button" class="btn wx-btn" id="gShareTop"><span aria-hidden="true">微</span> <span data-i18n="shareWx">分享到微信</span></button></div>
   <div id="gOne"></div>
+  <section class="spons mid" id="sponGuide" aria-label="Sponsors"></section>
   <div class="post-actions g-actions"><button type="button" class="btn" id="gShare" data-i18n="share">分享到微信</button><a class="btn ghost" href="#check" data-i18n="gCheckBtn">开始自测</a></div>
 </main>
 
@@ -211,6 +216,11 @@
   <div class="deals-full" id="dealsFull"></div>
 </main>
 
+<main class="shell view" id="vAds" hidden>
+  <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
+  <article class="guide" id="adsBody"></article>
+</main>
+
 <main class="shell view" id="vDisc" hidden>
   <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
   <article class="guide" id="discBody"></article>
@@ -226,7 +236,7 @@
 
 <footer class="foot"><div class="shell foot-in">
   <div><b>华邻网 HuaLin</b><p data-i18n="foot1">新闻每小时自动汇集自各大中英文媒体，点击标题阅读原文。</p></div>
-  <div><b data-i18n="footAds">广告刊登</b><p id="adContact" data-i18n="footAdsP">首页及侧栏广告位招租，欢迎商家联系。</p></div>
+  <div><b data-i18n="footAds">广告刊登</b><p id="adContact" data-i18n="footAdsP">首页及侧栏广告位招租，欢迎商家联系。</p><p><a class="flink" href="#advertise" data-i18n="adMore">了解广告位 ›</a></p></div>
   <div><b data-i18n="footSafe">安全提示</b><p data-i18n="foot2">分类信息由用户自行发布，请自行核实；交易当面确认，切勿预付定金，谨防诈骗。</p></div>
   <div><b data-i18n="footLegal">免责声明</b><p data-i18n="footLegalP">本站内容仅供参考，不构成法律或专业意见，与政府机构无关。</p><p><a class="flink" href="#disclaimer" data-i18n="footLegalLink">阅读完整免责声明 →</a></p></div>
   <div><b data-i18n="shareSite">分享本站</b><p><button type="button" class="btn ghost" id="footShare" data-i18n="shareSite">分享本站</button></p></div>

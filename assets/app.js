@@ -52,7 +52,10 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›",
+      adsTitle: "在华邻网投放广告", adsIntro: "华邻网每天更新纽约华人关心的新闻、福利指南和本周优惠，读者都是在美华人家庭。以下广告位可以单独或组合投放，价格面议，新开张商家有优惠。",
+      adsPos: "广告位一览", adsHow: "怎么投放", adsHowP: "把店名、一句话介绍、电话/微信、想放的位置和时间发给我们，当天就能上线。到期自动下架，不用操心。", adsNoContact: "联系方式即将公布。也可以先在“商家优惠”免费发布优惠信息。",
+      adsList: [["横幅广告", "首页最上方通栏，访客打开第一眼看到"], ["首页推荐（3个）", "首页顶部三张推荐卡片"], ["新闻中间（4个）", "首页新闻栏目之间，读新闻时自然看到"], ["侧栏（3个）", "首页右侧，电脑版全程可见"], ["分类板块页（可指定板块）", "例如只出现在“房屋出租”或“招聘”板块顶部"], ["信息流", "分类信息列表中每隔几条出现一次"], ["指南和文章页", "福利指南、新闻文章下方，读者停留时间最长"]],
       sponsored: "推荐", rateNames: { CNY: "人民币", HKD: "港币", TWD: "新台币", EUR: "欧元", GBP: "英镑", CAD: "加元", JPY: "日元", KRW: "韩元", AUD: "澳元", SGD: "新加坡元" },
       wx_codes: { 0: "晴", 1: "晴间多云", 2: "多云", 3: "阴", 45: "雾", 48: "雾", 51: "毛毛雨", 53: "毛毛雨", 55: "毛毛雨", 61: "小雨", 63: "中雨", 65: "大雨", 66: "冻雨", 67: "冻雨", 71: "小雪", 73: "中雪", 75: "大雪", 77: "雪粒", 80: "阵雨", 81: "阵雨", 82: "强阵雨", 85: "阵雪", 86: "阵雪", 95: "雷雨", 96: "雷雨", 99: "雷雨" },
       today: "今天", newsSrc: "新闻来源：各媒体原文，标题链接至原网站。",
@@ -105,7 +108,10 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›",
+      adsTitle: "Advertise on 华邻网", adsIntro: "华邻网 publishes daily news, benefits guides and weekly deals for Chinese families in New York. These spaces can be booked alone or together; prices are negotiable, with discounts for newly opened businesses.",
+      adsPos: "Ad spaces", adsHow: "How to book", adsHowP: "Send us your business name, a one-line description, phone/WeChat, and the space and dates you want. It can go live the same day and comes down automatically when it ends.", adsNoContact: "Contact details coming soon. Meanwhile, you can post deals for free in Local Deals.",
+      adsList: [["Banner", "Full-width at the very top of the home page"], ["Home featured (3)", "Three featured cards at the top of the home page"], ["Between news (4)", "Between the home-page news sections"], ["Sidebar (3)", "Right side of the home page, always visible on desktop"], ["Board pages (choose boards)", "E.g. only at the top of Rentals or Jobs"], ["In-feed", "Every few listings inside classified lists"], ["Guide & article pages", "Below benefits guides and news articles, where readers stay longest"]],
       rateNames: { CNY: "Chinese yuan", HKD: "HK dollar", TWD: "NT dollar", EUR: "Euro", GBP: "Pound", CAD: "Canadian dollar", JPY: "Yen", KRW: "Won", AUD: "Australian dollar", SGD: "Singapore dollar" },
       wx_codes: { 0: "Clear", 1: "Mostly clear", 2: "Partly cloudy", 3: "Overcast", 45: "Fog", 48: "Fog", 51: "Drizzle", 53: "Drizzle", 55: "Drizzle", 61: "Light rain", 63: "Rain", 65: "Heavy rain", 66: "Freezing rain", 67: "Freezing rain", 71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains", 80: "Showers", 81: "Showers", 82: "Heavy showers", 85: "Snow showers", 86: "Snow showers", 95: "Thunderstorms", 96: "Thunderstorms", 99: "Thunderstorms" },
       today: "Today", newsSrc: "Headlines link to the original publishers.",
@@ -197,7 +203,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); if (route.view === "disc") renderDisc(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
@@ -352,16 +358,41 @@
     const inner = `<span class="lab">${esc(t("adLabel"))}</span><h3>${esc(L(s.name))}</h3>${L(s.desc) ? `<p>${esc(L(s.desc))}</p>` : ""}${contact ? `<p>${contact}</p>` : ""}`;
     return s.url ? `<a class="spon paid ${cls || ""}" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener sponsored">${inner}</a>` : `<div class="spon paid ${cls || ""}">${inner}</div>`;
   }
-  function emptyAd() {
+  function emptyAd(sm) {
     const c = CFG.adContact || {};
     const parts = [c.phone, c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
-    return `<div class="spon empty"><span class="lab">${esc(t("sponsored"))}</span><h3>${esc(t("adEmptyH"))}</h3><p>${esc(t("adEmptyP"))}${parts.length ? "<br>" + esc(t("adContact") + parts.join(" · ")) : ""}</p></div>`;
+    return `<a class="spon empty ${sm ? "sm" : ""}" href="#advertise"><span class="lab">${esc(t("sponsored"))}</span><h3>${esc(t("adEmptyH"))}</h3><p>${sm ? "" : esc(t("adEmptyP")) + "<br>"}${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adMore"))}</p></a>`;
+  }
+  // Fill a container with live ads for a position, topped up with "ad space available" cards.
+  function fillAds(sel, pos, n, sm, filter) {
+    const el = $(sel); if (!el) return;
+    const live = liveSlots(pos).filter(filter || (() => true)).slice(0, n);
+    el.innerHTML = live.map(s => adCard(s, sm ? "sm" : "")).join("") + Array.from({ length: Math.max(0, n - live.length) }, () => emptyAd(sm)).join("");
+  }
+  function feedAd(i) {
+    const live = liveSlots("feed"); const s = live.length ? live[i % live.length] : null;
+    return `<li class="feed-ad">${s ? adCard(s, "sm") : emptyAd(true)}</li>`;
   }
   function renderAds() {
-    const top = liveSlots("top").slice(0, 3);
-    $("#sponTop").innerHTML = top.map(s => adCard(s)).join("") + Array.from({ length: Math.max(0, 3 - top.length) }, emptyAd).join("");
-    const rail = liveSlots("rail").slice(0, 6);
-    $("#sponRail").innerHTML = rail.map(s => adCard(s)).join("") + (rail.length < 2 ? emptyAd() : "");
+    fillAds("#sponBanner", "banner", 1, false);
+    fillAds("#sponTop", "top", 3, false);
+    fillAds("#sponMid1", "mid", 2, true, (s, i) => true);
+    const mids = liveSlots("mid");
+    $("#sponMid2").innerHTML = mids.slice(2, 4).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - mids.slice(2, 4).length) }, () => emptyAd(true)).join("");
+    fillAds("#sponRail", "rail", 3, false);
+    fillAds("#sponGuide", "article", 2, true);
+    renderBoardAds();
+  }
+  function renderBoardAds() {
+    if (route.view !== "board") return;
+    fillAds("#sponBoard", "board", 2, true, s => !s.boards || !s.boards.length || s.boards.includes(route.board));
+  }
+  function renderAdsPage() {
+    const c = CFG.adContact || {};
+    const parts = [c.phone && (t("phone") + " " + c.phone), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
+    $("#adsBody").innerHTML = `<div class="g-head"><span class="seal md" aria-hidden="true">${lang === "zh" ? "广" : "Ad"}</span><div><h1>${esc(t("adsTitle"))}</h1><p class="g-sum">${esc(t("adsIntro"))}</p></div></div>
+      <section><h2>${esc(t("adsPos"))}</h2><ol class="g-steps">${t("adsList").map(([h, p]) => `<li><b>${esc(h)}</b><br>${esc(p)}</li>`).join("")}</ol></section>
+      <section><h2>${esc(t("adsHow"))}</h2><p>${esc(t("adsHowP"))}</p><p><b>${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adsNoContact"))}</b></p></section>`;
   }
 
   /* ---------- render: posts ---------- */
@@ -389,7 +420,8 @@
     $("#bSeal").textContent = b.glyph; $("#bTitle").textContent = bName(b);
     const q = ($("#bFilter").value || "").trim().toLowerCase();
     const list = posts.filter(p => p.board === b.id && (!q || [p.title, p.area, p.body, p.contact].join(" ").toLowerCase().includes(q)));
-    $("#bList").innerHTML = list.length ? list.map(p => pitemHtml(p, false)).join("") :
+    renderBoardAds();
+    $("#bList").innerHTML = list.length ? list.map((p, i) => pitemHtml(p, false) + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (list.length < 6 ? feedAd(0) : "") :
       `<li><div class="empty">${q ? esc(t("noMatch")) : esc(t("noPosts")) + `<button type="button" class="linkbtn" data-postto="${b.id}">${esc(t("beFirst"))}</button>`}</div></li>`;
   }
   function renderSearch() {
@@ -501,7 +533,7 @@
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
-    $("#aSide").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("moreNews").replace("{s}", secName(sname)))}</h2></div><ul class="nl">${others.map(x => liHtml(x, false, !!x.img)).join("")}</ul></section>
+    $("#aSide").innerHTML = `<div class="spon-rail">${liveSlots("article").slice(0, 1).map(x => adCard(x)).join("") || emptyAd()}</div><section class="block"><div class="bh"><h2>${esc(t("moreNews").replace("{s}", secName(sname)))}</h2></div><ul class="nl">${others.map(x => liHtml(x, false, !!x.img)).join("")}</ul></section>
       <a class="g-check-cta" href="#check"><b>${esc(t("gCheckH"))}</b><span>${esc(t("gCheckP"))}</span></a>`;
     const rd = $("#aRead"); if (rd) rd.onclick = () => openReader(i, src);
     if (i.full) getJSON("data/full/" + i.id + ".json").then(f => {
@@ -544,7 +576,8 @@
     const box = $("#dealsHome"); if (!box) return;
     const ds = (deals && deals.sections) || {};
     const local = localDeals().slice(0, 5);
-    const biz = (ds.biz || []).slice(0, Math.max(0, 5 - local.length));
+    const zhIds = new Set((ds.zh || []).map(i => i.u));
+    const biz = (ds.biz || []).filter(i => !zhIds.has(i.u)).slice(0, Math.max(0, 5 - local.length));
     const cols = [];
     cols.push(`<section class="block dcol"><div class="bh"><h2>${esc(t("dl_local"))}</h2><a href="#deals">${esc(t("more"))}</a></div>${local.length ? `<ul class="rows">${local.map(p => rowHtml(p, false)).join("")}</ul>` : ""}${biz.length ? `<ul class="nl">${biz.map(i => dealLi(i, false)).join("")}</ul>` : ""}<button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></section>`);
     for (const k of DEAL_SECS) {
@@ -581,6 +614,7 @@
     else if (h === "check") route = { view: "check" };
     else if (h.startsWith("g-")) route = { view: "guideOne", id: h.slice(2) };
     else if (h === "disclaimer") route = { view: "disc" };
+    else if (h === "advertise") route = { view: "ads" };
     else if (h === "deals") route = { view: "deals" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
     else route = { view: "home" };
@@ -589,6 +623,7 @@
     $("#vArticle").hidden = route.view !== "article"; if (route.view === "article") renderArticle();
     $("#vDeals").hidden = route.view !== "deals"; if (route.view === "deals") renderDeals();
     $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
+    $("#vAds").hidden = route.view !== "ads"; if (route.view === "ads") renderAdsPage();
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
     if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();
     if (route.view === "board") { $("#bFilter").value = ""; renderBoard(); }
