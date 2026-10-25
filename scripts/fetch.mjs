@@ -12,10 +12,10 @@ const simpItem = i => { if (i.t) i.t = toSimp(i.t); if (i.s) i.s = toSimp(i.s); 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const MAX_AGE_H = 96;
 
-const gnSearch = (q, lang) => lang === "zh"
-  ? [`https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:3d")}&hl=zh-CN&gl=US&ceid=US:zh-Hans`,
-     `https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:3d")}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans`]
-  : [`https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:3d")}&hl=en-US&gl=US&ceid=US:en`];
+const gnSearch = (q, lang, w = "3d") => lang === "zh"
+  ? [`https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:" + w)}&hl=zh-CN&gl=US&ceid=US:zh-Hans`,
+     `https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:" + w)}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans`]
+  : [`https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:" + w)}&hl=en-US&gl=US&ceid=US:en`];
 const gnTopic = (topic, lang) => lang === "zh"
   ? [`https://news.google.com/rss/headlines/section/topic/${topic}?hl=zh-CN&gl=CN&ceid=CN:zh-Hans`,
      `https://news.google.com/rss/headlines/section/topic/${topic}?hl=zh-TW&gl=TW&ceid=TW:zh-Hant`]
@@ -24,8 +24,8 @@ const gnTopic = (topic, lang) => lang === "zh"
 // Section order = de-duplication priority. A story shows up in the first section that claims it.
 const FEEDS = {
   zh: {
-    top: [["美国华人", gnSearch("美国 华人 OR 华裔", "zh")], ["美国要闻", gnSearch("美国 白宫 OR 国会 OR 特朗普 OR 川普", "zh")], ["选举", gnSearch("美国 中期选举 OR 选民 OR 投票", "zh")]],
-    local: [["纽约华人", gnSearch("纽约 华人", "zh")], ["法拉盛", gnSearch("法拉盛", "zh")], ["布碌崙", gnSearch("布鲁克林 OR 布碌崙 OR 日落公园 华人", "zh")]],
+    top: [["美国最新", gnSearch("美国", "zh", "1d")], ["美国华人", gnSearch("美国 华人 OR 华裔", "zh")], ["美国要闻", gnSearch("美国 白宫 OR 国会 OR 特朗普 OR 川普", "zh")], ["选举", gnSearch("美国 中期选举 OR 选民 OR 投票", "zh")]],
+    local: [["纽约最新", gnSearch("纽约", "zh", "1d")], ["纽约华人", gnSearch("纽约 华人", "zh")], ["法拉盛", gnSearch("法拉盛", "zh")], ["布碌崙", gnSearch("布鲁克林 OR 布碌崙 OR 日落公园 华人", "zh")]],
     immigration: [["移民", gnSearch("美国 移民", "zh")], ["绿卡", gnSearch("绿卡 OR 入籍 OR 公民身份", "zh")], ["签证", gnSearch("美国 签证 OR H-1B 签证 OR 留学生 签证", "zh")], ["ICE", gnSearch("ICE 移民局 OR 移民执法 OR 遣返", "zh")]],
     uschina: [["中美关系", gnSearch("中美关系 OR 中美贸易 OR 关税 中国 美国", "zh")]],
     // BBC, RFI and DW don't allow their pages inside other sites, so they're not used.
@@ -245,7 +245,7 @@ function preferEmbeddable(out) {
       // Stories that can't be shown in full on our site are always left out.
       const keep = out.sections[lang][sec].filter(i => i.fr === 1 || i.full);
       const score = i => Date.parse(i.d) || 0;
-      out.sections[lang][sec] = keep.sort((a, b) => score(b) - score(a));
+      out.sections[lang][sec] = keep.sort((a, b) => score(b) - score(a)).slice(0, CAP[sec] || 20);
     }
   }
   console.log(`inline-friendly: replaced ${swapped} stories with another outlet's report of the same event`);
@@ -400,7 +400,7 @@ async function buildNews() {
       };
       items = prep(items).concat(prep(filler));
       const fresh = [];
-      for (const i of items) { const k = key(i.t); if (k.length < 4 || seen.has(k)) continue; seen.add(k); fresh.push(i); if (fresh.length >= CAP[sec]) break; }
+      for (const i of items) { const k = key(i.t); if (k.length < 4 || seen.has(k)) continue; seen.add(k); fresh.push(i); if (fresh.length >= CAP[sec] * 2) break; } // extra candidates: some get dropped later if they can't be shown in-site
       // Keep yesterday's stories when a section comes back thin, so the page never goes empty.
       const old = (prev.sections?.[lang]?.[sec] || []).filter(i => !BLOCK_SRC.test(i.src || "") && !BLOCK_TITLE.test(i.t) && (!i.d || now - Date.parse(i.d) < 7 * 86400e3) && (lang !== "zh" || isChinese(i.t)));
       for (const i of old) { if (fresh.length >= Math.min(8, CAP[sec])) break; const k = key(i.t); if (seen.has(k)) continue; seen.add(k); fresh.push(i); }

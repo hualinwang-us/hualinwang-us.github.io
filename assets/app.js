@@ -367,7 +367,7 @@
     const lw = $("#sec-top");
     if (!top.length) lw.innerHTML = `<div class="empty">${esc(t("newsEmpty"))}</div>`;
     else {
-      const leadIdx = top.slice(0, 6).findIndex(i => i.img);
+      const leadIdx = top.slice(0, 3).findIndex(i => i.img && (Date.parse(top[0].d) || 0) - (Date.parse(i.d) || 0) < 6 * 3600e3); // a picture story, but only if it is nearly as fresh as the newest
       const lead = top[leadIdx > 0 ? leadIdx : 0];
       const rest = top.filter(i => i !== lead).slice(0, 8);
       lw.innerHTML = `<article class="lead">${lead.img ? `<a ${nhref(lead)} class="img" tabindex="-1" aria-hidden="true">${imgTag(lead, "")}</a>` : ""}
