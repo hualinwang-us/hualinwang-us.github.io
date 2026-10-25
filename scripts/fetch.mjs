@@ -671,13 +671,13 @@ async function buildVisa() {
   const pick = links[0], html = await get(base + pick.u), data = parseBulletin(html);
   if (!data.family.length && !data.employment.length) throw new Error("bulletin tables not found");
   await fs.writeFile("data/visa.json", JSON.stringify({ month: `${pick.y}年${pick.m + 1}月`, monthEn: `${MONTHS[pick.m]} ${pick.y}`, url: base + pick.u, checked: new Date().toISOString(), ...data }));
-  console.log("visa bulletin:", pick.u, data.family.length, data.employment.length);
+  console.log(`::notice title=visa::ok ${pick.u} fam=${data.family.length} emp=${data.employment.length}`);
 }
 
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop())) {
   await buildNews();
   await buildMarket();
   try { await buildDeals(); } catch (e) { console.log("deals failed:", e.message); }
-  try { await buildVisa(); } catch (e) { console.log("visa bulletin failed:", e.message); }
+  try { await buildVisa(); } catch (e) { console.log("::warning title=visa::" + String(e.message || e).slice(0, 200)); }
   await trSave();
 }
