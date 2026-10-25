@@ -1385,6 +1385,8 @@
         let tried = ""; try { tried = sessionStorage.getItem("hl-reload") || ""; } catch (e) {}
         if (tried === v.v) return;
         try { sessionStorage.setItem("hl-reload", v.v); } catch (e) {}
+        // Reloading during the opening animation: play it again on the fresh page instead of cutting it off.
+        if (document.documentElement.classList.contains("hl-launch")) { try { sessionStorage.setItem("hl-splash-replay", "1"); } catch (e) {} }
         location.reload();
       }
     }).catch(() => {});
