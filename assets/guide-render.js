@@ -30,7 +30,7 @@
     const u = UI[lang] || UI.zh;
     const watch = opts.watch || {};
     const changed = (g.watch || []).map(w => watch[w] && watch[w].changed).filter(d => d && d > (g.verified || "")).sort().pop();
-    const contacts = (g.contacts || []).map(c => `<li><b>${esc(L(c.label, lang))}</b>${c.phone ? `<span class="g-ph">${esc(u.phone)} <span class="v">${esc(c.phone)}</span></span>` : ""}${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.urlText || c.url.replace(/^https?:\/\//, "").replace(/\/$/, ""))}</a>` : ""}${c.chinese ? `<span class="g-zh">${esc(u.chinese)}</span>` : ""}${L(c.note, lang) ? `<span class="g-note">${rich(L(c.note, lang))}</span>` : ""}</li>`).join("");
+    const contacts = (g.contacts || []).map(c => `<li><b>${esc(L(c.label, lang))}</b>${c.phone ? `<span class="g-ph">${esc(u.phone)} <span class="v">${esc(c.phone)}</span></span>` : ""}${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.urlText || c.url.replace(/^https?:\/\//, "").replace(/\/$/, ""))}</a>` : ""}${c.chinese ? `<span class="g-zh">${esc(u.chinese)}</span>` : ""}${L(c.note, lang) ? `<span class="g-note">${rich(L(c.note, lang))}</span>` : ""}</li>`).join("");
     return `<article class="guide">
       <div class="g-head"><span class="seal md" aria-hidden="true">${esc(g.glyph || "指")}</span><div><h1>${esc(L(g.title, lang))}</h1><p class="g-sum">${rich(L(g.summary, lang))}</p></div></div>
       <p class="g-notice">${esc(u.notice)} <a href="${esc((opts.base || "") + "#disclaimer")}">${esc(u.noticeLink)}</a></p>
@@ -41,7 +41,7 @@
       ${LA(g.docs, lang).length ? `<section><h2>${esc(u.docs)}</h2>${list(LA(g.docs, lang))}</section>` : ""}
       ${contacts ? `<section><h2>${esc(u.contacts)}</h2><ul class="g-contacts">${contacts}</ul></section>` : ""}
       ${LA(g.myths, lang).length ? `<section class="g-myths"><h2>${esc(u.myths)}</h2>${list(LA(g.myths, lang))}</section>` : ""}
-      ${(g.sources || []).length ? `<section class="g-src"><h2>${esc(u.sources)}</h2><ul>${g.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(L(s.name, lang) || s.url)}</a></li>`).join("")}</ul></section>` : ""}
+      ${(g.sources || []).length ? `<section class="g-src"><h2>${esc(u.sources)}</h2><ul>${g.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(L(s.name, lang) || s.url)}</a></li>`).join("")}</ul></section>` : ""}
       <p class="g-fine">${esc(u.verified)} ${esc(g.verified || "")} · ${esc(u.disclaimer)}</p>
     </article>`;
   }

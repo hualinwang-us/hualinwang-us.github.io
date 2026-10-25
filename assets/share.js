@@ -58,7 +58,7 @@
       <div class="sh-grid">
         <button type="button" class="sh-btn wx" data-sh="wechat"><span class="sh-ic">微</span>${esc(t.wechat)}</button>
         ${navigator.share && !inWeChat ? `<button type="button" class="sh-btn" data-sh="system"><span class="sh-ic">⇪</span>${esc(t.system)}</button>` : ""}
-        ${links.map(([label, cls, href]) => `<a class="sh-btn ${cls}" href="${esc(href)}" target="_blank" rel="noopener"><span class="sh-ic">${esc(label.slice(0, 1))}</span>${esc(label)}</a>`).join("")}
+        ${links.map(([label, cls, href]) => `<a class="sh-btn ${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><span class="sh-ic">${esc(label.slice(0, 1))}</span>${esc(label)}</a>`).join("")}
         <button type="button" class="sh-btn" data-sh="copy"><span class="sh-ic">⧉</span>${esc(t.copy)}</button>
       </div>
       <p class="sh-msg" role="status"></p>

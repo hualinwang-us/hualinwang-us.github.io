@@ -376,6 +376,29 @@ async function buildNews() {
 }
 
 
+
+/* ---------- translation (free MyMemory service; each title translated once and cached) ---------- */
+const TR_CACHE = "data/tr-cache.json";
+async function translateTitles(items, budget = 150) {
+  const cache = await readJSON(TR_CACHE, {});
+  let used = 0, quota = false;
+  const todo = items.filter(i => !isChinese(i.t));
+  for (const i of todo) {
+    if (cache[i.t]) { i.tz = cache[i.t].z; continue; }
+    if (quota || used >= budget) continue;
+    used++;
+    try {
+      const r = await get("https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&q=" + encodeURIComponent(i.t.slice(0, 450)), "json");
+      if (r.quotaFinished || /QUOTA|LIMIT/i.test(r.responseDetails || "")) { quota = true; continue; }
+      const z = clean((r.responseData && r.responseData.translatedText) || "");
+      if (z && isChinese(z)) { cache[i.t] = { z, t: Date.now() }; i.tz = z; }
+    } catch (e) { /* try again next run */ }
+  }
+  for (const k of Object.keys(cache)) if (Date.now() - (cache[k].t || 0) > 14 * 86400e3) delete cache[k];
+  await fs.writeFile(TR_CACHE, JSON.stringify(cache));
+  console.log(`translation: ${used} new${quota ? ", daily free quota reached" : ""}`);
+}
+
 /* ---------- this week's deals and free stuff ---------- */
 const DEAL_FEEDS = {
   online: [["Slickdeals", ["https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"]], ["Hip2Save", ["https://hip2save.com/feed/"]]],
@@ -407,6 +430,20 @@ async function buildDeals() {
     for (const i of items) { const k = key(i.t); if (k.length < 4 || seen.has(k)) continue; seen.add(k); i.id = crypto.createHash("sha1").update(k).digest("hex").slice(0, 10); list.push(i); if (list.length >= 24) break; }
     out.sections[sec] = list.length ? list : (prev.sections?.[sec] || []).filter(i => !i.d || now - Date.parse(i.d) < maxAge * 86400e3);
   }
+  // Chinese titles for English deals, and whether each deal page can open inside our site.
+  const allDeals = Object.values(out.sections).flat();
+  try { await translateTitles(allDeals); } catch (e) { console.log("translation failed:", e.message); }
+  try {
+    const dc = await readJSON("data/deal-cache.json", {});
+    const todo = allDeals.filter(i => !(i.u in dc)).slice(0, 80).map(i => async () => {
+      try { const r = await findImage(i); dc[i.u] = { fr: r.frame ? 1 : 0, real: r.real, img: r.img, t: Date.now() }; }
+      catch (e) { dc[i.u] = { fr: 0, t: Date.now() }; }
+    });
+    await pool(todo, 8);
+    for (const i of allDeals) { const c = dc[i.u]; if (!c) continue; i.fr = c.fr; if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; if (!i.img && c.img) i.img = c.img; }
+    for (const k of Object.keys(dc)) if (Date.now() - (dc[k].t || 0) > 21 * 86400e3) delete dc[k];
+    await fs.writeFile("data/deal-cache.json", JSON.stringify(dc));
+  } catch (e) { console.log("deal page check failed:", e.message); }
   await fs.writeFile("data/deals.json", JSON.stringify(out));
   console.log("deals:", Object.entries(out.sections).map(([k, v]) => k + " " + v.length).join(", "));
   for (const f of out.feeds.filter(f => !f.ok)) console.log("  deals feed failed:", f.name, f.err || "no items");

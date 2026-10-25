@@ -213,7 +213,7 @@
   function metaHtml(i) { const a = ago(i.d); return `<span class="meta">${i.src ? `<span class="src">${esc(i.src)}</span>` : ""}${a ? `<span>${esc(a)}</span>` : ""}</span>`; }
   const imgTag = (i, cls) => `<img class="${cls}" src="${esc(i.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('[data-hasimg]')&&this.closest('[data-hasimg]').removeAttribute('data-hasimg');this.remove()">`;
   // Stories open on our own article page (#a-<id>); the article page links out to the full story.
-  const nhref = i => i.id ? `href="#a-${esc(i.id)}"` : `href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener"`;
+  const nhref = i => i.id ? `href="#a-${esc(i.id)}"` : `href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer"`;
   function liHtml(i, withSummary, withThumb) {
     const thumb = withThumb && i.img;
     return `<li${thumb ? ' class="thumbed" data-hasimg' : ""}>${thumb ? `<a class="th-link" ${nhref(i)} tabindex="-1" aria-hidden="true">${imgTag(i, "th")}</a>` : ""}<div class="tx"><a class="t" ${nhref(i)}>${esc(i.t)}</a>${withSummary && i.s ? `<span class="s">${esc(i.s)}</span>` : ""}${metaHtml(i)}</div></li>`;
@@ -416,8 +416,8 @@
       ${metaHtml(i)}
       ${i.img ? `<div class="art-img" data-hasimg>${imgTag(i, "")}</div>` : ""}
       ${i.full ? `<p class="g-notice">${esc(t("offNote"))}</p><div class="art-full" id="aFull"><p class="muted">${esc(t("loadingFull"))}</p></div>` : i.s ? `<p class="art-sum">${esc(i.s)}</p>` : i.fr ? "" : `<p class="art-sum muted">${esc(t("artNoSum"))}</p>`}
-      ${i.fr && !i.full ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
-      <div class="post-actions">${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("openOrig"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
+      ${i.fr && !i.full ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
+      <div class="post-actions">${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(src)}">${esc(t("irFull"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
@@ -431,11 +431,12 @@
     $("#aShare").onclick = () => HLShare.open({ url: HLC.siteBase() + "n/" + i.id + "/", title: i.t, text: i.t + " - 华邻网" });
   }
   // Reader: shows the publisher's own page inside our site (only for sites that allow being embedded).
-  function openReader(i, src) {
+  function openReader(i, src) { openReaderUrl(i.u, src); }
+  function openReaderUrl(u, src) {
     const r = $("#reader");
-    $("#rdSrc").textContent = src;
-    $("#rdOrig").setAttribute("href", safeUrl(i.u));
-    $("#rdFrame").setAttribute("src", safeUrl(i.u));
+    $("#rdSrc").textContent = src || "";
+    $("#rdOrig").setAttribute("href", safeUrl(u));
+    $("#rdFrame").setAttribute("src", safeUrl(u));
     r.hidden = false; document.body.classList.add("noscroll");
     $("#rdClose").focus();
   }
@@ -450,7 +451,10 @@
   /* ---------- deals ---------- */
   const DEAL_SECS = ["zh", "free", "online", "events"];
   function dealLi(i, en) {
-    return `<li><a class="t" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener">${en ? `<span class="en-tag">${esc(t("dl_en"))}</span>` : ""}${esc(i.t)}</a>${metaHtml(i)}</li>`;
+    const title = lang === "zh" && i.tz ? i.tz : i.t;
+    const showEn = en && !(lang === "zh" && i.tz) && lang === "zh";
+    const link = i.fr ? `href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(i.src || "")}"` : `href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer"`;
+    return `<li><a class="t" ${link}>${showEn ? `<span class="en-tag">${esc(t("dl_en"))}</span>` : ""}${esc(title)}</a>${metaHtml(i)}</li>`;
   }
   function localDeals() { return posts.filter(p => p.board === "deals"); }
   function renderDeals() {
@@ -605,6 +609,8 @@
   $("#bPost").onclick = () => openForm(route.board);
   $("#searchForm").addEventListener("submit", e => { e.preventDefault(); searchQ = $("#q").value.trim(); if (!searchQ) return; if (location.hash === "#search") go(); else location.hash = "search"; });
   document.addEventListener("click", e => {
+    const rdl = e.target.closest("a[data-reader]");
+    if (rdl) { e.preventDefault(); openReaderUrl(rdl.dataset.reader, rdl.dataset.src); return; }
     const el = e.target.closest("[data-pid],[data-postto],[data-post],[data-home],[data-close],[data-copy]");
     if (!el) { if (e.target.tagName === "DIALOG") e.target.close(); return; }
     if (el.dataset.pid) openPost(el.dataset.pid);
