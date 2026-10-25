@@ -1,0 +1,17 @@
+name: Flyer check
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p /tmp/t; i=0
+          for u in $(node -e 'const d=require("./data/flyers.json");for(const s of d.stores)for(const u of s.imgs)console.log(s.id+"|"+encodeURI(decodeURI(u)))'); do
+            id=${u%%|*}; url=${u#*|}; i=$((i+1))
+            curl -sL -m 60 -A "Mozilla/5.0" -e "https://huamai88.com/" "$url" -o /tmp/raw && convert /tmp/raw[0] -resize 360x /tmp/t/$(printf %02d $i)-$id.jpg && echo "$id $(identify -format '%wx%h' /tmp/raw[0] 2>/dev/null)" || echo "$id FAIL $url"
+          done
+          git config user.name a; git config user.email a@a
+          git checkout --orphan flyer-check; git rm -rqf --cached .; cp /tmp/t/* .; git add *.jpg; git commit -qm c; git push -f origin flyer-check
