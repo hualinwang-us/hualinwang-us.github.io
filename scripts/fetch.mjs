@@ -269,9 +269,11 @@ async function buildOfficial(out) {
 
   // 2) Latest USCIS documents in the Federal Register (rules, notices), full text from the API.
   try {
-    const api = "https://www.federalregister.gov/api/v1/documents.json?per_page=6&order=newest&conditions%5Bagencies%5D%5B%5D=u-s-citizenship-and-immigration-services&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=html_url&fields%5B%5D=body_html_url&fields%5B%5D=publication_date&fields%5B%5D=type";
+    const api = "https://www.federalregister.gov/api/v1/documents.json?per_page=40&order=newest&conditions%5Bagencies%5D%5B%5D=u-s-citizenship-and-immigration-services&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=html_url&fields%5B%5D=body_html_url&fields%5B%5D=publication_date&fields%5B%5D=type";
     const res = await get(api, "json");
-    for (const r of (res.results || [])) {
+    // Keep rules, proposed rules and real notices; skip routine paperwork ("information collection") notices.
+    const useful = (res.results || []).filter(r => !/information collection|collection activities|currently approved collection/i.test(r.title || "")).slice(0, 6);
+    for (const r of useful) {
       let body = [];
       try { body = htmlToBlocks(await get(r.body_html_url)); } catch (e) { body = r.abstract ? [r.abstract] : []; }
       if (!body.length) continue;
