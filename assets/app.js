@@ -658,9 +658,8 @@
     const now = Date.now(), ids = new Set();
     for (const list of Object.values(news.sections[lang] || {})) for (const i of list) if (now - (Date.parse(i.d) || 0) < 86400e3) ids.add(i.id || i.u);
     const nDeals = Object.values((deals && deals.sections) || {}).reduce((a, v) => a + (v || []).filter(zhOk).length, 0);
-    const nPosts = postsLoaded ? posts.filter(p => now - ((typeof p.ts === "number" ? p.ts : Date.parse(p.ts)) || 0) < 7 * 86400e3).length : 0;
     const upd = Date.parse(news.updatedAt);
-    const parts = [ids.size && t("pNews").replace("{n}", `<b>${ids.size}</b>`), nDeals && t("pDeals").replace("{n}", `<b>${nDeals}</b>`), nPosts >= 3 && t("pPosts").replace("{n}", `<b>${nPosts}</b>`)].filter(Boolean);
+    const parts = [ids.size && t("pNews").replace("{n}", `<b>${ids.size}</b>`), nDeals && t("pDeals").replace("{n}", `<b>${nDeals}</b>`)].filter(Boolean);
     if (!ids.size) { el.hidden = true; return; } // only show the line once the news has loaded
     el.innerHTML = `<span class="pl-dot" aria-hidden="true"></span><span class="pl-t">${parts.join('<i aria-hidden="true">·</i>')}</span>${upd ? `<span class="pl-u">${esc(t("pUpd").replace("{t}", ago(news.updatedAt)))}</span>` : ""}`;
     el.hidden = false;
