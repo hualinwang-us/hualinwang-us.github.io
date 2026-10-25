@@ -1208,10 +1208,21 @@
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();
     renderTabs();
+    countView();
     const bn = route.view === "home" ? "home" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : (route.view === "deals" || route.view === "chaoshi") ? "deals" : route.view === "me" ? "me" : "";
     document.querySelectorAll("#bnav [data-bn]").forEach(a => a.classList.toggle("on", a.dataset.bn === bn));
     if (h === "classifieds") { const el = document.querySelector(".boards-sec"); if (el) el.scrollIntoView({ block: "start" }); }
     else if (route.view !== "home" || h === "") window.scrollTo(0, 0);
+  }
+
+  /* ---------- anonymous page-view count (which page, app or web; nothing personal) ---------- */
+  let lastHit = "";
+  function countView() {
+    const r = route, id = r.board || r.tool || r.store || r.sec || r.cat || r.trip || "";
+    const path = (r.view === "home" ? "home" : r.view + (id ? "-" + id : "")).toLowerCase().replace(/[^a-z0-9-]/g, "").slice(0, 40);
+    if (!POSTS_ON || path === lastHit || /[?&]nohit/.test(location.search)) return;
+    lastHit = path;
+    setTimeout(() => { try { HLC.rpc("hit", { p_path: path, p_app: IS_APP }).catch(() => {}); } catch (e) {} }, 400);
   }
 
   /* ---------- post detail ---------- */
