@@ -57,6 +57,8 @@ jobs:
       - name: Version asset links so phones never mix old and new files
         run: |
           V=${GITHUB_SHA::8}
+          echo "{\"v\":\"$V\"}" > _site/data/version.json
+          sed -i "s#<meta name=\"hl-build\" content=\"dev\">#<meta name=\"hl-build\" content=\"$V\">#" _site/index.html
           find _site -name "*.html" -exec sed -i -E "s#(assets/[a-z-]+\.(js|css))\"#\1?v=$V\"#g; s#(config\.js)\"#\1?v=$V\"#g" {} +
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -638,6 +638,20 @@
     }
   });
 
+  // If the phone shows a cached older page, reload once to get the newest version.
+  (function checkVersion() {
+    const mine = (document.querySelector('meta[name="hl-build"]') || {}).content;
+    if (!mine || mine === "dev") return;
+    fetch("data/version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(v => {
+      if (v && v.v && v.v !== mine) {
+        let tried = ""; try { tried = sessionStorage.getItem("hl-reload") || ""; } catch (e) {}
+        if (tried === v.v) return;
+        try { sessionStorage.setItem("hl-reload", v.v); } catch (e) {}
+        location.reload();
+      }
+    }).catch(() => {});
+  })();
+
   applyLang();
   go();
   loadData();
