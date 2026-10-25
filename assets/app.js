@@ -52,7 +52,8 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", fzLabel: "字号", fzNames: ["标准字号", "大字号", "特大字号"], ypTab: "商家黄页", ypH: "商家黄页", ypAdd: "免费登记商家", ypNote: "纽约华人常用的超市、餐馆、律师、医生、报税、装修等商家，一查就有电话和地址。", ypQph: "搜索商家名称、地址", ypAll: "全部", ypNone: "这个类别还没有商家，欢迎免费登记。", ypFeat: "推荐", ypMap: "地图", ypCall: "打电话", ypFormNote: "基础登记完全免费。想排在最前面、带“推荐”标记，可以联系我们做付费推荐。", yName: "商家名称", yCat: "类别", yAddr: "地址", yHours: "营业时间（选填）", yWeb: "网站（选填）", yDesc: "简介（选填）", yDescPh: "主营项目、特色、是否接受保险、会说的语言等", yErrName: "请填写商家名称。", yErrContact: "电话和微信至少填一项。", yErrArea: "请选择地区。", yOk: "登记成功，已显示在黄页里。", yFail: "登记失败，请稍后再试。", yOff: "黄页登记即将开放，也可以短信 {p} 让我们帮你登记。", ypPromo: "想让顾客更容易找到你？付费推荐排在本类最前面，带“推荐”标记：", ypCount: "{n} 家商家",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", bnMe: "我的", meH: "我的华邻", meLogin: "登录后可以查看自己发过的帖子和回复。", meLoginBtn: "登录 / 注册", mePosts: "我发的帖子", meReplies: "我的回复", meNoPosts: "还没有发过帖子。", meNoReplies: "还没有回复过帖子。", mePostNow: "去发布", meOut: "退出登录", meShare: "分享华邻网", meReplyTo: "回复了：", meGone: "（原帖已删除）",
+      rpH: "回复", rpCount: "{n} 条回复", rpNone: "还没有人回复，第一个说点什么吧。", rpPh: "写下你的问题或想法……（请勿留身份证、银行卡等隐私）", rpSend: "回复", rpLogin: "登录后回复", rpOk: "已回复", rpFail: "回复失败，请稍后再试。", rpTooMany: "回复太频繁了，请稍等几分钟。", rpDel: "删除", rpOff: "回复功能即将开放。", rpDeleted: "已删除", fzLabel: "字号", fzNames: ["标准字号", "大字号", "特大字号"], ypTab: "商家黄页", ypH: "商家黄页", ypAdd: "免费登记商家", ypNote: "纽约华人常用的超市、餐馆、律师、医生、报税、装修等商家，一查就有电话和地址。", ypQph: "搜索商家名称、地址", ypAll: "全部", ypNone: "这个类别还没有商家，欢迎免费登记。", ypFeat: "推荐", ypMap: "地图", ypCall: "打电话", ypFormNote: "基础登记完全免费。想排在最前面、带“推荐”标记，可以联系我们做付费推荐。", yName: "商家名称", yCat: "类别", yAddr: "地址", yHours: "营业时间（选填）", yWeb: "网站（选填）", yDesc: "简介（选填）", yDescPh: "主营项目、特色、是否接受保险、会说的语言等", yErrName: "请填写商家名称。", yErrContact: "电话和微信至少填一项。", yErrArea: "请选择地区。", yOk: "登记成功，已显示在黄页里。", yFail: "登记失败，请稍后再试。", yOff: "黄页登记即将开放，也可以短信 {p} 让我们帮你登记。", ypPromo: "想让顾客更容易找到你？付费推荐排在本类最前面，带“推荐”标记：", ypCount: "{n} 家商家",
       ypCats: [["market", "超市食品"], ["food", "餐馆美食"], ["law", "律师移民"], ["tax", "会计报税"], ["med", "医生诊所"], ["tcm", "中医针灸"], ["dental", "牙医眼科"], ["beauty", "美容美甲"], ["reno", "装修维修"], ["move", "搬家物流"], ["car", "汽车服务"], ["realty", "地产贷款"], ["ins", "保险理财"], ["edu", "补习教育"], ["travel", "旅行社"], ["other", "其他"]], adsPrice: "广告位和价格", adsYp: "商家黄页推荐", adsYpP: "排在所在类别最前面，带“推荐”标记；基础登记免费", pinAfter: "之后置顶 {p} ›", adsColPos: "位置", adsColPrice: "价格", adsPin: "分类信息置顶", adsPinP: "你的信息排在所选板块最上面，带红色“置顶”标记", adsAsk: "面议", adsPriceNote: "价格为开站价，可组合投放、长期投放另有优惠。电话或短信联系即可安排。", adsOfferEn: "", bAllAreas: "全部地区", bToday: "只看今天", pstBtn: "生成分享图", pstMaking: "正在生成图片…", pstH: "分享图已生成", pstTip: "发到微信群和朋友圈，扫码就能看到你的信息。手机上可以长按图片保存。", pstSave: "保存图片", pstShare: "发送图片", pstFail: "图片生成失败，请稍后再试。", pstSaved: "已保存到相册", stkH: "美股行情", stkAll: "看全部行情 ›", stkNote: "指数、中概股、热门科技股和汇率黄金，打开页面自动更新。行情由 TradingView 提供，部分报价可能有延迟。", stkOverview: "走势图", stkQuotes: "实时报价", stkHot: "今日涨跌榜", stkChart: "查任何股票", stkChartNote: "点图表左上角的代码，可以搜索任何股票", stkDisc: "本页行情仅供参考，不构成任何投资建议。华邻网不推荐买卖任何股票，投资有风险，请自行判断或咨询持牌理财顾问。", stkTab: "美股行情", stkIdx: "指数", stkCn: "中概股", stkTech: "科技股", stkFx: "汇率黄金", areaPick: "请选择地区", areaOther: "其他地区（自己填写）", areaOtherPh: "请填写地区", eArea: "请选择地区。", fImg: "图片（选填，最多4张）", fImgAdd: "加图片", imgUp: "正在上传图片…", imgFail: "信息已发布，但图片没传上去，请稍后再试。", recPosts: "最新分类信息", recSame: "{b}最新信息", recNews: "推荐阅读", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
       flyerH: "免费发布招聘 · 租房 · 二手 · 商家优惠", flyerSub: "纽约华人自己的分类信息网站", flyerPts: ["不用注册，一分钟发好", "可转发到微信，亲友都能看到", "每天还有华人新闻、福利指南、本周免费和打折"], flyerScan: "手机扫码立即发布", flyerDai: "不会打字？拍照发短信到 {p}，我们免费帮你发", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
       appIosH: "安装到 iPhone 桌面", appIosSteps: ["用 Safari 浏览器打开本站（微信里请先点右上角 ··· 选“在浏览器打开”）", "点屏幕下方的“分享”按钮（方框加向上箭头）", "往下滑，点“添加到主屏幕”", "点右上角“添加”，桌面上就有华邻网的图标了"],
@@ -114,7 +115,8 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", fzLabel: "Text size", fzNames: ["Normal text", "Large text", "Extra large text"], ypTab: "Directory", ypH: "Business directory", ypAdd: "List your business free", ypNote: "Supermarkets, restaurants, lawyers, doctors, tax preparers, contractors and more, with phone numbers and addresses.", ypQph: "Search name or address", ypAll: "All", ypNone: "No businesses in this category yet. List yours for free.", ypFeat: "Featured", ypMap: "Map", ypCall: "Call", ypFormNote: "A basic listing is free. To appear first with a Featured tag, contact us about a paid listing.", yName: "Business name", yCat: "Category", yAddr: "Address", yHours: "Hours (optional)", yWeb: "Website (optional)", yDesc: "About (optional)", yDescPh: "What you offer, insurance accepted, languages spoken…", yErrName: "Please enter the business name.", yErrContact: "Enter a phone number or WeChat.", yErrArea: "Please choose an area.", yOk: "Listed! It now shows in the directory.", yFail: "Couldn't save. Please try again.", yOff: "Listing opens soon. Text {p} and we'll add you.", ypPromo: "Want customers to find you first? Featured listings appear at the top of their category:", ypCount: "{n} businesses",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", bnMe: "Me", meH: "My HuaLin", meLogin: "Sign in to see your listings and replies.", meLoginBtn: "Sign in / Sign up", mePosts: "My listings", meReplies: "My replies", meNoPosts: "No listings yet.", meNoReplies: "No replies yet.", mePostNow: "Post one", meOut: "Sign out", meShare: "Share HuaLin", meReplyTo: "Replied: ", meGone: "(listing removed)",
+      rpH: "Replies", rpCount: "{n} replies", rpNone: "No replies yet. Be the first.", rpPh: "Ask a question or share a thought… (never post ID or bank numbers)", rpSend: "Reply", rpLogin: "Sign in to reply", rpOk: "Replied", rpFail: "Couldn't reply. Please try again.", rpTooMany: "Too many replies. Please wait a few minutes.", rpDel: "Delete", rpOff: "Replies are coming soon.", rpDeleted: "Deleted", fzLabel: "Text size", fzNames: ["Normal text", "Large text", "Extra large text"], ypTab: "Directory", ypH: "Business directory", ypAdd: "List your business free", ypNote: "Supermarkets, restaurants, lawyers, doctors, tax preparers, contractors and more, with phone numbers and addresses.", ypQph: "Search name or address", ypAll: "All", ypNone: "No businesses in this category yet. List yours for free.", ypFeat: "Featured", ypMap: "Map", ypCall: "Call", ypFormNote: "A basic listing is free. To appear first with a Featured tag, contact us about a paid listing.", yName: "Business name", yCat: "Category", yAddr: "Address", yHours: "Hours (optional)", yWeb: "Website (optional)", yDesc: "About (optional)", yDescPh: "What you offer, insurance accepted, languages spoken…", yErrName: "Please enter the business name.", yErrContact: "Enter a phone number or WeChat.", yErrArea: "Please choose an area.", yOk: "Listed! It now shows in the directory.", yFail: "Couldn't save. Please try again.", yOff: "Listing opens soon. Text {p} and we'll add you.", ypPromo: "Want customers to find you first? Featured listings appear at the top of their category:", ypCount: "{n} businesses",
       ypCats: [["market", "Groceries"], ["food", "Restaurants"], ["law", "Lawyers"], ["tax", "Tax & accounting"], ["med", "Doctors"], ["tcm", "Chinese medicine"], ["dental", "Dentists & eye care"], ["beauty", "Beauty & nails"], ["reno", "Renovation & repair"], ["move", "Moving & shipping"], ["car", "Auto services"], ["realty", "Real estate & loans"], ["ins", "Insurance & finance"], ["edu", "Tutoring"], ["travel", "Travel agencies"], ["other", "Other"]], adsPrice: "Ad spaces & prices", adsYp: "Featured directory listing", adsYpP: "Top of its category with a Featured tag; basic listings are free", pinAfter: "After that: {p} ›", adsColPos: "Placement", adsColPrice: "Price", adsPin: "Pinned listing", adsPinP: "Your listing stays at the top of its board with a red Pinned tag", adsAsk: "Ask", adsPriceNote: "Launch prices. Bundles and long-term bookings get discounts. Call or text to book.", adsOfferEn: "Launch offer: half price on all ads for the first 3 months; the first 100 posters get 7 days pinned free.", bAllAreas: "All areas", bToday: "Today only", pstBtn: "Make share image", pstMaking: "Making the image…", pstH: "Your share image", pstTip: "Send it to WeChat groups and Moments; anyone can scan to see your listing. On a phone, press and hold the image to save it.", pstSave: "Save image", pstShare: "Send image", pstFail: "Couldn't make the image. Please try again.", pstSaved: "Saved to Photos", stkH: "US stocks", stkAll: "All quotes ›", stkNote: "Indexes, Chinese stocks, big tech, currencies and gold, updating live. Data by TradingView; some quotes may be delayed.", stkOverview: "Chart", stkQuotes: "Quotes", stkHot: "Top movers today", stkChart: "Look up any stock", stkChartNote: "Tap the symbol at the top left of the chart to search", stkDisc: "For information only, not investment advice. 华邻网 does not recommend buying or selling any stock. Investing carries risk; consider a licensed adviser.", stkTab: "US stocks", stkIdx: "Indexes", stkCn: "China stocks", stkTech: "Tech", stkFx: "FX & gold", areaPick: "Choose an area", areaOther: "Other (type it in)", areaOtherPh: "Type the area", eArea: "Please choose an area.", fImg: "Photos (optional, up to 4)", fImgAdd: "Add photos", imgUp: "Uploading photos…", imgFail: "Posted, but the photos didn't upload. Please try again later.", recPosts: "Latest listings", recSame: "Latest in {b}", recNews: "Recommended", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
       flyerH: "Post jobs, rentals, buy & sell, deals: free", flyerSub: "Classifieds for Chinese New Yorkers", flyerPts: ["No sign-up, done in a minute", "Share to WeChat", "Daily news, benefits guides and deals too"], flyerScan: "Scan to post now", flyerDai: "Text a photo to {p} and we'll post it for you", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
       appIosH: "Add to iPhone home screen", appIosSteps: ["Open this site in Safari (in WeChat, tap ··· and choose Open in Safari)", "Tap the Share button at the bottom (square with an arrow)", "Scroll down and tap \"Add to Home Screen\"", "Tap \"Add\" at the top right"],
@@ -873,7 +875,7 @@
   }
 
   document.querySelectorAll("main.view").forEach(m => {
-    if (["vBoard", "vGuideOne", "vArticle"].includes(m.id)) return;
+    if (["vBoard", "vGuideOne", "vArticle", "vMe"].includes(m.id)) return;
     const vh = m.querySelector(".vh"); if (!vh) return;
     const sec = document.createElement("section"); sec.className = "spons mid view-ad"; sec.setAttribute("aria-label", "Sponsors");
     vh.after(sec);
@@ -939,6 +941,7 @@
     else if (h === "advertise") route = { view: "ads" };
     else if (h === "flyer") route = { view: "flyer" };
     else if (h === "stocks") route = { view: "stocks" };
+    else if (h === "me") route = { view: "me" };
     else if (h === "yp" || h.startsWith("yp-")) route = { view: "yp", cat: h.slice(3) };
     else if (h === "deals") route = { view: "deals" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
@@ -950,6 +953,7 @@
     $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
     $("#vAds").hidden = route.view !== "ads"; if (route.view === "ads") renderAdsPage();
     $("#vFlyer").hidden = route.view !== "flyer"; if (route.view === "flyer") renderFlyer();
+    $("#vMe").hidden = route.view !== "me"; if (route.view === "me") renderMe();
     $("#vStocks").hidden = route.view !== "stocks"; if (route.view === "stocks") renderStocks();
     $("#vYP").hidden = route.view !== "yp"; if (route.view === "yp") { $("#ypQ").value = ""; renderYP(); loadBiz(); }
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
@@ -958,7 +962,7 @@
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();
     renderTabs();
-    const bn = route.view === "home" ? "home" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : route.view === "deals" ? "deals" : "";
+    const bn = route.view === "home" ? "home" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : route.view === "deals" ? "deals" : route.view === "me" ? "me" : "";
     document.querySelectorAll("#bnav [data-bn]").forEach(a => a.classList.toggle("on", a.dataset.bn === bn));
     if (h === "classifieds") { const el = document.querySelector(".boards-sec"); if (el) el.scrollIntoView({ block: "start" }); }
     else if (route.view !== "home" || h === "") window.scrollTo(0, 0);
@@ -989,6 +993,52 @@
       } catch (er) { if (er && er.name === "AbortError") return; }
       $("#pstSave").click();
     };
+  }
+  /* ---------- replies under a listing ---------- */
+  async function loadReplies(p) {
+    const list = $("#rpList"), form = $("#rpForm"); if (!list) return;
+    const signed = A && A.user();
+    form.innerHTML = !POSTS_ON ? "" : signed
+      ? `<textarea id="rpText" maxlength="1000" rows="3" placeholder="${esc(t("rpPh"))}"></textarea><button type="button" class="btn" id="rpSend">${esc(t("rpSend"))}</button>`
+      : `<button type="button" class="btn ghost" id="rpLogin">${esc(t("rpLogin"))}</button>`;
+    if (!signed && $("#rpLogin")) $("#rpLogin").onclick = () => { afterLogin = () => openPost(p.id); $("#viewDlg").close(); openLogin(t("rpLogin")); };
+    let rows = [], mine = new Set();
+    try {
+      const r = await fetch(SB_URL + "/rest/v1/post_replies?select=id,created_at,author,body&post_id=eq." + encodeURIComponent(p.id) + "&order=created_at.asc&limit=300", { headers: sbHeaders() });
+      if (!r.ok) throw new Error(r.status);
+      rows = await r.json();
+      if (signed && rows.length) { try { (await HLC.rpc("my_reply_ids", { p_post: p.id }) || []).forEach(x => mine.add(typeof x === "object" ? Object.values(x)[0] : x)); } catch (e) {} }
+    } catch (e) { list.innerHTML = `<p class="muted">${esc(t("rpOff"))}</p>`; form.innerHTML = ""; return; }
+    if (!$("#rpList")) return;
+    $("#rpN").textContent = rows.length ? "· " + t("rpCount").replace("{n}", rows.length) : "";
+    list.innerHTML = rows.length ? rows.map(r => `<div class="rp"><div class="rp-h"><b>${esc(r.author)}</b><span>${esc(ago(r.created_at))}</span>${mine.has(r.id) ? `<button type="button" class="linkbtn rp-del" data-rpdel="${r.id}">${esc(t("rpDel"))}</button>` : ""}</div><p>${esc(r.body)}</p></div>`).join("") : `<p class="muted">${esc(t("rpNone"))}</p>`;
+    list.querySelectorAll("[data-rpdel]").forEach(b => b.onclick = async () => { b.disabled = true; try { await HLC.rpc("delete_my_reply", { p_id: Number(b.dataset.rpdel) }); toast(t("rpDeleted")); loadReplies(p); } catch (e) { b.disabled = false; } });
+    const send = $("#rpSend");
+    if (send) send.onclick = async () => {
+      const body = $("#rpText").value.trim(); if (!body) return;
+      if (HLC.BANNED.test(body)) { toast(t("eBanned")); return; }
+      send.disabled = true;
+      try { await HLC.rpc("add_reply", { p_post: p.id, p_body: body }); toast(t("rpOk")); loadReplies(p); }
+      catch (e) { send.disabled = false; toast(/too_many/.test(String(e.message) + String(e.raw || "")) ? t("rpTooMany") : t("rpFail")); }
+    };
+  }
+  /* ---------- my page: my listings and my replies ---------- */
+  async function renderMe() {
+    const box = $("#meBody"); const u = A && A.user();
+    if (!u) { box.innerHTML = `<section class="block me-empty"><h1>${esc(t("meH"))}</h1><p>${esc(t("meLogin"))}</p><button type="button" class="btn" id="meLoginBtn">${esc(t("meLoginBtn"))}</button></section>`; $("#meLoginBtn").onclick = () => { afterLogin = () => { location.hash = "me"; renderMe(); }; openLogin(); }; return; }
+    await loadMine();
+    const mineP = posts.filter(p => myIds.has(p.id) || myIds.has(String(p.id)) || keys.get(p.id));
+    box.innerHTML = `<section class="block me-head"><span class="me-av" aria-hidden="true">${esc((u.name || u.email || "我").slice(0, 1).toUpperCase())}</span><div><h1>${esc(u.name || u.email.split("@")[0])}</h1><p>${esc(u.email)}</p></div>
+        <div class="me-acts"><button type="button" class="btn ghost sm" id="meShare">${esc(t("meShare"))}</button><button type="button" class="btn ghost sm" id="meOut">${esc(t("meOut"))}</button></div></section>
+      <section class="block"><div class="bh"><h2>${esc(t("mePosts"))} <small>${mineP.length || ""}</small></h2><button type="button" class="linkbtn" data-post>${esc(t("mePostNow"))}</button></div>
+        ${mineP.length ? `<ul class="plist">${mineP.map(p => pitemHtml(p, true)).join("")}</ul>` : `<p class="muted">${esc(t("meNoPosts"))}</p>`}</section>
+      <section class="block"><div class="bh"><h2>${esc(t("meReplies"))}</h2></div><div id="meReplies"><p class="muted">${esc(t("loading"))}</p></div></section>`;
+    $("#meOut").onclick = async () => { await A.signOut(); toast(t("lgOut")); renderMe(); };
+    $("#meShare").onclick = shareCurrent;
+    try {
+      const rs = await HLC.rpc("my_replies", {});
+      $("#meReplies").innerHTML = (rs || []).length ? `<ul class="me-rp">${rs.map(r => { const p = posts.find(x => String(x.id) === String(r.post_id)); return `<li>${p ? `<button type="button" class="linkbtn" data-pid="${p.id}">${esc(p.title)}</button>` : `<span class="muted">${esc(t("meGone"))}</span>`}<p>${esc(t("meReplyTo"))}${esc(r.body)}</p><span class="muted">${esc(ago(r.created_at))}</span></li>`; }).join("")}</ul>` : `<p class="muted">${esc(t("meNoReplies"))}</p>`;
+    } catch (e) { $("#meReplies").innerHTML = `<p class="muted">${esc(t("meNoReplies"))}</p>`; }
   }
   // "More listings" under a listing: same board first, then the newest anywhere.
   function recPostsHtml(p) {
@@ -1027,12 +1077,15 @@
         ${myKey || mineAcct ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
       </div>
       <div class="manual" id="manualBox" hidden><span>${esc(t("shareManual"))}</span><input readonly value="${esc(url)}" aria-label="${esc(t("pageLink"))}"></div>
+      <section class="replies" id="rpBox"><h4>${esc(t("rpH"))} <span id="rpN"></span></h4><div id="rpList"><p class="muted">${esc(t("loading"))}</p></div>
+        <div class="rp-form" id="rpForm"></div></section>
       ${recPostsHtml(p)}
       <div class="dlg-ad">${liveSlots("feed").slice(0, 1).map(x => adCard(x, "sm")).join("") || emptyAd(true)}</div>
       <div class="reasons" id="repBox" hidden><b>${esc(t("reportH"))}</b>
         ${HLC.REPORT_REASONS.map(([k, zh, en], i) => `<label><input type="radio" name="rr" value="${k}" ${i === 0 ? "checked" : ""}> ${esc(lang === "zh" ? zh : en)}</label>`).join("")}
         <button type="button" class="btn" id="repSend">${esc(t("reportSend"))}</button></div>`;
     const dlg = $("#viewDlg"); if (!dlg.open) dlg.showModal();
+    loadReplies(p);
     $("#posterBtn").onclick = () => openPoster(p, url);
     if (opts.justPosted) setTimeout(() => { const b = $("#posterBtn"); if (b) b.classList.add("pulse"); }, 300);
     $("#shareBtn").onclick = () => HLShare.open({ url, title: (p.area ? "[" + p.area + "] " : "") + p.title, text: (p.area ? "[" + p.area + "] " : "") + p.title + " - 华邻网" });
@@ -1289,7 +1342,6 @@
     return HLShare.open({ url: base, title: "华邻网 HuaLin", text: t("shareSiteText") });
   }
   $("#fabShare").onclick = shareCurrent;
-  $("#bnShare").onclick = shareCurrent;
   document.addEventListener("click", e => { if (e.target.closest("[data-share-check]")) HLShare.open({ url: HLC.siteBase() + "#check", title: t("ckShareTitle"), text: t("ckShareText") }); });
   $("#siteShare").onclick = () => HLShare.open({ url: HLC.siteBase(), title: "华邻网 HuaLin", text: t("shareSiteText") });
   const fs2 = $("#footShare"); if (fs2) fs2.onclick = () => HLShare.open({ url: HLC.siteBase(), title: "华邻网 HuaLin", text: t("shareSiteText") });

@@ -51,7 +51,7 @@
     <span id="fxNow" class="pill" hidden></span>
   </span>
   <button type="button" class="util-share" id="loginBtn" data-i18n="login">登录 / 注册</button>
-  <span class="util-user" id="userBox" hidden><span id="userName"></span> <button type="button" class="linkbtn util-out" id="logoutBtn" data-i18n="logout">退出</button></span>
+  <span class="util-user" id="userBox" hidden><a href="#me" id="userName" class="util-me"></a> <button type="button" class="linkbtn util-out" id="logoutBtn" data-i18n="logout">退出</button></span>
   <button type="button" class="util-share util-app" id="appBtn" hidden data-i18n="appInstall">安装App</button>
   <button type="button" class="util-share util-fz" id="fzBtn" aria-label="字号大小"><span aria-hidden="true">A</span><b aria-hidden="true">A</b> <span data-i18n="fzLabel">字号</span></button>
   <button type="button" class="util-share" id="siteShare" data-i18n="shareSite">分享本站</button>
@@ -297,6 +297,11 @@
   <div class="actions"><button type="button" class="btn ghost" data-close data-i18n="cancel">取消</button><button type="submit" class="btn" id="ySubmit" data-i18n="submit">发布</button></div>
 </form></dialog>
 
+<main class="shell view" id="vMe" hidden>
+  <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
+  <div id="meBody"></div>
+</main>
+
 <main class="shell view" id="vFlyer" hidden>
   <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
   <div id="flyerBody"></div>
@@ -413,7 +418,7 @@
   <a href="#guide" data-bn="guide"><span class="bi" aria-hidden="true">指</span><span data-i18n="bnGuide">福利指南</span></a>
   <button type="button" class="bn-post" data-post><span class="bi" aria-hidden="true">＋</span><span data-i18n="bnPost">发布</span></button>
   <a href="#deals" data-bn="deals"><span class="bi" aria-hidden="true">惠</span><span data-i18n="bnDeals">优惠</span></a>
-  <button type="button" id="bnShare"><span class="bi wx" aria-hidden="true">微</span><span data-i18n="bnShare">分享</span></button>
+  <a href="#me" data-bn="me"><span class="bi" aria-hidden="true">我</span><span data-i18n="bnMe">我的</span></a>
 </nav>
 <button type="button" class="fab-share" id="fabShare" aria-label="分享"><span class="fab-ic" aria-hidden="true">微</span><span data-i18n="shareShort">分享</span></button>
 <div class="toast" id="toast" role="status" hidden></div>
