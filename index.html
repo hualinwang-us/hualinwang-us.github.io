@@ -114,7 +114,7 @@
       </div>
       <section class="spons mid" id="sponMid2" aria-label="Sponsors"></section>
       <div class="pair">
-        <section class="block"><div class="bh"><h2 data-i18n="sec_business">财经</h2><a href="#n-business" data-i18n="more">更多</a></div><ul class="nl" id="sec-business"></ul></section>
+        <section class="block"><div class="bh"><h2 data-i18n="sec_business">财经</h2><span class="bh-links"><a href="#stocks" class="stk-link">📈 <span data-i18n="stkTab">美股行情</span></a><a href="#n-business" data-i18n="more">更多</a></span></div><ul class="nl" id="sec-business"></ul></section>
         <section class="block"><div class="bh"><h2 data-i18n="sec_health">健康养生</h2><a href="#n-health" data-i18n="more">更多</a></div><ul class="nl" id="sec-health"></ul></section>
       </div>
       <section class="block" hidden><div class="bh"><h2 data-i18n="sec_official">政府公告</h2><a href="#n-official" data-i18n="more">更多</a></div><ul class="nl" id="sec-official"></ul></section>
@@ -245,6 +245,21 @@
 <main class="shell view" id="vAds" hidden>
   <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
   <article class="guide" id="adsBody"></article>
+</main>
+
+<main class="shell view" id="vStocks" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <h1 data-i18n="stkH">美股行情</h1>
+    <p class="vnote" data-i18n="stkNote">指数、中概股、热门科技股和汇率黄金，打开页面自动更新。行情由 TradingView 提供，部分报价可能有延迟。</p>
+  </div>
+  <div class="stk-tape" id="stkTape"></div>
+  <div class="stk-grid">
+    <section class="block stk-box"><div class="bh"><h2 data-i18n="stkOverview">市场总览</h2></div><div id="stkOverview" class="stk-w" style="height:520px"></div></section>
+    <section class="block stk-box"><div class="bh"><h2 data-i18n="stkHot">今日涨跌榜</h2></div><div id="stkHot" class="stk-w" style="height:520px"></div></section>
+  </div>
+  <section class="block stk-box"><div class="bh"><h2 data-i18n="stkChart">查任何股票</h2><span class="bh-note" data-i18n="stkChartNote">点图表左上角的代码，可以搜索任何股票</span></div><div id="stkChart" class="stk-w" style="height:520px"></div></section>
+  <p class="g-fine stk-disc" data-i18n="stkDisc">本页行情仅供参考，不构成任何投资建议。华邻网不推荐买卖任何股票，投资有风险，请自行判断或咨询持牌理财顾问。</p>
 </main>
 
 <main class="shell view" id="vFlyer" hidden>

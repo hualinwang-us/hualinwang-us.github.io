@@ -690,3 +690,15 @@ a.spon.empty:hover{border-color:var(--gold)}
 @keyframes sp-exit{0%{transform:none}100%{transform:translateY(-100%);visibility:hidden}}
 @media (prefers-reduced-motion:reduce){.hl-launch .splash{animation:sp-fadeout .4s ease 1.6s forwards}.splash *,.splash *::after{animation:none!important;opacity:1!important;clip-path:none!important;stroke-dashoffset:0!important;transform:none!important}
   @keyframes sp-fadeout{to{opacity:0;visibility:hidden}}}
+
+/* US stocks page */
+.vnote{margin:6px 0 0;color:var(--muted);font-size:14px}
+.stk-tape{min-height:46px;margin:6px 0 14px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.stk-grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.stk-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.stk-box{margin-bottom:16px}
+.stk-w{width:100%}
+.stk-disc{margin:8px 0 24px}
+.bh-links{display:flex;gap:14px;align-items:center}
+.stk-link{font-weight:700;color:var(--accent)!important}
+@media (max-width:719px){#stkOverview,#stkHot,#stkChart{height:460px!important}}
