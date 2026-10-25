@@ -61,6 +61,29 @@ for (const g of guides.guides || []) {
 }
 console.log(`guide pages: ${(guides.guides || []).length}`);
 
+// News pages: /n/<id>/ for every story currently on the site, so shared links show the headline.
+const ntpl = await read("news.html");
+const nfill = map => ntpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] : ""));
+let newsData = { sections: {} }; try { newsData = JSON.parse(await read("data/news.json")); } catch (e) {}
+const SEC = { zh: { top: "新闻速递", local: "纽约本地", immigration: "移民签证", uschina: "中美关系", china: "中国", business: "财经", health: "健康养生", ent: "娱乐体育" },
+  en: { top: "Top Stories", local: "New York", immigration: "Immigration", uschina: "US–China", china: "China", business: "Business", health: "Health", ent: "Entertainment & Sports" } };
+let nn = 0; const seenN = new Set();
+for (const lg of ["zh", "en"]) for (const [sname, list] of Object.entries((newsData.sections || {})[lg] || {})) for (const i of list) {
+  if (!i.id || seenN.has(i.id)) continue; seenN.add(i.id);
+  const src = i.src || (lg === "zh" ? "原网站" : "the publisher");
+  const when = i.d ? new Date(i.d).toLocaleString(lg === "zh" ? "zh-CN" : "en-US", { timeZone: "America/New_York", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
+  const body = `<span class="tag">${esc(SEC[lg][sname] || "")}</span><h1>${esc(i.t)}</h1><span class="meta"><span class="src">${esc(src)}</span>${when ? `<span>${esc(when)}</span>` : ""}</span>` +
+    (i.img && /^https:\/\//.test(i.img) ? `<div class="art-img" data-hasimg><img src="${esc(i.img)}" alt="" referrerpolicy="no-referrer" onerror="this.parentNode.removeAttribute('data-hasimg')"></div>` : "") +
+    `<p class="art-sum${i.s ? "" : " muted"}">${esc(i.s || (lg === "zh" ? "华邻网只收录新闻标题和摘要，全文请到原网站阅读。" : "HuaLin shows headlines and summaries only; read the full story on the original site."))}</p>`;
+  const html = nfill({ TITLE: esc(i.t), DESC: esc((i.s || i.t).slice(0, 120)), BASE: esc(BASE), URL: esc(`${BASE}n/${i.id}/`), BODY: body,
+    SRCURL: esc(/^https?:\/\//.test(i.u) ? i.u : BASE), READ: esc(lg === "zh" ? `前往 ${src} 阅读全文 →` : `Read the full story at ${src} →`),
+    COPY: esc(lg === "zh" ? `新闻版权归 ${src} 所有，华邻网仅收录标题与摘要并链接原文。` : `Copyright belongs to ${src}. HuaLin shows the headline and summary and links to the original.`) });
+  await fs.mkdir(`${OUT}/n/${i.id}`, { recursive: true });
+  await fs.writeFile(`${OUT}/n/${i.id}/index.html`, html);
+  nn++;
+}
+console.log(`news pages: ${nn}`);
+
 const urls = [`<url><loc>${BASE}</loc><changefreq>hourly</changefreq></url>`]
   .concat((guides.guides || []).map(g => `<url><loc>${BASE}g/${g.id}/</loc><lastmod>${g.verified || ""}</lastmod></url>`))
   .concat(posts.map(p => `<url><loc>${BASE}p/${p.id}/</loc><lastmod>${String(p.created_at).slice(0, 10)}</lastmod></url>`));

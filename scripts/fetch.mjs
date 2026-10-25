@@ -1,6 +1,7 @@
 // 华邻网 news + market fetcher. Runs in GitHub Actions (free), no API keys, no dependencies.
 // Writes data/news.json and data/market.json. If a feed fails, the previous items are kept.
 import fs from "node:fs/promises";
+import crypto from "node:crypto";
 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const MAX_AGE_H = 96;
@@ -145,10 +146,22 @@ function ogImage(html, pageUrl) {
   return img;
 }
 
+// The publisher's own short description (what link previews show). Kept short; we always link to the full article.
+function ogDesc(html) {
+  const head = html.slice(0, 300000);
+  const pick = re => { const m = head.match(re); return m ? clean(m[1]) : ""; };
+  let d = pick(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i)
+    || pick(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:description["']/i)
+    || pick(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i)
+    || pick(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']description["']/i);
+  if (d.length > 160) d = d.slice(0, 158) + "…";
+  return d;
+}
+
 async function findImage(item) {
   const url = /news\.google\.com/.test(item.u) ? await resolveGoogleNews(item.u) : item.u;
   const html = await get(url);
-  return { img: ogImage(html, url), real: url };
+  return { img: ogImage(html, url), desc: ogDesc(html), real: url };
 }
 
 async function pool(tasks, size) {
@@ -164,7 +177,7 @@ async function enrichImages(out) {
   const want = [];
   for (const lang of ["zh", "en"]) {
     for (const [sec, list] of Object.entries(out.sections[lang])) {
-      const n = sec === "top" ? 10 : 6;
+      const n = sec === "top" ? 14 : 10;
       list.slice(0, n).forEach(i => { if (!i.img) want.push(i); });
     }
   }
@@ -172,18 +185,21 @@ async function enrichImages(out) {
   const todo = [];
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
-    if (cache[k]) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
-    if (todo.length >= 90) continue; // cap new lookups per run; the rest wait for the next run
+    if (cache[k] && "desc" in cache[k]) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
+    if (todo.length >= 120) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
-      try { const r = await findImage(i); cache[k] = { img: r.img, t: now }; if (r.img) { i.img = r.img; found++; } }
+      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, real: r.real, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
   await pool(todo, 6);
   // Apply cached pictures to every story, not just the ones looked up.
   for (const lang of ["zh", "en"]) for (const list of Object.values(out.sections[lang])) for (const i of list) {
-    if (i.img) continue; const c = cache[key(i.t) + "|" + (i.src || "")]; if (c && c.img) i.img = c.img;
+    const c = cache[key(i.t) + "|" + (i.src || "")]; if (!c) continue;
+    if (!i.img && c.img) i.img = c.img;
+    if (!i.s && c.desc && c.desc.replace(/\s/g, "") !== i.t.replace(/\s/g, "")) i.s = c.desc;
+    if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; // link straight to the publisher
   }
   await fs.writeFile(IMG_CACHE, JSON.stringify(cache));
   const errs = Object.values(cache).filter(c => c.err).map(c => c.err);
@@ -225,6 +241,7 @@ async function buildNews() {
       // Keep yesterday's stories when a section comes back thin, so the page never goes empty.
       const old = (prev.sections?.[lang]?.[sec] || []).filter(i => !BLOCK_SRC.test(i.src || "") && !BLOCK_TITLE.test(i.t) && (!i.d || now - Date.parse(i.d) < 7 * 86400e3) && (lang !== "zh" || isChinese(i.t)));
       for (const i of old) { if (fresh.length >= Math.min(8, CAP[sec])) break; const k = key(i.t); if (seen.has(k)) continue; seen.add(k); fresh.push(i); }
+      for (const i of fresh) i.id = crypto.createHash("sha1").update(key(i.t) + "|" + (i.src || "")).digest("hex").slice(0, 10);
       out.sections[lang][sec] = fresh;
     }
   }
