@@ -52,7 +52,16 @@
       posted: "发布成功", eTitle: "标题至少2个字。", eBody: "请填写详细内容。", eContact: "请至少留下电话或微信。",
       eSave: "发布失败，请稍后再试。", eFlood: "发布太频繁，请10分钟后再试。", eBusy: "网站繁忙，请稍后再试。",
       loading: "载入中…", newsEmpty: "新闻正在更新，请稍后刷新。", noPosts: "还没有信息，", beFirst: "抢先发布",
-      noLatest: "暂时没有新信息。", invH: "来发第一条吧", invP: "招聘、租房、转让、找服务……免费发布，邻居们都看得到。", invBtn: "免费发布", pgAll: "分类信息大全", pgAbout: "关于我们", pgContact: "联系我们", pgAds: "广告刊登", pgTerms: "用户协议", pgPrivacy: "隐私政策", cpName: "华邻网", cpTag: "天涯若比邻，有事找华邻", pNews: "今日新闻 {n} 条", pDeals: "本周优惠 {n} 条", pPosts: "本周新信息 {n} 条", pUpd: "{t}更新 · 每30分钟自动刷新", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
+      noLatest: "暂时没有新信息。", invH: "来发第一条吧", invP: "招聘、租房、转让、找服务……免费发布，邻居们都看得到。", invBtn: "免费发布", pgAll: "分类信息大全", eventsH: "线下活动", eventsNote: "纽约华人社区活动和全市免费活动，每天自动更新。办活动的社区组织和商家可以免费发布。", evComm: "华人社区活动", evFree: "纽约免费活动", evPost: "免费发布活动", evInvH: "还没有社区活动", evInvP: "教会、同乡会、社区中心、商家办活动，都可以在这里免费发布。",
+      locAsk: "看你附近的招工、房屋和服务？", locBtn: "自动定位", locPick: "手动选择地区", locing: "正在定位…", locNo: "无法定位，请手动选择地区", locFar: "你不在纽约附近，先显示全纽约",
+      ncH: "新移民必备", ncCheck: "福利自测", ncSub: "刚来纽约，先把这几件事弄清楚。都免费，大部分不问移民身份。", ncFine: "信息仅供参考，以政府官网为准。外部链接会打开官方网站。",
+      ncItems: [["纽约市身份证 IDNYC", "免费，10 岁以上纽约市居民都能办，不论移民身份", "#g-idnyc"], ["免费移民法律咨询", "市政府热线 1-800-354-0365，免费保密，不论身份", "#g-legal-help"],
+        ["没保险也能看病", "NYC Care 和白卡，按收入，很多人都能用", "#g-nyc-care"], ["孩子免费上学", "纽约市公立学校免费入学，不问移民身份", "https://www.schools.nyc.gov/enrollment"],
+        ["免费学英文", "纽约三大公共图书馆都有免费英文班", "https://www.nypl.org/"], ["打工权益", "纽约市最低工资 2026 年每小时 $17，被欠薪可以向州劳工厅投诉", "https://dol.ny.gov/"],
+        ["考驾照", "纽约州“绿灯法”：不论移民身份都可以申请驾照", "https://dmv.ny.gov/"], ["社安号 SSN", "有工作许可或绿卡后，向社安局申请", "https://www.ssa.gov/number-card"],
+        ["被房东告：免费律师", "纽约市低收入租客可以有免费律师", "#g-tenant-help"], ["打 311 要中文", "任何市政问题打 311，可以要求中文翻译", "https://portal.311.nyc.gov/"],
+        ["防诈骗", "移民局、社安局、警察不会打电话要你转账或买礼品卡", "#g-legal-help"], ["免费报税和退税", "收入不高可以免费报税，还可能有退税", "#g-free-tax"]],
+      cityTab: "同城服务", datingTab: "同城交友", eventsTab: "线下活动", cityAll: "查看全部同城服务", cityAllYp: "全部商家", cityPost: "免费发布", checkTab: "福利自测", appTab: "App下载", cityIntro: "招聘、房屋、买卖、生活服务……纽约华人邻居都在这里，全部免费发布。", cityCtaH: "有工作要招、有房要租？", cityCtaP: "免费发布，邻居们都看得到。", cityNY: "纽约", rgH: "选择地区", rgCity: "城市", rgArea: "地区", rgAll: "全纽约", rgSet: "已切换到 {a}", pgAbout: "关于我们", pgContact: "联系我们", pgAds: "广告刊登", pgTerms: "用户协议", pgPrivacy: "隐私政策", cpName: "华邻网", cpTag: "天涯若比邻，有事找华邻", pNews: "今日新闻 {n} 条", pDeals: "本周优惠 {n} 条", pPosts: "本周新信息 {n} 条", pUpd: "{t}更新 · 每30分钟自动刷新", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
@@ -114,7 +123,16 @@
       submit: "Post", posting: "Posting…", posted: "Posted", eTitle: "Title needs at least 2 characters.", eBody: "Add the details.",
       eContact: "Add a phone number or WeChat ID.", eSave: "Couldn't post. Please try again.", eFlood: "Too many posts. Try again in 10 minutes.",
       eBusy: "The site is busy. Please try again shortly.", loading: "Loading…", newsEmpty: "News is updating. Refresh in a moment.",
-      noPosts: "Nothing here yet. ", beFirst: "Post the first one", noLatest: "No new listings yet.", invH: "Be the first to post", invP: "Jobs, rentals, items for sale, services: free to post, seen by your neighbors.", invBtn: "Post for free", pgAll: "All classifieds", pgAbout: "About", pgContact: "Contact", pgAds: "Advertise", pgTerms: "Terms", pgPrivacy: "Privacy", cpName: "HuaLin", cpTag: "A neighbor is never far", pNews: "{n} stories today", pDeals: "{n} deals this week", pPosts: "{n} new listings this week", pUpd: "Updated {t} · refreshes every 30 min", noMatch: "No matching listings.",
+      noPosts: "Nothing here yet. ", beFirst: "Post the first one", noLatest: "No new listings yet.", invH: "Be the first to post", invP: "Jobs, rentals, items for sale, services: free to post, seen by your neighbors.", invBtn: "Post for free", pgAll: "All classifieds", eventsH: "Events", eventsNote: "Chinese community events and free NYC events, updated daily. Organizations and businesses can post events free.", evComm: "Community events", evFree: "Free NYC events", evPost: "Post an event", evInvH: "No community events yet", evInvP: "Churches, associations, community centers and businesses can post events here for free.",
+      locAsk: "See jobs, housing and services near you?", locBtn: "Locate me", locPick: "Choose area", locing: "Finding your location…", locNo: "Couldn't get your location; please choose an area", locFar: "You're not near New York; showing all of New York",
+      ncH: "New to New York", ncCheck: "Benefits check", ncSub: "Just arrived? Start with these. All free, and most don't ask about immigration status.", ncFine: "For general reference; official websites govern. Outside links open official sites.",
+      ncItems: [["IDNYC city ID", "Free for NYC residents 10+, regardless of immigration status", "#g-idnyc"], ["Free immigration legal help", "City hotline 1-800-354-0365, free and confidential", "#g-legal-help"],
+        ["Health care without insurance", "NYC Care and Medicaid, based on income", "#g-nyc-care"], ["Free public school", "NYC public schools enroll every child; status isn't asked", "https://www.schools.nyc.gov/enrollment"],
+        ["Free English classes", "All three NYC public library systems offer free English classes", "https://www.nypl.org/"], ["Worker rights", "NYC minimum wage is $17/hour in 2026; report unpaid wages to the state Labor Department", "https://dol.ny.gov/"],
+        ["Driver's license", "New York's Green Light law: apply regardless of immigration status", "https://dmv.ny.gov/"], ["Social Security number", "Apply once you have work authorization or a green card", "https://www.ssa.gov/number-card"],
+        ["Free lawyer in housing court", "Low-income NYC tenants can get a free lawyer", "#g-tenant-help"], ["Call 311 in Chinese", "Call 311 for any city question and ask for Chinese", "https://portal.311.nyc.gov/"],
+        ["Avoid scams", "Immigration, Social Security and police never ask for wire transfers or gift cards by phone", "#g-legal-help"], ["Free tax filing", "Lower-income filers can file free and may get refunds", "#g-free-tax"]],
+      cityTab: "Local services", datingTab: "Meet locals", eventsTab: "Events", cityAll: "All local services", cityAllYp: "All businesses", cityPost: "Post free", checkTab: "Benefits check", appTab: "Get the app", cityIntro: "Jobs, housing, buy & sell, services: the New York Chinese community, all free to post.", cityCtaH: "Hiring or renting?", cityCtaP: "Post free and your neighbors will see it.", cityNY: "New York", rgH: "Choose your area", rgCity: "City", rgArea: "Area", rgAll: "All of New York", rgSet: "Switched to {a}", pgAbout: "About", pgContact: "Contact", pgAds: "Advertise", pgTerms: "Terms", pgPrivacy: "Privacy", cpName: "HuaLin", cpTag: "A neighbor is never far", pNews: "{n} stories today", pDeals: "{n} deals this week", pPosts: "{n} new listings this week", pUpd: "Updated {t} · refreshes every 30 min", noMatch: "No matching listings.",
       searchFor: "Search: ", results: "results", contact: "Contact", phone: "Phone", wx: "WeChat", copy: "Copy", copied: "Copied",
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
@@ -186,7 +204,7 @@
     if (n.status !== "fulfilled" && !loadData.retried) { loadData.retried = true; setTimeout(() => loadData().catch(() => {}), 3000); } // phone network hiccup: try once more
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
-    [renderNews, renderPulse, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    [renderNews, renderPulse, renderPortal, renderNewcomer, renderLocateBar, renderEvents, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
     if (postsLoaded) { try { renderPostsAll(); } catch (e) { console.error(e); } }
   }
 
@@ -229,7 +247,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "yp") renderYP(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); try { renderRegionBtn(); renderPortal(); renderNewcomer(); renderLocateBar(); if (route.view === "events") renderEvents(); } catch (e) {} try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "yp") renderYP(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); applyScript(); }
 
@@ -265,32 +283,36 @@
   }
   function setScript(sv) { const was = script; script = sv; try { localStorage.setItem("hl-script", sv); } catch (e) {} if (lang !== "zh") { setLang("zh"); return; } if (was === "t" && sv === "s") { location.reload(); return; } applyScript(); }
 
+  const IS_APP = /HuaLinApp/.test(navigator.userAgent) || window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  // The visitor's chosen area within New York ("" = all of New York). Filters boards and the local-services page.
+  let curArea = ""; try { curArea = localStorage.getItem("hl-area") || ""; } catch (e) {}
+  const areaPosts = () => curArea ? posts.filter(p => p.area === curArea) : posts;
   // Top menu: each item shows all of its sub-items when you hover (or tap on a phone).
   function menuItems() {
-    const count = id => posts.filter(p => p.board === id).length;
+    const count = id => areaPosts().filter(p => p.board === id).length;
     const items = [
       { h: "", label: t("home") },
-      { h: "guide", label: t("guideTab"), menu: () => `<a class="mm-cta" href="#check">${esc(t("gCheckH"))} →</a>` + (guides ? `<div class="mm-cols">${guides.groups.map(gr => {
+      { h: "check", label: t("checkTab"), menu: () => `<a class="mm-cta" href="#check">${esc(t("gCheckH"))} →</a>` + (guides ? `<div class="mm-cols">${guides.groups.map(gr => {
           const gs = guides.guides.filter(g => g.group === gr.id); if (!gs.length) return "";
           return `<div><b>${esc(HLG.L(gr, lang))}</b>${gs.map(g => `<a href="#g-${esc(g.id)}">${esc(HLG.L(g.title, lang))}</a>`).join("")}</div>`; }).join("")}</div>` : "") },
       { h: "deals", label: t("dealsTab"), menu: () => `<div class="mm-cols"><div>${["local", "zh", "free", "online", "events"].map(k => `<a href="${k === "local" ? "#b-deals" : "#deals"}">${esc(t("dl_" + k))}</a>`).join("")}<button type="button" class="mm-cta linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div></div>` },
-      { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div></div>` }
+      { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}<a href="#stocks">${esc(t("stkTab"))}</a></div></div>` }
     ];
     items.push({ h: "stocks", label: t("stkTab") });
-    items.push({ h: "yp", label: t("ypTab"), menu: () => `<div class="mm-cols"><div>${t("ypCats").slice(0, 8).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div><div>${t("ypCats").slice(8).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}<button type="button" class="mm-cta linkbtn" data-ypadd>${esc(t("ypAdd"))} →</button></div></div>` });
-    for (const g of GROUPS) items.push({ h: "b-" + g.boards[0][0], label: lang === "zh" ? g.zh : g.en, group: g.id,
-      menu: g.boards.length < 2 ? null : () => `<div class="mm-cols"><div>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}<button type="button" class="mm-cta linkbtn" data-postto="${g.boards[0][0]}">${esc(t("postFree"))} →</button></div></div>` });
-    // Tab order matches the home page: benefits check, stocks, deals, news, then jobs, housing and the rest.
-    const ORDER = ["", "guide", "stocks", "deals", "yp", "n-top", "grp:work", "grp:home", "grp:trade", "grp:social", "grp:svc", "grp:pro", "grp:health", "grp:life"];
-    const keyOf = it => it.group ? "grp:" + it.group : it.h;
-    return items.sort((a, b) => { const x = ORDER.indexOf(keyOf(a)), y = ORDER.indexOf(keyOf(b)); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); });
+    items.push({ h: "city", label: t("cityTab"), menu: () => `<div class="mm-cols mm-city">${GROUPS.map(g => `<div><b>${esc(lang === "zh" ? g.zh : g.en)}</b>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}">${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}</div>`).join("")}<div><b>${esc(t("ypTab"))}</b>${t("ypCats").slice(0, 10).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div></div><a class="mm-cta" href="#city">${esc(t("cityAll"))} →</a>` });
+    if (!IS_APP) items.push({ h: "app", label: t("appTab"), app: true });
+    items.push({ h: "b-dating", label: t("datingTab") });
+    items.push({ h: "events", label: t("eventsTab") });
+    // Top bar: home (all local services), app, meet locals, news, deals, offline events.
+    const ORDER = ["", "app", "b-dating", "n-top", "deals", "events"];
+    return items.filter(it => ORDER.includes(it.h)).sort((a, b) => ORDER.indexOf(a.h) - ORDER.indexOf(b.h));
   }
   function renderTabs() {
     const items = menuItems();
     const curBoard = route.view === "board" ? boardById(route.board) : null;
     const artDeal = route.view === "article" && deals && Object.values(deals.sections || {}).some(l => l.some(x => x.id === route.id));
-    const cur = artDeal ? "deals" : route.view === "news" || route.view === "article" ? "n-top" : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : route.view === "stocks" ? "stocks" : route.view === "yp" ? "yp" : curBoard ? "grp:" + curBoard.group : route.view === "home" ? "" : null;
-    $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.h}" data-mi="${k}" class="${(it.group ? "grp:" + it.group : it.h) === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
+    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article" || route.view === "stocks") ? "n-top" : route.view === "deals" ? "deals" : route.view === "events" ? "events" : (curBoard && curBoard.id === "dating") ? "b-dating" : (route.view === "home" || route.view === "city" || route.view === "yp" || curBoard || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
+    $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.app ? "" : it.h}"${it.app ? " data-appdl" : ""} data-mi="${k}" class="${it.h === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
   }
   const mega = document.getElementById("mega");
   let megaTimer = null, megaIdx = -1;
@@ -334,6 +356,99 @@
       const n = count(b[0]); return `<li><a href="#b-${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</a>${n ? `<span class="n">${n}</span>` : ""}</li>`;
     }).join("")}</ul></div>`).join("");
   }
+  // 同城服务: every board on one page, grouped like a classifieds portal, with counts for the chosen area.
+  const GROUP_COLORS = ["#d2453a", "#e08a1e", "#2f7fd8", "#1f9d6b", "#7a5bd6", "#d24f8a", "#0f9bb0", "#c0392b"];
+  const HOT = ["jobs", "rent", "car", "sale", "recycle", "parttime", "clean", "repair", "move", "rest", "house", "dating"];
+  function renderPortal() {
+    const el = $("#homePortal"); if (!el) return;
+    const zh = lang === "zh", count = id => areaPosts().filter(p => p.board === id).length;
+    const hot = HOT.map(boardById).filter(Boolean).map((b, k) => `<a class="pt-hot" href="#b-${b.id}" style="--c:${GROUP_COLORS[k % GROUP_COLORS.length]}"><span class="pt-ic" aria-hidden="true">${esc(b.glyph)}</span><b>${esc(zh ? b.zh : b.en)}</b></a>`).join("");
+    const cards = GROUPS.filter(g => g.id !== "social").map((g, k) => `<section class="pt-card" style="--c:${GROUP_COLORS[k % GROUP_COLORS.length]}"><h3><a href="#b-${g.boards[0][0]}">${esc(zh ? g.zh : g.en)}</a></h3><div class="pt-links">${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}">${esc(zh ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}</div></section>`).join("");
+    const yp = `<section class="pt-card" style="--c:#9c7536"><h3><a href="#yp">${esc(t("ypTab"))}</a></h3><div class="pt-links">${t("ypCats").slice(0, 10).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div></section>`;
+    el.innerHTML = `<div class="pt-head"><h2>${esc(t("cityTab"))}</h2><button type="button" class="region-pill" data-region>${ic("pin")}${esc(regionLabel())}<span aria-hidden="true">▾</span></button><button type="button" class="btn sm pt-post" data-post>${esc(t("postFree"))}</button></div>
+      <div class="pt-hots">${hot}</div><div class="pt-grid">${cards}${yp}</div>`;
+  }
+  function renderCity() {
+    const el = $("#cityBody"); if (!el) return;
+    const zh = lang === "zh", count = id => areaPosts().filter(p => p.board === id).length;
+    const weekAgo = Date.now() - 7 * 864e5;
+    const fresh = id => areaPosts().filter(p => p.board === id && ((typeof p.ts === "number" ? p.ts : Date.parse(p.ts)) || 0) > weekAgo).length;
+    const tiles = GROUPS.map((g, k) => `<a class="ct-tile" href="#b-${g.boards[0][0]}" style="--c:${GROUP_COLORS[k % GROUP_COLORS.length]}"><span class="ct-ic" aria-hidden="true">${esc((zh ? g.zh : g.en).slice(0, 1))}</span><b>${esc(zh ? g.zh : g.en)}</b><small>${g.boards.slice(0, 3).map(bd => esc(zh ? bd[2] : bd[3])).join(" · ")}</small></a>`).join("");
+    const cards = GROUPS.map((g, k) => `<section class="ct-card" style="--c:${GROUP_COLORS[k % GROUP_COLORS.length]}"><div class="ct-h"><h2>${esc(zh ? g.zh : g.en)}</h2><button type="button" class="linkbtn" data-postto="${g.boards[0][0]}">${esc(t("cityPost"))}</button></div>
+      <div class="ct-links">${g.boards.map(bd => { const n = count(bd[0]), f = fresh(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(zh ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}${f ? '<i class="ct-new" aria-label="new"></i>' : ""}</a>`; }).join("")}</div></section>`).join("");
+    const yp = `<section class="ct-card ct-yp" style="--c:#9c7536"><div class="ct-h"><h2>${esc(t("ypTab"))}</h2><a class="linkbtn" href="#yp">${esc(t("cityAllYp"))} →</a></div><div class="ct-links">${t("ypCats").map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div></section>`;
+    el.innerHTML = `<div class="ct-top"><div><h1>${esc(t("cityTab"))}</h1><p class="muted">${esc(t("cityIntro"))}</p></div><button type="button" class="region-pill" data-region>${ic("pin")}${esc(regionLabel())}<span aria-hidden="true">▾</span></button></div>
+      <div class="ct-tiles">${tiles}</div><div class="ct-grid">${cards}${yp}</div>
+      <div class="ct-cta"><b>${esc(t("cityCtaH"))}</b><span>${esc(t("cityCtaP"))}</span><button type="button" class="btn" data-post>${esc(t("postFree"))}</button></div>`;
+  }
+  function renderEvents() {
+    const el = $("#eventsBody"); if (!el) return;
+    const free = ((deals && deals.sections && deals.sections.events) || []).filter(zhOk);
+    const comm = areaPosts().filter(p => p.board === "events").slice(0, 40);
+    el.innerHTML = `<div class="ev-grid"><section class="block"><div class="bh"><h2>${esc(t("evComm"))}</h2><button type="button" class="linkbtn" data-postto="events">${esc(t("evPost"))}</button></div>
+      ${!postsLoaded ? '<div class="skel"><i></i><i></i><i></i></div>' : comm.length ? `<ul class="rows">${comm.map(p => rowHtml(p, false)).join("")}</ul>` : `<div class="invite"><b>${esc(t("evInvH"))}</b><p>${esc(t("evInvP"))}</p><button type="button" class="btn sm" data-postto="events">${esc(t("evPost"))}</button></div>`}</section>
+      <section class="block"><div class="bh"><h2>${esc(t("evFree"))}</h2></div>${free.length ? `<ul class="nl">${free.map(i => dealLi(i, true)).join("")}</ul>` : `<div class="skel"><i></i><i></i><i></i></div>`}</section></div>`;
+  }
+  // New immigrants: the first things to sort out, with official or our own guide links.
+  function renderNewcomer() {
+    const el = $("#newcomer"); if (!el) return;
+    el.innerHTML = `<div class="bh"><h2>${esc(t("ncH"))}</h2><a href="#check">${esc(t("ncCheck"))} ›</a></div><p class="nc-sub">${esc(t("ncSub"))}</p>
+      <div class="nc-grid">${t("ncItems").map(([h, p, u]) => `<a class="nc-it" href="${esc(u)}"${/^https:/.test(u) ? ' target="_blank" rel="noopener"' : ""}><b>${esc(h)}</b><span>${esc(p)}</span></a>`).join("")}</div>
+      <p class="g-fine">${esc(t("ncFine"))}</p>`;
+  }
+  // Find the nearest area from the phone's location (asked only when the visitor taps "locate me").
+  const AREA_PTS = { "法拉盛": [40.759, -73.830], "布鲁克林八大道 / 日落公园": [40.641, -74.011], "布鲁克林 86街 / 本森赫斯特": [40.604, -73.997], "曼哈顿华埠": [40.716, -73.997],
+    "艾姆赫斯特": [40.736, -73.878], "布鲁克林 U大道 / 羊头湾": [40.599, -73.959], "贝赛 / 白石 / 大颈": [40.768, -73.790], "新鲜草原 / 佛洛帕兰": [40.735, -73.793],
+    "森林小丘 / 雷哥公园": [40.720, -73.848], "可乐娜 / 杰克逊高地": [40.747, -73.870], "布鲁克林湾脊 / 戴克高地": [40.625, -74.025], "史泰登岛": [40.580, -74.150],
+    "布朗克斯": [40.845, -73.865], "长岛": [40.760, -73.400], "新泽西": [40.760, -74.100], "威郡 / 纽约上州": [41.034, -73.763] };
+  function nearestArea(lat, lng) {
+    const km = (a, b) => { const r = Math.PI / 180, x = (b[1] - a[1]) * r * Math.cos((a[0] + b[0]) / 2 * r), y = (b[0] - a[0]) * r; return Math.sqrt(x * x + y * y) * 6371; };
+    let best = "", d = 1e9; for (const [k, p] of Object.entries(AREA_PTS)) { const x = km([lat, lng], p); if (x < d) { d = x; best = k; } }
+    if (d > 80) return null; // not near New York
+    if (d > 6 && !/史泰登|布朗克斯|长岛|新泽西|威郡/.test(best)) { // between neighborhoods: fall back to the borough
+      if (lng > -73.96 && lat > 40.68) return "皇后区其他"; if (lat < 40.70 && lng > -74.05) return "布鲁克林其他"; return "曼哈顿其他"; }
+    return best;
+  }
+  function setArea(a, quiet) {
+    curArea = a; try { localStorage.setItem("hl-area", a); localStorage.setItem("hl-located", "1"); } catch (er) {}
+    renderRegionBtn(); renderPortal(); const lb = $("#locateBar"); if (lb) lb.hidden = true;
+    if (route.view === "city") renderCity(); if (route.view === "events") renderEvents();
+    if (route.view === "board") { $("#bArea").value = curArea; renderBoard(); }
+    if (!quiet) toast(t("rgSet").replace("{a}", regionLabel()));
+  }
+  function locateMe() {
+    if (!navigator.geolocation) { toast(t("locNo")); openRegion(); return; }
+    toast(t("locing"));
+    navigator.geolocation.getCurrentPosition(p => { const a = nearestArea(p.coords.latitude, p.coords.longitude); if (a === null) { setArea("", true); toast(t("locFar")); } else setArea(a); },
+      () => { toast(t("locNo")); openRegion(); }, { timeout: 10000, maximumAge: 600000 });
+  }
+  function renderLocateBar() {
+    const lb = $("#locateBar"); if (!lb) return;
+    let done = false; try { done = !!localStorage.getItem("hl-located") || !!localStorage.getItem("hl-area"); } catch (e) {}
+    if (done) { lb.hidden = true; return; }
+    lb.innerHTML = `${ic("pin")}<span>${esc(t("locAsk"))}</span><button type="button" class="btn sm" data-locate>${esc(t("locBtn"))}</button><button type="button" class="linkbtn" data-region>${esc(t("locPick"))}</button><button type="button" class="x" data-locx aria-label="Close">×</button>`;
+    lb.hidden = false;
+  }
+  function regionLabel() { const a = AREAS.find(x => x[0] === curArea); return t("cityNY") + (a ? " · " + (lang === "zh" ? a[0] : a[1]) : ""); }
+  function renderRegionBtn() { const b = $("#regionTxt"); if (b) b.textContent = regionLabel(); }
+  function openRegion() {
+    const zh = lang === "zh";
+    $("#viewBody").innerHTML = `<button type="button" class="x" data-close aria-label="Close">×</button><div class="rg"><h3>${esc(t("rgH"))}</h3><button type="button" class="btn sm rg-loc" data-locate>${ic("pin")}${esc(t("locBtn"))}</button>
+      <p class="rg-l">${esc(t("rgCity"))}</p><div class="rg-row"><button type="button" class="rg-chip on">${esc(t("cityNY"))}</button></div>
+      <p class="rg-l">${esc(t("rgArea"))}</p><div class="rg-row"><button type="button" class="rg-chip${curArea ? "" : " on"}" data-area="">${esc(t("rgAll"))}</button>${AREAS.filter(a => !/网上/.test(a[0])).map(([z, e]) => `<button type="button" class="rg-chip${curArea === z ? " on" : ""}" data-area="${esc(z)}">${esc(zh ? z : e)}</button>`).join("")}</div></div>`;
+    const d = $("#viewDlg"); if (!d.open) d.showModal();
+  }
+  document.addEventListener("click", e => {
+    if (e.target.closest("[data-region]")) { e.preventDefault(); openRegion(); return; }
+    const c = e.target.closest("[data-area]");
+    if (c && c.closest(".rg")) {
+      $("#viewDlg").close(); setArea(c.dataset.area); return;
+    }
+    if (e.target.closest("[data-appdl]")) { e.preventDefault(); installApp(); }
+    if (e.target.closest("[data-locate]")) { e.preventDefault(); const d = $("#viewDlg"); if (d.open) d.close(); locateMe(); }
+    if (e.target.closest("[data-locx]")) { try { localStorage.setItem("hl-located", "1"); } catch (er) {} $("#locateBar").hidden = true; }
+  });
+
   function renderAdContact() {
     const c = CFG.adContact || {};
     const parts = [c.phone && (t("phone") + " " + c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
@@ -665,7 +780,7 @@
     el.hidden = false;
   }
   function renderPostsAll() {
-    try { renderPulse(); } catch (e) {}
+    try { renderPulse(); renderPortal(); if (route.view === "events") renderEvents(); if (route.view === "city") renderCity(); } catch (e) {}
     const latest = posts.slice(0, 12);
     $("#latest").innerHTML = !postsLoaded ? `<div class="skel" aria-label="${esc(t("loading"))}"><i></i><i></i><i></i><i></i></div>` : latest.length ? latest.map(p => rowHtml(p, true)).join("") : `<div class="invite"><b>${esc(t("invH"))}</b><p>${esc(t("invP"))}</p><button type="button" class="btn sm" data-post>${esc(t("invBtn"))}</button></div>`;
     const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id) || offFor(b.id).length);
@@ -973,6 +1088,8 @@
     else if (h === "me") route = { view: "me" };
     else if (h === "yp" || h.startsWith("yp-")) route = { view: "yp", cat: h.slice(3) };
     else if (h === "deals") route = { view: "deals" };
+    else if (h === "city") route = { view: "city" };
+    else if (h === "events") route = { view: "events" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
     else route = { view: "home" };
     document.title = BASE_TITLE;
@@ -980,6 +1097,8 @@
     $("#vNews").hidden = route.view !== "news"; $("#vSearch").hidden = route.view !== "search";
     $("#vArticle").hidden = route.view !== "article"; if (route.view === "article") renderArticle();
     $("#vDeals").hidden = route.view !== "deals"; if (route.view === "deals") renderDeals();
+    $("#vCity").hidden = route.view !== "city"; if (route.view === "city") renderCity();
+    $("#vEvents").hidden = route.view !== "events"; if (route.view === "events") renderEvents();
     $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
     $("#vAds").hidden = route.view !== "ads"; if (route.view === "ads") renderAdsPage();
     $("#vFlyer").hidden = route.view !== "flyer"; if (route.view === "flyer") renderFlyer();
@@ -988,7 +1107,7 @@
     $("#vYP").hidden = route.view !== "yp"; if (route.view === "yp") { $("#ypQ").value = ""; renderYP(); loadBiz(); }
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
     if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();
-    if (route.view === "board") { $("#bFilter").value = ""; $("#bArea").innerHTML = `<option value="">${esc(t("bAllAreas"))}</option>` + AREAS.map(([z, e]) => `<option value="${esc(z)}">${esc(lang === "zh" ? z : e)}</option>`).join(""); $("#bToday").checked = false; renderBoard(); }
+    if (route.view === "board") { $("#bFilter").value = ""; $("#bArea").innerHTML = `<option value="">${esc(t("bAllAreas"))}</option>` + AREAS.map(([z, e]) => `<option value="${esc(z)}">${esc(lang === "zh" ? z : e)}</option>`).join(""); $("#bToday").checked = false; if (curArea && AREAS.some(a => a[0] === curArea)) $("#bArea").value = curArea; renderBoard(); }
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();
     renderTabs();
@@ -1257,6 +1376,8 @@
     deals: ["如：法拉盛XX超市本周特价，猪肉 $1.99/磅", "特价商品和价格、活动时间、店铺地址"],
     move: ["如：搬家、长途搬运，价格公道，有保险", "服务范围、价格、车辆大小、可预约时间"],
     reno: ["如：装修厨房浴室、油漆、铺地板，持牌", "服务项目、是否持牌、报价方式、服务地区"],
+    repair: ["如：冰箱洗衣机空调维修，当天上门", "维修项目、上门地区、收费方式、联系时间"],
+    recycle: ["如：高价回收旧家电、旧家具、电脑手机", "回收物品、是否上门、付款方式、服务地区"],
     clean: ["如：家庭清洁、开荒清洁，按小时收费", "服务内容、价格、可预约时间、服务地区"],
     nanny: ["如：月嫂，有证书，经验丰富", "经验、证书、服务内容、价格、可上户时间"],
     law: ["如：移民律师，绿卡、入籍、庇护咨询", "专业领域、收费方式、办公地址、语言"],
@@ -1287,6 +1408,7 @@
   function renderAreaSel() {
     const zh = lang === "zh";
     $("#fAreaSel").innerHTML = `<option value="">${esc(t("areaPick"))}</option>` + AREAS.map(([z, e]) => `<option value="${esc(z)}">${esc(zh ? z : e)}</option>`).join("") + `<option value="__other">${esc(t("areaOther"))}</option>`;
+    if (curArea && AREAS.some(a => a[0] === curArea)) $("#fAreaSel").value = curArea;
   }
   function boardExamples() {
     const ex = EX[$("#fBoard").value];

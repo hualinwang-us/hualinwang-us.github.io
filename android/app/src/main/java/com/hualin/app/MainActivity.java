@@ -16,6 +16,8 @@ import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.GeolocationPermissions;
+import android.content.pm.PackageManager;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -27,6 +29,10 @@ public class MainActivity extends Activity {
     static final String HOME = "https://hualin88.com/";
     static final String HOST = "hualin88.com";
     WebView web;
+    String geoOrigin; GeolocationPermissions.Callback geoCb;
+    @Override public void onRequestPermissionsResult(int code, String[] perms, int[] res) {
+        if (code == 7 && geoCb != null) { boolean ok = res.length > 0 && res[0] == PackageManager.PERMISSION_GRANTED; geoCb.invoke(geoOrigin, ok, false); geoCb = null; }
+    }
     // Secret handed only to our own top-level page; embedded third-party frames can't read it.
     final String token = java.util.UUID.randomUUID().toString();
     boolean ourPage(String url) { try { Uri u = Uri.parse(url); return "https".equals(u.getScheme()) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost())); } catch (Exception e) { return false; } }
@@ -44,10 +50,23 @@ public class MainActivity extends Activity {
         s.setUseWideViewPort(true);
         s.setTextZoom(100);
         s.setMediaPlaybackRequiresUserGesture(false);
+        s.setGeolocationEnabled(true);
         s.setUserAgentString(s.getUserAgentString() + " HuaLinApp/1.0");
         CookieManager.getInstance().setAcceptThirdPartyCookies(web, true);
         web.addJavascriptInterface(new Bridge(), "HuaLinApp");
-        web.setWebChromeClient(new WebChromeClient());
+        // "Locate me" on our own pages only: ask Android for approximate location, then answer the page.
+        web.setWebChromeClient(new WebChromeClient() {
+            @Override public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback cb) {
+                boolean ours = ourPage(origin);
+                if (!ours) { cb.invoke(origin, false, false); return; }
+                if (Build.VERSION.SDK_INT >= 23 && checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    geoOrigin = origin; geoCb = cb;
+                    requestPermissions(new String[]{ android.Manifest.permission.ACCESS_COARSE_LOCATION }, 7);
+                    return;
+                }
+                cb.invoke(origin, true, false);
+            }
+        });
         web.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) { return route(r.getUrl()); }
             @Override public void onPageStarted(WebView v, String url, Bitmap fav) { super.onPageStarted(v, url, fav); }

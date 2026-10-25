@@ -73,6 +73,7 @@
     <span class="seal" aria-hidden="true">邻</span>
     <span class="logo-txt"><b>华邻网</b><small data-i18n="tagline">在美华人 · 新闻与生活信息</small></span>
   </a>
+  <button type="button" class="region" id="regionBtn" data-region aria-label="选择地区"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span id="regionTxt">纽约</span><span class="caret" aria-hidden="true">▾</span></button>
   <form class="search" id="searchForm" role="search">
     <input id="q" type="search" autocomplete="off" data-i18n-ph="searchPh" placeholder="搜索：白卡、绿卡、租房、法拉盛…">
     <button type="submit" data-i18n="searchBtn">搜索</button>
@@ -90,6 +91,8 @@
 
 
   <div class="pulse" id="pulse" hidden></div>
+  <div class="locate-bar" id="locateBar" hidden></div>
+  <section class="portal" id="homePortal" aria-label="同城服务"></section>
   <section class="spon-banner" id="sponBanner" aria-label="Sponsors"></section>
 
   <div class="layout">
@@ -103,6 +106,7 @@
         </div>
         <div class="g-home-r" id="gHomeList"></div>
       </section>
+      <section class="block nc" id="newcomer"></section>
       <section class="block stk-home" id="stkHomeBox"><div class="bh"><h2><span data-i18n="stkTab">美股行情</span></h2><a href="#stocks" data-i18n="stkAll">看全部行情 ›</a></div><div id="stkHome" class="stk-w"></div></section>
       <section class="deals-home" id="dealsHome" hidden>
         <div class="bh big"><h2 data-i18n="dealsH">本周优惠和免费</h2><a href="#deals" data-i18n="more">更多</a></div>
@@ -276,6 +280,14 @@
   <p class="g-fine stk-disc" data-i18n="stkDisc">本页行情仅供参考，不构成任何投资建议。华邻网不推荐买卖任何股票，投资有风险，请自行判断或咨询持牌理财顾问。</p>
 </main>
 
+<main class="shell view" id="vEvents" hidden>
+  <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button><h1 data-i18n="eventsH">线下活动</h1><p class="vh-note" data-i18n="eventsNote">纽约华人社区活动和全市免费活动，每天自动更新。办活动的社区组织和商家可以免费发布。</p></div>
+  <div id="eventsBody"></div>
+</main>
+<main class="shell view" id="vCity" hidden>
+  <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>
+  <div id="cityBody"></div>
+</main>
 <main class="shell view" id="vYP" hidden>
   <div class="vh">
     <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>

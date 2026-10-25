@@ -18,12 +18,12 @@
       ["short", "短", "短租日租", "Short-term Stays"], ["house", "房", "房屋买卖", "Homes for Sale"],
       ["shop", "铺", "店面写字楼", "Commercial Space"]] },
     { id: "trade", zh: "买卖", en: "Buy & Sell", boards: [
-      ["biz", "商", "生意转让", "Businesses for Sale"], ["sale", "物", "二手买卖", "Buy & Sell"],
-      ["car", "车", "汽车买卖", "Cars"], ["furn", "家", "家具家电", "Furniture & Appliances"],
+      ["biz", "商", "生意转让", "Businesses for Sale"], ["sale", "物", "跳蚤市场", "Flea Market"], ["recycle", "收", "二手回收", "Recycling & Buyback"],
+      ["car", "车", "二手车", "Used Cars"], ["furn", "家", "家具家电", "Furniture & Appliances"],
       ["pet", "宠", "宠物领养", "Pets"],
       ["deals", "惠", "商家优惠", "Local Deals"]] },
     { id: "svc", zh: "生活服务", en: "Services", boards: [
-      ["move", "搬", "搬家运输", "Moving"], ["reno", "修", "装修维修", "Renovation & Repair"],
+      ["move", "搬", "搬家运输", "Moving"], ["reno", "修", "装修维修", "Renovation & Repair"], ["repair", "电", "家电维修", "Appliance Repair"],
       ["clean", "洁", "家政清洁", "Cleaning"], ["nanny", "护", "保姆月嫂", "Nannies & Caregivers"],
       ["ship", "递", "快递货运", "Shipping"], ["ride", "拼", "顺风车拼车", "Rides & Carpools"],
       ["translate", "译", "翻译代办", "Translation & Paperwork"], ["sign", "印", "印刷招牌", "Printing & Signs"]] },
