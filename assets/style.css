@@ -610,3 +610,13 @@ a.spon.empty:hover{border-color:var(--gold)}
   #vFlyer .fly-sheet{position:fixed;inset:0;border:0;max-width:none;padding:48px}
   .fly-sheet h1{font-size:40px}.fly-sheet ul{font-size:24px}
 }
+
+/* extra ad spaces */
+.foot-ads{margin:18px 0 8px!important;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.deals-ads{margin-top:14px!important}
+.art-ad{margin-top:18px!important}
+.dlg-ad{margin:14px 0 4px}
+.dlg-ad .spon{width:100%}
+.nl .feed-ad{padding:8px 0;border-bottom:1px dashed var(--line)}
+#vCheck .spons.mid{margin:16px 0!important}
+@media (max-width:719px){.foot-ads>:nth-child(n+3){display:none}.deals-ads>:nth-child(n+2){display:none}}

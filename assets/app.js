@@ -60,7 +60,7 @@
       house: [["#check", "我能申请什么？", "白卡、粮食券、公屋……回答几个问题马上知道"], ["#deals", "本周免费和打折", "每天自动更新，全部翻译成中文"], ["#b-deals", "商家免费发布优惠", "超市、餐馆、店铺每周特价，一分钟发好"], ["#guide", "纽约华人生活指南", "25 项福利，白话讲清楚怎么申请"], ["#post", "免费发布分类信息", "招聘、租房、二手买卖，一分钟发布"]],
       adsTitle: "在华邻网投放广告", adsIntro: "华邻网每天更新纽约华人关心的新闻、福利指南和本周优惠，读者都是在美华人家庭。以下广告位可以单独或组合投放，价格面议，新开张商家有优惠。",
       adsPos: "广告位一览", adsHow: "怎么投放", adsHowP: "把店名、一句话介绍、电话/微信、想放的位置和时间发给我们，当天就能上线。到期自动下架，不用操心。", adsNoContact: "联系方式即将公布。也可以先在“商家优惠”免费发布优惠信息。",
-      adsList: [["横幅广告", "首页最上方通栏，访客打开第一眼看到"], ["首页推荐（3个）", "首页顶部三张推荐卡片"], ["新闻中间（4个）", "首页新闻栏目之间，读新闻时自然看到"], ["侧栏（3个）", "首页右侧，电脑版全程可见"], ["分类板块页（可指定板块）", "例如只出现在“房屋出租”或“招聘”板块顶部"], ["信息流", "分类信息列表中每隔几条出现一次"], ["指南和文章页", "福利指南、新闻文章下方，读者停留时间最长"]],
+      adsList: [["横幅广告", "首页最上方通栏，访客打开第一眼看到"], ["首页推荐（3个）", "首页顶部三张推荐卡片"], ["新闻中间（4个）", "首页新闻栏目之间，读新闻时自然看到"], ["侧栏（3个）", "首页右侧，电脑版全程可见"], ["分类板块页（可指定板块）", "例如只出现在“房屋出租”或“招聘”板块顶部"], ["信息流", "分类信息列表中每隔几条出现一次"], ["指南和文章页", "福利指南上下方、新闻文章正文下方和侧栏，读者停留时间最长"], ["新闻和优惠列表", "新闻栏目页、本周优惠页每隔6条出现一次"], ["分类信息详情", "每条分类信息打开后的底部"], ["福利自测结果页", "读者查看自己能申请哪些福利时看到"], ["首页底部（4个）", "首页分类信息下方一排"]],
       sponsored: "推荐", rateNames: { CNY: "人民币", HKD: "港币", TWD: "新台币", EUR: "欧元", GBP: "英镑", CAD: "加元", JPY: "日元", KRW: "韩元", AUD: "澳元", SGD: "新加坡元" },
       wx_codes: { 0: "晴", 1: "晴间多云", 2: "多云", 3: "阴", 45: "雾", 48: "雾", 51: "毛毛雨", 53: "毛毛雨", 55: "毛毛雨", 61: "小雨", 63: "中雨", 65: "大雨", 66: "冻雨", 67: "冻雨", 71: "小雪", 73: "中雪", 75: "大雪", 77: "雪粒", 80: "阵雨", 81: "阵雨", 82: "强阵雨", 85: "阵雪", 86: "阵雪", 95: "雷雨", 96: "雷雨", 99: "雷雨" },
       today: "今天", newsSrc: "新闻来源：各媒体原文，标题链接至原网站。",
@@ -121,7 +121,7 @@
       house: [["#check", "What can I apply for?", "Medicaid, SNAP, housing: answer a few questions"], ["#deals", "Free & on sale this week", "Updated daily"], ["#b-deals", "Businesses: post deals free", "Weekly specials in a minute"], ["#guide", "NY benefits guides", "25 programs in plain language"], ["#post", "Post a free listing", "Jobs, rentals, buy & sell"]],
       adsTitle: "Advertise on 华邻网", adsIntro: "华邻网 publishes daily news, benefits guides and weekly deals for Chinese families in New York. These spaces can be booked alone or together; prices are negotiable, with discounts for newly opened businesses.",
       adsPos: "Ad spaces", adsHow: "How to book", adsHowP: "Send us your business name, a one-line description, phone/WeChat, and the space and dates you want. It can go live the same day and comes down automatically when it ends.", adsNoContact: "Contact details coming soon. Meanwhile, you can post deals for free in Local Deals.",
-      adsList: [["Banner", "Full-width at the very top of the home page"], ["Home featured (3)", "Three featured cards at the top of the home page"], ["Between news (4)", "Between the home-page news sections"], ["Sidebar (3)", "Right side of the home page, always visible on desktop"], ["Board pages (choose boards)", "E.g. only at the top of Rentals or Jobs"], ["In-feed", "Every few listings inside classified lists"], ["Guide & article pages", "Below benefits guides and news articles, where readers stay longest"]],
+      adsList: [["Banner", "Full-width at the very top of the home page"], ["Home featured (3)", "Three featured cards at the top of the home page"], ["Between news (4)", "Between the home-page news sections"], ["Sidebar (3)", "Right side of the home page, always visible on desktop"], ["Board pages (choose boards)", "E.g. only at the top of Rentals or Jobs"], ["In-feed", "Every few listings inside classified lists"], ["Guide & article pages", "Above and below guides, below articles and in the sidebar"], ["News & deals lists", "Every 6 items on news and deals pages"], ["Listing details", "At the bottom of every opened listing"], ["Benefits check results", "Where readers see what they qualify for"], ["Home page bottom (4)", "A row under the classifieds"]],
       rateNames: { CNY: "Chinese yuan", HKD: "HK dollar", TWD: "NT dollar", EUR: "Euro", GBP: "Pound", CAD: "Canadian dollar", JPY: "Yen", KRW: "Won", AUD: "Australian dollar", SGD: "Singapore dollar" },
       wx_codes: { 0: "Clear", 1: "Mostly clear", 2: "Partly cloudy", 3: "Overcast", 45: "Fog", 48: "Fog", 51: "Drizzle", 53: "Drizzle", 55: "Drizzle", 61: "Light rain", 63: "Rain", 65: "Heavy rain", 66: "Freezing rain", 67: "Freezing rain", 71: "Light snow", 73: "Snow", 75: "Heavy snow", 77: "Snow grains", 80: "Showers", 81: "Showers", 82: "Heavy showers", 85: "Snow showers", 86: "Snow showers", 95: "Thunderstorms", 96: "Thunderstorms", 99: "Thunderstorms" },
       today: "Today", newsSrc: "Headlines link to the original publishers.",
@@ -343,7 +343,7 @@
     $("#nTitle").textContent = t("sec_" + route.sec);
     $("#nNote").textContent = (news && news.updatedAt ? t("updated") + " " + ago(news.updatedAt) + " · " : "") + t("newsSrc");
     const list = sec(route.sec);
-    $("#nList").innerHTML = list.length ? list.map(i => liHtml(i, true, true)).join("") : `<div class="empty">${esc(news ? t("newsEmpty") : t("loading"))}</div>`;
+    $("#nList").innerHTML = list.length ? withAds(list.map(i => liHtml(i, true, true)), 6) : `<div class="empty">${esc(news ? t("newsEmpty") : t("loading"))}</div>`;
   }
 
   /* ---------- render: market ---------- */
@@ -391,6 +391,9 @@
     const live = liveSlots(pos).filter(filter || (() => true)).slice(0, n);
     el.innerHTML = live.map(s => adCard(s, sm ? "sm" : "")).join("") + Array.from({ length: Math.max(0, n - live.length) }, () => emptyAd(sm)).join("");
   }
+  // Ad strip inside a list (news, deals): one card, rotating through "feed" ads or house promos.
+  function listAd(i) { const live = liveSlots("feed"); const s = live.length ? live[i % live.length] : null; return `<li class="feed-ad">${s ? adCard(s, "sm") : emptyAd(true)}</li>`; }
+  const withAds = (items, every) => items.map((h, i) => h + ((i + 1) % every === 0 && i < items.length - 1 ? listAd(i / every | 0) : "")).join("");
   function feedAd(i) {
     const live = liveSlots("feed"); const s = live.length ? live[i % live.length] : null;
     return `<li class="feed-ad">${s ? adCard(s, "sm") : emptyAd(true)}</li>`;
@@ -404,6 +407,9 @@
     $("#sponMid2").innerHTML = mids.slice(2, 4).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - mids.slice(2, 4).length) }, () => emptyAd(true)).join("");
     fillAds("#sponRail", "rail", 3, false);
     fillAds("#sponGuide", "article", 2, true);
+    fillAds("#sponGuideTop", "article", 2, true);
+    fillAds("#sponFoot", "foot", 4, true);
+    fillAds("#sponDeals", "mid", 3, true);
     document.querySelectorAll(".view-ad").forEach(el => { el.innerHTML = liveSlots("section").slice(0, 2).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 2 - liveSlots("section").slice(0, 2).length) }, () => emptyAd(true)).join(""); });
     renderBoardAds();
   }
@@ -569,7 +575,7 @@
     const money = Math.round(r.yearly).toLocaleString("en-US");
     const head = r.pct != null ? `<p class="ck-sum">${esc(t("ckSum").replace("{y}", money).replace("{p}", r.pct))}</p>` : "";
     const rows = r.results.map(x => `<li><a href="#g-${esc(x.g.id)}"><span class="seal sm" aria-hidden="true">${esc(x.g.glyph || "指")}</span><span><b>${esc(HLG.L(x.g.title, lang))}</b><small>${esc(HLG.L(x.g.short || x.g.summary, lang))}</small></span><em class="lv ${x.level}">${esc(t(x.level === "likely" ? "ckLikely" : x.level === "maybe" ? "ckMaybe" : "ckInfo"))}</em></a></li>`).join("");
-    $("#ckOut").innerHTML = `<section class="ck-res">${head}${rows ? `<h2>${esc(t("ckHeads"))}</h2><ul>${rows}</ul>` : `<p>${esc(t("ckNone"))}</p>`}<p class="g-fine">${esc(t("ckFoot"))}</p><button type="button" class="btn" id="ckShare">${esc(t("ckShare"))}</button></section>`;
+    $("#ckOut").innerHTML = `<div class="spons mid">${liveSlots("section").slice(0, 2).map(x => adCard(x, "sm")).join("") || emptyAd(true) + emptyAd(true)}</div><section class="ck-res">${head}${rows ? `<h2>${esc(t("ckHeads"))}</h2><ul>${rows}</ul>` : `<p>${esc(t("ckNone"))}</p>`}<p class="g-fine">${esc(t("ckFoot"))}</p><button type="button" class="btn" id="ckShare">${esc(t("ckShare"))}</button></section>`;
     $("#ckShare").onclick = () => HLShare.open({ url: HLC.siteBase() + "#check", title: t("ckShareTitle"), text: t("ckShareText") });
     $("#ckOut").scrollIntoView({ block: "start", behavior: "smooth" });
   }
@@ -619,7 +625,8 @@
       ${zhView ? `<div class="post-actions"><button type="button" class="btn" data-reader="${esc(readUrl)}" data-src="${esc(src)}">${esc(t("zhDetail"))}</button><a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("enOrig"))}</a></div><p class="g-fine">${esc(t("zhDetailNote"))}</p>` : ""}
       ${i.fr && !i.full && !zhView ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
       <div class="post-actions"${zhView ? " hidden" : ""}>${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(src)}">${esc(t("irFull"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
-      <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>`;
+      <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>
+      <div class="spons mid art-ad">${liveSlots("article").slice(1, 3).map(x => adCard(x, "sm")).join("") || emptyAd(true) + emptyAd(true)}</div>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
     $("#aSide").innerHTML = `<div class="spon-rail">${liveSlots("article").slice(0, 1).map(x => adCard(x)).join("") || emptyAd()}</div><section class="block"><div class="bh"><h2>${esc(t("moreNews").replace("{s}", secName(sname)))}</h2></div><ul class="nl">${others.map(x => liHtml(x, false, !!x.img)).join("")}</ul></section>
@@ -680,7 +687,7 @@
       const all = localDeals();
       const bizAll = ds.biz || [];
       $("#dealsFull").innerHTML = `<section class="block"><div class="bh"><h2>${esc(t("dl_local"))}</h2><button type="button" class="linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div>${all.length ? `<ul class="plist">${all.map(p => pitemHtml(p, false)).join("")}</ul>` : ""}${bizAll.length ? `<ul class="nl full">${bizAll.map(i => dealLi(i, false)).join("")}</ul>` : ""}${!all.length && !bizAll.length ? `<p class="empty">${esc(t("dl_none"))}</p>` : ""}</section>` +
-        DEAL_SECS.map(k => `<section class="block"><div class="bh"><h2>${esc(t("dl_" + k))}</h2></div>${(ds[k] || []).length ? `<ul class="nl full">${ds[k].map(i => dealLi(i, k !== "zh")).join("")}</ul>` : `<p class="empty">${esc(t("dl_none"))}</p>`}</section>`).join("");
+        DEAL_SECS.map(k => `<section class="block"><div class="bh"><h2>${esc(t("dl_" + k))}</h2></div>${(ds[k] || []).length ? `<ul class="nl full">${withAds(ds[k].map(i => dealLi(i, k !== "zh")), 6)}</ul>` : `<p class="empty">${esc(t("dl_none"))}</p>`}</section>`).join("");
     }
   }
 
@@ -794,6 +801,7 @@
         ${myKey || mineAcct ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
       </div>
       <div class="manual" id="manualBox" hidden><span>${esc(t("shareManual"))}</span><input readonly value="${esc(url)}" aria-label="${esc(t("pageLink"))}"></div>
+      <div class="dlg-ad">${liveSlots("feed").slice(0, 1).map(x => adCard(x, "sm")).join("") || emptyAd(true)}</div>
       <div class="reasons" id="repBox" hidden><b>${esc(t("reportH"))}</b>
         ${HLC.REPORT_REASONS.map(([k, zh, en], i) => `<label><input type="radio" name="rr" value="${k}" ${i === 0 ? "checked" : ""}> ${esc(lang === "zh" ? zh : en)}</label>`).join("")}
         <button type="button" class="btn" id="repSend">${esc(t("reportSend"))}</button></div>`;
