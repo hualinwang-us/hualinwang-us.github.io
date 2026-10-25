@@ -272,8 +272,8 @@ async function buildOfficial(out) {
     const api = "https://www.federalregister.gov/api/v1/documents.json?per_page=100&order=newest&conditions%5Bagencies%5D%5B%5D=u-s-citizenship-and-immigration-services&conditions%5Bagencies%5D%5B%5D=homeland-security-department&conditions%5Btype%5D%5B%5D=RULE&conditions%5Btype%5D%5B%5D=PRORULE&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=html_url&fields%5B%5D=body_html_url&fields%5B%5D=publication_date&fields%5B%5D=type";
     const res = await get(api, "json");
     // Keep rules, proposed rules and real notices; skip routine paperwork ("information collection") notices.
-    const IMM = /immigra|nonimmigrant|visa|H-1B|H-2|green card|permanent resident|naturaliz|citizenship|asylum|parole|public charge|USCIS|employment authorization|refugee|adjustment of status|temporary protected|TPS|DACA|deferred action|alien|fee schedule|biometric|removal/i;
-    const useful = (res.results || []).filter(r => IMM.test((r.title || "") + " " + (r.abstract || "")) && !/information collection|collection activities|currently approved collection/i.test(r.title || "")).slice(0, 6);
+    const IMM = /immigra|nonimmigrant|visa|H-1B|H-2|green card|permanent resident|naturaliz|citizenship|asylum|parole|public charge|USCIS|employment authorization|refugee|adjustment of status|temporary protected|TPS|DACA|deferred action|fee schedule|biometric/i;
+    const useful = (res.results || []).filter(r => IMM.test((r.title || "") + " " + (r.abstract || "")) && !/information collection|collection activities|currently approved collection|safety zone|security zone|drawbridge|regatta|anchorage/i.test(r.title || "")).slice(0, 6);
     for (const r of useful) {
       let body = [];
       try { body = htmlToBlocks(await get(r.body_html_url)); } catch (e) { body = r.abstract ? [r.abstract] : []; }
