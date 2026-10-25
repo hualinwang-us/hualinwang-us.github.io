@@ -716,3 +716,17 @@ a.spon.empty:hover{border-color:var(--gold)}
 .pst-btn.pulse{animation:pst-pulse 1.2s ease-in-out 3}
 @keyframes pst-pulse{50%{box-shadow:0 0 0 8px rgba(29,122,62,.25)}}
 .pst-img{display:block;width:100%;max-width:420px;margin:10px auto 4px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+
+/* board filters */
+.bfilters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bfilters .filter{flex:1 1 220px;margin:0}
+.bfilters select{padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;max-width:100%}
+.chk{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--ink-2);white-space:nowrap}
+
+/* ad price list */
+.ads-offer{margin:14px 0;padding:12px 16px;border-radius:var(--r);background:var(--gold-soft);font-weight:700;color:var(--ink)}
+.ads-table{width:100%;border-collapse:collapse;font-size:15px}
+.ads-table th{text-align:left;font-size:13px;color:var(--muted);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--line)}
+.ads-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.ads-table td span{font-size:13px;color:var(--muted)}
+.ads-table td.pr{white-space:nowrap;font-weight:900;color:var(--accent);font-family:var(--display);text-align:right}

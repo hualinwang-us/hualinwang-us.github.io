@@ -156,7 +156,9 @@
     <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
     <div class="vh-row"><span class="seal md" id="bSeal"></span><h1 id="bTitle"></h1>
       <button class="btn" type="button" id="bPost" data-i18n="postHere">在本板块发布</button></div>
-    <input class="filter" id="bFilter" type="search" data-i18n-ph="filterPh" placeholder="在本板块中筛选">
+    <div class="bfilters"><input class="filter" id="bFilter" type="search" data-i18n-ph="filterPh" placeholder="在本板块中筛选">
+      <select id="bArea" aria-label="地区"></select>
+      <label class="chk"><input type="checkbox" id="bToday"> <span data-i18n="bToday">只看今天</span></label></div>
   </div>
   <section class="spons mid" id="sponBoard" aria-label="Sponsors"></section>
   <p class="rules-note" id="bRules" hidden></p>

@@ -10,18 +10,23 @@
   const GROUPS = [
     { id: "work", zh: "工作", en: "Jobs", boards: [
       ["jobs", "聘", "招聘请人", "Help Wanted"], ["rest", "餐", "餐馆请人", "Restaurant Jobs"],
-      ["salon", "甲", "美甲美容请人", "Salon Jobs"], ["seek", "职", "求职", "Jobs Wanted"]] },
+      ["salon", "甲", "美甲美容请人", "Salon Jobs"], ["factory", "仓", "仓库工厂", "Warehouse & Factory"],
+      ["driver", "司", "司机快递", "Drivers & Delivery"], ["parttime", "兼", "兼职零工", "Part-time & Gigs"],
+      ["seek", "职", "求职", "Jobs Wanted"]] },
     { id: "home", zh: "房屋", en: "Housing", boards: [
       ["rent", "租", "房屋出租", "Rentals"], ["share", "合", "室友合租", "Roommates"],
-      ["house", "房", "房屋买卖", "Homes for Sale"], ["shop", "铺", "店面写字楼", "Commercial Space"]] },
+      ["short", "短", "短租日租", "Short-term Stays"], ["house", "房", "房屋买卖", "Homes for Sale"],
+      ["shop", "铺", "店面写字楼", "Commercial Space"]] },
     { id: "trade", zh: "买卖", en: "Buy & Sell", boards: [
       ["biz", "商", "生意转让", "Businesses for Sale"], ["sale", "物", "二手买卖", "Buy & Sell"],
       ["car", "车", "汽车买卖", "Cars"], ["furn", "家", "家具家电", "Furniture & Appliances"],
+      ["pet", "宠", "宠物领养", "Pets"],
       ["deals", "惠", "商家优惠", "Local Deals"]] },
     { id: "svc", zh: "生活服务", en: "Services", boards: [
       ["move", "搬", "搬家运输", "Moving"], ["reno", "修", "装修维修", "Renovation & Repair"],
       ["clean", "洁", "家政清洁", "Cleaning"], ["nanny", "护", "保姆月嫂", "Nannies & Caregivers"],
-      ["ship", "递", "快递货运", "Shipping"], ["sign", "印", "印刷招牌", "Printing & Signs"]] },
+      ["ship", "递", "快递货运", "Shipping"], ["ride", "拼", "顺风车拼车", "Rides & Carpools"],
+      ["translate", "译", "翻译代办", "Translation & Paperwork"], ["sign", "印", "印刷招牌", "Printing & Signs"]] },
     { id: "pro", zh: "专业服务", en: "Professional", boards: [
       ["law", "律", "律师移民", "Lawyers & Immigration"], ["tax", "税", "会计报税", "Tax & Accounting"],
       ["loan", "贷", "贷款保险", "Loans & Insurance"], ["realtor", "经", "地产经纪", "Realtors"],
@@ -31,7 +36,7 @@
       ["beauty", "美", "美容美发", "Beauty & Hair"]] },
     { id: "life", zh: "教育社区", en: "Education & Community", boards: [
       ["edu", "教", "补习培训", "Tutoring & Classes"], ["kids", "托", "托儿老人", "Childcare & Seniors"],
-      ["events", "会", "社区活动", "Community Events"], ["travel", "旅", "旅游机票", "Travel"],
+      ["ask", "问", "求助问答", "Ask & Help"], ["events", "会", "社区活动", "Community Events"], ["travel", "旅", "旅游机票", "Travel"],
       ["other", "杂", "其他", "Other"]] },
     { id: "social", zh: "同城交友", en: "Meet Locals", boards: [
       ["dating", "友", "同城交友", "Meet Locals"]] }
