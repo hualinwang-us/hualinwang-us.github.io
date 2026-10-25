@@ -498,3 +498,9 @@ a.spon.empty:hover{border-color:var(--gold)}
   .g-home-r{grid-template-columns:1fr!important}
   .util-date{display:none}
 }
+
+/* paid pinned listings */
+.pin{display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;line-height:18px;vertical-align:1px}
+.pin-note{margin:0 0 12px;padding:10px 14px;border-radius:var(--r);background:var(--gold-soft);font-size:14px;color:var(--ink)}
+.pin-note:empty{display:none}
+.pin-note a{font-weight:700;color:var(--accent)}

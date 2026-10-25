@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", moreBoards: "全部板块",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", pinned: "置顶", pinAsk: "想让你的信息排在本板块最上面？付费置顶请致电", moreBoards: "全部板块",
       house: [["#check", "我能申请什么？", "白卡、粮食券、公屋……回答几个问题马上知道"], ["#deals", "本周免费和打折", "每天自动更新，全部翻译成中文"], ["#b-deals", "商家免费发布优惠", "超市、餐馆、店铺每周特价，一分钟发好"], ["#guide", "纽约华人生活指南", "25 项福利，白话讲清楚怎么申请"], ["#post", "免费发布分类信息", "招聘、租房、二手买卖，一分钟发布"]],
       adsTitle: "在华邻网投放广告", adsIntro: "华邻网每天更新纽约华人关心的新闻、福利指南和本周优惠，读者都是在美华人家庭。以下广告位可以单独或组合投放，价格面议，新开张商家有优惠。",
       adsPos: "广告位一览", adsHow: "怎么投放", adsHowP: "把店名、一句话介绍、电话/微信、想放的位置和时间发给我们，当天就能上线。到期自动下架，不用操心。", adsNoContact: "联系方式即将公布。也可以先在“商家优惠”免费发布优惠信息。",
@@ -109,7 +109,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", moreBoards: "All boards",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", pinned: "Pinned", pinAsk: "Want your listing at the top of this board? For paid pinning call", moreBoards: "All boards",
       house: [["#check", "What can I apply for?", "Medicaid, SNAP, housing: answer a few questions"], ["#deals", "Free & on sale this week", "Updated daily"], ["#b-deals", "Businesses: post deals free", "Weekly specials in a minute"], ["#guide", "NY benefits guides", "25 programs in plain language"], ["#post", "Post a free listing", "Jobs, rentals, buy & sell"]],
       adsTitle: "Advertise on 华邻网", adsIntro: "华邻网 publishes daily news, benefits guides and weekly deals for Chinese families in New York. These spaces can be booked alone or together; prices are negotiable, with discounts for newly opened businesses.",
       adsPos: "Ad spaces", adsHow: "How to book", adsHowP: "Send us your business name, a one-line description, phone/WeChat, and the space and dates you want. It can go live the same day and comes down automatically when it ends.", adsNoContact: "Contact details coming soon. Meanwhile, you can post deals for free in Local Deals.",
@@ -179,9 +179,12 @@
   async function loadPosts() {
     if (!POSTS_ON) { postsLoaded = true; renderPostsAll(); return; }
     try {
-      const r = await fetch(SB_URL + "/rest/v1/posts?select=id,created_at,board,title,body,area,contact,phone,wechat&order=created_at.desc&limit=600", { headers: sbHeaders() });
+      const q = cols => fetch(SB_URL + "/rest/v1/posts?select=" + cols + "&order=created_at.desc&limit=600", { headers: sbHeaders() });
+      let r = await q("id,created_at,board,title,body,area,contact,phone,wechat,pinned_until");
+      if (!r.ok) r = await q("id,created_at,board,title,body,area,contact,phone,wechat"); // before 04-pin.sql is run
       if (!r.ok) throw new Error(r.status);
-      posts = (await r.json()).map(p => Object.assign(p, { ts: Date.parse(p.created_at) }));
+      const now = Date.now();
+      posts = (await r.json()).map(p => Object.assign(p, { ts: Date.parse(p.created_at), pin: p.pinned_until && Date.parse(p.pinned_until) > now }));
     } catch (e) { /* keep what we have */ }
     postsLoaded = true;
     renderPostsAll();
@@ -406,11 +409,11 @@
   /* ---------- render: posts ---------- */
   function rowHtml(p, seal) {
     const b = boardById(p.board);
-    return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
+    return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
   }
   function pitemHtml(p, showBoard) {
     const b = boardById(p.board);
-    return `<li><button type="button" class="pitem" data-pid="${p.id}"><div class="pt">${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</div><div class="pm">${showBoard ? `<span class="bd">${esc(bName(b))}</span>` : ""}<span>${esc(ago(p.ts))}</span>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}${p.phone ? `<span>${esc(p.phone)}</span>` : ""}</div><div class="pb">${esc(p.body)}</div></button></li>`;
+    return `<li><button type="button" class="pitem" data-pid="${p.id}"><div class="pt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</div><div class="pm">${showBoard ? `<span class="bd">${esc(bName(b))}</span>` : ""}<span>${esc(ago(p.ts))}</span>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}${p.phone ? `<span>${esc(p.phone)}</span>` : ""}</div><div class="pb">${esc(p.body)}</div></button></li>`;
   }
   function renderPostsAll() {
     const latest = posts.slice(0, 12);
@@ -418,7 +421,7 @@
     const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id));
     const order = FEATURED.map(boardById).filter(b => withPosts.includes(b)).concat(withPosts.filter(b => !FEATURED.includes(b.id)));
     const cards = order.slice(0, 11).map(b => {
-      const list = posts.filter(p => p.board === b.id).slice(0, 6);
+      const list = posts.filter(p => p.board === b.id).sort((a, c) => (c.pin ? 1 : 0) - (a.pin ? 1 : 0)).slice(0, 6);
       return `<section class="board"><header><span class="seal sm">${esc(b.glyph)}</span><h3>${esc(bName(b))}</h3><a href="#b-${b.id}">${esc(t("more"))} ›</a></header><ul>${list.map(p => rowHtml(p, false)).join("")}</ul></section>`;
     });
     if (cards.length) cards.splice(Math.min(3, cards.length), 0, `<div class="board board-ad">${liveSlots("board").filter(x => !x.boards || !x.boards.length)[0] ? adCard(liveSlots("board")[0]) : emptyAd()}</div>`);
@@ -432,8 +435,10 @@
     const b = boardById(route.board); if (!b) return;
     $("#bSeal").textContent = b.glyph; $("#bTitle").textContent = bName(b);
     const q = ($("#bFilter").value || "").trim().toLowerCase();
-    const list = posts.filter(p => p.board === b.id && (!q || [p.title, p.area, p.body, p.contact].join(" ").toLowerCase().includes(q)));
+    const list = posts.filter(p => p.board === b.id && (!q || [p.title, p.area, p.body, p.contact].join(" ").toLowerCase().includes(q))).sort((a, c) => (c.pin ? 1 : 0) - (a.pin ? 1 : 0));
     renderBoardAds();
+    const c = CFG.adContact || {};
+    $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("pinAsk"))} <a href="tel:${esc(c.phone.replace(/[^0-9+]/g, ""))}">${esc(c.phone)}</a>${esc(t("adSms"))}` : "";
     $("#bList").innerHTML = list.length ? list.map((p, i) => pitemHtml(p, false) + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (list.length < 6 ? feedAd(0) : "") :
       `<li><div class="empty">${q ? esc(t("noMatch")) : esc(t("noPosts")) + `<button type="button" class="linkbtn" data-postto="${b.id}">${esc(t("beFirst"))}</button>`}</div></li>`;
   }
