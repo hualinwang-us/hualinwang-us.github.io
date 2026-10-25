@@ -66,7 +66,10 @@
   }
   const POST_COLS = "id,created_at,board,title,body,area,contact,phone,wechat";
   async function rpc(fn, body) {
-    const r = await fetch(SB_URL + "/rest/v1/rpc/" + fn, { method: "POST", headers: sbHeaders(), body: JSON.stringify(body) });
+    const h = sbHeaders();
+    const tk = root.HLAuth ? await root.HLAuth.token() : null;
+    if (tk) h.Authorization = "Bearer " + tk;
+    const r = await fetch(SB_URL + "/rest/v1/rpc/" + fn, { method: "POST", headers: h, body: JSON.stringify(body || {}) });
     const txt = await r.text();
     let data = null; try { data = JSON.parse(txt); } catch (e) {}
     if (!r.ok) { const err = new Error((data && (data.message || data.hint)) || ("HTTP " + r.status)); err.raw = txt; throw err; }

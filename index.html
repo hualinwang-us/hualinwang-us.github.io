@@ -27,6 +27,8 @@
     <span id="wxNow" class="pill" hidden></span>
     <span id="fxNow" class="pill" hidden></span>
   </span>
+  <button type="button" class="util-share" id="loginBtn" data-i18n="login">登录 / 注册</button>
+  <span class="util-user" id="userBox" hidden><span id="userName"></span> <button type="button" class="linkbtn util-out" id="logoutBtn" data-i18n="logout">退出</button></span>
   <button type="button" class="util-share" id="siteShare" data-i18n="shareSite">分享本站</button>
   <div class="seg" role="group" aria-label="Language / 语言">
     <button type="button" id="lzh" aria-pressed="true">中文</button>
@@ -269,6 +271,29 @@
   </form>
 </dialog>
 
+<dialog id="loginDlg" aria-labelledby="loginH">
+  <div class="dl login">
+    <button type="button" class="x" data-close aria-label="Close">×</button>
+    <h3 id="loginH" data-i18n="loginH">登录 / 注册华邻网</h3>
+    <p class="hint" id="loginWhy" data-i18n="loginWhy">登录后才能发布信息，也能在任何设备上管理自己的信息。第一次登录会自动注册。</p>
+    <button type="button" class="login-opt guest" id="lgGuest" hidden><span class="lo-ic">游</span><span><span data-i18n="lgGuest">以游客身份发布</span><small data-i18n="lgGuestNote">不用注册，每天限发一条</small></span></button>
+    <button type="button" class="login-opt google" id="lgGoogle"><span class="lo-ic">G</span><span data-i18n="lgGoogle">用 Google（Gmail）账号登录</span></button>
+    <button type="button" class="login-opt wechat" disabled><span class="lo-ic">微</span><span data-i18n="lgWechat">微信登录（即将开放）</span></button>
+    <div class="login-sep"><span data-i18n="lgOr">或用电子邮箱</span></div>
+    <div id="lgStep1" class="login-step">
+      <div class="field"><label for="lgEmail" data-i18n="lgEmail">电子邮箱</label><input id="lgEmail" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com"></div>
+      <button type="button" class="btn" id="lgSend" data-i18n="lgSend">发送验证码</button>
+    </div>
+    <div id="lgStep2" class="login-step" hidden>
+      <p class="hint" id="lgSent"></p>
+      <div class="field"><label for="lgCode" data-i18n="lgCode">验证码（6 位数字）</label><input id="lgCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="123456"></div>
+      <div class="actions"><button type="button" class="btn ghost" id="lgBack" data-i18n="lgBack">换个邮箱</button><button type="button" class="btn" id="lgVerify" data-i18n="lgVerify">登录</button></div>
+    </div>
+    <p class="err" id="lgErr" role="alert"></p>
+    <p class="hint"><span data-i18n="lgAgree">登录即表示同意本站</span> <a class="flink" href="#disclaimer" data-close data-i18n="footLegal">免责声明</a></p>
+  </div>
+</dialog>
+
 <dialog id="viewDlg"><div class="dl" id="viewBody"></div></dialog>
 <button type="button" class="fab-share" id="fabShare" aria-label="分享"><span class="fab-ic" aria-hidden="true">微</span><span data-i18n="shareShort">分享</span></button>
 <div class="toast" id="toast" role="status" hidden></div>
@@ -276,6 +301,7 @@
 <script src="config.js"></script>
 <script src="assets/common.js"></script>
 <script src="assets/share.js"></script>
+<script src="assets/auth.js"></script>
 <script src="assets/guide-render.js"></script>
 <script src="assets/app.js"></script>
 </body>

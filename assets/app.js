@@ -27,6 +27,9 @@
       ckShare: "把这个自测分享给亲友", ckShareTitle: "我能申请什么？华邻网福利自测", ckShareText: "白卡、粮食券、公屋、老人福利……回答 6 个问题，看看你家可能申请哪些福利（免费、匿名）", shareSite: "分享本站", shareSiteText: "华邻网：在美华人新闻、生活指南、本周优惠和免费分类信息",
       shareWx: "分享到微信", shareCheckWx: "把自测分享到微信", shareShort: "分享",
       newsTab: "新闻",
+      login: "登录 / 注册", logout: "退出", loginH: "登录 / 注册华邻网", loginWhy: "登录后才能发布信息，也能在任何设备上管理自己的信息。第一次登录会自动注册。", loginNeed: "登录后可以不限次数发布，并随时管理自己的信息；也可以游客身份发布，每天一条。",
+      lgGuest: "以游客身份发布", lgGuestNote: "不用注册，每天限发一条", eGuest: "游客每天只能发一条。登录后可以发更多，也能随时管理自己的信息。", lgGoogle: "用 Google（Gmail）账号登录", lgWechat: "微信登录（即将开放）", lgOr: "或用电子邮箱", lgEmail: "电子邮箱", lgSend: "发送验证码", lgCode: "验证码（6 位数字）", lgBack: "换个邮箱", lgVerify: "登录",
+      lgSent: "验证码已发到 {e}，请查收邮件（也看看垃圾邮件箱）。邮件里的链接也可以直接点开登录。", lgAgree: "登录即表示同意本站", lgBadEmail: "请输入正确的电子邮箱。", lgBadCode: "验证码不对或已过期，请重新发送。", lgFail: "暂时无法登录，请稍后再试。", lgWait: "发送太频繁，请过一分钟再试。", lgOk: "登录成功", lgOut: "已退出", eLogin: "请先登录再发布。",
       gLoading: "指南载入中…", footLegal: "免责声明", footLegalP: "本站内容仅供参考，不构成法律或专业意见，与政府机构无关。", footLegalLink: "阅读完整免责声明 →",
       formAgree: "点击“发布”即表示你保证信息真实合法，并同意", ckDisc: "自测结果只是粗略估算，不代表你一定符合或不符合，也不是政府的决定。", discUpdated: "更新日期", postDisc: "本信息由用户发布，本站未核实其内容，也不参与交易。",
       tagline: "在美华人 · 新闻与生活信息", searchPh: "搜索分类信息：工作、房屋、地区…", searchBtn: "搜索", postFree: "免费发布",
@@ -75,6 +78,9 @@
       ckShare: "Share this check with family and friends", ckShareTitle: "What can I apply for? HuaLin benefits check", ckShareText: "Medicaid, SNAP, public housing, senior help: answer 6 questions to see what your family may qualify for (free, anonymous)", shareSite: "Share HuaLin", shareSiteText: "HuaLin: news, life guides, weekly deals and free listings for Chinese Americans",
       shareWx: "Share", shareCheckWx: "Share this check", shareShort: "Share",
       newsTab: "News",
+      login: "Sign in", logout: "Sign out", loginH: "Sign in to HuaLin", loginWhy: "Sign in to post listings and manage them from any device. Your first sign-in creates your account.", loginNeed: "Sign in to post without limits and manage your listings, or post as a guest (one a day).",
+      lgGuest: "Post as a guest", lgGuestNote: "No sign-up, one listing per day", eGuest: "Guests can post one listing a day. Sign in to post more and manage your listings.", lgGoogle: "Continue with Google (Gmail)", lgWechat: "WeChat sign-in (coming soon)", lgOr: "or use email", lgEmail: "Email", lgSend: "Send code", lgCode: "Code (6 digits)", lgBack: "Use another email", lgVerify: "Sign in",
+      lgSent: "We sent a code to {e}. Check your inbox (and spam). You can also tap the link in that email.", lgAgree: "By signing in you agree to our", lgBadEmail: "Enter a valid email address.", lgBadCode: "That code is wrong or expired. Send a new one.", lgFail: "Couldn't sign in right now. Please try again.", lgWait: "Too many requests. Wait a minute and try again.", lgOk: "Signed in", lgOut: "Signed out", eLogin: "Please sign in to post.",
       gLoading: "Loading guides…", footLegal: "Disclaimer", footLegalP: "Content is for general information, not legal or professional advice. Not affiliated with any government agency.", footLegalLink: "Read the full disclaimer →",
       formAgree: "By posting you confirm your listing is true and lawful, and you agree to the", ckDisc: "Results are a rough estimate, not a guarantee and not a government decision.", discUpdated: "Updated", postDisc: "Posted by a user. We haven't verified it and aren't part of any transaction.",
       tagline: "News & community listings for Chinese Americans", searchPh: "Search listings: jobs, rentals, areas…", searchBtn: "Search", postFree: "Post Free",
@@ -597,6 +603,7 @@
     const p = posts.find(x => String(x.id) === String(id)); if (!p) return;
     const b = boardById(p.board);
     const myKey = keys.get(p.id);
+    const mineAcct = myIds.has(p.id) || myIds.has(String(p.id));
     const hits = HLC.scamHits(p.title + " " + p.body);
     const url = HLC.postUrl(p.id);
     const tel = (p.phone || "").replace(/[^\d+]/g, "");
@@ -614,7 +621,7 @@
       <div class="post-actions">
         <button type="button" class="btn" id="shareBtn">${esc(t("share"))}</button>
         <button type="button" class="btn ghost" id="repBtn">${esc(t("report"))}</button>
-        ${myKey ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
+        ${myKey || mineAcct ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
       </div>
       <div class="manual" id="manualBox" hidden><span>${esc(t("shareManual"))}</span><input readonly value="${esc(url)}" aria-label="${esc(t("pageLink"))}"></div>
       <div class="reasons" id="repBox" hidden><b>${esc(t("reportH"))}</b>
@@ -637,7 +644,7 @@
       if (!del.dataset.sure) { del.dataset.sure = "1"; del.textContent = t("delSure"); del.style.color = "var(--accent)"; return; }
       del.disabled = true;
       try {
-        const ok = await rpc("delete_post", { p_id: p.id, p_key: myKey });
+        const ok = mineAcct ? await HLC.rpc("delete_my_post", { p_id: p.id }) : await rpc("delete_post", { p_id: p.id, p_key: myKey });
         if (ok === false) throw new Error("not found");
         keys.drop(p.id); posts = posts.filter(x => x.id !== p.id); renderPostsAll(); $("#viewDlg").close(); toast(t("deleted"));
       } catch (e) { del.disabled = false; toast(t("delFail")); }
@@ -645,7 +652,57 @@
   }
 
   /* ---------- post form ---------- */
+  /* ---------- sign-in ---------- */
+  let afterLogin = null, myIds = new Set();
+  const A = window.HLAuth;
+  const LOGIN_ON = !!(CFG.loginEmail || CFG.loginGoogle);
+  function renderUser() {
+    const u = A && A.user();
+    $("#loginBtn").hidden = !!u || !LOGIN_ON; $("#userBox").hidden = !u;
+    $("#lgGoogle").hidden = !CFG.loginGoogle;
+    document.querySelector(".login-sep").hidden = !(CFG.loginEmail && CFG.loginGoogle);
+    $("#lgStep1").dataset.off = CFG.loginEmail ? "" : "1";
+    if (u) $("#userName").textContent = u.name || u.email;
+  }
+  async function loadMine() {
+    myIds = new Set();
+    if (!A || !A.user() || !POSTS_ON) return;
+    try { const ids = await HLC.rpc("my_post_ids", {}); (ids || []).forEach(x => myIds.add(typeof x === "object" ? Object.values(x)[0] : x)); } catch (e) {}
+  }
+  let guestOk = false;
+  function openLogin(why, offerGuest) {
+    $("#lgErr").textContent = ""; $("#lgStep1").hidden = !CFG.loginEmail; $("#lgStep2").hidden = true;
+    $("#lgGuest").hidden = !offerGuest;
+    $("#loginWhy").textContent = why || t("loginWhy");
+    $("#loginDlg").showModal();
+  }
+  if (A) {
+    A.onChange(() => { renderUser(); loadMine(); });
+    $("#loginBtn").onclick = () => { afterLogin = null; openLogin(); };
+    $("#lgGuest").onclick = () => { guestOk = true; const f = afterLogin; afterLogin = null; $("#loginDlg").close(); if (f) f(); };
+    $("#logoutBtn").onclick = async () => { await A.signOut(); toast(t("lgOut")); };
+    $("#lgGoogle").onclick = () => { try { sessionStorage.setItem("hl-after-login", afterLogin ? "post" : ""); } catch (e) {} A.google(); };
+    let lgEmail = "";
+    $("#lgSend").onclick = async () => {
+      const e = $("#lgEmail").value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) { $("#lgErr").textContent = t("lgBadEmail"); return; }
+      const b = $("#lgSend"); b.disabled = true; $("#lgErr").textContent = "";
+      try { await A.sendCode(e); lgEmail = e; $("#lgSent").textContent = t("lgSent").replace("{e}", e); $("#lgStep1").hidden = true; $("#lgStep2").hidden = false; $("#lgCode").focus(); }
+      catch (err) { $("#lgErr").textContent = err.status === 429 ? t("lgWait") : t("lgFail"); }
+      finally { b.disabled = false; }
+    };
+    $("#lgBack").onclick = () => { $("#lgStep1").hidden = false; $("#lgStep2").hidden = true; };
+    $("#lgVerify").onclick = async () => {
+      const c = $("#lgCode").value.replace(/\D/g, "");
+      const b = $("#lgVerify"); b.disabled = true; $("#lgErr").textContent = "";
+      try { await A.verifyCode(lgEmail, c); $("#loginDlg").close(); toast(t("lgOk")); if (afterLogin) { const f = afterLogin; afterLogin = null; f(); } }
+      catch (err) { $("#lgErr").textContent = t("lgBadCode"); }
+      finally { b.disabled = false; }
+    };
+  }
+
   function openForm(board) {
+    if (A && POSTS_ON && LOGIN_ON && !A.user() && !guestOk) { afterLogin = () => openForm(board); openLogin(t("loginNeed"), true); return; }
     $("#postForm").reset(); $("#fErr").textContent = "";
     $("#postOff").hidden = POSTS_ON; $("#postFields").hidden = !POSTS_ON;
     $("#fBoard").value = board || (route.view === "board" ? route.board : "jobs");
@@ -662,7 +719,7 @@
     if (err) { $("#fErr").textContent = t(err); return; }
     const btn = $("#fSubmit"); btn.disabled = true; btn.textContent = t("posting");
     try {
-      const res = await rpc("create_post", d);
+      const res = await HLC.rpc("create_post", d);
       const row = Array.isArray(res) ? res[0] : res;
       if (row && row.id) keys.set(row.id, row.delete_key);
       $("#postDlg").close();
@@ -671,6 +728,8 @@
       if (row && row.id) setTimeout(() => openPost(row.id, { justPosted: true }), 60); else toast(t("posted"));
     } catch (er) {
       const m = String(er.message || "") + String(er.raw || "");
+      if (/guest_limit/.test(m)) { $("#fErr").textContent = t("eGuest"); guestOk = false; return; }
+      if (/login_required|permission denied|JWT/i.test(m)) { $("#postDlg").close(); afterLogin = () => openForm(d.p_board); openLogin(t("loginNeed")); return; }
       $("#fErr").textContent = t(/too_many_posts/.test(m) ? "eFlood" : /site_busy/.test(m) ? "eBusy" : "eSave");
     } finally { btn.disabled = false; btn.textContent = t("submit"); }
   }
@@ -727,6 +786,11 @@
     }).catch(() => {});
   })();
 
+  if (A) {
+    const back = A.takeTokensFromUrl();
+    if (back) setTimeout(() => { if (A.user() || A.token) toast(t("lgOk")); let w = ""; try { w = sessionStorage.getItem("hl-after-login") || ""; sessionStorage.removeItem("hl-after-login"); } catch (e) {} if (w === "post") setTimeout(() => openForm(), 600); }, 800);
+    renderUser(); loadMine();
+  }
   applyLang();
   go();
   loadData();

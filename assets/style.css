@@ -437,3 +437,21 @@ body.noscroll .fab-share{display:none}
 .mm-cols{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 .mega:has(.mm-cols>div:nth-child(3)){width:min(1100px,calc(100vw - 32px))}
 .mega:has(.mm-cols>div:nth-child(2)):not(:has(.mm-cols>div:nth-child(3))){width:400px}
+
+/* sign-in */
+.util-user{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#fff;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.util-out{color:#cfd5e2;font-size:12.5px}
+.login{gap:12px}
+.login-opt{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-weight:700;cursor:pointer;color:var(--ink)}
+.login-opt:hover:not([disabled]){border-color:var(--accent)}
+.login-opt[disabled]{opacity:.5;cursor:not-allowed}
+.lo-ic{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:900;line-height:1}
+.login-opt.google .lo-ic{background:#fff;color:#4285f4;border:1px solid var(--line)}
+.login-opt.wechat .lo-ic{background:#07c160;color:#fff}
+.login-sep{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+.login-sep::before,.login-sep::after{content:"";flex:1;height:1px;background:var(--line)}
+.login-step{display:flex;flex-direction:column;gap:10px}
+.login-step .btn{align-self:flex-start}
+.login-opt.guest .lo-ic{background:var(--bg);color:var(--ink-2)}
+.login-opt.guest>span:last-child{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.login-opt small{font-weight:400;font-size:12.5px;color:var(--muted)}
