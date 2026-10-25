@@ -643,3 +643,34 @@ a.spon.empty:hover{border-color:var(--gold)}
 .rec h4{font:900 16px/1.3 var(--display);margin:0 0 8px}
 .rec .rows{margin:0 0 12px}
 .rec-news h4{margin-top:6px}
+
+/* ===== app launch screen: "有事找华邻" ===== */
+.splash{display:none}
+.hl-launch .splash{display:flex;position:fixed;inset:0;z-index:1000;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(120% 80% at 50% 38%,#d4463a 0%,#b8302a 46%,#8f1f1b 100%);color:#fff;overflow:hidden;
+  animation:sp-out .5s cubic-bezier(.4,0,.2,1) 1.75s forwards}
+.hl-launch body{overflow:hidden}
+.splash::before{content:"";position:absolute;inset:0;opacity:.05;
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.35) 0 1px,transparent 1px 5px)}
+.sp-glow{position:absolute;width:520px;height:520px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-62%) scale(.6);
+  background:radial-gradient(circle,rgba(255,226,180,.32),rgba(255,226,180,0) 65%);animation:sp-glow 1.6s ease-out .25s both}
+.sp-center{position:relative;display:flex;flex-direction:column;align-items:center}
+.sp-seal{width:118px;height:118px;border-radius:18px;background:#fff;display:grid;place-items:center;position:relative;
+  box-shadow:0 18px 40px rgba(70,8,6,.35),inset 0 0 0 5px #fff,inset 0 0 0 8px #c2362b;
+  animation:sp-stamp .62s cubic-bezier(.2,.9,.25,1.25) .12s both}
+.sp-seal span{font:900 74px/1 "Noto Serif SC","Songti SC","STSong",serif;color:#c2362b;transform:translateY(-2px)}
+.sp-seal::after{content:"";position:absolute;inset:-14px;border-radius:26px;border:2px solid rgba(255,255,255,.55);opacity:0;animation:sp-ring .9s ease-out .55s both}
+.sp-name{margin-top:26px;font:900 40px/1.1 "Noto Serif SC","Songti SC",serif;letter-spacing:.18em;padding-left:.18em;
+  animation:sp-rise .6s cubic-bezier(.2,.8,.2,1) .62s both}
+.sp-slogan{margin-top:14px;display:flex;gap:.32em;font:600 21px/1.3 "Noto Serif SC","Songti SC",serif;color:#ffe9c7}
+.sp-slogan span{display:inline-block;animation:sp-char .45s cubic-bezier(.2,.8,.2,1) both}
+.sp-slogan span:nth-child(1){animation-delay:.9s}.sp-slogan span:nth-child(2){animation-delay:.98s}.sp-slogan span:nth-child(3){animation-delay:1.06s}
+.sp-slogan span:nth-child(4){animation-delay:1.14s}.sp-slogan span:nth-child(5){animation-delay:1.22s}
+.sp-foot{position:absolute;bottom:calc(36px + env(safe-area-inset-bottom,0px));font-size:12.5px;letter-spacing:.2em;color:rgba(255,255,255,.7);animation:sp-rise .6s ease-out 1.1s both}
+@keyframes sp-stamp{0%{opacity:0;transform:scale(1.9) rotate(-8deg)}60%{opacity:1;transform:scale(.94) rotate(1deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes sp-ring{0%{opacity:.9;transform:scale(.9)}100%{opacity:0;transform:scale(1.35)}}
+@keyframes sp-glow{from{opacity:0;transform:translate(-50%,-62%) scale(.5)}to{opacity:1;transform:translate(-50%,-62%) scale(1)}}
+@keyframes sp-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes sp-char{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes sp-out{to{opacity:0;transform:scale(1.04);visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.hl-launch .splash{animation:sp-out .3s ease 1.2s forwards}.splash *{animation:none!important;opacity:1!important}}

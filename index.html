@@ -24,8 +24,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
 <link rel="stylesheet" href="assets/style.css">
+<script>(function(){try{var app=/HuaLinApp/.test(navigator.userAgent)||matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;var seen=sessionStorage.getItem("hl-splash");if(app&&!seen&&!/[?&]nosplash/.test(location.search)){document.documentElement.classList.add("hl-launch");sessionStorage.setItem("hl-splash","1");}}catch(e){}})();</script>
 </head>
 <body>
+<div class="splash" id="splash" aria-hidden="true">
+  <div class="sp-glow"></div>
+  <div class="sp-center">
+    <div class="sp-seal"><span>邻</span></div>
+    <div class="sp-name">华邻网</div>
+    <div class="sp-slogan"><span>有</span><span>事</span><span>找</span><span>华</span><span>邻</span></div>
+  </div>
+  <div class="sp-foot">纽约华人 · 新闻 · 福利 · 分类信息</div>
+</div>
 <img class="wx-thumb" src="assets/share.png" alt="" width="300" height="300">
 <div class="util"><div class="shell util-in">
   <span id="today" class="util-date"></span>

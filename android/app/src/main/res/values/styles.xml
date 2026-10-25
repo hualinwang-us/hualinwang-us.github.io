@@ -3,6 +3,6 @@
     <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">#C2362B</item>
         <item name="android:navigationBarColor">#FFFFFF</item>
-        <item name="android:windowBackground">#F3F4F7</item>
+        <item name="android:windowBackground">#B8302A</item>
     </style>
 </resources>

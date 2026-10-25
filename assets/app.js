@@ -721,6 +721,11 @@
     const sec = document.createElement("section"); sec.className = "spons mid view-ad"; sec.setAttribute("aria-label", "Sponsors");
     vh.after(sec);
   });
+  /* ---------- launch screen: remove it after it fades so it never blocks taps ---------- */
+  if (document.documentElement.classList.contains("hl-launch")) {
+    setTimeout(() => { document.documentElement.classList.remove("hl-launch"); const sp = $("#splash"); if (sp) sp.remove(); }, 2350);
+    $("#splash").addEventListener("click", () => { document.documentElement.classList.remove("hl-launch"); });
+  }
   /* ---------- app install (PWA) ---------- */
   const isApp = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true || /HuaLinApp/.test(navigator.userAgent);
   const APK = "https://github.com/hualinwang-us/hualinwang-us.github.io/releases/latest/download/hualin.apk";
