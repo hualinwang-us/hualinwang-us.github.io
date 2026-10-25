@@ -67,7 +67,7 @@
     ctx.fillStyle = "#c8372c"; ctx.font = `900 66px ${SERIF}`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("脉", PAD + 52, 102);
     ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
     ctx.fillStyle = "#fff"; ctx.font = `900 50px ${SERIF}`; ctx.fillText("华脉", PAD + 128, 104);
-    ctx.fillStyle = "#ffe3c2"; ctx.font = `600 27px ${SERIF}`; ctx.fillText("有事找华脉 · 纽约华人生活信息", PAD + 130, 146);
+    ctx.fillStyle = "#ffe3c2"; ctx.font = `600 27px ${SERIF}`; ctx.fillText("华脉一开，好事就来", PAD + 130, 146);
     // card
     const cx = PAD, cy = 170, cw = W - PAD * 2;
     ctx.save(); ctx.shadowColor = "rgba(60,20,10,.14)"; ctx.shadowBlur = 30; ctx.shadowOffsetY = 10; ctx.fillStyle = "#fff"; rr(ctx, cx, cy, cw, cardH, 24); ctx.fill(); ctx.restore();

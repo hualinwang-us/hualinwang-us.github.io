@@ -6,7 +6,7 @@
       seal: { zh: "脉", en: "脉" },
       zh: {
         title: "关于华脉",
-        intro: "天涯若比邻，有事找华脉。华脉是给纽约华人用的生活信息网站：新闻、福利指南、优惠、商家黄页和分类信息，都用中文讲清楚。",
+        intro: "华脉一开，好事就来。华脉是给纽约华人用的生活信息网站：新闻、福利指南、优惠、商家黄页和分类信息，都用中文讲清楚。",
         items: [
           ["我们做什么", "**生活指南**：白卡、粮食券、公屋、入籍等福利，用中文讲清楚谁能申请、要什么材料、去哪里办。\n**新闻和行情**：每 30 分钟自动汇集各大中英文媒体的新闻，以及天气、汇率和美股行情。\n**本周优惠**：网购折扣、免费领取和纽约免费活动。\n**分类信息和商家黄页**：招聘、租房、买卖、服务，邻居之间免费发布。"],
           ["我们的原则", "**免费、中文、实用。** 新闻注明来源并链接原文；指南只引用政府和官方机构的公开资料；分类信息由用户自行发布，我们会删除诈骗、违法和色情内容。"],
@@ -16,7 +16,7 @@
       },
       en: {
         title: "About HuaMai",
-        intro: "A neighbor is never far. HuaMai (华脉) is a local information site for the Chinese community in New York: news, benefit guides, deals, a business directory and classifieds, explained in plain Chinese.",
+        intro: "Open HuaMai, good things come. HuaMai (华脉) is a local information site for the Chinese community in New York: news, benefit guides, deals, a business directory and classifieds, explained in plain Chinese.",
         items: [
           ["What we do", "**Guides** to Medicaid, SNAP, public housing, citizenship and more: who qualifies, what to bring and where to go.\n**News and markets**, gathered automatically every 30 minutes from Chinese and English outlets, plus weather, exchange rates and US stocks.\n**Deals**: online discounts, freebies and free NYC events.\n**Classifieds and directory**: jobs, rentals, items and services, free to post."],
           ["Our principles", "**Free, in Chinese, and useful.** News always names and links its source; guides use public government information; listings are posted by users, and we remove scams, illegal and sexual content."],
