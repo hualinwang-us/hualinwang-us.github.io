@@ -1,5 +1,7 @@
 name: Flyer probe
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   p:
     runs-on: ubuntu-latest
@@ -7,6 +9,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: node scripts/flyer-probe.mjs > probe.log 2>&1; cat probe.log
-      - uses: actions/upload-artifact@v4
-        with: { name: probe, path: probe.log }
+      - run: node scripts/flyer-probe.mjs > probe.log 2>&1 || true
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git checkout --orphan probe-out; git rm -rq --cached . ; git add probe.log; git commit -qm probe; git push -f origin probe-out
