@@ -1,0 +1,12 @@
+name: Flyer probe
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/flyer-probe.mjs > probe.log 2>&1; cat probe.log
+      - uses: actions/upload-artifact@v4
+        with: { name: probe, path: probe.log }
