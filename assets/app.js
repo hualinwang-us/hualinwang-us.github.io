@@ -62,7 +62,7 @@
         ["考驾照", "纽约州“绿灯法”：不论移民身份都可以申请驾照", "https://dmv.ny.gov/"], ["社安号 SSN", "有工作许可或绿卡后，向社安局申请", "https://www.ssa.gov/number-card"],
         ["被房东告：免费律师", "纽约市低收入租客可以有免费律师", "#g-tenant-help"], ["打 311 要中文", "任何市政问题打 311，可以要求中文翻译", "https://portal.311.nyc.gov/"],
         ["防诈骗", "华人最常遇到的骗局：假警察、假移民局、杀猪盘、假短信", "#t-scam"], ["免费报税和退税", "收入不高可以免费报税，还可能有退税", "#g-free-tax"]],
-      cmH: "评论", cmPh: "说说你的看法…（请文明发言）", cmNamePh: "昵称（可不填）", cmSend: "发表评论", cmNone: "还没有评论，来说第一句吧。", cmOk: "评论已发表", cmFlood: "评论太频繁了，请稍后再试。", cmBanned: "评论含有不允许的内容。", cmFail: "发表失败，请稍后再试。", toolsTab: "实用工具", toolsAll: "全部工具", toolsSub: "贷款计算、入籍考试、驾照笔试、英语急救卡……免费使用，不用注册。", cityTab: "同城服务", datingTab: "同城交友", eventsTab: "线下活动", cityAll: "查看全部同城服务", cityAllYp: "全部商家", cityPost: "免费发布", checkTab: "福利自测", appTab: "App下载", cityIntro: "招聘、房屋、买卖、生活服务……纽约华人邻居都在这里，全部免费发布。", cityCtaH: "有工作要招、有房要租？", cityCtaP: "免费发布，邻居们都看得到。", cityNY: "纽约", rgH: "选择地区", rgCity: "城市", rgArea: "地区", rgAll: "全纽约", rgSet: "已切换到 {a}", pgAbout: "关于我们", pgContact: "联系我们", pgAds: "广告刊登", pgTerms: "用户协议", pgPrivacy: "隐私政策", cpName: "华脉", cpTag: "华脉一开，好事就来", pNews: "今日新闻 {n} 条", pDeals: "本周优惠 {n} 条", pPosts: "本周新信息 {n} 条", pUpd: "{t}更新 · 每30分钟自动刷新", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
+      cmH: "评论", cmPh: "说说你的看法…（请文明发言）", cmNamePh: "昵称（可不填）", cmSend: "发表评论", cmNone: "还没有评论，来说第一句吧。", cmOk: "评论已发表", cmFlood: "评论太频繁了，请稍后再试。", cmBanned: "评论含有不允许的内容。", cmFail: "发表失败，请稍后再试。", travelTab: "玩转美国", trAll: "全部攻略", trNear: "纽约周边", trUsa: "美国境内", toolsTab: "实用工具", toolsAll: "全部工具", toolsSub: "贷款计算、入籍考试、驾照笔试、英语急救卡……免费使用，不用注册。", cityTab: "同城服务", datingTab: "同城交友", eventsTab: "线下活动", cityAll: "查看全部同城服务", cityAllYp: "全部商家", cityPost: "免费发布", checkTab: "福利自测", appTab: "App下载", cityIntro: "招聘、房屋、买卖、生活服务……纽约华人邻居都在这里，全部免费发布。", cityCtaH: "有工作要招、有房要租？", cityCtaP: "免费发布，邻居们都看得到。", cityNY: "纽约", rgH: "选择地区", rgCity: "城市", rgArea: "地区", rgAll: "全纽约", rgSet: "已切换到 {a}", pgAbout: "关于我们", pgContact: "联系我们", pgAds: "广告刊登", pgTerms: "用户协议", pgPrivacy: "隐私政策", cpName: "华脉", cpTag: "华脉一开，好事就来", pNews: "今日新闻 {n} 条", pDeals: "本周优惠 {n} 条", pPosts: "本周新信息 {n} 条", pUpd: "{t}更新 · 每30分钟自动刷新", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
@@ -133,7 +133,7 @@
         ["Driver's license", "New York's Green Light law: apply regardless of immigration status", "https://dmv.ny.gov/"], ["Social Security number", "Apply once you have work authorization or a green card", "https://www.ssa.gov/number-card"],
         ["Free lawyer in housing court", "Low-income NYC tenants can get a free lawyer", "#g-tenant-help"], ["Call 311 in Chinese", "Call 311 for any city question and ask for Chinese", "https://portal.311.nyc.gov/"],
         ["Avoid scams", "Immigration, Social Security and police never ask for wire transfers or gift cards by phone", "#g-legal-help"], ["Free tax filing", "Lower-income filers can file free and may get refunds", "#g-free-tax"]],
-      cmH: "Comments", cmPh: "Share your thoughts… (please be civil)", cmNamePh: "Nickname (optional)", cmSend: "Post comment", cmNone: "No comments yet. Be the first.", cmOk: "Comment posted", cmFlood: "Too many comments; please wait a bit.", cmBanned: "Your comment contains content that isn't allowed.", cmFail: "Couldn't post; please try again.", toolsTab: "Tools", toolsAll: "All tools", toolsSub: "Loan calculators, citizenship and driving test practice, English phrase cards. Free, no sign-up.", cityTab: "Local services", datingTab: "Meet locals", eventsTab: "Events", cityAll: "All local services", cityAllYp: "All businesses", cityPost: "Post free", checkTab: "Benefits check", appTab: "Get the app", cityIntro: "Jobs, housing, buy & sell, services: the New York Chinese community, all free to post.", cityCtaH: "Hiring or renting?", cityCtaP: "Post free and your neighbors will see it.", cityNY: "New York", rgH: "Choose your area", rgCity: "City", rgArea: "Area", rgAll: "All of New York", rgSet: "Switched to {a}", pgAbout: "About", pgContact: "Contact", pgAds: "Advertise", pgTerms: "Terms", pgPrivacy: "Privacy", cpName: "HuaMai", cpTag: "Open HuaMai, good things come", pNews: "{n} stories today", pDeals: "{n} deals this week", pPosts: "{n} new listings this week", pUpd: "Updated {t} · refreshes every 30 min", noMatch: "No matching listings.",
+      cmH: "Comments", cmPh: "Share your thoughts… (please be civil)", cmNamePh: "Nickname (optional)", cmSend: "Post comment", cmNone: "No comments yet. Be the first.", cmOk: "Comment posted", cmFlood: "Too many comments; please wait a bit.", cmBanned: "Your comment contains content that isn't allowed.", cmFail: "Couldn't post; please try again.", travelTab: "Travel", trAll: "All guides", trNear: "Near NYC", trUsa: "Across the US", toolsTab: "Tools", toolsAll: "All tools", toolsSub: "Loan calculators, citizenship and driving test practice, English phrase cards. Free, no sign-up.", cityTab: "Local services", datingTab: "Meet locals", eventsTab: "Events", cityAll: "All local services", cityAllYp: "All businesses", cityPost: "Post free", checkTab: "Benefits check", appTab: "Get the app", cityIntro: "Jobs, housing, buy & sell, services: the New York Chinese community, all free to post.", cityCtaH: "Hiring or renting?", cityCtaP: "Post free and your neighbors will see it.", cityNY: "New York", rgH: "Choose your area", rgCity: "City", rgArea: "Area", rgAll: "All of New York", rgSet: "Switched to {a}", pgAbout: "About", pgContact: "Contact", pgAds: "Advertise", pgTerms: "Terms", pgPrivacy: "Privacy", cpName: "HuaMai", cpTag: "Open HuaMai, good things come", pNews: "{n} stories today", pDeals: "{n} deals this week", pPosts: "{n} new listings this week", pUpd: "Updated {t} · refreshes every 30 min", noMatch: "No matching listings.",
       searchFor: "Search: ", results: "results", contact: "Contact", phone: "Phone", wx: "WeChat", copy: "Copy", copied: "Copied",
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
@@ -303,17 +303,18 @@
     items.push({ h: "city", label: t("cityTab"), menu: () => `<div class="mm-cols mm-city">${GROUPS.map(g => `<div><b>${esc(lang === "zh" ? g.zh : g.en)}</b>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}">${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}</div>`).join("")}<div><b>${esc(t("ypTab"))}</b>${t("ypCats").slice(0, 10).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div></div><a class="mm-cta" href="#city">${esc(t("cityAll"))} →</a>` });
     if (!IS_APP) items.push({ h: "app", label: t("appTab"), app: true });
     items.push({ h: "b-dating", label: t("datingTab") });
+    items.push({ h: "travel", label: t("travelTab"), menu: () => window.HLTravel ? `<div class="mm-cols"><div><b>${esc(t("trNear"))}</b>${HLTravel.T.filter(x => x.area === "near").map(x => `<a href="#tr-${x.id}">${esc(x.name)}</a>`).join("")}</div><div><b>${esc(t("trUsa"))}</b>${HLTravel.T.filter(x => x.area === "usa").map(x => `<a href="#tr-${x.id}">${esc(x.name)}</a>`).join("")}</div></div><a class="mm-cta" href="#travel">${esc(t("trAll"))} →</a>` : null });
     items.push({ h: "tools", label: t("toolsTab"), menu: () => window.HLTools ? `<div class="mm-cols">${HLTools.CATS.map(c => `<div><b>${esc(lang === "zh" ? c.zh : c.en)}</b>${c.tools.map(id => `<a href="#t-${id}">${esc(HLTools.title(id, lang))}</a>`).join("")}</div>`).join("")}</div><a class="mm-cta" href="#tools">${esc(t("toolsAll"))} →</a>` : null });
     items.push({ h: "events", label: t("eventsTab") });
     // Top bar: home (all local services), app, meet locals, news, deals, offline events.
-    const ORDER = ["", "app", "b-dating", "n-top", "deals", "tools"];
+    const ORDER = ["", "app", "b-dating", "n-top", "deals", "travel", "tools"];
     return items.filter(it => ORDER.includes(it.h)).sort((a, b) => ORDER.indexOf(a.h) - ORDER.indexOf(b.h));
   }
   function renderTabs() {
     const items = menuItems();
     const curBoard = route.view === "board" ? boardById(route.board) : null;
     const artDeal = route.view === "article" && deals && Object.values(deals.sections || {}).some(l => l.some(x => x.id === route.id));
-    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article" || route.view === "stocks") ? "n-top" : route.view === "deals" ? "deals" : route.view === "events" ? "events" : route.view === "tools" ? "tools" : (curBoard && curBoard.id === "dating") ? "b-dating" : (route.view === "home" || route.view === "city" || route.view === "yp" || curBoard || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
+    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article" || route.view === "stocks") ? "n-top" : route.view === "deals" ? "deals" : route.view === "events" ? "events" : route.view === "tools" ? "tools" : route.view === "travel" ? "travel" : (curBoard && curBoard.id === "dating") ? "b-dating" : (route.view === "home" || route.view === "city" || route.view === "yp" || curBoard || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
     $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.app ? "" : it.h}"${it.app ? " data-appdl" : ""} data-mi="${k}" class="${it.h === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
   }
   const mega = document.getElementById("mega");
@@ -392,6 +393,14 @@
       <div class="ct-tiles">${tiles}</div><div class="ct-grid">${cards}${yp}</div>
       <div class="ct-cta"><b>${esc(t("cityCtaH"))}</b><span>${esc(t("cityCtaP"))}</span><button type="button" class="btn" data-post>${esc(t("postFree"))}</button></div>`;
   }
+  function renderTravel() {
+    if (!window.HLTravel || route.view !== "travel") return;
+    const T = window.HLTravel, trip = route.trip && T.T.find(x => x.id === route.trip);
+    $("#travelNav").innerHTML = [["", t("trAll")], ["near", t("trNear")], ["usa", t("trUsa")]].map(([k, n]) => `<a href="#travel${k ? "-" + k : ""}"${(trip ? trip.area : route.area) === k && !(trip && !k) ? ' class="on"' : ""}>${esc(n)}</a>`).join("");
+    $("#travelBody").innerHTML = trip ? T.page(trip.id) : T.hub(route.area);
+    document.title = (trip ? trip.name : t("travelTab")) + " - 华脉";
+  }
+  document.addEventListener("click", e => { const b = e.target.closest("[data-trshare]"); if (!b || !window.HLTravel) return; const n = HLTravel.title(b.dataset.trshare); HLShare.open({ url: HLC.siteBase() + "#tr-" + b.dataset.trshare, title: n + " 省钱攻略", text: n + " 省钱攻略 - 华脉" }); });
   function renderTools() {
     if (!window.HLTools || route.view !== "tools") return;
     const T = window.HLTools, zh = lang === "zh";
@@ -1155,6 +1164,7 @@
     else if (h === "deals") route = { view: "deals" };
     else if (h === "city") route = { view: "city" };
     else if (h === "events") route = { view: "events" };
+    else if (h === "travel" || h === "travel-near" || h === "travel-usa" || h.startsWith("tr-")) route = { view: "travel", area: h.startsWith("travel-") ? h.slice(7) : "", trip: h.startsWith("tr-") ? h.slice(3) : "" };
     else if (h === "tools" || h.startsWith("tools-") || h.startsWith("t-")) route = { view: "tools", cat: h.startsWith("tools-") ? h.slice(6) : "", tool: h.startsWith("t-") ? h.slice(2) : "" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
     else route = { view: "home" };
@@ -1166,6 +1176,7 @@
     $("#vCity").hidden = route.view !== "city"; if (route.view === "city") renderCity();
     $("#vEvents").hidden = route.view !== "events"; if (route.view === "events") renderEvents();
     $("#vTools").hidden = route.view !== "tools"; if (route.view === "tools") renderTools();
+    $("#vTravel").hidden = route.view !== "travel"; if (route.view === "travel") renderTravel();
     $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
     $("#vAds").hidden = route.view !== "ads"; if (route.view === "ads") renderAdsPage();
     $("#vFlyer").hidden = route.view !== "flyer"; if (route.view === "flyer") renderFlyer();
