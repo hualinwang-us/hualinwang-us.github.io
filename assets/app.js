@@ -296,7 +296,7 @@
       { h: "check", label: t("checkTab"), menu: () => `<a class="mm-cta" href="#check">${esc(t("gCheckH"))} →</a>` + (guides ? `<div class="mm-cols">${guides.groups.map(gr => {
           const gs = guides.guides.filter(g => g.group === gr.id); if (!gs.length) return "";
           return `<div><b>${esc(HLG.L(gr, lang))}</b>${gs.map(g => `<a href="#g-${esc(g.id)}">${esc(HLG.L(g.title, lang))}</a>`).join("")}</div>`; }).join("")}</div>` : "") },
-      { h: "deals", label: t("dealsTab"), menu: () => `<div class="mm-cols"><div>${["local", "zh", "free", "online", "events"].map(k => `<a href="${k === "local" ? "#b-deals" : "#deals"}">${esc(t("dl_" + k))}</a>`).join("")}<button type="button" class="mm-cta linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div></div>` },
+      { h: "deals", label: t("dealsTab"), menu: () => `<div class="mm-cols"><div><a href="#chaoshi"><b>🛒 华人超市特价单</b></a>${["local", "zh", "free", "online", "events"].map(k => `<a href="${k === "local" ? "#b-deals" : "#deals"}">${esc(t("dl_" + k))}</a>`).join("")}<button type="button" class="mm-cta linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div></div>` },
       { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}<a href="#stocks">${esc(t("stkTab"))}</a></div></div>` }
     ];
     items.push({ h: "stocks", label: t("stkTab") });
@@ -314,7 +314,7 @@
     const items = menuItems();
     const curBoard = route.view === "board" ? boardById(route.board) : null;
     const artDeal = route.view === "article" && deals && Object.values(deals.sections || {}).some(l => l.some(x => x.id === route.id));
-    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article") ? "n-top" : route.view === "stocks" ? "stocks" : route.view === "deals" ? "deals" : route.view === "events" ? "events" : route.view === "tools" ? "tools" : route.view === "travel" ? "travel" : (curBoard && curBoard.id === "dating") ? "b-dating" : route.view === "city" || (curBoard && curBoard.id !== "dating") || route.view === "yp" ? "city" : (route.view === "home" || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
+    const cur = artDeal ? "deals" : (route.view === "news" || route.view === "article") ? "n-top" : route.view === "stocks" ? "stocks" : (route.view === "deals" || route.view === "chaoshi") ? "deals" : route.view === "events" ? "events" : route.view === "tools" ? "tools" : route.view === "travel" ? "travel" : (curBoard && curBoard.id === "dating") ? "b-dating" : route.view === "city" || (curBoard && curBoard.id !== "dating") || route.view === "yp" ? "city" : (route.view === "home" || route.view === "check" || route.view === "guide" || route.view === "guideOne") ? "" : null;
     $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.app ? "" : it.h}"${it.app ? " data-appdl" : ""} data-mi="${k}" class="${it.h === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
   }
   const mega = document.getElementById("mega");
@@ -1160,6 +1160,7 @@
     else if (h === "me") route = { view: "me" };
     else if (h === "yp" || h.startsWith("yp-")) route = { view: "yp", cat: h.slice(3) };
     else if (h === "deals") route = { view: "deals" };
+    else if (h === "chaoshi" || h.startsWith("cs-")) route = { view: "chaoshi", store: h.startsWith("cs-") ? h.slice(3) : "" };
     else if (h === "city") route = { view: "city" };
     else if (h === "events") route = { view: "events" };
     else if (h === "travel" || h === "travel-near" || h === "travel-usa" || h.startsWith("tr-")) route = { view: "travel", area: h.startsWith("travel-") ? h.slice(7) : "", trip: h.startsWith("tr-") ? h.slice(3) : "" };
@@ -1171,6 +1172,7 @@
     $("#vNews").hidden = route.view !== "news"; $("#vSearch").hidden = route.view !== "search";
     $("#vArticle").hidden = route.view !== "article"; if (route.view === "article") renderArticle();
     $("#vDeals").hidden = route.view !== "deals"; if (route.view === "deals") renderDeals();
+    $("#vChaoshi").hidden = route.view !== "chaoshi"; if (route.view === "chaoshi" && window.HLChaoshi) { HLChaoshi.render($("#csBody"), route.store); document.title = "华人超市特价单 - 纽约华人超市本周 flyer｜华脉"; }
     $("#vCity").hidden = route.view !== "city"; if (route.view === "city") renderCity();
     $("#vEvents").hidden = route.view !== "events"; if (route.view === "events") renderEvents();
     $("#vTools").hidden = route.view !== "tools"; if (route.view === "tools") renderTools();
@@ -1187,7 +1189,7 @@
     if (route.view === "news") renderNewsView();
     if (route.view === "search") renderSearch();
     renderTabs();
-    const bn = route.view === "home" ? "home" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : route.view === "deals" ? "deals" : route.view === "me" ? "me" : "";
+    const bn = route.view === "home" ? "home" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : (route.view === "deals" || route.view === "chaoshi") ? "deals" : route.view === "me" ? "me" : "";
     document.querySelectorAll("#bnav [data-bn]").forEach(a => a.classList.toggle("on", a.dataset.bn === bn));
     if (h === "classifieds") { const el = document.querySelector(".boards-sec"); if (el) el.scrollIntoView({ block: "start" }); }
     else if (route.view !== "home" || h === "") window.scrollTo(0, 0);
