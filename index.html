@@ -55,6 +55,7 @@
   <span class="util-mid">
     <span id="wxNow" class="pill" hidden></span>
     <span id="fxNow" class="pill" hidden></span>
+    <span id="pulseMini" class="pill pl-mini" hidden></span>
   </span>
   <button type="button" class="util-share" id="loginBtn" data-i18n="login">登录 / 注册</button>
   <span class="util-user" id="userBox" hidden><a href="#me" id="userName" class="util-me"></a> <button type="button" class="linkbtn util-out" id="logoutBtn" data-i18n="logout">退出</button></span>
@@ -91,12 +92,17 @@
 
 
   <div class="pulse" id="pulse" hidden></div>
-  <div class="locate-bar" id="locateBar" hidden></div>
   <section class="portal" id="homePortal" aria-label="同城服务"></section>
   <section class="spon-banner" id="sponBanner" aria-label="Sponsors"></section>
 
   <div class="layout">
     <div class="col-main">
+      <section class="block latest-main">
+        <div class="bh"><h2 data-i18n="latest">最新信息</h2><a href="b/" data-i18n="pgAll">分类信息大全</a></div>
+        <ul class="rows" id="latest"></ul>
+      </section>
+      <div class="htabs" id="htabs" data-t="g">
+        <div class="ht-bar" role="tablist"><button type="button" role="tab" data-ht="g" data-i18n="checkTab">福利自测</button><button type="button" role="tab" data-ht="n" data-i18n="ncH">新移民必备</button></div>
       <section class="g-home" id="gHome" hidden>
         <div class="g-home-l">
           <span class="lab" data-i18n="gHomeLab">纽约华人生活指南</span>
@@ -107,12 +113,7 @@
         <div class="g-home-r" id="gHomeList"></div>
       </section>
       <section class="block nc" id="newcomer"></section>
-      <section class="block stk-home" id="stkHomeBox"><div class="bh"><h2><span data-i18n="stkTab">美股行情</span></h2><a href="#stocks" data-i18n="stkAll">看全部行情 ›</a></div><div id="stkHome" class="stk-w"></div></section>
-      <section class="deals-home" id="dealsHome" hidden>
-        <div class="bh big"><h2 data-i18n="dealsH">本周优惠和免费</h2><a href="#deals" data-i18n="more">更多</a></div>
-        <div class="deals-grid" id="dealsGrid"></div>
-        <section class="spons mid deals-ads" id="sponDeals" aria-label="Sponsors"></section>
-      </section>
+      </div>
       <section class="block lead-block">
         <div class="bh"><h2 data-i18n="sec_top">新闻速递</h2><a href="#n-top" data-i18n="more">更多</a></div>
         <div id="sec-top" class="lead-wrap"></div>
@@ -134,6 +135,13 @@
       </div>
       <section class="block" hidden><div class="bh"><h2 data-i18n="sec_official">政府公告</h2><a href="#n-official" data-i18n="more">更多</a></div><ul class="nl" id="sec-official"></ul></section>
       <section class="block"><div class="bh"><h2 data-i18n="sec_ent">娱乐体育</h2><a href="#n-ent" data-i18n="more">更多</a></div><ul class="nl two-col" id="sec-ent"></ul></section>
+      <section class="spons mid home-ad" id="sponMid3" aria-label="Sponsors"></section>
+      <section class="deals-home" id="dealsHome" hidden>
+        <div class="bh big"><h2 data-i18n="dealsH">本周优惠和免费</h2><a href="#deals" data-i18n="more">更多</a></div>
+        <div class="deals-grid" id="dealsGrid"></div>
+        <section class="spons mid deals-ads" id="sponDeals" aria-label="Sponsors"></section>
+      </section>
+      <section class="block stk-home" id="stkHomeBox"><div class="bh"><h2><span data-i18n="stkTab">美股行情</span></h2><a href="#stocks" data-i18n="stkAll">看全部行情 ›</a></div><div id="stkHome" class="stk-w"></div></section>
     </div>
 
     <aside class="col-rail">
@@ -142,10 +150,6 @@
         <p data-i18n="ctaP">招聘、租房、生意转让、二手买卖……无需注册，一分钟发布。</p>
         <button class="btn" type="button" data-post data-i18n="postNow">立即发布</button>
       </div>
-      <section class="block">
-        <div class="bh"><h2 data-i18n="latest">最新信息</h2></div>
-        <ul class="rows" id="latest"></ul>
-      </section>
       <section class="block" id="fxBlock" hidden>
         <div class="bh"><h2 data-i18n="fx">货币兑换率</h2><span class="bh-note" id="fxAsOf"></span></div>
         <table class="fx" id="fxTable"></table>

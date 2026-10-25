@@ -6,8 +6,9 @@
   const { GROUPS, BOARDS, boardById } = HLC;
   const BASE_TITLE = document.title;
   // One consistent set of line icons (instead of emoji, which look different on every phone).
+  const IC_GRID = '<rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/>';
   const IC = {"chart": "<path d=\"M3 3v18h18\"/><path d=\"m7 15 4-4 3 3 6-6\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "phone": "<path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2\"/>", "pin": "<path d=\"M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z\"/><circle cx=\"12\" cy=\"9\" r=\"2.5\"/>", "globe": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"/>", "camera": "<path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "mail": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/>", "image": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><circle cx=\"9\" cy=\"10\" r=\"2\"/><path d=\"m21 16-5-5-9 9\"/>"};
-  const ic = n => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+  const ic = n => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${n === "grid" ? IC_GRID : IC[n]}</svg>`;
   const FEATURED = ["jobs", "rest", "seek", "rent", "share", "house", "biz", "sale", "car", "move", "reno", "law"];
 
   const SECTIONS = ["top", "local", "immigration", "uschina", "china", "business", "health", "ent", "official"];
@@ -53,7 +54,7 @@
       eSave: "发布失败，请稍后再试。", eFlood: "发布太频繁，请10分钟后再试。", eBusy: "网站繁忙，请稍后再试。",
       loading: "载入中…", newsEmpty: "新闻正在更新，请稍后刷新。", noPosts: "还没有信息，", beFirst: "抢先发布",
       noLatest: "暂时没有新信息。", invH: "来发第一条吧", invP: "招聘、租房、转让、找服务……免费发布，邻居们都看得到。", invBtn: "免费发布", pgAll: "分类信息大全", eventsH: "线下活动", eventsNote: "纽约华人社区活动和全市免费活动，每天自动更新。办活动的社区组织和商家可以免费发布。", evComm: "华人社区活动", evFree: "纽约免费活动", evPost: "免费发布活动", evInvH: "还没有社区活动", evInvP: "教会、同乡会、社区中心、商家办活动，都可以在这里免费发布。",
-      locAsk: "看你附近的招工、房屋和服务？", locBtn: "自动定位", locPick: "手动选择地区", locing: "正在定位…", locNo: "无法定位，请手动选择地区", locFar: "你不在纽约附近，先显示全纽约",
+      locAsk: "看你附近的招工、房屋和服务？", locTip: "看附近的信息？", ptAll: "全部分类", ptMore: "更多分类", ptLess: "收起", locBtn: "自动定位", locPick: "手动选择地区", locing: "正在定位…", locNo: "无法定位，请手动选择地区", locFar: "你不在纽约附近，先显示全纽约",
       ncH: "新移民必备", ncCheck: "福利自测", ncSub: "刚来纽约，先把这几件事弄清楚。都免费，大部分不问移民身份。", ncFine: "信息仅供参考，以政府官网为准。外部链接会打开官方网站。",
       ncItems: [["纽约市身份证 IDNYC", "免费，10 岁以上纽约市居民都能办，不论移民身份", "#g-idnyc"], ["免费移民法律咨询", "市政府热线 1-800-354-0365，免费保密，不论身份", "#g-legal-help"],
         ["没保险也能看病", "NYC Care 和白卡，按收入，很多人都能用", "#g-nyc-care"], ["孩子免费上学", "纽约市公立学校免费入学，不问移民身份", "https://www.schools.nyc.gov/enrollment"],
@@ -124,7 +125,7 @@
       eContact: "Add a phone number or WeChat ID.", eSave: "Couldn't post. Please try again.", eFlood: "Too many posts. Try again in 10 minutes.",
       eBusy: "The site is busy. Please try again shortly.", loading: "Loading…", newsEmpty: "News is updating. Refresh in a moment.",
       noPosts: "Nothing here yet. ", beFirst: "Post the first one", noLatest: "No new listings yet.", invH: "Be the first to post", invP: "Jobs, rentals, items for sale, services: free to post, seen by your neighbors.", invBtn: "Post for free", pgAll: "All classifieds", eventsH: "Events", eventsNote: "Chinese community events and free NYC events, updated daily. Organizations and businesses can post events free.", evComm: "Community events", evFree: "Free NYC events", evPost: "Post an event", evInvH: "No community events yet", evInvP: "Churches, associations, community centers and businesses can post events here for free.",
-      locAsk: "See jobs, housing and services near you?", locBtn: "Locate me", locPick: "Choose area", locing: "Finding your location…", locNo: "Couldn't get your location; please choose an area", locFar: "You're not near New York; showing all of New York",
+      locAsk: "See jobs, housing and services near you?", locTip: "See what's near you?", ptAll: "All", ptMore: "More categories", ptLess: "Show less", locBtn: "Locate me", locPick: "Choose area", locing: "Finding your location…", locNo: "Couldn't get your location; please choose an area", locFar: "You're not near New York; showing all of New York",
       ncH: "New to New York", ncCheck: "Benefits check", ncSub: "Just arrived? Start with these. All free, and most don't ask about immigration status.", ncFine: "For general reference; official websites govern. Outside links open official sites.",
       ncItems: [["IDNYC city ID", "Free for NYC residents 10+, regardless of immigration status", "#g-idnyc"], ["Free immigration legal help", "City hotline 1-800-354-0365, free and confidential", "#g-legal-help"],
         ["Health care without insurance", "NYC Care and Medicaid, based on income", "#g-nyc-care"], ["Free public school", "NYC public schools enroll every child; status isn't asked", "https://www.schools.nyc.gov/enrollment"],
@@ -358,15 +359,24 @@
   }
   // 同城服务: every board on one page, grouped like a classifieds portal, with counts for the chosen area.
   const GROUP_COLORS = ["#d2453a", "#e08a1e", "#2f7fd8", "#1f9d6b", "#7a5bd6", "#d24f8a", "#0f9bb0", "#c0392b"];
-  const HOT = ["jobs", "rent", "car", "sale", "recycle", "parttime", "clean", "repair", "move", "rest", "house", "dating"];
+  const HOT = ["jobs", "rent", "car", "sale", "clean", "repair", "parttime"];
+  const GCOL = { work: "#d2453a", home: "#e08a1e", trade: "#2f7fd8", svc: "#1f9d6b", pro: "#7a5bd6", health: "#d24f8a", life: "#0f9bb0", social: "#c0392b" };
+  let portalOpen = false;
   function renderPortal() {
     const el = $("#homePortal"); if (!el) return;
     const zh = lang === "zh", count = id => areaPosts().filter(p => p.board === id).length;
-    const hot = HOT.map(boardById).filter(Boolean).map((b, k) => `<a class="pt-hot" href="#b-${b.id}" style="--c:${GROUP_COLORS[k % GROUP_COLORS.length]}"><span class="pt-ic" aria-hidden="true">${esc(b.glyph)}</span><b>${esc(zh ? b.zh : b.en)}</b></a>`).join("");
-    const cards = GROUPS.filter(g => g.id !== "social").map((g, k) => `<section class="pt-card" style="--c:${GROUP_COLORS[k % GROUP_COLORS.length]}"><h3><a href="#b-${g.boards[0][0]}">${esc(zh ? g.zh : g.en)}</a></h3><div class="pt-links">${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}">${esc(zh ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}</div></section>`).join("");
+    const hot = HOT.map(boardById).filter(Boolean).map(b => `<a class="pt-hot" href="#b-${b.id}" style="--c:${GCOL[b.group] || "#d2453a"}"><span class="pt-ic" aria-hidden="true">${esc(b.glyph)}</span><b>${esc(zh ? b.zh : b.en)}</b></a>`).join("")
+      + `<button type="button" class="pt-hot" data-ptmore style="--c:#5d6272"><span class="pt-ic pt-all" aria-hidden="true">${ic("grid")}</span><b>${esc(t("ptAll"))}</b></button>`;
+    const card = g => `<section class="pt-card" style="--c:${GCOL[g.id] || "#d2453a"}"><h3><a href="#b-${g.boards[0][0]}">${esc(zh ? g.zh : g.en)}</a></h3><div class="pt-links">${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}">${esc(zh ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}</div></section>`;
+    const main = ["work", "home", "trade", "svc"], groups = GROUPS.filter(g => g.id !== "social");
     const yp = `<section class="pt-card" style="--c:#9c7536"><h3><a href="#yp">${esc(t("ypTab"))}</a></h3><div class="pt-links">${t("ypCats").slice(0, 10).map(([k, n]) => `<a href="#yp-${k}">${esc(n)}</a>`).join("")}</div></section>`;
-    el.innerHTML = `<div class="pt-head"><h2>${esc(t("cityTab"))}</h2><button type="button" class="region-pill" data-region>${ic("pin")}${esc(regionLabel())}<span aria-hidden="true">▾</span></button><button type="button" class="btn sm pt-post" data-post>${esc(t("postFree"))}</button></div>
-      <div class="pt-hots">${hot}</div><div class="pt-grid">${cards}${yp}</div>`;
+    let located = false; try { located = !!localStorage.getItem("hl-located") || !!localStorage.getItem("hl-area"); } catch (e) {}
+    el.innerHTML = `<div class="pt-head"><h2>${esc(t("cityTab"))}</h2><button type="button" class="region-pill pt-region" data-region>${ic("pin")}${esc(regionLabel())}<span aria-hidden="true">▾</span></button>
+      ${located ? "" : `<span class="loc-tip">${esc(t("locTip"))}<button type="button" class="linkbtn" data-locate>${esc(t("locBtn"))}</button><button type="button" class="x" data-locx aria-label="Close">×</button></span>`}</div>
+      <div class="pt-hots">${hot}</div>
+      <div class="pt-grid">${groups.filter(g => main.includes(g.id)).map(card).join("")}</div>
+      <div class="pt-grid pt-more"${portalOpen ? "" : " hidden"}>${groups.filter(g => !main.includes(g.id)).map(card).join("")}${yp}</div>
+      <button type="button" class="pt-toggle" data-ptmore>${esc(portalOpen ? t("ptLess") : t("ptMore"))} <span aria-hidden="true">${portalOpen ? "▴" : "▾"}</span></button>`;
   }
   function renderCity() {
     const el = $("#cityBody"); if (!el) return;
@@ -411,7 +421,7 @@
   }
   function setArea(a, quiet) {
     curArea = a; try { localStorage.setItem("hl-area", a); localStorage.setItem("hl-located", "1"); } catch (er) {}
-    renderRegionBtn(); renderPortal(); const lb = $("#locateBar"); if (lb) lb.hidden = true;
+    renderRegionBtn(); renderPortal();
     if (route.view === "city") renderCity(); if (route.view === "events") renderEvents();
     if (route.view === "board") { $("#bArea").value = curArea; renderBoard(); }
     if (!quiet) toast(t("rgSet").replace("{a}", regionLabel()));
@@ -423,7 +433,7 @@
       () => { toast(t("locNo")); openRegion(); }, { timeout: 10000, maximumAge: 600000 });
   }
   function renderLocateBar() {
-    const lb = $("#locateBar"); if (!lb) return;
+    const lb = $("#locateBar"); if (!lb) return; // replaced by the small tip inside the services panel
     let done = false; try { done = !!localStorage.getItem("hl-located") || !!localStorage.getItem("hl-area"); } catch (e) {}
     if (done) { lb.hidden = true; return; }
     lb.innerHTML = `${ic("pin")}<span>${esc(t("locAsk"))}</span><button type="button" class="btn sm" data-locate>${esc(t("locBtn"))}</button><button type="button" class="linkbtn" data-region>${esc(t("locPick"))}</button><button type="button" class="x" data-locx aria-label="Close">×</button>`;
@@ -446,7 +456,9 @@
     }
     if (e.target.closest("[data-appdl]")) { e.preventDefault(); installApp(); }
     if (e.target.closest("[data-locate]")) { e.preventDefault(); const d = $("#viewDlg"); if (d.open) d.close(); locateMe(); }
-    if (e.target.closest("[data-locx]")) { try { localStorage.setItem("hl-located", "1"); } catch (er) {} $("#locateBar").hidden = true; }
+    if (e.target.closest("[data-locx]")) { try { localStorage.setItem("hl-located", "1"); } catch (er) {} renderPortal(); }
+    if (e.target.closest("[data-ptmore]")) { const fromIcon = e.target.closest(".pt-hot"); portalOpen = fromIcon ? true : !portalOpen; renderPortal(); if (fromIcon) { const m = document.querySelector(".pt-more"); if (m) m.scrollIntoView({ behavior: "smooth", block: "nearest" }); } }
+    const ht = e.target.closest("[data-ht]"); if (ht) { $("#htabs").dataset.t = ht.dataset.ht; }
   });
 
   function renderAdContact() {
@@ -567,6 +579,7 @@
     fillAds("#sponBanner", "banner", 1, false);
     fillAds("#sponTop", "top", 3, false);
     fillAds("#sponMid1", "mid", 3, true, (s, i) => true);
+    fillAds("#sponMid3", "mid", 3, true);
     const mids = liveSlots("mid");
     $("#sponMid2").innerHTML = mids.slice(3, 6).map(s => adCard(s, "sm")).join("") + Array.from({ length: Math.max(0, 3 - mids.slice(3, 6).length) }, () => emptyAd(true)).join("");
     fillAds("#sponRail", "rail", 6, false);
@@ -776,8 +789,9 @@
     const upd = Date.parse(news.updatedAt);
     const parts = [ids.size && t("pNews").replace("{n}", `<b>${ids.size}</b>`), nDeals && t("pDeals").replace("{n}", `<b>${nDeals}</b>`)].filter(Boolean);
     if (!ids.size) { el.hidden = true; return; } // only show the line once the news has loaded
-    el.innerHTML = `<span class="pl-dot" aria-hidden="true"></span><span class="pl-t">${parts.join('<i aria-hidden="true">·</i>')}</span>${upd ? `<span class="pl-u">${esc(t("pUpd").replace("{t}", ago(news.updatedAt)))}</span>` : ""}`;
-    el.hidden = false;
+    const mini = $("#pulseMini");
+    if (mini) { mini.innerHTML = `<span class="pl-dot" aria-hidden="true"></span>${parts.join(" · ")}`; mini.hidden = false; }
+    el.hidden = true;
   }
   function renderPostsAll() {
     try { renderPulse(); renderPortal(); if (route.view === "events") renderEvents(); if (route.view === "city") renderCity(); } catch (e) {}

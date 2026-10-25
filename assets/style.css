@@ -1039,3 +1039,34 @@ footer,.foot{background:#171b26;color:#cfc8bb}
 @media (min-width:900px){.ev-grid{grid-template-columns:1fr 1fr}}
 .locate-bar .x{position:static;width:auto;height:auto;padding:0 4px;box-shadow:none;background:none}
 @media (max-width:719px){.mast .region{display:none}}
+
+/* ===== calmer home (v5) ===== */
+.pl-mini{gap:6px}
+.pl-mini .pl-dot{width:7px;height:7px}
+#vHome #sponTop,#vHome #sponMid2,#vHome #sponDeals,#vHome .boards-sec,#vHome #sponFoot{display:none!important}
+#sponRail>:nth-child(n+4){display:none}
+.pt-head h2{margin-right:0}
+.pt-region{display:none}
+@media (max-width:719px){.pt-region{display:inline-flex}}
+.loc-tip{display:inline-flex;align-items:center;gap:6px;margin-left:auto;padding:4px 6px 4px 12px;border-radius:999px;background:var(--accent-soft);color:var(--ink-2);font-size:13px}
+.loc-tip .linkbtn{font-weight:700;color:var(--accent)}
+.loc-tip .x{position:static;font-size:16px;padding:0 4px;color:var(--muted)}
+.pt-hots{grid-template-columns:repeat(8,minmax(0,1fr))!important}
+@media (max-width:719px){.pt-hots{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+button.pt-hot{border:0;background:none;cursor:pointer;font:inherit}
+.pt-all{background:linear-gradient(145deg,#8a90a0,#5d6272)!important}
+.pt-all .ic{width:22px;height:22px;margin:0;stroke:#fff;stroke-width:2}
+.pt-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.pt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.pt-grid{grid-template-columns:minmax(0,1fr)}}
+.pt-card{border-bottom:0}
+.pt-toggle{display:block;margin:10px auto 0;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 18px;font-size:13px;color:var(--ink-2);cursor:pointer}
+.pt-toggle:hover{border-color:var(--accent);color:var(--accent)}
+/* 福利自测 / 新移民必备 as two tabs */
+.ht-bar{display:inline-flex;gap:4px;padding:4px;margin-bottom:10px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+.ht-bar button{border:0;background:none;padding:7px 18px;border-radius:999px;font:700 14px/1 var(--body);color:var(--ink-2);cursor:pointer}
+.htabs[data-t="g"] .ht-bar [data-ht="g"],.htabs[data-t="n"] .ht-bar [data-ht="n"]{background:var(--accent);color:#fff}
+.htabs[data-t="g"] #newcomer,.htabs[data-t="n"] #gHome{display:none!important}
+.latest-main .rows{column-gap:28px}
+@media (min-width:720px){.latest-main .rows:has(> li){columns:2}}
+.latest-main .rows li{break-inside:avoid}
