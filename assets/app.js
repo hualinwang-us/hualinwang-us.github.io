@@ -262,6 +262,7 @@
   window.addEventListener("scroll", () => { if (!mega.hidden) { const nav = document.querySelector(".tabs").getBoundingClientRect(); mega.style.top = nav.bottom + "px"; } }, { passive: true });
 
   function renderDir() {
+    if (!$("#dir")) return; // the home directory panel was removed: the hover menus in the top bar list every board
     const count = id => posts.filter(p => p.board === id).length;
     $("#dir").innerHTML = GROUPS.map(g => `<div class="dg"><h3>${esc(lang === "zh" ? g.zh : g.en)}</h3><ul>${g.boards.map(b => {
       const n = count(b[0]); return `<li><a href="#b-${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</a>${n ? `<span class="n">${n}</span>` : ""}</li>`;
