@@ -51,6 +51,7 @@ for (const u of ["https://hualin88.com/", "https://www.hualin88.com/", "https://
   try { const s = await fetch(u, { redirect: "manual" }); out.push({ name: "Site answers: " + u, ok: s.status < 400, status: s.status, detail: s.headers.get("location") || "" }); }
   catch (e) { out.push({ name: "Site answers: " + u, ok: false, status: 0, detail: String(e.message).slice(0, 120) }); }
 }
-let fails = 0;
-for (const c of out) { const line = `${c.ok ? "PASS" : "FAIL"} | ${c.name} | HTTP ${c.status} | ${String(c.detail).replace(/\s+/g, " ").slice(0, 140)}`; console.log(line); console.log((c.ok ? "::notice::" : "::warning::") + line); if (!c.ok) fails++; }
-console.log(`::notice::SUMMARY ${out.length - fails}/${out.length} passed`);
+let fails = 0; const lines = [];
+for (const c of out) { const line = `${c.ok ? "PASS" : "FAIL"} | ${c.name} | HTTP ${c.status} | ${String(c.detail).replace(/\s+/g, " ").slice(0, 90)}`; console.log(line); lines.push(line); if (!c.ok) fails++; }
+// GitHub shows at most 10 notes per step, so everything goes into one.
+console.log(`::notice title=SUMMARY ${out.length - fails}/${out.length} passed::` + lines.join(" %0A "));
