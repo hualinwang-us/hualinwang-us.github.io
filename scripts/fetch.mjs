@@ -166,9 +166,16 @@ function ogDesc(html) {
 }
 
 // The opening of the article (first paragraphs), clipped to about 200 characters, shown as a lead above the embedded page.
+// Page furniture that sometimes sits inside article paragraphs (audio players, "AI summary" labels, share prompts).
+const LEAD_JUNK = [
+  /\d{1,2}:\d{2}\s*\/\s*\d{1,2}:\d{2}/g, /your browser does not support[^.!。！]*[.!。！]?/gi, /[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu,
+  /AI\s*(摘要|总结|導讀|导读|生成)[^：:]{0,12}[：:]?/gi, /(文章)?摘要整理[：:]?/g, /(本文|以下)(由|为)?\s*AI[^。]{0,20}[。：:]?/gi,
+  /(收听|朗读|播放)(本文|文章|全文)?/g, /(字号|大中小|打印本页|分享到)[^\s]{0,10}/g
+];
+function scrubLead(t) { for (const re of LEAD_JUNK) t = t.replace(re, " "); return t.replace(/\s+/g, " ").replace(/^[\s:：,，、。]+/, "").trim(); }
 function leadText(html) {
   const body = html.replace(/<(script|style|noscript|header|footer|nav|aside|figure|form)[\s\S]*?<\/\1>/gi, " ");
-  const paras = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map(m => clean(m[1]).replace(/\s+/g, " ").trim())
+  const paras = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map(m => scrubLead(clean(m[1])))
     .filter(p => (p.match(/[\u4e00-\u9fff]/g) || []).length >= 25 || (!/[\u4e00-\u9fff]/.test(p) && p.length >= 80))
     .filter(p => !/版权|免责|声明|责任编辑|原标题|来源：|点击|关注|下载|扫码|copyright|all rights reserved|subscribe|cookie/i.test(p));
   let out = "";
@@ -257,11 +264,11 @@ async function enrichImages(out) {
   const todo = [];
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
-    if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || cache[k].lv === 2)) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
+    if (cache[k] && "frame" in cache[k] && (cache[k].frame === false || cache[k].lv === 3)) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
     if (todo.length >= 260) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
-      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, lv: 2, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
+      try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, lead: r.lead, lv: 3, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
@@ -272,6 +279,7 @@ async function enrichImages(out) {
     if (!i.img && c.img) i.img = c.img;
     if (!i.s && c.desc && c.desc.replace(/\s/g, "") !== i.t.replace(/\s/g, "")) i.s = c.desc;
     // A fuller lead for stories read inside our site: use the article's opening if it says more than the short description.
+    if (i.s) i.s = scrubLead(i.s);
     if (c.lead && c.lead.length > (i.s || "").length + 20 && (lang === "en" || /[\u4e00-\u9fff]/.test(c.lead))) i.s = c.lead;
     if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; // link straight to the publisher
     if (c.frame) i.fr = 1; else if (c.frame === false) i.fr = 0;
