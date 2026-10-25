@@ -4,6 +4,10 @@
   const HLC = window.HLC;
   const CFG = HLC.CFG, SB_URL = HLC.SB_URL, SB_KEY = HLC.SB_KEY, POSTS_ON = HLC.POSTS_ON;
   const { GROUPS, BOARDS, boardById } = HLC;
+  const BASE_TITLE = document.title;
+  // One consistent set of line icons (instead of emoji, which look different on every phone).
+  const IC = {"chart": "<path d=\"M3 3v18h18\"/><path d=\"m7 15 4-4 3 3 6-6\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>", "phone": "<path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2\"/>", "pin": "<path d=\"M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z\"/><circle cx=\"12\" cy=\"9\" r=\"2.5\"/>", "globe": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"/>", "camera": "<path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/>", "mail": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/>", "image": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><circle cx=\"9\" cy=\"10\" r=\"2\"/><path d=\"m21 16-5-5-9 9\"/>"};
+  const ic = n => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
   const FEATURED = ["jobs", "rest", "seek", "rent", "share", "house", "biz", "sale", "car", "move", "reno", "law"];
 
   const SECTIONS = ["top", "local", "immigration", "uschina", "china", "business", "health", "ent", "official"];
@@ -48,7 +52,7 @@
       posted: "发布成功", eTitle: "标题至少2个字。", eBody: "请填写详细内容。", eContact: "请至少留下电话或微信。",
       eSave: "发布失败，请稍后再试。", eFlood: "发布太频繁，请10分钟后再试。", eBusy: "网站繁忙，请稍后再试。",
       loading: "载入中…", newsEmpty: "新闻正在更新，请稍后刷新。", noPosts: "还没有信息，", beFirst: "抢先发布",
-      noLatest: "暂时没有新信息。", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
+      noLatest: "暂时没有新信息。", invH: "来发第一条吧", invP: "招聘、租房、转让、找服务……免费发布，邻居们都看得到。", invBtn: "免费发布", pgAbout: "关于我们", pgContact: "联系我们", pgAds: "广告刊登", pgTerms: "用户协议", pgPrivacy: "隐私政策", cpName: "华邻网", cpTag: "天涯若比邻，有事找华邻", pNews: "今日新闻 {n} 条", pDeals: "本周优惠 {n} 条", pPosts: "本周新信息 {n} 条", pUpd: "{t}更新 · 每30分钟自动刷新", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
@@ -110,7 +114,7 @@
       submit: "Post", posting: "Posting…", posted: "Posted", eTitle: "Title needs at least 2 characters.", eBody: "Add the details.",
       eContact: "Add a phone number or WeChat ID.", eSave: "Couldn't post. Please try again.", eFlood: "Too many posts. Try again in 10 minutes.",
       eBusy: "The site is busy. Please try again shortly.", loading: "Loading…", newsEmpty: "News is updating. Refresh in a moment.",
-      noPosts: "Nothing here yet. ", beFirst: "Post the first one", noLatest: "No new listings yet.", noMatch: "No matching listings.",
+      noPosts: "Nothing here yet. ", beFirst: "Post the first one", noLatest: "No new listings yet.", invH: "Be the first to post", invP: "Jobs, rentals, items for sale, services: free to post, seen by your neighbors.", invBtn: "Post for free", pgAbout: "About", pgContact: "Contact", pgAds: "Advertise", pgTerms: "Terms", pgPrivacy: "Privacy", cpName: "HuaLin", cpTag: "A neighbor is never far", pNews: "{n} stories today", pDeals: "{n} deals this week", pPosts: "{n} new listings this week", pUpd: "Updated {t} · refreshes every 30 min", noMatch: "No matching listings.",
       searchFor: "Search: ", results: "results", contact: "Contact", phone: "Phone", wx: "WeChat", copy: "Copy", copied: "Copied",
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
@@ -181,7 +185,7 @@
     if (a.status === "fulfilled" && a.value && Array.isArray(a.value.slots)) ads = a.value;
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
-    [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    [renderNews, renderPulse, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
     if (postsLoaded) { try { renderPostsAll(); } catch (e) { console.error(e); } }
   }
 
@@ -490,8 +494,8 @@
     const map = b.address ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(b.address) : "";
     return `<article class="yp-card${b.feat ? " feat" : ""}">
       <div class="yp-top"><span class="seal sm" aria-hidden="true">${esc((catName(b.cat) || "商").slice(0, 1))}</span><div><h3>${b.feat ? `<span class="pin">${esc(t("ypFeat"))}</span>` : ""}${esc(b.name)}</h3><p class="yp-meta">${esc(catName(b.cat))}${b.area ? " · " + esc(lang === "zh" ? b.area : ((AREAS.find(a => a[0] === b.area) || [0, b.area])[1])) : ""}</p></div></div>
-      ${b.address ? `<p class="yp-addr">${esc(b.address)}</p>` : ""}${b.hours ? `<p class="yp-line">🕘 ${esc(b.hours)}</p>` : ""}${b.descr ? `<p class="yp-desc">${esc(b.descr)}</p>` : ""}
-      <div class="yp-act">${tel.length >= 7 ? `<a class="btn sm" href="tel:${esc(tel)}">☎ ${esc(b.phone)}</a>` : ""}${b.wechat ? `<span class="yp-wx">${esc(t("wx"))} ${esc(b.wechat)}</span>` : ""}${map ? `<a class="btn ghost sm" href="${esc(map)}" target="_blank" rel="noopener">📍 ${esc(t("ypMap"))}</a>` : ""}${b.website ? `<a class="btn ghost sm" href="${esc(safeUrl(/^https?:/.test(b.website) ? b.website : "https://" + b.website))}" target="_blank" rel="noopener">🌐</a>` : ""}</div>
+      ${b.address ? `<p class="yp-addr">${esc(b.address)}</p>` : ""}${b.hours ? `<p class="yp-line">${ic("clock")}${esc(b.hours)}</p>` : ""}${b.descr ? `<p class="yp-desc">${esc(b.descr)}</p>` : ""}
+      <div class="yp-act">${tel.length >= 7 ? `<a class="btn sm" href="tel:${esc(tel)}">${ic("phone")}${esc(b.phone)}</a>` : ""}${b.wechat ? `<span class="yp-wx">${esc(t("wx"))} ${esc(b.wechat)}</span>` : ""}${map ? `<a class="btn ghost sm" href="${esc(map)}" target="_blank" rel="noopener">${ic("pin")}${esc(t("ypMap"))}</a>` : ""}${b.website ? `<a class="btn ghost sm" href="${esc(safeUrl(/^https?:/.test(b.website) ? b.website : "https://" + b.website))}" target="_blank" rel="noopener" aria-label="website">${ic("globe")}</a>` : ""}</div>
     </article>`;
   }
   function openBizForm() {
@@ -640,16 +644,30 @@
   }
   function rowHtml(p, seal) {
     const b = boardById(p.board);
-    return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}${(p.images || []).length ? ` <span class="hasimg" aria-label="photo">📷</span>` : ""}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
+    return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}${(p.images || []).length ? ` <span class="hasimg" aria-label="photo">${ic("camera")}</span>` : ""}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
   }
   function pitemHtml(p, showBoard) {
     const b = boardById(p.board);
     const im = (p.images || [])[0];
     return `<li><button type="button" class="pitem${im ? " has-img" : ""}" data-pid="${p.id}">${im ? `<img class="pthumb" src="${esc(im)}" alt="" loading="lazy">` : ""}<div class="pt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</div><div class="pm">${showBoard ? `<span class="bd">${esc(bName(b))}</span>` : ""}<span>${esc(ago(p.ts))}</span>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}${p.phone ? `<span>${esc(p.phone)}</span>` : ""}</div><div class="pb">${esc(p.body)}</div></button></li>`;
   }
+  // A one-line, real-numbers summary of what's new (all counted from the site's own data).
+  function renderPulse() {
+    const el = $("#pulse"); if (!el || !news || !news.sections) return;
+    const now = Date.now(), ids = new Set();
+    for (const list of Object.values(news.sections[lang] || {})) for (const i of list) if (now - (Date.parse(i.d) || 0) < 86400e3) ids.add(i.id || i.u);
+    const nDeals = Object.values((deals && deals.sections) || {}).reduce((a, v) => a + (v || []).filter(zhOk).length, 0);
+    const nPosts = postsLoaded ? posts.filter(p => now - ((typeof p.ts === "number" ? p.ts : Date.parse(p.ts)) || 0) < 7 * 86400e3).length : 0;
+    const upd = Date.parse(news.updatedAt);
+    const parts = [ids.size && t("pNews").replace("{n}", `<b>${ids.size}</b>`), nDeals && t("pDeals").replace("{n}", `<b>${nDeals}</b>`), nPosts && t("pPosts").replace("{n}", `<b>${nPosts}</b>`)].filter(Boolean);
+    if (!parts.length) { el.hidden = true; return; }
+    el.innerHTML = `<span class="pl-dot" aria-hidden="true"></span><span class="pl-t">${parts.join('<i aria-hidden="true">·</i>')}</span>${upd ? `<span class="pl-u">${esc(t("pUpd").replace("{t}", ago(news.updatedAt)))}</span>` : ""}`;
+    el.hidden = false;
+  }
   function renderPostsAll() {
+    try { renderPulse(); } catch (e) {}
     const latest = posts.slice(0, 12);
-    $("#latest").innerHTML = !postsLoaded ? `<div class="empty">${esc(t("loading"))}</div>` : latest.length ? latest.map(p => rowHtml(p, true)).join("") : `<div class="empty">${esc(t("noLatest"))}</div>`;
+    $("#latest").innerHTML = !postsLoaded ? `<div class="skel" aria-label="${esc(t("loading"))}"><i></i><i></i><i></i><i></i></div>` : latest.length ? latest.map(p => rowHtml(p, true)).join("") : `<div class="invite"><b>${esc(t("invH"))}</b><p>${esc(t("invP"))}</p><button type="button" class="btn sm" data-post>${esc(t("invBtn"))}</button></div>`;
     const withPosts = HLC.BOARDS.filter(b => posts.some(p => p.board === b.id) || offFor(b.id).length);
     const order = FEATURED.map(boardById).filter(b => withPosts.includes(b)).concat(withPosts.filter(b => !FEATURED.includes(b.id)));
     const cards = order.slice(0, 11).map(b => {
@@ -674,7 +692,7 @@
     const c = CFG.adContact || {};
     const tel = c.phone ? c.phone.replace(/[^0-9+]/g, "") : "";
     $("#bRules").hidden = b.id !== "dating"; $("#bRules").textContent = b.id === "dating" ? t("datingRules") : "";
-    $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("earlyPin"))}${CFG.pinPrice ? ` <a href="#advertise">${esc(t("pinAfter").replace("{p}", CFG.pinPrice))}</a>` : ""}<br><a class="daifa" href="sms:${esc(tel)}">✉ ${esc(t("daifa").replace("{p}", c.phone))}</a>` : "";
+    $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("earlyPin"))}${CFG.pinPrice ? ` <a href="#advertise">${esc(t("pinAfter").replace("{p}", CFG.pinPrice))}</a>` : ""}<br><a class="daifa" href="sms:${esc(tel)}">${ic("mail")}${esc(t("daifa").replace("{p}", c.phone))}</a>` : "";
     const offs = offFor(b.id).filter(o => !q || [o.t, o.te, o.area, o.bz, o.be, o.az].join(" ").toLowerCase().includes(q));
     const items = list.map(p => pitemHtml(p, false)).concat(offs.map(offItem));
     $("#bList").innerHTML = items.length ? items.map((h, i) => h + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (items.length < 6 ? feedAd(0) : "") :
@@ -867,8 +885,18 @@
   }
 
   function renderDisc() {
-    const d = HLC.DISCLAIMER, x = d[lang] || d.zh;
     const rich = v => esc(v).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+    const pg = route.page && HLC.PAGES && HLC.PAGES[route.page];
+    if (pg) {
+      const x = pg[lang] || pg.zh, c = CFG.adContact || {};
+      const fill = v => v.replace(/\{phone\}/g, c.phone ? c.phone + (lang === "zh" ? "" : "") : "—").replace(/\{email\}/g, CFG.contactEmail || "—");
+      document.title = x.title + " - " + (lang === "zh" ? "华邻网" : "HuaLin");
+      $("#discBody").innerHTML = `<div class="g-head"><span class="seal md" aria-hidden="true">${esc(pg.seal[lang] || pg.seal.zh)}</span><div><h1>${esc(x.title)}</h1><p class="g-sum">${esc(fill(x.intro))}</p></div></div>` +
+        x.items.map(([h, p]) => `<section><h2>${esc(h)}</h2>${fill(p).split("\n").map(l => `<p>${rich(l)}</p>`).join("")}</section>`).join("") +
+        `<p class="g-fine">${esc(t("discUpdated"))} ${esc(HLC.PAGES_UPDATED)}</p>`;
+      return;
+    }
+    const d = HLC.DISCLAIMER, x = d[lang] || d.zh;
     $("#discBody").innerHTML = `<div class="g-head"><span class="seal md" aria-hidden="true">${lang === "zh" ? "责" : "!"}</span><div><h1>${esc(x.title)}</h1><p class="g-sum">${esc(x.intro)}</p></div></div>` +
       x.items.map(([h, p], i) => `<section><h2>${i + 1}. ${esc(h)}</h2><p>${rich(p)}</p></section>`).join("") +
       `<p class="g-fine">${esc(t("discUpdated"))} ${esc(d.updated)}</p>`;
@@ -938,6 +966,7 @@
     else if (h === "check") route = { view: "check" };
     else if (h.startsWith("g-")) route = { view: "guideOne", id: h.slice(2) };
     else if (h === "disclaimer") route = { view: "disc" };
+    else if (HLC.PAGES && HLC.PAGES[h]) route = { view: "disc", page: h };
     else if (h === "advertise") route = { view: "ads" };
     else if (h === "flyer") route = { view: "flyer" };
     else if (h === "stocks") route = { view: "stocks" };
@@ -946,6 +975,7 @@
     else if (h === "deals") route = { view: "deals" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
     else route = { view: "home" };
+    document.title = BASE_TITLE;
     $("#vHome").hidden = route.view !== "home"; $("#vBoard").hidden = route.view !== "board";
     $("#vNews").hidden = route.view !== "news"; $("#vSearch").hidden = route.view !== "search";
     $("#vArticle").hidden = route.view !== "article"; if (route.view === "article") renderArticle();
@@ -975,7 +1005,7 @@
     if (btn) { btn.disabled = true; btn.textContent = t("pstMaking"); }
     let canvas;
     try { canvas = await window.HLPoster.make(p, { url, board: bName(b) }); }
-    catch (e) { toast(t("pstFail")); if (btn) { btn.disabled = false; btn.textContent = "🖼 " + t("pstBtn"); } return; }
+    catch (e) { toast(t("pstFail")); if (btn) { btn.disabled = false; btn.innerHTML = ic("image") + esc(t("pstBtn")); } return; }
     let data = ""; try { data = canvas.toDataURL("image/jpeg", 0.9); } catch (e) { toast(t("pstFail")); return; }
     const name = "hualin-" + p.id + ".jpg";
     $("#viewBody").innerHTML = `<button type="button" class="x" data-close aria-label="Close">×</button>
@@ -1072,7 +1102,7 @@
       <p class="warn">${esc(t("postDisc"))} <a class="flink" href="#disclaimer" data-close>${esc(t("footLegal"))}</a></p>
       <div class="post-actions">
         <button type="button" class="btn" id="shareBtn">${esc(t("share"))}</button>
-        <button type="button" class="btn pst-btn" id="posterBtn">🖼 ${esc(t("pstBtn"))}</button>
+        <button type="button" class="btn pst-btn" id="posterBtn">${ic("image")}${esc(t("pstBtn"))}</button>
         <button type="button" class="btn ghost" id="repBtn">${esc(t("report"))}</button>
         ${myKey || mineAcct ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
       </div>
@@ -1404,4 +1434,5 @@
   loadPosts();
   setInterval(loadData, 10 * 60 * 1000);
   setInterval(loadPosts, 3 * 60 * 1000);
+  try { const y = document.getElementById("cpYear"); if (y) y.textContent = new Date().getFullYear(); } catch (e) {}
 })();

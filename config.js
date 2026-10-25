@@ -15,6 +15,7 @@ window.HL_CONFIG = {
   translateEmail: "huamai.us@gmail.com",
 
   // Shown on empty ad spaces and in the footer so businesses can reach you.
+  contactEmail: "hualinwang.us@gmail.com",
   adContact: { phone: "516-628-7119", wechat: "", email: "" },
 
   // Prices shown on the "了解广告位" page, in the same order as the ad spaces listed there. Change freely.
