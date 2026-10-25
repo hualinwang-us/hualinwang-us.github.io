@@ -52,7 +52,8 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
+      flyerH: "免费发布招聘 · 租房 · 二手 · 商家优惠", flyerSub: "纽约华人自己的分类信息网站", flyerPts: ["不用注册，一分钟发好", "可转发到微信，亲友都能看到", "每天还有华人新闻、福利指南、本周免费和打折"], flyerScan: "手机扫码立即发布", flyerDai: "不会打字？拍照发短信到 {p}，我们免费帮你发", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
       appIosH: "安装到 iPhone 桌面", appIosSteps: ["用 Safari 浏览器打开本站（微信里请先点右上角 ··· 选“在浏览器打开”）", "点屏幕下方的“分享”按钮（方框加向上箭头）", "往下滑，点“添加到主屏幕”", "点右上角“添加”，桌面上就有华邻网的图标了"],
       appWxH: "请先在浏览器打开", appWxSteps: ["点右上角 ··· ", "选择“在浏览器打开”（安卓）或“在 Safari 中打开”（iPhone）", "打开后再点“安装App”"],
       appAndH: "安装到手机桌面", appAndSteps: ["点浏览器右上角的菜单（⋮）", "选择“安装应用”或“添加到主屏幕”", "点“安装”，桌面上就有华邻网的图标了"], appDone: "知道了", apkBtn: "下载安卓App（APK）", apkNote: "下载后点开安装。第一次安装手机会问“允许安装未知来源应用”，选允许即可。", apkOr: "或者不用下载，直接装到桌面：", apkFoot: "安卓App下载", offTag: "官方", offFrom: "来源", offApply: "去官网免费申请", offJobHow: "打开官网后，在搜索框输入职位编号 {id} 即可找到这个职位并在线申请（免费）。", offUntil: "截止", offPay: "工资", offLoc: "地点", offOrg: "机构", offEnShow: "看英文原文", offNote: "官方信息每天自动更新，来自纽约市政府公开数据。申请永远免费，任何人向你收费都要小心。", pinned: "置顶", pinAsk: "想让你的信息排在本板块最上面？付费置顶请致电", moreBoards: "全部板块",
@@ -112,7 +113,8 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
+      flyerH: "Post jobs, rentals, buy & sell, deals: free", flyerSub: "Classifieds for Chinese New Yorkers", flyerPts: ["No sign-up, done in a minute", "Share to WeChat", "Daily news, benefits guides and deals too"], flyerScan: "Scan to post now", flyerDai: "Text a photo to {p} and we'll post it for you", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
       appIosH: "Add to iPhone home screen", appIosSteps: ["Open this site in Safari (in WeChat, tap ··· and choose Open in Safari)", "Tap the Share button at the bottom (square with an arrow)", "Scroll down and tap \"Add to Home Screen\"", "Tap \"Add\" at the top right"],
       appWxH: "Open in your browser first", appWxSteps: ["Tap ··· at the top right", "Choose Open in Browser / Open in Safari", "Then tap \"Get the app\""],
       appAndH: "Add to home screen", appAndSteps: ["Tap the browser menu (⋮)", "Choose \"Install app\" or \"Add to Home screen\"", "Tap Install"], appDone: "Got it", apkBtn: "Download Android app (APK)", apkNote: "Open the file to install. Allow installing from unknown sources if asked.", apkOr: "Or add it to your home screen without downloading:", apkFoot: "Android app", offTag: "Official", offFrom: "Source", offApply: "Apply free on the official site", offJobHow: "On the site, search for job ID {id} to find this posting and apply online (free).", offUntil: "Deadline", offPay: "Pay", offLoc: "Location", offOrg: "Agency", offEnShow: "Show original", offNote: "Official listings update daily from NYC Open Data. Applying is always free.", pinned: "Pinned", pinAsk: "Want your listing at the top of this board? For paid pinning call", moreBoards: "All boards",
@@ -216,7 +218,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
@@ -409,6 +411,16 @@
     if (route.view !== "board") return;
     fillAds("#sponBoard", "board", 2, true, s => !s.boards || !s.boards.length || s.boards.includes(route.board));
   }
+  function renderFlyer() {
+    const c = CFG.adContact || {}, url = HLC.siteBase() + "#post";
+    $("#flyerBody").innerHTML = `<div class="fly-sheet"><div class="fly-top"><span class="seal md" aria-hidden="true">邻</span><div><b>华邻网</b><span>${esc(t("flyerSub"))}</span></div></div>
+      <h1>${esc(t("flyerH"))}</h1><ul>${t("flyerPts").map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="fly-qr"><div id="flyQr"></div><p>${esc(t("flyerScan"))}</p><small>${esc(HLC.siteBase().replace(/^https?:\/\//, ""))}</small></div>
+      ${c.phone ? `<p class="fly-dai">${esc(t("flyerDai").replace("{p}", c.phone))}</p>` : ""}</div>
+      <p class="fly-actions"><button type="button" class="btn" onclick="window.print()">${lang === "zh" ? "打印" : "Print"}</button></p>`;
+    const draw = () => { const box = $("#flyQr"); if (box && !box.firstChild && window.QRCode) new window.QRCode(box, { text: url, width: 220, height: 220, correctLevel: window.QRCode.CorrectLevel.M }); };
+    if (window.QRCode) draw(); else { const sc = document.createElement("script"); sc.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"; sc.onload = draw; document.head.appendChild(sc); }
+  }
   function renderAdsPage() {
     const c = CFG.adContact || {};
     const parts = [c.phone && (t("phone") + " " + c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
@@ -483,7 +495,8 @@
     const list = posts.filter(p => p.board === b.id && (!q || [p.title, p.area, p.body, p.contact].join(" ").toLowerCase().includes(q))).sort((a, c) => (c.pin ? 1 : 0) - (a.pin ? 1 : 0));
     renderBoardAds();
     const c = CFG.adContact || {};
-    $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("pinAsk"))} <a href="tel:${esc(c.phone.replace(/[^0-9+]/g, ""))}">${esc(c.phone)}</a>${esc(t("adSms"))}` : "";
+    const tel = c.phone ? c.phone.replace(/[^0-9+]/g, "") : "";
+    $("#bPin").innerHTML = c.phone ? `<span class="pin">${esc(t("pinned"))}</span> ${esc(t("earlyPin"))}<br><a class="daifa" href="sms:${esc(tel)}">✉ ${esc(t("daifa").replace("{p}", c.phone))}</a>` : "";
     const offs = offFor(b.id).filter(o => !q || [o.t, o.te, o.area, o.bz, o.be, o.az].join(" ").toLowerCase().includes(q));
     const items = list.map(p => pitemHtml(p, false)).concat(offs.map(offItem));
     $("#bList").innerHTML = items.length ? items.map((h, i) => h + ((i + 1) % 6 === 0 ? feedAd(i / 6 | 0) : "")).join("") + (items.length < 6 ? feedAd(0) : "") :
@@ -731,6 +744,7 @@
     else if (h.startsWith("g-")) route = { view: "guideOne", id: h.slice(2) };
     else if (h === "disclaimer") route = { view: "disc" };
     else if (h === "advertise") route = { view: "ads" };
+    else if (h === "flyer") route = { view: "flyer" };
     else if (h === "deals") route = { view: "deals" };
     else if (h.startsWith("a-")) route = { view: "article", id: h.slice(2) };
     else route = { view: "home" };
@@ -740,6 +754,7 @@
     $("#vDeals").hidden = route.view !== "deals"; if (route.view === "deals") renderDeals();
     $("#vDisc").hidden = route.view !== "disc"; if (route.view === "disc") renderDisc();
     $("#vAds").hidden = route.view !== "ads"; if (route.view === "ads") renderAdsPage();
+    $("#vFlyer").hidden = route.view !== "flyer"; if (route.view === "flyer") renderFlyer();
     $("#vGuide").hidden = route.view !== "guide"; $("#vGuideOne").hidden = route.view !== "guideOne"; $("#vCheck").hidden = route.view !== "check";
     if (route.view === "guide" || route.view === "guideOne" || route.view === "check") renderGuides();
     if (route.view === "board") { $("#bFilter").value = ""; renderBoard(); }
