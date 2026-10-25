@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", stkH: "美股行情", stkNote: "指数、中概股、热门科技股和汇率黄金，打开页面自动更新。行情由 TradingView 提供，部分报价可能有延迟。", stkOverview: "市场总览", stkHot: "今日涨跌榜", stkChart: "查任何股票", stkChartNote: "点图表左上角的代码，可以搜索任何股票", stkDisc: "本页行情仅供参考，不构成任何投资建议。华邻网不推荐买卖任何股票，投资有风险，请自行判断或咨询持牌理财顾问。", stkTab: "美股行情", stkIdx: "指数", stkCn: "中概股", stkTech: "科技股", stkFx: "汇率黄金", areaPick: "请选择地区", areaOther: "其他地区（自己填写）", areaOtherPh: "请填写地区", eArea: "请选择地区。", fImg: "图片（选填，最多4张）", fImgAdd: "加图片", imgUp: "正在上传图片…", imgFail: "信息已发布，但图片没传上去，请稍后再试。", recPosts: "最新分类信息", recSame: "{b}最新信息", recNews: "推荐阅读", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", stkH: "美股行情", stkAll: "看全部行情 ›", stkNote: "指数、中概股、热门科技股和汇率黄金，打开页面自动更新。行情由 TradingView 提供，部分报价可能有延迟。", stkOverview: "市场总览", stkHot: "今日涨跌榜", stkChart: "查任何股票", stkChartNote: "点图表左上角的代码，可以搜索任何股票", stkDisc: "本页行情仅供参考，不构成任何投资建议。华邻网不推荐买卖任何股票，投资有风险，请自行判断或咨询持牌理财顾问。", stkTab: "美股行情", stkIdx: "指数", stkCn: "中概股", stkTech: "科技股", stkFx: "汇率黄金", areaPick: "请选择地区", areaOther: "其他地区（自己填写）", areaOtherPh: "请填写地区", eArea: "请选择地区。", fImg: "图片（选填，最多4张）", fImgAdd: "加图片", imgUp: "正在上传图片…", imgFail: "信息已发布，但图片没传上去，请稍后再试。", recPosts: "最新分类信息", recSame: "{b}最新信息", recNews: "推荐阅读", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
       flyerH: "免费发布招聘 · 租房 · 二手 · 商家优惠", flyerSub: "纽约华人自己的分类信息网站", flyerPts: ["不用注册，一分钟发好", "可转发到微信，亲友都能看到", "每天还有华人新闻、福利指南、本周免费和打折"], flyerScan: "手机扫码立即发布", flyerDai: "不会打字？拍照发短信到 {p}，我们免费帮你发", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
       appIosH: "安装到 iPhone 桌面", appIosSteps: ["用 Safari 浏览器打开本站（微信里请先点右上角 ··· 选“在浏览器打开”）", "点屏幕下方的“分享”按钮（方框加向上箭头）", "往下滑，点“添加到主屏幕”", "点右上角“添加”，桌面上就有华邻网的图标了"],
       appWxH: "请先在浏览器打开", appWxSteps: ["点右上角 ··· ", "选择“在浏览器打开”（安卓）或“在 Safari 中打开”（iPhone）", "打开后再点“安装App”"],
@@ -113,7 +113,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", stkH: "US stocks", stkNote: "Indexes, Chinese stocks, big tech, currencies and gold, updating live. Data by TradingView; some quotes may be delayed.", stkOverview: "Market overview", stkHot: "Top movers today", stkChart: "Look up any stock", stkChartNote: "Tap the symbol at the top left of the chart to search", stkDisc: "For information only, not investment advice. 华邻网 does not recommend buying or selling any stock. Investing carries risk; consider a licensed adviser.", stkTab: "US stocks", stkIdx: "Indexes", stkCn: "China stocks", stkTech: "Tech", stkFx: "FX & gold", areaPick: "Choose an area", areaOther: "Other (type it in)", areaOtherPh: "Type the area", eArea: "Please choose an area.", fImg: "Photos (optional, up to 4)", fImgAdd: "Add photos", imgUp: "Uploading photos…", imgFail: "Posted, but the photos didn't upload. Please try again later.", recPosts: "Latest listings", recSame: "Latest in {b}", recNews: "Recommended", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", stkH: "US stocks", stkAll: "All quotes ›", stkNote: "Indexes, Chinese stocks, big tech, currencies and gold, updating live. Data by TradingView; some quotes may be delayed.", stkOverview: "Market overview", stkHot: "Top movers today", stkChart: "Look up any stock", stkChartNote: "Tap the symbol at the top left of the chart to search", stkDisc: "For information only, not investment advice. 华邻网 does not recommend buying or selling any stock. Investing carries risk; consider a licensed adviser.", stkTab: "US stocks", stkIdx: "Indexes", stkCn: "China stocks", stkTech: "Tech", stkFx: "FX & gold", areaPick: "Choose an area", areaOther: "Other (type it in)", areaOtherPh: "Type the area", eArea: "Please choose an area.", fImg: "Photos (optional, up to 4)", fImgAdd: "Add photos", imgUp: "Uploading photos…", imgFail: "Posted, but the photos didn't upload. Please try again later.", recPosts: "Latest listings", recSame: "Latest in {b}", recNews: "Recommended", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
       flyerH: "Post jobs, rentals, buy & sell, deals: free", flyerSub: "Classifieds for Chinese New Yorkers", flyerPts: ["No sign-up, done in a minute", "Share to WeChat", "Daily news, benefits guides and deals too"], flyerScan: "Scan to post now", flyerDai: "Text a photo to {p} and we'll post it for you", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
       appIosH: "Add to iPhone home screen", appIosSteps: ["Open this site in Safari (in WeChat, tap ··· and choose Open in Safari)", "Tap the Share button at the bottom (square with an arrow)", "Scroll down and tap \"Add to Home Screen\"", "Tap \"Add\" at the top right"],
       appWxH: "Open in your browser first", appWxSteps: ["Tap ··· at the top right", "Choose Open in Browser / Open in Safari", "Then tap \"Get the app\""],
@@ -177,7 +177,7 @@
     if (a.status === "fulfilled" && a.value && Array.isArray(a.value.slots)) ads = a.value;
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
-    [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    [renderNews, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
     if (postsLoaded) { try { renderPostsAll(); } catch (e) { console.error(e); } }
   }
 
@@ -219,7 +219,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); }
 
@@ -232,17 +232,21 @@
           const gs = guides.guides.filter(g => g.group === gr.id); if (!gs.length) return "";
           return `<div><b>${esc(HLG.L(gr, lang))}</b>${gs.map(g => `<a href="#g-${esc(g.id)}">${esc(HLG.L(g.title, lang))}</a>`).join("")}</div>`; }).join("")}</div>` : "") },
       { h: "deals", label: t("dealsTab"), menu: () => `<div class="mm-cols"><div>${["local", "zh", "free", "online", "events"].map(k => `<a href="${k === "local" ? "#b-deals" : "#deals"}">${esc(t("dl_" + k))}</a>`).join("")}<button type="button" class="mm-cta linkbtn" data-postto="deals">${esc(t("dl_postCta"))}</button></div></div>` },
-      { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}<a href="#stocks">📈 ${esc(t("stkTab"))}</a></div></div>` }
+      { h: "n-top", label: t("newsTab"), menu: () => `<div class="mm-cols"><div>${SECTIONS.slice(0, 5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div><div>${SECTIONS.slice(5).map(x => `<a href="#n-${x}">${esc(t("sec_" + x))}</a>`).join("")}</div></div>` }
     ];
+    items.push({ h: "stocks", label: t("stkTab") });
     for (const g of GROUPS) items.push({ h: "b-" + g.boards[0][0], label: lang === "zh" ? g.zh : g.en, group: g.id,
       menu: g.boards.length < 2 ? null : () => `<div class="mm-cols"><div>${g.boards.map(bd => { const n = count(bd[0]); return `<a href="#b-${bd[0]}"><span class="seal sm" aria-hidden="true">${esc(bd[1])}</span>${esc(lang === "zh" ? bd[2] : bd[3])}${n ? `<em>${n}</em>` : ""}</a>`; }).join("")}<button type="button" class="mm-cta linkbtn" data-postto="${g.boards[0][0]}">${esc(t("postFree"))} →</button></div></div>` });
-    return items;
+    // Order tabs by how many readers want them: news, jobs, housing, benefits, deals, stocks, then the rest.
+    const ORDER = ["", "n-top", "grp:work", "grp:home", "guide", "deals", "stocks", "grp:trade", "grp:social", "grp:svc", "grp:pro", "grp:health", "grp:life"];
+    const keyOf = it => it.group ? "grp:" + it.group : it.h;
+    return items.sort((a, b) => { const x = ORDER.indexOf(keyOf(a)), y = ORDER.indexOf(keyOf(b)); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); });
   }
   function renderTabs() {
     const items = menuItems();
     const curBoard = route.view === "board" ? boardById(route.board) : null;
     const artDeal = route.view === "article" && deals && Object.values(deals.sections || {}).some(l => l.some(x => x.id === route.id));
-    const cur = artDeal ? "deals" : route.view === "news" || route.view === "article" ? "n-top" : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : curBoard ? "grp:" + curBoard.group : route.view === "home" ? "" : null;
+    const cur = artDeal ? "deals" : route.view === "news" || route.view === "article" ? "n-top" : (route.view === "guide" || route.view === "guideOne" || route.view === "check") ? "guide" : route.view === "deals" ? "deals" : route.view === "stocks" ? "stocks" : curBoard ? "grp:" + curBoard.group : route.view === "home" ? "" : null;
     $("#tabs").innerHTML = items.map((it, k) => `<a href="#${it.h}" data-mi="${k}" class="${(it.group ? "grp:" + it.group : it.h) === cur ? "on" : ""}${it.menu ? " has-menu" : ""}" ${it.menu ? 'aria-haspopup="true"' : ""}>${esc(it.label)}${it.menu ? '<span class="caret" aria-hidden="true">▾</span>' : ""}</a>`).join("");
   }
   const mega = document.getElementById("mega");
@@ -442,6 +446,22 @@
       tabs: [{ title: t("stkIdx"), symbols: sym(idx) }, { title: t("stkCn"), symbols: sym(cn) }, { title: t("stkTech"), symbols: sym(tech) }, { title: t("stkFx"), symbols: sym(fx) }] });
     tvWidget("#stkHot", "hotlists", { colorTheme: theme, dateRange: "1D", exchange: "US", showChart: true, locale, width: "100%", height: "100%", isTransparent: true, showSymbolLogo: true, showFloatingTooltip: true });
     tvWidget("#stkChart", "advanced-chart", { autosize: true, symbol: "NYSE:BABA", interval: "D", timezone: "America/New_York", theme, style: "1", locale, allow_symbol_change: true, hide_side_toolbar: true, calendar: false, support_host: "https://www.tradingview.com" });
+  }
+  let stkHomeKey = "";
+  function renderStocksHome() {
+    const box = $("#stkHome"); if (!box) return;
+    const key = lang + (window.matchMedia("(prefers-color-scheme: dark)").matches ? "d" : "l");
+    if (stkHomeKey === key) return;
+    const go = () => {
+      stkHomeKey = key;
+      const zh = lang === "zh", sy = (s, z) => ({ s, d: zh ? z : "" });
+      tvWidget("#stkHome", "market-overview", { colorTheme: key.endsWith("d") ? "dark" : "light", dateRange: "1D", showChart: false, locale: zh ? "zh_CN" : "en", width: "100%", height: "100%", isTransparent: true, showSymbolLogo: true,
+        tabs: [{ title: t("stkIdx"), symbols: [sy("FOREXCOM:SPXUSD", "标普500"), sy("FOREXCOM:NSXUSD", "纳斯达克100"), sy("FOREXCOM:DJI", "道琼斯"), sy("FX_IDC:USDCNY", "美元/人民币"), sy("OANDA:XAUUSD", "黄金")] },
+               { title: t("stkCn"), symbols: [sy("NYSE:BABA", "阿里巴巴"), sy("NASDAQ:PDD", "拼多多"), sy("NASDAQ:JD", "京东"), sy("NASDAQ:BIDU", "百度"), sy("NYSE:NIO", "蔚来")] },
+               { title: t("stkTech"), symbols: [sy("NASDAQ:NVDA", "英伟达"), sy("NASDAQ:AAPL", "苹果"), sy("NASDAQ:MSFT", "微软"), sy("NASDAQ:TSLA", "特斯拉"), sy("NYSE:TSM", "台积电")] }] });
+    };
+    if ("IntersectionObserver" in window && !stkHomeKey) { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "300px" }); io.observe(box); }
+    else go();
   }
   function renderFlyer() {
     const c = CFG.adContact || {}, url = HLC.siteBase() + "#post";

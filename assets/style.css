@@ -702,3 +702,11 @@ a.spon.empty:hover{border-color:var(--gold)}
 .bh-links{display:flex;gap:14px;align-items:center}
 .stk-link{font-weight:700;color:var(--accent)!important}
 @media (max-width:719px){#stkOverview,#stkHot,#stkChart{height:460px!important}}
+
+/* homepage blocks in the main column */
+.col-main .g-home{margin:0}
+.col-main .deals-home{margin:0}
+.col-main .deals-home .bh.big{margin-top:4px}
+.col-main #sponTop{margin:0}
+.stk-home #stkHome{height:300px}
+@media (max-width:719px){.stk-home #stkHome{height:320px}}
