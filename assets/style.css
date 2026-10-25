@@ -1427,3 +1427,18 @@ button.cs-img{padding:0;width:100%;cursor:zoom-in;font:inherit}
 .ah-nt{display:flex;flex-direction:column;gap:4px;min-width:0}
 .ah-nt b{font-size:15px;line-height:1.4;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ah-nt em{font-style:normal;color:var(--muted);font-size:12.5px}
+/* App 下载页 */
+.ad-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+.ad-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.ad-card.mine{border:2px solid var(--accent)}
+.ad-top{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.ad-os{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:28px;background:#1B1F2A;color:#fff}
+.ad-top h2{margin:0;font:800 20px/1.3 var(--display)}
+.ad-top p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+.ad-btn{display:flex;justify-content:center;width:100%;min-height:50px;font-size:16.5px;box-sizing:border-box}
+.ad-hint{background:var(--line-2);border-radius:10px;padding:10px 12px;font-size:14px;margin:0}
+.ad-steps{margin:14px 0 0;padding-left:22px;display:grid;gap:8px;font-size:15px;line-height:1.5}
+.ad-ic{display:inline-block;vertical-align:-3px;color:#2f7fd8}
+.ad-same{margin-top:16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.ad-same h3{margin:0 0 8px;font:800 16px/1.3 var(--display)}
+.ad-same ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14.5px}
