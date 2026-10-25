@@ -55,7 +55,8 @@
   <button type="button" class="util-share util-app" id="appBtn" hidden data-i18n="appInstall">安装App</button>
   <button type="button" class="util-share" id="siteShare" data-i18n="shareSite">分享本站</button>
   <div class="seg" role="group" aria-label="Language / 语言">
-    <button type="button" id="lzh" aria-pressed="true">中文</button>
+    <button type="button" id="lzh" aria-pressed="true">简</button>
+    <button type="button" id="lzt" aria-pressed="false">繁</button>
     <button type="button" id="len" aria-pressed="false">EN</button>
   </div>
 </div></div>
@@ -264,6 +265,34 @@
   <section class="block stk-box"><div class="bh"><h2 data-i18n="stkChart">查任何股票</h2><span class="bh-note" data-i18n="stkChartNote">点图表左上角的代码，可以搜索任何股票</span></div><div id="stkChart" class="stk-w" style="height:520px"></div></section>
   <p class="g-fine stk-disc" data-i18n="stkDisc">本页行情仅供参考，不构成任何投资建议。华邻网不推荐买卖任何股票，投资有风险，请自行判断或咨询持牌理财顾问。</p>
 </main>
+
+<main class="shell view" id="vYP" hidden>
+  <div class="vh">
+    <button class="back" type="button" data-home data-i18n="back">← 返回首页</button>
+    <div class="vh-row"><span class="seal md" aria-hidden="true">黄</span><h1 data-i18n="ypH">商家黄页</h1><button class="btn" type="button" id="ypAdd" data-i18n="ypAdd">免费登记商家</button></div>
+    <p class="vnote" data-i18n="ypNote">纽约华人常用的超市、餐馆、律师、医生、报税、装修等商家，一查就有电话和地址。</p>
+    <div class="bfilters"><input class="filter" id="ypQ" type="search" data-i18n-ph="ypQph" placeholder="搜索商家名称、地址"><select id="ypArea" aria-label="地区"></select></div>
+    <div class="yp-cats" id="ypCats"></div>
+  </div>
+  <div class="yp-list" id="ypList"></div>
+</main>
+
+<dialog id="ypDlg"><form class="dl" id="ypForm" method="dialog">
+  <button type="button" class="x" data-close aria-label="Close">×</button>
+  <h3 data-i18n="ypAdd">免费登记商家</h3>
+  <p class="warn" data-i18n="ypFormNote">基础登记完全免费。想排在最前面、带“推荐”标记，可以联系我们做付费推荐。</p>
+  <div class="field"><label for="yName" data-i18n="yName">商家名称</label><input id="yName" maxlength="60" required></div>
+  <div class="two"><div class="field"><label for="yCat" data-i18n="yCat">类别</label><select id="yCat"></select></div>
+    <div class="field"><label for="yArea" data-i18n="fArea">地区</label><select id="yArea"></select></div></div>
+  <div class="field"><label for="yAddr" data-i18n="yAddr">地址</label><input id="yAddr" maxlength="120" placeholder="如：39-12 Main St, Flushing"></div>
+  <div class="two"><div class="field"><label for="yPhone" data-i18n="fPhone">电话</label><input id="yPhone" maxlength="30" inputmode="tel"></div>
+    <div class="field"><label for="yWx" data-i18n="fWx">微信（选填）</label><input id="yWx" maxlength="40"></div></div>
+  <div class="two"><div class="field"><label for="yHours" data-i18n="yHours">营业时间（选填）</label><input id="yHours" maxlength="80" placeholder="如：每天 9am–9pm"></div>
+    <div class="field"><label for="yWeb" data-i18n="yWeb">网站（选填）</label><input id="yWeb" maxlength="200" inputmode="url"></div></div>
+  <div class="field"><label for="yDesc" data-i18n="yDesc">简介（选填）</label><textarea id="yDesc" maxlength="600" data-i18n-ph="yDescPh" placeholder="主营项目、特色、是否接受保险、会说的语言等"></textarea></div>
+  <p class="err" id="yErr" role="alert"></p>
+  <div class="actions"><button type="button" class="btn ghost" data-close data-i18n="cancel">取消</button><button type="submit" class="btn" id="ySubmit" data-i18n="submit">发布</button></div>
+</form></dialog>
 
 <main class="shell view" id="vFlyer" hidden>
   <div class="vh"><button class="back" type="button" data-home data-i18n="back">← 返回首页</button></div>

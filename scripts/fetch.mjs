@@ -2,6 +2,12 @@
 // Writes data/news.json and data/market.json. If a feed fails, the previous items are kept.
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
+import { createRequire } from "node:module";
+
+// Traditional → simplified for Chinese headlines and summaries (the page converts to 繁體 for readers who pick it).
+let toSimp = x => x;
+try { const OpenCC = createRequire(import.meta.url)("opencc-js"); toSimp = OpenCC.Converter({ from: "tw", to: "cn" }); } catch (e) { console.log("opencc-js not installed; keeping original characters"); }
+const simpItem = i => { if (i.t) i.t = toSimp(i.t); if (i.s) i.s = toSimp(i.s); if (i.sz) i.sz = toSimp(i.sz); if (i.tz) i.tz = toSimp(i.tz); return i; };
 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const MAX_AGE_H = 96;
@@ -381,6 +387,7 @@ async function buildNews() {
   }
   try { await enrichImages(out); } catch (e) { console.log("images failed:", e.message); }
   try { await buildOfficial(out); } catch (e) { console.log("official failed:", e.message); }
+  for (const list of Object.values(out.sections.zh || {})) list.forEach(simpItem);
   await fs.writeFile("data/news.json", JSON.stringify(out));
   const ok = out.feeds.filter(f => f.ok).length;
   console.log(`news: ${ok}/${out.feeds.length} feeds ok`);
@@ -494,6 +501,7 @@ async function buildDeals() {
     for (const k of Object.keys(dc)) if (Date.now() - (dc[k].t || 0) > 21 * 86400e3) delete dc[k];
     await fs.writeFile("data/deal-cache.json", JSON.stringify(dc));
   } catch (e) { console.log("deal page check failed:", e.message); }
+  for (const list of Object.values(out.sections || {})) list.forEach(simpItem);
   await fs.writeFile("data/deals.json", JSON.stringify(out));
   console.log("deals:", Object.entries(out.sections).map(([k, v]) => k + " " + v.length).join(", "));
   for (const f of out.feeds.filter(f => !f.ok)) console.log("  deals feed failed:", f.name, f.err || "no items");

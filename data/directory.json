@@ -1,0 +1,176 @@
+{
+ "_help": "商家黄页基础名单（公开的商家名称、地址、电话）。商家自己登记的会从 Supabase 自动加进来。featured_until 填日期即为付费推荐。",
+ "items": [
+  {
+   "id": "s01",
+   "name": "US 1 Supermarket",
+   "cat": "market",
+   "area": "法拉盛",
+   "address": "39-12 Main St, Flushing",
+   "phone": "929-200-7058",
+   "seed": true
+  },
+  {
+   "id": "s02",
+   "name": "Chung Fat Supermarket",
+   "cat": "market",
+   "area": "法拉盛",
+   "address": "41-82 Main St, Flushing",
+   "phone": "718-886-9368",
+   "seed": true
+  },
+  {
+   "id": "s03",
+   "name": "Yong Fa Supermarket 新中美超级市场",
+   "cat": "market",
+   "area": "法拉盛",
+   "address": "59-11 Main St, Flushing",
+   "phone": "718-661-1183",
+   "seed": true
+  },
+  {
+   "id": "s04",
+   "name": "Jmart",
+   "cat": "market",
+   "area": "法拉盛",
+   "address": "136-20 Roosevelt Ave, Flushing",
+   "phone": "718-661-0099",
+   "seed": true
+  },
+  {
+   "id": "s05",
+   "name": "Hua Lian Supermarket",
+   "cat": "market",
+   "area": "法拉盛",
+   "address": "25-03 Parsons Blvd, Flushing",
+   "phone": "718-321-3388",
+   "seed": true
+  },
+  {
+   "id": "s06",
+   "name": "Fei Long Market 飞龙超市（63街）",
+   "cat": "market",
+   "area": "布鲁克林八大道 / 日落公园",
+   "address": "6301 8th Ave, Brooklyn",
+   "phone": "718-680-0118",
+   "seed": true
+  },
+  {
+   "id": "s07",
+   "name": "Fei Long Market 飞龙超市（44街）",
+   "cat": "market",
+   "area": "布鲁克林八大道 / 日落公园",
+   "address": "4423 8th Ave, Brooklyn",
+   "phone": "",
+   "seed": true
+  },
+  {
+   "id": "s08",
+   "name": "Feng Tai Market",
+   "cat": "market",
+   "area": "布鲁克林八大道 / 日落公园",
+   "address": "4506 8th Ave, Brooklyn",
+   "phone": "718-709-9732",
+   "seed": true
+  },
+  {
+   "id": "s09",
+   "name": "Fu Chun Supermarket",
+   "cat": "market",
+   "area": "布鲁克林八大道 / 日落公园",
+   "address": "5114 8th Ave, Brooklyn",
+   "phone": "718-686-6622",
+   "seed": true
+  },
+  {
+   "id": "s10",
+   "name": "Hong Kong Supermarket 香港超市",
+   "cat": "market",
+   "area": "曼哈顿华埠",
+   "address": "157 Hester St, New York",
+   "phone": "212-966-4943",
+   "seed": true
+  },
+  {
+   "id": "s11",
+   "name": "Chinatown Supermarket 新中华超市",
+   "cat": "market",
+   "area": "曼哈顿华埠",
+   "address": "109 E Broadway, New York",
+   "phone": "646-213-9866",
+   "seed": true
+  },
+  {
+   "id": "s12",
+   "name": "Kam Man Market 金门超市",
+   "cat": "market",
+   "area": "曼哈顿华埠",
+   "address": "200 Canal St, New York",
+   "phone": "212-571-0171",
+   "seed": true
+  },
+  {
+   "id": "s13",
+   "name": "New York Mart",
+   "cat": "market",
+   "area": "曼哈顿华埠",
+   "address": "128 Mott St, New York",
+   "phone": "",
+   "seed": true
+  },
+  {
+   "id": "s14",
+   "name": "Deluxe Food Market",
+   "cat": "market",
+   "area": "曼哈顿华埠",
+   "address": "79 Elizabeth St, New York",
+   "phone": "212-925-5766",
+   "seed": true
+  },
+  {
+   "id": "s15",
+   "name": "US Supermarket",
+   "cat": "market",
+   "area": "艾姆赫斯特",
+   "address": "82-66 Broadway, Elmhurst",
+   "phone": "718-639-8688",
+   "seed": true
+  },
+  {
+   "id": "s16",
+   "name": "SkyFoods",
+   "cat": "market",
+   "area": "艾姆赫斯特",
+   "address": "79-55 Albion Ave, Elmhurst",
+   "phone": "718-672-8889",
+   "seed": true
+  },
+  {
+   "id": "s17",
+   "name": "Good Supermarket",
+   "cat": "market",
+   "area": "艾姆赫斯特",
+   "address": "86-18 Broadway, Elmhurst",
+   "phone": "718-898-8880",
+   "seed": true
+  },
+  {
+   "id": "s18",
+   "name": "D & Z Supermarket",
+   "cat": "market",
+   "area": "艾姆赫斯特",
+   "address": "77-00 Queens Blvd, Elmhurst",
+   "phone": "718-205-0181",
+   "seed": true
+  },
+  {
+   "id": "s19",
+   "name": "SeasonFresh Supermarket",
+   "cat": "market",
+   "area": "艾姆赫斯特",
+   "address": "45-10 83rd St, Elmhurst",
+   "phone": "718-205-5099",
+   "seed": true
+  }
+ ]
+}
