@@ -535,7 +535,7 @@
     const theme = key.endsWith("d") ? "dark" : "light", locale = lang === "zh" ? "zh_CN" : "en";
     const cn = [["NYSE:BABA", "阿里巴巴"], ["NASDAQ:PDD", "拼多多"], ["NASDAQ:JD", "京东"], ["NASDAQ:BIDU", "百度"], ["NYSE:NIO", "蔚来"], ["NASDAQ:LI", "理想汽车"], ["NYSE:XPEV", "小鹏汽车"], ["NASDAQ:NTES", "网易"], ["NYSE:TCOM", "携程"], ["NYSE:BEKE", "贝壳"]];
     const tech = [["NASDAQ:NVDA", "英伟达"], ["NASDAQ:AAPL", "苹果"], ["NASDAQ:MSFT", "微软"], ["NASDAQ:GOOGL", "谷歌"], ["NASDAQ:AMZN", "亚马逊"], ["NASDAQ:META", "Meta"], ["NASDAQ:TSLA", "特斯拉"], ["NYSE:TSM", "台积电"]];
-    const idx = [["FOREXCOM:SPXUSD", "标普500"], ["FOREXCOM:NSXUSD", "纳斯达克100"], ["FOREXCOM:DJI", "道琼斯"], ["CBOE:VIX", "恐慌指数"]];
+    const idx = [["FOREXCOM:SPXUSD", "标普500"], ["FOREXCOM:NSXUSD", "纳斯达克100"], ["FOREXCOM:DJI", "道琼斯"], ["TVC:VIX", "恐慌指数"]];
     const fx = [["FX_IDC:USDCNY", "美元/人民币"], ["FX_IDC:USDHKD", "美元/港币"], ["OANDA:XAUUSD", "黄金"], ["BITSTAMP:BTCUSD", "比特币"]];
     const sym = list => list.map(([s, z]) => ({ s, d: lang === "zh" ? z : "" }));
     tvWidget("#stkTape", "ticker-tape", { symbols: idx.concat(cn.slice(0, 4), tech.slice(0, 4), fx.slice(0, 3)).map(([s, z]) => ({ proName: s, title: lang === "zh" ? z : "" })), showSymbolLogo: true, isTransparent: true, displayMode: "adaptive", colorTheme: theme, locale });
