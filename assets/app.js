@@ -416,7 +416,22 @@
       <a class="ah-hero" href="#check"><span class="ah-lab">${esc(zh ? "福利自测" : "Benefits check")}</span><b>${esc(zh ? "白卡、粮食券、公屋……我能申请什么？" : "Medicaid, SNAP, housing: what can I get?")}</b><span>${esc(zh ? "回答几个问题，马上看到你可能符合的福利" : "Answer a few questions to see what you may qualify for")}</span><em>${esc(zh ? "开始自测 →" : "Start →")}</em></a>
       <a class="ah-cs" href="#chaoshi"><span class="ah-cs-ic">🛒</span><div><b>${esc(zh ? "华人超市特价单" : "Supermarket flyers")}</b><span>${esc(zh ? "法拉盛、华埠、布鲁克林本周特价，选超市直接看" : "This week's flyers from Chinese supermarkets")}</span></div><i>›</i></a>
       <section class="ah-tools-sec"><div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div>${tools}</section>
-      <section class="ah-tools-sec"><div class="bh"><h2>${esc(zh ? "同城服务" : "Local services")}</h2><a class="ah-all" href="#city">${esc(zh ? "全部分类" : "All categories")} ›</a></div>${boards}</section>`;
+      <section class="ah-tools-sec"><div class="bh"><h2>${esc(zh ? "同城服务" : "Local services")}</h2><a class="ah-all" href="#city">${esc(zh ? "全部分类" : "All categories")} ›</a></div>${boards}</section>
+      <section class="ah-tools-sec ah-news"><div class="bh"><h2>${esc(zh ? "推荐新闻" : "Top stories")}</h2><a class="ah-all" href="#n-top">${esc(zh ? "全部新闻" : "All news")} ›</a></div><div id="ahNews"><div class="skel"><i></i><i></i><i></i></div></div></section>`;
+    renderAppNews();
+  }
+  // A handful of hand-picked-by-rule stories for the app home: the lead story, then the freshest
+  // NYC-local and immigration stories, then more top stories; pictures preferred, at most 5.
+  function renderAppNews() {
+    const el = $("#ahNews"); if (!el || !IS_APP) return;
+    if (!news) return;
+    const fresh = i => Date.now() - (Date.parse(i.d) || 0) < 36 * 3600e3;
+    const pick = [], seen = new Set();
+    const take = (list, n) => { for (const i of list) { if (pick.length >= 5 || n <= 0) break; if (seen.has(i.id) || !fresh(i)) continue; seen.add(i.id); pick.push(i); n--; } };
+    const withImgFirst = l => l.filter(i => i.img).concat(l.filter(i => !i.img));
+    take(withImgFirst(sec("top").slice(0, 6)), 1); take(withImgFirst(sec("local").slice(0, 8)), 1); take(withImgFirst(sec("immigration").slice(0, 8)), 1); take(withImgFirst(sec("top").slice(0, 12)), 2);
+    if (pick.length < 3) take(sec("top"), 5);
+    el.innerHTML = pick.length ? `<ul class="ah-nl">${pick.map(i => `<li><a ${nhref(i)}>${i.img ? `<span class="ah-th">${imgTag(i, "")}</span>` : ""}<span class="ah-nt"><b>${esc(disp(i))}</b><em>${esc(i.src || "")}</em></span></a></li>`).join("")}</ul>` : `<div class="empty">${esc(t("newsEmpty"))}</div>`;
   }
   function renderTools() {
     if (!window.HLTools || route.view !== "tools") return;
@@ -534,6 +549,7 @@
     return { list: copy, feat: true };
   }
   function renderNews() {
+    try { renderAppNews(); } catch (e) {}
     if (!news) { SECTIONS.forEach(s => { const el = $("#sec-" + s); if (el) el.innerHTML = `<div class="empty">${esc(t("loading"))}</div>`; }); return; }
     const top = sec("top");
     const lw = $("#sec-top");
