@@ -9,6 +9,7 @@
   const L = (zh, en) => ({ zh, en });
 
   const CATS = [
+    { id: "scam", zh: "防诈骗", en: "Scam alerts", tools: ["scam"] },
     { id: "imm", zh: "移民入籍", en: "Immigration", tools: ["civics", "natdate", "visa"] },
     { id: "drive", zh: "驾照考试", en: "Driver's license", tools: ["permit"] },
     { id: "loan", zh: "贷款计算器", en: "Loan calculators", tools: ["mortgage", "carloan"] },
@@ -17,6 +18,7 @@
     { id: "life", zh: "生活工具", en: "Everyday", tools: ["units", "sizes", "tip"] }
   ];
   const TOOLS = {
+    scam: { g: "防", t: L("防诈骗提醒", "Scam alerts"), d: L("华人最常遇到的 14 种骗局，骗子怎么说、怎么识破", "14 common scams and how to spot them") },
     civics: { g: "问", t: L("入籍考试练习", "Citizenship test practice"), d: L("2025 新版 128 题，中英对照，模拟考试", "2025 test, 128 questions, bilingual") },
     natdate: { g: "籍", t: L("入籍时间计算", "Naturalization date"), d: L("拿绿卡几年后可以申请入籍", "When you can file N-400") },
     visa: { g: "排", t: L("移民排期查询", "Visa bulletin"), d: L("中国出生，每月自动更新", "China-born, updated monthly") },
@@ -286,13 +288,48 @@
       <p class="tl-note">${esc(z ? "递件时用哪张表（批准日或递件日），以移民局每月公告为准。" : "USCIS says each month which chart to use for filing.")} <a href="${esc(visa.url)}" target="_blank" rel="noopener">${esc(z ? "官方原文" : "Official bulletin")}</a></p>`;
   }
 
+  /* ---------- 防诈骗 ---------- */
+  // [名称, 骗子通常怎么说, 怎么识破, 遇到了怎么办, 是否高发]
+  const SCAMS = [
+    ["假中国使领馆、假中国警察", "打电话说中文，自称“中国领事馆”“国内公安局”，说你有包裹被扣、护照出问题、涉嫌洗钱或犯罪，要“配合调查”，把你转给“警官”，再要你把钱转到“安全账户”，还叫你不要告诉家人。", "中国使领馆和中国警察不会打电话让你转账，更不会跨国电话办案。只要提到“安全账户”“保密”“不要告诉家人”，一定是骗子。", "马上挂断，不要按任何键。可以打使领馆官网上的电话自己核实。告诉家人，尤其是家里老人。", 1],
+    ["假移民局、假社安局、假国税局", "自称移民局（USCIS）、社安局（SSA）、国税局（IRS）或法院，说你的身份有问题、社安号被冻结、欠税要被逮捕或驱逐，要你马上用礼品卡、比特币、Zelle 或现金付款。", "美国政府部门不会打电话威胁逮捕，也绝不会要你用礼品卡、比特币或 Zelle 付款。来电显示的号码可以被伪造。", "挂断，自己上政府官网找电话核实。不要说出社安号、银行账号。", 1],
+    ["“杀猪盘”网恋投资骗局", "在微信、交友软件、WhatsApp 上“加错人”或主动搭讪，长期聊天培养感情，然后带你一起“投资”加密货币、外汇、黄金，开始让你小赚，等你投大钱就提不出来，还要交“税”“保证金”。", "从没见过面的网友带你投资，就是骗局。“稳赚不赔”“内部消息”“老师带单”都是套路。投资网站和 App 是骗子自己做的。", "立即停止转钱，不要再交任何“解冻费”。保留聊天记录和转账记录，报警，并向 FBI 网络犯罪中心 ic3.gov 举报。", 1],
+    ["假收费短信（过路费、快递、罚单）", "收到短信说“你有未付的过路费（E-ZPass/Toll）”“包裹地址有误无法派送”“停车罚单逾期”，附一个链接，点进去要你填信用卡。", "官方很少用短信催款并附陌生链接。网址拼写怪、域名奇怪（比如 .xyz、.top），或者催你“今天不付就加罚款”，都是骗局。", "不要点链接。自己打开官方网站或 App 查看。可以把骗子短信转发到 7726（SPAM）举报，然后删除。", 1],
+    ["假银行、假 Zelle 电话", "自称你的银行防诈部门，说你账户有可疑交易，要你把钱“转到安全账户”，或者要你念出手机收到的验证码。", "银行不会叫你把钱转走来“保护”账户，也绝不会问你要验证码。Zelle 转出去的钱基本追不回来。", "挂断，打你银行卡背面的电话自己联系银行。", 1],
+    ["“爷爷奶奶”骗局（假孙子出事）", "打给老人，说“奶奶，是我”，或者假装警察、律师，说孙子孙女出车祸、被捕了，急需保释金，叫老人不要告诉父母，有时还派人上门来拿现金。", "声音可能用 AI 模仿。骗子会制造紧急、要保密、要现金或礼品卡。", "先挂断，直接打电话给孙子孙女或他们的父母核实。家里可以约定一个只有家人知道的“暗号”。", 1],
+    ["租房骗局", "网上房子又便宜又好，“房东”说人在外地不能带看，先付押金和第一个月房租就寄钥匙；或者用别人的房子照片来骗押金。", "价格比同区便宜很多、不能看房、催你马上付钱、只收 Zelle 或现金，都很可疑。", "一定要亲自看房、核实房东身份再付钱。押金按纽约法律最多一个月租金。", 1],
+    ["假工作、在家赚钱", "招人“在家打字”“帮忙收包裹转寄”“刷单赚佣金”，或者先寄给你一张支票，让你存进去再把一部分转回去。", "正规工作不会叫你先交培训费、押金，也不会叫你帮忙收钱转钱。假支票过几天会被退回，钱要你自己赔。", "不要交钱，不要帮陌生人收转钱款或包裹，你可能在帮骗子洗钱。", 0],
+    ["假福利、假补助", "说你可以领“政府补助”“刺激支票”“免费手机”“白卡加钱”，只要先交手续费或给出社安号、银行信息。", "政府福利申请不收手续费，也不会打电话推销。", "只在政府官网或社区机构申请福利。网站上的“生活指南”有正规申请方法。", 0],
+    ["假移民律师、假代办（Notario）", "自称能“包办绿卡”“快速拿身份”“有内部关系”，收很多钱，用错误材料帮你申请，甚至让你签空白表格。", "只有持牌律师和政府认可的代表可以提供移民法律服务。保证结果、有内部关系，都是骗人。", "可以打市政府免费移民法律热线 1-800-354-0365 核实，或看网站上的“免费移民法律帮助”指南。", 0],
+    ["电脑中病毒、假技术支持", "电脑或手机突然弹出警告，说“你中毒了，请打这个电话”，对方要求远程控制你的电脑，再要你付费或登录网上银行。", "正规公司不会用弹窗叫你打电话。不要让陌生人远程控制电脑。", "关掉浏览器或重启。如果已经让对方连上了，马上断网，改银行密码，找可信的人帮你检查。", 0],
+    ["网购和二手交易骗局", "卖家只收 Zelle、礼品卡；买家“多付了钱”要你退差价；或者假冒的网店超低价卖名牌。", "要求不安全的付款方式、价格好得不正常、催你马上交易，都要小心。", "用信用卡或有买家保护的平台付款。二手交易尽量当面交货。", 0],
+    ["中奖、抽奖、遗产", "说你中了大奖、抽中了汽车，或者有一笔海外遗产，只要先付税金、手续费就能领。", "真正的中奖不用先交钱。你没参加过的抽奖，不可能中奖。", "不理会，不交钱，不给个人资料。", 0],
+    ["假慈善、假募捐", "灾难发生后冒充慈善机构募捐，或者在街上、网上用感人故事要钱。", "催你马上捐、只收现金或礼品卡，都很可疑。", "直接去慈善机构官网捐款。", 0]
+  ];
+  function scamHtml(lang) {
+    const rules = ["政府部门、银行、使领馆不会打电话威胁你，也不会叫你转账到“安全账户”。", "任何人要你用礼品卡、比特币、Zelle、现金快递付款，一定是骗子。", "绝不把验证码、社安号、银行密码告诉任何人。", "要你“保密”“不要告诉家人”“马上付”的，先停下来，挂电话，问家人。", "不点陌生短信和邮件里的链接，自己打开官网查。", "网上认识的人带你投资，一定是骗局。"];
+    return `<div class="sc-rules"><h2>六条保命原则</h2><ol>${rules.map(r => `<li>${esc(r)}</li>`).join("")}</ol><p>记住一句话：<b>先挂电话，再自己核实。</b></p></div>
+      <h2 class="sc-h">华人最常遇到的骗局</h2><div class="sc-list">${SCAMS.map(([n, how, spot, act, hot]) => `<details class="sc"${hot ? " open" : ""}><summary>${hot ? '<span class="sc-hot">高发</span>' : ""}<b>${esc(n)}</b></summary>
+        <div class="sc-b"><p><em>骗子怎么说</em>${esc(how)}</p><p><em>怎么识破</em>${esc(spot)}</p><p><em>怎么办</em>${esc(act)}</p></div></details>`).join("")}</div>
+      <div class="sc-help"><h2>被骗了怎么办</h2><ol>
+        <li><b>马上联系银行</b>：打卡背面的电话，要求冻结、拦截或追回转账，越快越好。</li>
+        <li><b>报警</b>：有危险打 911；一般情况可以到住处附近的警察分局报案，拿到报案号。</li>
+        <li><b>向联邦政府举报</b>：联邦贸易委员会 reportfraud.ftc.gov；网络诈骗和杀猪盘向 FBI 网络犯罪中心 ic3.gov 举报。</li>
+        <li><b>保留证据</b>：聊天记录、短信、来电号码、转账记录都截图保存。</li>
+        <li><b>小心“二次诈骗”</b>：被骗后，有人自称能帮你“追回损失”并先收费，也是骗子。</li>
+        <li><b>不要自责</b>：骗子是专业团伙，受骗不是你的错。跟家人说，大家一起想办法。</li></ol>
+        <p class="tl-note">这里列的是常见套路，骗子会不断换说法。拿不准的时候，先挂断，再问家人、社区服务中心，或打 311 求助。</p></div>
+      <div class="sc-share"><button type="button" class="btn wx-btn" data-scamshare>分享给家人，特别是长辈</button></div>`;
+  }
+
   /* ---------- render a tool page ---------- */
   function render(id, el, lang) {
     const z = lang === "zh", x = TOOLS[id];
     if (!x) { el.innerHTML = hub(lang); return; }
     const head = `<div class="tl-head"><span class="tl-ic" aria-hidden="true">${esc(x.g)}</span><div><h1>${esc(tl(x.t, lang))}</h1><p>${esc(tl(x.d, lang))}</p></div></div>`;
     let body = "";
-    if (CALC[id]) body = `<div class="tl-calc" data-calc="${id}">${CALC[id].form(z)}<div class="tl-result"></div><p class="tl-note">${esc(tl(CALC[id].note, lang))}</p></div>`;
+    if (id === "scam") body = scamHtml(lang);
+    else if (CALC[id]) body = `<div class="tl-calc" data-calc="${id}">${CALC[id].form(z)}<div class="tl-result"></div><p class="tl-note">${esc(tl(CALC[id].note, lang))}</p></div>`;
     else if (id === "units") body = unitsHtml(lang);
     else if (id === "sizes") body = `<p class="tl-note">${esc(z ? "不同品牌尺码有差别，以商家尺码表为准。" : "Sizes vary by brand.")}</p>` + sizesHtml(lang);
     else if (id === "phrases") body = phrasesHtml(lang);
@@ -311,6 +348,7 @@
     el.oninput = id !== "units" ? null : e => { const inp = e.target.closest("[data-side]"); if (!inp) return; const box = inp.closest("[data-u]"), u = UNITS.find(v => v.k === box.dataset.u), v = parseFloat(inp.value);
       const other = box.querySelector(`[data-side="${inp.dataset.side === "a" ? "b" : "a"}"]`); other.value = isFinite(v) ? fmt(inp.dataset.side === "a" ? u.ab(v) : u.ba(v)) : ""; };
     el.onclick = e => {
+      if (e.target.closest("[data-scamshare]")) { if (window.HLShare) window.HLShare.open({ url: location.origin + "/#t-scam", title: "防诈骗提醒：华人最常遇到的 14 种骗局", text: "防诈骗提醒：华人最常遇到的 14 种骗局，骗子怎么说、怎么识破 - 华脉" }); return; }
       const s = e.target.closest("[data-say]"); if (s) { try { const u = new SpeechSynthesisUtterance(s.dataset.say); u.lang = "en-US"; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} return; }
       const pt = e.target.closest("[data-ptab]"); if (pt) { const q = pt.dataset.ptab === "quiz"; el.querySelector("#ptLearn").hidden = q; el.querySelector("#ptQuiz").hidden = !q; el.querySelectorAll(".tl-tabs [data-ptab]").forEach(b => b.classList.toggle("on", b.dataset.ptab === pt.dataset.ptab)); el.querySelector(".tl-tabs").scrollIntoView({ behavior: "smooth", block: "start" }); if (q && !Q.list.length) { startQuiz("permit", "20"); paint(); } return; }
       const st = e.target.closest("[data-qstart]"); if (st) { const [k, m] = st.dataset.qstart.split(":"); startQuiz(k, m); paint(); el.querySelector("#tlQuiz").scrollIntoView({ behavior: "smooth", block: "start" }); return; }

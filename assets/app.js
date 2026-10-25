@@ -61,7 +61,7 @@
         ["免费学英文", "纽约三大公共图书馆都有免费英文班", "https://www.nypl.org/"], ["打工权益", "纽约市最低工资 2026 年每小时 $17，被欠薪可以向州劳工厅投诉", "https://dol.ny.gov/"],
         ["考驾照", "纽约州“绿灯法”：不论移民身份都可以申请驾照", "https://dmv.ny.gov/"], ["社安号 SSN", "有工作许可或绿卡后，向社安局申请", "https://www.ssa.gov/number-card"],
         ["被房东告：免费律师", "纽约市低收入租客可以有免费律师", "#g-tenant-help"], ["打 311 要中文", "任何市政问题打 311，可以要求中文翻译", "https://portal.311.nyc.gov/"],
-        ["防诈骗", "移民局、社安局、警察不会打电话要你转账或买礼品卡", "#g-legal-help"], ["免费报税和退税", "收入不高可以免费报税，还可能有退税", "#g-free-tax"]],
+        ["防诈骗", "华人最常遇到的骗局：假警察、假移民局、杀猪盘、假短信", "#t-scam"], ["免费报税和退税", "收入不高可以免费报税，还可能有退税", "#g-free-tax"]],
       cmH: "评论", cmPh: "说说你的看法…（请文明发言）", cmNamePh: "昵称（可不填）", cmSend: "发表评论", cmNone: "还没有评论，来说第一句吧。", cmOk: "评论已发表", cmFlood: "评论太频繁了，请稍后再试。", cmBanned: "评论含有不允许的内容。", cmFail: "发表失败，请稍后再试。", toolsTab: "实用工具", toolsAll: "全部工具", toolsSub: "贷款计算、入籍考试、驾照笔试、英语急救卡……免费使用，不用注册。", cityTab: "同城服务", datingTab: "同城交友", eventsTab: "线下活动", cityAll: "查看全部同城服务", cityAllYp: "全部商家", cityPost: "免费发布", checkTab: "福利自测", appTab: "App下载", cityIntro: "招聘、房屋、买卖、生活服务……纽约华人邻居都在这里，全部免费发布。", cityCtaH: "有工作要招、有房要租？", cityCtaP: "免费发布，邻居们都看得到。", cityNY: "纽约", rgH: "选择地区", rgCity: "城市", rgArea: "地区", rgAll: "全纽约", rgSet: "已切换到 {a}", pgAbout: "关于我们", pgContact: "联系我们", pgAds: "广告刊登", pgTerms: "用户协议", pgPrivacy: "隐私政策", cpName: "华脉", cpTag: "华脉一开，好事就来", pNews: "今日新闻 {n} 条", pDeals: "本周优惠 {n} 条", pPosts: "本周新信息 {n} 条", pUpd: "{t}更新 · 每30分钟自动刷新", noMatch: "没有找到相关信息。", searchFor: "搜索：", results: "条结果",
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
