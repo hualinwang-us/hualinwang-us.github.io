@@ -307,7 +307,7 @@
     items.push({ h: "tools", label: t("toolsTab"), menu: () => window.HLTools ? `<div class="mm-cols">${HLTools.CATS.map(c => `<div><b>${esc(lang === "zh" ? c.zh : c.en)}</b>${c.tools.map(id => `<a href="#t-${id}">${esc(HLTools.title(id, lang))}</a>`).join("")}</div>`).join("")}</div><a class="mm-cta" href="#tools">${esc(t("toolsAll"))} →</a>` : null });
     items.push({ h: "events", label: t("eventsTab") });
     // Top bar: home (all local services), app, meet locals, news, deals, offline events.
-    const ORDER = ["", "app", "b-dating", "n-top", "deals", "travel", "tools"];
+    const ORDER = ["", "app", "tools", "deals", "n-top", "travel", "b-dating"];
     return items.filter(it => ORDER.includes(it.h)).sort((a, b) => ORDER.indexOf(a.h) - ORDER.indexOf(b.h));
   }
   function renderTabs() {
