@@ -22,7 +22,8 @@ const fill = map => tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in map ? map[k] :
 let posts = [];
 if (HLC.POSTS_ON) {
   try {
-    const r = await fetch(`${HLC.SB_URL}/rest/v1/posts?select=${HLC.POST_COLS}&order=created_at.desc&limit=2000`, { headers: HLC.sbHeaders() });
+    let r = await fetch(`${HLC.SB_URL}/rest/v1/posts?select=${HLC.POST_COLS_IMG}&order=created_at.desc&limit=2000`, { headers: HLC.sbHeaders() });
+    if (!r.ok) r = await fetch(`${HLC.SB_URL}/rest/v1/posts?select=${HLC.POST_COLS}&order=created_at.desc&limit=2000`, { headers: HLC.sbHeaders() });
     if (!r.ok) throw new Error("HTTP " + r.status + " " + (await r.text()).slice(0, 200));
     posts = await r.json();
   } catch (e) { console.log("posts fetch failed:", e.message); }
@@ -36,7 +37,8 @@ for (const p of posts) {
   const desc = `【${b ? b.zh : "分类信息"}】${p.body.replace(/\s+/g, " ").slice(0, 90)}${p.body.length > 90 ? "…" : ""}${who ? " 联系：" + who : ""}`;
   const url = `${BASE}p/${p.id}/`;
   const ssr = `<article class="pcard"><span class="tag">${esc(b ? b.zh : "")}</span><h1>${esc(p.title)}</h1><div class="detail-body">${esc(p.body)}</div></article>`;
-  const html = fill({ TITLE: esc(title), DESC: esc(desc), BASE: esc(BASE), URL: esc(url), JSON: json(p), SSR: ssr });
+  const ogimg = (p.images && p.images[0]) || `${BASE}assets/share.png`;
+  const html = fill({ TITLE: esc(title), DESC: esc(desc), BASE: esc(BASE), URL: esc(url), JSON: json(p), SSR: ssr, OGIMG: esc(ogimg) });
   await fs.mkdir(`${OUT}/p/${p.id}`, { recursive: true });
   await fs.writeFile(`${OUT}/p/${p.id}/index.html`, html);
   n++;

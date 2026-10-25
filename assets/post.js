@@ -53,6 +53,7 @@
       <span class="tag">${esc(bn)}${p.area ? " · " + esc(p.area) : ""} · ${esc(new Date(p.created_at).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US"))}</span>
       <h1>${esc(p.title)}</h1>
       <div class="detail-body">${esc(p.body)}</div>
+      ${(p.images || []).length ? `<div class="gallery">${p.images.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy"></a>`).join("")}</div>` : ""}
       <div class="contact"><b>${esc(t("contact"))}</b>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}
         ${p.phone ? `<span>${esc(t("phone"))} <span class="v" id="cpP">${esc(p.phone)}</span></span><button type="button" class="copy" data-copy="cpP">${esc(t("copy"))}</button>${tel.length >= 7 ? `<a class="copy call" href="tel:${esc(tel)}">${esc(t("call"))}</a>` : ""}` : ""}
         ${p.wechat ? `<span>${esc(t("wx"))} <span class="v" id="cpW">${esc(p.wechat)}</span></span><button type="button" class="copy" data-copy="cpW">${esc(t("copy"))}</button>` : ""}</div>

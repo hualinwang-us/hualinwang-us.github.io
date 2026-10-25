@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）", houseLab: "华邻网推荐", fImg: "图片（选填，最多4张）", fImgAdd: "加图片", imgUp: "正在上传图片…", imgFail: "信息已发布，但图片没传上去，请稍后再试。", recPosts: "最新分类信息", recSame: "{b}最新信息", recNews: "推荐阅读", datingRules: "同城交友须知：仅限18岁以上；禁止色情、有偿陪伴和任何商业服务，违者删除。警惕“杀猪盘”：网上认识的人劝你投资、炒币、转账，一律是骗局。第一次见面请选公共场所，并告诉亲友。", eBanned: "本站禁止色情和有偿陪伴类信息，请修改后再发布。", daifa: "不会打字？把广告拍照或文字发短信到 {p}，我们免费帮你发。", earlyPin: "开站优惠：前100位发帖免费置顶7天，发完短信告诉我们即可。", flyerLink: "打印招贴海报",
       flyerH: "免费发布招聘 · 租房 · 二手 · 商家优惠", flyerSub: "纽约华人自己的分类信息网站", flyerPts: ["不用注册，一分钟发好", "可转发到微信，亲友都能看到", "每天还有华人新闻、福利指南、本周免费和打折"], flyerScan: "手机扫码立即发布", flyerDai: "不会打字？拍照发短信到 {p}，我们免费帮你发", bnHome: "首页", bnGuide: "福利指南", bnPost: "发布", bnDeals: "优惠", bnShare: "分享", appInstall: "安装App", appBarH: "把华邻网装到手机桌面", appBarP: "像App一样一点就开，新闻和福利信息随时看。", appBarBtn: "安装", appLater: "以后再说",
       appIosH: "安装到 iPhone 桌面", appIosSteps: ["用 Safari 浏览器打开本站（微信里请先点右上角 ··· 选“在浏览器打开”）", "点屏幕下方的“分享”按钮（方框加向上箭头）", "往下滑，点“添加到主屏幕”", "点右上角“添加”，桌面上就有华邻网的图标了"],
       appWxH: "请先在浏览器打开", appWxSteps: ["点右上角 ··· ", "选择“在浏览器打开”（安卓）或“在 Safari 中打开”（iPhone）", "打开后再点“安装App”"],
@@ -113,7 +113,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)", houseLab: "From 华邻网", fImg: "Photos (optional, up to 4)", fImgAdd: "Add photos", imgUp: "Uploading photos…", imgFail: "Posted, but the photos didn't upload. Please try again later.", recPosts: "Latest listings", recSame: "Latest in {b}", recNews: "Recommended", datingRules: "Meet Locals rules: 18+ only. No sexual content, paid companionship or commercial services; such posts are removed. Beware romance scams: anyone you met online who urges you to invest, buy crypto or send money is a scammer. Meet in a public place first and tell a friend.", eBanned: "Sexual or paid-companionship content isn't allowed. Please edit your post.", daifa: "Can't type it? Text a photo or the details to {p} and we'll post it for you free.", earlyPin: "Launch offer: the first 100 posters get 7 days pinned free. Just text us after posting.", flyerLink: "Print a flyer",
       flyerH: "Post jobs, rentals, buy & sell, deals: free", flyerSub: "Classifieds for Chinese New Yorkers", flyerPts: ["No sign-up, done in a minute", "Share to WeChat", "Daily news, benefits guides and deals too"], flyerScan: "Scan to post now", flyerDai: "Text a photo to {p} and we'll post it for you", bnHome: "Home", bnGuide: "Guides", bnPost: "Post", bnDeals: "Deals", bnShare: "Share", appInstall: "Get the app", appBarH: "Add 华邻网 to your home screen", appBarP: "Opens like an app, one tap away.", appBarBtn: "Install", appLater: "Not now",
       appIosH: "Add to iPhone home screen", appIosSteps: ["Open this site in Safari (in WeChat, tap ··· and choose Open in Safari)", "Tap the Share button at the bottom (square with an arrow)", "Scroll down and tap \"Add to Home Screen\"", "Tap \"Add\" at the top right"],
       appWxH: "Open in your browser first", appWxSteps: ["Tap ··· at the top right", "Choose Open in Browser / Open in Safari", "Then tap \"Get the app\""],
@@ -190,7 +190,8 @@
     if (!POSTS_ON) { postsLoaded = true; renderPostsAll(); return; }
     try {
       const q = cols => fetch(SB_URL + "/rest/v1/posts?select=" + cols + "&order=created_at.desc&limit=600", { headers: sbHeaders() });
-      let r = await q("id,created_at,board,title,body,area,contact,phone,wechat,pinned_until");
+      let r = await q("id,created_at,board,title,body,area,contact,phone,wechat,pinned_until,images");
+      if (!r.ok) r = await q("id,created_at,board,title,body,area,contact,phone,wechat,pinned_until"); // before 06-images.sql
       if (!r.ok) r = await q("id,created_at,board,title,body,area,contact,phone,wechat"); // before 04-pin.sql is run
       if (!r.ok) throw new Error(r.status);
       const now = Date.now();
@@ -436,6 +437,18 @@
   }
 
   /* ---------- render: posts ---------- */
+  // "Recommended" under a news story: picture stories from other sections, then the latest listings.
+  function recNewsHtml(i, sname) {
+    const seen = new Set([i.id]);
+    const pick = [];
+    for (const s of ["top", "local", "immigration", "uschina", "china", "business", "health", "ent"]) {
+      if (s === sname) continue;
+      for (const x of sec(s)) { if (!seen.has(x.id) && x.img) { pick.push(x); seen.add(x.id); break; } }
+    }
+    const lp = posts.slice(0, 4);
+    return `<section class="rec rec-news"><h4>${esc(t("recNews"))}</h4><ul class="nl">${pick.slice(0, 6).map(x => liHtml(x, false, true)).join("")}</ul>
+      ${lp.length ? `<h4>${esc(t("recPosts"))}</h4><ul class="rows">${lp.map(x => rowHtml(x, true)).join("")}</ul>` : ""}</section>`;
+  }
   /* ---------- official listings (NYC jobs, housing lotteries) ---------- */
   const offAll = () => (official.jobs || []).concat(official.housing || []);
   const offFor = board => offAll().filter(o => o.board === board);
@@ -471,11 +484,12 @@
   }
   function rowHtml(p, seal) {
     const b = boardById(p.board);
-    return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
+    return `<li><button type="button" class="row" data-pid="${p.id}">${seal ? `<span class="seal sm" title="${esc(bName(b))}">${esc(b ? b.glyph : "·")}</span>` : ""}<span class="rt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}${(p.images || []).length ? ` <span class="hasimg" aria-label="photo">📷</span>` : ""}</span><span class="rd">${esc(ago(p.ts))}</span></button></li>`;
   }
   function pitemHtml(p, showBoard) {
     const b = boardById(p.board);
-    return `<li><button type="button" class="pitem" data-pid="${p.id}"><div class="pt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</div><div class="pm">${showBoard ? `<span class="bd">${esc(bName(b))}</span>` : ""}<span>${esc(ago(p.ts))}</span>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}${p.phone ? `<span>${esc(p.phone)}</span>` : ""}</div><div class="pb">${esc(p.body)}</div></button></li>`;
+    const im = (p.images || [])[0];
+    return `<li><button type="button" class="pitem${im ? " has-img" : ""}" data-pid="${p.id}">${im ? `<img class="pthumb" src="${esc(im)}" alt="" loading="lazy">` : ""}<div class="pt">${p.pin ? `<span class="pin">${esc(t("pinned"))}</span>` : ""}${p.area ? `[${esc(p.area)}] ` : ""}${esc(p.title)}</div><div class="pm">${showBoard ? `<span class="bd">${esc(bName(b))}</span>` : ""}<span>${esc(ago(p.ts))}</span>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}${p.phone ? `<span>${esc(p.phone)}</span>` : ""}</div><div class="pb">${esc(p.body)}</div></button></li>`;
   }
   function renderPostsAll() {
     const latest = posts.slice(0, 12);
@@ -627,6 +641,7 @@
       ${i.fr && !i.full && !zhView ? `<div class="inline-read"><div class="ir-bar"><span>${esc(t("irNote").replace("{src}", src))}</span><button type="button" class="linkbtn" id="aRead">${esc(t("irFull"))}</button></div><iframe class="ir-frame" src="${esc(safeUrl(i.u))}" title="${esc(i.t)}" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe></div>` : ""}
       <div class="post-actions"${zhView ? " hidden" : ""}>${i.full ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("offLink"))}</a>` : i.fr ? `<a class="btn ghost" href="${esc(safeUrl(i.u))}" data-reader="${esc(safeUrl(i.u))}" data-src="${esc(src)}">${esc(t("irFull"))}</a>` : `<a class="btn" href="${esc(safeUrl(i.u))}" target="_blank" rel="noopener noreferrer">${esc(t("readAt").replace("{src}", src))}</a>`}<button type="button" class="btn ghost" id="aShare">${esc(t("share"))}</button></div>
       <p class="g-fine">${esc(t("artCopy").replace("{src}", src))}</p>
+      ${recNewsHtml(i, sname)}
       <div class="spons mid art-ad">${liveSlots("article").slice(1, 3).map(x => adCard(x, "sm")).join("") || emptyAd(true) + emptyAd(true)}</div>`;
     document.title = i.t + " - 华邻网";
     const others = (news.sections[hit.lg][sname] || []).filter(x => x !== i).slice(0, 10);
@@ -776,6 +791,14 @@
   }
 
   /* ---------- post detail ---------- */
+  // "More listings" under a listing: same board first, then the newest anywhere.
+  function recPostsHtml(p) {
+    const same = posts.filter(x => x.board === p.board && x.id !== p.id).slice(0, 4);
+    const rest = posts.filter(x => x.id !== p.id && !same.includes(x)).slice(0, 6 - same.length);
+    if (!same.length && !rest.length) return "";
+    const b = boardById(p.board);
+    return `<section class="rec"><h4>${esc(same.length ? t("recSame").replace("{b}", bName(b)) : t("recPosts"))}</h4><ul class="rows">${same.concat(rest).map(x => rowHtml(x, true)).join("")}</ul></section>`;
+  }
   function openPost(id, opts) {
     opts = opts || {};
     const p = posts.find(x => String(x.id) === String(id)); if (!p) return;
@@ -791,6 +814,7 @@
       <span class="tag">${esc(bName(b))}${p.area ? " · " + esc(p.area) : ""} · ${esc(new Date(p.ts).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US"))}</span>
       <h3>${esc(p.title)}</h3>
       <div class="detail-body">${esc(p.body)}</div>
+      ${(p.images || []).length ? `<div class="gallery">${p.images.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy"></a>`).join("")}</div>` : ""}
       <div class="contact"><b>${esc(t("contact"))}</b>${p.contact ? `<span>${esc(p.contact)}</span>` : ""}
         ${p.phone ? `<span>${esc(t("phone"))} <span class="v" id="cpP">${esc(p.phone)}</span></span><button type="button" class="copy" data-copy="cpP">${esc(t("copy"))}</button>${tel.length >= 7 ? `<a class="copy call" href="tel:${esc(tel)}">${esc(t("call"))}</a>` : ""}` : ""}
         ${p.wechat ? `<span>${esc(t("wx"))} <span class="v" id="cpW">${esc(p.wechat)}</span></span><button type="button" class="copy" data-copy="cpW">${esc(t("copy"))}</button>` : ""}</div>
@@ -803,6 +827,7 @@
         ${myKey || mineAcct ? `<button type="button" class="btn ghost" id="delBtn">${esc(t("del"))}</button>` : ""}
       </div>
       <div class="manual" id="manualBox" hidden><span>${esc(t("shareManual"))}</span><input readonly value="${esc(url)}" aria-label="${esc(t("pageLink"))}"></div>
+      ${recPostsHtml(p)}
       <div class="dlg-ad">${liveSlots("feed").slice(0, 1).map(x => adCard(x, "sm")).join("") || emptyAd(true)}</div>
       <div class="reasons" id="repBox" hidden><b>${esc(t("reportH"))}</b>
         ${HLC.REPORT_REASONS.map(([k, zh, en], i) => `<label><input type="radio" name="rr" value="${k}" ${i === 0 ? "checked" : ""}> ${esc(lang === "zh" ? zh : en)}</label>`).join("")}
@@ -889,6 +914,43 @@
     $("#postDlg").showModal();
     if (POSTS_ON) setTimeout(() => $("#fTitle").focus(), 30);
   }
+  /* ---------- listing photos: shrunk in the browser, uploaded to Supabase Storage ---------- */
+  let picked = [];
+  function showPicked() {
+    $("#fImgPrev").innerHTML = picked.map((f, i) => `<span class="ip"><img src="${f.url}" alt=""><button type="button" data-unpick="${i}" aria-label="remove">×</button></span>`).join("");
+    document.querySelector(".img-add").hidden = picked.length >= 4;
+  }
+  $("#fImg").addEventListener("change", e => {
+    for (const f of [...e.target.files]) { if (picked.length >= 4) break; if (/^image\//.test(f.type) || /\.(heic|jpe?g|png|webp)$/i.test(f.name)) picked.push({ file: f, url: URL.createObjectURL(f) }); }
+    e.target.value = ""; showPicked();
+  });
+  $("#fImgPrev").addEventListener("click", e => { const b = e.target.closest("[data-unpick]"); if (!b) return; picked.splice(Number(b.dataset.unpick), 1); showPicked(); });
+  function shrink(file) {
+    return new Promise((res, rej) => {
+      const img = new Image();
+      img.onload = () => {
+        const max = 1280, k = Math.min(1, max / Math.max(img.width, img.height));
+        const c = document.createElement("canvas"); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(b => b ? res(b) : rej(new Error("encode")), "image/jpeg", 0.82);
+      };
+      img.onerror = () => rej(new Error("decode"));
+      img.src = URL.createObjectURL(file);
+    });
+  }
+  async function uploadPicked() {
+    const urls = [];
+    for (const f of picked) {
+      const blob = await shrink(f.file);
+      const name = "p/" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10) + ".jpg";
+      const h = { apikey: SB_KEY, "Content-Type": "image/jpeg", "x-upsert": "false" };
+      const tok = A && A.user() ? await A.token() : null; if (tok) h.Authorization = "Bearer " + tok;
+      const r = await fetch(SB_URL + "/storage/v1/object/post-images/" + name, { method: "POST", headers: h, body: blob });
+      if (!r.ok) throw new Error("upload " + r.status);
+      urls.push(SB_URL + "/storage/v1/object/public/post-images/" + name);
+    }
+    return urls;
+  }
   async function submitForm(e) {
     e.preventDefault();
     if (!POSTS_ON) return;
@@ -899,9 +961,14 @@
     if (err) { $("#fErr").textContent = t(err); return; }
     const btn = $("#fSubmit"); btn.disabled = true; btn.textContent = t("posting");
     try {
+      let urls = [], imgErr = false;
+      if (picked.length) { btn.textContent = t("imgUp"); try { urls = await uploadPicked(); } catch (ue) { imgErr = true; } btn.textContent = t("posting"); }
       const res = await HLC.rpc("create_post", d);
       const row = Array.isArray(res) ? res[0] : res;
       if (row && row.id) keys.set(row.id, row.delete_key);
+      if (row && row.id && urls.length) { try { await HLC.rpc("set_post_images", { p_id: row.id, p_key: row.delete_key, p_images: urls }); } catch (se) { imgErr = true; } }
+      picked = []; showPicked();
+      if (imgErr) setTimeout(() => toast(t("imgFail")), 400);
       $("#postDlg").close();
       await loadPosts();
       location.hash = "b-" + d.p_board;

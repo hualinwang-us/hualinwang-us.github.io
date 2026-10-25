@@ -68,6 +68,7 @@
     return h;
   }
   const POST_COLS = "id,created_at,board,title,body,area,contact,phone,wechat";
+  const POST_COLS_IMG = POST_COLS + ",images";
   async function rpc(fn, body) {
     const h = sbHeaders();
     const tk = root.HLAuth ? await root.HLAuth.token() : null;
@@ -79,7 +80,8 @@
     return data;
   }
   async function getPost(id) {
-    const r = await fetch(SB_URL + "/rest/v1/posts?select=" + POST_COLS + "&id=eq." + encodeURIComponent(id), { headers: sbHeaders() });
+    let r = await fetch(SB_URL + "/rest/v1/posts?select=" + POST_COLS_IMG + "&id=eq." + encodeURIComponent(id), { headers: sbHeaders() });
+    if (!r.ok) r = await fetch(SB_URL + "/rest/v1/posts?select=" + POST_COLS + "&id=eq." + encodeURIComponent(id), { headers: sbHeaders() });
     if (!r.ok) throw new Error("HTTP " + r.status);
     const rows = await r.json();
     return rows[0] || null;
@@ -146,5 +148,5 @@
   };
 
   root.HLC = { DISCLAIMER, CFG, SB_URL, SB_KEY, POSTS_ON, GROUPS, BOARDS, boardById, SCAM, scamHits, BANNED, REPORT_REASONS,
-    sbHeaders, rpc, getPost, POST_COLS, siteBase, postUrl, share, keys: store("hl-keys"), reported: store("hl-reported") };
+    sbHeaders, rpc, getPost, POST_COLS, POST_COLS_IMG, siteBase, postUrl, share, keys: store("hl-keys"), reported: store("hl-reported") };
 })(typeof window !== "undefined" ? window : globalThis);
