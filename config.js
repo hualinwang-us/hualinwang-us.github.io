@@ -15,5 +15,5 @@ window.HL_CONFIG = {
   translateEmail: "huamai.us@gmail.com",
 
   // Shown on empty ad spaces and in the footer so businesses can reach you.
-  adContact: { phone: "", wechat: "", email: "" }
+  adContact: { phone: "516-628-7119", wechat: "", email: "" }
 };

@@ -52,7 +52,7 @@
       contact: "联系方式", phone: "电话", wx: "微信", copy: "复制", copied: "已复制", del: "删除我的信息", delSure: "确认删除？",
       deleted: "已删除", delFail: "删除失败，请稍后再试。", safety: "请当面交易，切勿预付定金或转账给陌生人。",
       updated: "更新于", fxAsOf: "以 1 美元计", minAgo: "分钟前", hrAgo: "小时前", dayAgo: "天前", justNow: "刚刚",
-      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›",
+      adLabel: "推荐商家", adEmptyH: "广告位招租", adEmptyP: "黄金位置，曝光给每一位访客", adContact: "联系：", adMore: "了解广告位 ›", adSms: "（未接请发短信）",
       adsTitle: "在华邻网投放广告", adsIntro: "华邻网每天更新纽约华人关心的新闻、福利指南和本周优惠，读者都是在美华人家庭。以下广告位可以单独或组合投放，价格面议，新开张商家有优惠。",
       adsPos: "广告位一览", adsHow: "怎么投放", adsHowP: "把店名、一句话介绍、电话/微信、想放的位置和时间发给我们，当天就能上线。到期自动下架，不用操心。", adsNoContact: "联系方式即将公布。也可以先在“商家优惠”免费发布优惠信息。",
       adsList: [["横幅广告", "首页最上方通栏，访客打开第一眼看到"], ["首页推荐（3个）", "首页顶部三张推荐卡片"], ["新闻中间（4个）", "首页新闻栏目之间，读新闻时自然看到"], ["侧栏（3个）", "首页右侧，电脑版全程可见"], ["分类板块页（可指定板块）", "例如只出现在“房屋出租”或“招聘”板块顶部"], ["信息流", "分类信息列表中每隔几条出现一次"], ["指南和文章页", "福利指南、新闻文章下方，读者停留时间最长"]],
@@ -108,7 +108,7 @@
       del: "Delete my listing", delSure: "Confirm delete?", deleted: "Deleted", delFail: "Couldn't delete. Please try again.",
       safety: "Meet in person. Never prepay or wire money to strangers.", updated: "Updated", fxAsOf: "per 1 US dollar",
       minAgo: "m ago", hrAgo: "h ago", dayAgo: "d ago", justNow: "just now", adLabel: "Featured", adEmptyH: "Ad space available",
-      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›",
+      adEmptyP: "Prime placement seen by every visitor", adContact: "Contact: ", sponsored: "Ad", adMore: "About ad spaces ›", adSms: " (text if no answer)",
       adsTitle: "Advertise on 华邻网", adsIntro: "华邻网 publishes daily news, benefits guides and weekly deals for Chinese families in New York. These spaces can be booked alone or together; prices are negotiable, with discounts for newly opened businesses.",
       adsPos: "Ad spaces", adsHow: "How to book", adsHowP: "Send us your business name, a one-line description, phone/WeChat, and the space and dates you want. It can go live the same day and comes down automatically when it ends.", adsNoContact: "Contact details coming soon. Meanwhile, you can post deals for free in Local Deals.",
       adsList: [["Banner", "Full-width at the very top of the home page"], ["Home featured (3)", "Three featured cards at the top of the home page"], ["Between news (4)", "Between the home-page news sections"], ["Sidebar (3)", "Right side of the home page, always visible on desktop"], ["Board pages (choose boards)", "E.g. only at the top of Rentals or Jobs"], ["In-feed", "Every few listings inside classified lists"], ["Guide & article pages", "Below benefits guides and news articles, where readers stay longest"]],
@@ -269,7 +269,7 @@
   }
   function renderAdContact() {
     const c = CFG.adContact || {};
-    const parts = [c.phone && (t("phone") + " " + c.phone), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
+    const parts = [c.phone && (t("phone") + " " + c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
     $("#adContact").textContent = t("footAdsP") + (parts.length ? " " + parts.join(" · ") : "");
   }
 
@@ -360,7 +360,7 @@
   }
   function emptyAd(sm) {
     const c = CFG.adContact || {};
-    const parts = [c.phone, c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
+    const parts = [c.phone && (c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
     return `<a class="spon empty ${sm ? "sm" : ""}" href="#advertise"><span class="lab">${esc(t("sponsored"))}</span><h3>${esc(t("adEmptyH"))}</h3><p>${sm ? "" : esc(t("adEmptyP")) + "<br>"}${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adMore"))}</p></a>`;
   }
   // Fill a container with live ads for a position, topped up with "ad space available" cards.
@@ -389,10 +389,10 @@
   }
   function renderAdsPage() {
     const c = CFG.adContact || {};
-    const parts = [c.phone && (t("phone") + " " + c.phone), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
+    const parts = [c.phone && (t("phone") + " " + c.phone + t("adSms")), c.wechat && (t("wx") + " " + c.wechat), c.email].filter(Boolean);
     $("#adsBody").innerHTML = `<div class="g-head"><span class="seal md" aria-hidden="true">${lang === "zh" ? "广" : "Ad"}</span><div><h1>${esc(t("adsTitle"))}</h1><p class="g-sum">${esc(t("adsIntro"))}</p></div></div>
       <section><h2>${esc(t("adsPos"))}</h2><ol class="g-steps">${t("adsList").map(([h, p]) => `<li><b>${esc(h)}</b><br>${esc(p)}</li>`).join("")}</ol></section>
-      <section><h2>${esc(t("adsHow"))}</h2><p>${esc(t("adsHowP"))}</p><p><b>${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adsNoContact"))}</b></p></section>`;
+      <section><h2>${esc(t("adsHow"))}</h2><p>${esc(t("adsHowP"))}</p><p><b>${parts.length ? esc(t("adContact") + parts.join(" · ")) : esc(t("adsNoContact"))}</b></p>${c.phone ? `<p><a class="btn" href="tel:${esc(c.phone.replace(/[^0-9+]/g, ""))}">${esc(t("phone"))} ${esc(c.phone)}</a> <a class="btn ghost" href="sms:${esc(c.phone.replace(/[^0-9+]/g, ""))}">${lang === "zh" ? "发短信" : "Text"}</a></p>` : ""}</section>`;
   }
 
   /* ---------- render: posts ---------- */
