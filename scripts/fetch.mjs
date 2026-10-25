@@ -190,40 +190,72 @@ async function pool(tasks, size) {
   return results;
 }
 
+
+/* Keep readers on our site: drop a story that can't be shown inline when another outlet's report of the
+   same event can, and rank stories that can be shown inline a little higher. */
+function bigrams(t) {
+  const c = t.toLowerCase().replace(/[\s\p{P}\p{S}]/gu, "");
+  const set = new Set(); for (let k = 0; k < c.length - 1; k++) set.add(c.slice(k, k + 2)); return set;
+}
+function similar(a, b) {
+  let inter = 0; for (const x of a) if (b.has(x)) inter++;
+  return inter / Math.max(1, Math.min(a.size, b.size));
+}
+function preferEmbeddable(out) {
+  let swapped = 0;
+  for (const lang of ["zh", "en"]) {
+    const all = Object.values(out.sections[lang]).flat().filter(i => !i.full);
+    const ok = all.filter(i => i.fr === 1).map(i => ({ i, g: bigrams(i.t) }));
+    for (const [sec, list] of Object.entries(out.sections[lang])) {
+      if (sec === "official") continue;
+      out.sections[lang][sec] = list.filter(i => {
+        if (i.fr !== 0) return true;
+        const g = bigrams(i.t);
+        const twin = ok.find(o => o.i !== i && similar(g, o.g) >= 0.6);
+        if (twin) { swapped++; return false; }
+        return true;
+      });
+      // Within a section, a story that can't be shown inline sorts as if it were 6 hours older.
+      const score = i => (Date.parse(i.d) || 0) - (i.fr === 0 ? 6 * 3600e3 : 0);
+      out.sections[lang][sec].sort((a, b) => score(b) - score(a));
+    }
+  }
+  console.log(`inline-friendly: replaced ${swapped} stories with another outlet's report of the same event`);
+}
+
 async function enrichImages(out) {
   const cache = await readJSON(IMG_CACHE, {});
   const now = Date.now();
   for (const k of Object.keys(cache)) if (now - (cache[k].t || 0) > 5 * 86400e3) delete cache[k];
   for (const k of Object.keys(cache)) if (/\uFFFD/.test(cache[k].desc || "")) delete cache[k];
+  // Check every story, highest-ranked first across all sections, so the ones people see are done first.
   const want = [];
-  for (const lang of ["zh", "en"]) {
-    for (const [sec, list] of Object.entries(out.sections[lang])) {
-      const n = sec === "top" ? 14 : 10;
-      list.slice(0, n).forEach(i => { if (!i.img) want.push(i); });
-    }
-  }
+  const lists = ["zh", "en"].flatMap(lang => Object.values(out.sections[lang]));
+  const depth = Math.max(0, ...lists.map(l => l.length));
+  for (let r = 0; r < depth; r++) for (const l of lists) if (l[r]) want.push(l[r]);
   let found = 0, tried = 0;
   const todo = [];
   for (const i of want) {
     const k = key(i.t) + "|" + (i.src || "");
     if (cache[k] && "frame" in cache[k]) { if (cache[k].img) { i.img = cache[k].img; found++; } continue; }
-    if (todo.length >= 120) continue; // cap new lookups per run; the rest wait for the next run
+    if (todo.length >= 260) continue; // cap new lookups per run; the rest wait for the next run
     todo.push(async () => {
       tried++;
       try { const r = await findImage(i); cache[k] = { img: r.img, desc: r.desc, real: r.real, frame: r.frame, t: now }; if (r.img) { i.img = r.img; found++; } }
       catch (e) { cache[k] = { img: "", t: now, err: String(e.message || e).slice(0, 60) }; }
     });
   }
-  await pool(todo, 6);
+  await pool(todo, 8);
   // Apply cached pictures to every story, not just the ones looked up.
   for (const lang of ["zh", "en"]) for (const list of Object.values(out.sections[lang])) for (const i of list) {
     const c = cache[key(i.t) + "|" + (i.src || "")]; if (!c) continue;
     if (!i.img && c.img) i.img = c.img;
     if (!i.s && c.desc && c.desc.replace(/\s/g, "") !== i.t.replace(/\s/g, "")) i.s = c.desc;
     if (c.real && /news\.google\.com/.test(i.u)) i.u = c.real; // link straight to the publisher
-    if (c.frame) i.fr = 1;
+    if (c.frame) i.fr = 1; else if (c.frame === false) i.fr = 0;
   }
   await fs.writeFile(IMG_CACHE, JSON.stringify(cache));
+  preferEmbeddable(out);
   const errs = Object.values(cache).filter(c => c.err).map(c => c.err);
   console.log(`images: ${found} found, ${tried} new lookups${errs.length ? ", errors e.g. " + [...new Set(errs)].slice(0, 3).join(" / ") : ""}`);
   out.imageStats = { found, tried, errors: [...new Set(errs)].slice(0, 5) };
