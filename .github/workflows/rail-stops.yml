@@ -14,8 +14,9 @@ jobs:
         with: { node-version: 20 }
       - run: npm install --no-save gtfs-realtime-bindings
       - run: node scripts/rail-stops.mjs
+      - run: node scripts/calendar.mjs
       - name: Save
         run: |
           git config user.name "github-actions"; git config user.email "actions@github.com"
-          git add data/rail-stops.json data/sched-*.json 2>/dev/null || true
+          git add data/rail-stops.json data/sched-*.json data/subway-stops.json data/calendar.json 2>/dev/null || true
           git diff --cached --quiet || (git commit -m "Update rail stations and timetables" && git pull --rebase && git push)

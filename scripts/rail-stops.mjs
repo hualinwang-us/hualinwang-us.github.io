@@ -63,3 +63,20 @@ for (const sys of ["lirr", "mnr"]) {
   } catch (e) { console.log(`::warning title=${sys} realtime::${e.message}`); }
 }
 if (out.lirr || out.mnr) await fs.writeFile("data/rail-stops.json", JSON.stringify(out));
+
+// Subway stations (parent stations) with the lines that stop there.
+try {
+  const r = await fetch("https://rrgtfsfeeds.s3.amazonaws.com/gtfs_subway.zip"); if (!r.ok) throw new Error("HTTP " + r.status);
+  await fs.writeFile("/tmp/subway.zip", Buffer.from(await r.arrayBuffer()));
+  execSync("rm -rf /tmp/subway && mkdir -p /tmp/subway && unzip -o -q /tmp/subway.zip -d /tmp/subway");
+  const stops = await readCsv("subway", "stops.txt"), trips = await readCsv("subway", "trips.txt"), st = await readCsv("subway", "stop_times.txt");
+  const routeOfTrip = new Map(trips.map(t => [t.trip_id, t.route_id]));
+  const parentOf = new Map(stops.map(s => [s.stop_id, s.parent_station || s.stop_id]));
+  const routes = new Map();
+  for (const x of st) { const p = parentOf.get(x.stop_id) || x.stop_id.replace(/[NS]$/, ""); const rt = routeOfTrip.get(x.trip_id); if (!rt) continue; (routes.get(p) || routes.set(p, new Set()).get(p)).add(rt.replace(/X$/, "")); }
+  const list = stops.filter(s => s.location_type === "1" || (!s.parent_station && !/[NS]$/.test(s.stop_id)))
+    .map(s => ({ id: s.stop_id, n: s.stop_name, lat: +(+s.stop_lat).toFixed(5), lon: +(+s.stop_lon).toFixed(5), r: [...(routes.get(s.stop_id) || [])].sort() }))
+    .filter(s => s.r.length);
+  await fs.writeFile("data/subway-stops.json", JSON.stringify(list));
+  console.log(`::notice title=subway static::stations=${list.length} sample=${JSON.stringify(list.find(x => x.id === "701") || list[0])}`);
+} catch (e) { console.log(`::warning title=subway static::${e.message}`); }

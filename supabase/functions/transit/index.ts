@@ -14,7 +14,19 @@ const json = (body: unknown, status = 200, maxAge = 15) =>
 const FEEDS: Record<string, string> = {
   lirr: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/lirr%2Fgtfs-lirr",
   mnr: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/mnr%2Fgtfs-mnr",
+  // Subway: one feed per group of lines (no key needed)
+  s123: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs",
+  sace: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-ace",
+  sbdfm: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-bdfm",
+  sg: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-g",
+  sjz: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-jz",
+  snqrw: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-nqrw",
+  sl: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-l",
+  ssi: "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-si",
 };
+const SUBWAY_FEED: Record<string, string> = { "1": "s123", "2": "s123", "3": "s123", "4": "s123", "5": "s123", "6": "s123", "7": "s123", "S": "s123", "GS": "s123",
+  "A": "sace", "C": "sace", "E": "sace", "H": "sace", "FS": "sace", "B": "sbdfm", "D": "sbdfm", "F": "sbdfm", "M": "sbdfm", "G": "sg", "J": "sjz", "Z": "sjz",
+  "7X": "s123", "6X": "s123", "FX": "sbdfm", "N": "snqrw", "Q": "snqrw", "R": "snqrw", "W": "snqrw", "L": "sl", "SI": "ssi", "SIR": "ssi" };
 const cache = new Map<string, { t: number; v: unknown }>();
 async function cached<T>(key: string, ttlMs: number, fn: () => Promise<T>): Promise<T> {
   const hit = cache.get(key);
@@ -71,6 +83,23 @@ Deno.serve(async (req) => {
       }
       out.sort((a, b) => a.t - b.t);
       return json({ now: Math.round(now), list: out.slice(0, 15) });
+    }
+    if (op === "subway") {
+      // stop = parent station id (e.g. 701 = Flushing-Main St); routes = lines serving it (to pick the feeds)
+      const stop = q.get("stop") || "", routes = (q.get("routes") || "").split(",").filter(r => SUBWAY_FEED[r]);
+      if (!/^[A-Z0-9]{2,5}$/.test(stop) || !routes.length) return json({ error: "bad request" }, 400);
+      const now = Date.now() / 1000, out: any[] = [];
+      for (const sys of [...new Set(routes.map(r => SUBWAY_FEED[r]))]) {
+        for (const tr of await railFeed(sys)) {
+          const i = tr.stus.findIndex((s: any) => s.id === stop + "N" || s.id === stop + "S");
+          if (i < 0 || i === tr.stus.length - 1) continue;
+          const s = tr.stus[i];
+          if (!s.t || s.t < now - 30) continue;
+          out.push({ t: s.t, dir: s.id.slice(-1), route: tr.route, dest: tr.dest.replace(/[NS]$/, "") });
+        }
+      }
+      out.sort((a, b) => a.t - b.t);
+      return json({ now: Math.round(now), list: out.slice(0, 30) });
     }
     if (op === "stops") {
       const lat = Number(q.get("lat")), lon = Number(q.get("lon"));
