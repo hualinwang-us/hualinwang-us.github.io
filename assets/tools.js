@@ -351,7 +351,7 @@
     }
     const seen = new Set(); return out.sort((a, b) => a.t - b.t).filter(v => { const k = v.t + v.dest; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 15);
   }
-  const stamp = () => `<div class="tr-stamp"><span>🕒 更新于 <b>${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "America/New_York" })}</b> · 每 30 秒自动刷新</span><button type="button" class="linkbtn" data-trrefresh>立即刷新</button></div>`;
+  const stamp = () => `<div class="tr-stamp"><span>🕒 更新于 <b>${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "America/New_York" })}</b> · ${TR.mode === "bus" ? "每 20 秒" : "每 30 秒"}自动刷新</span><button type="button" class="linkbtn" data-trrefresh>立即刷新</button></div>`;
   /* live bus map: the stop, you, and the buses on their way (they glide to each new position) */
   let leafletP = null;
   function loadLeaflet() {
@@ -376,7 +376,7 @@
     if (!TR.map || TR.mapBox !== box) {
       box.innerHTML = "";
       const m = L.map(box, { zoomControl: true, attributionControl: true, scrollWheelZoom: false });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", { maxZoom: 19, subdomains: "abcd", attribution: "© OpenStreetMap © CARTO" }).addTo(m);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(m);
       TR.map = m; TR.mapBox = box; TR.buses = {};
       if (stop) { TR.stopMk = L.marker([stop.lat, stop.lon], { icon: L.divIcon({ className: "tr-stop-ic", html: "<span>站</span>", iconSize: [34, 34], iconAnchor: [17, 17] }), zIndexOffset: 1000 }).addTo(m).bindTooltip(esc(s.name), { direction: "top", offset: [0, -16] }); }
       if (TR.pos) L.circleMarker([TR.pos.lat, TR.pos.lon], { radius: 8, color: "#fff", weight: 3, fillColor: "#2f6fd6", fillOpacity: 1 }).addTo(m).bindTooltip("你在这里");
@@ -387,7 +387,7 @@
     buses.forEach(v => {
       const key = v.vid || (v.route + v.eta); seen.add(key);
       const mins = v.eta ? Math.max(0, Math.round((Date.parse(v.eta) - Date.now()) / 60000)) : null;
-      const html = `<div class="tr-bus"><i style="transform:rotate(${90 - (v.bearing || 0)}deg)">➤</i><b>${esc(v.route)}</b>${mins != null ? `<em>${mins ? mins + "分" : "到"}</em>` : ""}</div>`;
+      const html = `<div class="tr-bus"><i style="transform:rotate(${-(v.bearing || 0)}deg)">➤</i><b>${esc(v.route)}</b>${mins != null ? `<em>${mins ? mins + "分" : "到"}</em>` : ""}</div>`;
       const icon = L.divIcon({ className: "tr-bus-ic", html, iconSize: [72, 30], iconAnchor: [36, 15] });
       if (TR.buses[key]) { TR.buses[key].setIcon(icon); glide(TR.buses[key], [v.lat, v.lon], 2500); }
       else TR.buses[key] = L.marker([v.lat, v.lon], { icon }).addTo(m);
