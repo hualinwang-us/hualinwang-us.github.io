@@ -54,7 +54,7 @@
       eSave: "发布失败，请稍后再试。", eFlood: "发布太频繁，请10分钟后再试。", eBusy: "网站繁忙，请稍后再试。",
       loading: "载入中…", newsEmpty: "新闻正在更新，请稍后刷新。", noPosts: "还没有信息，", beFirst: "抢先发布",
       noLatest: "暂时没有新信息。", invH: "来发第一条吧", invP: "招聘、租房、转让、找服务……免费发布，邻居们都看得到。", invBtn: "免费发布", pgAll: "分类信息大全", eventsH: "线下活动", eventsNote: "纽约华人社区活动和全市免费活动，每天自动更新。办活动的社区组织和商家可以免费发布。", evComm: "华人社区活动", evFree: "纽约免费活动", evPost: "免费发布活动", evInvH: "还没有社区活动", evInvP: "教会、同乡会、社区中心、商家办活动，都可以在这里免费发布。",
-      locAsk: "看你附近的招工、房屋和服务？", locTip: "看附近的信息？", ptAll: "全部分类", ptMore: "更多分类", ptLess: "收起", locBtn: "自动定位", locPick: "手动选择地区", locing: "正在定位…", locNo: "无法定位，请手动选择地区", locFar: "你不在纽约附近，先显示全纽约",
+      locAsk: "看你附近的招工、房屋和服务？", locTip: "看附近的信息？", ptAll: "全部分类", ptMore: "展开全部分类", ptLess: "收起", locBtn: "自动定位", locPick: "手动选择地区", locing: "正在定位…", locNo: "无法定位，请手动选择地区", locFar: "你不在纽约附近，先显示全纽约",
       ncH: "新移民必备", ncCheck: "福利自测", ncSub: "刚来纽约，先把这几件事弄清楚。都免费，大部分不问移民身份。", ncFine: "信息仅供参考，以政府官网为准。外部链接会打开官方网站。",
       ncItems: [["纽约市身份证 IDNYC", "免费，10 岁以上纽约市居民都能办，不论移民身份", "#g-idnyc"], ["免费移民法律咨询", "市政府热线 1-800-354-0365，免费保密，不论身份", "#g-legal-help"],
         ["没保险也能看病", "NYC Care 和白卡，按收入，很多人都能用", "#g-nyc-care"], ["孩子免费上学", "纽约市公立学校免费入学，不问移民身份", "https://www.schools.nyc.gov/enrollment"],
@@ -379,8 +379,7 @@
     el.innerHTML = `<div class="pt-head"><h2>${esc(t("cityTab"))}</h2><button type="button" class="region-pill pt-region" data-region>${ic("pin")}${esc(regionLabel())}<span aria-hidden="true">▾</span></button>
       ${located ? "" : `<span class="loc-tip">${esc(t("locTip"))}<button type="button" class="linkbtn" data-locate>${esc(t("locBtn"))}</button><button type="button" class="x" data-locx aria-label="Close">×</button></span>`}</div>
       <div class="pt-hots">${hot}</div>
-      <div class="pt-grid">${groups.filter(g => main.includes(g.id)).map(card).join("")}</div>
-      <div class="pt-grid pt-more"${portalOpen ? "" : " hidden"}>${groups.filter(g => !main.includes(g.id)).map(card).join("")}${yp}</div>
+      <div class="pt-grid pt-more"${portalOpen ? "" : " hidden"}>${groups.filter(g => main.includes(g.id)).map(card).join("")}${groups.filter(g => !main.includes(g.id)).map(card).join("")}${yp}</div>
       <button type="button" class="pt-toggle" data-ptmore>${esc(portalOpen ? t("ptLess") : t("ptMore"))} <span aria-hidden="true">${portalOpen ? "▴" : "▾"}</span></button>`;
   }
   function renderCity() {
