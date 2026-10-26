@@ -57,6 +57,8 @@
       ${inWeChat ? `<div class="sh-wx-hint">${esc(t.inWechat)}</div>` : ""}
       <div class="sh-grid">
         <button type="button" class="sh-btn wx" data-sh="wechat"><span class="sh-ic">微</span>${esc(t.wechat)}</button>
+        <button type="button" class="sh-btn xhs" data-sh="xhs"><span class="sh-ic">书</span>小红书</button>
+        <button type="button" class="sh-btn ig" data-sh="ig"><span class="sh-ic">IG</span>Instagram</button>
         ${(navigator.share || window.HuaLinApp) && !inWeChat ? `<button type="button" class="sh-btn" data-sh="system"><span class="sh-ic">⇪</span>${esc(t.system)}</button>` : ""}
         ${links.map(([label, cls, href]) => `<a class="sh-btn ${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><span class="sh-ic">${esc(label.slice(0, 1))}</span>${esc(label)}</a>`).join("")}
         <button type="button" class="sh-btn" data-sh="copy"><span class="sh-ic">⧉</span>${esc(t.copy)}</button>
@@ -81,6 +83,15 @@
           const box = q.querySelector(".sh-qr-box");
           if (!box.firstChild) loadQR().then(() => { new window.QRCode(box, { text: url, width: 168, height: 168, correctLevel: window.QRCode.CorrectLevel.M }); }).catch(() => { q.hidden = true; });
         }
+      } else if (k === "xhs" || k === "ig") {
+        // Neither app accepts a shared link from a web page, so copy the text and open the app; the user pastes it.
+        const ok = await copy(msg);
+        const app = k === "xhs" ? "小红书" : "Instagram";
+        say(ok ? `文字和链接已复制。打开${app}，发笔记或快拍时粘贴就行（Instagram 建议贴在个人简介或快拍的链接贴纸里）。` : "");
+        if (!ok) { const u = dlg.querySelector(".sh-url"); u.focus(); u.select(); }
+        const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const go = mobile ? (k === "xhs" ? "xhsdiscover://" : "instagram://app") : (k === "xhs" ? "https://www.xiaohongshu.com/" : "https://www.instagram.com/");
+        setTimeout(() => { if (mobile) location.href = go; else window.open(go, "_blank", "noopener"); }, 900);
       } else if (k === "system") {
         try { await navigator.share({ title, text, url }); dlg.close(); } catch (err) {}
       } else if (k === "copy") {
