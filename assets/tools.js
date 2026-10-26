@@ -9,17 +9,18 @@
   const L = (zh, en) => ({ zh, en });
 
   const CATS = [
-    { id: "go", zh: "出行交通", en: "Getting around", tools: ["transit"] },
+    { id: "go", zh: "出行交通", en: "Getting around", tools: ["transit", "asp"] },
     { id: "scam", zh: "防诈骗宝典", en: "Scam alerts", tools: ["scam"] },
     { id: "imm", zh: "移民入籍", en: "Immigration", tools: ["civics", "natdate", "visa"] },
     { id: "drive", zh: "驾照考试", en: "Driver's license", tools: ["permit"] },
+    { id: "home", zh: "租房买房", en: "Housing", tools: ["building", "lottery", "landlord"] },
     { id: "loan", zh: "贷款计算器", en: "Loan calculators", tools: ["mortgage", "carloan"] },
     { id: "afford", zh: "可负担计算", en: "Affordability", tools: ["rent40", "homeafford"] },
     { id: "eng", zh: "英语学习", en: "English", tools: ["phrases"] },
-    { id: "life", zh: "生活工具", en: "Everyday", tools: ["units", "sizes", "tip"] }
+    { id: "life", zh: "生活工具", en: "Everyday", tools: ["holiday", "freemap", "units", "sizes", "tip"] }
   ];
-  const TOOLS = {
-    transit: { g: "车", t: L("实时到站", "Real-time arrivals"), d: L("附近公交车、长岛铁路、北方铁路，实时更新", "Nearby buses, LIRR, Metro-North, live") },
+  const TOOLS = Object.assign({
+    transit: { g: "车", t: L("实时到站", "Real-time arrivals"), d: L("附近公交车、地铁、长岛铁路、北方铁路，实时更新", "Nearby buses, subway, LIRR, Metro-North, live") },
     scam: { g: "防", t: L("专骗华人的 14 种骗局", "Scams targeting Chinese"), d: L("骗子怎么说、怎么骗、怎么识破，转给爸妈看", "14 common scams and how to spot them") },
     civics: { g: "问", t: L("入籍考试练习", "Citizenship test practice"), d: L("2025 新版 128 题，中英对照，模拟考试", "2025 test, 128 questions, bilingual") },
     natdate: { g: "籍", t: L("入籍时间计算", "Naturalization date"), d: L("拿绿卡几年后可以申请入籍", "When you can file N-400") },
@@ -33,7 +34,7 @@
     units: { g: "换", t: L("单位换算", "Unit converter"), d: L("温度、斤磅、尺寸、加仑", "Temperature, weight, length, volume") },
     sizes: { g: "码", t: L("中美尺码换算", "US–China sizes"), d: L("衣服、鞋子", "Clothes and shoes") },
     tip: { g: "费", t: L("小费计算", "Tip calculator"), d: L("一键算小费，多人平分", "Tip and split the bill") }
-  };
+  }, (window.HLCity && window.HLCity.TOOLS) || {});
   const tl = (o, lang) => o[lang] || o.zh;
 
   /* ---------- hub ---------- */
@@ -416,7 +417,7 @@
     if (!buses.length && !stop) box.innerHTML = `<span class="tr-map-load">暂时没有车辆位置</span>`;
   }
   function transitHtml() {
-    return `<div class="tl-tabs" role="tablist">${[["bus", "公交车"], ["lirr", "长岛铁路"], ["mnr", "北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
+    return `<div class="tl-tabs" role="tablist">${[["bus", "公交车"], ["subway", "地铁"], ["lirr", "长岛铁路"], ["mnr", "北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
       <p class="tl-note">数据来自纽约大都会运输署（MTA）实时数据，每 30 秒自动刷新。实际以车站显示和广播为准。定位只用来找附近车站，不会保存。</p>`;
   }
   function locate() {
@@ -442,6 +443,23 @@
         } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
       };
       TR.map = null; TR.reload = load; load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 20000);
+      return;
+    }
+    if (TR.mode === "subway") {
+      if (!TR.sub) { try { TR.sub = await (await fetch("data/subway-stops.json")).json(); } catch (e) { TR.sub = []; } }
+      const list = TR.sub.slice().sort((a, b) => a.n.localeCompare(b.n));
+      if (!TR.subStop || !list.some(x => x.id === TR.subStop)) TR.subStop = (list.find(x => x.id === "701") || list[0] || {}).id;
+      const cur = list.find(x => x.id === TR.subStop) || { r: [], n: "" };
+      box.innerHTML = `<div class="tr-find"><label class="tl-f"><span>地铁站</span><select data-trsub>${list.map(x => `<option value="${esc(x.id)}"${x.id === TR.subStop ? " selected" : ""}>${esc(x.n)}（${esc(x.r.join(" "))}）</option>`).join("")}</select></label><button type="button" class="btn ghost" data-trsubnear>📍 最近的地铁站</button></div><div id="trList"><div class="skel"><i></i><i></i><i></i></div></div>`;
+      const load = async () => {
+        const L = el.querySelector("#trList"); if (!L) return;
+        try {
+          const d = await fnGet({ op: "subway", stop: TR.subStop, routes: cur.r.join(",") });
+          const col = dir => { const a = (d.list || []).filter(v => v.dir === dir).slice(0, 8); return a.length ? `<ul class="tr-arr">${a.map(v => { const m = Math.round((v.t * 1000 - Date.now()) / 60000); return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>${v.dest ? "往 " + esc(v.dest) : ""}</b><span>${dir === "N" ? "上城 / 往北" : "下城 / 往南"}</span></div><em>${m <= 0 ? "进站" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">暂时没有车。</p>`; };
+          L.innerHTML = stamp() + `<h3 class="cal-h">⬆️ 上城方向（Uptown / 往北）</h3>${col("N")}<h3 class="cal-h">⬇️ 下城方向（Downtown / 往南）</h3>${col("S")}<p class="tl-note">7 号线「上城方向」是开往法拉盛 Main St。数据来自 MTA 官方实时系统。</p>`;
+        } catch (e) { L.innerHTML = `<p class="tl-note">地铁实时数据马上上线，请稍后再试。</p>`; }
+      };
+      TR.reload = load; load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
       return;
     }
     // rail
@@ -471,6 +489,10 @@
     const st = e.target.closest("[data-trstop]"); if (st) { TR.stopSel = TR.stops[Number(st.dataset.trstop)]; paintTransit(el); return true; }
     if (e.target.closest("[data-trrefresh]")) { const b = e.target.closest("[data-trrefresh]"); b.textContent = "刷新中…"; if (TR.reload) TR.reload(); return true; }
     if (e.target.closest("[data-trback]")) { TR.stopSel = null; if (TR.map) { TR.map.remove(); TR.map = null; } paintTransit(el); return true; }
+    if (e.target.closest("[data-trsubnear]")) {
+      try { const p = await locate(); let best = null, bd = 1e9; for (const s of (TR.sub || [])) { const d = dist(p, s); if (d < bd) { bd = d; best = s; } } if (best) { TR.subStop = best.id; paintTransit(el); } } catch (er) {}
+      return true;
+    }
     if (e.target.closest("[data-trnear]")) {
       try { const p = await locate(); const L = (TR.rail[TR.mode] || []); let best = null, bd = 1e9; for (const s of L) { const d = dist(p, s); if (d < bd) { bd = d; best = s; } } if (best) { TR.railStop = best.id; paintTransit(el); } } catch (er) {}
       return true;
@@ -532,10 +554,11 @@
       if (e.target.closest("[data-qrestart]")) { startQuiz(Q.kind, Q.mode); paint(); }
     };
     if (id === "transit") {
-      el.onchange = e => { const sel = e.target.closest("[data-trrail]"); if (sel) { TR.railStop = sel.value; paintTransit(el); } };
+      el.onchange = e => { const ss = e.target.closest("[data-trsub]"); if (ss) { TR.subStop = ss.value; paintTransit(el); return; } const sel = e.target.closest("[data-trrail]"); if (sel) { TR.railStop = sel.value; paintTransit(el); } };
       el.onsubmit = e => { const f = e.target.closest("[data-trcode]"); if (!f) return; e.preventDefault(); const v = f.querySelector("input").value.trim(); if (/^\d{6}$/.test(v)) { TR.stopSel = { id: v, name: "站号 " + v, routes: [] }; paintTransit(el); } };
       paintTransit(el);
     } else { el.onchange = null; el.onsubmit = null; clearInterval(TR.timer); }
+    if (window.HLCity && window.HLCity.TOOLS[id]) window.HLCity.render(id, el, lang);
     function paint() { const q = el.querySelector("#tlQuiz"); if (q) q.innerHTML = quizHtml(lang); }
     if ((id === "civics" || id === "permit") && Q.kind === id && Q.list.length) paint(); else { Q.list = []; Q.kind = ""; }
   }
