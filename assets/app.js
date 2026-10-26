@@ -421,12 +421,13 @@
     const TOP_BOARDS = ["jobs", "rest", "rent", "share", "sale", "car", "reno", "clean"];
     const boards = `<div class="ah-tools">${TOP_BOARDS.map(boardById).filter(Boolean).map(b => `<a href="#b-${b.id}"><span class="ah-ic" style="--c:${GCOL[b.group] || "#d2453a"}">${esc(b.glyph)}</span><b>${esc(zh ? b.zh : b.en)}</b></a>`).join("")}</div>`;
     el.innerHTML = `
+      <div class="wx-strip" id="ahWx" hidden></div>
       <a class="ah-hero" href="#check"><span class="ah-lab">${esc(zh ? "福利自测" : "Benefits check")}</span><b>${esc(zh ? "白卡、粮食券、公屋……我能申请什么？" : "Medicaid, SNAP, housing: what can I get?")}</b><span>${esc(zh ? "回答几个问题，马上看到你可能符合的福利" : "Answer a few questions to see what you may qualify for")}</span><em>${esc(zh ? "开始自测 →" : "Start →")}</em></a>
       <a class="ah-cs" href="#chaoshi"><span class="ah-cs-ic">🛒</span><div><b>${esc(zh ? "华人超市特价单" : "Supermarket flyers")}</b><span>${esc(zh ? "法拉盛、华埠、布鲁克林本周特价，选超市直接看" : "This week's flyers from Chinese supermarkets")}</span></div><i>›</i></a>
       <section class="ah-tools-sec"><div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div>${tools}</section>
       <section class="ah-tools-sec"><div class="bh"><h2>${esc(zh ? "同城服务" : "Local services")}</h2><a class="ah-all" href="#city">${esc(zh ? "全部分类" : "All categories")} ›</a></div>${boards}</section>
       <section class="ah-tools-sec ah-news"><div class="bh"><h2>${esc(zh ? "推荐新闻" : "Top stories")}</h2><a class="ah-all" href="#n-top">${esc(zh ? "全部新闻" : "All news")} ›</a></div><div id="ahNews"><div class="skel"><i></i><i></i><i></i></div></div></section>`;
-    renderAppNews();
+    renderAppNews(); try { renderWxStrip(); } catch (e) {}
   }
   // A handful of hand-picked-by-rule stories for the app home: the lead story, then the freshest
   // NYC-local and immigration stories, then more top stories; pictures preferred, at most 5.
@@ -609,8 +610,21 @@
       $("#wx").innerHTML = `<div class="big"><strong>${Math.round(w.now.temp)}°F</strong><span>${esc(name(w.now.code))}</span></div>` +
         (w.days || []).slice(0, 3).map((d, i) => `<div><b>${esc(i === 0 ? t("today") : day(d.d))}</b><span>${esc(name(d.code))}</span><span>${Math.round(d.hi)}° / ${Math.round(d.lo)}°</span></div>`).join("");
       $("#wxBlock").hidden = false;
+      renderWxStrip();
       const wn = $("#wxNow"); wn.hidden = false; wn.innerHTML = `${lang === "zh" ? "纽约" : "NYC"} <b>${Math.round(w.now.temp)}°F</b> ${esc(name(w.now.code))}`;
     }
+  }
+
+  // Weather strip at the top of the home page (web) and the app home: now + next 3 days.
+  function renderWxStrip() {
+    const w = market && market.weather; if (!w || !w.now) return;
+    const name = c => t("wx_codes")[c] || "";
+    const emo = c => c === 0 ? "☀️" : c <= 2 ? "🌤️" : c === 3 ? "☁️" : c <= 48 ? "🌫️" : c <= 67 ? "🌧️" : c <= 77 ? "❄️" : c <= 82 ? "🌦️" : "⛈️";
+    const C = f => Math.round((f - 32) * 5 / 9);
+    const day = (d, i) => i === 0 ? t("today") : new Date(d + "T12:00:00").toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { weekday: "short" });
+    const html = `<div class="wx-now"><span class="wx-emo">${emo(w.now.code)}</span><div><b>${Math.round(w.now.temp)}°F</b><small>${C(w.now.temp)}°C</small></div><div class="wx-where"><b>${esc(lang === "zh" ? "纽约" : "New York")}</b><span>${esc(name(w.now.code))}</span></div></div>
+      <div class="wx-days">${(w.days || []).slice(0, 3).map((d, i) => `<div><span>${esc(day(d.d, i))}</span><i>${emo(d.code)}</i><b>${Math.round(d.hi)}°<em>/${Math.round(d.lo)}°</em></b></div>`).join("")}</div>`;
+    ["#homeWx", "#ahWx"].forEach(id => { const el = $(id); if (el) { el.innerHTML = html; el.hidden = false; } });
   }
 
   /* ---------- render: ads ---------- */
