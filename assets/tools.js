@@ -23,7 +23,7 @@
     scam: { g: "防", t: L("专骗华人的 14 种骗局", "Scams targeting Chinese"), d: L("骗子怎么说、怎么骗、怎么识破，转给爸妈看", "14 common scams and how to spot them") },
     civics: { g: "问", t: L("入籍考试练习", "Citizenship test practice"), d: L("2025 新版 128 题，中英对照，模拟考试", "2025 test, 128 questions, bilingual") },
     natdate: { g: "籍", t: L("入籍时间计算", "Naturalization date"), d: L("拿绿卡几年后可以申请入籍", "When you can file N-400") },
-    visa: { g: "排", t: L("移民排期查询", "Visa bulletin"), d: L("中国出生，每月自动更新", "China-born, updated monthly") },
+    visa: { g: "排", t: L("移民排期查询", "Visa bulletin"), d: L("中国出生怎么查、怎么看排期表", "China-born, updated monthly") },
     permit: { g: "驾", t: L("纽约驾照笔试练习", "NY permit test practice"), d: L("中文题目，交通标志和规则", "Signs and rules, in Chinese") },
     mortgage: { g: "房", t: L("房贷月供计算器", "Mortgage calculator"), d: L("含房产税、保险、物业费", "With tax, insurance, HOA") },
     carloan: { g: "车", t: L("车贷月供计算器", "Car loan calculator"), d: L("含纽约销售税", "With NYC sales tax") },
@@ -281,7 +281,27 @@
   let visa = null, visaTried = false;
   function visaHtml(lang) {
     const z = lang === "zh";
-    if (!visa) return `<p class="tl-note">${esc(visaTried ? (z ? "排期数据暂时没有拿到，请直接看美国国务院官网。" : "The bulletin isn't available right now; see the State Department site.") : (z ? "载入中…" : "Loading…"))}</p><p><a class="btn ghost" href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" target="_blank" rel="noopener">${esc(z ? "打开官网排期表" : "Open the official bulletin")}</a></p>`;
+    if (!visa) { if (!visaTried) return `<p class="tl-note">${esc(z ? "载入中…" : "Loading…")}</p>`;
+      const OFF = "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html";
+      return z ? `<div class="vb-guide">
+        <p class="tl-note">美国国务院的网站不让程序自动读取，所以这里没办法直接显示数字。点下面按钮打开官方排期表，按下面的方法看，一分钟就能看懂。</p>
+        <p><a class="btn" href="${OFF}" target="_blank" rel="noopener">打开本月官方排期表</a></p>
+        <h3>怎么看排期表（中国大陆出生）</h3>
+        <ol class="ad-steps">
+          <li>打开后点最新月份，例如「Visa Bulletin For November 2026」。</li>
+          <li><b>亲属移民</b>：找「FAMILY-SPONSORED」表格；<b>职业移民</b>：找「EMPLOYMENT-BASED」表格。</li>
+          <li>每个表都有两张：<b>A. FINAL ACTION DATES</b>（排到了，可以批准）和 <b>B. DATES FOR FILING</b>（可以先递交材料）。</li>
+          <li>看「<b>CHINA-mainland born</b>」那一列，找到你的类别那一行。</li>
+          <li>那一格的日期比你的优先日（I-130 / I-140 收据上的 Priority Date）<b>晚</b>，就说明排到了；写「C」表示不用排。</li>
+        </ol>
+        <h3>常见类别</h3>
+        <ul class="vb-cats">
+          <li><b>F1</b> 公民的未婚成年子女</li><li><b>F2A</b> 绿卡持有人的配偶和未成年子女</li><li><b>F2B</b> 绿卡持有人的未婚成年子女</li>
+          <li><b>F3</b> 公民的已婚子女</li><li><b>F4</b> 公民的兄弟姐妹</li>
+          <li><b>EB-1</b> 杰出人才、跨国高管</li><li><b>EB-2</b> 高学历、NIW</li><li><b>EB-3</b> 技术工人、专业人员</li><li><b>EB-5</b> 投资移民</li>
+        </ul>
+        <p class="tl-note">在美国境内办身份调整的，用 A 表还是 B 表，要看 USCIS 每月公布的说明。拿不准请问移民律师，华脉黄页「律师移民」有很多。</p>
+      </div>` : `<p class="tl-note">The State Department site can't be read automatically. Open the official bulletin:</p><p><a class="btn" href="${OFF}" target="_blank" rel="noopener">Open this month's Visa Bulletin</a></p>`; }
     const NAMES = { F1: "F1 公民的未婚成年子女", F2A: "F2A 绿卡持有人的配偶和未成年子女", F2B: "F2B 绿卡持有人的未婚成年子女", F3: "F3 公民的已婚子女", F4: "F4 公民的兄弟姐妹",
       "1st": "EB-1 杰出人才", "2nd": "EB-2 高学历/特殊能力", "3rd": "EB-3 专业/技术工人", "Other Workers": "EB-3 其他工人", "4th": "EB-4 特殊移民", "5th": "EB-5 投资移民（非预留）" };
     const tbl = (rows, title) => rows && rows.length ? `<section class="tl-visa"><h3>${esc(title)}</h3><div class="tl-tbl"><table><thead><tr><th>${esc(z ? "类别" : "Category")}</th><th>${esc(z ? "排期（批准日）" : "Final action")}</th><th>${esc(z ? "递件日" : "Dates for filing")}</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(z ? (NAMES[r.c] || r.c) : r.c)}</td><td>${esc(r.fa || "—")}</td><td>${esc(r.df || "—")}</td></tr>`).join("")}</tbody></table></div></section>` : "";
