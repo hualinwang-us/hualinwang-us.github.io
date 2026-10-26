@@ -11,6 +11,8 @@ import android.content.ContentValues;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.Toast;
+import android.speech.tts.TextToSpeech;
+import java.util.Locale;
 import java.io.OutputStream;
 import android.view.View;
 import android.webkit.CookieManager;
@@ -37,8 +39,11 @@ public class MainActivity extends Activity {
     final String token = java.util.UUID.randomUUID().toString();
     boolean ourPage(String url) { try { Uri u = Uri.parse(url); return "https".equals(u.getScheme()) && (HOST.equals(u.getHost()) || ("www." + HOST).equals(u.getHost())); } catch (Exception e) { return false; } }
 
+    TextToSpeech tts; boolean ttsReady = false;
+    @Override protected void onDestroy() { if (tts != null) tts.shutdown(); super.onDestroy(); }
     @Override protected void onCreate(Bundle saved) {
         super.onCreate(saved);
+        tts = new TextToSpeech(this, st -> { if (st == TextToSpeech.SUCCESS) { tts.setLanguage(Locale.US); tts.setSpeechRate(0.85f); ttsReady = true; } });
         web = new WebView(this);
         web.setBackgroundColor(0xFFFFFFFF); // same white as the launch screen, so there is no flash
         setContentView(web);
@@ -113,6 +118,13 @@ public class MainActivity extends Activity {
             runOnUiThread(() -> startActivity(Intent.createChooser(send, "分享到")));
         }
         @JavascriptInterface public String version() { return BuildConfig.VERSION_NAME; }
+        /** Reads English text aloud with the phone's own voice (WebView has no speech of its own). */
+        @JavascriptInterface public boolean speak(String text) {
+            if (text == null || text.length() > 500 || tts == null) return false;
+            if (!ttsReady) { runOnUiThread(() -> Toast.makeText(MainActivity.this, "朗读功能正在准备，请再按一次", Toast.LENGTH_SHORT).show()); return false; }
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "hm");
+            return true;
+        }
         /** Saves a picture (data: URL) to the phone's Photos, in a 华脉 album. */
         @JavascriptInterface public void saveImage(String dataUrl, String name, String tok) { if (!token.equals(tok)) return; Uri u = store(dataUrl, name); runOnUiThread(() -> Toast.makeText(MainActivity.this, u != null ? "已保存到相册" : "保存失败", Toast.LENGTH_SHORT).show()); }
         /** Saves the picture, then opens the share sheet with it (WeChat, WhatsApp...). */

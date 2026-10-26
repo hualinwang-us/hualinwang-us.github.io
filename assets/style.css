@@ -1486,3 +1486,4 @@ body{overflow-wrap:break-word}.art,.art-sum,.art p,.post-body,.rows li,.nl li{ov
 .wx-days span{font-size:12px;opacity:.9}.wx-days i{font-style:normal;font-size:18px}
 .wx-days b{font-size:14px;font-weight:800}.wx-days em{font-style:normal;font-weight:500;opacity:.8}
 @media (max-width:400px){.wx-days>div{min-width:52px;padding:4px}.wx-emo{font-size:28px}}
+.say-note{display:block;color:var(--accent);font-size:12.5px;margin-top:4px}

@@ -414,6 +414,23 @@
     return false;
   }
 
+  /* read English aloud: Android app → phone's own voice; browsers → Web Speech */
+  function sayEn(text, btn) {
+    const note = msg => { const host = btn.closest("li") || btn.parentNode; let n = host.querySelector(".say-note"); if (!n) { n = document.createElement("small"); n.className = "say-note"; host.appendChild(n); } n.textContent = msg; };
+    try { if (window.HuaLinApp && HuaLinApp.speak) { if (!HuaLinApp.speak(text)) note("再按一次试试。"); return; } } catch (e) {}
+    const ss = window.speechSynthesis;
+    if (!ss || !window.SpeechSynthesisUtterance) { note("这个浏览器不支持朗读，请用 Chrome 或 Safari 打开。"); return; }
+    try {
+      ss.cancel();
+      const u = new SpeechSynthesisUtterance(text); u.lang = "en-US"; u.rate = 0.85; u.volume = 1;
+      const vs = ss.getVoices(); const v = vs.find(x => /en[-_]US/i.test(x.lang)) || vs.find(x => /^en/i.test(x.lang)); if (v) u.voice = v;
+      let started = false; u.onstart = () => { started = true; };
+      ss.speak(u);
+      setTimeout(() => { if (!started && !ss.speaking) note("没有声音？请把手机音量调大，iPhone 请关掉静音键。"); }, 1500);
+    } catch (e) { note("朗读失败，请稍后再试。"); }
+  }
+  if (window.speechSynthesis) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices(); } catch (e) {} }
+
   /* ---------- render a tool page ---------- */
   function render(id, el, lang) {
     const z = lang === "zh", x = TOOLS[id];
@@ -443,7 +460,7 @@
     el.onclick = e => {
       if (id === "transit") { transitClick(e, el); }
       if (e.target.closest("[data-scamshare]")) { if (window.HLShare) window.HLShare.open({ url: location.origin + "/#t-scam", title: "专骗华人的 14 种骗局，转给爸妈看", text: "防诈骗提醒：华人最常遇到的 14 种骗局，骗子怎么说、怎么识破 - 华脉" }); return; }
-      const s = e.target.closest("[data-say]"); if (s) { try { const u = new SpeechSynthesisUtterance(s.dataset.say); u.lang = "en-US"; u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} return; }
+      const s = e.target.closest("[data-say]"); if (s) { sayEn(s.dataset.say, s); return; }
       const pt = e.target.closest("[data-ptab]"); if (pt) { const q = pt.dataset.ptab === "quiz"; el.querySelector("#ptLearn").hidden = q; el.querySelector("#ptQuiz").hidden = !q; el.querySelectorAll(".tl-tabs [data-ptab]").forEach(b => b.classList.toggle("on", b.dataset.ptab === pt.dataset.ptab)); el.querySelector(".tl-tabs").scrollIntoView({ behavior: "smooth", block: "start" }); if (q && !Q.list.length) { startQuiz("permit", "20"); paint(); } return; }
       const st = e.target.closest("[data-qstart]"); if (st) { const [k, m] = st.dataset.qstart.split(":"); startQuiz(k, m); paint(); el.querySelector("#tlQuiz").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
       const o = e.target.closest("[data-opt]"); if (o && Q.picked < 0) { Q.picked = Number(o.dataset.opt); if (Q.picked === Q.list[Q.i].ok) Q.right++; paint(); return; }
