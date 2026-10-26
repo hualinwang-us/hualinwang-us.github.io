@@ -1,0 +1,17 @@
+name: probe-stats
+on: { push: { branches: [main], paths: [".github/workflows/probe-stats.yml"] } }
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - env: { K: "${{ secrets.SUPABASE_SERVICE_KEY }}" }
+        run: |
+          curl -s "https://wkiviznpdcjubyqfovfx.supabase.co/rest/v1/page_hits?select=day,path,app,n&order=day.desc&limit=5000" -H "apikey: $K" -H "Authorization: Bearer $K" > h.json
+          node -e '
+          const h=require("./h.json");const by=(f)=>{const m={};for(const r of h){const k=f(r);m[k]=(m[k]||0)+r.n;}return Object.entries(m).sort((a,b)=>b[1]-a[1]);};
+          console.log("::notice title=total::"+h.reduce((a,r)=>a+r.n,0)+" app="+h.filter(r=>r.app).reduce((a,r)=>a+r.n,0));
+          console.log("::notice title=days::"+JSON.stringify(by(r=>r.day).sort()));
+          console.log("::notice title=paths::"+JSON.stringify(by(r=>r.path).slice(0,25)));'
+          git config user.name bot; git config user.email bot@x; git rm -q .github/workflows/probe-stats.yml; git commit -qm "remove probe"; git pull -q --rebase; git push -q
