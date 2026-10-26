@@ -87,11 +87,18 @@ Deno.serve(async (req) => {
       const del = first(d?.Siri?.ServiceDelivery?.StopMonitoringDelivery);
       const visits = (del?.MonitoredStopVisit || []).map((v: any) => {
         const j = v.MonitoredVehicleJourney || {}, c = j.MonitoredCall || {};
+        const loc = j.VehicleLocation || {};
         return { route: first(j.PublishedLineName) || "", dest: first(j.DestinationName) || "", eta: c.ExpectedArrivalTime || c.AimedArrivalTime || "",
-          away: c.Extensions?.Distances?.PresentableDistance || first(c.ArrivalProximityText) || "", stops: c.Extensions?.Distances?.StopsFromCall ?? null };
+          away: c.Extensions?.Distances?.PresentableDistance || first(c.ArrivalProximityText) || "", stops: c.Extensions?.Distances?.StopsFromCall ?? null,
+          vid: String(j.VehicleRef || "").replace(/^MTA[ _]?NYCT_/, ""), lat: Number(loc.Latitude) || null, lon: Number(loc.Longitude) || null, bearing: Number(j.Bearing) || 0,
+          meters: c.Extensions?.Distances?.DistanceFromCall ?? null };
       });
       const err = first(del?.ErrorCondition?.Description) || "";
-      return json({ list: visits, note: err });
+      // the stop's own position (for the map), cached for a day
+      let at = null;
+      try { const sd: any = await cached("stop:" + stop, 86400e3, () => busTime(`/api/where/stop/MTA_${stop}.json`, {}));
+        const e = sd?.data?.entry || sd?.data; if (e && e.lat) at = { lat: e.lat, lon: e.lon, name: e.name || "", dir: e.direction || "" }; } catch { /* map just centers on the buses */ }
+      return json({ list: visits, note: err, stop: at });
     }
     return json({ error: "unknown op" }, 400);
   } catch (e) {

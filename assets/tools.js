@@ -352,6 +352,49 @@
     const seen = new Set(); return out.sort((a, b) => a.t - b.t).filter(v => { const k = v.t + v.dest; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 15);
   }
   const stamp = () => `<div class="tr-stamp"><span>🕒 更新于 <b>${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false, timeZone: "America/New_York" })}</b> · 每 30 秒自动刷新</span><button type="button" class="linkbtn" data-trrefresh>立即刷新</button></div>`;
+  /* live bus map: the stop, you, and the buses on their way (they glide to each new position) */
+  let leafletP = null;
+  function loadLeaflet() {
+    if (window.L && window.L.map) return Promise.resolve();
+    return leafletP || (leafletP = new Promise((ok, no) => {
+      const c = document.createElement("link"); c.rel = "stylesheet"; c.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"; document.head.appendChild(c);
+      const j = document.createElement("script"); j.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"; j.onload = ok; j.onerror = no; document.head.appendChild(j);
+    }));
+  }
+  function glide(mk, to, ms) {
+    const from = mk.getLatLng(), t0 = performance.now();
+    if (from.distanceTo(to) > 3000) { mk.setLatLng(to); return; }
+    const step = now => { const k = Math.min(1, (now - t0) / ms), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      mk.setLatLng([from.lat + (to[0] - from.lat) * e, from.lng + (to[1] - from.lng) * e]); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  async function busMap(el, s, d) {
+    const box = el.querySelector("#trMap"); if (!box) return;
+    try { await loadLeaflet(); } catch (e) { box.innerHTML = `<span class="tr-map-load">地图暂时打不开</span>`; return; }
+    const L = window.L, stop = d.stop || (s.lat ? { lat: s.lat, lon: s.lon } : null);
+    const buses = (d.list || []).filter(v => v.lat && v.lon);
+    if (!TR.map || TR.mapBox !== box) {
+      box.innerHTML = "";
+      const m = L.map(box, { zoomControl: true, attributionControl: true, scrollWheelZoom: false });
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", { maxZoom: 19, subdomains: "abcd", attribution: "© OpenStreetMap © CARTO" }).addTo(m);
+      TR.map = m; TR.mapBox = box; TR.buses = {};
+      if (stop) { TR.stopMk = L.marker([stop.lat, stop.lon], { icon: L.divIcon({ className: "tr-stop-ic", html: "<span>站</span>", iconSize: [34, 34], iconAnchor: [17, 17] }), zIndexOffset: 1000 }).addTo(m).bindTooltip(esc(s.name), { direction: "top", offset: [0, -16] }); }
+      if (TR.pos) L.circleMarker([TR.pos.lat, TR.pos.lon], { radius: 8, color: "#fff", weight: 3, fillColor: "#2f6fd6", fillOpacity: 1 }).addTo(m).bindTooltip("你在这里");
+      const pts = [stop && [stop.lat, stop.lon], ...buses.slice(0, 3).map(v => [v.lat, v.lon])].filter(Boolean);
+      if (pts.length > 1) m.fitBounds(pts, { padding: [36, 36], maxZoom: 16 }); else if (pts.length) m.setView(pts[0], 16); else m.setView([40.7128, -74.006], 12);
+    }
+    const m = TR.map, seen = new Set();
+    buses.forEach(v => {
+      const key = v.vid || (v.route + v.eta); seen.add(key);
+      const mins = v.eta ? Math.max(0, Math.round((Date.parse(v.eta) - Date.now()) / 60000)) : null;
+      const html = `<div class="tr-bus"><i style="transform:rotate(${90 - (v.bearing || 0)}deg)">➤</i><b>${esc(v.route)}</b>${mins != null ? `<em>${mins ? mins + "分" : "到"}</em>` : ""}</div>`;
+      const icon = L.divIcon({ className: "tr-bus-ic", html, iconSize: [72, 30], iconAnchor: [36, 15] });
+      if (TR.buses[key]) { TR.buses[key].setIcon(icon); glide(TR.buses[key], [v.lat, v.lon], 2500); }
+      else TR.buses[key] = L.marker([v.lat, v.lon], { icon }).addTo(m);
+    });
+    Object.keys(TR.buses).forEach(k => { if (!seen.has(k)) { m.removeLayer(TR.buses[k]); delete TR.buses[k]; } });
+    if (!buses.length && !stop) box.innerHTML = `<span class="tr-map-load">暂时没有车辆位置</span>`;
+  }
   function transitHtml() {
     return `<div class="tl-tabs" role="tablist">${[["bus", "公交车"], ["lirr", "长岛铁路"], ["mnr", "北方铁路"]].map(([k, n]) => `<button type="button" data-trmode="${k}"${TR.mode === k ? ' class="on"' : ""}>${esc(n)}</button>`).join("")}</div><div id="trBox"></div>
       <p class="tl-note">数据来自纽约大都会运输署（MTA）实时数据，每 30 秒自动刷新。实际以车站显示和广播为准。定位只用来找附近车站，不会保存。</p>`;
@@ -369,15 +412,16 @@
         return;
       }
       const s = TR.stopSel;
-      box.innerHTML = `<div class="tr-head"><button type="button" class="linkbtn" data-trback>← 换一个站</button><h3>${esc(s.name)}</h3><span>${esc(s.routes ? s.routes.join("、") : "")}</span></div><div id="trList"><div class="skel"><i></i><i></i><i></i></div></div>`;
+      box.innerHTML = `<div class="tr-head"><button type="button" class="linkbtn" data-trback>← 换一个站</button><h3>${esc(s.name)}</h3><span>${esc(s.routes ? s.routes.join("、") : "")}</span></div><div class="tr-map" id="trMap"><span class="tr-map-load">地图加载中…</span></div><div id="trList"><div class="skel"><i></i><i></i><i></i></div></div>`;
       const load = async () => {
         try {
           const d = await fnGet({ op: "bus", stop: s.id });
+          busMap(el, s, d);
           const L = el.querySelector("#trList"); if (!L) return;
           L.innerHTML = stamp() + (d.list.length ? `<ul class="tr-arr">${d.list.map(v => { const m = v.eta ? Math.round((Date.parse(v.eta) - Date.now()) / 60000) : null; return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>往 ${esc(v.dest)}</b><span>${esc(/at stop/i.test(v.away || "") ? "已到站" : /approaching/i.test(v.away || "") ? "马上进站" : v.stops != null ? "还有 " + v.stops + " 站" : (v.away || "").replace(/miles? away/i, "英里外"))}</span></div><em>${m == null ? "—" : m <= 0 ? "到站" : m + " 分钟"}${m != null && m > 0 ? `<small>约 ${new Date(Date.parse(v.eta)).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "America/New_York" })} 到</small>` : ""}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">${esc(d.note || "现在没有即将到站的车。")}</p>`);
         } catch (e) { const L = el.querySelector("#trList"); if (L) L.innerHTML = `<p class="tl-note">暂时拿不到数据（${esc(e.message)}），请稍后再试。</p>`; }
       };
-      TR.reload = load; load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 30000);
+      TR.map = null; TR.reload = load; load(); TR.timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(TR.timer); load(); }, 20000);
       return;
     }
     // rail
@@ -406,7 +450,7 @@
     }
     const st = e.target.closest("[data-trstop]"); if (st) { TR.stopSel = TR.stops[Number(st.dataset.trstop)]; paintTransit(el); return true; }
     if (e.target.closest("[data-trrefresh]")) { const b = e.target.closest("[data-trrefresh]"); b.textContent = "刷新中…"; if (TR.reload) TR.reload(); return true; }
-    if (e.target.closest("[data-trback]")) { TR.stopSel = null; paintTransit(el); return true; }
+    if (e.target.closest("[data-trback]")) { TR.stopSel = null; if (TR.map) { TR.map.remove(); TR.map = null; } paintTransit(el); return true; }
     if (e.target.closest("[data-trnear]")) {
       try { const p = await locate(); const L = (TR.rail[TR.mode] || []); let best = null, bd = 1e9; for (const s of L) { const d = dist(p, s); if (d < bd) { bd = d; best = s; } } if (best) { TR.railStop = best.id; paintTransit(el); } } catch (er) {}
       return true;
