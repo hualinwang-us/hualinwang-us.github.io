@@ -1,0 +1,9 @@
+name: Live check
+on: workflow_dispatch
+jobs:
+  l:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          h=$(curl -s "https://huamai88.com/?x=$RANDOM")
+          echo "::notice title=live::home-top=$(echo "$h" | grep -c 'class="home-top"') build=$(echo "$h" | grep -o 'hl-build" content="[^"]*' ) cache=$(curl -sI https://huamai88.com/ | grep -i 'cache-control\|age:' | tr '\n' ' ')"
