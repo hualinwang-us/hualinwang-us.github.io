@@ -1,0 +1,17 @@
+name: Remove old app releases
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          latest=$(gh api repos/$R/releases/latest -q .tag_name)
+          echo "keeping $latest"
+          for t in $(gh api "repos/$R/releases?per_page=100" -q '.[].tag_name'); do
+            if [ "$t" != "$latest" ]; then gh release delete "$t" -R "$R" --yes --cleanup-tag && echo "::notice::deleted $t"; fi
+          done
