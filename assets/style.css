@@ -1487,3 +1487,13 @@ body{overflow-wrap:break-word}.art,.art-sum,.art p,.post-body,.rows li,.nl li{ov
 .wx-days b{font-size:14px;font-weight:800}.wx-days em{font-style:normal;font-weight:500;opacity:.8}
 @media (max-width:400px){.wx-days>div{min-width:52px;padding:4px}.wx-emo{font-size:28px}}
 .say-note{display:block;color:var(--accent);font-size:12.5px;margin-top:4px}
+/* weather pill left of 登录 on phones */
+#wxNow .wx-e{margin-right:3px}
+@media (max-width:560px){
+  .util-mid{display:flex!important;flex:0 0 auto;margin-right:auto;overflow:visible}
+  .util-mid #fxNow,.util-mid #pulseMini{display:none!important}
+  #wxNow{white-space:nowrap;padding:2px 9px}
+  #wxNow .wx-c,#wxNow .wx-d{display:none}
+}
+@media (max-width:440px){.util-app{display:none!important}}
+@media (max-width:370px){.util-fz{display:none!important}#wxNow{padding:2px 7px}}

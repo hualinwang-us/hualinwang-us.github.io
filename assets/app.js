@@ -611,7 +611,10 @@
         (w.days || []).slice(0, 3).map((d, i) => `<div><b>${esc(i === 0 ? t("today") : day(d.d))}</b><span>${esc(name(d.code))}</span><span>${Math.round(d.hi)}° / ${Math.round(d.lo)}°</span></div>`).join("");
       $("#wxBlock").hidden = false;
       renderWxStrip();
-      const wn = $("#wxNow"); wn.hidden = false; wn.innerHTML = `${lang === "zh" ? "纽约" : "NYC"} <b>${Math.round(w.now.temp)}°F</b> ${esc(name(w.now.code))}`;
+      const emo = c => c === 0 ? "☀️" : c <= 2 ? "🌤️" : c === 3 ? "☁️" : c <= 48 ? "🌫️" : c <= 67 ? "🌧️" : c <= 77 ? "❄️" : c <= 82 ? "🌦️" : "⛈️";
+      const d0 = (w.days || [])[0];
+      const wn = $("#wxNow"); wn.hidden = false; wn.title = d0 ? `${t("today")} ${Math.round(d0.hi)}° / ${Math.round(d0.lo)}°` : "";
+      wn.innerHTML = `<span class="wx-e" aria-hidden="true">${emo(w.now.code)}</span><span class="wx-c">${lang === "zh" ? "纽约" : "NYC"} </span><b>${Math.round(w.now.temp)}°F</b><span class="wx-d"> ${esc(name(w.now.code))}${d0 ? ` · ${Math.round(d0.hi)}°/${Math.round(d0.lo)}°` : ""}</span>`;
     }
   }
 
@@ -624,7 +627,7 @@
     const day = (d, i) => i === 0 ? t("today") : new Date(d + "T12:00:00").toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { weekday: "short" });
     const html = `<div class="wx-now"><span class="wx-emo">${emo(w.now.code)}</span><div><b>${Math.round(w.now.temp)}°F</b><small>${C(w.now.temp)}°C</small></div><div class="wx-where"><b>${esc(lang === "zh" ? "纽约" : "New York")}</b><span>${esc(name(w.now.code))}</span></div></div>
       <div class="wx-days">${(w.days || []).slice(0, 3).map((d, i) => `<div><span>${esc(day(d.d, i))}</span><i>${emo(d.code)}</i><b>${Math.round(d.hi)}°<em>/${Math.round(d.lo)}°</em></b></div>`).join("")}</div>`;
-    ["#homeWx", "#ahWx"].forEach(id => { const el = $(id); if (el) { el.innerHTML = html; el.hidden = false; } });
+    void html; // weather now lives in the top strip, left of 登录 (see #wxNow)
   }
 
   /* ---------- render: ads ---------- */
