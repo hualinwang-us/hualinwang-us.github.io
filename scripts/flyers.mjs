@@ -33,9 +33,10 @@ const STORES = [
   // 大华兴: site certificate is broken, so browsers can't load its images directly; we keep a copy.
   { id: "amart", name: "大华兴超市 A Mart", en: "A Mart", areas: ["li"], locs: ["长岛 Hicksville"], page: "https://www.amart-ny.com/index.php/weekly-special/", home: "https://www.amart-ny.com/index.php/about/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u), rehost: true },
   { id: "littleneck", name: "好邻居超市", en: "Little Neck Supermarket", areas: ["ln"], locs: ["小颈 Little Neck"], page: "https://littlenecksupermarket.com/", home: "https://littlenecksupermarket.com/en/weekly-specials/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
-  { id: "walfood", name: "万华超市 WalFood", en: "WalFood", areas: ["ln"], locs: ["湾边 Bayside"], page: "https://www.walfoodmarket.com/", home: "https://www.walfoodmarket.com/about", keep: u => /wixstatic\.com\/media\/c55d0c_/.test(u) },
+  { id: "walfood", name: "万华超市 WalFood", en: "WalFood", areas: ["ln"], locs: ["湾边 Bayside"], page: "https://www.walfoodmarket.com/", home: "https://www.walfoodmarket.com/about", keep: u => /wixstatic\.com\/media\/c55d0c_/.test(u), max: 1 }, // first picture on the page is the flyer; the rest are QR codes / store photos
   { id: "99ranch", name: "99大华超市", en: "99 Ranch", areas: ["fl", "li"], locs: ["法拉盛", "长岛 Westbury"], link: "https://www.99ranch.com/" },
-  { id: "skyfoods", name: "昌发超市 Sky Foods", en: "Sky Foods", areas: ["fl", "el"], locs: ["法拉盛", "艾姆赫斯特"], link: "https://www.skyfoods.com/" },
+  // 昌发: site often blocks automated visits (429); tried every run, shown when it works.
+  { id: "skyfoods", name: "昌发超市 Sky Foods", en: "Sky Foods", areas: ["fl", "el"], locs: ["法拉盛", "艾姆赫斯特"], page: "https://skyfoods.com/", home: "https://skyfoods.com/about-us/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
   { id: "newage", name: "兴旺超市 New Age", en: "New Age Market", areas: ["fl"], locs: ["法拉盛"], link: "https://newagemarket.net/" },
   { id: "superfl", name: "新飞龙超市", en: "Super FL Mart", areas: ["li"], locs: ["长岛 Mineola"], link: "https://super-fl-mart.com/" },
 ];
@@ -56,7 +57,7 @@ for (const s of STORES) {
       const ym = u => { const m = u.match(/\/uploads\/(20\d\d)\/(\d\d)\//); return m ? new Date(+m[1], +m[2] - 1, 1).getTime() : null; };
       const fresh = imgs.filter(u => { const t = ym(u); return t == null || Date.now() - t < 45 * 864e5; });
       if (fresh.length) imgs.splice(0, imgs.length, ...fresh);
-      o.imgs = imgs.slice(0, 12).map(u => /wixstatic\.com\/media\//.test(u) ? u.replace(/(\/media\/([^\/]+))$/, "$1/v1/fit/w_1400,h_6000,q_85/$2") : u);
+      o.imgs = imgs.slice(0, s.max || 12).map(u => /wixstatic\.com\/media\//.test(u) ? u.replace(/(\/media\/([^\/]+))$/, "$1/v1/fit/w_1400,h_6000,q_85/$2") : u);
       if (!o.imgs.length) throw new Error("no images found");
       if (s.rehost) { // save a copy in the site (data/flyer-img/) and point to it
         await fs.mkdir("data/flyer-img", { recursive: true });
