@@ -1139,7 +1139,7 @@
 
   /* ---------- launch screen: remove it after it fades so it never blocks taps ---------- */
   if (document.documentElement.classList.contains("hl-launch")) {
-    setTimeout(() => { document.documentElement.classList.remove("hl-launch"); const sp = $("#splash"); if (sp) sp.remove(); }, document.documentElement.classList.contains("hl-quick") ? 2200 : 5000);
+    setTimeout(() => { document.documentElement.classList.remove("hl-launch"); const sp = $("#splash"); if (sp) sp.remove(); }, document.documentElement.classList.contains("hl-quick") ? 2400 : 5000);
     $("#splash").addEventListener("click", () => { document.documentElement.classList.remove("hl-launch"); });
   }
   /* ---------- app install (PWA) ---------- */

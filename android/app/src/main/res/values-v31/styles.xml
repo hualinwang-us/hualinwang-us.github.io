@@ -3,8 +3,8 @@
     <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">#121A2B</item>
         <item name="android:navigationBarColor">#FFFFFF</item>
-        <item name="android:windowBackground">#0E1320</item>
-        <item name="android:windowSplashScreenBackground">#0E1320</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+        <item name="android:windowSplashScreenBackground">#FFFFFF</item>
         <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
     </style>
 </resources>

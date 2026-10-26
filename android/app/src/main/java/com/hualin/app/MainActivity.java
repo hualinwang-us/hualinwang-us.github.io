@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
     @Override protected void onCreate(Bundle saved) {
         super.onCreate(saved);
         web = new WebView(this);
-        web.setBackgroundColor(0xFF0E1320); // same red as the launch screen, so there's no white flash
+        web.setBackgroundColor(0xFFFFFFFF); // same white as the launch screen, so there is no flash
         setContentView(web);
         WebSettings s = web.getSettings();
         s.setJavaScriptEnabled(true);
