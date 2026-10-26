@@ -1454,3 +1454,10 @@ button.cs-img{padding:0;width:100%;cursor:zoom-in;font:inherit}
 @media (max-width:560px){.util-mid{display:none!important}.util-in{justify-content:flex-end;gap:6px}.util-in>:first-child:not(.util-mid){margin-right:auto}}
 @media (max-width:400px){.util-share{padding:2px 9px}.util .seg button{padding-inline:9px}}
 @media (max-width:350px){.util-fz{display:none}}
+/* floating "back to home" button (all platforms; hidden on the home page) */
+.fab-home{position:fixed;z-index:21;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(82px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:56px;height:56px;border-radius:50%;background:#1B1F2A;color:#fff;text-decoration:none;box-shadow:0 10px 24px -8px rgba(27,31,42,.6);font-size:11px;font-weight:700}
+.fab-home[hidden]{display:none}
+.fab-home svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:719px){.fab-home{bottom:calc(140px + env(safe-area-inset-bottom,0px));width:52px;height:52px}}
+body.noscroll .fab-home{display:none}
+@media (prefers-color-scheme:dark){.fab-home{background:#f3ead8;color:#1B1F2A}}
