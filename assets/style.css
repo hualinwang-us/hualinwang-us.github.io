@@ -1467,3 +1467,8 @@ body{overflow-wrap:break-word}.art,.art-sum,.art p,.post-body,.rows li,.nl li{ov
 .sale-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;margin:10px 0 14px;background:var(--line-2);border-radius:14px;max-width:520px}
 .sale-tabs a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;font-weight:800;font-size:16px;color:var(--muted);text-decoration:none}
 .sale-tabs a.on{background:var(--paper);color:var(--accent);box-shadow:0 2px 8px -3px rgba(27,31,42,.35)}
+/* home order: 福利自测 → 超市特价 → 同城服务 */
+.home-top{margin-top:16px;display:grid;gap:14px}
+.home-top .htabs{margin:0}
+.home-cs{margin-bottom:2px}
+@media (min-width:720px){.home-tools .ah-tools{grid-template-columns:repeat(8,minmax(0,1fr))}}

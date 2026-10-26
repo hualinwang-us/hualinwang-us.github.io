@@ -208,7 +208,7 @@
     if (n.status !== "fulfilled" && !loadData.retried) { loadData.retried = true; setTimeout(() => loadData().catch(() => {}), 3000); } // phone network hiccup: try once more
     news = news || { sections: {} };
     // Each part renders on its own, so one problem can't blank out the rest of the page.
-    [renderAppHome, renderNews, renderPulse, renderPortal, renderNewcomer, renderLocateBar, renderEvents, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
+    [renderAppHome, renderHomeTools, renderNews, renderPulse, renderPortal, renderNewcomer, renderLocateBar, renderEvents, renderMarket, renderAds, renderNewsView, renderArticle, renderGuides, renderDeals, renderStocksHome].forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
     if (postsLoaded) { try { renderPostsAll(); } catch (e) { console.error(e); } }
   }
 
@@ -251,7 +251,7 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(el => (el.placeholder = t(el.dataset.i18nPh)));
     $("#today").textContent = new Date().toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric", weekday: "long", timeZone: "America/New_York" });
     $("#fBoard").innerHTML = GROUPS.map(g => `<optgroup label="${esc(lang === "zh" ? g.zh : g.en)}">${g.boards.map(b => `<option value="${b[0]}">${esc(lang === "zh" ? b[2] : b[3])}</option>`).join("")}</optgroup>`).join("");
-    renderTabs(); renderDir(); try { renderAppHome(); renderRegionBtn(); renderPortal(); renderNewcomer(); renderLocateBar(); if (route.view === "events") renderEvents(); if (route.view === "tools") renderTools(); } catch (e) {} try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "yp") renderYP(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
+    renderTabs(); renderDir(); try { renderAppHome(); renderHomeTools(); renderRegionBtn(); renderPortal(); renderNewcomer(); renderLocateBar(); if (route.view === "events") renderEvents(); if (route.view === "tools") renderTools(); } catch (e) {} try { showAppUI(); } catch (e) {} if (route.view === "disc") renderDisc(); if (route.view === "ads") renderAdsPage(); if (route.view === "flyer") renderFlyer(); if (route.view === "stocks") renderStocks(); if (route.view === "yp") renderYP(); stkHomeKey = ""; renderStocksHome(); if (route.view === "article") renderArticle(); try { renderDeals(); } catch (e) {} renderGuides(); if (route.view === "check" && $("#ckOut").innerHTML) showCheck(); renderNews(); renderMarket(); renderAds(); renderPostsAll(); renderNewsView(); renderAdContact();
   }
   function setLang(l) { lang = l; try { localStorage.setItem("hl-lang", l); } catch (e) {} applyLang(); applyScript(); }
 
@@ -402,6 +402,13 @@
   }
   document.addEventListener("click", e => { const b = e.target.closest("[data-trshare]"); if (!b || !window.HLTravel) return; const n = HLTravel.title(b.dataset.trshare); HLShare.open({ url: HLC.siteBase() + "#tr-" + b.dataset.trshare, title: n + " 省钱攻略", text: n + " 省钱攻略 - 华脉" }); });
   const TOOL_COL = { go: "#2f6fd6", scam: "#c8302a", imm: "#7a4fd0", drive: "#1f9d74", loan: "#d98a1c", afford: "#b8562a", eng: "#2a8fb8", life: "#5d6272" };
+  // Website home: the same 8 most-used tools as the app home, third on the page.
+  function renderHomeTools() {
+    const el = $("#homeTools"); const T = window.HLTools; if (!el || !T) return;
+    const zh = lang === "zh", TOP = ["transit", "scam", "civics", "permit", "visa", "mortgage", "phrases", "tip"];
+    const catOf = id => (T.CATS.find(c => c.tools.includes(id)) || {}).id;
+    el.innerHTML = `<div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div><div class="ah-tools">${TOP.filter(id => T.TOOLS[id]).map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[catOf(id)] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")}</div>`;
+  }
   function renderAppHome() {
     const el = $("#appHome"); if (!el || !IS_APP) return;
     document.documentElement.classList.add("app-lite"); el.hidden = false;
