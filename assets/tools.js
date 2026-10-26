@@ -455,7 +455,7 @@
         const L = el.querySelector("#trList"); if (!L) return;
         try {
           const d = await fnGet({ op: "subway", stop: TR.subStop, routes: cur.r.join(",") });
-          const col = dir => { const a = (d.list || []).filter(v => v.dir === dir).slice(0, 8); return a.length ? `<ul class="tr-arr">${a.map(v => { const m = Math.round((v.t * 1000 - Date.now()) / 60000); return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>${v.dest ? "往 " + esc(v.dest) : ""}</b><span>${dir === "N" ? "上城 / 往北" : "下城 / 往南"}</span></div><em>${m <= 0 ? "进站" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">暂时没有车。</p>`; };
+          const col = dir => { const a = (d.list || []).filter(v => v.dir === dir).slice(0, 8); return a.length ? `<ul class="tr-arr">${a.map(v => { const m = Math.round((v.t * 1000 - Date.now()) / 60000); return `<li><span class="tr-rt">${esc(v.route)}</span><div><b>${(() => { const n = ((TR.sub || []).find(x => x.id === String(v.dest || "").replace(/[NS]$/, "")) || {}).n; return n ? "往 " + esc(n) : ""; })()}</b><span>${dir === "N" ? "上城 / 往北" : "下城 / 往南"}</span></div><em>${m <= 0 ? "进站" : m + " 分钟"}</em></li>`; }).join("")}</ul>` : `<p class="tl-note">暂时没有车。</p>`; };
           L.innerHTML = stamp() + `<h3 class="cal-h">⬆️ 上城方向（Uptown / 往北）</h3>${col("N")}<h3 class="cal-h">⬇️ 下城方向（Downtown / 往南）</h3>${col("S")}<p class="tl-note">7 号线「上城方向」是开往法拉盛 Main St。数据来自 MTA 官方实时系统。</p>`;
         } catch (e) { L.innerHTML = `<p class="tl-note">地铁实时数据马上上线，请稍后再试。</p>`; }
       };

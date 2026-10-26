@@ -1,0 +1,14 @@
+name: probe-city
+on: { push: { branches: [main], paths: [".github/workflows/probe-city.yml"] } }
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          S=https://data.cityofnewyork.us/resource
+          echo "::notice title=open::$(curl -s "$S/vy5i-a666.json?\$select=count(*)&\$where=lottery_status='Active'%20AND%20lottery_end_date%3E='2026-10-26'")"
+          echo "::notice title=active::$(curl -s "$S/vy5i-a666.json?\$select=count(*)&\$where=lottery_status='Active'")"
+          echo "::notice title=maxend::$(curl -s "$S/vy5i-a666.json?\$select=max(lottery_end_date),max(lottery_start_date)")"
+          git config user.name bot; git config user.email bot@x; git rm -q .github/workflows/probe-city.yml; git commit -qm "remove probe"; git pull -q --rebase; git push -q
