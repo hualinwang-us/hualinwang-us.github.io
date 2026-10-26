@@ -13,6 +13,7 @@ jobs:
           await p.goto('https://huamai88.com/?nosplash&nohit#deals');await p.waitForTimeout(6000);
           const s=await p.$$eval('#dealsFull section',s=>s.map(x=>(x.querySelector('h2')||{}).textContent+':'+x.querySelectorAll('li').length).join(' | '));
           console.log(`::notice title=${n}::${s} || errs=${errs.slice(0,4).join(' ; ')}`);}
+          const d=await (await fetch('https://huamai88.com/data/deals.json?x='+Date.now())).text();console.log('::notice title=deals.json::len='+d.length+' head='+d.slice(0,300).replace(/\n/g,' '));
           await b.close()})();
           JS
           node t.js
