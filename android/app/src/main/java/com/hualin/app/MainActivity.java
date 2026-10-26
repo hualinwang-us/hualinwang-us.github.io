@@ -118,6 +118,14 @@ public class MainActivity extends Activity {
             runOnUiThread(() -> startActivity(Intent.createChooser(send, "分享到")));
         }
         @JavascriptInterface public String version() { return BuildConfig.VERSION_NAME; }
+        /** Opens one app's own share screen (WeChat, 小红书, Instagram, WhatsApp...) with the text; false if that app isn't installed. */
+        @JavascriptInterface public boolean shareTo(String pkg, String text, String tok) {
+            if (!token.equals(tok) || text == null || text.length() > 2000 || pkg == null || !pkg.matches("[a-z0-9_.]{3,60}")) return false;
+            Intent send = new Intent(Intent.ACTION_SEND);
+            send.setType("text/plain"); send.putExtra(Intent.EXTRA_TEXT, text); send.setPackage(pkg);
+            send.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try { startActivity(send); return true; } catch (ActivityNotFoundException e) { return false; }
+        }
         /** Reads English text aloud with the phone's own voice (WebView has no speech of its own). */
         @JavascriptInterface public boolean speak(String text) {
             if (text == null || text.length() > 500 || tts == null) return false;

@@ -40,10 +40,10 @@
     const msg = text + "\n" + url;
     const enc = encodeURIComponent;
     const links = [
-      ["WhatsApp", "wa", `https://wa.me/?text=${enc(msg)}`],
-      ["Facebook", "fb", `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`],
-      ["LINE", "line", `https://social-plugins.line.me/lineit/share?url=${enc(url)}`],
-      ["X", "tw", `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`],
+      ["WhatsApp", "wa", `https://wa.me/?text=${enc(msg)}`, "com.whatsapp"],
+      ["Facebook", "fb", `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`, "com.facebook.katana"],
+      ["LINE", "line", `https://social-plugins.line.me/lineit/share?url=${enc(url)}`, "jp.naver.line.android"],
+      ["X", "tw", `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`, "com.twitter.android"],
       [t.sms, "sms", `sms:?&body=${enc(msg)}`],
       [t.email, "mail", `mailto:?subject=${enc(title)}&body=${enc(msg)}`]
     ];
@@ -60,7 +60,7 @@
         <button type="button" class="sh-btn xhs" data-sh="xhs"><span class="sh-ic">书</span>小红书</button>
         <button type="button" class="sh-btn ig" data-sh="ig"><span class="sh-ic">IG</span>Instagram</button>
         ${(navigator.share || window.HuaLinApp) && !inWeChat ? `<button type="button" class="sh-btn" data-sh="system"><span class="sh-ic">⇪</span>${esc(t.system)}</button>` : ""}
-        ${links.map(([label, cls, href]) => `<a class="sh-btn ${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><span class="sh-ic">${esc(label.slice(0, 1))}</span>${esc(label)}</a>`).join("")}
+        ${links.map(([label, cls, href, pkg]) => `<a class="sh-btn ${cls}" href="${esc(href)}"${pkg ? ` data-pkg="${pkg}"` : ""} target="_blank" rel="noopener noreferrer"><span class="sh-ic">${esc(label.slice(0, 1))}</span>${esc(label)}</a>`).join("")}
         <button type="button" class="sh-btn" data-sh="copy"><span class="sh-ic">⧉</span>${esc(t.copy)}</button>
       </div>
       <p class="sh-msg" role="status"></p>
@@ -71,8 +71,14 @@
     const say = m => { dlg.querySelector(".sh-msg").textContent = m; };
     dlg.addEventListener("click", async e => {
       if (e.target === dlg || e.target.closest("[data-sh-close]")) { dlg.close(); return; }
+      // In the Android app: jump straight into that app's own share screen.
+      const APP = window.HuaLinApp && window.HuaLinApp.shareTo ? window.HuaLinApp : null;
+      const PKG = { wechat: "com.tencent.mm", xhs: "com.xingin.xhs", ig: "com.instagram.android" }, NAME = { wechat: "微信", xhs: "小红书", ig: "Instagram" };
+      const pa = e.target.closest("[data-pkg]");
+      if (pa && APP) { e.preventDefault(); if (APP.shareTo(pa.dataset.pkg, msg, window.__hlt || "")) dlg.close(); else window.open(pa.href, "_blank"); return; }
       const b = e.target.closest("[data-sh]"); if (!b) return;
       const k = b.dataset.sh;
+      if (APP && PKG[k]) { if (APP.shareTo(PKG[k], msg, window.__hlt || "")) { dlg.close(); return; } say(`这台手机没有安装${NAME[k]}。`); return; }
       if ((k === "wechat" || k === "system") && window.HuaLinApp && window.HuaLinApp.share) { try { window.HuaLinApp.share(msg, window.__hlt || ""); dlg.close(); return; } catch (err) {} }
       if (k === "wechat") {
         const ok = await copy(msg);
@@ -90,6 +96,7 @@
         say(ok ? `文字和链接已复制。打开${app}，发笔记或快拍时粘贴就行（Instagram 建议贴在个人简介或快拍的链接贴纸里）。` : "");
         if (!ok) { const u = dlg.querySelector(".sh-url"); u.focus(); u.select(); }
         const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (mobile && navigator.share) { try { await navigator.share({ title, text, url }); dlg.close(); } catch (err) {} return; }
         const go = mobile ? (k === "xhs" ? "xhsdiscover://" : "instagram://app") : (k === "xhs" ? "https://www.xiaohongshu.com/" : "https://www.instagram.com/");
         setTimeout(() => { if (mobile) location.href = go; else window.open(go, "_blank", "noopener"); }, 900);
       } else if (k === "system") {
