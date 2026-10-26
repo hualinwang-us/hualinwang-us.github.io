@@ -1,9 +1,0 @@
-name: Flyer check
-on: workflow_dispatch
-jobs:
-  c:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          node -e 'const d=require("./data/flyers.json");(async()=>{let bad=0,ok=0;for(const s of d.stores)for(const u of s.imgs){if(!u.startsWith("http"))continue;try{const r=await fetch(u,{headers:{"user-agent":"Mozilla/5.0",referer:"https://huamai88.com/"}});const ct=r.headers.get("content-type")||"";const n=(await r.arrayBuffer()).byteLength;if(r.ok&&/image/.test(ct)&&n>20000)ok++;else{bad++;console.log(`::warning title=${s.id}::${r.status} ${ct} ${n}`)}}catch(e){bad++;console.log(`::warning title=${s.id}::${e.message}`)}}console.log(`::notice title=result::ok=${ok} bad=${bad}`)})()'
