@@ -663,15 +663,25 @@ export function parseBulletin(html) {
 }
 async function buildVisa() {
   const base = "https://travel.state.gov";
-  const idx = await get(base + "/content/travel/en/legal/visa-law0/visa-bulletin.html");
+  // travel.state.gov refuses GitHub's servers, so fall back to our own Supabase relay (op=visa) when needed.
+  let viaRelay = false;
+  const cfgTxt = await fs.readFile("config.js", "utf8").catch(() => "");
+  const SBU = ((cfgTxt.match(/supabaseUrl:\s*"([^"]+)"/) || [])[1] || "").replace(/\/rest\/v1\/?$/, "").replace(/\/$/, ""), SBK = (cfgTxt.match(/supabaseKey:\s*"([^"]+)"/) || [])[1] || "";
+  const getPage = async path => {
+    if (!viaRelay) { try { return await get(base + path); } catch (e) { viaRelay = true; } }
+    const r = await fetch(`${SBU}/functions/v1/transit?op=visa&path=${encodeURIComponent(path)}`, { headers: { apikey: SBK } });
+    if (!r.ok) throw new Error("relay HTTP " + r.status + " " + (await r.text()).slice(0, 120));
+    return r.text();
+  };
+  const idx = await getPage("/content/travel/en/legal/visa-law0/visa-bulletin.html");
   const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
   const links = [...new Set((idx.match(/\/content\/travel\/en\/legal\/visa-law0\/visa-bulletin\/\d{4}\/visa-bulletin-for-[a-z]+-\d{4}\.html/gi) || []))]
     .map(u => { const m = u.match(/for-([a-z]+)-(\d{4})/i); return { u, y: +m[2], m: MONTHS.indexOf(m[1].toLowerCase()) }; }).filter(x => x.m >= 0).sort((a, b) => (b.y * 12 + b.m) - (a.y * 12 + a.m));
   if (!links.length) throw new Error("no bulletin links");
-  const pick = links[0], html = await get(base + pick.u), data = parseBulletin(html);
+  const pick = links[0], html = await getPage(pick.u), data = parseBulletin(html);
   if (!data.family.length && !data.employment.length) throw new Error("bulletin tables not found");
   await fs.writeFile("data/visa.json", JSON.stringify({ month: `${pick.y}年${pick.m + 1}月`, monthEn: `${MONTHS[pick.m]} ${pick.y}`, url: base + pick.u, checked: new Date().toISOString(), ...data }));
-  console.log(`::notice title=visa::ok ${pick.u} fam=${data.family.length} emp=${data.employment.length}`);
+  console.log(`::notice title=visa::ok${viaRelay ? " (via relay)" : ""} ${pick.u} fam=${data.family.length} emp=${data.employment.length}`);
 }
 
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split("/").pop())) {

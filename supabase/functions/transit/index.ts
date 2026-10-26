@@ -100,6 +100,17 @@ Deno.serve(async (req) => {
         const e = sd?.data?.entry || sd?.data; if (e && e.lat) at = { lat: e.lat, lon: e.lon, name: e.name || "", dir: e.direction || "" }; } catch { /* map just centers on the buses */ }
       return json({ list: visits, note: err, stop: at });
     }
+    if (op === "visa") {
+      // Visa Bulletin pages (public, State Dept). Only these two page shapes are allowed.
+      const path = q.get("path") || "";
+      if (!/^\/content\/travel\/en\/legal\/visa-law0\/visa-bulletin(\.html|\/\d{4}\/visa-bulletin-for-[a-z]+-\d{4}\.html)$/.test(path)) return json({ error: "bad path" }, 400);
+      const html = await cached("visa:" + path, 6 * 3600e3, async () => {
+        const r = await fetch("https://travel.state.gov" + path, { headers: { "user-agent": "Mozilla/5.0 (compatible; HuaMaiBot/1.0; +https://huamai88.com/)", "accept": "text/html" } });
+        if (!r.ok) throw new Error("state.gov HTTP " + r.status);
+        return r.text();
+      });
+      return new Response(html, { headers: { ...CORS, "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+    }
     return json({ error: "unknown op" }, 400);
   } catch (e) {
     return json({ error: String((e as Error).message || e).slice(0, 200) }, 502, 0);
