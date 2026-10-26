@@ -1166,7 +1166,6 @@
   function renderAppDl() {
     const el = $("#appDlBody"); if (!el) return;
     document.title = "华脉 App 下载 - 安卓 / iPhone";
-    const same = ["每天第一次打开有毛笔写「华脉」开场动画", "精简首页：福利自测、超市特价单、实用工具、同城服务、推荐新闻", "实时到站、超市特价单可以用定位找附近", "全屏打开，没有浏览器地址栏", "网站每次更新，App 自动是最新内容", "最下方显示版本号"];
     const and = `<section class="ad-card${isIOS ? "" : " mine"}"><div class="ad-top"><span class="ad-os">🤖</span><div><h2>安卓手机</h2><p>APK 直接安装${apkVer ? ` · 最新版本 ${esc(apkVer)}` : ""}</p></div></div>
       <a class="btn ad-btn" href="${APK}">⬇ 下载安卓 App（APK）</a>
       <ol class="ad-steps"><li>点上面的按钮下载</li><li>下载完点开文件，选「安装」</li><li>手机问「允许安装未知应用」，选允许</li><li>如果出现 Google Play 保护提示，点「扫描应用」或「仍然安装」</li><li>桌面出现华脉图标，就装好了</li></ol></section>`;
@@ -1174,7 +1173,6 @@
       ${isIOS && !isWx ? `<button type="button" class="btn ad-btn" data-ios-help>📲 一步步教我装</button>` : `<p class="ad-hint">${isWx ? "请先点右上角 ··· 选「在浏览器打开」，用 Safari 打开 huamai88.com" : "请用 iPhone 的 Safari 浏览器打开 huamai88.com"}</p>`}
       <ol class="ad-steps"><li>用 <b>Safari</b> 打开 huamai88.com（微信里先点右上角 ··· 选「在浏览器打开」）</li><li>点屏幕最下方的 <b>分享按钮</b> <svg class="ad-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 11v9h14v-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>（方框加向上箭头）</li><li>往下滑，点 <b>「添加到主屏幕」</b></li><li>点右上角 <b>「添加」</b></li><li>桌面出现华脉图标，以后从图标打开就是 App</li></ol></section>`;
     el.innerHTML = `<div class="ad-grid">${isIOS ? ios + and : and + ios}</div>
-      <section class="ad-same"><h3>两个版本功能完全一样</h3><ul>${same.map(x => `<li>✓ ${esc(x)}</li>`).join("")}</ul></section>
       <p class="tl-note">分享给亲友：把 huamai88.com/#app 发到微信群，他们点开就能看到怎么装。</p>`;
   }
   document.addEventListener("click", e => { if (e.target.closest("[data-ios-help]")) appSteps(t("appIosH"), t("appIosSteps")); });
@@ -1245,7 +1243,7 @@
     if (route.view === "search") renderSearch();
     renderTabs();
     countView();
-    const bn = route.view === "home" ? "home" : (route.view === "city" || route.view === "board" || route.view === "yp") ? "city" : route.view === "chaoshi" ? "sale" : route.view === "tools" ? "tools" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : (route.view === "deals" || route.view === "chaoshi") ? "deals" : route.view === "me" ? "me" : "";
+    const bn = route.view === "home" ? "home" : (route.view === "city" || route.view === "board" || route.view === "yp") ? "city" : (route.view === "chaoshi" || route.view === "deals") ? "sale" : route.view === "tools" ? "tools" : ["guide", "guideOne", "check"].includes(route.view) ? "guide" : (route.view === "deals" || route.view === "chaoshi") ? "deals" : route.view === "me" ? "me" : "";
     document.querySelectorAll("#bnav [data-bn]").forEach(a => a.classList.toggle("on", a.dataset.bn === bn));
     const fh = $("#fabHome"); if (fh) fh.hidden = route.view === "home";
     if (h === "classifieds") { const el = document.querySelector(".boards-sec"); if (el) el.scrollIntoView({ block: "start" }); }

@@ -1463,3 +1463,7 @@ body.noscroll .fab-home{display:none}
 @media (prefers-color-scheme:dark){.fab-home{background:#f3ead8;color:#1B1F2A}}
 @media (max-width:719px){.bnav{grid-template-columns:repeat(5,minmax(0,1fr))!important;width:100%;box-sizing:border-box}.bnav a>span:last-child,.bnav button>span:last-child{white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:100%}}
 body{overflow-wrap:break-word}.art,.art-sum,.art p,.post-body,.rows li,.nl li{overflow-wrap:anywhere}
+/* 本周特价: two tabs — 超市特价 / 其他特价 */
+.sale-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;margin:10px 0 14px;background:var(--line-2);border-radius:14px;max-width:520px}
+.sale-tabs a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;font-weight:800;font-size:16px;color:var(--muted);text-decoration:none}
+.sale-tabs a.on{background:var(--paper);color:var(--accent);box-shadow:0 2px 8px -3px rgba(27,31,42,.35)}
