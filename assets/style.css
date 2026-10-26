@@ -1461,3 +1461,5 @@ button.cs-img{padding:0;width:100%;cursor:zoom-in;font:inherit}
 @media (max-width:719px){.fab-home{bottom:calc(140px + env(safe-area-inset-bottom,0px));width:52px;height:52px}}
 body.noscroll .fab-home{display:none}
 @media (prefers-color-scheme:dark){.fab-home{background:#f3ead8;color:#1B1F2A}}
+@media (max-width:719px){.bnav{grid-template-columns:repeat(5,minmax(0,1fr))!important;width:100%;box-sizing:border-box}.bnav a>span:last-child,.bnav button>span:last-child{white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:100%}}
+body{overflow-wrap:break-word}.art,.art-sum,.art p,.post-body,.rows li,.nl li{overflow-wrap:anywhere}
