@@ -1450,3 +1450,7 @@ button.cs-img{padding:0;width:100%;cursor:zoom-in;font:inherit}
   clip-path:inset(0 100% 0 0);animation:sp-brush .9s cubic-bezier(.6,0,.2,1) 2.9s forwards!important}
 .hl-quick .sp-poem{display:block!important;animation:sp-brush .45s cubic-bezier(.6,0,.2,1) .95s forwards!important}
 .hl-quick .splash{animation:sp-exit .5s cubic-bezier(.76,0,.24,1) 1.75s forwards!important}
+/* phones: no half-hidden weather pill in the top strip; everything else fits on one line */
+@media (max-width:560px){.util-mid{display:none!important}.util-in{justify-content:flex-end;gap:6px}.util-in>:first-child:not(.util-mid){margin-right:auto}}
+@media (max-width:400px){.util-share{padding:2px 9px}.util .seg button{padding-inline:9px}}
+@media (max-width:350px){.util-fz{display:none}}

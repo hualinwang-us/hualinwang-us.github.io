@@ -426,10 +426,11 @@
     if (!news) return;
     const fresh = i => Date.now() - (Date.parse(i.d) || 0) < 36 * 3600e3;
     const pick = [], seen = new Set();
-    const take = (list, n) => { for (const i of list) { if (pick.length >= 5 || n <= 0) break; if (seen.has(i.id) || !fresh(i)) continue; seen.add(i.id); pick.push(i); n--; } };
+    const take = (list, n, any) => { for (const i of list) { if (pick.length >= 5 || n <= 0) break; if (seen.has(i.id) || (!any && !fresh(i))) continue; seen.add(i.id); pick.push(i); n--; } };
     const withImgFirst = l => l.filter(i => i.img).concat(l.filter(i => !i.img));
     take(withImgFirst(sec("top").slice(0, 6)), 1); take(withImgFirst(sec("local").slice(0, 8)), 1); take(withImgFirst(sec("immigration").slice(0, 8)), 1); take(withImgFirst(sec("top").slice(0, 12)), 2);
-    if (pick.length < 3) take(sec("top"), 5);
+    if (pick.length < 5) take(sec("top").concat(sec("local"), sec("immigration")), 5, true); // never leave the box empty
+    if (!pick.length) { const raw = (news.sections && (news.sections[lang] || news.sections.zh)) || {}; take([].concat(raw.top || [], raw.local || [], raw.immigration || []), 5, true); }
     el.innerHTML = pick.length ? `<ul class="ah-nl">${pick.map(i => `<li><a ${nhref(i)}>${i.img ? `<span class="ah-th">${imgTag(i, "")}</span>` : ""}<span class="ah-nt"><b>${esc(disp(i))}</b><em>${esc(i.src || "")}</em></span></a></li>`).join("")}</ul>` : `<div class="empty">${esc(t("newsEmpty"))}</div>`;
   }
   function renderTools() {
@@ -1175,7 +1176,6 @@
     el.innerHTML = `<div class="ad-grid">${isIOS ? ios + and : and + ios}</div>
       <section class="ad-same"><h3>两个版本功能完全一样</h3><ul>${same.map(x => `<li>✓ ${esc(x)}</li>`).join("")}</ul></section>
       <p class="tl-note">分享给亲友：把 huamai88.com/#app 发到微信群，他们点开就能看到怎么装。</p>`;
-    if (!apkVer) fetch("https://api.github.com/repos/hualinwang-us/hualinwang-us.github.io/releases/latest").then(r => r.json()).then(d => { const m = String(d.tag_name || "").match(/(\d+)$/); if (m) { apkVer = "1.0." + m[1]; if (route.view === "appdl") renderAppDl(); } }).catch(() => {});
   }
   document.addEventListener("click", e => { if (e.target.closest("[data-ios-help]")) appSteps(t("appIosH"), t("appIosSteps")); });
   async function installApp() {
