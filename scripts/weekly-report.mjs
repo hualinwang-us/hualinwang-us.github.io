@@ -119,6 +119,7 @@ html += sec("🤖 自动抓取", table([
 html += sec("🩺 现在的运行状态", table(live.map(l => row(esc(l.name), l.ok ? "✅ 正常" : "❌ 异常", l.ok ? (l.ms + " 毫秒") : esc(l.note)))));
 html += `<p style="color:#999;font-size:12px;margin-top:30px">这封邮件每周一早上由网站自动发送。不想收或想改内容，跟 Claude 说一声就行。</p></div>`;
 
+console.log(`::notice title=summary::${db ? `views=${db.views} prev=${db.views_prev} app=${db.views_app} daily=${JSON.stringify(db.views_daily)} top=${JSON.stringify((db.top_pages || []).slice(0, 12))} posts_new=${db.posts_new} posts_total=${db.posts_total} reports=${db.reports_new} users_new=${db.users_new} users_total=${db.users_total}` : "no db"} | issues=${issues.join(" / ").slice(0, 600)}`);
 /* 6. send */
 const subject = `华脉每周报告 ${nyDay(from)}–${nyDay(today)}${issues.length ? ` · ⚠️ ${issues.length} 项需要注意` : " · 一切正常"}`;
 await fs.writeFile("weekly-report.html", html);
