@@ -2,8 +2,8 @@
    Everything opens inside the site: pick an area (or use location), pick a store, flyer shows here; tap to zoom in an in-page viewer. */
 (function () {
   const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const AREAS = [["", "全部地区"], ["fl", "法拉盛"], ["el", "艾姆赫斯特"], ["co", "可乐娜"], ["ln", "小颈 · 湾边"], ["mh", "曼哈顿华埠"], ["bk", "布鲁克林"], ["li", "长岛"]];
-  const PTS = { fl: [40.7590, -73.8300], el: [40.7370, -73.8780], co: [40.7450, -73.8620], ln: [40.7640, -73.7550], mh: [40.7155, -73.9970], bk: [40.6330, -74.0050], li: [40.7550, -73.5900] };
+  const AREAS = [["", "全部地区"], ["fl", "法拉盛"], ["el", "艾姆赫斯特"], ["co", "可乐娜"], ["ln", "小颈 · 湾边"], ["mh", "曼哈顿华埠"], ["bk", "布鲁克林"], ["si", "史丹顿岛"], ["li", "长岛"]];
+  const PTS = { fl: [40.7590, -73.8300], el: [40.7370, -73.8780], co: [40.7450, -73.8620], ln: [40.7640, -73.7550], mh: [40.7155, -73.9970], bk: [40.6330, -74.0050], si: [40.5800, -74.1500], li: [40.7550, -73.5900] };
   let data = null, loading = null, area = null, locMsg = "", asked = false;
   try { const a = localStorage.getItem("hl-cs-area"); if (a !== null) area = a; } catch (e) {}
   const load = () => loading || (loading = fetch("data/flyers.json", { cache: "no-cache" }).then(r => r.json()).then(d => (data = d)).catch(() => (data = { stores: [] })));
@@ -42,7 +42,7 @@
       ${inArea.length ? `<div class="cs-stores">${inArea.map(s => `<a href="#cs-${esc(s.id)}"${cur && cur.id === s.id ? ' class="on"' : ""}>${esc(s.name)}</a>`).join("")}</div>` : `<p class="tl-note">这个地区暂时还没有超市的特价单，看看旁边的地区吧。</p>`}
       ${cur ? `<section class="cs-flyer">
         <div class="cs-head"><h2>${esc(cur.name)}</h2><p>${esc(cur.locs.join(" · "))}</p></div>
-        <p class="cs-meta">${cur.got ? `${md(cur.got)}更新` : ""}${cur.stale ? " · 本周还没出新单，先显示上一期" : ""}${cur.imgs.length > 1 ? ` · 共 ${cur.imgs.length} 张（不同分店可能不同）` : ""} · 点图片放大看</p>
+        <p class="cs-meta">${cur.got ? `${md(cur.got)}更新` : ""}${cur.src ? ` · 图片来源：${esc(cur.src)}` : ""}${cur.stale ? " · 本周还没出新单，先显示上一期" : ""}${cur.imgs.length > 1 ? ` · 共 ${cur.imgs.length} 张（不同分店可能不同）` : ""} · 点图片放大看</p>
         ${cur.imgs.map((u, i) => `<button type="button" class="cs-img" data-csview="${i}"><img src="${esc(u)}" alt="${esc(cur.name)} 本周特价单 ${i + 1}" loading="${i ? "lazy" : "eager"}" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('bad')"><span>图片暂时打不开，请稍后再试</span></button>`).join("")}
       </section>` : ""}
       <p class="tl-note">每周五自动更新。特价单来自各超市官方网站，版权归超市所有；价格和日期以店内为准。超市老板想加入或更正，请到「联系我们」。</p>`;

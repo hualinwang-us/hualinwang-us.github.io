@@ -8,6 +8,11 @@ const get = async u => { const r = await fetch(u, { headers: UA, redirect: "foll
 const imgsOf = t => [...new Set([...t.matchAll(/https?:\/\/[^"'\s)\\<>]+?\.(?:jpe?g|png|webp)/gi)].map(m => m[0].replace(/%7E/gi, "~")))]
   .filter(u => !/favicon|logo|icon|dummy|cropped-|parastorage|placeholder|-\d+x\d+\.|\/v1\/(fill|fit|crop)\//i.test(u));
 // area keys: fl 法拉盛, el 艾姆赫斯特, co 可乐娜, ln 小颈/湾边, mh 曼哈顿华埠, bk 布鲁克林, si 史丹顿岛, li 长岛
+async function csw(slug) {
+  const t = await get("https://www.chaoshiweekly.com/store/" + slug);
+  const files = [...new Set([...t.matchAll(/%2Fflyers%2F([^&"]+?\.(?:jpe?g|png|webp))/gi)].map(m => decodeURIComponent(m[1])))];
+  return files.map(f => "https://www.chaoshiweekly.com/flyers/" + f);
+}
 const STORES = [
   { id: "jmart", name: "新世界超市 J-Mart", en: "J-Mart", areas: ["fl", "ln", "bk"], locs: ["法拉盛 New World Mall 136-20 Roosevelt Ave", "小颈 Little Neck", "布鲁克林 Bensonhurst"],
     page: "https://www.newworldmallnyc.com/jmart-weekly-special", home: "https://www.newworldmallnyc.com/", keep: u => /wixstatic\.com\/media\/1dffbd_/.test(u) },
@@ -34,17 +39,31 @@ const STORES = [
   { id: "amart", name: "大华兴超市 A Mart", en: "A Mart", areas: ["li"], locs: ["长岛 Hicksville"], page: "https://www.amart-ny.com/index.php/weekly-special/", home: "https://www.amart-ny.com/index.php/about/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u), rehost: true },
   { id: "littleneck", name: "好邻居超市", en: "Little Neck Supermarket", areas: ["ln"], locs: ["小颈 Little Neck"], page: "https://littlenecksupermarket.com/", home: "https://littlenecksupermarket.com/en/weekly-specials/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
   { id: "walfood", name: "万华超市 WalFood", en: "WalFood", areas: ["ln"], locs: ["湾边 Bayside"], page: "https://www.walfoodmarket.com/", home: "https://www.walfoodmarket.com/about", keep: u => /wixstatic\.com\/media\/c55d0c_/.test(u), max: 1 }, // first picture on the page is the flyer; the rest are QR codes / store photos
-  { id: "99ranch", name: "99大华超市", en: "99 Ranch", areas: ["fl", "li"], locs: ["法拉盛", "长岛 Westbury"], link: "https://www.99ranch.com/" },
-  // 昌发: site often blocks automated visits (429); tried every run, shown when it works.
-  { id: "skyfoods", name: "昌发超市 Sky Foods", en: "Sky Foods", areas: ["fl", "el"], locs: ["法拉盛", "艾姆赫斯特"], page: "https://skyfoods.com/", home: "https://skyfoods.com/about-us/", keep: u => /\/wp-content\/uploads\/20\d\d\//.test(u) },
-  { id: "newage", name: "兴旺超市 New Age", en: "New Age Market", areas: ["fl"], locs: ["法拉盛"], link: "https://newagemarket.net/" },
-  { id: "superfl", name: "新飞龙超市", en: "Super FL Mart", areas: ["li"], locs: ["长岛 Mineola"], link: "https://super-fl-mart.com/" },
+
+  // Stores with no flyer on their own website: flyer photo as published on chaoshiweekly.com (菜网), credited on the page.
+  { id: "skyfoods-flushing", name: "昌发超市（法拉盛）", en: "Sky Foods Flushing", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/skyfoods-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("skyfoods-flushing") },
+  { id: "skyfoods-main-flushing", name: "昌发超市（缅街）", en: "Sky Foods Main St", areas: ["fl"], locs: ["法拉盛 缅街"], page: "https://www.chaoshiweekly.com/store/skyfoods-main-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("skyfoods-main-flushing") },
+  { id: "chungfat-flushing", name: "昌发超市（Chung Fat）", en: "Chung Fat", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/chungfat-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("chungfat-flushing") },
+  { id: "skyfoods-elmhurst", name: "昌发超市（艾姆赫斯特）", en: "Sky Foods Elmhurst", areas: ["el"], locs: ["艾姆赫斯特 Elmhurst"], page: "https://www.chaoshiweekly.com/store/skyfoods-elmhurst", src: "菜网 chaoshiweekly.com", custom: () => csw("skyfoods-elmhurst") },
+  { id: "golden-city-flushing", name: "金城发超市", en: "Golden City", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/golden-city-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("golden-city-flushing") },
+  { id: "us1-flushing", name: "新龙兴超市", en: "US 1", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/us1-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("us1-flushing") },
+  { id: "feilong-flushing", name: "飞龙超市（法拉盛）", en: "Fei Long Flushing", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/feilong-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("feilong-flushing") },
+  { id: "feilong-brooklyn", name: "飞龙超市（布鲁克林）", en: "Fei Long Brooklyn", areas: ["bk"], locs: ["布鲁克林"], page: "https://www.chaoshiweekly.com/store/feilong-brooklyn", src: "菜网 chaoshiweekly.com", custom: () => csw("feilong-brooklyn") },
+  { id: "ac-flushing", name: "中美超市", en: "AC", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/ac-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("ac-flushing") },
+  { id: "newage-flushing", name: "兴旺超市 New Age", en: "New Age", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/newage-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("newage-flushing") },
+  { id: "99ranch-flushing", name: "99大华超市（法拉盛）", en: "99 Ranch Flushing", areas: ["fl"], locs: ["法拉盛"], page: "https://www.chaoshiweekly.com/store/99ranch-flushing", src: "菜网 chaoshiweekly.com", custom: () => csw("99ranch-flushing") },
+  { id: "99ranch-westbury", name: "99大华超市（长岛）", en: "99 Ranch Westbury", areas: ["li"], locs: ["长岛 Westbury"], page: "https://www.chaoshiweekly.com/store/99ranch-westbury", src: "菜网 chaoshiweekly.com", custom: () => csw("99ranch-westbury") },
+  { id: "hl-brooklyn", name: "华乐超市（布鲁克林）", en: "HL Brooklyn", areas: ["bk"], locs: ["布鲁克林"], page: "https://www.chaoshiweekly.com/store/hl-brooklyn", src: "菜网 chaoshiweekly.com", custom: () => csw("hl-brooklyn") },
+  { id: "huale-statenisland", name: "华乐超市（史丹顿岛）", en: "Hua Le Staten Island", areas: ["si"], locs: ["史丹顿岛"], page: "https://www.chaoshiweekly.com/store/huale-statenisland", src: "菜网 chaoshiweekly.com", custom: () => csw("huale-statenisland") },
+  { id: "ezfresh-brooklyn-65th", name: "甌江超级市场", en: "EZ Fresh", areas: ["bk"], locs: ["布鲁克林 65街"], page: "https://www.chaoshiweekly.com/store/ezfresh-brooklyn-65th", src: "菜网 chaoshiweekly.com", custom: () => csw("ezfresh-brooklyn-65th") },
+  { id: "superflmart-mineola", name: "新飞龙超市", en: "Super FL Mart", areas: ["li"], locs: ["长岛 Mineola"], page: "https://www.chaoshiweekly.com/store/superflmart-mineola", src: "菜网 chaoshiweekly.com", custom: () => csw("superflmart-mineola") },
 ];
 let prev = {}; try { prev = Object.fromEntries((JSON.parse(await fs.readFile("data/flyers.json", "utf8")).stores || []).map(s => [s.id, s])); } catch {}
 const homeCache = {};
 const out = [];
 for (const s of STORES) {
   const o = { id: s.id, name: s.name, en: s.en, areas: s.areas, locs: s.locs, page: s.page || s.link, imgs: [] };
+  if (s.src) o.src = s.src;
   if (s.page) {
     try {
       let imgs;
