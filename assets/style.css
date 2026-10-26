@@ -1495,5 +1495,5 @@ body{overflow-wrap:break-word}.art,.art-sum,.art p,.post-body,.rows li,.nl li{ov
   #wxNow{white-space:nowrap;padding:2px 9px}
   #wxNow .wx-c,#wxNow .wx-d{display:none}
 }
-@media (max-width:440px){.util-app{display:none!important}}
 @media (max-width:370px){.util-fz{display:none!important}#wxNow{padding:2px 7px}}
+#lzt[hidden]{display:none!important}
