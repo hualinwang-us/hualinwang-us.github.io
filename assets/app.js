@@ -194,7 +194,10 @@
     return r.json();
   }
   async function loadData() {
-    const [n, m, a, gd, w, dl, ol] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), getJSON("data/deals.json"), Promise.resolve(null)]); // official listings turned off
+    // Deals are small: show them as soon as they arrive instead of waiting for the (large) news file.
+    const dealsP = getJSON("data/deals.json").then(v => { if (v && v.sections) { deals = v; try { renderDeals(); } catch (e) {} } return v; })
+      .catch(() => getJSON("data/deals.json?retry=1").then(v => { if (v && v.sections) { deals = v; try { renderDeals(); } catch (e) {} } return v; }));
+    const [n, m, a, gd, w, dl, ol] = await Promise.allSettled([getJSON("data/news.json"), getJSON("data/market.json"), getJSON("data/ads.json"), getJSON("data/guides.json"), getJSON("data/watch.json"), dealsP, Promise.resolve(null)]); // official listings turned off
     if (ol && ol.status === "fulfilled" && ol.value) official = ol.value;
     if (dl.status === "fulfilled" && dl.value && dl.value.sections) deals = dl.value;
     if (gd.status === "fulfilled" && gd.value && Array.isArray(gd.value.guides)) guides = gd.value;
@@ -1098,6 +1101,7 @@
     }
     $("#dealsGrid").innerHTML = cols.join("");
     box.hidden = false;
+    if (route.view === "deals" && !deals) { $("#dealsFull").innerHTML = `<div class="skel"><i></i><i></i><i></i></div><p class="empty">正在加载优惠…</p>`; return; }
     if (route.view === "deals") {
       const all = localDeals();
       const bizAll = ds.biz || [];
