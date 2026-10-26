@@ -2,6 +2,33 @@
 (function () {
   const HLC = window.HLC || (window.HLC = {});
   HLC.PAGES = {
+    business: {
+      seal: { zh: "合", en: "合" },
+      zh: {
+        title: "商业合作",
+        intro: "华脉面向纽约华人，每天有人来看新闻、查福利、找工作、找房子、看超市特价。欢迎商家和机构一起合作。",
+        items: [
+          ["广告位", "首页、栏目页和 App 里的「推荐」广告位，按周或按月出租。适合餐馆、超市、律师、会计、地产、装修、医疗诊所等。"],
+          ["商家黄页认证和置顶", "在「商家黄页」登记你的店，免费；想排在前面、加图片和优惠信息，可以申请付费推荐。"],
+          ["超市特价单", "超市老板可以把每周的特价单发给我们，免费放进「本周特价 → 超市特价」，让附近的华人看到。"],
+          ["招聘和房屋推广", "需要一次招很多人、或者有多套房子出租出售，可以整批发布并置顶。"],
+          ["内容和社区合作", "社区组织、非营利机构的免费活动和公益信息，可以免费刊登；也欢迎媒体和平台的内容合作。"],
+          ["联系方式", "电话：{phone}（未接请发短信）\n邮箱：{email}\n请说明你的店名或机构名、想合作的内容，我们会尽快回复。"]
+        ]
+      },
+      en: {
+        title: "Work with us",
+        intro: "HuaMai serves Chinese New Yorkers every day: news, benefits, jobs, housing and supermarket flyers. Businesses and organizations are welcome to work with us.",
+        items: [
+          ["Ad placements", "Sponsored spots on the home page, section pages and the app, by the week or month."],
+          ["Directory listing and featured spots", "List your business in the directory for free; featured placement with photos and offers is available."],
+          ["Supermarket flyers", "Store owners can send us the weekly flyer and we'll show it free under Weekly specials → Supermarkets."],
+          ["Hiring and property campaigns", "Post many openings or properties at once, with pinned placement."],
+          ["Community and content partners", "Free listings for community groups and nonprofits; content partnerships welcome."],
+          ["Contact", "Phone: {phone} (text if no answer)\nEmail: {email}"]
+        ]
+      }
+    },
     about: {
       seal: { zh: "脉", en: "脉" },
       zh: {
