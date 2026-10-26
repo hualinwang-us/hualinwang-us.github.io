@@ -1,13 +1,14 @@
-const j = async (u, o = {}) => { try { const r = await fetch(u, { ...o, signal: AbortSignal.timeout(40000) }); const t = await r.text(); return `[${r.status}] ${t.slice(0, 900).replace(/\s+/g, " ")}`; } catch (e) { return "ERR " + e.message; } };
-const show = async (k, u, o) => console.log(`\n=== ${k}\n${await j(u, o)}`);
-const cat = async q => { const r = await fetch(`https://api.us.socrata.com/api/catalog/v1?domains=data.cityofnewyork.us&q=${encodeURIComponent(q)}&limit=6`); const d = await r.json(); console.log(`\n=== CAT ${q}\n` + (d.results || []).map(x => `${x.resource.id} | ${x.resource.name} | ${x.resource.updatedAt}`).join("\n")); };
-await cat("housing connect lotteries"); await cat("alternate side parking"); await cat("public restrooms"); await cat("linknyc kiosk"); await cat("library branches"); await cat("cooling centers"); await cat("warming center"); await cat("free wifi hotspot"); await cat("rent stabilized");
-await show("geosearch", "https://geosearch.planninglabs.nyc/v2/search?text=" + encodeURIComponent("41-60 Main St Queens") + "&size=1");
-await show("hpd violations by bbl", "https://data.cityofnewyork.us/resource/wvxf-dwi5.json?$limit=2&bbl=4049780001");
-await show("hpd complaints", "https://data.cityofnewyork.us/resource/ygpa-z7cr.json?$limit=1");
-await show("311 by bbl", "https://data.cityofnewyork.us/resource/erm2-nwe9.json?$limit=1&bbl=4049780001");
-await show("subway gtfs-rt 7", "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-7");
-await show("subway static", "https://rrgtfsfeeds.s3.amazonaws.com/gtfs_subway.zip", { method: "HEAD" });
-await show("asp dot page", "https://www.nyc.gov/html/dot/html/motorist/alternate-side-parking.shtml");
-await show("311 asp", "https://portal.311.nyc.gov/article/?kanumber=KA-01011");
-await show("nws alerts nyc", "https://api.weather.gov/alerts/active?point=40.7128,-74.006", { headers: { "user-agent": "huamai88.com (huamai.us@gmail.com)" } });
+const j = async (u, o = {}) => { try { const r = await fetch(u, { ...o, signal: AbortSignal.timeout(40000) }); const t = await r.text(); return [r.status, t]; } catch (e) { return [0, "ERR " + e.message]; } };
+const show = async (k, u, n = 900, o) => { const [s, t] = await j(u, o); console.log(`\n=== ${k} [${s}]\n${t.slice(0, n).replace(/\s+/g, " ")}`); return t; };
+for (const f of ["nyct%2Fgtfs", "nyct%2Fgtfs-7", "nyct/gtfs-7", "nyct%2Fgtfs-ace", "nyct%2Fgtfs-nqrw"]) { const [s, t] = await j("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/" + f); console.log(`=== feed ${f} [${s}] len=${t.length} ${t.slice(0, 80).replace(/\s+/g, " ")}`); }
+const asp = (await j("https://www.nyc.gov/html/dot/html/motorist/alternate-side-parking.shtml"))[1];
+for (const k of ["suspend", "in effect", "Suspended", "calendar", "2026"]) { let i = -1, n = 0; while ((i = asp.indexOf(k, i + 1)) > 0 && n++ < 3) console.log(`ASP[${k}] ${asp.slice(Math.max(0, i - 200), i + 250).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")}`); }
+await show("hpd viol sample", "https://data.cityofnewyork.us/resource/wvxf-dwi5.json?$limit=1&boroid=4", 1500);
+await show("hc lottery sample", "https://data.cityofnewyork.us/resource/vy5i-a666.json?$limit=2&$order=lottery_end_date%20DESC", 2000);
+await show("hc by building", "https://data.cityofnewyork.us/resource/nibs-na6y.json?$limit=1", 1200);
+await show("restroom", "https://data.cityofnewyork.us/resource/i7jb-7jku.json?$limit=1", 800);
+await show("restroom op", "https://data.cityofnewyork.us/resource/vzrx-zg6z.json?$limit=1", 800);
+await show("linknyc", "https://data.cityofnewyork.us/resource/s4kf-3yrf.json?$limit=1", 800);
+await show("queens lib", "https://data.cityofnewyork.us/resource/kh3d-xhq7.json?$limit=1", 800);
+await show("bpl", "https://data.cityofnewyork.us/resource/xmzf-uf2w.json?$limit=1", 800);
+await show("geosearch full", "https://geosearch.planninglabs.nyc/v2/search?text=" + encodeURIComponent("41-60 Main St Queens") + "&size=1", 2500);
