@@ -1,0 +1,12 @@
+const j = async u => { const r = await fetch(u, { signal: AbortSignal.timeout(40000) }); const t = await r.text(); try { return JSON.parse(t); } catch { return { status: r.status, t: t.slice(0, 300) }; } };
+const show = (k, v) => console.log(`\n=== ${k}\n${JSON.stringify(v).slice(0, 1500)}`);
+show("restaurants", await j("https://data.cityofnewyork.us/resource/43nn-pn8j.json?$select=distinct%20dba,building,street,zipcode,phone&$where=" + encodeURIComponent("cuisine_description='Chinese' AND zipcode in('11354','11355')") + "&$limit=5"));
+show("dcwp industries", await j("https://data.cityofnewyork.us/resource/w7w3-xahh.json?$select=business_category,count(*)&$group=business_category&$order=count(*)%20desc&$limit=60"));
+show("dcwp sample", await j("https://data.cityofnewyork.us/resource/w7w3-xahh.json?$limit=2&address_zip=11354"));
+for (const tx of ["Dentist", "Acupuncturist", "Internal Medicine", "Optometrist", "Family Medicine"]) show("npi " + tx, await j(`https://npiregistry.cms.hhs.gov/api/?version=2.1&enumeration_type=NPI-2&taxonomy_description=${encodeURIComponent(tx)}&city=FLUSHING&state=NY&limit=3`));
+show("ny catalog realestate", await j("https://api.us.socrata.com/api/catalog/v1?domains=data.ny.gov&q=real%20estate%20brokers&limit=5").then(d => (d.results || []).map(x => [x.resource.id, x.resource.name])));
+show("ny catalog movers", await j("https://api.us.socrata.com/api/catalog/v1?domains=data.ny.gov&q=household%20goods%20movers&limit=5").then(d => (d.results || []).map(x => [x.resource.id, x.resource.name])));
+show("ny catalog appearance", await j("https://api.us.socrata.com/api/catalog/v1?domains=data.ny.gov&q=appearance%20enhancement&limit=5").then(d => (d.results || []).map(x => [x.resource.id, x.resource.name])));
+show("ny catalog insurance", await j("https://api.us.socrata.com/api/catalog/v1?domains=data.ny.gov&q=insurance%20agents%20licensed&limit=5").then(d => (d.results || []).map(x => [x.resource.id, x.resource.name])));
+show("ny catalog attorney", await j("https://api.us.socrata.com/api/catalog/v1?domains=data.ny.gov&q=attorney%20registrations&limit=5").then(d => (d.results || []).map(x => [x.resource.id, x.resource.name])));
+show("nyc catalog", await j("https://api.us.socrata.com/api/catalog/v1?domains=data.cityofnewyork.us&q=travel%20agency&limit=5").then(d => (d.results || []).map(x => [x.resource.id, x.resource.name])));
