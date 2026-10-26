@@ -22,7 +22,13 @@ try {
       if (!m) continue;
       const mo = MONTHS[m[1].toLowerCase()], d1 = +m[2], d2 = m[3] ? +m[3] : d1;
       const name = cells.find(c => !/(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d/i.test(c) && /[a-z]/i.test(c)) || cells[cells.length - 1];
-      for (let d = d1; d <= d2; d++) asp.push({ d: ymd(+yr, mo, d), name, major: /\*/.test(row) });
+      // The page's table labels are unreliable, so work out the year from the weekday printed in the row.
+      const wd = (row.match(/\b(sun|mon|tue|wed|thu|fri|sat)[a-z]*\b/i) || [])[1];
+      const WD = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+      const nowY = new Date().getUTCFullYear();
+      let year = +yr;
+      if (wd) { const hit = [nowY - 1, nowY, nowY + 1].find(y => new Date(Date.UTC(y, mo - 1, d1)).getUTCDay() === WD[wd.toLowerCase().slice(0, 3)]); if (hit) year = hit; }
+      for (let d = d1; d <= d2; d++) asp.push({ d: ymd(year, mo, d), name: name.replace(/\*$/, ""), major: /\*/.test(row) });
     }
   }
   console.log(`::notice title=asp::${asp.length} days ${asp.slice(0, 3).map(x => x.d + " " + x.name).join("; ")}`);
