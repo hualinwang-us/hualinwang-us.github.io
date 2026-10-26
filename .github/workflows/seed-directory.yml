@@ -1,0 +1,15 @@
+name: Seed directory
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  s:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/seed-directory.mjs
+      - run: |
+          git config user.name hualin; git config user.email hualin@users.noreply.github.com
+          git add data/directory.json; git commit -qm "Directory: real Flushing businesses from public registries" && git pull -q --rebase && git push
