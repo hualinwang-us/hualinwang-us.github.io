@@ -1,93 +1,92 @@
 {
- "lastRun": "2026-10-27T15:29:53.053Z",
+ "lastRun": "2026-10-28T11:54:17.336Z",
  "pages": {
   "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility": {
    "hash": "ee0d4d7ddd68cd68e897485155b141ee0c2e5317",
    "changed": null,
-   "checked": "2026-10-27",
-   "pending": "e018bf0f4fa4ba21cbd6d8f9121a4c4986c41308"
+   "checked": "2026-10-28",
+   "pending": "deaec0039c66ce2d373e11d7afb37d7a5b682cc5"
   },
   "https://www.uscis.gov/n-400": {
    "hash": "8d80a280735647fdf0023c0279b6558beba059fc",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://www.uscis.gov/i-485": {
    "hash": "3f84b11477d9d0128a54ce44f9c411ef09a44158",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://info.nystateofhealth.ny.gov/stay-covered": {
-   "hash": "168231f4a7c0a63c4f1d2b14d34b3cf06a15a275",
-   "changed": null,
-   "checked": "2026-10-27",
-   "pending": "ef8e5f201638bf3a0659c85b1a40cc7fc79ecb3a"
+   "hash": "ef8e5f201638bf3a0659c85b1a40cc7fc79ecb3a",
+   "changed": "2026-10-28",
+   "checked": "2026-10-28"
   },
   "https://www.nyc.gov/site/hra/help/public-health-insurance.page": {
    "hash": "a1ddcc9e3967878f37c1aa77b5867ca1b1a2b9e9",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://info.nystateofhealth.ny.gov/stay-connected": {
    "hash": "4189c3b52d8be1a1bc8f002c3a152751d0300127",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://access.nyc.gov/programs/nyc-care/": {
    "hash": "975039a8bd7e130fe8236d21b863526b86ca3972",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://healthweb-back.health.ny.gov/health_care/epic/member_info/program_highlights_2026.htm": {
    "hash": "860c2e140a94c5c3ed0ba2c492b4ce3468fc350c",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://www.nyc.gov/site/hra/help/able-bodied-adults-without-dependents.page": {
    "hash": "1afea6c5a7d9d9b9e5b9f20224eaa8cfe9e99c71",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://access.nyc.gov/programs/women-infants-and-children-wic/": {
    "hash": "77589dcea3bef13e57d5b5de9169dec866248e26",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://rules.cityofnewyork.us/rule/amendments-to-the-fair-fares-nyc-program/": {
    "hash": "8350fe567c030810fcb0de5edf72719ef9a9dde0",
    "changed": null,
-   "checked": "2026-10-27",
+   "checked": "2026-10-28",
    "error": "HTTP 403"
   },
   "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm": {
    "hash": "44f0ec1b7839f2e3792c7d4a256302fc61f112be",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://www.nyc.gov/site/nycha/eligibility/public-housing-applicant-faq.page": {
    "hash": "be549be8832d7730e86796b375769fa4785dc7c2",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://www.nyc.gov/site/nycha/section-8/guide-for-applicants-and-tenants.page": {
    "hash": "55dfbf25c639fec2f948022905e72b00f8d06d21",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://access.nyc.gov/programs/nyc-housing-connect": {
    "hash": "5a93fca03119aedd344bd21f2c193dd9c2c4180f",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://www.nyc.gov/site/rentfreeze/qualifications/qualifications.page": {
    "hash": "fdaf1ddeae53926d584acf8836b632c71a24455a",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   },
   "https://www.nyc.gov/site/nycha/eligibility/eligibility.page": {
    "hash": "54fb45ada738fd036bc146d88eb96817ab4e9ec8",
    "changed": null,
-   "checked": "2026-10-27"
+   "checked": "2026-10-28"
   }
  }
 }
