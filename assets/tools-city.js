@@ -215,5 +215,15 @@
     };
     if (id === "freemap" && navigator.geolocation && !FM.pos) navigator.geolocation.getCurrentPosition(p => { FM.pos = { lat: p.coords.latitude, lon: p.coords.longitude }; if (FM.map) { FM.map.setView([FM.pos.lat, FM.pos.lon], 15); window.L.circleMarker([FM.pos.lat, FM.pos.lon], { radius: 8, color: "#fff", weight: 3, fillColor: "#2f6fd6", fillOpacity: 1 }).addTo(FM.map); } }, () => {}, { timeout: 10000, maximumAge: 600000 });
   }
-  window.HLCity = { TOOLS, render };
+  // One-line "today" summary for the home page.
+  async function today() {
+    await loadCal(); const d = nyToday(), dow = new Date(d + "T12:00:00").getDay(), sun = dow === 0, we = dow === 0 || dow === 6;
+    const asp = on(CAL.asp, d), sch = on(CAL.school, d), tr = on(CAL.trash, d), fed = on(CAL.federal, d);
+    const t1 = nyToday(1), asp1 = on(CAL.asp, t1);
+    return { date: zhDate(d), aspOff: asp.length > 0 || sun, aspWhy: asp.length ? aspName(asp[0].name) : sun ? "周日" : "",
+      aspTomorrow: asp1.length > 0, aspTomorrowWhy: asp1.length ? aspName(asp1[0].name) : "",
+      schoolOff: sch.length > 0 || we, trashOff: tr.length > 0 || sun, bankOff: fed.length > 0 || sun,
+      holiday: (fed[0] || sch[0] || tr[0] || {}).name || "" };
+  }
+  window.HLCity = { TOOLS, render, today };
 })();

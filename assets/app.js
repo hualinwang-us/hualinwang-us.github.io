@@ -401,20 +401,41 @@
     document.title = (trip ? trip.name : t("travelTab")) + " - 华脉";
   }
   document.addEventListener("click", e => { const b = e.target.closest("[data-trshare]"); if (!b || !window.HLTravel) return; const n = HLTravel.title(b.dataset.trshare); HLShare.open({ url: HLC.siteBase() + "#tr-" + b.dataset.trshare, title: n + " 省钱攻略", text: n + " 省钱攻略 - 华脉" }); });
-  const TOOL_COL = { go: "#2f6fd6", scam: "#c8302a", imm: "#7a4fd0", drive: "#1f9d74", loan: "#d98a1c", afford: "#b8562a", eng: "#2a8fb8", life: "#5d6272" };
+  const TOOL_COL = { home: "#8a5a2b", go: "#2f6fd6", scam: "#c8302a", imm: "#7a4fd0", drive: "#1f9d74", loan: "#d98a1c", afford: "#b8562a", eng: "#2a8fb8", life: "#5d6272" };
   // Website home: the same 8 most-used tools as the app home, third on the page.
   function renderHomeTools() {
     const el = $("#homeTools"); const T = window.HLTools; if (!el || !T) return;
-    const zh = lang === "zh", TOP = ["transit", "scam", "civics", "permit", "visa", "mortgage", "phrases", "tip"];
+    const td = $("#homeToday"); if (td && !td.dataset.on) { td.dataset.on = "1"; td.innerHTML = todayHtml(); fillToday(td); }
+    const zh = lang === "zh", TOP = ["transit", "asp", "building", "lottery", "scam", "civics", "permit", "phrases"];
     const catOf = id => (T.CATS.find(c => c.tools.includes(id)) || {}).id;
     el.innerHTML = `<div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div><div class="ah-tools">${TOP.filter(id => T.TOOLS[id]).map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[catOf(id)] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")}</div>`;
+  }
+  // "今日速览": the four things people check every day, right at the top of the home page.
+  let flyerCount = null;
+  function todayHtml() {
+    return `<section class="today" aria-label="今日速览"><div class="today-h"><b>今日速览</b><span data-tdate></span></div><div class="today-grid">
+      <a href="#t-asp" class="td-asp"><i>🚗</i><b>今天要挪车吗</b><span data-tasp>查看中…</span></a>
+      <a href="#t-holiday" class="td-hol"><i>📅</i><b>今天放假吗</b><span data-thol>查看中…</span></a>
+      <a href="#chaoshi"><i>🛒</i><b>超市本周特价</b><span data-tcs>每周五更新</span></a>
+      <a href="#t-transit"><i>🚇</i><b>实时到站</b><span>公交 · 地铁 · 火车</span></a></div></section>`;
+  }
+  function fillToday(root) {
+    if (!root) return;
+    if (window.HLCity && HLCity.today) HLCity.today().then(x => {
+      root.querySelectorAll("[data-tdate]").forEach(e => e.textContent = x.date);
+      root.querySelectorAll("[data-tasp]").forEach(e => { e.textContent = x.aspOff ? "不用挪，扫街暂停" + (x.aspWhy ? "（" + x.aspWhy + "）" : "") : "要挪，扫街照常" + (x.aspTomorrow ? " · 明天暂停" : ""); e.closest("a").classList.toggle("ok", x.aspOff); e.closest("a").classList.toggle("warn", !x.aspOff); });
+      root.querySelectorAll("[data-thol]").forEach(e => { const off = [x.schoolOff && "学校", x.trashOff && "垃圾收集", x.bankOff && "银行邮局"].filter(Boolean); e.textContent = off.length ? off.join("、") + "休息" : "学校、银行、垃圾收集都正常"; });
+    }).catch(() => {});
+    const setCs = () => root.querySelectorAll("[data-tcs]").forEach(e => e.textContent = flyerCount + " 家超市，每周五更新");
+    if (flyerCount != null) setCs();
+    else fetch("data/flyers.json").then(r => r.json()).then(d => { flyerCount = (d.stores || []).filter(s => s.imgs && s.imgs.length).length; setCs(); }).catch(() => {});
   }
   function renderAppHome() {
     const el = $("#appHome"); if (!el || !IS_APP) return;
     document.documentElement.classList.add("app-lite"); el.hidden = false;
     const T = window.HLTools, zh = lang === "zh";
     // The 8 tools people reach for most; the rest sit behind "全部工具".
-    const TOP_TOOLS = ["transit", "scam", "civics", "permit", "visa", "mortgage", "phrases", "tip"];
+    const TOP_TOOLS = ["transit", "asp", "building", "lottery", "scam", "civics", "permit", "phrases"];
     const catOf = id => (T.CATS.find(c => c.tools.includes(id)) || {}).id;
     const tools = T ? `<div class="ah-tools">${TOP_TOOLS.filter(id => T.TOOLS[id]).map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[catOf(id)] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")}</div>` : "";
     // The 8 most used local-service boards; the rest behind "全部分类".
@@ -422,12 +443,13 @@
     const boards = `<div class="ah-tools">${TOP_BOARDS.map(boardById).filter(Boolean).map(b => `<a href="#b-${b.id}"><span class="ah-ic" style="--c:${GCOL[b.group] || "#d2453a"}">${esc(b.glyph)}</span><b>${esc(zh ? b.zh : b.en)}</b></a>`).join("")}</div>`;
     el.innerHTML = `
       <div class="wx-strip" id="ahWx" hidden></div>
+      ${todayHtml()}
       <a class="ah-hero" href="#check"><span class="ah-lab">${esc(zh ? "福利自测" : "Benefits check")}</span><b>${esc(zh ? "白卡、粮食券、公屋……我能申请什么？" : "Medicaid, SNAP, housing: what can I get?")}</b><span>${esc(zh ? "回答几个问题，马上看到你可能符合的福利" : "Answer a few questions to see what you may qualify for")}</span><em>${esc(zh ? "开始自测 →" : "Start →")}</em></a>
       <a class="ah-cs" href="#chaoshi"><span class="ah-cs-ic">🛒</span><div><b>${esc(zh ? "华人超市特价单" : "Supermarket flyers")}</b><span>${esc(zh ? "法拉盛、华埠、布鲁克林本周特价，选超市直接看" : "This week's flyers from Chinese supermarkets")}</span></div><i>›</i></a>
       <section class="ah-tools-sec"><div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div>${tools}</section>
       <section class="ah-tools-sec"><div class="bh"><h2>${esc(zh ? "同城服务" : "Local services")}</h2><a class="ah-all" href="#city">${esc(zh ? "全部分类" : "All categories")} ›</a></div>${boards}</section>
       <section class="ah-tools-sec ah-news"><div class="bh"><h2>${esc(zh ? "推荐新闻" : "Top stories")}</h2><a class="ah-all" href="#n-top">${esc(zh ? "全部新闻" : "All news")} ›</a></div><div id="ahNews"><div class="skel"><i></i><i></i><i></i></div></div></section>`;
-    renderAppNews(); try { renderWxStrip(); } catch (e) {}
+    renderAppNews(); fillToday(el); try { renderWxStrip(); } catch (e) {}
   }
   // A handful of hand-picked-by-rule stories for the app home: the lead story, then the freshest
   // NYC-local and immigration stories, then more top stories; pictures preferred, at most 5.
