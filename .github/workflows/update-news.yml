@@ -70,5 +70,17 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+      # GitHub Pages sometimes answers 500/502 for a moment; wait and try again instead of failing (and emailing).
       - id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - if: steps.deployment.outcome == 'failure'
+        run: sleep 90
+      - id: deployment2
+        if: steps.deployment.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        run: sleep 180
+      - if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
         uses: actions/deploy-pages@v4
