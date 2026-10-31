@@ -1,11 +1,11 @@
 {
- "lastRun": "2026-10-31T01:41:50.925Z",
+ "lastRun": "2026-10-31T21:44:58.548Z",
  "pages": {
   "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility": {
    "hash": "ee0d4d7ddd68cd68e897485155b141ee0c2e5317",
    "changed": null,
    "checked": "2026-10-31",
-   "pending": "24d8eed30e2a9deca3814ff8f0a3d896862aa45c"
+   "pending": "182f704a6733bb3abe5ba61c9028be8916f8ffaa"
   },
   "https://www.uscis.gov/n-400": {
    "hash": "8d80a280735647fdf0023c0279b6558beba059fc",
