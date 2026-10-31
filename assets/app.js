@@ -405,7 +405,7 @@
   // Website home: the same 8 most-used tools as the app home, third on the page.
   function renderHomeTools() {
     const el = $("#homeTools"); const T = window.HLTools; if (!el || !T) return;
-    const td = $("#homeToday"); if (td && !td.dataset.on) { td.dataset.on = "1"; td.innerHTML = todayHtml(); fillToday(td); }
+    const td = $("#homeToday"); if (td && td.dataset.on !== lang) { td.dataset.on = lang; td.innerHTML = todayHtml(); fillToday(td); }
     const zh = lang === "zh", TOP = ["transit", "asp", "building", "lottery", "scam", "civics", "permit", "phrases"];
     const catOf = id => (T.CATS.find(c => c.tools.includes(id)) || {}).id;
     el.innerHTML = `<div class="bh"><h2>${esc(t("toolsTab"))}</h2><a class="ah-all" href="#tools">${esc(zh ? "全部工具" : "All tools")} ›</a></div><div class="ah-tools">${TOP.filter(id => T.TOOLS[id]).map(id => `<a href="#t-${esc(id)}"><span class="ah-ic" style="--c:${TOOL_COL[catOf(id)] || "#5d6272"}">${esc(T.TOOLS[id].g)}</span><b>${esc(T.title(id, lang))}</b></a>`).join("")}</div>`;
@@ -413,20 +413,27 @@
   // "今日速览": the four things people check every day, right at the top of the home page.
   let flyerCount = null;
   function todayHtml() {
-    return `<section class="today" aria-label="今日速览"><div class="today-h"><b>今日速览</b><span data-tdate></span></div><div class="today-grid">
-      <a href="#t-asp" class="td-asp"><i>🚗</i><b>今天要挪车吗</b><span data-tasp>查看中…</span></a>
-      <a href="#t-holiday" class="td-hol"><i>📅</i><b>今天放假吗</b><span data-thol>查看中…</span></a>
-      <a href="#chaoshi"><i>🛒</i><b>超市本周特价</b><span data-tcs>每周五更新</span></a>
-      <a href="#t-transit"><i>🚇</i><b>实时到站</b><span>公交 · 地铁 · 火车</span></a></div></section>`;
+    const zh = lang === "zh", T = (c, e) => esc(zh ? c : e);
+    return `<section class="today" aria-label="${T("今日速览", "Today")}"><div class="today-h"><b>${T("今日速览", "Today in NYC")}</b><span data-tdate></span></div><div class="today-grid">
+      <a href="#t-asp" class="td-asp"><i>🚗</i><b>${T("今天要挪车吗", "Move my car?")}</b><span data-tasp>${T("查看中…", "Checking…")}</span></a>
+      <a href="#t-holiday" class="td-hol"><i>📅</i><b>${T("今天放假吗", "Holiday today?")}</b><span data-thol>${T("查看中…", "Checking…")}</span></a>
+      <a href="#chaoshi"><i>🛒</i><b>${T("超市本周特价", "Grocery deals")}</b><span data-tcs>${T("每周五更新", "Updated Fridays")}</span></a>
+      <a href="#t-transit"><i>🚇</i><b>${T("实时到站", "Live arrivals")}</b><span>${T("公交 · 地铁 · 火车", "Bus · Subway · Rail")}</span></a></div></section>`;
   }
   function fillToday(root) {
     if (!root) return;
+    const zh = lang === "zh";
     if (window.HLCity && HLCity.today) HLCity.today().then(x => {
-      root.querySelectorAll("[data-tdate]").forEach(e => e.textContent = x.date);
-      root.querySelectorAll("[data-tasp]").forEach(e => { e.textContent = x.aspOff ? "不用挪，扫街暂停" + (x.aspWhy ? "（" + x.aspWhy + "）" : "") : "要挪，扫街照常" + (x.aspTomorrow ? " · 明天暂停" : ""); e.closest("a").classList.toggle("ok", x.aspOff); e.closest("a").classList.toggle("warn", !x.aspOff); });
-      root.querySelectorAll("[data-thol]").forEach(e => { const off = [x.schoolOff && "学校", x.trashOff && "垃圾收集", x.bankOff && "银行邮局"].filter(Boolean); e.textContent = off.length ? off.join("、") + "休息" : "学校、银行、垃圾收集都正常"; });
+      root.querySelectorAll("[data-tdate]").forEach(e => e.textContent = zh ? x.date : x.dateEn);
+      root.querySelectorAll("[data-tasp]").forEach(e => {
+        e.textContent = zh ? (x.aspOff ? "不用挪，扫街暂停" + (x.aspWhy ? "（" + x.aspWhy + "）" : "") : "要挪，扫街照常" + (x.aspTomorrow ? " · 明天暂停" : ""))
+          : (x.aspOff ? "No — street cleaning suspended" + (x.aspWhyEn ? " (" + x.aspWhyEn + ")" : "") : "Yes — street cleaning in effect" + (x.aspTomorrow ? " · off tomorrow" : ""));
+        e.closest("a").classList.toggle("ok", x.aspOff); e.closest("a").classList.toggle("warn", !x.aspOff); });
+      root.querySelectorAll("[data-thol]").forEach(e => {
+        const off = zh ? [x.schoolOff && "学校", x.trashOff && "垃圾收集", x.bankOff && "银行邮局"].filter(Boolean) : [x.schoolOff && "Schools", x.trashOff && "Trash pickup", x.bankOff && "Banks & post office"].filter(Boolean);
+        e.textContent = zh ? (off.length ? off.join("、") + "休息" : "学校、银行、垃圾收集都正常") : (off.length ? off.join(", ") + " closed" : "Schools, banks and trash pickup as usual"); });
     }).catch(() => {});
-    const setCs = () => root.querySelectorAll("[data-tcs]").forEach(e => e.textContent = flyerCount + " 家超市，每周五更新");
+    const setCs = () => root.querySelectorAll("[data-tcs]").forEach(e => e.textContent = zh ? flyerCount + " 家超市，每周五更新" : flyerCount + " stores, updated Fridays");
     if (flyerCount != null) setCs();
     else fetch("data/flyers.json").then(r => r.json()).then(d => { flyerCount = (d.stores || []).filter(s => s.imgs && s.imgs.length).length; setCs(); }).catch(() => {});
   }

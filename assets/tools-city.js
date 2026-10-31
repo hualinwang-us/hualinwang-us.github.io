@@ -220,7 +220,9 @@
     await loadCal(); const d = nyToday(), dow = new Date(d + "T12:00:00").getDay(), sun = dow === 0, we = dow === 0 || dow === 6;
     const asp = on(CAL.asp, d), sch = on(CAL.school, d), tr = on(CAL.trash, d), fed = on(CAL.federal, d);
     const t1 = nyToday(1), asp1 = on(CAL.asp, t1);
-    return { date: zhDate(d), aspOff: asp.length > 0 || sun, aspWhy: asp.length ? aspName(asp[0].name) : sun ? "周日" : "",
+    return { date: zhDate(d), dateEn: new Date(d + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }),
+      aspWhyEn: asp.length ? asp[0].name : sun ? "Sunday" : "",
+      aspOff: asp.length > 0 || sun, aspWhy: asp.length ? aspName(asp[0].name) : sun ? "周日" : "",
       aspTomorrow: asp1.length > 0, aspTomorrowWhy: asp1.length ? aspName(asp1[0].name) : "",
       schoolOff: sch.length > 0 || we, trashOff: tr.length > 0 || sun, bankOff: fed.length > 0 || sun,
       holiday: (fed[0] || sch[0] || tr[0] || {}).name || "" };
