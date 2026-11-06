@@ -1,11 +1,11 @@
 {
- "lastRun": "2026-11-06T00:22:45.319Z",
+ "lastRun": "2026-11-06T20:55:30.435Z",
  "pages": {
   "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility": {
    "hash": "ee0d4d7ddd68cd68e897485155b141ee0c2e5317",
    "changed": null,
    "checked": "2026-11-06",
-   "pending": "35bb454dde5745a49597b5718731caf5872baecb"
+   "pending": "deb0439d380f33d0e93ce02433d3b6900ecf0191"
   },
   "https://www.uscis.gov/n-400": {
    "hash": "8d80a280735647fdf0023c0279b6558beba059fc",
@@ -53,11 +53,9 @@
    "checked": "2026-11-06"
   },
   "https://rules.cityofnewyork.us/rule/amendments-to-the-fair-fares-nyc-program/": {
-   "hash": "8350fe567c030810fcb0de5edf72719ef9a9dde0",
-   "changed": null,
-   "checked": "2026-11-06",
-   "error": "HTTP 403",
-   "pending": "8773a002b724268313e51c1df249fd799f88dcaa"
+   "hash": "8773a002b724268313e51c1df249fd799f88dcaa",
+   "changed": "2026-11-06",
+   "checked": "2026-11-06"
   },
   "https://www.tax.ny.gov/pit/credits/empire_state_child_credit.htm": {
    "hash": "44f0ec1b7839f2e3792c7d4a256302fc61f112be",
