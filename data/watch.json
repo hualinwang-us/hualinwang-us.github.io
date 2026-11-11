@@ -1,11 +1,11 @@
 {
- "lastRun": "2026-11-11T03:34:26.052Z",
+ "lastRun": "2026-11-11T23:57:16.970Z",
  "pages": {
   "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility": {
    "hash": "ee0d4d7ddd68cd68e897485155b141ee0c2e5317",
    "changed": null,
    "checked": "2026-11-11",
-   "pending": "c46936a1504db8454c528fc9da5bdedfccda422e"
+   "pending": "388da5b4217acb16b011a8376c5563e0213f8f14"
   },
   "https://www.uscis.gov/n-400": {
    "hash": "8d80a280735647fdf0023c0279b6558beba059fc",
@@ -13,10 +13,9 @@
    "checked": "2026-11-11"
   },
   "https://www.uscis.gov/i-485": {
-   "hash": "3f84b11477d9d0128a54ce44f9c411ef09a44158",
-   "changed": null,
-   "checked": "2026-11-11",
-   "pending": "3f6d73c0374395e2ad64dc58d8bf0fe91e094469"
+   "hash": "3f6d73c0374395e2ad64dc58d8bf0fe91e094469",
+   "changed": "2026-11-11",
+   "checked": "2026-11-11"
   },
   "https://info.nystateofhealth.ny.gov/stay-covered": {
    "hash": "11ceffa5e31588587f8ee52641af94401e8900f4",
